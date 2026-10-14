@@ -10,6 +10,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
+| 002 | [K-line payload: daylight burn and sensor linearity](entries/002-kline-daylight-burn/README.md) | Found the image pipeline is non-linear above ~90 DN. Flame detected at 770 nm, but no quantitative index against a sunlit background. In progress. |
 | 001 | [EMBER UHF antenna testing](entries/001-ember-antenna/README.md) | Nitinol dipole experiments, feed troubleshooting, and copper reference tuning with a NanoVNA. In progress. |
 
 ## Writing an entry
