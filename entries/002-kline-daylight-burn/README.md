@@ -1,10 +1,10 @@
-# 002 K-line payload: daylight burn and sensor linearity
+# 002 K-line payload: sensor linearity and two burn tests
 
 **Status:** In progress
 **Started:** 2026-10-14
 **Updated:** 2026-10-14
 
-Setting exposure for a daylight burn test of the three-camera narrowband payload. The session produced one solid instrument finding, one qualitative detection, and one failure: **the stored JPEGs are not linear in incident light**, the flame is clearly brightest at 770 nm, and I could not extract a trustworthy δ₇₇ against a sunlit background.
+Exposure setting and two burn tests of the three-camera narrowband payload on the same day. Three outcomes: **the stored JPEGs are not linear in incident light**; the afternoon burn against a sunlit fence gave no usable index; and the evening burn against a dark backdrop gave a clean **δ₇₇ ≈ +2.5**, with the background being the only thing that changed.
 
 ## Goal
 
@@ -69,7 +69,7 @@ Only 26% of the frame is valid at 400 µs; the rest falls below the 8 DN floor w
 
 Also recorded: no-fire references and dark frames at 100 / 200 / 400 / 800 µs. **Dark current is negligible** — mean 0.00005 DN, max 5 across 7.9 M pixels, matching the 24000 µs darks from 3 Oct. Dark subtraction is effectively a no-op on this sensor.
 
-## The flame
+## Burn 1 — daylight, sunlit fence
 
 Bracketing on the live flame, per-channel peak DN:
 
@@ -94,7 +94,7 @@ At 400 µs, 770 becomes the brightest channel. On the no-fire scene it was consi
 
 The flame at 200 µs, aligned, identical scaling across all three. Peak above local background: 750 +24, 770 +58, 780 +49.
 
-## What failed
+### Why burn 1 failed
 
 I could not produce a stable integrated δ₇₇. Successive attempts gave +4.0, +0.45, −3.2, −9.0 and +2.07 on the same data, depending entirely on how the flame region and background annulus were defined. Several attempts drove the continuum estimate negative, making the ratio meaningless.
 
@@ -102,23 +102,84 @@ The cause is the background, not the flame. The flame is about 0.08% of the fram
 
 I spent too long iterating on thresholds before looking at the frames. Rendering the flame region early would have shown the problem immediately.
 
+## Burn 2 — dark backdrop, same evening
+
+Same rig, same filters, same flat field. The only change was a dark backdrop behind the flame.
+
+Bracketing gave 100 µs with all three channels at 75–84 DN, just inside the linear limit. I took 15 triplets there, then two further sets at 50 µs.
+
+### Locating the flame
+
+The afternoon's failure was caused by the flame region, so this time I rendered the selected region over the frame before computing anything. The region comes from temporal flicker across all three channels — a flame moves between frames, the backdrop and board do not.
+
+![The 770 nm frame with a white outline around the flicker-selected region, which sits on the flame](images/flame-region-check.jpg)
+
+The flicker-selected region at 100 µs, outlined in white on the 770 nm median. It lands on the flame.
+
+### The estimator matters
+
+My first pass used a per-pixel **median** over the 15 frames, which gave δ₇₇ = +0.222 — but the raw peaks in the same region were 750 = 14 and 770 = 100, a 7× ratio that a 20% integral could not explain. A median rejects the flame as an outlier: at any given pixel the flame is only present in some frames. The **mean** preserves time-integrated flux and is the correct estimator for a flickering source.
+
+| Estimator | S₇₅₀ | S₇₇₀ | S₇₈₀ | δ₇₇ |
+| --- | --- | --- | --- | --- |
+| Median over frames | 13.7k | 15.0k | 11.5k | +0.222 |
+| **Mean over frames** | 14.5k | **28.1k** | 14.3k | **+0.957** |
+
+### Result
+
+The 100 µs set had 770 peaking at 100 DN, above the linear limit, so its δ₇₇ is a floor. The 50 µs set A is fully linear and is the measurement:
+
+| Band | Integrated | Relative to 750 | Raw peak |
+| --- | --- | --- | --- |
+| 750 | 5.4k | 1.00 | 8 |
+| **770** | **25.9k** | **4.79** | 83 |
+| 780 | 8.4k | 1.56 | 31 |
+
+| Measure | Value |
+| --- | --- |
+| δ₇₇, integrated | **+2.49** |
+| δ₇₇, per-triplet median (n = 15) | **+3.40** |
+| Per-triplet range | −0.24 to +5.09 |
+| Triplets positive | 93% |
+| Raw peak, 770 | 83 DN — **within the linear limit** |
+| Region | 6337 px |
+
+![The flame in three bands for both 50 µs sets, with 770 nm much brighter in set A and the set B region landing on scene furniture](images/dark-backdrop-flame.jpg)
+
+Mean of 15 frames, identical scaling, white outline marking the measured region. Top row, set A: the region is on the flame and 770 nm is visibly much brighter. Bottom row, set B: the region has latched onto the board edge and a diagonal object, not a flame.
+
+**Set B is rejected.** Its region selected scene motion rather than a flame — the fire had died back and something moved through the frame between exposures. Its nominal δ₇₇ = +0.37 is not a measurement of anything. I only caught this by rendering the region; the numbers alone looked plausible.
+
+### Why the backdrop was the whole problem
+
+| | Burn 1, sunlit fence | Burn 2, dark backdrop |
+| --- | --- | --- |
+| Continuum bands agree with each other | 780 at +49 against 770's +58 | **750 and 780 within 1.4%** |
+| Stability across region size | +4.0, −9.0, +2.07 | +0.22 to +0.50 |
+| Result | unusable | **δ₇₇ = +2.49** |
+
+In burn 1 the flame was about 0.08% of the frame against a fence of comparable brightness in the continuum bands, so background structure dominated the integral. In burn 2 the background sits near 0.6–0.8 DN and the flame is the only thing in the region.
+
 ## What this establishes
 
 - The image pipeline is non-linear above roughly 90 DN. Measured, and it changes how every future exposure is chosen.
 - A no-fire baseline of δ₇₇ = −0.074 with a quantified false-positive floor.
-- A flame produces a large, specific 770 nm excess, visible and present in peak increments.
-- **Daylight against a bright background does not yield a quantitative δ₇₇ with this method.** This was predicted in the payload documentation; it is now demonstrated.
+- **A flame against a dark backdrop gives δ₇₇ = +2.49 integrated, fully within the sensor's linear range**, with 93% of individual triplets positive. The two continuum bands agree with each other to 1.4%, which is the shape a line emitter should produce.
+- **Background, not exposure or calibration, is what decides whether the measurement is possible.** Identical hardware and settings gave an unusable result against a sunlit fence and a clean one against a dark backdrop, hours apart.
+- For a flickering source, use the mean over frames. A median suppresses the signal.
+
+Still unresolved: absolute calibration, the ~2 s gap between channels, and 8-bit storage. δ₇₇ remains aperture-dependent for an extended source, so any quoted figure needs its region stated.
 
 ## Next steps
 
 Planned, not yet performed:
 
-1. Repeat the burn **against a dark surface or at dusk**, so the flame dominates its own background. This is the single change most likely to give a measurable number.
-2. Keep raw peak ≤ 87 DN on the flame itself, not the landscape.
-3. Investigate raw (DNG) capture. A tone curve is irreversible at 8 bits and no calibration recovers it; this session is the strongest argument yet for a raw path.
+1. Investigate raw (DNG) capture. A tone curve is irreversible at 8 bits and no calibration recovers it; this session is the strongest argument yet for a raw path.
+2. Repeat with a potassium-free fuel, such as an alcohol flame, as a negative control. That is what would turn a detection into a discriminator.
+3. Keep the flame near frame centre; the outer 10% of the field is uncalibrated.
 
 ## Files and references
 
-- [Exposure and capture manifests](files/) — per-frame mean, p99, max and clipped fraction for every capture, with exposure. `163919` no-fire bracket, `165000` reference ladder, `165651` darks, `172754` fire bracket.
+- [Exposure and capture manifests](files/) — per-frame mean, p99, max and clipped fraction for every capture, with exposure. `163919` no-fire bracket, `165000` reference ladder, `165651` darks, `172754` burn 1 bracket, `184638` burn 2 bracket, `185113` the 50 µs set A used for the final result.
 - Raw frames are held outside this repo at `payload_raw/` alongside the payload repository; they are not reproducible and want a backup.
 - Payload code, calibration and analysis tools: [`koenig_wildfire`](https://github.com/ngrabbs/koenig_wildfire). Flat-field provenance in `calibration/README.md`; the 20 September detection in `docs/potassium_detection.md`.
