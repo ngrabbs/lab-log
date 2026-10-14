@@ -95,15 +95,6 @@ The session added daylight examples with and without fire, along with recorded e
 
 An earlier analysis reported a derived index of δ₇₇ = +2.49 for the building set at 50 µs. The [preliminary analysis notes](preliminary-analysis.md) retain that result and explain what was calculated. It is a result of a particular processing method and selected area, not a calibrated measurement of potassium emission.
 
-## Next steps
-
-Planned, not yet performed:
-
-1. Add the original outdoor no-fire images to the repository; their measurement manifests are already included.
-2. Label each retained image set as fire present, no fire present, or uncertain, based on observations during capture. Record the fuel, background, exposure, and any scene movement alongside it.
-3. Collect more clearly labeled examples at matching settings, including no-fire references taken close in time to each burn.
-4. Inspect the selected measurement area on the actual image before accepting any flame calculation.
-
 ## Files and references
 
 A triplet is one image from each of the three cameras. The folders below contain original JPEG captures; the image panels above are processed summaries.
