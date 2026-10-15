@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-10-15T21:19:20.847116+00:00",
+  "setup": "User confirmed Y3 pad3 tip with C8 pad2 GND; 10x probe; no MCU commands",
+  "settings": {
+    ":CHANnel1:PROBe?": "1.000000e+01",
+    ":CHANnel1:COUPling?": "DC",
+    ":MEASure:COUNter:SOURce?": "CHAN1"
+  },
+  "readings": [
+    {
+      "counter_hz": "1.6000191e+07",
+      "frequency_hz": "1.587302e+07",
+      "vpp": "3.680000e+00"
+    },
+    {
+      "counter_hz": "1.6000190e+07",
+      "frequency_hz": "1.587302e+07",
+      "vpp": "3.640000e+00"
+    },
+    {
+      "counter_hz": "1.6000192e+07",
+      "frequency_hz": "1.587302e+07",
+      "vpp": "3.680000e+00"
+    },
+    {
+      "counter_hz": "1.6000192e+07",
+      "frequency_hz": "1.587302e+07",
+      "vpp": "3.680000e+00"
+    },
+    {
+      "counter_hz": "1.6000190e+07",
+      "frequency_hz": "1.587302e+07",
+      "vpp": "3.640000e+00"
+    },
+    {
+      "counter_hz": "1.6000193e+07",
+      "frequency_hz": "1.612903e+07",
+      "vpp": "3.640000e+00"
+    }
+  ],
+  "scope_error": "0,\"No error\""
+}

@@ -1,0 +1,43 @@
+{
+  "captured_at": "2026-10-15T21:15:28.642384+00:00",
+  "setup": "Y3 pad3 output to pad2 ground, 10x scope probe; user confirmed ready; no MCU commands or TX test",
+  "settings": {
+    ":CHANnel1:PROBe?": "1.000000e+01",
+    ":CHANnel1:COUPling?": "DC",
+    ":MEASure:COUNter:SOURce?": "CHAN1",
+    ":TRIGger:STATus?": "AUTO"
+  },
+  "readings": [
+    {
+      "counter_hz": "0.0000000e+00",
+      "frequency_hz": "9.9E37",
+      "vpp": "1.200000e-01"
+    },
+    {
+      "counter_hz": "0.0000000e+00",
+      "frequency_hz": "9.9E37",
+      "vpp": "1.200000e-01"
+    },
+    {
+      "counter_hz": "0.0000000e+00",
+      "frequency_hz": "9.9E37",
+      "vpp": "1.600000e-01"
+    },
+    {
+      "counter_hz": "0.0000000e+00",
+      "frequency_hz": "9.9E37",
+      "vpp": "1.200000e-01"
+    },
+    {
+      "counter_hz": "0.0000000e+00",
+      "frequency_hz": "9.9E37",
+      "vpp": "1.600000e-01"
+    },
+    {
+      "counter_hz": "0.0000000e+00",
+      "frequency_hz": "9.9E37",
+      "vpp": "1.600000e-01"
+    }
+  ],
+  "scope_error": "0,\"No error\""
+}

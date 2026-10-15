@@ -1026,5 +1026,38 @@ counter, as an additional reference comparison rather than a calibration.
 
 [Raw counter readings and console](files/clk0-rigol-frequency-counter.json).
 
+## CAN oscillator counter comparison with accessible ground
+
+The first Y3 counter attempt showed no clock and 120–160 mV peak-to-peak
+noise. A subsequent attempt showed approximately 25 MHz at 0.88–1.04 V
+peak-to-peak, with no counter result. That did not match Y3 and was not accepted
+as a Y3 measurement; the contacted node was not confirmed. Directly spanning
+Y3 pads 2/3 was impractical, so used the user-proposed **C8 pad 2 ground to
+Y3 pad 3 output** instead.
+
+Six counter queries then returned 16,000,191; 16,000,190; 16,000,192;
+16,000,192; 16,000,190; and 16,000,193 Hz. Mean **16,000,191.33 Hz** is
+approximately **+12.0 ppm** relative to nominal 16 MHz. Peak-to-peak voltage
+was 3.64–3.68 V. The coarse waveform-frequency measurement alternated between
+15.873 and 16.129 MHz; it is unsuitable for this ppm comparison. Use the
+frequency-counter readings, while retaining the distinction between repeatability
+and absolute accuracy.
+
+The same Rigol counter reads Y3 slightly high and Si5351 CLK0 approximately
+53.7 ppm low: their normalized readings differ by about 65.7 ppm. This supports
+a difference between the board's two clock sources, rather than attributing
+all the Si5351 result to a common scope timebase error. Y3 is not a calibrated
+reference, and the Si5351 crystal/load setting, temperature and probe effects
+remain unqualified. No absolute frequency correction has been applied.
+
+No firmware commands or TX windows were used in these Y3 checks. Next proposed
+investigation: verify the Si5351 crystal-loading arrangement and compare its
+supported internal load settings with outputs otherwise muted, before choosing
+any frequency correction or component rework.
+
+Raw records: [no signal](files/y3-rigol-frequency-counter.json),
+[unidentified 25 MHz attempt](files/y3-rigol-frequency-counter-retry.json),
+and [accepted Y3/C8 comparison](files/y3-c8-ground-frequency-counter.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
