@@ -103,10 +103,18 @@ The readings were taken separately; this is not a precision simultaneous drop
 measurement or full qualification of U15. The board remains below nominal supply
 voltage, and its normal operating current is still unknown.
 
+### 100 mA current-limit step
+
+With the supply set to 5.0 V and a 100 mA limit, the display read **3.89 V,
+0.100 A, CC**. I noticed no smoke or heat during the check; no temperature
+measurement was recorded. Voltage rose from the previous current-limited test,
+but the board still did not reach nominal input voltage. Normal operating
+current and the cause of the load remain unqualified.
+
 ## Next check
 
 With output off, retain the 5.0 V setting and increase the current limit to
-100 mA for another brief 1–2 second observation. Record actual supply voltage,
+150 mA for another brief 1–2 second observation. Record actual supply voltage,
 current and CV/CC mode, then turn output off. This is a staged diagnostic limit,
 not an approved operating-current budget. Do not increase it further without
 reviewing the result. Stop immediately for smoke, odor or obvious heating.
