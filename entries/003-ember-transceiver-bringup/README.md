@@ -431,5 +431,61 @@ Next: establish which physical CAN channel connects the IHU to the transceiver
 and verify stack termination before enabling bus traffic. The consoles and
 internal tests alone do not establish the header bus connections.
 
+## CAN A through the stack
+
+I confirmed that IHU uses CAN A. The transceiver has no terminator; IHU and the
+LTE Feather have the two terminators. CAN B is unconnected. This is the reported
+termination arrangement; resistance across the assembled bus was not measured.
+The ordered component record specifies 16 MHz CAN oscillators Y3/Y4, consistent
+with CNF1/2/3=`00,f0,86` for the IHU's configured 500 kbit/s.
+
+Bring-up firmware v4 adds explicit, ten-second CAN A receive windows: `l` for
+listen-only and `n` for normal-mode reception with hardware acknowledgments.
+All transmit requests are cleared before connecting A to the bus. CAN B stays
+in standby and RF stays muted. After each window, A returns to standby and
+configuration mode. No application frames are transmitted by this firmware.
+SPI is now 1 MHz; both internal loopback tests continued to pass after flashing.
+
+The IHU was explicitly put in normal mode. During the first, listen-only window,
+one IHU `hello` request produced one observed frame, standard ID `0x710`.
+The IHU reported FRAME_TX_FAILED and later an application timeout. Its status
+showed TX success 0, failure 1 and TEC 8. This is consistent with no usable ACK
+while the transceiver was silent; the LTE Feather's firmware/mode was not
+inspected, so its participation is unknown.
+
+With A acknowledging, a second `hello` produced six captured fragments and
+six successful IHU frame transmissions. However, the capture ended with
+`EFLG=0x40` (RX0 overflow). The diagnostic reader was changed to burst SPI reads,
+RX0 rollover into RX1, and RAM capture with printing deferred until the end.
+Error flags are cleared at the beginning of each new window.
+
+A third `hello` then produced all six sequential fragments for request 3:
+
+```text
+E2 00 7E D9 08 11 00 03 00 0D 45 55 01
+E2 00 3B F6 08 10 00 03 01 01 07 07 B8
+E2 00 7E D9 08 10 00 03 02 8E 07 07 B8
+E2 00 3B F6 08 10 00 03 03 8E 01 01 02
+E2 00 7E D9 08 10 00 03 04 03 01 03 CD
+E2 00 3B F6 06 12 00 03 05 C5 00 01 02
+[listen_A] END frames=6 EFLG=00 mode_ok=1 restored=1
+```
+
+These are raw MCP receive-buffer bytes. Unused EID bytes and bytes past DLC
+are not payload. IHU TX-success increased from 6 to 12, with failure count
+remaining at 1 from the listen-only test; TEC/REC/EFLG were all zero afterward.
+The HELLO application request still timed out, as this image captures frames
+but does not implement a HELLO reply. No LTE upload commands were issued.
+
+This is a successful short CAN A receive/acknowledgment test through the stack,
+not full application communication or sustained-load qualification. The IHU
+remains in normal mode with no pending request; both transceiver CAN channels
+are back in standby/configuration. Startup sequencing, transceiver-originated
+frames, IRQ wiring and application replies remain to be tested.
+
+Firmware commit `144193b`, branch `firmware/transceiver-y24-bringup`.
+Final UF2 SHA-256:
+`095027b784670c91864e080caff19a3325c8381639ea74c38c4c7d6af422d970`.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
