@@ -595,5 +595,19 @@ application-level evidence.
 Next: identify available RF measurement equipment and plan clock measurements
 before enabling a clock output. RF is still muted.
 
+## RF instrument setup
+
+Available instruments now include a Rigol DS1202Z-E and a tinySA, in addition
+to the Analog Discovery 3. A read-only network SCPI query successfully identified
+the Rigol as DS1202Z-E, firmware 00.06.04. CH1 was enabled, configured for a
+10× probe, with its bandwidth limit off; CH2 was disabled. Timebase was
+200 µs/div and trigger state WAIT. These are instrument settings, not evidence
+of a connected probe's actual attenuation or a measured board waveform.
+No settings were changed and no clock output was enabled.
+
+The tinySA did not appear in the USB device inventory during this check.
+Its exact variant, firmware and input arrangement still need identification
+before spectrum measurements. The physical scope probe model is also pending.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
