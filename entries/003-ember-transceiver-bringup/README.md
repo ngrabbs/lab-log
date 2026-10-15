@@ -1244,5 +1244,21 @@ therefore differs slightly from the tabulated scans. Raw records:
 [first window](files/y24-post-caps-tx-spurs.json),
 [repeat window](files/y24-post-caps-spurs-repeat.json).
 
+## C6 replaced with a zero-ohm resistor; verification pending
+
+The user reports replacing C6 with a 0 Ω resistor. C1/C2 remain open from
+the earlier rework. This supersedes the unchanged-C6 state at the session
+checkpoint; no post-rework waveform or RF packet result is available yet.
+The comms board and LibreSDR now have UHF antennas approximately three feet
+apart, replacing the earlier conducted tinySA arrangement.
+
+The first post-rework console check found the transceiver Pico USB device
+absent. No clock-enable or TX command was sent. Next: restore stack power
+before reconnecting Pico USB, confirm startup, and repeat the muted 10 MHz
+measurement at TP1 with a short verified ground connection. Compare the
+logic high/low levels and extrema against the previous negative plateau
+before proceeding to bounded BPSK packet tests. KiCad source and BOM have
+not yet been updated for either physical rework.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
