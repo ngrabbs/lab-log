@@ -59,21 +59,30 @@ measurement directly verifies H2 pad 29's connection to C117 ground.
 
 I found that I had been measuring the wrong pin and corrected the measurement
 point. H2 pad 29 to C117 pad 2 then measured **1.3 Ω**, suggesting ground
-continuity. It has not been clarified which earlier readings used the wrong
-pin, or whether the correction involved only a probe or a soldered test pin;
-the earlier readings are retained rather than treated as verified connections.
+continuity. The correction was moving the probe only, not relocating a soldered pin.
+Which earlier readings used the wrong pin was not specified; those readings
+are retained rather than treated as verified connections.
 
 Repeating input-to-ground resistance at H2 pads 25/29 gave **4 MΩ and climbing**.
 The requested orientation was red on pad 25 and black on pad 29. This is not a
 settled value. A rising reading can result from the meter charging capacitance;
 it does not indicate a hard short or establish powered operation.
 
+Directly across C117, the subsequent reading was **OL**. This indicates the
+meter was over range, not a measured infinite resistance. Together with the
+high/rising input reading, this check has not identified a hard input-to-ground
+short. The earlier 20 kΩ observation remains in the record; its difference is
+not assigned a confirmed cause.
+
 ## Next check
 
-With power disconnected, compare directly across C117 using the same probe
-polarity (red on pad 1, black on pad 2). Confirm whether the wrong-pin correction
-was probe placement only or also a change to a temporary soldered connection.
-Then establish the current-limited first-power setup.
+Prepare the bench supply with its output off: proposed initial settings are
+5.0 V and a 50 mA current limit for a brief fault-screening power-on. This is
+not an estimate of normal board current; the assembled circuitry may require
+more. Verify the current-limit setting and input connection before enabling
+output. Positive goes to H2 pad 25 (`+5V_CON`); negative to H2 pad 29 (GND).
+Keep the Pico, USB and other external interfaces disconnected. These are
+proposed settings, not reported instrument settings or completed actions.
 
 No power-on results are recorded. Pico and external interfaces remain outside
 the proposed first-power setup.
