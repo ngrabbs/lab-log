@@ -827,5 +827,38 @@ a verified input clock. A flat mute output without checking its input would
 not alone demonstrate the gate's function. No new clock command was sent
 while arranging these probe moves.
 
+## First conducted TX carrier test
+
+At my request, proceeded with a short TX tone while leaving C6 unchanged.
+Reported connection: J9 → external DC block → 30 dB pad → tinySA RF input;
+confirmed the scope probe was removed. Firmware v8 (`5b5609a`) adds `t`:
+PLLA 874 MHz, CLK0 divide-by-six, BPSK low, RX clock off, TX path selected
+before clock enable with 1 ms settling, then ten-second maximum transmission.
+Cleanup always restores TX_ACTIVE low, including I²C failures. Host clock/TX
+fault tests, existing checks and target build passed; flashing was verified.
+UF2 SHA-256:
+`50fdd4f371886a77895c32171f8a75e83940670c8161d0d05484dfa9e6c273e9`.
+
+TinySA was set to input mode, LNA off, internal attenuation 10 dB, external
+gain 0, requested RBW 30 kHz, 435–439 MHz. The 201-point USB scan completed
+2.70 seconds after the command and returned a peak at **436.98 MHz**, reported
+level **+5.844 dBm**. This level is anomalously high for this board with the
+reported external attenuation: adding 30 dB would imply power inconsistent
+with the expected amplifier/supply budget. Do not interpret it as calibrated
+board power. Check attenuator identity/connection, analyzer calibration and
+overload before further TX measurements. Frequency is only a coarse peak bin.
+
+Firmware reported complete=1, shutdown_verified=1, TX=0. The after-window
+scan maximum was −84.625 dBm and output controls read FF/80/80/80, supporting
+carrier generation through the conducted path and subsequent shutoff. C6,
+operating-frequency logic behavior, RF spectrum and output power remain open.
+
+I saw the TX LED but not a trace on the analyzer. USB scan leaves sweeping
+paused, and the later after-window scan replaced the trace with noise. A screen
+capture confirmed PAUSED. Display was then restored to live 437 MHz center,
+4 MHz span, +10 dBm reference and max hold, without another TX command.
+
+[Raw baseline, during/after scans and console](files/y24-first-tx-tone.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
