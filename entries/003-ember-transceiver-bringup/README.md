@@ -1373,5 +1373,22 @@ FF/80/80/80, TX=0, RX=0 and both CAN internal loopbacks pass.
 The pattern has not yet been run: awaiting probe placement at C65 pad 1,
 ground at pad 2, to measure the actual XOR data-input low/high voltages.
 
+## C65 data-input measurement: flat trace, source check pending
+
+With user-confirmed probe placement, ran the RF-muted `d` pattern twice.
+Rigol CH1 was confirmed 10x, DC coupled, 1 V/div, 20 ms/div; no SCPI error.
+Both stopped acquisitions showed approximately -0.04 to +0.04 V, mean
++0.020 V; frequency and high/low plateau measurements were unavailable.
+The repeat stopped 1.17 seconds after the firmware pattern-start message,
+inside the five-second window. No 0–3.3 V pattern was observed at the probe.
+This does not yet establish a board fault: probe contact/location and the
+source signal need checking. Next measurement requested at TP2, before R25,
+with confirmation of the CH1 connection.
+
+Both runs reported completion, data=0, TX/RX=0 and clock disable verified;
+final register 3 was FF. No RF transmission was requested. Scope returned to RUN.
+[First capture](files/y24-c65-data-input.json) ·
+[Synchronized repeat](files/y24-c65-data-input-repeat.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
