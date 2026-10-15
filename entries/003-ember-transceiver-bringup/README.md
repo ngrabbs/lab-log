@@ -111,13 +111,22 @@ measurement was recorded. Voltage rose from the previous current-limited test,
 but the board still did not reach nominal input voltage. Normal operating
 current and the cause of the load remain unqualified.
 
+### 150 mA current-limit step
+
+At the 5.0 V setting and 150 mA limit, the supply displayed **4.97 V,
+0.150 A, CC**. No smoke was observed. This is close to the requested voltage,
+but the reported CC state means current limiting was still active; a stable
+constant-voltage operating current has not yet been established.
+
 ## Next check
 
 With output off, retain the 5.0 V setting and increase the current limit to
-150 mA for another brief 1–2 second observation. Record actual supply voltage,
-current and CV/CC mode, then turn output off. This is a staged diagnostic limit,
-not an approved operating-current budget. Do not increase it further without
-reviewing the result. Stop immediately for smoke, odor or obvious heating.
+200 mA for a brief 1–2 second observation. Record actual supply voltage,
+current and CV/CC mode, then turn output off. If CC persists, stop increasing
+the limit and investigate the load before further power tests. This is a
+staged diagnostic limit, not an approved operating-current budget. Stop
+immediately for smoke, odor or obvious heating. Pico and external interfaces
+remain disconnected for this test.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
