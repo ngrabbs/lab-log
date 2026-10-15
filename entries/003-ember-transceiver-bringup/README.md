@@ -74,18 +74,34 @@ high/rising input reading, this check has not identified a hard input-to-ground
 short. The earlier 20 kΩ observation remains in the record; its difference is
 not assigned a confirmed cause.
 
+## First current-limited power-on
+
+I confirmed the NANKADF settings at **5.0 V / 0.050 A**. The requested
+connection was positive to H2 pad 25 and negative to H2 pad 29, with the Pico,
+USB and other interfaces disconnected. The procedure called for a 1–2 second
+power-on followed by output off; actual elapsed time and final output state
+were not separately reported.
+
+| Supply indication | Reported value |
+| --- | --- |
+| Output voltage | 2.95 V |
+| Output current | 0.050 A |
+| Regulation mode | CC |
+
+The supply reached its current limit and did not hold the requested 5.0 V.
+The 50 mA limit was deliberately conservative, not an operating-current budget.
+This result alone does not distinguish normal circuit demand from a fault and
+is not a successful nominal-voltage bring-up. These are supply-display values;
+voltage at the board input and after U15 has not yet been measured.
+
 ## Next check
 
-Prepare the bench supply with its output off: proposed initial settings are
-5.0 V and a 50 mA current limit for a brief fault-screening power-on. This is
-not an estimate of normal board current; the assembled circuitry may require
-more. Verify the current-limit setting and input connection before enabling
-output. Positive goes to H2 pad 25 (`+5V_CON`); negative to H2 pad 29 (GND).
-Keep the Pico, USB and other external interfaces disconnected. These are
-proposed settings, not reported instrument settings or completed actions.
-
-No power-on results are recorded. Pico and external interfaces remain outside
-the proposed first-power setup.
+Keep the same 5.0 V / 50 mA settings. With output off, set the multimeter to
+DC volts and position probes across C117 (pad 1 positive, pad 2 ground).
+Briefly enable output, record the board input voltage, then turn output off.
+Repeat across C58 (pad 1 positive, pad 2 ground) to check the protected 5 V
+rail. Position probes with output off to avoid slipping across adjacent pads.
+Do not raise the current limit until these readings have been reviewed.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
