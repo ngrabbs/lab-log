@@ -685,5 +685,40 @@ with the hardware TX mute held inactive.
 
 [Raw Y4 waveform, readings and settings](files/y4-can-b-clock-waveform.json).
 
+## Preparing the Si5351 test
+
+Bring-up v7 adds a single-byte `c` command for a ten-second maximum, 10 MHz
+CLK0 test: 25 MHz crystal → PLLA ×32 → MS0 ÷80, with 2 mA drive.
+TX_ACTIVE, RX_ACTIVE and BPSK remain low; the hardware AND gate U14 is
+commanded muted. CLK1/CLK2 remain disabled. Register readback, PLLA lock,
+crystal-loss status and a deadline guard the window; any received console
+input aborts. Shutdown attempts both register 3 disable and CLK0 power-down.
+An I²C fault can prevent those writes, so shutdown is verified and reported,
+not assumed. Physical mute isolation remains to be measured.
+
+Host tests passed for the register plan, timing, each individual I²C failure,
+missing/lost PLL lock, bad readback and input abort. Existing CAN/GPIO and HELLO
+tests and the target build passed. Firmware was flashed with readback
+verification. UF2 SHA-256:
+`4901e8e01af0d5939a94098a34abbf9b730ae3f89674b6a34352f82f138daa7a`.
+
+Only the new read-only `s` command was sent after flashing:
+
+```text
+[clock_status] r0=11 r3=FF r16=00 r17=00 r18=00 r183=D2
+```
+
+The output-disable readback remained FF, both internal CAN loopbacks passed,
+and startup succeeded on attempt 1. No clock-enable command has been sent.
+Register 183 remains at D2 (10 pF internal load selection). The exported
+circuit also includes external 15 pF C1/C2; combined loading and frequency
+accuracy need evaluation, and no load-setting change has been made.
+Programming reference: [Skyworks AN619 rev 0.8](https://www.skyworksinc.com/-/media/Skyworks/SL/documents/public/application-notes/AN619.pdf).
+
+Next: place the 10× scope probe on TP1 (AC-coupled CLK0_OUT after C6/R3),
+with a short ground connection to C81 pad 2, then request the bounded test.
+The tinySA remains disconnected. This is test preparation, not a measured
+Si5351 output or RF result.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
