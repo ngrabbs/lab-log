@@ -36,17 +36,35 @@ do not yet establish correct powered operation. The reported readings were taken
 Initial readings and actual probe polarity were not separately recorded; no
 lead-resistance correction has been applied.
 
-## Next check
+## Power connection checks
 
 The ordered-board pad record identifies H2 pads 25/26 as input `+5V_CON` and
 H2 pads 29–32 as GND. Proposed temporary connections are H2 pad 25 for positive
-and pad 29 for ground. Before connecting the supply, verify continuity from the
-positive pin to C117 pad 1 and from the ground pin to C117 pad 2. Check the
-physical pad numbering rather than counting from an assumed viewing side.
+and pad 29 for ground. Subsequent reported measurements were:
 
-Pin installation and those continuity checks have not yet been reported. Then
-establish the bench voltage/current limit for first power, with the Pico and
-external interfaces still disconnected. No power-on results are recorded.
+| Measurement | Reported resistance |
+| --- | --- |
+| H2 pad 25 → C117 pad 1 | 1.14 Ω |
+| H2 pad 25 → C117 pad 2 | 2.38 MΩ |
+| H2 pad 25 → H2 pad 29 | 5.3 MΩ |
+
+The first reading suggests continuity along the input rail, but is above the
+previous 0.34 Ω shorted-lead reading. Probe contact should be checked before
+attributing that difference to the PCB. The two megohm readings differ from
+the earlier 20 kΩ across C117. Probe polarity, settling time and contact for
+this set were not recorded, so the discrepancy remains unresolved. Neither
+measurement directly verifies H2 pad 29's connection to C117 ground.
+
+## Next check
+
+Keep power disconnected. Measure H2 pad 29 to C117 pad 2 directly, expecting
+near the shorted-lead resistance. Recheck the shorted probes and input-rail
+continuity with firm contact on exposed metal. Then repeat the resistance
+across C117 and across H2 pads 25/29 using the same probe polarity and settling
+time. Confirm physical pad numbering if results disagree.
+
+No power-on results are recorded. Pico and external interfaces remain outside
+the proposed first-power setup.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
