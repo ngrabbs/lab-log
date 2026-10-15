@@ -860,5 +860,41 @@ capture confirmed PAUSED. Display was then restored to live 437 MHz center,
 
 [Raw baseline, during/after scans and console](files/y24-first-tx-tone.json).
 
+## Corrected attenuator hookup and repeated TX burst
+
+**Correction to the preceding test:** I discovered that the 30 dB pad was
+not installed. The first TX burst went through the external DC block directly
+to the tinySA RF input. The earlier setup description records what was reported,
+not the actual connection. Its +5.844 dBm reading must not have 30 dB added.
+That exposure does not by itself establish damage or analyzer health.
+
+After installing the 30 dB pad and confirming readiness, repeated one ten-second
+`t` window. Analyzer settings remained input mode, LNA off, 10 dB internal
+attenuation, external gain 0, requested RBW 30 kHz, 435–439 MHz sweep.
+The USB scan returned **−18.656 dBm at 436.98 MHz**; a subsequent live/max-hold
+display showed **436.972 MHz, −18.7 dBm**. The difference in frequency is
+consistent with the different sweep grids, not an accuracy claim.
+
+Adding nominal external attenuation gives **+11.34 dBm, approximately 13.6 mW**
+at the board before accounting for cable/DC-block losses. This is preliminary:
+attenuator loss and analyzer calibration are unverified. The observed level
+change from the unattenuated attempt is 24.5 dB rather than 30 dB, so the two
+runs do not validate absolute power or pad loss; overload/compression, loading
+and setup differences remain possible explanations.
+
+The retained display also shows smaller peaks approximately 1 MHz either side
+of the carrier, around −59 dBm on this trace. Their source and levels require
+further investigation. This narrow scan does not qualify harmonics or the full
+TX spectrum. C6 and frequency accuracy remain open issues.
+
+Firmware reported complete=1, shutdown_verified=1, TX=0; registers 3/16/17/18
+read FF/80/80/80. Max hold deliberately retains the carrier after TX shuts off;
+it is not evidence of continued transmission. Unlike the previous run, no
+after-window spectrum scan overwrote the retained trace.
+
+![Retained tinySA carrier with the external 30 dB pad installed](images/y24-pad-tx-screen.png)
+
+[Raw attenuated TX scan and console](files/y24-pad-tx-tone.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
