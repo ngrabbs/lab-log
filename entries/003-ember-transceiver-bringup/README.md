@@ -609,5 +609,20 @@ The tinySA did not appear in the USB device inventory during this check.
 Its exact variant, firmware and input arrangement still need identification
 before spectrum measurements. The physical scope probe model is also pending.
 
+## Probe and analyzer identified
+
+I identified the scope probe as a Rigol PVP2350 with its switch at 10×.
+I moved the IHU USB cable to the tinySA; the transceiver console remained
+available. The analyzer's USB `info` response identified **tinySA ULTRA**,
+firmware `tinySA4_v1.4-156-g4eb315d`, built February 27, 2024. No analyzer
+measurement settings or generator modes were changed.
+
+The Rigol was configured for a preliminary probe-compensation check: CH1,
+10× scaling, DC coupling, 1 V/div, 500 µs/div, rising-edge trigger at 1.5 V,
+auto sweep/run. It returned no SCPI error. Connecting the probe to the scope's
+front-panel compensation output and inspecting the waveform is still pending.
+No board clock outputs were enabled and no RF connection to the analyzer
+was requested.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
