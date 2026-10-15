@@ -1,0 +1,41 @@
+{
+  "scope": "Diagnostic recovery of actual received RF, not a standard BPSK pass",
+  "rf_packet": {
+    "sequence": 0,
+    "hex": "0901c000001f01010005030100000000000000006593fbac0001450c00060201000000003280",
+    "decoded": {
+      "name": "HEARTBEAT",
+      "sequence": 0,
+      "header": {
+        "schema_version": 1,
+        "kind": 1,
+        "message_id": 5,
+        "source": 3,
+        "target": 1,
+        "transaction_epoch": 0,
+        "transaction_id": 0,
+        "source_boot_id": 1704197036,
+        "uptime_ms": 83212,
+        "payload_length": 6
+      },
+      "payload": {
+        "mode": 2,
+        "configuration": 1,
+        "telemetry_period_ms": 0
+      }
+    },
+    "carrier_offset_hz": -6882.7056884765625,
+    "window_start": 48000,
+    "timing_sample": 0,
+    "decoder": "phase-transition-diagnostic"
+  },
+  "console_bytes_match": true,
+  "raw_iq_sha256": "87585379e0c2676730a4989bf1b1165f9e51fada043512c0664616d8ca85d820",
+  "yamcs_matches": [
+    {
+      "name": "/ember/HEARTBEAT",
+      "receptionTime": "2026-10-15T22:51:17.695Z",
+      "generationTime": "2026-10-15T22:51:17.695Z"
+    }
+  ]
+}

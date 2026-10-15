@@ -1294,5 +1294,59 @@ decoder before attempting telemetry reception through LibreSDR/Yamcs.
 
 [Raw frozen TP1 waveform, counter and console](files/y24-c6-zero-ohm-tp1.json).
 
+## First native telemetry through the new board's RF path
+
+Implemented and installed bring-up v11 (`cec4c38`): explicit single-byte `b`
+sends one native COMMS heartbeat with actual boot ID, uptime and sequence.
+The 101-byte outer frame uses version3, CRC32, 1200-baud differential phase
+encoding and approximately 673 ms airtime. Native EMBER CRC16 is retained.
+Late symbols or console input abort; an independent two-second timer interrupt
+mutes TX. Startup never transmits. The timer is not a crash-proof hardware
+inhibit. GPIO timing/abort/deadline tests, I2C fault injection, existing CAN
+tests and the target build passed. Six ground tests cover C/Python byte identity,
+noise/frequency/timing offsets, conjugation, boundaries, rejection, and a
+separate non-antipodal diagnostic path.
+
+Full pre-v11 flash was saved and verified, SHA256:
+`dd331ec294e01f95f66b9b61a5a62a11a524c7f6c15f5da59cf1fc77c1afc98b`.
+Installed UF2 SHA256:
+`5a0e400dea8aa642b2a75bf5c92c8c31554ec86a6d9e4df34e6fb12a3a8ab9b3`.
+Warm startup passed on attempt1, including both CAN internal loopbacks.
+
+The user confirmed scope probe removal and UHF antennas approximately three
+feet apart. LibreSDR channel0/RX2, gain0, nominal437 MHz, 192 kS/s capture
+with filtered48 kS/s decoding was used. UHD reported USB3 after initialization;
+the existing custom FPGA hash was preserved. A receive-only baseline had no
+stream errors and no packets. The first coordinated attempt also transmitted
+nothing: the host allowed only0.5 seconds for a console status response while
+firmware polls once per second. Correcting that host timeout allowed the next
+attempt to send one packet, complete, and verify shutdown.
+
+The standard differential-BPSK decoder accepted **zero packets**, despite a
+clear RF burst and no receive-stream errors. Offline inspection suggested
+phase transitions near90 degrees instead of the intended180; exact phase
+quality and the physical cause remain unresolved. An explicitly enabled
+45-degree transition-threshold diagnostic recovered the original heartbeat,
+with both CRC32 and native CRC16 passing. The normal receiver has no automatic
+fallback to this diagnostic. Decoder/source follow-up commit: `1863f88`.
+
+The recovered bytes match the Pico console exactly: source COMMS, sequence0,
+boot ID1704197036, uptime83,212 ms, COMMISSIONING/GROUND_TEST, manual period0.
+Those RF-recovered bytes were then forwarded unchanged to Yamcs `ember-uhf`;
+a separate archive query found the matching `/ember/HEARTBEAT` packet received
+at2026-10-15T22:51:17.695Z. This is **diagnostic RF telemetry delivery**, not a
+standard BPSK modem pass, EPS/CAN forwarding result, or reliability test.
+No ADC value was added to the heartbeat and no synthetic telemetry substituted.
+
+Final console confirmed TX=0, RX=0, clocks disabled (FF/80/80/80), load D2,
+and CAN A/B standby/configuration. The finite receiver exited. Next priority
+is characterizing/correcting phase modulation, then repeating strict decoding
+and only afterward adding IHU/EPS packet forwarding.
+
+Evidence: [strict receiver result](files/first-bpsk-strict-result.json),
+[Pico console](files/first-bpsk-20261015-02-console.txt), and
+[diagnostic RF-to-Yamcs byte proof](files/first-bpsk-diagnostic-proof.json).
+Full IQ remains retained on the ground host; its SHA256 is in the proof.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

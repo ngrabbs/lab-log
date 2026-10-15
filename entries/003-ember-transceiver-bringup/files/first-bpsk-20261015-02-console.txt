@@ -1,0 +1,47 @@
+[clock_status] r0=11 r3=FF r16=80 r17=80 r18=80 r183=D2
+[y24-safe-v11] #82 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2081
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v11] #83 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2079
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[bpsk] prepared native COMMS heartbeat packet_hex=0901c000001f01010005030100000000000000006593fbac0001450c00060201000000003280
+[tx_tone] complete=1 shutdown_verified=1 status=11 TX=0
+[bpsk] complete=1 frame_bytes=101 TX=0
+[y24-safe-v11] #84 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2065
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v11] #85 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v11] #86 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2079
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v11] #87 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[clock_status] r0=11 r3=FF r16=80 r17=80 r18=80 r183=D2
+[y24-safe-v11] #88 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
