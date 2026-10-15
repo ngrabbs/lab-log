@@ -1435,5 +1435,36 @@ This does not yet test carrier-frequency switching or resolve the RF phase error
 Final data/TX/RX were low, clock disable verified (r3=FF); no RF transmission.
 [Successful retry](files/y24-r25-pad2-data-input-retry.json).
 
+## U7 output: slow switching passes, 10 MHz levels need repeatability
+
+At user-identified U7 pin 4, the muted 10 Hz data pattern produced high/low
+plateaus 3.304 V/approximately 0 V, frequency 10.060 Hz. This supports slow
+XOR output response, not high-frequency phase accuracy.
+
+With the probe retained at that point, ran the existing muted 10 MHz clock
+window with data held low. User confirmed a short ground spring at nearby GND.
+All captures were stopped during the bounded test; stored raw waveforms and
+scope measurements are retained below.
+
+| Capture | Vertical setup | High / low plateau | Min / max |
+| --- | --- | --- | --- |
+| Initial | 1 V/div, -1.5 V offset | 4.181 / 0.817 V | 0.64 / 4.68 V |
+| Repeat | 2 V/div, zero offset | 3.216 / -0.024 V | -0.24 / 3.44 V |
+| Confirmation | 1 V/div, zero offset | 2.970 / 0.078 V | -0.48 / 3.52 V |
+
+Each reported 10 MHz. The confirmation's automatic average was unavailable.
+These changing levels prevent a firm waveform-quality conclusion; the initial
+apparent overvoltage is not established as an actual pin-voltage fault.
+Probe contact/loading and acquisition repeatability remain to be separated
+from circuit behavior. No hardware change was made or recommended from these
+captures. None measures the approximately 145.67 MHz operating waveform or
+resolves the RF phase-state error. All windows completed with shutdown verified,
+TX=0, and final clock registers FF/80/80/80. No antenna TX was requested.
+
+[Slow data response](files/y24-u7-output-data-pattern.json) ·
+[Initial 10 MHz](files/y24-u7-output-10mhz.json) ·
+[Wider-range repeat](files/y24-u7-output-10mhz-repeat.json) ·
+[Zero-offset confirmation](files/y24-u7-output-10mhz-confirm.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
