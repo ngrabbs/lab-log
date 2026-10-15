@@ -358,5 +358,51 @@ ADC readings over heartbeats #9–15 ranged from 2068 to 2070.
 Next: verify independent register write/readback and then internal CAN loopback,
 with transceivers still in standby, before connecting an external CAN peer.
 
+## Independent registers and internal CAN loopback
+
+Firmware v3 first wrote opposite `0x55` / `0xAA` patterns into the two
+controllers' inactive TXB0D0 registers, swapped the patterns, verified each
+readback, and restored the original bytes. This passed, establishing independent
+access to the two controllers beyond their identical reset values.
+
+The first loopback attempt reported frame-mismatch code 4 on both controllers
+and held them in reset. A diagnostic build captured the receive buffers:
+
+```text
+A: 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+B: 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+```
+
+ID, DLC and payload were correct. The test incorrectly compared the extended-ID
+bytes, which are not part of the standard-ID frame. The comparison was corrected
+to check the standard identifier, standard/data-frame flags, DLC and all eight
+data bytes. Regression tests now allow arbitrary unused EID bits and reject
+wrong IDs, DLCs, payloads, extended frames and remote frames. Host checks also
+cover aliased chip selects, timeouts and failed mode transitions.
+
+The corrected image built and flashed with verification. Its boot-time results
+were reported consistently during captured heartbeats #9–12:
+
+```text
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+```
+
+Each controller internally sent and received one standard-ID `0x321` frame,
+DLC 8, with the payload shown above (A begins `A1`, B begins `B2`). These are
+one-shot boot tests; repeated console lines report stored results. Both returned
+to configuration mode, with CAN CLKOUT disabled and one-shot mode enabled.
+Both transceivers stayed in standby. No normal-mode CAN traffic was enabled.
+The Si5351 disable check still passed and ADC samples ranged from 2068 to 2072.
+
+Firmware commit: `3bf6ba4`, branch `firmware/transceiver-y24-bringup`.
+UF2 SHA-256:
+`56d13b6da3ed1e7184c3a0105b4aed48086bf4c1c3989f0416028c929362b1ed`.
+
+This validates independent SPI access and a small internal controller loopback
+test, not CANH/CANL signaling, termination, bitrate accuracy or interrupt wiring.
+Next: identify the available external CAN adapter/peer and plan a terminated
+bench-bus test before enabling either transceiver.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
