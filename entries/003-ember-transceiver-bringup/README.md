@@ -218,13 +218,13 @@ The reported voltage from **J7 pad 2 (PICO_VSYS) to J7 pad 3 (GND)** was
 Pico supply connection downstream of D14. It is an unloaded measurement at
 that connector; startup with the Pico and its additional current remain untested.
 
-## Next check
+## Planned check before firmware inspection
 
 Keep both outputs off and identify the exact Pico variant and currently loaded
 firmware before installation. Prepare a controlled bring-up image with RF/clock
 outputs disabled before using the controller on the board. The supply measurements
 do not yet establish MCU operation, CAN communication, clock generation or RF
-performance. No controller installation or firmware change has been recorded.
+performance. At this point, no controller installation or firmware change had been recorded.
 
 ## Bare Pico firmware inspection
 
@@ -250,8 +250,42 @@ unchanged for the current dual-CAN board. Its startup code drives TX_ACTIVE and
 BPSK_DATA low and performs a read-only Si5351 status probe, but this source
 inspection is not proof of the exact behavior of the flashed image.
 
-Next: prepare and verify firmware against the ordered board pin map, keeping
-RF muted and clock outputs explicitly controlled, before installing the Pico.
+## Safe bring-up firmware loaded
+
+The original Pico's full 2 MiB flash was backed up and verified before replacement.
+Its metadata identifies `comms`, SDK 2.1.1, original Pico, build date September 22,
+2026. The backup is retained locally on two machines; SHA-256:
+`b16f49870da54b0ffb7b866c33f907206b3c5daceb9b545a1fda1541b4261d1f`.
+This identifies the saved image, without claiming an exact source match.
+
+A separate `firmware/transceiver_bringup` application now uses the ordered Y24
+pin map. It holds TX/RX inactive, both CAN controllers in reset and standby,
+and BPSK low. It writes Si5351 output-disable register 3 to `0xFF` once per
+second and checks readback. It has no CAN-transmit or clock-enable commands.
+The original Pico build passed with compiler warnings treated as errors.
+Host checks passed for ordered connector nets, GPIO initialization levels/order,
+and I²C failure/readback handling. These checks do not measure physical pin levels.
+
+The UF2 was flashed with readback verification and the Pico rebooted successfully.
+UF2 SHA-256:
+`38d1b070565c7feb6491eb5be7db8a50ca1e1ebedc706db55f0a0abaeb6073e0`.
+A USB capture received:
+
+```text
+[y24-safe-v1] #6 TX=0 RX=0 CAN_A/B=reset+standby Si5351_disable=NOT_VERIFIED ADC1_raw=761
+[y24-safe-v1] #7 TX=0 RX=0 CAN_A/B=reset+standby Si5351_disable=NOT_VERIFIED ADC1_raw=731
+[y24-safe-v1] #8 TX=0 RX=0 CAN_A/B=reset+standby Si5351_disable=NOT_VERIFIED ADC1_raw=702
+[y24-safe-v1] #9 TX=0 RX=0 CAN_A/B=reset+standby Si5351_disable=NOT_VERIFIED ADC1_raw=702
+[y24-safe-v1] #10 TX=0 RX=0 CAN_A/B=reset+standby Si5351_disable=NOT_VERIFIED ADC1_raw=723
+```
+
+The Pico is still bare. `NOT_VERIFIED` is expected with the Si5351 absent;
+the floating ADC readings are not receiver measurements. CAN and RF operation
+remain untested.
+
+Next: disconnect USB and switch both board supplies off before installing the
+Pico. Verify orientation and inspect the soldering before the first installed
+power-on. Do not power the installed Pico from USB alone with board rails off.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
