@@ -1466,5 +1466,48 @@ TX=0, and final clock registers FF/80/80/80. No antenna TX was requested.
 [Wider-range repeat](files/y24-u7-output-10mhz-repeat.json) ·
 [Zero-offset confirmation](files/y24-u7-output-10mhz-confirm.json).
 
+## Longer RF phase holds reproduce approximately 90-degree transitions
+
+Installed and flash-verified v13 (`84f777d`). Explicit `p` alternates ten
+100 ms data states, starting low: one second total RF, using the existing
+1.5-second payload deadline and independent two-second interrupt mute.
+Timing, lateness, deadline, console-abort and clock-fault tests passed; target
+build passed. Startup confirmed both CAN internal loopbacks and muted clocks.
+User confirmed the scope probe removed and both UHF antennas connected about
+three feet apart. No board parts were changed.
+
+Ran two separate one-second bursts at nominal 437 MHz, each inside a finite
+LibreSDR capture (RX2/channel 0, gain 0, 192 kS/s, filtered 48 kS/s analysis).
+Both firmware windows completed with shutdown verified; final TX/RX=0 and
+clock registers FF/80/80/80. Both receivers recorded no stream errors and
+exited. These were diagnostic holds, not telemetry packets; nothing was
+forwarded to Yamcs. Raw IQ is retained on the ground host.
+
+| Result | First burst | Repeat |
+| --- | --- | --- |
+| Observed burst duration, threshold estimate | 1.002 s | 1.002 s |
+| Median absolute phase step | 89.9 degrees | 89.6 degrees |
+| State 1/state 0 median amplitude ratio | 1.273 | 1.279 |
+| Phase-fit residual RMS across holds | 1.29–2.33 degrees | 1.55–2.32 degrees |
+
+Analysis (`75c1f6a`, `ground/bpsk/phase_holds.py`) fits phase and frequency
+separately in the central 60 ms of each hold, then extrapolates adjacent fits
+to their shared boundary. This accommodates observed relative frequency drift
+of about 12–13 Hz during a burst. Synthetic 90/180-degree cases with noise,
+amplitude imbalance and frequency drift recovered transition angles within
+0.05 degree; this validates the calculation for those cases, not the RF setup.
+The measured angles are receiver-domain estimates; phase drift/model residuals
+limit precision. These results support repeatable non-antipodal modulation,
+even with long holds and no scope loading, but do not localize the cause to
+U7, U14, the tripler, another TX stage or receiver effects. Standard BPSK
+acceptance remains open. Do not replace parts based on this evidence alone.
+
+[First console](files/phase-holds-20261015-01-console.txt) ·
+[First receiver](files/phase-holds-20261015-01-result.json) ·
+[First phase analysis](files/phase-holds-20261015-01-analysis.json) ·
+[Repeat console](files/phase-holds-20261015-02-console.txt) ·
+[Repeat receiver](files/phase-holds-20261015-02-result.json) ·
+[Repeat phase analysis](files/phase-holds-20261015-02-analysis.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
