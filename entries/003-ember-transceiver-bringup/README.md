@@ -148,15 +148,30 @@ is still a partial-power test. The 3.3 V-powered circuitry has not been brought
 up. The Pico remains absent; installing it is not a substitute for verifying
 the board's external 3.3 V supply arrangement.
 
-## Next check
+## Preparing the second supply channel
 
-Turn the bench output off. Establish whether a second independently adjustable,
-current-limited supply channel is available for the external 3.3 V input before
-planning the next power configuration. H2 pads 27/28 are the recorded `+3V3`
-input connection; no additional supply connection is authorized by this proposed
-step alone. Confirm source settings, common ground, and the power-up sequence
-before applying both rails. No 3.3 V injection or powered functional testing
-has been recorded yet.
+A second channel capable of 3.3 V is available and reported connected, ready
+for testing. Exact channel settings and its physical connection points have
+not yet been reported. No dual-rail power-on result is recorded yet.
+
+Proposed next procedure, with Pico/USB/CAN still disconnected:
+
+1. Turn both outputs off. Use independent channels, not series or parallel mode.
+   Confirm 5 V positive goes to H2 pad 25, 3.3 V positive to H2 pad 27 (or 28),
+   and both negatives share board GND at H2 pad 29 (or another verified GND pad).
+2. With sources disconnected, check the new positive connection to C59 pad 1
+   and its ground connection to C59 pad 2 for low resistance. Return the meter
+   to DC volts before powered measurements.
+3. Set the 5 V channel to 5.0 V / 200 mA and the new channel to 3.30 V / 50 mA.
+   The latter is an initial screening limit, not an established operating budget.
+4. Enable 5 V first, then 3.3 V. Observe both channels for 1–2 seconds and record
+   each voltage, current and CV/CC mode. Turn 3.3 V off, then 5 V off. Do not
+   increase either current limit if it enters CC; review the readings first.
+
+This order continues the already-tested 5 V-only configuration before adding
+logic power; it is not a claim of complete board power-sequencing qualification.
+Stop for smoke, odor or obvious heating. Board-rail measurements follow only
+after the supply readings are reviewed.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
