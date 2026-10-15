@@ -644,5 +644,28 @@ check, not a high-frequency probe calibration or edge/ringing qualification.
 are retained. The probe is still on the compensation output; no board clock
 measurement or clock-enable operation has occurred.
 
+## CAN A oscillator measurement
+
+Moved the 10× PVP2350 probe to Y3 output pad 3, with pad 2 as the
+requested ground point. CH1 used DC coupling, 1 V/div, 50 ns/div,
+full bandwidth and a 1.5 V rising-edge trigger. The first reading was
+approximately zero with 160 mV peak-to-peak noise and no measurable frequency.
+After another probe attempt, a clock was present.
+
+The repeat capture reported 16.129 MHz (62 ns period), high plateau 3.264 V,
+low plateau 0.013 V and 3.60 V peak-to-peak. Separate extrema queries read
++3.48 V and −0.20 V; these running-acquisition measurements are not necessarily
+from the same cycle. The display waveform has 0.5 ns sample spacing, so the
+quick frequency result establishes approximately 16 MHz operation, not
+oscillator frequency accuracy. Probe loading and grounding can affect the
+observed overshoot; edge quality remains unqualified.
+
+Y3 is oscillating at approximately its nominal frequency with a roughly 3.3 V
+logic swing. No Si5351 clock-enable command was issued. Next is the equivalent
+Y4 CAN B oscillator check, followed by controlled Si5351 testing.
+
+Raw captures: [initial attempt](files/y3-can-a-clock-waveform.json) and
+[clock present](files/y3-can-a-clock-retry-waveform.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
