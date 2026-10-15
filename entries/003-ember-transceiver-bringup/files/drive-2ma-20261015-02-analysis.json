@@ -1,0 +1,137 @@
+{
+  "burst_start_s": 2.3027291666666665,
+  "burst_end_s": 3.3045625,
+  "threshold_power": 1.3416870459082022e-06,
+  "noise_power": 2.2345010846654524e-09,
+  "method": "Separate linear phase fits in central 60ms of each 100ms hold; extrapolate adjacent fits to boundary. Receiver-domain estimates, not direct XOR measurements.",
+  "fits": [
+    {
+      "state": 0,
+      "t0": 2.3227083333333334,
+      "slope": -43279.4884990286,
+      "intercept": -2.9003615680269537,
+      "frequency_hz": -6888.144252843692,
+      "amplitude": 0.001777070458047092,
+      "residual_rms_deg": 1.8277368181320761
+    },
+    {
+      "state": 1,
+      "t0": 2.4227291666666666,
+      "slope": -43289.88289637057,
+      "intercept": -1.3261430100300284,
+      "frequency_hz": -6889.798722019122,
+      "amplitude": 0.002245726529508829,
+      "residual_rms_deg": 1.0573057175671212
+    },
+    {
+      "state": 0,
+      "t0": 2.5227291666666667,
+      "slope": -43299.69362802503,
+      "intercept": -2.9777667406425428,
+      "frequency_hz": -6891.359969706018,
+      "amplitude": 0.00173271750099957,
+      "residual_rms_deg": 1.5012179391234133
+    },
+    {
+      "state": 1,
+      "t0": 2.622708333333333,
+      "slope": -43307.91710559531,
+      "intercept": -1.54686861930141,
+      "frequency_hz": -6892.6687973436165,
+      "amplitude": 0.0022068959660828114,
+      "residual_rms_deg": 1.4256952177265154
+    },
+    {
+      "state": 0,
+      "t0": 2.7227083333333333,
+      "slope": -43319.5323482359,
+      "intercept": 1.2075714004424867,
+      "frequency_hz": -6894.517482617283,
+      "amplitude": 0.0017186426557600498,
+      "residual_rms_deg": 1.6880655501752542
+    },
+    {
+      "state": 1,
+      "t0": 2.8227291666666665,
+      "slope": -43331.40279483418,
+      "intercept": -1.1188565120395157,
+      "frequency_hz": -6896.4069716243275,
+      "amplitude": 0.0021934211254119873,
+      "residual_rms_deg": 1.7781920915755793
+    },
+    {
+      "state": 0,
+      "t0": 2.9227291666666666,
+      "slope": -43339.54917955573,
+      "intercept": -0.6325835468457343,
+      "frequency_hz": -6897.703283532475,
+      "amplitude": 0.0017100488767027855,
+      "residual_rms_deg": 1.7564233529432185
+    },
+    {
+      "state": 1,
+      "t0": 3.0227291666666667,
+      "slope": -43347.02431824669,
+      "intercept": 2.3495248513863944,
+      "frequency_hz": -6898.892823605335,
+      "amplitude": 0.00218408671207726,
+      "residual_rms_deg": 1.7591208673275427
+    },
+    {
+      "state": 0,
+      "t0": 3.122708333333333,
+      "slope": -43354.67715562706,
+      "intercept": 2.2211546841154246,
+      "frequency_hz": -6900.111202539438,
+      "amplitude": 0.0017083865823224187,
+      "residual_rms_deg": 1.8904484767699106
+    },
+    {
+      "state": 1,
+      "t0": 3.222729166666667,
+      "slope": -43363.74102151706,
+      "intercept": 2.5537187710253306,
+      "frequency_hz": -6901.5536224725365,
+      "amplitude": 0.0021787993609905243,
+      "residual_rms_deg": 1.6717290260158268
+    }
+  ],
+  "transitions": [
+    {
+      "to_state": 1,
+      "phase_step_deg": 86.97131327049647
+    },
+    {
+      "to_state": 0,
+      "phase_step_deg": -90.63024099264618
+    },
+    {
+      "to_state": 1,
+      "phase_step_deg": 88.68272583558631
+    },
+    {
+      "to_state": 0,
+      "phase_step_deg": -92.7990236910659
+    },
+    {
+      "to_state": 1,
+      "phase_step_deg": 94.6543153219469
+    },
+    {
+      "to_state": 0,
+      "phase_step_deg": -92.15348960834878
+    },
+    {
+      "to_state": 1,
+      "phase_step_deg": 96.75350205604329
+    },
+    {
+      "to_state": 0,
+      "phase_step_deg": -90.1816083045835
+    },
+    {
+      "to_state": 1,
+      "phase_step_deg": 85.19409461333998
+    }
+  ]
+}

@@ -1509,5 +1509,49 @@ acceptance remains open. Do not replace parts based on this evidence alone.
 [Repeat receiver](files/phase-holds-20261015-02-result.json) ·
 [Repeat phase analysis](files/phase-holds-20261015-02-analysis.json).
 
+## Controlled Si5351 drive-strength comparison
+
+Installed/flash-verified v14 (`5ce0267`). Added explicit 4/6/8 mA phase-hold
+commands; 2 mA baseline retained. Only CLK0 control register16 bits1:0 change
+(4C/4D/4E/4F); PLL, divider, nominal 437 MHz frequency, ten 100 ms data holds,
+antenna setup and LibreSDR gain 0 remain fixed. Drive encoding follows
+[Skyworks AN619, register16](https://www.skyworksinc.com/-/media/Skyworks/SL/documents/public/application-notes/AN619.pdf).
+Host checks cover each setting's register plan, every I2C transfer fault,
+invalid drive rejection, mute and cleanup; existing startup tests and build passed.
+
+Five separately requested one-second firmware windows were captured in order:
+2, 4, 6, 8, then 2 mA again. No scope probe was on the board. All completed with
+shutdown verified, receiver stream errors empty, and final registers
+FF/80/80/80. Normal tests still default to 2 mA; no preferred setting was made
+persistent. No telemetry/Yamcs forwarding occurred.
+
+| CLK0 setting | Median absolute RF phase step | State 1/state 0 amplitude ratio |
+| --- | --- | --- |
+| 2 mA baseline | 91.7 degrees | 1.284 |
+| 4 mA | 137.0 degrees | 1.103 |
+| 6 mA | 135.0 degrees | 1.084 |
+| 8 mA | 132.5 degrees | 1.079 |
+| 2 mA return | 90.6 degrees | 1.276 |
+
+Same per-hold phase/frequency fit as before; maximum within-hold phase-fit RMS
+was 1.89–2.95 degrees across runs. These estimates are not calibrated phase
+measurements, and the small difference between stronger settings has not been
+qualified statistically. The return to baseline supports a drive-dependent
+change rather than drift alone. Stronger drive improves phase separation and
+amplitude balance but does not restore the intended 180 degrees. This points
+to sensitivity to clock waveform/edge behavior somewhere in the end-to-end
+path, not proof of a particular failed component or a complete firmware fix.
+Next candidate comparison is the integer-PLL frequency setting, with other
+variables held fixed and receiver retuned; no such test has yet been run with
+this phase-hold firmware.
+
+Evidence files (console, receiver result and phase analysis for each):
+[2 mA](files/drive-2ma-20261015-01-analysis.json),
+[4 mA](files/drive-4ma-20261015-01-analysis.json),
+[6 mA](files/drive-6ma-20261015-01-analysis.json),
+[8 mA](files/drive-8ma-20261015-01-analysis.json),
+[2 mA return](files/drive-2ma-20261015-02-analysis.json).
+Raw IQ is retained on the ground host.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
