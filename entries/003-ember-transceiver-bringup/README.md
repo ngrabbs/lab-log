@@ -767,5 +767,27 @@ probe and ground before a repeat using a stopped, single acquisition.
 
 [Raw source-side attempt](files/clk0-10mhz-c6-source-waveform.json).
 
+## Stable source-side capture
+
+After confirming the tip and ground were steady, repeated the bounded test
+and stopped the scope during the active window. STOP was verified before
+reading measurements and transferring the waveform. C6 pad 1 measured
+**10.000 MHz / 100 ns**, with high plateau **3.199 V**, low plateau **0.062 V**,
+and extrema **0.00–3.32 V**. The transferred waveform independently gives
+0.00–3.32 V and mean 1.650 V, consistent with the scope's mean 1.653 V.
+
+This supports normal source-side clock swing at 10 MHz. The previous erratic
+source-side attempt was not reproduced; its precise cause remains unconfirmed.
+It does not yet resolve the negative plateau previously measured downstream
+at TP1. Next: repeat TP1 using the same stopped-acquisition method before
+changing components or increasing frequency.
+
+Firmware again reported complete=1 and shutdown_verified=1. After resuming
+scope acquisition following the window, no frequency was measurable, mean
+was −2.1 mV and peak-to-peak noise 160 mV. Registers 3/16/17/18 read
+FF/80/80/80. Clock is off and TX remains commanded muted.
+
+[Raw frozen source-side waveform and console](files/clk0-c6-source-frozen-waveform.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
