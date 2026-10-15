@@ -530,5 +530,42 @@ UF2 SHA-256:
 Next: address the startup-sequencing failure and perform a controlled cold-start
 retest before moving on to RF clock measurements.
 
+## Bounded startup readiness update
+
+Firmware v6 keeps both CAN transceivers in standby while making up to twenty
+reset/readback attempts, approximately five seconds total. Each attempt holds
+reset low for 10 ms, waits 20 ms after release, and requires two configuration
+register samples 20 ms apart. Failed attempts reassert reset and wait 200 ms.
+Exhaustion holds both controllers in reset. Si5351 output-disable is attempted
+during the sequence. Readiness indicates responsive controller registers, not
+measured power-good signals. The original failure's physical cause is still
+unconfirmed.
+
+Host tests passed for delayed replies recovering on attempt 2, permanent failure
+exhausting twenty attempts with reset asserted, and immediate recovery on a new
+attempt sequence. Existing GPIO, loopback and HELLO parser tests also passed.
+The warning-as-error build and flash verification passed.
+
+With stack power already established, the restarted image reported:
+
+```text
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+```
+
+Heartbeats #7–10 retained those results, verified Si5351 disable, and ADC1
+2084–2085. This is a successful warm-start check; a true cold-start test remains
+pending. No new CAN traffic was requested in this step.
+
+Firmware commit `62a3e45`, branch `firmware/transceiver-y24-bringup`.
+UF2 SHA-256:
+`9d2bfaa703eabfa889f51ef723bdbe80f109fd213549371398de350651576a6e`.
+
+Proposed cold-start check: unplug all USB power paths to the stack, turn stack
+power off, verify power indicators extinguish and wait ten seconds. Restore
+stack power first, wait five seconds, then reconnect MCU USB consoles. Inspect
+startup logs before enabling CAN. This avoids deliberately running the installed
+Pico from USB with board rails off. The test has not yet been performed.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
