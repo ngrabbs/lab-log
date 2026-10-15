@@ -94,14 +94,22 @@ This result alone does not distinguish normal circuit demand from a fault and
 is not a successful nominal-voltage bring-up. These are supply-display values;
 voltage at the board input and after U15 has not yet been measured.
 
+### Input and protected-rail voltages
+
+At the same 5.0 V / 50 mA supply settings, I measured **2.96 V across C117**
+(board input) and **2.94 V across C58** (protected 5 V rail). Their approximately
+20 mV difference shows the protection path is passing voltage in this condition.
+The readings were taken separately; this is not a precision simultaneous drop
+measurement or full qualification of U15. The board remains below nominal supply
+voltage, and its normal operating current is still unknown.
+
 ## Next check
 
-Keep the same 5.0 V / 50 mA settings. With output off, set the multimeter to
-DC volts and position probes across C117 (pad 1 positive, pad 2 ground).
-Briefly enable output, record the board input voltage, then turn output off.
-Repeat across C58 (pad 1 positive, pad 2 ground) to check the protected 5 V
-rail. Position probes with output off to avoid slipping across adjacent pads.
-Do not raise the current limit until these readings have been reviewed.
+With output off, retain the 5.0 V setting and increase the current limit to
+100 mA for another brief 1–2 second observation. Record actual supply voltage,
+current and CV/CC mode, then turn output off. This is a staged diagnostic limit,
+not an approved operating-current budget. Do not increase it further without
+reviewing the result. Stop immediately for smoke, odor or obvious heating.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
