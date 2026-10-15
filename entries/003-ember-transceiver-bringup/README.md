@@ -127,14 +127,27 @@ input power is approximately **0.75 W** (5.0 V × 0.150 A). It is a brief
 observation, not a sustained-current or thermal qualification, and the Pico
 is still absent.
 
+### Board voltages at nominal input
+
+The next measurements were **4.99 V across C117** and **4.97 V across C58**.
+The approximately 20 mV difference is consistent with the earlier protection-path
+check. The supply's current and mode were not separately reconfirmed with these
+two readings. This establishes near-nominal voltage at both measured board nodes,
+not yet all supply rails or functional operation.
+
 ## Next check
 
-Retain 5.0 V and the 200 mA limit. Measure the board input across C117 and the
-protected 5 V rail across C58 in DC-voltage mode (pad 1 positive, pad 2 ground).
-Position probes with output off, briefly enable for each reading, then switch
-off before repositioning. Record the supply current and CV/CC state as well.
-Stop for smoke, odor, obvious heating or a return to current limiting. Lower
-rails and sustained operation have not yet been measured under nominal input.
+Keep the 5.0 V / 200 mA supply setting and the Pico absent. The ordered-board
+pad record identifies C105 pad 1 as `+3V0` and pad 2 as GND; U12 supplies this
+rail from protected `+5V`. Measure across C105 in DC volts, expecting about
+3.0 V. Also measure C59 pad 1 (`+3V3`) to pad 2 (GND). The 3.3 V rail has an
+external supply connection at H2 pads 27/28; only the 5 V input has been powered
+in this test. Record any voltage there before adding a second supply.
+
+Position probes with output off, briefly enable for each reading, then turn
+off before repositioning. Record supply current and CV/CC mode. Stop for smoke,
+odor, obvious heating or a return to current limiting. No 3.3 V supply injection,
+Pico installation or sustained-power test has been performed in this log.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
