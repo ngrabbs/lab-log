@@ -624,5 +624,25 @@ front-panel compensation output and inspecting the waveform is still pending.
 No board clock outputs were enabled and no RF connection to the analyzer
 was requested.
 
+## Probe compensation check
+
+The first capture was nearly flat because I had not connected the probe BNC
+to the scope. After connecting it, CH1 measured approximately **1.000 kHz**,
+**3.08 V peak-to-peak**, top **2.948 V**, and base **0.035 V** on the scope's
+compensation output. These are scope-reported values, not calibration against
+an independent reference.
+
+The display showed square pulses with generally flat tops. A LAN settings
+popup obscured part of the screen, so a separate waveform transfer was used
+to check the plateau. In the 1200-point display waveform (5 µs/sample), early
+high-plateau means were 2.962–2.980 V and later means approximately 2.960 V.
+No substantial plateau droop/peaking was evident at this resolution, so no
+compensation-screw adjustment was requested. This is a preliminary compensation
+check, not a high-frequency probe calibration or edge/ringing qualification.
+
+[Raw scope waveform and scaling preamble](files/probe-compensation-waveform.json)
+are retained. The probe is still on the compensation output; no board clock
+measurement or clock-enable operation has occurred.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
