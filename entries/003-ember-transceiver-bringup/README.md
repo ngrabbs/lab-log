@@ -749,5 +749,23 @@ coupling capacitor. No component changes have been made.
 
 [Raw waveform, console results and post-window readings](files/clk0-10mhz-first-waveform.json).
 
+## Source-side comparison attempt
+
+After the requested move to C6 pad 1, another bounded test detected 10 MHz
+and completed with verified shutdown. However, sequential scope voltage
+queries varied substantially: VMAX +2.28 V, VMIN −1.84 V, VTOP +3.76 V,
+VBASE −0.92 V and VAVG +2.50 V. These cannot describe one consistent waveform.
+The separately transferred waveform ranged from −1.28 to +2.80 V, with
+mean +0.770 V. DC coupling and 10× scaling were verified.
+
+This is not an accepted source-voltage measurement. Probe/ground contact,
+measurement-point identification and acquisition stability need checking;
+no circuit fault is diagnosed from this attempt. After the window, the scope
+showed no frequency, 160 mV peak-to-peak noise and mean −2.7 mV; registers
+3/16/17/18 were FF/80/80/80. The clock remains disabled. Next: secure the
+probe and ground before a repeat using a stopped, single acquisition.
+
+[Raw source-side attempt](files/clk0-10mhz-c6-source-waveform.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
