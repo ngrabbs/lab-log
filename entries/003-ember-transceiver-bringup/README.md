@@ -211,13 +211,20 @@ Current into the 3.3 V rail remains unmeasured, so 149 mA is not total board
 current or a complete power budget. No sustained or thermal qualification is
 claimed.
 
+### Pico supply feed
+
+The reported voltage from **J7 pad 2 (PICO_VSYS) to J7 pad 3 (GND)** was
+**4.9 V**, with the Pico still absent. This confirms voltage reaches the
+Pico supply connection downstream of D14. It is an unloaded measurement at
+that connector; startup with the Pico and its additional current remain untested.
+
 ## Next check
 
-Before installing the Pico, verify its VSYS feed: DC voltage from J7 pad 2
-(`PICO_VSYS`, red probe) to J7 pad 3 (GND, black probe). The ordered pad record
-places this feed downstream of D14 from protected 5 V. Position probes with
-both outputs off, apply the same supply setup briefly, record voltage, then
-switch AD3 off followed by the 5 V supply. Leave the Pico uninstalled.
+Keep both outputs off and identify the exact Pico variant and currently loaded
+firmware before installation. Prepare a controlled bring-up image with RF/clock
+outputs disabled before using the controller on the board. The supply measurements
+do not yet establish MCU operation, CAN communication, clock generation or RF
+performance. No controller installation or firmware change has been recorded.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
