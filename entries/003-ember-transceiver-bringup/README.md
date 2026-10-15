@@ -226,5 +226,32 @@ outputs disabled before using the controller on the board. The supply measuremen
 do not yet establish MCU operation, CAN communication, clock generation or RF
 performance. No controller installation or firmware change has been recorded.
 
+## Bare Pico firmware inspection
+
+I identified the controller as an original Raspberry Pi Pico, already running
+transceiver comms firmware, and booted it separately with its USB console
+available. It has not been installed on the new board.
+
+A passive serial capture, with no commands sent, received:
+
+```text
+[comms] heartbeat #15  uptime=78192 ms  tasks=5  free_heap=119888  ihu=0 xacts
+```
+
+This confirms live firmware console output on the bare Pico. The boot report
+was not captured, and the flashed binary was not read back or matched to a
+source/build hash. No firmware was flashed and no reset or RF commands were sent.
+
+The inspected source checkout was at EMBER commit
+`9b714354fd0ca63ff51502d462ad13d26b3a837f`. Its older comms configuration uses
+GP14/GP15 for an I²C housekeeping slave. The ordered PCB uses those GPIOs for
+CAN_A_CSn / CAN_B_CSn at J6 pads 19/20. That source is therefore not suitable
+unchanged for the current dual-CAN board. Its startup code drives TX_ACTIVE and
+BPSK_DATA low and performs a read-only Si5351 status probe, but this source
+inspection is not proof of the exact behavior of the flashed image.
+
+Next: prepare and verify firmware against the ordered board pin map, keeping
+RF muted and clock outputs explicitly controlled, before installing the Pico.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
