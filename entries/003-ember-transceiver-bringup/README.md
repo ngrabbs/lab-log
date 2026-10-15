@@ -1101,5 +1101,28 @@ TX remained muted throughout; no RF carrier was requested.
 
 [Raw load comparison and console](files/y24-crystal-load-comparison.json).
 
+## External crystal capacitors: review and proposed rework
+
+The ordered design records specify Y1 as ABM8G-25.000MHZ-B4Y-T and C1/C2
+as 15 pF from XA/XB respectively to ground. The [Abracon ordering table](https://abracon.com/Resonators/ABM8G.pdf)
+specifies a default 10 pF crystal load; this part has no alternate load option.
+Its initial frequency tolerance is ±30 ppm, separate from temperature stability.
+
+[Si5351 datasheet section 4.1.1](https://www.skyworksinc.com/-/media/Skyworks/SL/documents/public/data-sheets/Si5351-B.pdf)
+provides internal crystal loading and limits optional additional external loading
+to 2 pF equivalent (4 pF on each crystal terminal). Our two 15 pF capacitors
+exceed that guidance. With internal loading already set to 10 pF, excess
+external loading is a likely contributor to the observed low frequency. The
+reversible load test supports the direction of this effect, but does not prove
+that it accounts for the whole offset or the fractional-PLL side peaks.
+
+Proposed next experiment, not yet performed: disconnect all board power and
+USB, remove C1 and C2, and leave their pads open. Do not bridge these pads:
+each capacitor connects a crystal terminal to ground. Leave C6 unchanged so
+only one issue is tested. After inspection, restore power and compare startup,
+PLL lock and the same muted 10 MHz counter measurement with internal loading
+at 10 pF. Absolute frequency accuracy remains uncalibrated. No hardware,
+KiCad source, firmware setting or instrument state was changed in this review.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
