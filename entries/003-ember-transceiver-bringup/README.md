@@ -55,13 +55,25 @@ the earlier 20 kΩ across C117. Probe polarity, settling time and contact for
 this set were not recorded, so the discrepancy remains unresolved. Neither
 measurement directly verifies H2 pad 29's connection to C117 ground.
 
+### Correcting the measurement point
+
+I found that I had been measuring the wrong pin and corrected the measurement
+point. H2 pad 29 to C117 pad 2 then measured **1.3 Ω**, suggesting ground
+continuity. It has not been clarified which earlier readings used the wrong
+pin, or whether the correction involved only a probe or a soldered test pin;
+the earlier readings are retained rather than treated as verified connections.
+
+Repeating input-to-ground resistance at H2 pads 25/29 gave **4 MΩ and climbing**.
+The requested orientation was red on pad 25 and black on pad 29. This is not a
+settled value. A rising reading can result from the meter charging capacitance;
+it does not indicate a hard short or establish powered operation.
+
 ## Next check
 
-Keep power disconnected. Measure H2 pad 29 to C117 pad 2 directly, expecting
-near the shorted-lead resistance. Recheck the shorted probes and input-rail
-continuity with firm contact on exposed metal. Then repeat the resistance
-across C117 and across H2 pads 25/29 using the same probe polarity and settling
-time. Confirm physical pad numbering if results disagree.
+With power disconnected, compare directly across C117 using the same probe
+polarity (red on pad 1, black on pad 2). Confirm whether the wrong-pin correction
+was probe placement only or also a change to a temporary soldered connection.
+Then establish the current-limited first-power setup.
 
 No power-on results are recorded. Pico and external interfaces remain outside
 the proposed first-power setup.
