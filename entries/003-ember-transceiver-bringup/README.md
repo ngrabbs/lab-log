@@ -1260,5 +1260,39 @@ logic high/low levels and extrema against the previous negative plateau
 before proceeding to bounded BPSK packet tests. KiCad source and BOM have
 not yet been updated for either physical rework.
 
+## C6 zero-ohm verification at TP1
+
+After reconnecting USB, the Pico reported startup ready on attempt 9, with
+independent-register tests and both CAN internal loopbacks passing. The earlier
+USB absence is resolved; the precise connection issue was not established.
+
+With the user-confirmed TP1 tip/C81 pad 2 ground arrangement, ran one muted
+10 MHz window. Rigol CH1: 10×, DC coupled, 1 V/div, 50 ns/div, bandwidth limit
+off, rising-edge trigger 1.5 V. STOP was confirmed before waveform transfer
+and voltage measurements, completed 3.63 seconds after the command.
+
+| Measurement | After C6 replacement |
+| --- | --- |
+| High plateau | 3.202 V |
+| Low plateau | 0.085 V |
+| Minimum / maximum | 0.00 / 3.32 V |
+| Mean | 1.649 V |
+| Frequency counter queries | 9,999,915.6; 9,999,916.0; 9,999,916.0 Hz |
+
+The 1200-point waveform independently spans 0.00–3.32 V. The earlier
+approximately −0.458 V low plateau at TP1 is no longer present in this
+10 MHz capture. This supports the C6 rework for logic-level integrity at the
+tested frequency; it does not qualify the approximately 145.67 MHz TX drive,
+modulation transitions or RF emissions. The counter reads approximately 8.4 ppm
+low, without traceable calibration; the closely spaced queries may share a
+counter update.
+
+The test completed with shutdown verified; final r3=FF, r16/17/18=80,
+r183=D2, TX=0. Scope acquisition was resumed. No RF TX was requested.
+Next: implement/test bounded BPSK packet generation and a matching ground
+decoder before attempting telemetry reception through LibreSDR/Yamcs.
+
+[Raw frozen TP1 waveform, counter and console](files/y24-c6-zero-ohm-tp1.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
