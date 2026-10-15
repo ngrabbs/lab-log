@@ -789,5 +789,28 @@ FF/80/80/80. Clock is off and TX remains commanded muted.
 
 [Raw frozen source-side waveform and console](files/clk0-c6-source-frozen-waveform.json).
 
+## TP1 negative level reproduced
+
+Repeated the TP1 measurement after the stable source-side check. At 10 MHz,
+TP1 again measured high plateau **2.687 V**, low plateau **−0.458 V**, and
+extrema **−0.52 to +2.76 V**. The transferred waveform independently matches
+those extrema and a mean of 1.124 V. A STOP command was sent before measurement,
+but the immediate trigger-status response was TD rather than STOP, so this
+attempt does not establish a verified frozen acquisition. Nevertheless, its
+consistent measurements reproduce the earlier downstream negative plateau.
+
+The contrast with the source-side 0.062–3.199 V plateaus supports a DC-level
+shift across the AC-coupled connection. Input-clamp action is plausible but
+clamp current is unmeasured. Do not increase clock frequency until resolving
+this input condition. A direct CMOS connection in place of C6 is the proposed
+rework to evaluate: the exported board record places both devices on 3.3 V,
+and there is no independent DC bias network on CLK0_OUT. No rework has occurred.
+
+Firmware reported complete=1/shutdown_verified=1, and readback was
+FF/80/80/80 for registers 3/16/17/18. Afterward the scope detected no frequency,
+with 160 mV peak-to-peak noise and mean −5.6 mV. TX remains commanded muted.
+
+[Raw TP1 repeat and console](files/clk0-tp1-frozen-waveform.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
