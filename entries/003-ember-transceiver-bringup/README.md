@@ -1418,5 +1418,22 @@ pad 2 to GND. In-circuit readings require interpretation.
 Test completed with data/TX/RX low and clock output disable verified (r3=FF).
 No RF transmission was requested. [Capture](files/y24-r25-pad2-data-input.json).
 
+## R25 pad 2 retry passes: earlier flat traces not reproduced
+
+User requested a retry and confirmed the powered scope-test setup. The same
+muted pattern at user-identified R25 pad 2 now measured 9.980 Hz, high plateau
+3.301 V, low plateau approximately 0 V, extrema -0.04/+3.40 V, mean 1.645 V.
+The scope stopped 1.16 seconds after the pattern-start message. This matches
+TP2 and supports valid settled data levels at the XOR input net. The preceding
+flat traces are consistent with a probe-contact/location issue; their cause was
+not directly established. The proposed resistance checks are deferred and no
+R25 replacement is indicated by these measurements.
+
+Next requested measurement: U7 pin 4 (also U14 pin 1), using the same slow
+pattern with RF muted and clock outputs disabled, to check XOR output response.
+This does not yet test carrier-frequency switching or resolve the RF phase error.
+Final data/TX/RX were low, clock disable verified (r3=FF); no RF transmission.
+[Successful retry](files/y24-r25-pad2-data-input-retry.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
