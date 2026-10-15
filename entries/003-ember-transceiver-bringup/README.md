@@ -135,19 +135,28 @@ check. The supply's current and mode were not separately reconfirmed with these
 two readings. This establishes near-nominal voltage at both measured board nodes,
 not yet all supply rails or functional operation.
 
+### Lower-rail measurements with only 5 V applied
+
+I measured **3.0 V across C105** and **0 V across C59**. C105 is on the local
+`+3V0` regulator output; C59 is on the externally supplied `+3V3` rail. These
+results show nominal voltage at the local 3.0 V measurement point and no measured
+voltage on the unsupplied 3.3 V rail. Supply current and CV/CC mode were not
+separately reconfirmed for this pair of readings.
+
+The 5 V input/protected rail and local 3.0 V checks are encouraging, but this
+is still a partial-power test. The 3.3 V-powered circuitry has not been brought
+up. The Pico remains absent; installing it is not a substitute for verifying
+the board's external 3.3 V supply arrangement.
+
 ## Next check
 
-Keep the 5.0 V / 200 mA supply setting and the Pico absent. The ordered-board
-pad record identifies C105 pad 1 as `+3V0` and pad 2 as GND; U12 supplies this
-rail from protected `+5V`. Measure across C105 in DC volts, expecting about
-3.0 V. Also measure C59 pad 1 (`+3V3`) to pad 2 (GND). The 3.3 V rail has an
-external supply connection at H2 pads 27/28; only the 5 V input has been powered
-in this test. Record any voltage there before adding a second supply.
-
-Position probes with output off, briefly enable for each reading, then turn
-off before repositioning. Record supply current and CV/CC mode. Stop for smoke,
-odor, obvious heating or a return to current limiting. No 3.3 V supply injection,
-Pico installation or sustained-power test has been performed in this log.
+Turn the bench output off. Establish whether a second independently adjustable,
+current-limited supply channel is available for the external 3.3 V input before
+planning the next power configuration. H2 pads 27/28 are the recorded `+3V3`
+input connection; no additional supply connection is authorized by this proposed
+step alone. Confirm source settings, common ground, and the power-up sequence
+before applying both rails. No 3.3 V injection or powered functional testing
+has been recorded yet.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
