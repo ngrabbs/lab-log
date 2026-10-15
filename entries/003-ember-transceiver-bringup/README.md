@@ -19,17 +19,27 @@ USB, or external interfaces. A multimeter and a current-limited bench supply
 are available. Instrument models and the individual board identifier have not
 yet been recorded.
 
-## Next check — unpowered supply resistance
+## Unpowered supply resistance
 
-With the board disconnected, identify the ground and supply measurement points
-against the ordered design. Measure resistance from each supply rail to ground,
-recording probe polarity and both the initial and settled reading. Capacitors
-may make the reading change; a continuity beep alone is not a resistance result.
-No resistance measurements or power-on results have been recorded yet.
+With the Pico absent and the board disconnected, I measured:
 
-After reviewing those readings, establish the power connection and current limit
-for the first controlled power-on. Keep the Pico and external interfaces
-disconnected for the initial supply checks.
+| Measurement | Reported resistance |
+| --- | --- |
+| Meter probes touched together | 0.34 Ω |
+| Across C117 — input 5 V to GND | 20 kΩ |
+| Across C58 — protected 5 V to GND | 359 kΩ |
+| Across C59 — 3.3 V to GND | 20 kΩ |
+
+These readings do not indicate a hard short on the three measured rails. They
+do not yet establish correct powered operation. Initial versus settled values
+and actual probe polarity have not been separately confirmed; these are the
+reported readings, without lead-resistance correction.
+
+## Next check
+
+Confirm that the readings settled, then identify the supply connection and
+set the bench voltage/current limit for first power. Keep the Pico and external
+interfaces disconnected. No power-on results have been recorded yet.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
