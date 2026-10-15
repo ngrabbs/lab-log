@@ -1169,5 +1169,43 @@ Raw records: [first window](files/y24-c1-c2-removed-counter.json) and
 [repeat](files/y24-c1-c2-removed-repeat.json). Next: reseat C6 pad 1 tip and
 Y1 ground, then capture a stable waveform and repeat the counter check.
 
+## Conducted TX side peaks after C1/C2 removal
+
+At the user's request, repeated the 437 MHz target tone through the established
+DC block and external 30 dB pad into tinySA. Scope probe removal was requested,
+but not separately confirmed. Analyzer settings: internal attenuation 20 dB,
+LNA off, external gain correction zero; wide scans 435–440 MHz, 301 points,
+30 kHz RBW; fine scan 436.9–437.1 MHz, 101 points, 3 kHz RBW.
+
+The fine scan peaked at 436.992 MHz, −19.59 dBm at the analyzer, versus
+436.972 MHz before removal. The 2 kHz grid and uncalibrated analyzer limit
+frequency interpretation. Wide-scan carrier level was approximately −19.1 dBm.
+The first wide scan saw the upper side peak at −63.09 dBm but did not resolve
+the lower one above noise. Max-hold subsequently showed both, prompting a
+second bounded TX window with two repeat scans:
+
+| Repeat scan | Carrier | Lower side peak | Upper side peak |
+| --- | --- | --- | --- |
+| 1 | −19.125 dBm | −62.594 dBm | −63.125 dBm |
+| 2 | −19.125 dBm | −62.594 dBm | −61.625 dBm |
+
+Both side peaks remain about 1 MHz from the carrier, roughly 42.5–44 dB below
+it. Earlier fractional-PLL scans were about 40.5–41.5 dB below the carrier;
+the modest change and sweep variation do not establish a substantial spur
+improvement. Removing C1/C2 improved frequency offset but did not eliminate
+these side peaks. The earlier integer-valued PLL comparison remains the
+stronger clue to their origin. No firmware frequency correction was applied.
+
+Both ten-second TX windows completed with shutdown verified. Final clocks
+were disabled (r3=FF, r16/17/18=80), internal load restored to D2, TX=0.
+The analyzer remains in live max-hold so the captured trace stays visible.
+
+![tinySA max-hold after C1/C2 removal](images/y24-post-caps-tx-screen.png)
+
+The screenshot is a max-hold display, not a single USB scan; its marker level
+therefore differs slightly from the tabulated scans. Raw records:
+[first window](files/y24-post-caps-tx-spurs.json),
+[repeat window](files/y24-post-caps-spurs-repeat.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
