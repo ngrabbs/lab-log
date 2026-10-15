@@ -173,5 +173,28 @@ logic power; it is not a claim of complete board power-sequencing qualification.
 Stop for smoke, odor or obvious heating. Board-rail measurements follow only
 after the supply readings are reviewed.
 
+## Identifying the second supply
+
+I reported powering the 3.3 V connection, seeing the board's 3.3 V power LED
+illuminate, and seeing the 5 V supply remain up. No numerical board voltage or
+3.3 V current was recorded during that check. The second source did not have
+the adjustable current limit assumed in the proposed procedure, so that
+procedure was not completed as written.
+
+Desktop inspection identified **WaveForms 3.25.1 with an Analog Discovery 3
+rev C**, separate from the NANKADF 5 V source. At inspection, Master Enable
+was off, the positive-supply setpoint was **3.004 V**, the negative supply was
+disabled, and Hardware Power Limit was **Auto / 2.5 W**. This later UI snapshot
+does not establish the voltage setting during the preceding LED observation.
+No supply settings or output enables were changed during inspection.
+
+The [Digilent manual](https://files.digilent.com/manuals/WaveForms/3.24.4/start10.html)
+describes a shared adjustable power limit (0.6–15 W); it is not an adjustable
+50 mA output-current limit. The displayed USB current is instrument input
+current, not a measurement of current into the board's 3.3 V rail. Before the
+next test, correct/verify the positive-supply setting at 3.30 V and establish
+an appropriate protection and current-measurement arrangement. The nominal
+3.3 V rail has not yet been confirmed by a meter with both sources applied.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
