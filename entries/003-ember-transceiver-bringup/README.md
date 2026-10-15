@@ -287,5 +287,25 @@ Next: disconnect USB and switch both board supplies off before installing the
 Pico. Verify orientation and inspect the soldering before the first installed
 power-on. Do not power the installed Pico from USB alone with board rails off.
 
+## First installed Pico console check
+
+I soldered the Pico into the board, connected its USB console, and reported
+both 5 V and 3.3 V supplies on. A passive six-second console capture received
+heartbeats #464–470 with `Si5351_disable=verified_0xFF` on every line and
+ADC1 values 2072, 2068, 2069, 2069, 2069, 2069, 2069.
+The firmware continued reporting TX/RX inactive and both CAN controllers in
+reset and standby. No commands or firmware changes were made during this check.
+
+The Si5351 output-disable register now acknowledges and reads back correctly
+through the installed Pico. This is not a scope measurement of clock outputs.
+ADC readings correspond to approximately 1.67 V assuming a 3.30 V ADC reference,
+consistent with the intended mid-supply receiver bias; reference voltage and
+baseband voltage still need meter verification. This does not test RF reception.
+USB is connected, so this observation does not isolate the board's VSYS feed.
+
+Next measurements requested: 5 V supply current and regulation mode, C59 rail
+voltage, RX_BASEBAND at J7 pad 9 relative to GND, and TX_ACTIVE at J6 pad 14
+relative to GND. No installed-board meter results are recorded yet.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
