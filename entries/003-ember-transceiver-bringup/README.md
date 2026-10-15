@@ -8,6 +8,43 @@ The EMBER transceiver PCB arrived today. I am bringing it up in stages, starting
 with unpowered checks before testing the supplies, controller, CAN interfaces,
 and RF paths.
 
+## Session checkpoint — October 15
+
+Power rails, Pico operation, both CAN controllers' independent SPI/internal
+loopback tests, and one complete CAN A HELLO exchange through the stack have
+worked. Conducted TX produces a carrier; RX and modulated RF communication
+are not yet demonstrated.
+
+C1/C2 (external 15 pF crystal capacitors) were removed, leaving their pads
+open. Internal Si5351 loading remains 10 pF. The tinySA carrier moved from
+436.972 to 436.992 MHz for a 437 MHz target. Frequency accuracy remains
+uncalibrated, and the post-rework scope readings need a stable-probe repeat.
+The approximately ±1 MHz side peaks persist at roughly 42–44 dB below the
+carrier. Earlier changing to an integer-valued PLL ratio reduced those peaks
+by about 16 dB; this is a diagnostic clue, not a chosen operating-frequency
+change. C6 remains unchanged, with the downstream negative-level issue open.
+
+At the stopping check, firmware v10 reported TX=0, RX=0, CAN A/B in standby
+and configuration mode, and Si5351 r3=FF / r16–18=80 / r183=D2. Startup and
+both internal CAN loopback results passed. This verifies the reported muted
+state; stack power has not been switched off remotely. The tinySA max-hold
+trace remains visible even with TX off.
+
+Resume with:
+
+1. Establish stable probe contact and repeat the post-rework 10 MHz measurement.
+2. Resolve C6's AC-coupled logic-input level; evaluate the proposed 0 Ω
+   replacement when available, then remeasure the input waveform.
+3. Investigate PLL-related side peaks at the required operating frequency;
+   repeat spectrum/power checks with a qualified reference and attenuation.
+4. Bring up RX and modulated TX, then test an end-to-end RF link. CAN B external
+   signaling, interrupt wiring, repeated starts and sustained-load tests remain.
+5. Carry confirmed rework into the hardware revision/BOM; today's physical
+   C1/C2 removal is logged here but has not changed the KiCad design files.
+
+Bring-up firmware: `fd26103`, branch `firmware/transceiver-y24-bringup`.
+Detailed observations, failed attempts and raw captures follow chronologically.
+
 ## Initial inspection and setup
 
 I inspected the board under the microscope and did not see any solder bridges.

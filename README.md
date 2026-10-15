@@ -10,7 +10,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
-| 003 | [EMBER transceiver bring-up](entries/003-ember-transceiver-bringup/README.md) | First assembled PCB inspection, unpowered checks, and staged electrical/RF testing. In progress. |
+| 003 | [EMBER transceiver bring-up](entries/003-ember-transceiver-bringup/README.md) | Rails and CAN A exchange checked; conducted TX, crystal-load rework, and unresolved RF side peaks. In progress. |
 | 002 | [Gathering daylight fire and no-fire images](entries/002-kline-daylight-burn/README.md) | Leaves and small branches burned in two daylight setups. Example images, exposure settings, and JPEG brightness measurements; preliminary analysis kept separately. In progress. |
 | 001 | [EMBER UHF antenna testing](entries/001-ember-antenna/README.md) | Nitinol dipole experiments, feed troubleshooting, and copper reference tuning with a NanoVNA. In progress. |
 
