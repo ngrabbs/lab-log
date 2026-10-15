@@ -720,5 +720,34 @@ with a short ground connection to C81 pad 2, then request the bounded test.
 The tinySA remains disconnected. This is test preparation, not a measured
 Si5351 output or RF result.
 
+## First Si5351 output measurement
+
+After confirming the probe on TP1 with the requested C81 pad 2 ground,
+sent one `c` command. The Rigol was DC coupled, 10×, 1 V/div, 50 ns/div,
+auto trigger at 1 V. During the bounded window it reported **10.000 MHz**,
+**100 ns**, **3.32 V peak-to-peak**, high plateau **2.689 V** and low plateau
+**−0.451 V**. Separately queried extrema were +2.76 V and −0.52 V.
+These running acquisitions are not necessarily the same cycle; the frequency
+reading is not a calibrated accuracy result.
+
+Firmware reported `complete=1 shutdown_verified=1 status=11`. Afterward the
+scope showed no measurable frequency, 120 mV peak-to-peak noise and mean
+−4.7 mV. Readback was `r3=FF r16=80 r17=80 r18=80 r183=D2`. Both register
+and scope evidence therefore support successful clock generation and shutdown.
+TX/RX controls remained low; RF mute isolation was not measured.
+
+The negative plateau at TP1 needs investigation before higher-frequency tests.
+The exported netlist shows C6 (100 nF), R3 (0 Ω), then TP1/U7 input, with no
+separate DC bias connection on that net. AC coupling and input-clamp action
+are a candidate explanation, not a confirmed diagnosis. The
+[TI SN74LVC1G86 datasheet](https://www.ti.com/lit/gpn/SN74LVC1G86)
+gives a −0.5 V absolute input-voltage limit, with a clamp-current exception;
+clamp current has not been measured. The observed undershoot is not accepted
+as a qualified input waveform. Probe grounding and source-side levels need
+comparison. Clock remains off; next proposed point is C6 pad 1, before the
+coupling capacitor. No component changes have been made.
+
+[Raw waveform, console results and post-window readings](files/clk0-10mhz-first-waveform.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
