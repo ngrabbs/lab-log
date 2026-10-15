@@ -567,5 +567,33 @@ stack power first, wait five seconds, then reconnect MCU USB consoles. Inspect
 startup logs before enabling CAN. This avoids deliberately running the installed
 Pico from USB with board rails off. The test has not yet been performed.
 
+## First controlled cold-start result
+
+I reported the stack back up after the requested power-off/power-on procedure.
+Both USB consoles were available again. No software reset, flash, or CAN-enable
+command was sent during this inspection; only IHU `status` was requested.
+
+The transceiver's retained boot result was:
+
+```text
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+```
+
+Heartbeats #25–29 consistently showed both controllers in configuration mode,
+both transceivers in standby, TX/RX inactive and Si5351 disable verified.
+ADC1 ranged from 2084 to 2086. IHU reported a new boot ID, uptime approximately
+23.7 seconds, CAN ready in configuration mode, and zero TX/RX/error counters.
+
+This is one successful reported cold-start cycle with the requested stack-power-
+first, USB-afterward sequence. No retry was needed, so it does not demonstrate
+physical delayed-rail recovery or prove the original failure's cause. Repeated
+cycles and other supported power sequences remain unqualified. No fresh CAN
+round trip was performed after this cycle; the earlier exchange remains the
+application-level evidence.
+
+Next: identify available RF measurement equipment and plan clock measurements
+before enabling a clock output. RF is still muted.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
