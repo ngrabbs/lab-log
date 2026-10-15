@@ -118,15 +118,23 @@ At the 5.0 V setting and 150 mA limit, the supply displayed **4.97 V,
 but the reported CC state means current limiting was still active; a stable
 constant-voltage operating current has not yet been established.
 
+### First constant-voltage result
+
+At the 5.0 V setting with a 200 mA current limit, the supply displayed
+**5.0 V, 0.150 A, CV**. No smoke was observed. This is the first reported
+constant-voltage result, with current below the selected limit. The indicated
+input power is approximately **0.75 W** (5.0 V × 0.150 A). It is a brief
+observation, not a sustained-current or thermal qualification, and the Pico
+is still absent.
+
 ## Next check
 
-With output off, retain the 5.0 V setting and increase the current limit to
-200 mA for a brief 1–2 second observation. Record actual supply voltage,
-current and CV/CC mode, then turn output off. If CC persists, stop increasing
-the limit and investigate the load before further power tests. This is a
-staged diagnostic limit, not an approved operating-current budget. Stop
-immediately for smoke, odor or obvious heating. Pico and external interfaces
-remain disconnected for this test.
+Retain 5.0 V and the 200 mA limit. Measure the board input across C117 and the
+protected 5 V rail across C58 in DC-voltage mode (pad 1 positive, pad 2 ground).
+Position probes with output off, briefly enable for each reading, then switch
+off before repositioning. Record the supply current and CV/CC state as well.
+Stop for smoke, odor, obvious heating or a return to current limiting. Lower
+rails and sustained operation have not yet been measured under nominal input.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
