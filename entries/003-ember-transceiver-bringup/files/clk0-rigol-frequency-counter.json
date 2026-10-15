@@ -1,0 +1,48 @@
+{
+  "captured_at": "2026-10-15T21:13:55.168443+00:00",
+  "setup": "10x probe tip C6 pad1; user confirmed requested Y1 ground pad2 or4, exact ground pad unspecified; muted 10MHz clock test",
+  "settings": {
+    ":CHANnel1:PROBe?": "1.000000e+01",
+    ":CHANnel1:COUPling?": "DC",
+    ":MEASure:COUNter:SOURce?": "CHAN1"
+  },
+  "readings": [
+    {
+      "seconds_after_dispatch": 2.005187749979086,
+      "counter_hz": "9.9994612e+06",
+      "frequency_hz": "1.000000e+07",
+      "vpp": "3.320000e+00"
+    },
+    {
+      "seconds_after_dispatch": 2.7233730839798227,
+      "counter_hz": "9.9994636e+06",
+      "frequency_hz": "1.000000e+07",
+      "vpp": "3.320000e+00"
+    },
+    {
+      "seconds_after_dispatch": 3.44528879201971,
+      "counter_hz": "9.9994636e+06",
+      "frequency_hz": "1.000000e+07",
+      "vpp": "3.320000e+00"
+    },
+    {
+      "seconds_after_dispatch": 4.165228041994851,
+      "counter_hz": "9.9994632e+06",
+      "frequency_hz": "1.000000e+07",
+      "vpp": "3.320000e+00"
+    },
+    {
+      "seconds_after_dispatch": 4.887835583998822,
+      "counter_hz": "9.9994628e+06",
+      "frequency_hz": "1.000000e+07",
+      "vpp": "3.320000e+00"
+    }
+  ],
+  "after": {
+    "FREQuency": "9.9E37",
+    "VPP": "1.600000e-01",
+    "VAVG": "3.612061e-03"
+  },
+  "console": "[clock_test] preparing CLK0 10MHz, max 10s, TX/RX=0; any input aborts\n[clock_test] complete=1 shutdown_verified=1 status=11 TX=0\n[y24-safe-v9] #433 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\n[y24-safe-v9] #434 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\n[y24-safe-v9] #435 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2080\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\n[clock_status] r0=11 r3=FF r16=80 r17=80 r18=80 r183=D2\n[y24-safe-v9] #436 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\n[y24-safe-v9] #437 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\n",
+  "scope_error": "0,\"No error\""
+}

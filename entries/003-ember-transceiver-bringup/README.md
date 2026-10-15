@@ -995,5 +995,36 @@ are disabled. C6 remains unchanged and its input-level issue remains open.
 
 [Raw comparison spectra and console](files/y24-tx-pll-comparison.json).
 
+## Independent Rigol frequency-counter cross-check
+
+The C6-to-C81 ground span was impractical for the probe. Used C6 pad 1 as
+the tip point and requested Y1 ground pad 2 or 4 instead; the exact selected
+ground pad was not specified. Y1 crystal-signal pads 1/3 were explicitly excluded.
+The probe remained 10×. Enabled the Rigol's CH1 frequency counter rather than
+relying on its coarser waveform frequency measurement.
+
+During one muted ten-second 10 MHz clock window, five counter queries returned
+9,999,461.2; 9,999,463.6; 9,999,463.6; 9,999,463.2; and 9,999,462.8 Hz.
+Their mean is **9,999,462.88 Hz**, or approximately **−53.7 ppm** relative to
+the programmed nominal frequency. Displayed digits and the 2.4 Hz sample
+spread are not instrument accuracy specifications; repeated values may share
+a counter update. Waveform frequency queries still rounded to 10.000 MHz,
+and peak-to-peak voltage was 3.32 V.
+
+The Rigol independently observes a low frequency, supporting a source/reference
+issue rather than an effect solely in the tinySA peak display. Its indicated
+fractional error would correspond to approximately −23.5 kHz at 437 MHz,
+compared with the tinySA's approximately −28 kHz result. Neither timebase has
+been checked against a calibrated standard; no firmware correction is justified
+from this comparison alone. Possible crystal-loading error remains a hypothesis.
+
+The test completed and shutdown was verified, with TX held low throughout.
+Afterward the scope detected no frequency, 160 mV peak-to-peak noise and mean
++3.6 mV; registers 3/16/17/18 read FF/80/80/80. No TX tone was requested.
+Next proposed check is Y3's nominal 16 MHz oscillator using this same Rigol
+counter, as an additional reference comparison rather than a calibration.
+
+[Raw counter readings and console](files/clk0-rigol-frequency-counter.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
