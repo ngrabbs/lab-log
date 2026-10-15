@@ -667,5 +667,23 @@ Y4 CAN B oscillator check, followed by controlled Si5351 testing.
 Raw captures: [initial attempt](files/y3-can-a-clock-waveform.json) and
 [clock present](files/y3-can-a-clock-retry-waveform.json).
 
+## CAN B oscillator measurement
+
+With the probe moved to Y4 (requested tip pad 3, ground pad 2), the same
+10×, DC-coupled, 1 V/div, 50 ns/div setup measured a clock with high plateau
+**3.251 V** and low plateau **0.020 V**. The scope reported **3.64 V
+peak-to-peak**, with separately queried extrema +3.48 V and −0.20 V.
+Frequency and period queries returned 16.129 MHz and 63 ns respectively;
+these separate running-acquisition readings have limited resolution and
+are not mutually exact. They establish approximately **16 MHz** operation,
+not oscillator accuracy. The transferred waveform uses 0.5 ns sample spacing.
+
+Y4's frequency and logic swing are similar to Y3's. Both CAN oscillators now
+have direct scope evidence of operation; CAN B bus signaling remains untested.
+No Si5351 output was enabled. Next is preparation of controlled Si5351 tests
+with the hardware TX mute held inactive.
+
+[Raw Y4 waveform, readings and settings](files/y4-can-b-clock-waveform.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
