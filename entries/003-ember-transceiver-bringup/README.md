@@ -487,5 +487,48 @@ Firmware commit `144193b`, branch `firmware/transceiver-y24-bringup`.
 Final UF2 SHA-256:
 `095027b784670c91864e080caff19a3325c8381639ea74c38c4c7d6af422d970`.
 
+## Complete IHU–transceiver HELLO exchange
+
+Bring-up firmware v5 adds an explicit `h` window: ten seconds on CAN A,
+allowing one HELLO_ACK reply to one validated IHU HELLO. The shared fragment
+and COBS/CRC parsers verify the envelope, version, type, empty payload,
+sender/origin relationship, and token/request correspondence. Other command
+types are ignored. The reply preserves origin/request and supplies a fresh
+nonzero responder boot ID. One-shot CAN transmission, bounded waits and a
+single-response limit prevent indefinite retries or an open-ended service.
+
+Host tests passed for the reply envelope and rejection of wrong version/type,
+payload, origin, token, corrupted encoding/CRC and trailing partial data.
+GPIO/loopback checks and the warning-as-error target build also passed. The
+image was flashed with verification; both internal CAN tests passed again.
+
+With IHU already in normal mode, an `h` window and one IHU `hello` produced:
+
+```text
+IHU: SUBMITTED request=4 type=1 bytes=0
+IHU: RESULT request=4 outcome=CAN_HELLO_CONFIRMED peer=653843575 bytes=0 hex=
+COMMS: [listen_A] END frames=6 EFLG=00 mode_ok=1 restored=1
+COMMS: [hello_A] boot=653843575 request=4 attempted=1 tx_complete=1
+```
+
+The IHU matched the response to request 4 and identified the same responder
+boot ID reported by the transceiver. Its TX-success count increased from 12
+to 18, RX count from 0 to 6, and matched count from 0 to 1. TEC, REC, EFLG,
+RX-bad, overflow and fragment-error counters were zero. TX-failure remained
+at the prior value of 1; no new failure occurred in this exchange. Pending
+was zero afterward.
+
+This establishes one complete **IHU → CAN A → transceiver → CAN A → IHU**
+application exchange at the configured 500 kbit/s. It is not a sustained-load,
+redundancy, CAN B wiring, or RF qualification. Both transceiver CAN channels
+returned to standby/configuration, TX/RX remained inactive, and the Si5351
+disable readback passed. No LTE or EPS commands were sent.
+
+Firmware commit `1070627`, branch `firmware/transceiver-y24-bringup`.
+UF2 SHA-256:
+`08dc90e9f5ea7a702872b0dfdfbcac0b37cdb5f55fcd516e2a82e10394066297`.
+Next: address the startup-sequencing failure and perform a controlled cold-start
+retest before moving on to RF clock measurements.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
