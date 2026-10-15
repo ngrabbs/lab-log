@@ -1,0 +1,136 @@
+{
+  "captured_at": "2026-10-15T21:22:29.193555+00:00",
+  "setup": "C6 pad1 tip, Y1 ground pad2 or4;10x Rigol CH1 counter;10MHz muted windows; original D2 restored after each; external C1/C2 unchanged",
+  "results": [
+    {
+      "internal_load_pf": 10,
+      "readings": [
+        {
+          "seconds": 2.5004714503884315,
+          "counter_hz": "9.9994628e+06",
+          "vpp": "4.160000e+00"
+        },
+        {
+          "seconds": 3.1038479516282678,
+          "counter_hz": "9.9994636e+06",
+          "vpp": "4.080000e+00"
+        },
+        {
+          "seconds": 3.721877762116492,
+          "counter_hz": "9.9994624e+06",
+          "vpp": "4.160000e+00"
+        },
+        {
+          "seconds": 4.345612779259682,
+          "counter_hz": "9.9994632e+06",
+          "vpp": "4.080000e+00"
+        },
+        {
+          "seconds": 4.970616451464593,
+          "counter_hz": "9.9994620e+06",
+          "vpp": "4.120000e+00"
+        }
+      ],
+      "console": "[clock_load] preparing temporary 10pF, muted 10MHz, max10s\r\n[clock_test] complete=1 shutdown_verified=1 status=11 TX=0\r\n[clock_load] pf=10 original=D2 configured=1 complete=1 stopped=1 restored=1\r\n[y24-safe-v10] #32 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2080\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #33 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #34 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2080\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n",
+      "after_frequency": "9.9E37"
+    },
+    {
+      "internal_load_pf": 8,
+      "readings": [
+        {
+          "seconds": 2.500502641312778,
+          "counter_hz": "9.9995252e+06",
+          "vpp": "4.120000e+00"
+        },
+        {
+          "seconds": 3.1040720576420426,
+          "counter_hz": "9.9995252e+06",
+          "vpp": "4.160000e+00"
+        },
+        {
+          "seconds": 3.7087536491453648,
+          "counter_hz": "9.9995060e+06",
+          "vpp": "4.160000e+00"
+        },
+        {
+          "seconds": 4.334530399180949,
+          "counter_hz": "9.9995252e+06",
+          "vpp": "4.120000e+00"
+        },
+        {
+          "seconds": 4.957569198682904,
+          "counter_hz": "9.9995252e+06",
+          "vpp": "4.120000e+00"
+        }
+      ],
+      "console": "[clock_load] preparing temporary 8pF, muted 10MHz, max10s\r\n[clock_test] complete=1 shutdown_verified=1 status=11 TX=0\r\n[clock_load] pf=8 original=D2 configured=1 complete=1 stopped=1 restored=1\r\n[y24-safe-v10] #35 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #36 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2082\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #37 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2080\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n",
+      "after_frequency": "9.9E37"
+    },
+    {
+      "internal_load_pf": 6,
+      "readings": [
+        {
+          "seconds": 2.500522442162037,
+          "counter_hz": "9.9996098e+06",
+          "vpp": "3.320000e+00"
+        },
+        {
+          "seconds": 3.1297867707908154,
+          "counter_hz": "9.9996084e+06",
+          "vpp": "3.320000e+00"
+        },
+        {
+          "seconds": 3.7573330868035555,
+          "counter_hz": "9.9996084e+06",
+          "vpp": "3.320000e+00"
+        },
+        {
+          "seconds": 4.378937636502087,
+          "counter_hz": "9.9996084e+06",
+          "vpp": "3.320000e+00"
+        },
+        {
+          "seconds": 5.0028668930754066,
+          "counter_hz": "9.9996084e+06",
+          "vpp": "3.320000e+00"
+        }
+      ],
+      "console": "[clock_load] preparing temporary 6pF, muted 10MHz, max10s\r\n[clock_test] complete=1 shutdown_verified=1 status=11 TX=0\r\n[clock_load] pf=6 original=D2 configured=1 complete=1 stopped=1 restored=1\r\n[y24-safe-v10] #38 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #39 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n",
+      "after_frequency": "9.9E37"
+    },
+    {
+      "internal_load_pf": 10,
+      "readings": [
+        {
+          "seconds": 2.500562566332519,
+          "counter_hz": "9.9994624e+06",
+          "vpp": "3.280000e+00"
+        },
+        {
+          "seconds": 3.1290463749319315,
+          "counter_hz": "9.9994620e+06",
+          "vpp": "3.320000e+00"
+        },
+        {
+          "seconds": 3.7527444567531347,
+          "counter_hz": "9.9994624e+06",
+          "vpp": "3.320000e+00"
+        },
+        {
+          "seconds": 4.376893167383969,
+          "counter_hz": "9.9994624e+06",
+          "vpp": "3.320000e+00"
+        },
+        {
+          "seconds": 5.0023680087178946,
+          "counter_hz": "9.9994624e+06",
+          "vpp": "3.320000e+00"
+        }
+      ],
+      "console": "[clock_load] preparing temporary 10pF, muted 10MHz, max10s\r\n[clock_test] complete=1 shutdown_verified=1 status=11 TX=0\r\n[clock_load] pf=10 original=D2 configured=1 complete=1 stopped=1 restored=1\r\n[y24-safe-v10] #40 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #41 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #42 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n",
+      "after_frequency": "9.9E37"
+    }
+  ],
+  "final_console": "[clock_status] r0=11 r3=FF r16=80 r17=80 r18=80 r183=D2\r\n[y24-safe-v10] #43 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n[y24-safe-v10] #44 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n",
+  "scope_error": "0,\"No error\""
+}

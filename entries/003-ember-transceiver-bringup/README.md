@@ -1059,5 +1059,47 @@ Raw records: [no signal](files/y3-rigol-frequency-counter.json),
 [unidentified 25 MHz attempt](files/y3-rigol-frequency-counter-retry.json),
 and [accepted Y3/C8 comparison](files/y3-c8-ground-frequency-counter.json).
 
+## Reversible crystal-load comparison
+
+Firmware v10 (`fd26103`) adds commands `0`, `8`, `6` for temporary 10/8/6 pF
+internal load settings. Each saves register 183, disables clocks, writes and
+verifies the selected documented value (D2/92/52), waits 200 ms, runs one
+muted ten-second 10 MHz window, then disables clocks and restores the saved
+value. TX/RX/BPSK remain low. Reserved load selection 00 is never used.
+Single-transfer I²C fault sweeps, abort/lock tests, existing checks and target
+build passed; firmware flash verification passed. UF2 SHA-256:
+`148000f8ab4865d5ad8deddfb94bd789453d9f7b494c552dea5dff513cc4c6a3`.
+
+With the user-confirmed C6 pad 1 tip and Y1 ground pad 2 or 4, ran 10 → 8 →
+6 → 10 pF. Each row is the arithmetic mean of five Rigol counter queries,
+not a calibrated frequency result. External C1/C2 remained unchanged.
+
+| Internal load setting | Mean measured frequency | Offset from 10 MHz |
+| --- | --- | --- |
+| 10 | 9999462.80 Hz | -53.72 ppm |
+| 8 | 9999521.36 Hz | -47.86 ppm |
+| 6 | 9999608.68 Hz | -39.13 ppm |
+| 10 | 9999462.32 Hz | -53.77 ppm |
+
+The 8 pF set contained one 9,999,506 Hz reading versus four 9,999,525.2 Hz
+readings; it is retained rather than discarded. Its median is 9,999,525.2 Hz
+(−47.48 ppm). Displayed precision and sample spread do not establish absolute
+accuracy or statistical independence of counter updates.
+
+Reducing internal load raised the frequency, with a roughly 14.6 ppm shift
+from 10 to 6 pF. Returning to 10 pF reproduced the starting frequency within
+0.5 Hz in these sample means. This demonstrates sensitivity to load setting,
+but the minimum setting still read approximately 39 ppm low. It does not prove
+how much of the remaining error comes from crystal tolerance, external loading,
+probe coupling or scope timebase. External capacitor removal/substitution and
+traceable calibration remain unperformed; no permanent correction was chosen.
+
+All four windows reported configuration, completion, shutdown and restoration
+successful. Between windows the scope could not measure a frequency. Final
+status was r3=FF, r16/17/18=80, r183=D2: original 10 pF restored, outputs off.
+TX remained muted throughout; no RF carrier was requested.
+
+[Raw load comparison and console](files/y24-crystal-load-comparison.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
