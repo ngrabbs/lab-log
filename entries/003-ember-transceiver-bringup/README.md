@@ -952,5 +952,48 @@ modulated TX and RX functionality. No hardware changes were made.
 
 [Raw targeted windows and console](files/y24-tx-harmonic-windows.json).
 
+## Fractional PLL comparison: 437 / 437.5 / 437 MHz
+
+Firmware v9 adds diagnostic command `u`, targeting 437.5 MHz with PLLA
+875 MHz = 25 MHz ×35 and the same divide-by-six clock/tripler path. The PLL
+ratio has no fractional remainder; FBA_INT stays clear because 35 is odd,
+following [AN619 §3.2.1](https://www.skyworksinc.com/-/media/Skyworks/SL/documents/public/application-notes/AN619.pdf).
+The normal `t` command remains 437 MHz (PLL ratio 34+24/25). This comparison
+does not change the board's design frequency. Fault-injection tests, existing
+host checks and target build passed; flashing was verified. UF2 SHA-256:
+`0f01ab3d63c9027aaeb0d805531ec04f1d4fdefb0513225e97488c13e2e9c45d`.
+
+Used the unchanged external DC block/30 dB pad, tinySA internal attenuation
+20 dB, LNA off, external gain zero. Three ten-second windows ran in order
+`t`, `u`, `t`. Each included a 435–440 MHz, 301-point scan at requested 30 kHz
+RBW, then a ±100 kHz, 101-point scan at requested 3 kHz RBW. Both scans
+finished about 3.61 seconds after each command. Baselines were captured first.
+
+| Nominal carrier / PLL ratio | Fine-scan peak | Fine-scan level | Maxima in ±1 MHz neighborhoods, wide scan |
+| --- | --- | --- | --- |
+| 437 MHz / 34+24/25 | 436.972 MHz | −19.156 dBm | −60.625 / −59.656 dBm |
+| 437.5 MHz / 35 | 437.472 MHz | −19.156 dBm | −76.656 / −75.656 dBm |
+| 437 MHz / 34+24/25, repeat | 436.972 MHz | −19.156 dBm | −60.125 / −59.656 dBm |
+
+The integer-ratio setting reduced those neighborhood maxima by approximately
+16 dB without a substantial carrier-level change; the peaks returned with the
+original fractional setting. This strongly implicates clock synthesis in the
+side peaks. It does not isolate the mechanism conclusively, and the lower
+readings are neighborhood maxima, not necessarily residual discrete spurs.
+Do not treat this as full spectral qualification or a reason to silently
+change the required operating frequency.
+
+Both nominal frequencies read approximately 28 kHz low (about 64 ppm), on a
+2 kHz measurement grid. This common fractional offset is consistent with a
+reference-frequency error somewhere in the source/analyzer measurement chain;
+an independent reference is needed before blaming the crystal or applying
+firmware correction. Crystal loading, including external C1/C2, remains open.
+
+Every burst reported complete=1/shutdown_verified=1 and TX=0. Final register
+readback was FF/80/80/80; startup and both internal CAN tests passed. All clocks
+are disabled. C6 remains unchanged and its input-level issue remains open.
+
+[Raw comparison spectra and console](files/y24-tx-pll-comparison.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
