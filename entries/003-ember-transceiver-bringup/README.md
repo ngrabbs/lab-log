@@ -1348,5 +1348,30 @@ Evidence: [strict receiver result](files/first-bpsk-strict-result.json),
 [diagnostic RF-to-Yamcs byte proof](files/first-bpsk-diagnostic-proof.json).
 Full IQ remains retained on the ground host; its SHA256 is in the proof.
 
+## Phase investigation and next measurement
+
+Further offline inspection of the same capture, aligned to the known transmitted
+frame, found median successive-symbol phase changes near +96 and -89 degrees
+for opposite transition directions; unchanged symbols were near +0.5 degrees.
+These are receiver-domain estimates, not a direct measurement of XOR output
+phase. Symbol integration timing affects the estimate. A global unwrapped-phase
+fit had approximately 95-degree residual RMS and was rejected as unreliable.
+The cause remains unresolved; no additional RF burst was sent for this analysis.
+
+The ordered netlist connects BPSK_DATA through R25 (100 ohms) to U7 pin 2,
+with C65 (10 pF) shunting that input to ground. Its nominal RC time constant is
+1 ns, far shorter than the 833 us symbol period; it is not an AC-coupling
+capacitor in series with the data. This was an exported connectivity check,
+not a new ERC run or rendered-sheet inspection.
+
+Installed and flash-verified v12 (`8d10579`) for a scoped input-level check.
+Explicit command `d` keeps TX/RX low and verifies clocks disabled before
+producing a five-second, approximately 10 Hz GP16 pattern. Console input aborts;
+data returns low afterward. Host tests cover normal completion, failed clock
+verification and abort; target build passed. Startup readback confirms
+FF/80/80/80, TX=0, RX=0 and both CAN internal loopbacks pass.
+The pattern has not yet been run: awaiting probe placement at C65 pad 1,
+ground at pad 2, to measure the actual XOR data-input low/high voltages.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
