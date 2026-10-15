@@ -1390,5 +1390,17 @@ final register 3 was FF. No RF transmission was requested. Scope returned to RUN
 [First capture](files/y24-c65-data-input.json) ·
 [Synchronized repeat](files/y24-c65-data-input-repeat.json).
 
+## TP2 source signal passes the slow data-level check
+
+Moved the probe to TP2 (before R25), with CH1 and ground confirmed by the user.
+Repeated the same muted five-second pattern; stopped capture 1.21 seconds after
+its start message. Measured 9.980 Hz, high plateau 3.301 V, low plateau
+approximately 0 V, extrema -0.04/+3.40 V, mean 1.645 V. This confirms the source
+pattern reaches TP2 under this test; it does not qualify RF phase modulation.
+Next requested point is R25 pad 2, downstream toward U7 pin 2, keeping the same
+ground. The earlier flat C65 result remains unresolved, including possible
+probe placement/contact. Test completed with data/TX/RX low and clock output
+disable verified; no RF transmission. [Capture](files/y24-tp2-data-input.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
