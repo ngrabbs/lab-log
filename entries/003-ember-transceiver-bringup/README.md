@@ -327,5 +327,36 @@ installed-board current. CV/CC mode was not reported in this measurement set.
 Next functional step: check each MCP25625 over SPI in configuration mode,
 keeping RF muted and CAN transmission disabled. No CAN test has been performed yet.
 
+## Dual CAN controller SPI check
+
+Bring-up firmware v2 was built, tested on the host, flashed with readback
+verification, and booted on the installed Pico. Firmware source is EMBER commit
+`9402ebd` on `firmware/transceiver-y24-bringup`. UF2 SHA-256:
+`5b0a235368464fc8d38bcee6370cbf21634e7047ad6f0dfe5e17abf880b1656c`.
+
+The firmware holds both CAN transceivers in standby, releases the controller
+resets after 10 ms, waits another 10 ms, and reads CANSTAT/CANCTRL through
+SPI0 at 100 kHz, mode 0. It issues only SPI READ instructions. Unexpected
+mode fields latch the affected controller back into reset until reboot.
+Host tests covered chip-select exclusivity, read-only instructions, expected
+mode decoding, invalid responses, and reset-on-failure behavior.
+
+Six complete captured register reports, during heartbeats #9–14, all read:
+
+```text
+[can] A STAT=80 CTRL=87 CONFIG; B STAT=80 CTRL=87 CONFIG
+```
+
+These match configuration mode after reset as described in the
+[Microchip MCP25625 datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/MCP25625-CAN-Controller-Data-Sheet-20005282C.pdf).
+Both chip selects returned the expected values; identical reset values alone
+do not prove that writes to each controller are independent. No register writes,
+CAN frames, or bus acknowledgments were attempted. The transceivers remain in
+standby and RF remains muted. The Si5351 disable readback passed throughout;
+ADC readings over heartbeats #9–15 ranged from 2068 to 2070.
+
+Next: verify independent register write/readback and then internal CAN loopback,
+with transceivers still in standby, before connecting an external CAN peer.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
