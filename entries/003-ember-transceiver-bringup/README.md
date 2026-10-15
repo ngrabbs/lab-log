@@ -1402,5 +1402,21 @@ ground. The earlier flat C65 result remains unresolved, including possible
 probe placement/contact. Test completed with data/TX/RX low and clock output
 disable verified; no RF transmission. [Capture](files/y24-tp2-data-input.json).
 
+## R25 downstream measurement remains near ground
+
+With the tip moved to user-identified R25 pad 2 toward U7 pin 2 and the same
+confirmed ground as TP2, repeated the muted pattern. Acquisition stopped
+1.16 seconds after the start message. The trace remained near ground:
+mean +0.020 V, extrema -0.04/+0.12 V, no valid frequency or plateau readings.
+TP2 had shown 0–3.30 V in the preceding test. This narrows the next check to
+R25 and the downstream net, but does not distinguish probe contact, an open
+connection, wrong component value or a downstream short/loading fault.
+No component replacement is justified yet. Next: fully remove stack power
+and Pico USB, verify rails discharged, then measure across R25 and from its
+pad 2 to GND. In-circuit readings require interpretation.
+
+Test completed with data/TX/RX low and clock output disable verified (r3=FF).
+No RF transmission was requested. [Capture](files/y24-r25-pad2-data-input.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
