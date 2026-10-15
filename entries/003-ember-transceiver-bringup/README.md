@@ -896,5 +896,61 @@ after-window spectrum scan overwrote the retained trace.
 
 [Raw attenuated TX scan and console](files/y24-pad-tx-tone.json).
 
+## Analyzer attenuation cross-check
+
+With the external 30 dB pad still installed, ran separate ten-second TX windows
+at 10 and 20 dB internal attenuation. LNA was off, external gain zero, RBW
+requested 30 kHz, averaging/max hold off for the USB measurements. Each run
+included a baseline and after-window scan.
+
+| Internal attenuation | Carrier peak | Lower side peak | Upper side peak |
+| --- | --- | --- | --- |
+| 10 dB | 436.980 MHz, −19.156 dBm | 435.960 MHz, −61.125 dBm | 437.980 MHz, −60.156 dBm |
+| 20 dB | 436.980 MHz, −19.156 dBm | 435.980 MHz, −60.125 dBm | 437.980 MHz, −60.156 dBm |
+
+The analyzer-referred carrier level agreed at its reported resolution, and the
+side peaks were approximately 41–42 dB below the carrier. This makes simple
+analyzer overload less likely; it does not establish their origin or calibrate
+the power measurement. Nominal pad correction gives +10.844 dBm, about 12.1 mW,
+excluding cable/DC-block loss. The prior estimate was approximately 13.6 mW;
+these are preliminary readings, not a calibrated output specification.
+
+Both tests reported complete=1/shutdown_verified=1. After-window carrier-band
+maxima were −91.656 and −83.656 dBm respectively, consistent with the higher
+noise floor at greater internal attenuation. No carrier remained apparent.
+
+[Raw attenuation comparison](files/y24-tx-attenuation-comparison.json).
+
+## Targeted leakage and harmonic windows
+
+A further ten-second window used 20 dB internal attenuation, the same external
+30 dB pad, LNA off and requested 30 kHz RBW. Four 101-point windows were captured
+between 1.70 and 2.31 seconds after the TX command; matching baselines were
+captured before TX.
+
+| Window | Highest during-TX reading | Highest baseline reading |
+| --- | --- | --- |
+| 145.3–146.0 MHz (drive) | −85.375 dBm | −85.375 dBm |
+| 291.0–291.7 MHz (twice drive) | −79.625 dBm at 291.308 MHz | −83.625 dBm |
+| 436.6–437.3 MHz (carrier) | −19.156 dBm at 436.971 MHz | −81.656 dBm |
+| 873.4–874.6 MHz (twice carrier) | −73.656 dBm | −72.656 dBm |
+
+No clear rise above the sampled baseline maxima appeared in the drive or
+second-carrier windows. The roughly 4 dB rise near 291.3 MHz is marginal against
+the measured noise and is not a quantified harmonic result. Band-dependent
+sensitivity and calibration are not established; these narrow windows do not
+replace a full spectrum survey or provide certified suppression limits.
+
+Shutdown again reported verified with TX=0 and registers FF/80/80/80.
+The analyzer was returned to live 437 MHz center / 4 MHz span; max hold is off,
+so the present display is the muted noise floor.
+
+Open items: C6 input bias/undershoot; approximately 29 kHz apparent carrier
+offset (analyzer/reference calibration needed before assigning cause);
+approximately ±1 MHz side peaks; calibrated output power; full spectrum;
+modulated TX and RX functionality. No hardware changes were made.
+
+[Raw targeted windows and console](files/y24-tx-harmonic-windows.json).
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
