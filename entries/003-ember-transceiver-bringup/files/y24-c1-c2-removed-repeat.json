@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-15T22:00:27.796765+00:00",
+  "setup": "Repeat muted 10MHz after C1/C2 removal; internal10pF, C6pad1/Y1ground, 10x probe; scope counter uncalibrated",
+  "counter_hz": [
+    9999907.6,
+    9999908.8,
+    9999871.2,
+    9999928.8,
+    9999908.0,
+    9999887.2
+  ],
+  "measurements": {
+    "VPP": "4.040000e+00",
+    "VTOP": "2.926667e+00",
+    "VBASe": "-9.242105e-01",
+    "VMAX": "3.240000e+00",
+    "VMIN": "6.800000e-01"
+  },
+  "console": "[clock_load] preparing temporary 10pF, muted 10MHz, max10s\r\n[clock_test] complete=1 shutdown_verified=1 status=11 TX=0\r\n[clock_load] pf=10 original=D2 configured=1 complete=1 stopped=1 restored=1\r\n[y24-safe-v10] #44 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2080\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n",
+  "after": "[clock_status] r0=11 r3=FF r16=80 r17=80 r18=80 r183=D2\r\n[y24-safe-v10] #45 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078\r\n[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG\r\n[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87\r\n[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)\r\n[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78\r\n[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78\r\n"
+}

@@ -1135,5 +1135,39 @@ results do not establish an oscillator failure after capacitor removal.
 Next: confirm board rails, restart the Pico after rails are stable, and restore
 the C6 pad 1 / Y1 ground probe setup before the muted frequency comparison.
 
+## First clock measurements with C1/C2 open
+
+Reconnecting USB did not restart the board-powered Pico: its earlier failed
+startup state persisted. A targeted USB application reboot restarted only the
+transceiver Pico. Startup then passed on the first readiness attempt; independent
+CAN register tests and both internal loopbacks passed. Si5351 responded with
+10 pF loading selected and outputs disabled.
+
+With the user reporting the probe ready, ran two muted ten-second 10 MHz
+windows at internal 10 pF. Before removal, the last 10 pF mean was
+9,999,462.32 Hz (−53.77 ppm). After removal:
+
+| Window | Mean counter frequency | Offset | Observed range |
+| --- | --- | --- | --- |
+| First, 5 queries | 9,999,843.76 Hz | −15.62 ppm | 9,999,728–9,999,928 Hz |
+| Repeat, 6 queries | 9,999,901.93 Hz | −9.81 ppm | 9,999,871.2–9,999,928.8 Hz |
+
+The repeat explicitly set CH1 to 10×, DC coupling, 1 V/div, bandwidth limit
+off, 50 ns/div, positive-edge triggering at 1.5 V and CH1 counter source.
+Both windows completed with shutdown and load restoration verified; final
+r3=FF, r16/17/18=80, r183=D2 and TX=0. No RF transmission was requested.
+
+Frequency moved toward nominal, consistent with reducing excess crystal
+loading. However, readings fluctuate substantially more than the pre-rework
+baseline. Sequential voltage measurements were also inconsistent (reported
+VBASE below VMIN and VPP incompatible with the separate extrema), so they do
+not establish a valid voltage swing. Probe contact/ground and acquisition need
+checking before treating this as a stable frequency result or applying any
+calibration. The Rigol timebase remains uncalibrated.
+
+Raw records: [first window](files/y24-c1-c2-removed-counter.json) and
+[repeat](files/y24-c1-c2-removed-repeat.json). Next: reseat C6 pad 1 tip and
+Y1 ground, then capture a stable waveform and repeat the counter check.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
