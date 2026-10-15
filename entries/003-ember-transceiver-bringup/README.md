@@ -193,8 +193,31 @@ describes a shared adjustable power limit (0.6–15 W); it is not an adjustable
 50 mA output-current limit. The displayed USB current is instrument input
 current, not a measurement of current into the board's 3.3 V rail. Before the
 next test, correct/verify the positive-supply setting at 3.30 V and establish
-an appropriate protection and current-measurement arrangement. The nominal
-3.3 V rail has not yet been confirmed by a meter with both sources applied.
+an appropriate protection and current-measurement arrangement. The next test below establishes the board voltage with both sources applied.
+
+## Both supplies applied
+
+For the next test, the requested settings were NANKADF **5.0 V / 200 mA** and
+AD3 **V+ 3.30 V / 0.6 W hardware power limit**, with V− disabled and common
+board ground. The procedure enabled 5 V first, then AD3, and called for AD3
+to be switched off before 5 V after measurement. Those settings are the
+requested procedure, not an independently captured instrument configuration.
+
+I measured **3.29 V across C59**, saw **no WaveForms warnings**, and read
+**0.149 A on the 5 V supply**. This confirms near-nominal external 3.3 V at the
+board. The 5 V current is close to the earlier 150 mA observation; the 1 mA
+difference is not interpreted as significant without instrument accuracy data.
+Current into the 3.3 V rail remains unmeasured, so 149 mA is not total board
+current or a complete power budget. No sustained or thermal qualification is
+claimed.
+
+## Next check
+
+Before installing the Pico, verify its VSYS feed: DC voltage from J7 pad 2
+(`PICO_VSYS`, red probe) to J7 pad 3 (GND, black probe). The ordered pad record
+places this feed downstream of D14 from protected 5 V. Position probes with
+both outputs off, apply the same supply setup briefly, record voltage, then
+switch AD3 off followed by the 5 V supply. Leave the Pico uninstalled.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
