@@ -812,5 +812,20 @@ with 160 mV peak-to-peak noise and mean −5.6 mV. TX remains commanded muted.
 
 [Raw TP1 repeat and console](files/clk0-tp1-frozen-waveform.json).
 
+## Open issue: CLK0 AC-coupled XOR input
+
+**OPEN — C6 rework deferred.** A 0 Ω link is not available, so C6 remains
+unchanged at the user's direction. TP1's repeated negative plateau is retained
+as an unresolved electrical issue, not waived or marked acceptable. Proposed
+remedy is a direct CMOS connection in place of C6, followed by repeat voltage,
+edge and operating-frequency checks; no fix has been tested.
+
+Continue bounded 10 MHz diagnostic checks with TX_ACTIVE low. Full-frequency
+and transmit-path qualification remain deferred. Next measure the signal at
+U14 pin 1 (U7 XOR output), then U14 pin 4 to check whether the mute suppresses
+a verified input clock. A flat mute output without checking its input would
+not alone demonstrate the gate's function. No new clock command was sent
+while arranging these probe moves.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
