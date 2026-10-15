@@ -404,5 +404,32 @@ test, not CANH/CANL signaling, termination, bitrate accuracy or interrupt wiring
 Next: identify the available external CAN adapter/peer and plan a terminated
 bench-bus test before enabling either transceiver.
 
+## First powered-stack console check
+
+I installed the transceiver headers and put the board in the stack with the
+IHU and powered EPS. Both MCU USB consoles were connected. The first passive
+capture showed the transceiver reporting `independent_registers=FAIL`, both
+loopbacks skipped (code 6), and both CAN controllers held in reset. The Si5351
+disable check still passed. This was a latched boot-test result, not a fresh
+SPI test each second; the zero register readings were taken while reset was held.
+
+After one software restart of only the transceiver Pico, with stack power
+already on, independent-register and both loopback tests passed. Heartbeats
+#7–11 reported both controllers back in configuration mode (`80/88`), Si5351
+disable verified, and ADC1 raw 2085. No firmware was changed during this check.
+Power-up sequencing is a candidate cause, not confirmed: the initial failure
+was not captured at register-level detail. The boot test needs bounded rail-ready
+handling and a cold-start retest before startup can be considered reliable.
+
+The other console responded to `help` and `status` as `IHU_MCU`, firmware
+`can-bench-v3`. It reported `can_ready=1`, configuration mode `80`, CNF registers
+`00,f0,86`, and configured bitrate 500000. TEC, REC, EFLG and TX/RX counters
+were zero. No `normal`, transmit, EPS-control or telemetry commands were issued.
+Both transceiver CAN channels remain in standby; RF remains muted.
+
+Next: establish which physical CAN channel connects the IHU to the transceiver
+and verify stack termination before enabling bus traffic. The consoles and
+internal tests alone do not establish the header bus connections.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
