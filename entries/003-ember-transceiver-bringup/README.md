@@ -305,7 +305,27 @@ USB is connected, so this observation does not isolate the board's VSYS feed.
 
 Next measurements requested: 5 V supply current and regulation mode, C59 rail
 voltage, RX_BASEBAND at J7 pad 9 relative to GND, and TX_ACTIVE at J6 pad 14
-relative to GND. No installed-board meter results are recorded yet.
+relative to GND. Results follow below.
+
+## Installed-board idle measurements
+
+With the Pico installed, USB connected, and both board supplies on, I measured:
+
+| Check | Reported result |
+| --- | --- |
+| 5 V supply display | 5.00 V, 0.149 A |
+| Across C59 | 3.29 V |
+| J7 pad 9 — RX_BASEBAND to GND | 1.661 V |
+| J6 pad 14 — TX_ACTIVE to GND | 14 mV |
+
+The baseband voltage is near the intended 1.65 V idle bias, and TX_ACTIVE is
+physically low. This supports the idle control state but does not measure RF
+output power or prove the full mute path. The 5 V current matches the earlier
+149 mA observation. USB can also supply the Pico, so this is not the total
+installed-board current. CV/CC mode was not reported in this measurement set.
+
+Next functional step: check each MCP25625 over SPI in configuration mode,
+keeping RF muted and CAN transmission disabled. No CAN test has been performed yet.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
