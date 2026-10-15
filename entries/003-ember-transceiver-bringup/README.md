@@ -1124,5 +1124,16 @@ PLL lock and the same muted 10 MHz counter measurement with internal loading
 at 10 pF. Absolute frequency accuracy remains uncalibrated. No hardware,
 KiCad source, firmware setting or instrument state was changed in this review.
 
+## C1/C2 removal reported; power check pending
+
+The user reports C1 and C2 are now open. A subsequent read-only console check
+found the Pico running v10, but every requested Si5351 register read failed;
+both CAN controllers also reported failed startup/readiness. TX/RX GPIOs were
+reported low. This is consistent with missing peripheral power, but power
+state has not yet been confirmed. No clock or TX test was started, and these
+results do not establish an oscillator failure after capacitor removal.
+Next: confirm board rails, restart the Pico after rails are stable, and restore
+the C6 pad 1 / Y1 ground probe setup before the muted frequency comparison.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
