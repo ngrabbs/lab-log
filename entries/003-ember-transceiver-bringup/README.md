@@ -30,7 +30,9 @@ branch `firmware/transceiver-y24-bringup`. Both now start CAN A in normal mode.
 The IHU registry observes current EPS over I²C and COMMS over CAN; planned or
 absent nodes remain NOT_SEEN. A 20-exchange check passed both HELLO and explicit
 RF-disabled rejection. RF stays inactive until explicitly armed; CAN B remains
-standby. No RF regression was run with these new images.
+standby. A subsequent 30-second RF regression delivered all nine packets live
+to Yamcs and verified return to idle CAN. The first receiver capture overflowed
+after its nine packets; an unchanged repeat completed without errors.
 
 The earlier v20/v5 two-minute test delivered36/36 packets to Yamcs. Live ground
 decoding was subsequently implemented in commit `35cd12f`; that work does not
@@ -1909,6 +1911,49 @@ Firmware commit `62256e0`. Installed UF2 SHA-256:
 
 [Final test console evidence](files/20261016-device-registry-console.json).
 Previous flash backups remain in local artifacts.
+
+## October 16 — live RF regression after boot-ready CAN
+
+Used unchanged COMMS v21 / IHU v7 (`62256e0`) and the live ground decoder
+(`35cd12f`). Requested a 30-second IHU run with a ten-second period: three
+cycles, each containing HEARTBEAT, SYSTEM_STATUS and POWER_STATUS. The ground
+receiver was ready before enabling the finite COMMS service. Same existing
+short-range antenna arrangement; nominal437 MHz,1200 baud,4 mA clock drive,
+LibreSDR RX2/channel0/gain0 at192 ksample/s. No hardware or EPS settings changed.
+
+The first run delivered all9 packets with exact byte matches, but the receiver
+stopped on `ERROR_CODE_OVERFLOW` after about35.69 seconds of samples, after
+transmission had finished. Previously decoded packets remained in Yamcs. A
+follow-up host check found low load, ample free disk, no reported throttling
+and no recent kernel messages; these checks do not identify the cause. No
+receiver change was made before repeating the same test.
+
+The repeat passed:
+
+- 9/9 IHU packets QUEUED and RF_TX_COMPLETE, with matching lengths and CRC32.
+- 9/9 strict RF decodes, each forwarded once and identical to Yamcs archive
+  bytes. No diagnostic decoder fallback or replay forwarding was used.
+- At the ten-second progress check, the first three matching packets were
+  already archived while the run was still active. The EPS input-voltage
+  parameter was ACQUIRED with a57-second expiry interval.
+- The full55-second receiver session finished without stream/decoder errors.
+- IHU expired at `submitted=9 cycles=3`. After explicitly stopping COMMS RF
+  service, a new HELLO succeeded and discovery resumed with EPS/COMMS ONLINE.
+  Final pending/uhf_pending/unknown and CAN error counters were0. COMMS reported
+  TX/RX0, CAN A normal, CAN B standby/configuration and clocks disabled.
+
+This verifies live delivery and return to boot-ready CAN for the finite test.
+The earlier overflow remains unresolved; one clean repeat is not a sustained
+receiver reliability qualification. EPS sense calibration, RF phase/spectrum,
+receive margin and the transceiver's own RX chain remain open. Firmware local
+completion still does not mean an RF ground acknowledgment.
+
+[First-run proof, including overflow](files/registry-rf-live-20261016-01-proof.json) ·
+[First-run consoles](files/registry-rf-live-20261016-01-console.json) ·
+[Clean repeat proof](files/registry-rf-live-20261016-02-proof.json) ·
+[Clean repeat consoles](files/registry-rf-live-20261016-02-console.json).
+Raw IQ remains on the ground host. Both sessions and telemetry generation were
+stopped after testing; CAN remains available.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
