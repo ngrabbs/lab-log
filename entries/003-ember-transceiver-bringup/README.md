@@ -12,7 +12,7 @@ and RF paths.
 
 Power rails, Pico operation, both CAN controllers' SPI/internal loopbacks,
 CAN A HELLO, transmitted RF and a one-way IHU → CAN A → COMMS → RF → Yamcs
-heartbeat have been demonstrated. At4 mA Si5351 drive, the unchanged strict
+heartbeat, system status and EPS telemetry have been demonstrated. At4 mA Si5351 drive, the unchanged strict
 decoder recovered50/50 packets with exact byte matches in the short-range
 reliability run. The end-to-end IHU heartbeat was separately reassembled from
 CAN fragments and matched against RF-recovered and Yamcs-archived bytes.
@@ -25,9 +25,9 @@ about135 degrees at4 mA. Stronger drive and integer-PLL comparisons did not
 restore180 degrees. Packet success does not close waveform, spectrum or
 range/margin qualification. Prior fractional-PLL side peaks remain an open issue.
 
-Installed bring-up firmware: v17 `f23fa01`, branch
+Installed bring-up firmware: v18 `db98dac`, branch
 `firmware/transceiver-y24-bringup`. Startup is muted. Explicit `B` sends one
-4 mA native COMMS heartbeat; `f` admits one validated IHU heartbeat during a
+4 mA native COMMS heartbeat; `f` admits one validated IHU telemetry packet during a
 bounded CAN window and forwards it once. There is no automatic RF service or
 ground acknowledgment. The historical IHU CF_CHAIN command times out because
 this bridge intentionally does not claim a Walter echo response.
@@ -37,7 +37,7 @@ FF/80/80/80, load D2. IHU CAN remains normal, pending0, peer0 after the expected
 reply timeout; automatic telemetry and LTE queue were off. Stack remains powered.
 
 Next: qualify receive margin, add proper transport acknowledgment semantics,
-exercise real EPS telemetry forwarding, test recovery/cold starts, and bring up
+test recovery/cold starts, and bring up
 this board's RX chain. Carry confirmed physical reworks into the hardware revision.
 Detailed observations, failed attempts and raw captures follow chronologically.
 
@@ -1690,6 +1690,67 @@ COMMS reported RF_complete1 and shutdown verified, final TX/RX0, FF/80/80/80.
 [CAN handshake](files/can-rf-preflight-hello.json) ·
 [Both MCU consoles](files/ihu-can-rf-20261015-01-console.txt) ·
 [CAN/RF/Yamcs byte-identity proof](files/ihu-can-rf-20261015-01-proof.json).
+
+## Existing LTE/SDRB telemetry carried over the transceiver
+
+Extended the bounded bridge to preserve all four telemetry layouts in the shared
+dictionary: HEARTBEAT, SYSTEM_STATUS, POWER_STATUS and COMM_STATUS. Both existing
+IHU envelopes (CF_CHAIN and CF_SEND_PACKET) are supported. No IHU firmware,
+hardware, EPS configuration, or telemetry identities were changed. COMM_STATUS
+is covered by software fixtures; no live IHU producer was exercised for it.
+
+Installed and flash-verified v18 (`db98dac`); documentation follow-up `aeeac4b`.
+UF2 SHA-256: `9ac1f05df90fee9d632e692abb02c61c2dde4ab7e42802c65e6914c5890440c2`.
+The 128-byte EPS packet produces 191 RF bytes, approximately 1.273 seconds at
+1200 baud, within the existing 1.5-second payload and independent 2-second mute
+limits. Decoder windows increased from two to four seconds with one-second
+stride so long packets survive window boundaries. CAN work buffers moved to
+static storage after compiled-code review exposed excessive stack use; the
+final image was retested below. Startup, clock-fault, packet corruption,
+variable-length timing/abort, dictionary consistency and decoder tests passed.
+
+Actual packets from IHU boot3734611732 traversed CAN A → COMMS → RF → LibreSDR,
+then were forwarded from the validated capture into Yamcs ember-uhf. Independent
+CAN fragment reassembly, strict RF decoding with both CRCs and Yamcs archive
+lookup established identical bytes at every stage. Final-image results:
+
+| Packet | Native bytes | CAN fragments | Native sequence | Yamcs archive UTC |
+| --- | --- | --- | --- | --- |
+| POWER_STATUS | 128 | 38 | 3 | 2026-10-16T00:27:18.666Z |
+| SYSTEM_STATUS | 46 | 17 | 4 | 2026-10-16T00:27:55.517Z |
+| HEARTBEAT | 38 | 15 | 5 | 2026-10-16T00:29:17.853Z |
+
+These UTC timestamps are October 15 evening in CDT. Same short-range antennas,
+437 MHz nominal, 4 mA CLK0 drive, RX2/channel0/gain0; no diagnostic decoder
+fallback or receiver stream errors. Every RF burst completed with shutdown
+verified. This is a finite functional check, not a new reliability campaign.
+Earlier candidate-image EPS and system-status packets also passed before the
+static-buffer change; their original captures remain in local artifacts.
+
+EPS flags reported readout/conversion/ADC valid and LIVE, but
+`sense_values_verified=0`; this test does not establish calibrated power/current
+measurements. SYSTEM_STATUS counters describe the existing IHU bench request
+handling, not flight telecommand accounting. Source, uptime, sequence, raw
+measurements and validity flags were preserved rather than regenerated.
+
+IHU `eps telemetry` and `telemetry` use CF_CHAIN; `system lte` uses
+CF_SEND_PACKET. No application acknowledgment is implemented by this bridge.
+The latter request remains pending for22 seconds, versus5 seconds for CF_CHAIN;
+a premature next handshake was rejected as BUSY. Read-only status confirmed
+pending0 after timeout, and the later handshake succeeded. Wait for pending0,
+then repeat COMMS `h` / IHU `hello` before arming COMMS `f` for another packet.
+The historical `lte` command name did not cause an LTE transmission here.
+
+Final COMMS state is TX/RX0, clocks FF/80/80/80, CAN standby/configuration.
+Continuous forwarding, an RF admission/acknowledgment contract, receive margin,
+and this board's RX chain remain open. Full per-packet operating commands are
+in the transceiver firmware README; no autonomous RF service was enabled.
+
+[EPS byte-identity proof](files/ihu-eps-rf-v18-final-proof.json) ·
+[System-status proof](files/ihu-system-rf-v18-final-proof.json) ·
+[Heartbeat proof](files/ihu-heartbeat-rf-v18-final-proof.json).
+Matching console and HELLO captures accompany each proof; raw IQ remains on the
+ground host.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

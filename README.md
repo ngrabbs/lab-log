@@ -10,7 +10,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
-| 003 | [EMBER transceiver bring-up](entries/003-ember-transceiver-bringup/README.md) | Rails/CAN checked; first RF heartbeat archived in Yamcs via diagnostic decoding. Phase modulation and side peaks remain open. In progress. |
+| 003 | [EMBER transceiver bring-up](entries/003-ember-transceiver-bringup/README.md) | IHU heartbeat, system status and EPS packets delivered over CAN/RF to Yamcs with exact byte matches. RF waveform and receive qualification remain open. In progress. |
 | 002 | [Gathering daylight fire and no-fire images](entries/002-kline-daylight-burn/README.md) | Leaves and small branches burned in two daylight setups. Example images, exposure settings, and JPEG brightness measurements; preliminary analysis kept separately. In progress. |
 | 001 | [EMBER UHF antenna testing](entries/001-ember-antenna/README.md) | Nitinol dipole experiments, feed troubleshooting, and copper reference tuning with a NanoVNA. In progress. |
 
