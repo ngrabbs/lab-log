@@ -1553,5 +1553,40 @@ Evidence files (console, receiver result and phase analysis for each):
 [2 mA return](files/drive-2ma-20261015-02-analysis.json).
 Raw IQ is retained on the ground host.
 
+## Integer-PLL phase comparison does not resolve the phase error
+
+Installed and flash-verified v15 (`8ff359f`), adding explicit `q`: the same
+one-second alternating phase holds at 4 mA using PLLA=875 MHz (25 MHz times35),
+MS0 divide by6 and nominal RF437.5 MHz. Baseline `j` remains PLLA874 MHz,
+fractional ratio34+24/25, nominal RF437 MHz, also4 mA. Odd integer PLL ratio35
+retains FBA_INT clear, as in the prior CW comparison. Tests verify the combined
+integer-PLL/4 mA/payload register plan and every I2C failure; startup tests and
+target build passed. No hardware or permanent default change.
+
+Ran an A/B/A sequence of three one-second bursts. LibreSDR was retuned to each
+nominal carrier with RX2/channel0, gain0, the same rate and antenna setup.
+No scope probe loading. All runs completed with verified shutdown, no receiver
+stream errors, final TX/RX=0 and FF/80/80/80; nothing forwarded to Yamcs.
+
+| Configuration | Median absolute phase step | State amplitude ratio |
+| --- | --- | --- |
+| 437 MHz fractional baseline | 134.7 degrees | 1.101 |
+| 437.5 MHz integer PLL | 134.5 degrees | 1.101 |
+| 437 MHz baseline return | 133.8 degrees | 1.104 |
+
+No meaningful phase/amplitude improvement is evident from this comparison.
+It does not prove fractional PLL behavior irrelevant under all conditions;
+frequency also changed by500 kHz, and no calibrated phase measurement was made.
+The earlier drive-strength effect remains the strongest demonstrated firmware
+influence. Neither setting restores180-degree modulation. A useful next test
+is actual packets at4 mA with the unchanged strict decoder, keeping waveform
+quality and packet reliability as separate acceptance questions. No such
+4 mA packet test has yet been performed.
+
+[Fractional baseline analysis](files/pll-frac-4ma-20261015-01-analysis.json) ·
+[Integer comparison analysis](files/pll-int-4ma-20261015-01-analysis.json) ·
+[Baseline return analysis](files/pll-frac-4ma-20261015-02-analysis.json).
+Console and receiver JSON accompany each file; full IQ remains on the ground host.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

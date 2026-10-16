@@ -1,0 +1,14 @@
+{
+  "utc": "2026-10-15T23:59:00.828495+00:00",
+  "frequency_hz": 436999999.9952314,
+  "channel": 0,
+  "antenna": "RX2",
+  "rate": 191999.99952627943,
+  "gain": 0.0,
+  "fpga_sha256": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99",
+  "errors": [],
+  "packets": [],
+  "samples": 1925120,
+  "peak_magnitude": 0.003551965579390526,
+  "forwarded": 0
+}
