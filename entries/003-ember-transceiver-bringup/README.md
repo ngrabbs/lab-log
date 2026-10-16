@@ -25,19 +25,19 @@ about135 degrees at4 mA. Stronger drive and integer-PLL comparisons did not
 restore180 degrees. Packet success does not close waveform, spectrum or
 range/margin qualification. Prior fractional-PLL side peaks remain an open issue.
 
-Installed firmware: transceiver v19 and IHU can-bench-v4, commit `25f9694`,
-branch `firmware/transceiver-y24-bringup`. Explicit `g` collects up to four
-packets for ten seconds, transmits the batch, and stops. IHU receives separate
-QUEUED and RF_TX_COMPLETE replies; these do not claim ground reception.
-The final three-packet batch reached Yamcs with exact byte matches and no
-application timeouts. Queue cancellation was also demonstrated without RF.
+Installed firmware: transceiver v20 and IHU can-bench-v5, commit `34d3030`,
+branch `firmware/transceiver-y24-bringup`. An explicitly enabled two-minute run
+sent heartbeat, system status and EPS telemetry every ten seconds:36/36 strict
+RF decodes matched Yamcs bytes. The generator expired automatically; a separate
+stop test prevented further cycles. Boot remains IDLE/muted; no run resumes after
+reset. QUEUED/RF_TX_COMPLETE are local link results, not ground acknowledgments.
 
 Last verified COMMS state: TX/RX=0, CAN A/B standby/configuration, clocks
-FF/80/80/80, load D2. IHU CAN remains normal with peer345681223 retained,
-pending0, uhf_pending0, unknown0, and CAN error counters0. No automatic RF
-service was enabled. The older `f` path still has its legacy no-ACK semantics.
+FF/80/80/80, load D2. IHU CAN remains normal with peer1883405986 retained,
+pending0, uhf_pending0, unknown0, CAN error counters0, and mode2 EXPIRED.
+The radio service was explicitly stopped after the generator expired.
 
-Next: explicitly enabled periodic telemetry, sustained queue/recovery testing,
+Next: sustained queue/recovery testing, a continuous ground decoder service,
 receive margin, and this board's RX chain. Physical reworks still need carrying
 into the hardware revision. RF waveform/spectrum qualification remains open.
 Detailed observations, failed attempts and raw captures follow chronologically.
@@ -1817,6 +1817,60 @@ Firmware commit `25f9694`. Final UF2 SHA-256:
 [Final batch consoles](files/20261016-uhf-batch-final-console.txt) ·
 [Final RF/Yamcs proof](files/20261016-uhf-batch-final-proof.json).
 Raw IQ and verified flash backups remain in local artifacts.
+
+## October 16 — timed autonomous telemetry
+
+Used AMSAT rt-ihu as an architectural guide: separate startup, operating-mode
+control, telemetry production and bounded radio execution. This is still bench
+firmware; no launch/deployment logic or automatic power-mode transitions were
+copied. Both controllers start without an active transmit run.
+
+COMMS v20 `a` opens a finite180-second service window, alternating CAN listening
+with bounded RF bursts and result replies, capped at96 attempts. IHU v5
+`uhf run 120 10` produces heartbeat, system status and EPS packets every ten
+seconds for two minutes. Only one packet is outstanding; failed/missing results
+or link faults stop generation. `uhf stop` stops future generation; an accepted
+packet may finish. COMMS `x` interrupts the radio service.
+
+Host tests passed for duration/period limits, expiry, stop, busy transport,
+no catch-up bursts, timer wrap and fault state, alongside existing queue/client,
+clock-fault and native-packet checks. Both target roles built with warnings as
+errors. Full v19/v4 flash backups were saved and verified before installing
+v20/v5. Initial hardware status confirmed the inactive defaults.
+
+- **Stop test:** one three-packet cycle completed. After `uhf stop`, eight more
+  seconds produced no new packets despite a five-second cycle period. All three
+  strict RF decodes matched Yamcs bytes.
+- **Full run:**12 cycles,36 packets, all QUEUED and RF_TX_COMPLETE with matching
+  length/CRC32. All36 strict RF decodes matched transmitted and Yamcs-archived
+  bytes. No receiver stream errors or decoder fallback. Generator reported
+  `EXPIRED submitted=36 cycles=12`; final IHU pending/uhf_pending/unknown and
+  CAN error counters were zero. Every burst reported verified shutdown.
+- After expiry, COMMS was explicitly stopped and verified TX/RX0 with clocks
+  FF/80/80/80. This test exercised generator expiry and manual radio-service stop;
+  it did not wait for the independent180-second radio window to expire.
+
+Same short-range antenna setup, nominal437 MHz,1200 baud and4 mA drive.
+LibreSDR RX2/channel0/gain0 captured135 seconds. Actual recovered packets were
+forwarded to Yamcs **after capture and byte verification**, not continuously
+while transmitting. Local firmware completion is not a ground ACK. EPS sense
+calibration, RF modulation/spectrum, range and the board's RX path remain open.
+
+To repeat after reset: start the finite ground capture and wait for receiver
+ready; issue IHU `normal`, COMMS `a`, then IHU `hello` and wait for confirmation.
+Issue IHU `uhf run 120 10` once. Use `status` to inspect progress, `uhf stop` to
+stop production and COMMS `x` to stop the service. With the retained peer, a new
+COMMS `a` and IHU run command suffice. No per-packet command is required.
+
+Firmware commit `34d3030`. Installed UF2 SHA-256:
+
+- COMMS: `4c847a7b7da5269690c7e5670d997c5f039b1d6d70e31eee250a0c4be33d3a4b`
+- IHU: `2f04473f86ed43e0e10f1e121d861d0e3f972139aefe41e0b63db680b4a3eff0`
+
+[Stop-test proof](files/20261016-timed-stop-01-proof.json) ·
+[Full-run RF/Yamcs proof](files/20261016-timed-120s-01-proof.json) ·
+[Full-run consoles](files/20261016-timed-120s-01-console.json).
+Original IQ remains on the ground host; flash backups remain local.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
