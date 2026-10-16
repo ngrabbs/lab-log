@@ -2,13 +2,13 @@
 
 **Status:** In progress  
 **Started:** 2026-10-15  
-**Updated:** 2026-10-15
+**Updated:** 2026-10-16
 
 The EMBER transceiver PCB arrived today. I am bringing it up in stages, starting
 with unpowered checks before testing the supplies, controller, CAN interfaces,
 and RF paths.
 
-## Session checkpoint — October 15
+## Session checkpoint — October 16
 
 Power rails, Pico operation, both CAN controllers' SPI/internal loopbacks,
 CAN A HELLO, transmitted RF and a one-way IHU → CAN A → COMMS → RF → Yamcs
@@ -25,20 +25,21 @@ about135 degrees at4 mA. Stronger drive and integer-PLL comparisons did not
 restore180 degrees. Packet success does not close waveform, spectrum or
 range/margin qualification. Prior fractional-PLL side peaks remain an open issue.
 
-Installed bring-up firmware: v18 `db98dac`, branch
-`firmware/transceiver-y24-bringup`. Startup is muted. Explicit `B` sends one
-4 mA native COMMS heartbeat; `f` admits one validated IHU telemetry packet during a
-bounded CAN window and forwards it once. There is no automatic RF service or
-ground acknowledgment. The historical IHU CF_CHAIN command times out because
-this bridge intentionally does not claim a Walter echo response.
+Installed firmware: transceiver v19 and IHU can-bench-v4, commit `25f9694`,
+branch `firmware/transceiver-y24-bringup`. Explicit `g` collects up to four
+packets for ten seconds, transmits the batch, and stops. IHU receives separate
+QUEUED and RF_TX_COMPLETE replies; these do not claim ground reception.
+The final three-packet batch reached Yamcs with exact byte matches and no
+application timeouts. Queue cancellation was also demonstrated without RF.
 
 Last verified COMMS state: TX/RX=0, CAN A/B standby/configuration, clocks
-FF/80/80/80, load D2. IHU CAN remains normal, pending0, peer0 after the expected
-reply timeout; automatic telemetry and LTE queue were off. Stack remains powered.
+FF/80/80/80, load D2. IHU CAN remains normal with peer345681223 retained,
+pending0, uhf_pending0, unknown0, and CAN error counters0. No automatic RF
+service was enabled. The older `f` path still has its legacy no-ACK semantics.
 
-Next: qualify receive margin, add proper transport acknowledgment semantics,
-test recovery/cold starts, and bring up
-this board's RX chain. Carry confirmed physical reworks into the hardware revision.
+Next: explicitly enabled periodic telemetry, sustained queue/recovery testing,
+receive margin, and this board's RX chain. Physical reworks still need carrying
+into the hardware revision. RF waveform/spectrum qualification remains open.
 Detailed observations, failed attempts and raw captures follow chronologically.
 
 ## Initial inspection and setup
@@ -1751,6 +1752,71 @@ in the transceiver firmware README; no autonomous RF service was enabled.
 [Heartbeat proof](files/ihu-heartbeat-rf-v18-final-proof.json).
 Matching console and HELLO captures accompany each proof; raw IQ remains on the
 ground host.
+
+## October 16 — bounded queue and explicit CAN results
+
+Added a dedicated UHF request/reply protocol instead of reusing LTE modem
+acceptance or Walter echo semantics. COMMS holds at most four native telemetry
+packets in RAM. A ten-second collection window is followed by a bounded drain;
+CAN pauses during each RF burst and result replies follow between bursts.
+IHU validates reply boot ID, request, native length and packet CRC32. Admission
+releases its synchronous request slot while retaining a separate result tracker.
+No automatic retransmission or periodic RF service was introduced.
+
+Host tests cover FIFO/capacity, duplicate suppression, conflicting and stale
+requests, success/failure/cancellation history, wrong reply identity/digest,
+existing clock faults, empty windows, native telemetry, decoder boundaries,
+and unchanged auto-telemetry/LTE queue helpers. Both target roles built with
+warnings as errors. Existing deployed v3 health producers were preserved from
+the LTE-health work; unrelated LTE ground software was not changed. Large CAN
+buffers remain static; compiled RF-service local allocation was644 bytes plus
+saved registers, not a complete worst-case call-stack measurement.
+
+Preflight found the old COMMS v18 image reporting latched CAN faults
+(STAT/CTRL00) despite its retained successful startup report. The physical cause
+was not established. After backup/restart, controller configuration and both
+internal loopbacks passed. Both old flash images were saved in full and verified
+before installing COMMS v19 and IHU v4. The first flash command omitted the
+required forced reboot flag and changed neither image; corrected flashing then
+verified successfully. A final IHU update made result timeouts increment its
+UNKNOWN counter; the tests below were repeated on that final image.
+
+- **Cancel test:** IHU received QUEUED for a heartbeat, then CANCELLED after a
+  COMMS console stop. No RF packet was emitted. Peer remained established and
+  both pending counts returned to zero. Repeated after the final IHU update.
+- **Batch test:** queued HEARTBEAT38 bytes, SYSTEM_STATUS46 bytes and
+  POWER_STATUS128 bytes during one collection window. Each received a separate
+  RF_TX_COMPLETE reply. All three strict RF decodes matched COMMS packet bytes,
+  IHU reply digests and Yamcs archive bytes. No stream errors or decoder fallback.
+- **Final repeat:** IHU boot1470488940, COMMS peer345681223, requests3–5;
+  all three queued/completed. Final IHU pending0, uhf_pending0, unknown0,
+  tx_fail/tx_timeout/TEC/REC/EFLG and RX-error counters0. COMMS verified shutdown
+  for every burst and returned to TX/RX0, clocks FF/80/80/80, CAN configuration.
+
+Same nominal437 MHz, 4 mA drive, 1200 baud and short-range antenna arrangement;
+finite15-second LibreSDR captures, RX2/channel0/gain0. Actual RF-recovered bytes
+were forwarded after capture verification. Firmware completion and independently
+observed ground reception remain separate claims. Duplicate/overflow/reply-validation
+behavior is software-tested; deliberate reply-loss hardware testing remains open. EPS
+`sense_values_verified=0` remains unchanged; transport success is not calibration.
+
+To repeat with the retained peer: send COMMS `g`, then during collection issue
+IHU `uhf heartbeat`, `uhf system`, or `uhf eps`, waiting for QUEUED after each.
+Start the finite ground capture before drain begins. Any COMMS console byte
+stops the batch. At most four packets; results should arrive before the30-second
+IHU deadline. A reset requires a new HELLO. Collection/drain timing and reply
+semantics are documented in `system/interfaces/transceiver_uhf_bench.md`.
+
+Firmware commit `25f9694`. Final UF2 SHA-256:
+
+- COMMS: `191131ec083c30b8511f36c6eba674b4c7956c03c85cd7acc86b1fc33808a3c2`
+- IHU: `97d37dd53770d47091d5d4942bbdf745e81c41531fd2b9c34fcb5ec71b618dd1`
+
+[Final cancellation](files/20261016-cancel-final.json) ·
+[Initial batch proof](files/20261016-uhf-batch-01-proof.json) ·
+[Final batch consoles](files/20261016-uhf-batch-final-console.txt) ·
+[Final RF/Yamcs proof](files/20261016-uhf-batch-final-proof.json).
+Raw IQ and verified flash backups remain in local artifacts.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
