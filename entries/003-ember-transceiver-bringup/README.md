@@ -10,39 +10,35 @@ and RF paths.
 
 ## Session checkpoint — October 15
 
-Power rails, Pico operation, both CAN controllers' independent SPI/internal
-loopback tests, and one complete CAN A HELLO exchange through the stack have
-worked. Conducted TX produces a carrier; RX and modulated RF communication
-are not yet demonstrated.
+Power rails, Pico operation, both CAN controllers' SPI/internal loopbacks,
+CAN A HELLO, transmitted RF and a one-way IHU → CAN A → COMMS → RF → Yamcs
+heartbeat have been demonstrated. At4 mA Si5351 drive, the unchanged strict
+decoder recovered50/50 packets with exact byte matches in the short-range
+reliability run. The end-to-end IHU heartbeat was separately reassembled from
+CAN fragments and matched against RF-recovered and Yamcs-archived bytes.
+RX on this transceiver board has not yet been demonstrated.
 
-C1/C2 (external 15 pF crystal capacitors) were removed, leaving their pads
-open. Internal Si5351 loading remains 10 pF. The tinySA carrier moved from
-436.972 to 436.992 MHz for a 437 MHz target. Frequency accuracy remains
-uncalibrated, and the post-rework scope readings need a stable-probe repeat.
-The approximately ±1 MHz side peaks persist at roughly 42–44 dB below the
-carrier. Earlier changing to an integer-valued PLL ratio reduced those peaks
-by about 16 dB; this is a diagnostic clue, not a chosen operating-frequency
-change. C6 remains unchanged, with the downstream negative-level issue open.
+Physical rework: C1/C2 removed/open; C6 replaced by0 ohms. Internal crystal
+loading remains10 pF. No KiCad/BOM update was made for those reworks.
+Modulation remains nonideal: approximately90-degree RF phase steps at2 mA,
+about135 degrees at4 mA. Stronger drive and integer-PLL comparisons did not
+restore180 degrees. Packet success does not close waveform, spectrum or
+range/margin qualification. Prior fractional-PLL side peaks remain an open issue.
 
-At the stopping check, firmware v10 reported TX=0, RX=0, CAN A/B in standby
-and configuration mode, and Si5351 r3=FF / r16–18=80 / r183=D2. Startup and
-both internal CAN loopback results passed. This verifies the reported muted
-state; stack power has not been switched off remotely. The tinySA max-hold
-trace remains visible even with TX off.
+Installed bring-up firmware: v17 `f23fa01`, branch
+`firmware/transceiver-y24-bringup`. Startup is muted. Explicit `B` sends one
+4 mA native COMMS heartbeat; `f` admits one validated IHU heartbeat during a
+bounded CAN window and forwards it once. There is no automatic RF service or
+ground acknowledgment. The historical IHU CF_CHAIN command times out because
+this bridge intentionally does not claim a Walter echo response.
 
-Resume with:
+Last verified COMMS state: TX/RX=0, CAN A/B standby/configuration, clocks
+FF/80/80/80, load D2. IHU CAN remains normal, pending0, peer0 after the expected
+reply timeout; automatic telemetry and LTE queue were off. Stack remains powered.
 
-1. Establish stable probe contact and repeat the post-rework 10 MHz measurement.
-2. Resolve C6's AC-coupled logic-input level; evaluate the proposed 0 Ω
-   replacement when available, then remeasure the input waveform.
-3. Investigate PLL-related side peaks at the required operating frequency;
-   repeat spectrum/power checks with a qualified reference and attenuation.
-4. Bring up RX and modulated TX, then test an end-to-end RF link. CAN B external
-   signaling, interrupt wiring, repeated starts and sustained-load tests remain.
-5. Carry confirmed rework into the hardware revision/BOM; today's physical
-   C1/C2 removal is logged here but has not changed the KiCad design files.
-
-Bring-up firmware: `fd26103`, branch `firmware/transceiver-y24-bringup`.
+Next: qualify receive margin, add proper transport acknowledgment semantics,
+exercise real EPS telemetry forwarding, test recovery/cold starts, and bring up
+this board's RX chain. Carry confirmed physical reworks into the hardware revision.
 Detailed observations, failed attempts and raw captures follow chronologically.
 
 ## Initial inspection and setup
@@ -1653,6 +1649,47 @@ attenuation/separation, or end-to-end CAN-to-RF-to-Yamcs delivery.
 [Full sequence/byte-match report](files/packet-reliability-20261015.json).
 Per-batch console and receiver JSON are retained alongside it as
 `reliability-4ma-20261015-01` through `-10`; full IQ remains on the ground host.
+
+## IHU → CAN A → transceiver → RF → Yamcs: exact heartbeat delivery
+
+Added and installed v17 (`f23fa01`): explicit `f` admits one IHU-native38-byte
+HEARTBEAT inside a validated CF_CHAIN envelope during a maximum10-second CAN
+window, returns CAN to standby/configuration, and sends unchanged packet bytes
+once over RF at4 mA. Envelope/native identity, length, boot, CRC, token and type
+checks reject other traffic; missing/invalid traffic produces no RF. Existing
+RF timer/abort/cleanup apply. Parser rejection/byte-preservation tests, no-input
+CAN-window test, existing startup tests and target build passed. One initial
+unit-test expectation was corrected: changing a legal sequence value while
+recomputing CRC must remain acceptable. No IHU firmware or hardware changes.
+
+Reconnected IHU console identified can-bench-v3, boot3734611732, CAN500 kbit/s,
+automatic telemetry and LTE queue off. A bounded COMMS `h` plus IHU `normal`
+and `hello` established peer558718019 with no CAN errors. Then a single IHU
+`telemetry` command submitted request2, type114/CF_CHAIN,38 bytes.
+
+- COMMS received15 standard CAN fragments on0x710, EFLG00, restored mode.
+  Independent host reassembly verified the envelope CRC and native packet bytes.
+- COMMS emitted the same packet once; strict RF decoder accepted outer CRC32
+  and native CRC16, with no receiver stream errors or diagnostic fallback.
+- Recovered native source=IHU, sequence0, boot3734611732, uptime4,334,373 ms,
+  SAFE/GROUND_TEST/manual telemetry. RF outer sequence2 preserves request2.
+- After validating the capture, forwarded those RF-recovered bytes unchanged
+  to Yamcs ember-uhf. Archive lookup found exact38-byte `/ember/HEARTBEAT`
+  at2026-10-16T00:15:57.583Z (October15,7:15:57 PM CDT), link `eps-uhf-in`.
+  This link name is historical; the decoded source is IHU, not EPS.
+
+This proves one-way heartbeat delivery through the requested stages. It was a
+finite capture followed by verified forwarding, not a continuous live service.
+No synthetic replacement packet or EPS sensor measurement was substituted.
+IHU reported UNKNOWN/TIMEOUT because CF_CHAIN expects a Walter echo ACK;
+the bridge deliberately does not forge that reply or claim a ground ACK.
+IHU CAN tx_ok increased6→21 with tx_fail/timeout/TEC/REC/EFLG all0; application
+unknown became1, pending0, peer0. Proper RF acknowledgment semantics remain open.
+COMMS reported RF_complete1 and shutdown verified, final TX/RX0, FF/80/80/80.
+
+[CAN handshake](files/can-rf-preflight-hello.json) ·
+[Both MCU consoles](files/ihu-can-rf-20261015-01-console.txt) ·
+[CAN/RF/Yamcs byte-identity proof](files/ihu-can-rf-20261015-01-proof.json).
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

@@ -1,0 +1,67 @@
+{
+  "receiver_result": {
+    "utc": "2026-10-16T00:15:10.145891+00:00",
+    "frequency_hz": 436999999.9952314,
+    "channel": 0,
+    "antenna": "RX2",
+    "rate": 191999.99952627943,
+    "gain": 0.0,
+    "fpga_sha256": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99",
+    "errors": [],
+    "packets": [
+      {
+        "sequence": 2,
+        "hex": "0901c000001f0101000502010000000000000000de99a7140042232500060301000000003a7d",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 0,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3734611732,
+            "uptime_ms": 4334373,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 0
+          }
+        },
+        "carrier_offset_hz": -6884.8114013671875,
+        "window_start": 144000,
+        "timing_sample": 0,
+        "decoder": "dbpsk"
+      }
+    ],
+    "samples": 2883584,
+    "peak_magnitude": 0.001540806726552546,
+    "forwarded": 0
+  },
+  "yamcs_packet": {
+    "packet": "CQHAAAAfAQEABQIBAAAAAAAAAADemacUAEIjJQAGAwEAAAAAOn0=",
+    "sequenceNumber": 151109632,
+    "id": {
+      "name": "/ember/HEARTBEAT"
+    },
+    "receptionTime": "2026-10-16T00:15:57.583Z",
+    "generationTime": "2026-10-16T00:15:57.583Z",
+    "earthReceptionTime": "2026-10-16T00:15:57.583Z",
+    "link": "eps-uhf-in",
+    "size": 38
+  },
+  "forwarded_rf_bytes": "0901c000001f0101000502010000000000000000de99a7140042232500060301000000003a7d",
+  "can_fragments": 15,
+  "can_id": "0x710",
+  "can_envelope_crc_verified": true,
+  "can_payload_hex": "0901c000001f0101000502010000000000000000de99a7140042232500060301000000003a7d",
+  "ihu_boot": 3734611732,
+  "can_request": 2,
+  "all_bytes_equal": true,
+  "ihu_application_reply": "UNKNOWN/TIMEOUT expected: bridge does not implement Walter echo or ground ACK"
+}
