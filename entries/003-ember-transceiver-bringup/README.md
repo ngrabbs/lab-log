@@ -1625,5 +1625,34 @@ a useful firmware setting for continued bring-up, not a complete hardware fix.
 [Packet2 proof](files/packet-4ma-20261015-03-proof.json).
 Console and receiver JSON accompany each proof; raw IQ remains on the ground host.
 
+## Bounded 50-packet reliability run: 50 exact recoveries
+
+Using unchanged v16 and strict ground decoder, sent50 individually bounded
+heartbeats at4 mA, nominal437 MHz,1200 baud. Ten finite15-second LibreSDR
+captures contained five packets each, approximately2 seconds between packet
+starts within a batch. Same short-range antennas, RX2/channel0, gain0; no scope
+probe. Each packet retained its independent timer mute and checked shutdown.
+No firmware changes, diagnostic fallback or Yamcs forwarding.
+
+- **50/50 strict decoded packets matched transmitted bytes exactly**, with
+  outer CRC32 and native CRC16 accepted; no missing expected packets.
+- Sequences3–52 were contiguous and unique across captures; one boot ID
+  2782243847 throughout. Actual uptime ranged212,557–389,588 ms.
+- All50 transmissions reported completion and verified shutdown. All ten
+  captures had no receiver stream errors.
+- Final TX/RX=0, clocks FF/80/80/80, CAN A/B standby/configuration.
+
+The receiver deduplicates repeated detections within overlapping decode
+windows, so this is not a raw duplicate-transmission count. Individual rejected
+CRC candidates are not exposed; missing valid packets must not be described as
+CRC failures. This finite run supports continued bench use at4 mA, not a low
+packet-error-rate guarantee, range qualification or resolution of the roughly
+135-degree phase separation. Next useful test is receive margin with controlled
+attenuation/separation, or end-to-end CAN-to-RF-to-Yamcs delivery.
+
+[Full sequence/byte-match report](files/packet-reliability-20261015.json).
+Per-batch console and receiver JSON are retained alongside it as
+`reliability-4ma-20261015-01` through `-10`; full IQ remains on the ground host.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

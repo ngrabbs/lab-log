@@ -1,0 +1,160 @@
+{
+  "utc": "2026-10-16T00:06:29.818974+00:00",
+  "frequency_hz": 436999999.9952314,
+  "channel": 0,
+  "antenna": "RX2",
+  "rate": 191999.99952627943,
+  "gain": 0.0,
+  "fpga_sha256": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99",
+  "errors": [],
+  "packets": [
+    {
+      "sequence": 23,
+      "hex": "0901c017001f0101000503010000000000000000a5d5ac07000464760006020100000000dd78",
+      "decoded": {
+        "name": "HEARTBEAT",
+        "sequence": 23,
+        "header": {
+          "schema_version": 1,
+          "kind": 1,
+          "message_id": 5,
+          "source": 3,
+          "target": 1,
+          "transaction_epoch": 0,
+          "transaction_id": 0,
+          "source_boot_id": 2782243847,
+          "uptime_ms": 287862,
+          "payload_length": 6
+        },
+        "payload": {
+          "mode": 2,
+          "configuration": 1,
+          "telemetry_period_ms": 0
+        }
+      },
+      "carrier_offset_hz": -6895.843505859375,
+      "window_start": 96000,
+      "timing_sample": 0,
+      "decoder": "dbpsk"
+    },
+    {
+      "sequence": 24,
+      "hex": "0901c018001f0101000503010000000000000000a5d5ac0700046b240006020100000000fe9a",
+      "decoded": {
+        "name": "HEARTBEAT",
+        "sequence": 24,
+        "header": {
+          "schema_version": 1,
+          "kind": 1,
+          "message_id": 5,
+          "source": 3,
+          "target": 1,
+          "transaction_epoch": 0,
+          "transaction_id": 0,
+          "source_boot_id": 2782243847,
+          "uptime_ms": 289572,
+          "payload_length": 6
+        },
+        "payload": {
+          "mode": 2,
+          "configuration": 1,
+          "telemetry_period_ms": 0
+        }
+      },
+      "carrier_offset_hz": -6902.8472900390625,
+      "window_start": 192000,
+      "timing_sample": 0,
+      "decoder": "dbpsk"
+    },
+    {
+      "sequence": 25,
+      "hex": "0901c019001f0101000503010000000000000000a5d5ac07000475bd0006020100000000f0b4",
+      "decoded": {
+        "name": "HEARTBEAT",
+        "sequence": 25,
+        "header": {
+          "schema_version": 1,
+          "kind": 1,
+          "message_id": 5,
+          "source": 3,
+          "target": 1,
+          "transaction_epoch": 0,
+          "transaction_id": 0,
+          "source_boot_id": 2782243847,
+          "uptime_ms": 292285,
+          "payload_length": 6
+        },
+        "payload": {
+          "mode": 2,
+          "configuration": 1,
+          "telemetry_period_ms": 0
+        }
+      },
+      "carrier_offset_hz": -6896.8963623046875,
+      "window_start": 288000,
+      "timing_sample": 0,
+      "decoder": "dbpsk"
+    },
+    {
+      "sequence": 26,
+      "hex": "0901c01a001f0101000503010000000000000000a5d5ac0700047c6a000602010000000051c1",
+      "decoded": {
+        "name": "HEARTBEAT",
+        "sequence": 26,
+        "header": {
+          "schema_version": 1,
+          "kind": 1,
+          "message_id": 5,
+          "source": 3,
+          "target": 1,
+          "transaction_epoch": 0,
+          "transaction_id": 0,
+          "source_boot_id": 2782243847,
+          "uptime_ms": 293994,
+          "payload_length": 6
+        },
+        "payload": {
+          "mode": 2,
+          "configuration": 1,
+          "telemetry_period_ms": 0
+        }
+      },
+      "carrier_offset_hz": -6905.0445556640625,
+      "window_start": 384000,
+      "timing_sample": 0,
+      "decoder": "dbpsk"
+    },
+    {
+      "sequence": 27,
+      "hex": "0901c01b001f0101000503010000000000000000a5d5ac07000483180006020100000000dca5",
+      "decoded": {
+        "name": "HEARTBEAT",
+        "sequence": 27,
+        "header": {
+          "schema_version": 1,
+          "kind": 1,
+          "message_id": 5,
+          "source": 3,
+          "target": 1,
+          "transaction_epoch": 0,
+          "transaction_id": 0,
+          "source_boot_id": 2782243847,
+          "uptime_ms": 295704,
+          "payload_length": 6
+        },
+        "payload": {
+          "mode": 2,
+          "configuration": 1,
+          "telemetry_period_ms": 0
+        }
+      },
+      "carrier_offset_hz": -6905.4107666015625,
+      "window_start": 480000,
+      "timing_sample": 0,
+      "decoder": "dbpsk"
+    }
+  ],
+  "samples": 2883584,
+  "peak_magnitude": 0.0035402774810791016,
+  "forwarded": 0
+}

@@ -1,0 +1,88 @@
+[clock_status] r0=11 r3=FF r16=80 r17=80 r18=80 r183=D2
+[y24-safe-v16] #239 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2076
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v16] #240 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[bpsk] prepared native COMMS heartbeat packet_hex=0901c00d001f0101000503010000000000000000a5d5ac070003cf6b0006020100000000a680
+[bpsk] drive_mA=4
+[tx_tone] complete=1 shutdown_verified=1 status=11 TX=0
+[bpsk] complete=1 frame_bytes=101 TX=0
+[y24-safe-v16] #241 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2067
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v16] #242 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[bpsk] prepared native COMMS heartbeat packet_hex=0901c00e001f0101000503010000000000000000a5d5ac070003da0400060201000000001652
+[bpsk] drive_mA=4
+[tx_tone] complete=1 shutdown_verified=1 status=11 TX=0
+[bpsk] complete=1 frame_bytes=101 TX=0
+[y24-safe-v16] #243 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2068
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[bpsk] prepared native COMMS heartbeat packet_hex=0901c00f001f0101000503010000000000000000a5d5ac070003e0b100060201000000009ea8
+[bpsk] drive_mA=4
+[tx_tone] complete=1 shutdown_verified=1 status=11 TX=0
+[bpsk] complete=1 frame_bytes=101 TX=0
+[y24-safe-v16] #244 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2067
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[bpsk] prepared native COMMS heartbeat packet_hex=0901c010001f0101000503010000000000000000a5d5ac070003e75f00060201000000005569
+[bpsk] drive_mA=4
+[tx_tone] complete=1 shutdown_verified=1 status=11 TX=0
+[bpsk] complete=1 frame_bytes=101 TX=0
+[y24-safe-v16] #245 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2067
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v16] #246 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2077
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[bpsk] prepared native COMMS heartbeat packet_hex=0901c011001f0101000503010000000000000000a5d5ac070003f1f800060201000000009679
+[bpsk] drive_mA=4
+[tx_tone] complete=1 shutdown_verified=1 status=11 TX=0
+[bpsk] complete=1 frame_bytes=101 TX=0
+[y24-safe-v16] #247 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2067
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[clock_status] r0=11 r3=FF r16=80 r17=80 r18=80 r183=D2
+[y24-safe-v16] #248 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2078
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78
+[y24-safe-v16] #249 TX=0 RX=0 CAN_A/B=standby Si5351_disable=verified_0xFF ADC1_raw=2079
+[can] A STAT=80 CTRL=88 CONFIG; B STAT=80 CTRL=88 CONFIG
+[startup] ready=1 attempts=1 last_A=80/87 last_B=80/87
+[selftest] independent_registers=PASS loopback_A=0 loopback_B=0 (0=PASS)
+[loop_rx_A] 64 20 3B F6 08 A1 00 FF 55 AA 12 34 78
+[loop_rx_B] 64 20 FF D8 08 B2 00 FF 55 AA 12 34 78

@@ -1,0 +1,1643 @@
+{
+  "planned": 50,
+  "drive_mA": 4,
+  "frequency_hz": 437000000,
+  "receiver_gain": 0,
+  "batches": [
+    {
+      "label": "reliability-4ma-20261015-01",
+      "expected_hex": [
+        "0901c003001f0101000503010000000000000000a5d5ac0700033e4d00060201000000003dcb",
+        "0901c004001f0101000503010000000000000000a5d5ac07000344fb0006020100000000f6c4",
+        "0901c005001f0101000503010000000000000000a5d5ac0700034f940006020100000000e0ed",
+        "0901c006001f0101000503010000000000000000a5d5ac070003564200060201000000003e2d",
+        "0901c007001f0101000503010000000000000000a5d5ac0700035cf00006020100000000aae7"
+      ],
+      "received_packets": [
+        {
+          "sequence": 3,
+          "hex": "0901c003001f0101000503010000000000000000a5d5ac0700033e4d00060201000000003dcb",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 3,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 212557,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6890.533447265625,
+          "window_start": 96000,
+          "timing_sample": 12,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 4,
+          "hex": "0901c004001f0101000503010000000000000000a5d5ac07000344fb0006020100000000f6c4",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 4,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 214267,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6895.7061767578125,
+          "window_start": 192000,
+          "timing_sample": 16,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 5,
+          "hex": "0901c005001f0101000503010000000000000000a5d5ac0700034f940006020100000000e0ed",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 5,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 216980,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6898.49853515625,
+          "window_start": 288000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 6,
+          "hex": "0901c006001f0101000503010000000000000000a5d5ac070003564200060201000000003e2d",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 6,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 218690,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6900.5126953125,
+          "window_start": 384000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 7,
+          "hex": "0901c007001f0101000503010000000000000000a5d5ac0700035cf00006020100000000aae7",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 7,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 220400,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6901.7486572265625,
+          "window_start": 480000,
+          "timing_sample": 17,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.0036587852519005537
+    },
+    {
+      "label": "reliability-4ma-20261015-02",
+      "expected_hex": [
+        "0901c008001f0101000503010000000000000000a5d5ac07000386de00060201000000005706",
+        "0901c009001f0101000503010000000000000000a5d5ac0700038d8c0006020100000000eb1e",
+        "0901c00a001f0101000503010000000000000000a5d5ac07000398230006020100000000bba7",
+        "0901c00b001f0101000503010000000000000000a5d5ac0700039ed000060201000000007ce9",
+        "0901c00c001f0101000503010000000000000000a5d5ac070003a57e0006020100000000d0b8"
+      ],
+      "received_packets": [
+        {
+          "sequence": 8,
+          "hex": "0901c008001f0101000503010000000000000000a5d5ac07000386de00060201000000005706",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 8,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 231134,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6897.03369140625,
+          "window_start": 96000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 9,
+          "hex": "0901c009001f0101000503010000000000000000a5d5ac0700038d8c0006020100000000eb1e",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 9,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 232844,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6895.751953125,
+          "window_start": 144000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 10,
+          "hex": "0901c00a001f0101000503010000000000000000a5d5ac07000398230006020100000000bba7",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 10,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 235555,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6899.0020751953125,
+          "window_start": 288000,
+          "timing_sample": 3,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 11,
+          "hex": "0901c00b001f0101000503010000000000000000a5d5ac0700039ed000060201000000007ce9",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 11,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 237264,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.16064453125,
+          "window_start": 384000,
+          "timing_sample": 5,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 12,
+          "hex": "0901c00c001f0101000503010000000000000000a5d5ac070003a57e0006020100000000d0b8",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 12,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 238974,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6901.2451171875,
+          "window_start": 480000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.003498464124277234
+    },
+    {
+      "label": "reliability-4ma-20261015-03",
+      "expected_hex": [
+        "0901c00d001f0101000503010000000000000000a5d5ac070003cf6b0006020100000000a680",
+        "0901c00e001f0101000503010000000000000000a5d5ac070003da0400060201000000001652",
+        "0901c00f001f0101000503010000000000000000a5d5ac070003e0b100060201000000009ea8",
+        "0901c010001f0101000503010000000000000000a5d5ac070003e75f00060201000000005569",
+        "0901c011001f0101000503010000000000000000a5d5ac070003f1f800060201000000009679"
+      ],
+      "received_packets": [
+        {
+          "sequence": 13,
+          "hex": "0901c00d001f0101000503010000000000000000a5d5ac070003cf6b0006020100000000a680",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 13,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 249707,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6892.822265625,
+          "window_start": 48000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 14,
+          "hex": "0901c00e001f0101000503010000000000000000a5d5ac070003da0400060201000000001652",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 14,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 252420,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6899.0936279296875,
+          "window_start": 192000,
+          "timing_sample": 5,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 15,
+          "hex": "0901c00f001f0101000503010000000000000000a5d5ac070003e0b100060201000000009ea8",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 15,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 254129,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6900.0091552734375,
+          "window_start": 288000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 16,
+          "hex": "0901c010001f0101000503010000000000000000a5d5ac070003e75f00060201000000005569",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 16,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 255839,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6903.80859375,
+          "window_start": 384000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 17,
+          "hex": "0901c011001f0101000503010000000000000000a5d5ac070003f1f800060201000000009679",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 17,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 258552,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6903.8543701171875,
+          "window_start": 480000,
+          "timing_sample": 7,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.0038458157796412706
+    },
+    {
+      "label": "reliability-4ma-20261015-04",
+      "expected_hex": [
+        "0901c012001f0101000503010000000000000000a5d5ac0700041be70006020100000000c9c9",
+        "0901c013001f0101000503010000000000000000a5d5ac070004229400060201000000004a1f",
+        "0901c014001f0101000503010000000000000000a5d5ac07000429410006020100000000e4b5",
+        "0901c015001f0101000503010000000000000000a5d5ac07000433da000602010000000081c9",
+        "0901c016001f0101000503010000000000000000a5d5ac0700043a880006020100000000e8c2"
+      ],
+      "received_packets": [
+        {
+          "sequence": 18,
+          "hex": "0901c012001f0101000503010000000000000000a5d5ac0700041be70006020100000000c9c9",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 18,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 269287,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6899.23095703125,
+          "window_start": 96000,
+          "timing_sample": 11,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 19,
+          "hex": "0901c013001f0101000503010000000000000000a5d5ac070004229400060201000000004a1f",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 19,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 270996,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.2064208984375,
+          "window_start": 192000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 20,
+          "hex": "0901c014001f0101000503010000000000000000a5d5ac07000429410006020100000000e4b5",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 20,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 272705,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.618408203125,
+          "window_start": 288000,
+          "timing_sample": 10,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 21,
+          "hex": "0901c015001f0101000503010000000000000000a5d5ac07000433da000602010000000081c9",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 21,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 275418,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.435302734375,
+          "window_start": 384000,
+          "timing_sample": 14,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 22,
+          "hex": "0901c016001f0101000503010000000000000000a5d5ac0700043a880006020100000000e8c2",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 22,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 277128,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.181884765625,
+          "window_start": 480000,
+          "timing_sample": 13,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.0037018072325736284
+    },
+    {
+      "label": "reliability-4ma-20261015-05",
+      "expected_hex": [
+        "0901c017001f0101000503010000000000000000a5d5ac07000464760006020100000000dd78",
+        "0901c018001f0101000503010000000000000000a5d5ac0700046b240006020100000000fe9a",
+        "0901c019001f0101000503010000000000000000a5d5ac07000475bd0006020100000000f0b4",
+        "0901c01a001f0101000503010000000000000000a5d5ac0700047c6a000602010000000051c1",
+        "0901c01b001f0101000503010000000000000000a5d5ac07000483180006020100000000dca5"
+      ],
+      "received_packets": [
+        {
+          "sequence": 23,
+          "hex": "0901c017001f0101000503010000000000000000a5d5ac07000464760006020100000000dd78",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 23,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 287862,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6895.843505859375,
+          "window_start": 96000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 24,
+          "hex": "0901c018001f0101000503010000000000000000a5d5ac0700046b240006020100000000fe9a",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 24,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 289572,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.8472900390625,
+          "window_start": 192000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 25,
+          "hex": "0901c019001f0101000503010000000000000000a5d5ac07000475bd0006020100000000f0b4",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 25,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 292285,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6896.8963623046875,
+          "window_start": 288000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 26,
+          "hex": "0901c01a001f0101000503010000000000000000a5d5ac0700047c6a000602010000000051c1",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 26,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 293994,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.0445556640625,
+          "window_start": 384000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 27,
+          "hex": "0901c01b001f0101000503010000000000000000a5d5ac07000483180006020100000000dca5",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 27,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 295704,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.4107666015625,
+          "window_start": 480000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.0035402774810791016
+    },
+    {
+      "label": "reliability-4ma-20261015-06",
+      "expected_hex": [
+        "0901c01c001f0101000503010000000000000000a5d5ac070004ad0700060201000000008681",
+        "0901c01d001f0101000503010000000000000000a5d5ac070004b3b40006020100000000c0cb",
+        "0901c01e001f0101000503010000000000000000a5d5ac070004be4c0006020100000000f323",
+        "0901c01f001f0101000503010000000000000000a5d5ac070004c4fa00060201000000002487",
+        "0901c020001f0101000503010000000000000000a5d5ac070004cba80006020100000000e23d"
+      ],
+      "received_packets": [
+        {
+          "sequence": 28,
+          "hex": "0901c01c001f0101000503010000000000000000a5d5ac070004ad0700060201000000008681",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 28,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 306439,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6898.406982421875,
+          "window_start": 96000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 29,
+          "hex": "0901c01d001f0101000503010000000000000000a5d5ac070004b3b40006020100000000c0cb",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 29,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 308148,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6904.541015625,
+          "window_start": 144000,
+          "timing_sample": 16,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 30,
+          "hex": "0901c01e001f0101000503010000000000000000a5d5ac070004be4c0006020100000000f323",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 30,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 310860,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6903.4881591796875,
+          "window_start": 288000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 31,
+          "hex": "0901c01f001f0101000503010000000000000000a5d5ac070004c4fa00060201000000002487",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 31,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 312570,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6904.815673828125,
+          "window_start": 384000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 32,
+          "hex": "0901c020001f0101000503010000000000000000a5d5ac070004cba80006020100000000e23d",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 32,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 314280,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6904.6783447265625,
+          "window_start": 480000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.003734871279448271
+    },
+    {
+      "label": "reliability-4ma-20261015-07",
+      "expected_hex": [
+        "0901c021001f0101000503010000000000000000a5d5ac070004f597000602010000000097d8",
+        "0901c022001f0101000503010000000000000000a5d5ac070005002e0006020100000000b97d",
+        "0901c023001f0101000503010000000000000000a5d5ac07000506dc00060201000000009510",
+        "0901c024001f0101000503010000000000000000a5d5ac0700050d8a0006020100000000a94c",
+        "0901c025001f0101000503010000000000000000a5d5ac07000518230006020100000000a8e4"
+      ],
+      "received_packets": [
+        {
+          "sequence": 33,
+          "hex": "0901c021001f0101000503010000000000000000a5d5ac070004f597000602010000000097d8",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 33,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 325015,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6898.86474609375,
+          "window_start": 48000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 34,
+          "hex": "0901c022001f0101000503010000000000000000a5d5ac070005002e0006020100000000b97d",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 34,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 327726,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6901.153564453125,
+          "window_start": 192000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 35,
+          "hex": "0901c023001f0101000503010000000000000000a5d5ac07000506dc00060201000000009510",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 35,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 329436,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6903.25927734375,
+          "window_start": 288000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 36,
+          "hex": "0901c024001f0101000503010000000000000000a5d5ac0700050d8a0006020100000000a94c",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 36,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 331146,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6907.9742431640625,
+          "window_start": 384000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 37,
+          "hex": "0901c025001f0101000503010000000000000000a5d5ac07000518230006020100000000a8e4",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 37,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 333859,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6903.9459228515625,
+          "window_start": 480000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.0043695843778550625
+    },
+    {
+      "label": "reliability-4ma-20261015-08",
+      "expected_hex": [
+        "0901c026001f0101000503010000000000000000a5d5ac070005421100060201000000006e89",
+        "0901c027001f0101000503010000000000000000a5d5ac07000548bf00060201000000001cad",
+        "0901c028001f0101000503010000000000000000a5d5ac0700054f6d0006020100000000cab6",
+        "0901c029001f0101000503010000000000000000a5d5ac070005561b000602010000000007a1",
+        "0901c02a001f0101000503010000000000000000a5d5ac07000560b300060201000000006e71"
+      ],
+      "received_packets": [
+        {
+          "sequence": 38,
+          "hex": "0901c026001f0101000503010000000000000000a5d5ac070005421100060201000000006e89",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 38,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 344593,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6898.3154296875,
+          "window_start": 96000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 39,
+          "hex": "0901c027001f0101000503010000000000000000a5d5ac07000548bf00060201000000001cad",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 39,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 346303,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.069091796875,
+          "window_start": 192000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 40,
+          "hex": "0901c028001f0101000503010000000000000000a5d5ac0700054f6d0006020100000000cab6",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 40,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 348013,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6904.1290283203125,
+          "window_start": 288000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 41,
+          "hex": "0901c029001f0101000503010000000000000000a5d5ac070005561b000602010000000007a1",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 41,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 349723,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.181884765625,
+          "window_start": 336000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 42,
+          "hex": "0901c02a001f0101000503010000000000000000a5d5ac07000560b300060201000000006e71",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 42,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 352435,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.3192138671875,
+          "window_start": 480000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.004057927988469601
+    },
+    {
+      "label": "reliability-4ma-20261015-09",
+      "expected_hex": [
+        "0901c02b001f0101000503010000000000000000a5d5ac0700058aa200060201000000006092",
+        "0901c02c001f0101000503010000000000000000a5d5ac070005915000060201000000004cf9",
+        "0901c02d001f0101000503010000000000000000a5d5ac0700059be90006020100000000dc88",
+        "0901c02e001f0101000503010000000000000000a5d5ac070005a29700060201000000000af4",
+        "0901c02f001f0101000503010000000000000000a5d5ac070005a9450006020100000000095e"
+      ],
+      "received_packets": [
+        {
+          "sequence": 43,
+          "hex": "0901c02b001f0101000503010000000000000000a5d5ac0700058aa200060201000000006092",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 43,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 363170,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6898.1781005859375,
+          "window_start": 96000,
+          "timing_sample": 10,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 44,
+          "hex": "0901c02c001f0101000503010000000000000000a5d5ac070005915000060201000000004cf9",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 44,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 364880,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.364990234375,
+          "window_start": 192000,
+          "timing_sample": 4,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 45,
+          "hex": "0901c02d001f0101000503010000000000000000a5d5ac0700059be90006020100000000dc88",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 45,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 367593,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.1148681640625,
+          "window_start": 288000,
+          "timing_sample": 14,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 46,
+          "hex": "0901c02e001f0101000503010000000000000000a5d5ac070005a29700060201000000000af4",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 46,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 369303,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6903.99169921875,
+          "window_start": 384000,
+          "timing_sample": 9,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 47,
+          "hex": "0901c02f001f0101000503010000000000000000a5d5ac070005a9450006020100000000095e",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 47,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 371013,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.0445556640625,
+          "window_start": 480000,
+          "timing_sample": 9,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.004595239646732807
+    },
+    {
+      "label": "reliability-4ma-20261015-10",
+      "expected_hex": [
+        "0901c030001f0101000503010000000000000000a5d5ac070005d33300060201000000005096",
+        "0901c031001f0101000503010000000000000000a5d5ac070005d9e00006020100000000d75a",
+        "0901c032001f0101000503010000000000000000a5d5ac070005e4780006020100000000b10c",
+        "0901c033001f0101000503010000000000000000a5d5ac070005eb2600060201000000001531",
+        "0901c034001f0101000503010000000000000000a5d5ac070005f1d40006020100000000561f"
+      ],
+      "received_packets": [
+        {
+          "sequence": 48,
+          "hex": "0901c030001f0101000503010000000000000000a5d5ac070005d33300060201000000005096",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 48,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 381747,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6897.3541259765625,
+          "window_start": 96000,
+          "timing_sample": 2,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 49,
+          "hex": "0901c031001f0101000503010000000000000000a5d5ac070005d9e00006020100000000d75a",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 49,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 383456,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6896.6217041015625,
+          "window_start": 144000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 50,
+          "hex": "0901c032001f0101000503010000000000000000a5d5ac070005e4780006020100000000b10c",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 50,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 386168,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6902.8472900390625,
+          "window_start": 288000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 51,
+          "hex": "0901c033001f0101000503010000000000000000a5d5ac070005eb2600060201000000001531",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 51,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 387878,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6905.82275390625,
+          "window_start": 384000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        },
+        {
+          "sequence": 52,
+          "hex": "0901c034001f0101000503010000000000000000a5d5ac070005f1d40006020100000000561f",
+          "decoded": {
+            "name": "HEARTBEAT",
+            "sequence": 52,
+            "header": {
+              "schema_version": 1,
+              "kind": 1,
+              "message_id": 5,
+              "source": 3,
+              "target": 1,
+              "transaction_epoch": 0,
+              "transaction_id": 0,
+              "source_boot_id": 2782243847,
+              "uptime_ms": 389588,
+              "payload_length": 6
+            },
+            "payload": {
+              "mode": 2,
+              "configuration": 1,
+              "telemetry_period_ms": 0
+            }
+          },
+          "carrier_offset_hz": -6907.0587158203125,
+          "window_start": 480000,
+          "timing_sample": 0,
+          "decoder": "dbpsk"
+        }
+      ],
+      "missing_hex": [],
+      "valid_exact_matches": 5,
+      "shutdown_verified": true,
+      "stream_errors": [],
+      "peak_magnitude": 0.0041291434317827225
+    }
+  ],
+  "complete": true,
+  "note": "Strict decoder unchanged; per-capture deduplication prevents counting repeated decoder detections as RF duplicates. Individual CRC rejection counts are not exposed.",
+  "summary": {
+    "sent": 50,
+    "strict_exact_matches": 50,
+    "missing": 0,
+    "first_sequence": 3,
+    "last_sequence": 52,
+    "unique_sequences": 50,
+    "boot_id": 2782243847,
+    "stream_errors": 0,
+    "shutdowns_verified": 50,
+    "first_uptime_ms": 212557,
+    "last_uptime_ms": 389588
+  }
+}
