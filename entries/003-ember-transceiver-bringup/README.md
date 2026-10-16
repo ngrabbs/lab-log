@@ -25,21 +25,17 @@ about135 degrees at4 mA. Stronger drive and integer-PLL comparisons did not
 restore180 degrees. Packet success does not close waveform, spectrum or
 range/margin qualification. Prior fractional-PLL side peaks remain an open issue.
 
-Installed firmware: transceiver v20 and IHU can-bench-v5, commit `34d3030`,
-branch `firmware/transceiver-y24-bringup`. An explicitly enabled two-minute run
-sent heartbeat, system status and EPS telemetry every ten seconds:36/36 strict
-RF decodes matched Yamcs bytes. The generator expired automatically; a separate
-stop test prevented further cycles. Boot remains IDLE/muted; no run resumes after
-reset. QUEUED/RF_TX_COMPLETE are local link results, not ground acknowledgments.
+Installed firmware: transceiver v21 and IHU can-bench-v7, commit `62256e0`,
+branch `firmware/transceiver-y24-bringup`. Both now start CAN A in normal mode.
+The IHU registry observes current EPS over I²C and COMMS over CAN; planned or
+absent nodes remain NOT_SEEN. A 20-exchange check passed both HELLO and explicit
+RF-disabled rejection. RF stays inactive until explicitly armed; CAN B remains
+standby. No RF regression was run with these new images.
 
-Last verified COMMS state: TX/RX=0, CAN A/B standby/configuration, clocks
-FF/80/80/80, load D2. IHU CAN remains normal with peer1883405986 retained,
-pending0, uhf_pending0, unknown0, CAN error counters0, and mode2 EXPIRED.
-The radio service was explicitly stopped after the generator expired.
-
-Next: sustained queue/recovery testing, a continuous ground decoder service,
-receive margin, and this board's RX chain. Physical reworks still need carrying
-into the hardware revision. RF waveform/spectrum qualification remains open.
+The earlier v20/v5 two-minute test delivered36/36 packets to Yamcs. Live ground
+decoding was subsequently implemented in commit `35cd12f`; that work does not
+replace the RF waveform, receive-margin and board RX qualification still needed.
+Physical reworks still need carrying into the hardware revision.
 Detailed observations, failed attempts and raw captures follow chronologically.
 
 ## Initial inspection and setup
@@ -1871,6 +1867,48 @@ Firmware commit `34d3030`. Installed UF2 SHA-256:
 [Full-run RF/Yamcs proof](files/20261016-timed-120s-01-proof.json) ·
 [Full-run consoles](files/20261016-timed-120s-01-console.json).
 Original IQ remains on the ground host; flash backups remain local.
+
+## October 16 — expected devices and boot-ready CAN
+
+Added a central table for current I²C EPS, future CAN EPS, CAN COMMS, LTE and
+payload. The IHU probes known addresses rather than guessing all possible CAN
+IDs. Its `devices` command reports identity, last-seen age and state; idle probes
+run every two seconds. COMMS answers discovery, HELLO and ECHO at boot, while
+unarmed telemetry requests receive `REJECTED status=7` (RF disabled). Discovery
+alone does not establish the application peer or start RF.
+
+Saved full previous COMMS v20 and IHU v6 images before flashing and verifying
+v21/v7. The first HELLO attempt timed out; retries worked, and its cause was not
+established. A separate repeatable telemetry timeout was traced to the IHU
+validator rejecting the newly introduced disabled status. Corrected that check
+and added a regression test. The final hardware test then passed:
+
+- 20/20 HELLO replies and 20/20 explicit RF-disabled replies.
+- EPS and COMMS ONLINE; EPS_NEXT, LTE and PAYLOAD NOT_SEEN, matching the setup
+  with only the transceiver connected to CAN A.
+- IHU matched40, unknown0, pending0 and uhf_pending0; CAN TEC, REC, EFLG,
+  TX failures/timeouts, RX errors/overflows and fragment errors/timeouts all0.
+- COMMS reported TX/RX0, CAN A normal, CAN B configuration/standby, and clocks
+  disabled with register3=FF. No RF command was issued in this test.
+
+Host registry, queue/client and startup/fault checks passed; controller builds
+used warnings as errors. This establishes the bench CAN behavior, not RF silence
+measured by an instrument, flight discovery, or multi-node interoperability.
+The older LTE bridge shares application CAN IDs with COMMS and must not join
+that bus until its addressing is migrated. Its new discovery responder is also
+not implemented yet. The initial isolated HELLO timeout remains an observation
+to watch in longer testing; the final run did not reproduce it.
+
+IHU console: `devices`, `devices scan`, `hello`. `normal` and a temporary COMMS
+HELLO window are no longer required after boot. RF still needs explicit COMMS
+`a`/`g`; this update was tested with RF disabled, and an RF regression remains.
+Firmware commit `62256e0`. Installed UF2 SHA-256:
+
+- COMMS: `4c808fb7dfed64d01e547e71eb009622aabdacbe6822a163ecd01c03f2d34503`
+- IHU: `0d5f1a502216f2318ea8ad5799bd5f78ca43a8d140ae0aeb7638a19f3723509f`
+
+[Final test console evidence](files/20261016-device-registry-console.json).
+Previous flash backups remain in local artifacts.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
