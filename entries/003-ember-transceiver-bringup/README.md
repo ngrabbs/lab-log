@@ -1588,5 +1588,42 @@ quality and packet reliability as separate acceptance questions. No such
 [Baseline return analysis](files/pll-frac-4ma-20261015-02-analysis.json).
 Console and receiver JSON accompany each file; full IQ remains on the ground host.
 
+## First strict-decoder packets at 4 mA: three of three exact matches
+
+Installed/flash-verified v16 (`bb1d8b3`). Explicit uppercase `B` sends one
+native COMMS heartbeat with4 mA CLK0 drive at437 MHz; lowercase `b` retains
+2 mA baseline. Same1200-baud waveform, approximately673 ms airtime, deadline,
+independent two-second mute and checked cleanup. No ground decoder changes.
+Packet/CRC/timing/abort tests, clock-fault coverage, startup checks and target
+build passed. No hardware rework or probe on the board.
+
+Three separately triggered transmissions and finite captures all passed the
+normal `dbpsk` decoder (no phase-diagnostic flag or fallback). Each recovered
+packet passed outer CRC32 and native CRC16 and matched the Pico console bytes
+exactly. Native source COMMS, target GROUND, HEARTBEAT, boot ID2782243847:
+
+| Sequence | Actual uptime | Strict decode / exact match |
+| --- | --- | --- |
+| 0 | 10,081 ms | PASS |
+| 1 | 35,841 ms | PASS |
+| 2 | 54,588 ms | PASS |
+
+LibreSDR RX2/channel0, gain0, same antennas about3 feet apart, nominal437 MHz.
+All captures had no stream errors. Each firmware test completed and verified
+shutdown; final TX/RX=0, clock registers FF/80/80/80. No packets were forwarded
+to Yamcs in these capture-only tests. Normal defaults remain2 mA; `B` explicitly
+selects4 mA for each test and cleanup powers CLK0 down.
+
+This is the first repeatable strict-decoder RF packet result on this board,
+not a qualification of180-degree modulation, packet-error rate, range or
+spectral compliance. The roughly135-degree phase separation measured at4 mA
+remains an open waveform issue. Three successful short-range packets demonstrate
+a useful firmware setting for continued bring-up, not a complete hardware fix.
+
+[Packet0 proof](files/packet-4ma-20261015-01-proof.json) ·
+[Packet1 proof](files/packet-4ma-20261015-02-proof.json) ·
+[Packet2 proof](files/packet-4ma-20261015-03-proof.json).
+Console and receiver JSON accompany each proof; raw IQ remains on the ground host.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

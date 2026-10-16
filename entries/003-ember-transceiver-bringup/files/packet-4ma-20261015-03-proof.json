@@ -1,0 +1,37 @@
+{
+  "label": "packet-4ma-20261015-03",
+  "expected_hex": "0901c002001f0101000503010000000000000000a5d5ac070000d53c0006020100000000dcb2",
+  "strict_byte_match": true,
+  "packets": [
+    {
+      "sequence": 2,
+      "hex": "0901c002001f0101000503010000000000000000a5d5ac070000d53c0006020100000000dcb2",
+      "decoded": {
+        "name": "HEARTBEAT",
+        "sequence": 2,
+        "header": {
+          "schema_version": 1,
+          "kind": 1,
+          "message_id": 5,
+          "source": 3,
+          "target": 1,
+          "transaction_epoch": 0,
+          "transaction_id": 0,
+          "source_boot_id": 2782243847,
+          "uptime_ms": 54588,
+          "payload_length": 6
+        },
+        "payload": {
+          "mode": 2,
+          "configuration": 1,
+          "telemetry_period_ms": 0
+        }
+      },
+      "carrier_offset_hz": -6894.561767578125,
+      "window_start": 96000,
+      "timing_sample": 0,
+      "decoder": "dbpsk"
+    }
+  ],
+  "shutdown_verified": true
+}
