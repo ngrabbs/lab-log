@@ -1,0 +1,7 @@
+{
+  "source": "/tmp/live-before-pipeline.py",
+  "receiver_exit": 1,
+  "injected": true,
+  "delay_s": 1.8000753749947762,
+  "raw_open_age_s": 8.022010077009327
+}

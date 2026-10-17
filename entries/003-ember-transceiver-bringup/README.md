@@ -2027,5 +2027,60 @@ qualification is complete. No board RX or ground acknowledgment was tested.
 [Build manifest](files/firmware-manifest.json).
 Raw IQ and the old flash backup remain in local artifacts.
 
+## October 17 — sustained demo qualification
+
+Closed the three remaining demo checks: controlled overflow investigation,
+visual dashboard checks, and a longer live rehearsal. The physical RF setup
+and installed firmware were unchanged from the preceding test.
+
+First, injected a single 1.8-second raw-file write delay at about eight seconds
+into two receive-only sessions. The pre-pipeline receiver (`52c0b3e`) stopped
+with `ERROR_CODE_OVERFLOW`. Pipeline v2 completed 25 seconds without errors;
+its queue peaked at42/64 chunks and absorbed the delayed write. This reproduces
+one failure mechanism and validates its mitigation. It does **not** establish
+that a disk stall caused the historical overflow. Neither trial forwarded data.
+
+Then ran the receiver continuously for690 seconds (11.5 minutes), with five
+explicitly bounded120-second IHU runs at a10-second period. Each run expired
+at36 submitted packets/12 cycles; COMMS was stopped and re-enabled between runs.
+
+- **185/185 packets:**60 HEARTBEAT,60 SYSTEM_STATUS,60 POWER_STATUS, and five
+  COMMS firmware identities. All strict RF decodes matched original native
+  bytes and the Yamcs archive exactly, with no replay forwarding.
+- No stream/decoder errors. Queue peak9/64, longest storage operation401.1 ms,
+  maximum measured receive-call gap5.31 ms. These are observations from this
+  run, not guaranteed timing bounds.
+- Five-second polling observed all60 updates for each telemetry family. After
+  excluding initial cached values, all six monitored parameters stayed ACQUIRED.
+  Maximum sampled age: EPS14.58 s, system12.98 s, heartbeat13.96 s. Polling
+  cannot rule out a shorter event between samples.
+- Visually checked EPS and System displays early, midway and during the final
+  run: EPS reported LIVE and changed values; heartbeat/system generation times
+  and uptime advanced. Firmware displayed0.22.0, clean build, exact source SHA.
+  Overview's unproduced endpoint/command panels remain blank; use System.par
+  for this UHF demo instead.
+- Final HELLO succeeded. TX/RX were inactive, all clocks disabled, CAN A normal,
+  and pending/unknown/error registers zero. Lifetime IHU TX failures stayed3
+  throughout; no new failures occurred. EPS and COMMS remained ONLINE.
+
+This completes the requested short-range team-demo rehearsal. RF performance,
+board RX, EPS sense calibration and ground acknowledgments remain separate
+qualification work. The original overflow trigger remains unproven. Telemetry
+was stopped after the rehearsal, so displays will subsequently age normally.
+
+![EPS live during the final bounded run](images/demo-eps-late.png)
+
+![System status and heartbeat advancing during the final run](images/demo-system-late.png)
+
+[185-packet RF/Yamcs proof](files/demo-long-20261017-01-proof.json) ·
+[Console record](files/demo-long-20261017-01-console.json) ·
+[Sampled freshness](files/demo-long-20261017-01-freshness-summary.json) ·
+[Five bounded runs](files/demo-long-20261017-01-runs.json) ·
+[Old receiver stall result](files/storage-stall-before-result.json) ·
+[Old injection](files/storage-stall-before-injection.json) ·
+[New receiver stall result](files/storage-stall-after-result.json) ·
+[New injection](files/storage-stall-after-injection.json).
+Raw IQ, the injection script and full polling records remain in local artifacts.
+
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

@@ -1,0 +1,56 @@
+{
+  "sample_period_s": 5,
+  "first_sample": "2026-10-17T10:32:50.375881+00:00",
+  "last_sample": "2026-10-17T10:43:12.620510+00:00",
+  "parameters": {
+    "POWER_STATUS_input_mv": {
+      "max_sampled_age_s": 14.581757,
+      "samples": 117,
+      "distinct_updates": 60,
+      "statuses": [
+        "ACQUIRED"
+      ]
+    },
+    "POWER_STATUS_readout_count": {
+      "max_sampled_age_s": 14.581757,
+      "samples": 117,
+      "distinct_updates": 60,
+      "statuses": [
+        "ACQUIRED"
+      ]
+    },
+    "SYSTEM_STATUS_uptime_ms": {
+      "max_sampled_age_s": 12.982028,
+      "samples": 117,
+      "distinct_updates": 60,
+      "statuses": [
+        "ACQUIRED"
+      ]
+    },
+    "SYSTEM_STATUS_mode": {
+      "max_sampled_age_s": 12.982028,
+      "samples": 117,
+      "distinct_updates": 60,
+      "statuses": [
+        "ACQUIRED"
+      ]
+    },
+    "HEARTBEAT_uptime_ms": {
+      "max_sampled_age_s": 13.963028,
+      "samples": 118,
+      "distinct_updates": 60,
+      "statuses": [
+        "ACQUIRED"
+      ]
+    },
+    "HEARTBEAT_telemetry_period_ms": {
+      "max_sampled_age_s": 13.963028,
+      "samples": 118,
+      "distinct_updates": 60,
+      "statuses": [
+        "ACQUIRED"
+      ]
+    }
+  },
+  "initial_cached_values_excluded": true
+}
