@@ -1,0 +1,2361 @@
+{
+  "receiver_result": {
+    "receiver_version": 2,
+    "utc": "2026-10-17T10:22:05.883231+00:00",
+    "frequency_hz": 436999999.9952314,
+    "channel": 0,
+    "antenna": "RX2",
+    "rate": 191999.99952627943,
+    "gain": 0.0,
+    "fpga_sha256": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99",
+    "raw_format": "little-endian complex64, 192000 samples/s",
+    "errors": [],
+    "pipeline_metrics": {
+      "chunk_queue_peak": 3,
+      "decode_queue_peak": 0,
+      "max_recv_gap_s": 0.0010529090068303049,
+      "max_storage_chunk_s": 0.1500086599990027
+    },
+    "samples": 28803072,
+    "packets": [
+      {
+        "sequence": 2147483649,
+        "hex": "0901c000003101010032030100000000000000003d8cf45b00004f5f00180016000020c6cb19393c9a660996531c42ed1d28044e3bea1898",
+        "decoded": {
+          "name": "COMMS_FIRMWARE",
+          "sequence": 0,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 50,
+            "source": 3,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 1032647771,
+            "uptime_ms": 20319,
+            "payload_length": 24
+          },
+          "payload": {
+            "version_major": 0,
+            "version_minor": 22,
+            "version_patch": 0,
+            "dirty": 0,
+            "git_sha_0": 549899033,
+            "git_sha_1": 960272998,
+            "git_sha_2": 160846620,
+            "git_sha_3": 1122835752,
+            "git_sha_4": 72236010
+          }
+        },
+        "carrier_offset_hz": -6617.2943115234375,
+        "window_start": 0,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:10.272883+00:00",
+        "capture_window_end_s": 4.0,
+        "decode_seconds": 0.36523338699771557
+      },
+      {
+        "sequence": 2,
+        "hex": "0901c000001f0101000502010000000000000000e11bcbc9000ac4fb0006030100002710357c",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 0,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 705787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6617.2943115234375,
+        "window_start": 0,
+        "timing_sample": 1,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:10.273288+00:00",
+        "capture_window_end_s": 4.0,
+        "decode_seconds": 0.3656374429992866
+      },
+      {
+        "sequence": 3,
+        "hex": "0901c00100270101000102010000000000000000e11bcbc9000acc4b000e03010000271000000002000000005688",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 1,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 707659,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 2,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6615.623474121094,
+        "window_start": 48000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:11.275565+00:00",
+        "capture_window_end_s": 5.0,
+        "decode_seconds": 0.35071240400429815
+      },
+      {
+        "sequence": 4,
+        "hex": "0901c00200790101001002010000000000000000e11bcbc9000ad0a30060010202010101010202000000000000000001000ad0a3000000000000000200002977000026f5fffffdb6000198e000004b07000027100000271000000001080000000000000000000067000419251791fffc02ca338701d60000000720e200012d37",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 2,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 708771,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 1,
+            "ihu_readout_uptime_ms": 708771,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10615,
+            "output_mv": 9973,
+            "battery_ua": -586,
+            "input_ua": 104672,
+            "die_temp_mc": 19207,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 4,
+            "raw_vin": 6437,
+            "raw_vout": 6033,
+            "raw_ibat": 65532,
+            "raw_iin": 714,
+            "raw_die_temp": 13191,
+            "raw_thermistor_voltage": 470,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6619.331359863281,
+        "window_start": 144000,
+        "timing_sample": 14,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:13.278103+00:00",
+        "capture_window_end_s": 7.0,
+        "decode_seconds": 0.34623780600668397
+      },
+      {
+        "sequence": 5,
+        "hex": "0901c003001f0101000502010000000000000000e11bcbc9000aec0b0006030100002710d416",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 3,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 715787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6609.901428222656,
+        "window_start": 480000,
+        "timing_sample": 7,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:20.289387+00:00",
+        "capture_window_end_s": 14.0,
+        "decode_seconds": 0.3556369129946688
+      },
+      {
+        "sequence": 6,
+        "hex": "0901c00400270101000102010000000000000000e11bcbc9000af01e000e030100002710000000050000000079f9",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 4,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 716830,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 5,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6619.102478027344,
+        "window_start": 528000,
+        "timing_sample": 17,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:21.255143+00:00",
+        "capture_window_end_s": 15.0,
+        "decode_seconds": 0.34390595299191773
+      },
+      {
+        "sequence": 7,
+        "hex": "0901c00500790101001002010000000000000000e11bcbc9000af4760060010202010101010202000000000000000002000af476000000000000000200002972000026f5fffffe4800019d7500004b07000027100000271000000001080000000000000000000067000619221791fffd02d2338701de0000000720e20001b1f2",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 5,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 717942,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 2,
+            "ihu_readout_uptime_ms": 717942,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10610,
+            "output_mv": 9973,
+            "battery_ua": -440,
+            "input_ua": 105845,
+            "die_temp_mc": 19207,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 6,
+            "raw_vin": 6434,
+            "raw_vout": 6033,
+            "raw_ibat": 65533,
+            "raw_iin": 722,
+            "raw_die_temp": 13191,
+            "raw_thermistor_voltage": 478,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6619.285583496094,
+        "window_start": 576000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:22.229832+00:00",
+        "capture_window_end_s": 16.0,
+        "decode_seconds": 0.3410677280044183
+      },
+      {
+        "sequence": 8,
+        "hex": "0901c006001f0101000502010000000000000000e11bcbc9000b131b0006030100002710a84b",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 6,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 725787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6613.7237548828125,
+        "window_start": 960000,
+        "timing_sample": 10,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:30.257224+00:00",
+        "capture_window_end_s": 24.0,
+        "decode_seconds": 0.3465666629927
+      },
+      {
+        "sequence": 9,
+        "hex": "0901c00700270101000102010000000000000000e11bcbc9000b172f000e030100002710000000080000000074f6",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 7,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 726831,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 8,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6619.1253662109375,
+        "window_start": 1008000,
+        "timing_sample": 6,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:31.277087+00:00",
+        "capture_window_end_s": 25.0,
+        "decode_seconds": 0.3781095220037969
+      },
+      {
+        "sequence": 10,
+        "hex": "0901c00800790101001002010000000000000000e11bcbc9000b1b860060010202010101010202000000000000000003000b1b86000000000000000200002977000026f3fffffd2300019a9800004b07000027100000271000000001080000000000000000000067000519251790fffb02cd338701d00000000720e200016c23",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 8,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 727942,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 3,
+            "ihu_readout_uptime_ms": 727942,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10615,
+            "output_mv": 9971,
+            "battery_ua": -733,
+            "input_ua": 105112,
+            "die_temp_mc": 19207,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 5,
+            "raw_vin": 6437,
+            "raw_vout": 6032,
+            "raw_ibat": 65531,
+            "raw_iin": 717,
+            "raw_die_temp": 13191,
+            "raw_thermistor_voltage": 464,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6625.694274902344,
+        "window_start": 1056000,
+        "timing_sample": 10,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:32.264502+00:00",
+        "capture_window_end_s": 26.0,
+        "decode_seconds": 0.34573397699568886
+      },
+      {
+        "sequence": 11,
+        "hex": "0901c009001f0101000502010000000000000000e11bcbc9000b3a2b0006030100002710ff59",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 9,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 735787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6613.334655761719,
+        "window_start": 1440000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:40.244277+00:00",
+        "capture_window_end_s": 34.0,
+        "decode_seconds": 0.34609662801085506
+      },
+      {
+        "sequence": 12,
+        "hex": "0901c00a00270101000102010000000000000000e11bcbc9000b3e3d000e0301000027100000000b00000000bde7",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 10,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 736829,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 11,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6618.370056152344,
+        "window_start": 1488000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:41.270021+00:00",
+        "capture_window_end_s": 35.0,
+        "decode_seconds": 0.3518868769897381
+      },
+      {
+        "sequence": 13,
+        "hex": "0901c00b00790101001002010000000000000000e11bcbc9000b42950060010202010101010202000000000000000004000b4295000000000000000200002975000026f3fffffd2300019f2d00004b07000027100000271000000001080000000000000000000067000419241790fffb02d5338701d00000000720e20001fb9b",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 11,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 737941,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 4,
+            "ihu_readout_uptime_ms": 737941,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10613,
+            "output_mv": 9971,
+            "battery_ua": -733,
+            "input_ua": 106285,
+            "die_temp_mc": 19207,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 4,
+            "raw_vin": 6436,
+            "raw_vout": 6032,
+            "raw_ibat": 65531,
+            "raw_iin": 725,
+            "raw_die_temp": 13191,
+            "raw_thermistor_voltage": 464,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6618.415832519531,
+        "window_start": 1536000,
+        "timing_sample": 4,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:42.247276+00:00",
+        "capture_window_end_s": 36.0,
+        "decode_seconds": 0.3409810849989299
+      },
+      {
+        "sequence": 14,
+        "hex": "0901c00c001f0101000502010000000000000000e11bcbc9000b613b00060301000027102b41",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 12,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 745787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6610.313415527344,
+        "window_start": 1920000,
+        "timing_sample": 1,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:50.268738+00:00",
+        "capture_window_end_s": 44.0,
+        "decode_seconds": 0.3405866419925587
+      },
+      {
+        "sequence": 15,
+        "hex": "0901c00d00270101000102010000000000000000e11bcbc9000b654e000e0301000027100000000e00000000172f",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 13,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 746830,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 14,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6618.8507080078125,
+        "window_start": 1968000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:51.249481+00:00",
+        "capture_window_end_s": 45.0,
+        "decode_seconds": 0.3438560530048562
+      },
+      {
+        "sequence": 16,
+        "hex": "0901c00e00790101001002010000000000000000e11bcbc9000b69a70060010202010101010202000000000000000005000b69a7000000000000000200002975000026f6fffffe4800019a9800004b07000027100000271000000001080000000000000000000067000419241792fffd02cd338701df0000000720e20001c0dd",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 14,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 747943,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 5,
+            "ihu_readout_uptime_ms": 747943,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10613,
+            "output_mv": 9974,
+            "battery_ua": -440,
+            "input_ua": 105112,
+            "die_temp_mc": 19207,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 4,
+            "raw_vin": 6436,
+            "raw_vout": 6034,
+            "raw_ibat": 65533,
+            "raw_iin": 717,
+            "raw_die_temp": 13191,
+            "raw_thermistor_voltage": 479,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6619.606018066406,
+        "window_start": 2016000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:22:52.296884+00:00",
+        "capture_window_end_s": 46.0,
+        "decode_seconds": 0.37120429599599447
+      },
+      {
+        "sequence": 17,
+        "hex": "0901c00f001f0101000502010000000000000000e11bcbc9000b884b00060301000027108cf2",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 15,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 755787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6612.4420166015625,
+        "window_start": 2400000,
+        "timing_sample": 12,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:00.241720+00:00",
+        "capture_window_end_s": 54.0,
+        "decode_seconds": 0.33672008400026243
+      },
+      {
+        "sequence": 18,
+        "hex": "0901c01000270101000102010000000000000000e11bcbc9000b8c5e000e03010000271000000011000000005360",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 16,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 756830,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 17,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6620.109558105469,
+        "window_start": 2448000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:01.273576+00:00",
+        "capture_window_end_s": 55.0,
+        "decode_seconds": 0.33790075199794956
+      },
+      {
+        "sequence": 19,
+        "hex": "0901c01100790101001002010000000000000000e11bcbc9000b90b70060010202010101010202000000000000000006000b90b7000000000000000200002977000026f5fffffdb600019b2b00004af1000027100000271000000001080000000000000000000067000519251791fffc02ce338601ce0000000720e20001d0ef",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 17,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 757943,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 6,
+            "ihu_readout_uptime_ms": 757943,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10615,
+            "output_mv": 9973,
+            "battery_ua": -586,
+            "input_ua": 105259,
+            "die_temp_mc": 19185,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 5,
+            "raw_vin": 6437,
+            "raw_vout": 6033,
+            "raw_ibat": 65532,
+            "raw_iin": 718,
+            "raw_die_temp": 13190,
+            "raw_thermistor_voltage": 462,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6620.1324462890625,
+        "window_start": 2496000,
+        "timing_sample": 1,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:02.259629+00:00",
+        "capture_window_end_s": 56.0,
+        "decode_seconds": 0.3465202639927156
+      },
+      {
+        "sequence": 20,
+        "hex": "0901c012001f0101000502010000000000000000e11bcbc9000baf5b000603010000271012b9",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 18,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 765787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6614.753723144531,
+        "window_start": 2880000,
+        "timing_sample": 14,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:10.230562+00:00",
+        "capture_window_end_s": 64.0,
+        "decode_seconds": 0.33805655100150034
+      },
+      {
+        "sequence": 21,
+        "hex": "0901c01300270101000102010000000000000000e11bcbc9000bb36e000e03010000271000000014000000008daf",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 19,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 766830,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 20,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6623.771667480469,
+        "window_start": 2928000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:11.254148+00:00",
+        "capture_window_end_s": 65.0,
+        "decode_seconds": 0.34162144499714486
+      },
+      {
+        "sequence": 22,
+        "hex": "0901c01400790101001002010000000000000000e11bcbc9000bb7c70060010202010101010202000000000000000007000bb7c7000000000000000200002975000026f5fffffd2300019c5000004b32000027100000271000000001080000000000000000000067000419241791fffb02d0338901d10000000720e2000156ed",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 20,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 767943,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 7,
+            "ihu_readout_uptime_ms": 767943,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10613,
+            "output_mv": 9973,
+            "battery_ua": -733,
+            "input_ua": 105552,
+            "die_temp_mc": 19250,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 4,
+            "raw_vin": 6436,
+            "raw_vout": 6033,
+            "raw_ibat": 65531,
+            "raw_iin": 720,
+            "raw_die_temp": 13193,
+            "raw_thermistor_voltage": 465,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6623.771667480469,
+        "window_start": 2976000,
+        "timing_sample": 14,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:12.241158+00:00",
+        "capture_window_end_s": 66.0,
+        "decode_seconds": 0.3405094620102318
+      },
+      {
+        "sequence": 23,
+        "hex": "0901c015001f0101000502010000000000000000e11bcbc9000bd66b00060301000027108d43",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 21,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 775787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6616.355895996094,
+        "window_start": 3360000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:20.265626+00:00",
+        "capture_window_end_s": 74.0,
+        "decode_seconds": 0.34309615301026497
+      },
+      {
+        "sequence": 24,
+        "hex": "0901c01600270101000102010000000000000000e11bcbc9000bda7f000e030100002710000000170000000019a2",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 22,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 776831,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 23,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6622.1923828125,
+        "window_start": 3408000,
+        "timing_sample": 7,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:21.240745+00:00",
+        "capture_window_end_s": 75.0,
+        "decode_seconds": 0.34067402000073344
+      },
+      {
+        "sequence": 25,
+        "hex": "0901c01700790101001002010000000000000000e11bcbc9000bded70060010202010101010202000000000000000008000bded7000000000000000100002975000026f3fffffedb00019f2d00004b07000027100000271000000001080000000000000000000067000319241790fffe02d5338701df0000000720e20001d000",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 23,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 777943,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 8,
+            "ihu_readout_uptime_ms": 777943,
+            "readout_age_ms": 0,
+            "battery_mv": 1,
+            "input_mv": 10613,
+            "output_mv": 9971,
+            "battery_ua": -293,
+            "input_ua": 106285,
+            "die_temp_mc": 19207,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 3,
+            "raw_vin": 6436,
+            "raw_vout": 6032,
+            "raw_ibat": 65534,
+            "raw_iin": 725,
+            "raw_die_temp": 13191,
+            "raw_thermistor_voltage": 479,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6622.1923828125,
+        "window_start": 3456000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:22.257820+00:00",
+        "capture_window_end_s": 76.0,
+        "decode_seconds": 0.33779109100578353
+      },
+      {
+        "sequence": 26,
+        "hex": "0901c018001f0101000502010000000000000000e11bcbc9000bfd7b0006030100002710a8be",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 24,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 785787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6617.362976074219,
+        "window_start": 3840000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:30.235940+00:00",
+        "capture_window_end_s": 84.0,
+        "decode_seconds": 0.3365005719970213
+      },
+      {
+        "sequence": 27,
+        "hex": "0901c01900270101000102010000000000000000e11bcbc9000c018e000e0301000027100000001a000000002a2e",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 25,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 786830,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 26,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6625.144958496094,
+        "window_start": 3888000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:31.268800+00:00",
+        "capture_window_end_s": 85.0,
+        "decode_seconds": 0.33870385300542694
+      },
+      {
+        "sequence": 28,
+        "hex": "0901c01a00790101001002010000000000000000e11bcbc9000c05e60060010202010101010202000000000000000009000c05e6000000000000000200002975000026f6fffffdb600019d7500004b32000027100000271000000001080000000000000000000067000519241792fffc02d2338901d90000000720e200017817",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 26,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 787942,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 9,
+            "ihu_readout_uptime_ms": 787942,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10613,
+            "output_mv": 9974,
+            "battery_ua": -586,
+            "input_ua": 105845,
+            "die_temp_mc": 19250,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 5,
+            "raw_vin": 6436,
+            "raw_vout": 6034,
+            "raw_ibat": 65532,
+            "raw_iin": 722,
+            "raw_die_temp": 13193,
+            "raw_thermistor_voltage": 473,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6627.0904541015625,
+        "window_start": 3936000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:32.245703+00:00",
+        "capture_window_end_s": 86.0,
+        "decode_seconds": 0.3381642230087891
+      },
+      {
+        "sequence": 29,
+        "hex": "0901c01b001f0101000502010000000000000000e11bcbc9000c248b00060301000027103499",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 27,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 795787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6622.6043701171875,
+        "window_start": 4320000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:40.292350+00:00",
+        "capture_window_end_s": 94.0,
+        "decode_seconds": 0.3629653529933421
+      },
+      {
+        "sequence": 30,
+        "hex": "0901c01c00270101000102010000000000000000e11bcbc9000c289f000e0301000027100000001d00000000ccba",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 28,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 796831,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 29,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6626.472473144531,
+        "window_start": 4368000,
+        "timing_sample": 6,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:41.246816+00:00",
+        "capture_window_end_s": 95.0,
+        "decode_seconds": 0.33937706000870094
+      },
+      {
+        "sequence": 31,
+        "hex": "0901c01d00790101001002010000000000000000e11bcbc9000c2cf7006001020201010101020200000000000000000a000c2cf7000000000000000200002973000026f0fffffe480001984e00004b4700002710000027100000000108000000000000000000006700051923178efffd02c9338a01d50000000720e200013817",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 29,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 797943,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 10,
+            "ihu_readout_uptime_ms": 797943,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10611,
+            "output_mv": 9968,
+            "battery_ua": -440,
+            "input_ua": 104526,
+            "die_temp_mc": 19271,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 5,
+            "raw_vin": 6435,
+            "raw_vout": 6030,
+            "raw_ibat": 65533,
+            "raw_iin": 713,
+            "raw_die_temp": 13194,
+            "raw_thermistor_voltage": 469,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6626.5411376953125,
+        "window_start": 4416000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:42.233623+00:00",
+        "capture_window_end_s": 96.0,
+        "decode_seconds": 0.33851215199683793
+      },
+      {
+        "sequence": 32,
+        "hex": "0901c01e001f0101000502010000000000000000e11bcbc9000c4b9b0006030100002710e02f",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 30,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 805787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6621.803283691406,
+        "window_start": 4800000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:50.265170+00:00",
+        "capture_window_end_s": 104.0,
+        "decode_seconds": 0.348244742010138
+      },
+      {
+        "sequence": 33,
+        "hex": "0901c01f00270101000102010000000000000000e11bcbc9000c4fad000e0301000027100000002000000000c57d",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 31,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 806829,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 32,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6625.6256103515625,
+        "window_start": 4848000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:51.235433+00:00",
+        "capture_window_end_s": 105.0,
+        "decode_seconds": 0.34100176898937207
+      },
+      {
+        "sequence": 34,
+        "hex": "0901c02000790101001002010000000000000000e11bcbc9000c5406006001020201010101020200000000000000000b000c5406000000000000000100002977000026f6fffffdb60001997300004b1c000027100000271000000001080000000000000000000067000319251792fffc02cb338801e50000000720e2000121de",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 32,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 807942,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 11,
+            "ihu_readout_uptime_ms": 807942,
+            "readout_age_ms": 0,
+            "battery_mv": 1,
+            "input_mv": 10615,
+            "output_mv": 9974,
+            "battery_ua": -586,
+            "input_ua": 104819,
+            "die_temp_mc": 19228,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 3,
+            "raw_vin": 6437,
+            "raw_vout": 6034,
+            "raw_ibat": 65532,
+            "raw_iin": 715,
+            "raw_die_temp": 13192,
+            "raw_thermistor_voltage": 485,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6625.67138671875,
+        "window_start": 4896000,
+        "timing_sample": 1,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:23:52.254155+00:00",
+        "capture_window_end_s": 106.0,
+        "decode_seconds": 0.339703878009459
+      },
+      {
+        "sequence": 35,
+        "hex": "0901c021001f0101000502010000000000000000e11bcbc9000c72ab0006030100002710c6f3",
+        "decoded": {
+          "name": "HEARTBEAT",
+          "sequence": 33,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 5,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 815787,
+            "payload_length": 6
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000
+          }
+        },
+        "carrier_offset_hz": -6621.4599609375,
+        "window_start": 5280000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:24:00.230799+00:00",
+        "capture_window_end_s": 114.0,
+        "decode_seconds": 0.3369313019939
+      },
+      {
+        "sequence": 36,
+        "hex": "0901c02200270101000102010000000000000000e11bcbc9000c76be000e0301000027100000002300000000afcc",
+        "decoded": {
+          "name": "SYSTEM_STATUS",
+          "sequence": 34,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 1,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 816830,
+            "payload_length": 14
+          },
+          "payload": {
+            "mode": 3,
+            "configuration": 1,
+            "telemetry_period_ms": 10000,
+            "accepted_commands": 35,
+            "rejected_commands": 0
+          }
+        },
+        "carrier_offset_hz": -6625.946044921875,
+        "window_start": 5328000,
+        "timing_sample": 5,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:24:01.271040+00:00",
+        "capture_window_end_s": 115.0,
+        "decode_seconds": 0.34662214999843854
+      },
+      {
+        "sequence": 37,
+        "hex": "0901c02300790101001002010000000000000000e11bcbc9000c7b17006001020201010101020200000000000000000c000c7b17000000000000000200002973000026f3fffffdb600019ce300004b32000027100000271000000001080000000000000000000067000519231790fffc02d1338901d50000000720e20001eff9",
+        "decoded": {
+          "name": "POWER_STATUS",
+          "sequence": 35,
+          "header": {
+            "schema_version": 1,
+            "kind": 1,
+            "message_id": 16,
+            "source": 2,
+            "target": 1,
+            "transaction_epoch": 0,
+            "transaction_id": 0,
+            "source_boot_id": 3776695241,
+            "uptime_ms": 817943,
+            "payload_length": 96
+          },
+          "payload": {
+            "payload_version": 1,
+            "provenance": 2,
+            "link": 2,
+            "readout_present": 1,
+            "readout_valid": 1,
+            "conversion_valid": 1,
+            "adc_valid": 1,
+            "configured_cells": 2,
+            "detected_cells": 2,
+            "sense_values_verified": 0,
+            "bridge_session_id": 0,
+            "readout_count": 12,
+            "ihu_readout_uptime_ms": 817943,
+            "readout_age_ms": 0,
+            "battery_mv": 2,
+            "input_mv": 10611,
+            "output_mv": 9971,
+            "battery_ua": -586,
+            "input_ua": 105699,
+            "die_temp_mc": 19250,
+            "rsnsb_microohms": 10000,
+            "rsnsi_microohms": 10000,
+            "raw_config_bits": 0,
+            "raw_charger_config_bits": 1,
+            "raw_charger_state": 2048,
+            "raw_charge_status": 0,
+            "raw_limit_alerts": 0,
+            "raw_charger_state_alerts": 0,
+            "raw_charge_status_alerts": 0,
+            "raw_system_status": 103,
+            "raw_vbat": 5,
+            "raw_vin": 6435,
+            "raw_vout": 6032,
+            "raw_ibat": 65532,
+            "raw_iin": 721,
+            "raw_die_temp": 13193,
+            "raw_thermistor_voltage": 469,
+            "raw_bsr": 0,
+            "raw_jeita_region": 7,
+            "raw_chem_cells": 8418,
+            "raw_telemetry_status": 1
+          }
+        },
+        "carrier_offset_hz": -6627.3651123046875,
+        "window_start": 5376000,
+        "timing_sample": 0,
+        "decoder": "dbpsk",
+        "received_utc": "2026-10-17T10:24:02.240345+00:00",
+        "capture_window_end_s": 116.0,
+        "decode_seconds": 0.3383236189984018
+      }
+    ],
+    "forwarded": 37,
+    "ended_utc": "2026-10-17T10:24:36.548689+00:00"
+  },
+  "yamcs_packets": [
+    {
+      "packet": "CQHAIwB5AQEAEAIBAAAAAAAAAADhG8vJAAx7FwBgAQICAQEBAQICAAAAAAAAAAAMAAx7FwAAAAAAAAACAAApcwAAJvP///22AAGc4wAASzIAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABRkjF5D//ALRM4kB1QAAAAcg4gAB7/k=",
+      "sequenceNumber": 151109667,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:24:02.240Z",
+      "generationTime": "2026-10-17T10:24:02.240Z",
+      "earthReceptionTime": "2026-10-17T10:24:02.240Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAIgAnAQEAAQIBAAAAAAAAAADhG8vJAAx2vgAOAwEAACcQAAAAIwAAAACvzA==",
+      "sequenceNumber": 151109666,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:24:01.271Z",
+      "generationTime": "2026-10-17T10:24:01.271Z",
+      "earthReceptionTime": "2026-10-17T10:24:01.271Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAIQAfAQEABQIBAAAAAAAAAADhG8vJAAxyqwAGAwEAACcQxvM=",
+      "sequenceNumber": 151109665,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:24:00.231Z",
+      "generationTime": "2026-10-17T10:24:00.231Z",
+      "earthReceptionTime": "2026-10-17T10:24:00.231Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAIAB5AQEAEAIBAAAAAAAAAADhG8vJAAxUBgBgAQICAQEBAQICAAAAAAAAAAALAAxUBgAAAAAAAAABAAApdwAAJvb///22AAGZcwAASxwAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcAAxklF5L//ALLM4gB5QAAAAcg4gABId4=",
+      "sequenceNumber": 151109664,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:52.254Z",
+      "generationTime": "2026-10-17T10:23:52.254Z",
+      "earthReceptionTime": "2026-10-17T10:23:52.254Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAHwAnAQEAAQIBAAAAAAAAAADhG8vJAAxPrQAOAwEAACcQAAAAIAAAAADFfQ==",
+      "sequenceNumber": 151109663,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:51.235Z",
+      "generationTime": "2026-10-17T10:23:51.235Z",
+      "earthReceptionTime": "2026-10-17T10:23:51.235Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAHgAfAQEABQIBAAAAAAAAAADhG8vJAAxLmwAGAwEAACcQ4C8=",
+      "sequenceNumber": 151109662,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:23:50.265Z",
+      "generationTime": "2026-10-17T10:23:50.265Z",
+      "earthReceptionTime": "2026-10-17T10:23:50.265Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAHQB5AQEAEAIBAAAAAAAAAADhG8vJAAws9wBgAQICAQEBAQICAAAAAAAAAAAKAAws9wAAAAAAAAACAAApcwAAJvD///5IAAGYTgAAS0cAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABRkjF47//QLJM4oB1QAAAAcg4gABOBc=",
+      "sequenceNumber": 151109661,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:42.234Z",
+      "generationTime": "2026-10-17T10:23:42.234Z",
+      "earthReceptionTime": "2026-10-17T10:23:42.234Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAHAAnAQEAAQIBAAAAAAAAAADhG8vJAAwonwAOAwEAACcQAAAAHQAAAADMug==",
+      "sequenceNumber": 151109660,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:41.247Z",
+      "generationTime": "2026-10-17T10:23:41.247Z",
+      "earthReceptionTime": "2026-10-17T10:23:41.247Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAGwAfAQEABQIBAAAAAAAAAADhG8vJAAwkiwAGAwEAACcQNJk=",
+      "sequenceNumber": 151109659,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:23:40.292Z",
+      "generationTime": "2026-10-17T10:23:40.292Z",
+      "earthReceptionTime": "2026-10-17T10:23:40.292Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAGgB5AQEAEAIBAAAAAAAAAADhG8vJAAwF5gBgAQICAQEBAQICAAAAAAAAAAAJAAwF5gAAAAAAAAACAAApdQAAJvb///22AAGddQAASzIAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABRkkF5L//ALSM4kB2QAAAAcg4gABeBc=",
+      "sequenceNumber": 151109658,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:32.246Z",
+      "generationTime": "2026-10-17T10:23:32.246Z",
+      "earthReceptionTime": "2026-10-17T10:23:32.246Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAGQAnAQEAAQIBAAAAAAAAAADhG8vJAAwBjgAOAwEAACcQAAAAGgAAAAAqLg==",
+      "sequenceNumber": 151109657,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:31.269Z",
+      "generationTime": "2026-10-17T10:23:31.269Z",
+      "earthReceptionTime": "2026-10-17T10:23:31.269Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAGAAfAQEABQIBAAAAAAAAAADhG8vJAAv9ewAGAwEAACcQqL4=",
+      "sequenceNumber": 151109656,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:23:30.236Z",
+      "generationTime": "2026-10-17T10:23:30.236Z",
+      "earthReceptionTime": "2026-10-17T10:23:30.236Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAFwB5AQEAEAIBAAAAAAAAAADhG8vJAAve1wBgAQICAQEBAQICAAAAAAAAAAAIAAve1wAAAAAAAAABAAApdQAAJvP///7bAAGfLQAASwcAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcAAxkkF5D//gLVM4cB3wAAAAcg4gAB0AA=",
+      "sequenceNumber": 151109655,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:22.258Z",
+      "generationTime": "2026-10-17T10:23:22.258Z",
+      "earthReceptionTime": "2026-10-17T10:23:22.258Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAFgAnAQEAAQIBAAAAAAAAAADhG8vJAAvafwAOAwEAACcQAAAAFwAAAAAZog==",
+      "sequenceNumber": 151109654,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:21.241Z",
+      "generationTime": "2026-10-17T10:23:21.241Z",
+      "earthReceptionTime": "2026-10-17T10:23:21.241Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAFQAfAQEABQIBAAAAAAAAAADhG8vJAAvWawAGAwEAACcQjUM=",
+      "sequenceNumber": 151109653,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:23:20.266Z",
+      "generationTime": "2026-10-17T10:23:20.266Z",
+      "earthReceptionTime": "2026-10-17T10:23:20.266Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAFAB5AQEAEAIBAAAAAAAAAADhG8vJAAu3xwBgAQICAQEBAQICAAAAAAAAAAAHAAu3xwAAAAAAAAACAAApdQAAJvX///0jAAGcUAAASzIAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABBkkF5H/+wLQM4kB0QAAAAcg4gABVu0=",
+      "sequenceNumber": 151109652,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:12.241Z",
+      "generationTime": "2026-10-17T10:23:12.241Z",
+      "earthReceptionTime": "2026-10-17T10:23:12.241Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAEwAnAQEAAQIBAAAAAAAAAADhG8vJAAuzbgAOAwEAACcQAAAAFAAAAACNrw==",
+      "sequenceNumber": 151109651,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:11.254Z",
+      "generationTime": "2026-10-17T10:23:11.254Z",
+      "earthReceptionTime": "2026-10-17T10:23:11.254Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAEgAfAQEABQIBAAAAAAAAAADhG8vJAAuvWwAGAwEAACcQErk=",
+      "sequenceNumber": 151109650,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:23:10.231Z",
+      "generationTime": "2026-10-17T10:23:10.231Z",
+      "earthReceptionTime": "2026-10-17T10:23:10.231Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAEQB5AQEAEAIBAAAAAAAAAADhG8vJAAuQtwBgAQICAQEBAQICAAAAAAAAAAAGAAuQtwAAAAAAAAACAAApdwAAJvX///22AAGbKwAASvEAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABRklF5H//ALOM4YBzgAAAAcg4gAB0O8=",
+      "sequenceNumber": 151109649,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:02.260Z",
+      "generationTime": "2026-10-17T10:23:02.260Z",
+      "earthReceptionTime": "2026-10-17T10:23:02.260Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAEAAnAQEAAQIBAAAAAAAAAADhG8vJAAuMXgAOAwEAACcQAAAAEQAAAABTYA==",
+      "sequenceNumber": 151109648,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:23:01.274Z",
+      "generationTime": "2026-10-17T10:23:01.274Z",
+      "earthReceptionTime": "2026-10-17T10:23:01.274Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHADwAfAQEABQIBAAAAAAAAAADhG8vJAAuISwAGAwEAACcQjPI=",
+      "sequenceNumber": 151109647,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:23:00.242Z",
+      "generationTime": "2026-10-17T10:23:00.242Z",
+      "earthReceptionTime": "2026-10-17T10:23:00.242Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHADgB5AQEAEAIBAAAAAAAAAADhG8vJAAtppwBgAQICAQEBAQICAAAAAAAAAAAFAAtppwAAAAAAAAACAAApdQAAJvb///5IAAGamAAASwcAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABBkkF5L//QLNM4cB3wAAAAcg4gABwN0=",
+      "sequenceNumber": 151109646,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:52.297Z",
+      "generationTime": "2026-10-17T10:22:52.297Z",
+      "earthReceptionTime": "2026-10-17T10:22:52.297Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHADQAnAQEAAQIBAAAAAAAAAADhG8vJAAtlTgAOAwEAACcQAAAADgAAAAAXLw==",
+      "sequenceNumber": 151109645,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:51.249Z",
+      "generationTime": "2026-10-17T10:22:51.250Z",
+      "earthReceptionTime": "2026-10-17T10:22:51.250Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHADAAfAQEABQIBAAAAAAAAAADhG8vJAAthOwAGAwEAACcQK0E=",
+      "sequenceNumber": 151109644,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:22:50.269Z",
+      "generationTime": "2026-10-17T10:22:50.269Z",
+      "earthReceptionTime": "2026-10-17T10:22:50.269Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHACwB5AQEAEAIBAAAAAAAAAADhG8vJAAtClQBgAQICAQEBAQICAAAAAAAAAAAEAAtClQAAAAAAAAACAAApdQAAJvP///0jAAGfLQAASwcAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABBkkF5D/+wLVM4cB0AAAAAcg4gAB+5s=",
+      "sequenceNumber": 151109643,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:42.247Z",
+      "generationTime": "2026-10-17T10:22:42.247Z",
+      "earthReceptionTime": "2026-10-17T10:22:42.247Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHACgAnAQEAAQIBAAAAAAAAAADhG8vJAAs+PQAOAwEAACcQAAAACwAAAAC95w==",
+      "sequenceNumber": 151109642,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:41.270Z",
+      "generationTime": "2026-10-17T10:22:41.270Z",
+      "earthReceptionTime": "2026-10-17T10:22:41.270Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHACQAfAQEABQIBAAAAAAAAAADhG8vJAAs6KwAGAwEAACcQ/1k=",
+      "sequenceNumber": 151109641,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:22:40.245Z",
+      "generationTime": "2026-10-17T10:22:40.245Z",
+      "earthReceptionTime": "2026-10-17T10:22:40.245Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHACAB5AQEAEAIBAAAAAAAAAADhG8vJAAsbhgBgAQICAQEBAQICAAAAAAAAAAADAAsbhgAAAAAAAAACAAApdwAAJvP///0jAAGamAAASwcAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABRklF5D/+wLNM4cB0AAAAAcg4gABbCM=",
+      "sequenceNumber": 151109640,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:32.265Z",
+      "generationTime": "2026-10-17T10:22:32.265Z",
+      "earthReceptionTime": "2026-10-17T10:22:32.265Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHABwAnAQEAAQIBAAAAAAAAAADhG8vJAAsXLwAOAwEAACcQAAAACAAAAAB09g==",
+      "sequenceNumber": 151109639,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:31.277Z",
+      "generationTime": "2026-10-17T10:22:31.277Z",
+      "earthReceptionTime": "2026-10-17T10:22:31.277Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHABgAfAQEABQIBAAAAAAAAAADhG8vJAAsTGwAGAwEAACcQqEs=",
+      "sequenceNumber": 151109638,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:22:30.257Z",
+      "generationTime": "2026-10-17T10:22:30.257Z",
+      "earthReceptionTime": "2026-10-17T10:22:30.257Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHABQB5AQEAEAIBAAAAAAAAAADhG8vJAAr0dgBgAQICAQEBAQICAAAAAAAAAAACAAr0dgAAAAAAAAACAAApcgAAJvX///5IAAGddQAASwcAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABhkiF5H//QLSM4cB3gAAAAcg4gABsfI=",
+      "sequenceNumber": 151109637,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:22.230Z",
+      "generationTime": "2026-10-17T10:22:22.230Z",
+      "earthReceptionTime": "2026-10-17T10:22:22.230Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHABAAnAQEAAQIBAAAAAAAAAADhG8vJAArwHgAOAwEAACcQAAAABQAAAAB5+Q==",
+      "sequenceNumber": 151109636,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:21.255Z",
+      "generationTime": "2026-10-17T10:22:21.255Z",
+      "earthReceptionTime": "2026-10-17T10:22:21.255Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAAwAfAQEABQIBAAAAAAAAAADhG8vJAArsCwAGAwEAACcQ1BY=",
+      "sequenceNumber": 151109635,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:22:20.289Z",
+      "generationTime": "2026-10-17T10:22:20.289Z",
+      "earthReceptionTime": "2026-10-17T10:22:20.289Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAAgB5AQEAEAIBAAAAAAAAAADhG8vJAArQowBgAQICAQEBAQICAAAAAAAAAAABAArQowAAAAAAAAACAAApdwAAJvX///22AAGY4AAASwcAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABBklF5H//ALKM4cB1gAAAAcg4gABLTc=",
+      "sequenceNumber": 151109634,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:13.278Z",
+      "generationTime": "2026-10-17T10:22:13.278Z",
+      "earthReceptionTime": "2026-10-17T10:22:13.278Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAAQAnAQEAAQIBAAAAAAAAAADhG8vJAArMSwAOAwEAACcQAAAAAgAAAABWiA==",
+      "sequenceNumber": 151109633,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:11.276Z",
+      "generationTime": "2026-10-17T10:22:11.276Z",
+      "earthReceptionTime": "2026-10-17T10:22:11.276Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAAAAfAQEABQIBAAAAAAAAAADhG8vJAArE+wAGAwEAACcQNXw=",
+      "sequenceNumber": 151109632,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:22:10.280Z",
+      "generationTime": "2026-10-17T10:22:10.280Z",
+      "earthReceptionTime": "2026-10-17T10:22:10.280Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAAAAxAQEAMgMBAAAAAAAAAAA9jPRbAABPXwAYABYAACDGyxk5PJpmCZZTHELtHSgETjvqGJg=",
+      "sequenceNumber": 151109632,
+      "id": {
+        "name": "/ember/COMMS_FIRMWARE"
+      },
+      "receptionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "earthReceptionTime": "2026-10-17T10:22:10.273Z",
+      "link": "eps-uhf-in",
+      "size": 56
+    }
+  ],
+  "firmware_parameters": {
+    "version_major": {
+      "id": {
+        "name": "COMMS_FIRMWARE_version_major",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 0
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 0
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "version_minor": {
+      "id": {
+        "name": "COMMS_FIRMWARE_version_minor",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 22
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 22
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "version_patch": {
+      "id": {
+        "name": "COMMS_FIRMWARE_version_patch",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 0
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 0
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "dirty": {
+      "id": {
+        "name": "COMMS_FIRMWARE_dirty",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 0
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 0
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "git_sha_0": {
+      "id": {
+        "name": "COMMS_FIRMWARE_git_sha_0",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 549899033
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 549899033
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "git_sha_1": {
+      "id": {
+        "name": "COMMS_FIRMWARE_git_sha_1",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 960272998
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 960272998
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "git_sha_2": {
+      "id": {
+        "name": "COMMS_FIRMWARE_git_sha_2",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 160846620
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 160846620
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "git_sha_3": {
+      "id": {
+        "name": "COMMS_FIRMWARE_git_sha_3",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 1122835752
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 1122835752
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    },
+    "git_sha_4": {
+      "id": {
+        "name": "COMMS_FIRMWARE_git_sha_4",
+        "namespace": "/ember"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 72236010
+      },
+      "engValue": {
+        "type": "UINT32",
+        "uint32Value": 72236010
+      },
+      "acquisitionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "acquisitionStatus": "ACQUIRED",
+      "expireMillis": "342000"
+    }
+  },
+  "git_sha": "20c6cb19393c9a660996531c42ed1d28044e3bea",
+  "all_bytes_equal": true,
+  "during_run_packets": [
+    {
+      "packet": "CQHAAgB5AQEAEAIBAAAAAAAAAADhG8vJAArQowBgAQICAQEBAQICAAAAAAAAAAABAArQowAAAAAAAAACAAApdwAAJvX///22AAGY4AAASwcAACcQAAAnEAAAAAEIAAAAAAAAAAAAAGcABBklF5H//ALKM4cB1gAAAAcg4gABLTc=",
+      "sequenceNumber": 151109634,
+      "id": {
+        "name": "/ember/POWER_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:13.278Z",
+      "generationTime": "2026-10-17T10:22:13.278Z",
+      "earthReceptionTime": "2026-10-17T10:22:13.278Z",
+      "link": "eps-uhf-in",
+      "size": 128
+    },
+    {
+      "packet": "CQHAAQAnAQEAAQIBAAAAAAAAAADhG8vJAArMSwAOAwEAACcQAAAAAgAAAABWiA==",
+      "sequenceNumber": 151109633,
+      "id": {
+        "name": "/ember/SYSTEM_STATUS"
+      },
+      "receptionTime": "2026-10-17T10:22:11.276Z",
+      "generationTime": "2026-10-17T10:22:11.276Z",
+      "earthReceptionTime": "2026-10-17T10:22:11.276Z",
+      "link": "eps-uhf-in",
+      "size": 46
+    },
+    {
+      "packet": "CQHAAAAfAQEABQIBAAAAAAAAAADhG8vJAArE+wAGAwEAACcQNXw=",
+      "sequenceNumber": 151109632,
+      "id": {
+        "name": "/ember/HEARTBEAT"
+      },
+      "receptionTime": "2026-10-17T10:22:10.280Z",
+      "generationTime": "2026-10-17T10:22:10.280Z",
+      "earthReceptionTime": "2026-10-17T10:22:10.280Z",
+      "link": "eps-uhf-in",
+      "size": 38
+    },
+    {
+      "packet": "CQHAAAAxAQEAMgMBAAAAAAAAAAA9jPRbAABPXwAYABYAACDGyxk5PJpmCZZTHELtHSgETjvqGJg=",
+      "sequenceNumber": 151109632,
+      "id": {
+        "name": "/ember/COMMS_FIRMWARE"
+      },
+      "receptionTime": "2026-10-17T10:22:10.273Z",
+      "generationTime": "2026-10-17T10:22:10.273Z",
+      "earthReceptionTime": "2026-10-17T10:22:10.273Z",
+      "link": "eps-uhf-in",
+      "size": 56
+    }
+  ],
+  "ihu_packets": 36,
+  "comms_identity_packets": 1,
+  "live_arrival_verified": true,
+  "ground_ack": false
+}

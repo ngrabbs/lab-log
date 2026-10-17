@@ -1,0 +1,9 @@
+{
+  "version": "0.22.0",
+  "git_sha": "20c6cb19393c9a660996531c42ed1d28044e3bea",
+  "dirty": false,
+  "uf2_sha256": "43054a49eb5ac5f1235a2bbef5364630713de2606570dac638273f4896bd9a85",
+  "target_serial": "E663682593639D39",
+  "host_tests": 13,
+  "receiver_pipeline_version": 2
+}

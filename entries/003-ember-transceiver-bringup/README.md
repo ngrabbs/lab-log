@@ -2,13 +2,13 @@
 
 **Status:** In progress  
 **Started:** 2026-10-15  
-**Updated:** 2026-10-16
+**Updated:** 2026-10-17
 
 The EMBER transceiver PCB arrived today. I am bringing it up in stages, starting
 with unpowered checks before testing the supplies, controller, CAN interfaces,
 and RF paths.
 
-## Session checkpoint — October 16
+## Session checkpoint — October 17
 
 Power rails, Pico operation, both CAN controllers' SPI/internal loopbacks,
 CAN A HELLO, transmitted RF and a one-way IHU → CAN A → COMMS → RF → Yamcs
@@ -25,19 +25,17 @@ about135 degrees at4 mA. Stronger drive and integer-PLL comparisons did not
 restore180 degrees. Packet success does not close waveform, spectrum or
 range/margin qualification. Prior fractional-PLL side peaks remain an open issue.
 
-Installed firmware: transceiver v21 and IHU can-bench-v7, commit `62256e0`,
-branch `firmware/transceiver-y24-bringup`. Both now start CAN A in normal mode.
-The IHU registry observes current EPS over I²C and COMMS over CAN; planned or
-absent nodes remain NOT_SEEN. A 20-exchange check passed both HELLO and explicit
-RF-disabled rejection. RF stays inactive until explicitly armed; CAN B remains
-standby. A subsequent 30-second RF regression delivered all nine packets live
-to Yamcs and verified return to idle CAN. The first receiver capture overflowed
-after its nine packets; an unchanged repeat completed without errors.
+Installed COMMS firmware is release0.22.0 (v22), clean source commit
+`20c6cb19393c9a660996531c42ed1d28044e3bea`; IHU remains can-bench-v7.
+CAN starts ready while RF requires an explicit finite service window. Current
+EPS and COMMS are discovered. The October17 rehearsal delivered36 telemetry
+packets plus one COMMS firmware identity live into Yamcs, with exact byte
+matches and no receiver errors during150 seconds. A separate180-second
+receive-only soak also passed after moving storage off the capture loop.
+The earlier receiver overflow's root cause remains unproven.
 
-The earlier v20/v5 two-minute test delivered36/36 packets to Yamcs. Live ground
-decoding was subsequently implemented in commit `35cd12f`; that work does not
-replace the RF waveform, receive-margin and board RX qualification still needed.
-Physical reworks still need carrying into the hardware revision.
+RF phase/spectrum, receive margin, the board's RX path and EPS sense calibration
+remain open. Physical reworks still need carrying into the hardware revision.
 Detailed observations, failed attempts and raw captures follow chronologically.
 
 ## Initial inspection and setup
@@ -1954,6 +1952,80 @@ completion still does not mean an RF ground acknowledgment.
 [Clean repeat consoles](files/registry-rf-live-20261016-02-console.json).
 Raw IQ remains on the ground host. Both sessions and telemetry generation were
 stopped after testing; CAN remains available.
+
+## October 17 — firmware identity and longer live rehearsal
+
+The receiver now queues raw samples to a separate storage/window worker instead
+of writing the SD card from the USB capture loop. Its64-chunk input queue and
+four-window decoder queue are bounded; overflow still stops explicitly rather
+than silently joining samples across a gap. Overlap storage is preallocated.
+This removes a plausible scheduling delay but does not establish the cause of
+the previous stream overflow. A simulated slow-storage test verified bounded
+failure, stream shutdown and no fabricated packet forwarding. All13 ground
+unit tests and existing firmware startup/fault checks passed; the target build
+passed with warnings treated as errors.
+
+COMMS release0.22.0 now reports its semantic version, full Git source commit,
+dirty-build flag and boot identity. Console `v` queries the identity while idle.
+The first admitted request in an explicitly enabled RF session triggers one
+additional COMMS_FIRMWARE packet, using the existing bounded burst/mute checks.
+It is genuinely sourced by COMMS; the IHU telemetry bytes remain unchanged.
+Boot or an empty RF session does not send it. Yamcs has a dedicated firmware
+display and parameters. Dirty means uncommitted source changes at build time,
+not a runtime fault. A helper captures commit/status before source export;
+CMake rejects missing identity inputs. The Git SHA identifies source, while
+the separately recorded UF2 SHA identifies the built artifact.
+
+Before flashing, neither USB console appeared. Kernel logs identified a dead
+USB host controller, which had also disconnected a USB disk and caused journal
+errors. With permission, unbinding/rebinding that specific controller restored
+both consoles. No filesystem repair or disk write was performed; disk health
+needs separate follow-up. This was on the controller host, distinct from the
+receiver host and its earlier sample overflow. The old COMMS image also showed
+a latched CAN B fault before reboot; both controller self-checks passed after
+installing the new image. That pre-existing fault's cause was not established.
+
+Saved the previous COMMS v21 flash image. The first load immediately after
+backup missed USB re-enumeration and changed no firmware; retry loaded v22 with
+readback verification. Its console identified release0.22.0, dirty0 and source
+`20c6cb19393c9a660996531c42ed1d28044e3bea`. Installed UF2 SHA-256:
+`43054a49eb5ac5f1235a2bbef5364630713de2606570dac638273f4896bd9a85`.
+IHU firmware and EPS configuration were not changed.
+
+- **Receive-only soak:**180.01 seconds, no stream/decoder errors, no packets.
+  Peak storage queue5/64; longest storage-chunk operation229.5 ms; largest
+  measured gap between receive calls1.93 ms.
+- **Live rehearsal:**120-second IHU run, period10 seconds,12 cycles. All36
+  heartbeat/system/EPS packets received QUEUED and RF_TX_COMPLETE. The single
+  COMMS identity made37 RF packets total; all were strict-decoded, forwarded
+  once and matched archived Yamcs bytes exactly. The first cycle and firmware
+  identity were already archived during the ongoing run; no replay forwarding.
+- **Receiver completion:**150-second capture, no stream/decoder errors. Peak
+  storage queue3/64, longest storage-chunk operation150.0 ms, maximum measured
+  receive-call gap1.05 ms. These diagnostics describe this run, not hard timing
+  guarantees or a full fault-tolerance qualification.
+- Yamcs parameters and the rendered display showed **0.22.0 (clean build)**,
+  the exact source commit and COMMS boot1032647771. The display represents the
+  last received identity; a future reflash requires a fresh received report.
+- The generator expired at36 packets/12 cycles; RF was explicitly stopped.
+  HELLO and discovery worked afterward. The MCU reported TX/RX inactive,
+  clocks disabled and CAN A ready. Unknown/pending counts and live CAN error
+  registers were0. Lifetime TX failures remained3 before and after the run;
+  no new failures occurred during it. The prior failures span controller updates
+  and were not cleared or presented as a zero lifetime count.
+
+Same existing short-range antenna setup, nominal437 MHz,1200 baud,4 mA drive;
+LibreSDR RX2/channel0/gain0 at192 ksample/s. This is a successful finite demo
+rehearsal, not proof that the original overflow is eliminated or RF hardware
+qualification is complete. No board RX or ground acknowledgment was tested.
+
+![COMMS firmware identity received over RF in Yamcs](images/comms-firmware-yamcs-20261017.png)
+
+[Full RF/Yamcs proof](files/version-demo-20261017-01-proof.json) ·
+[MCU consoles](files/version-demo-20261017-01-console.json) ·
+[Receiver-only soak](files/pipeline-v2-idle-result.json) ·
+[Build manifest](files/firmware-manifest.json).
+Raw IQ and the old flash backup remain in local artifacts.
 
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)

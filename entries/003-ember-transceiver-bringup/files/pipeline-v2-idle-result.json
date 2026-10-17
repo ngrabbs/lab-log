@@ -1,0 +1,22 @@
+{
+  "receiver_version": 2,
+  "utc": "2026-10-17T10:18:09.589637+00:00",
+  "frequency_hz": 436999999.9952314,
+  "channel": 0,
+  "antenna": "RX2",
+  "rate": 191999.99952627943,
+  "gain": 0.0,
+  "fpga_sha256": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99",
+  "raw_format": "little-endian complex64, 192000 samples/s",
+  "errors": [],
+  "pipeline_metrics": {
+    "chunk_queue_peak": 5,
+    "decode_queue_peak": 1,
+    "max_recv_gap_s": 0.0019289280025986955,
+    "max_storage_chunk_s": 0.2295042340119835
+  },
+  "samples": 34562048,
+  "packets": [],
+  "forwarded": 0,
+  "ended_utc": "2026-10-17T10:21:10.244770+00:00"
+}
