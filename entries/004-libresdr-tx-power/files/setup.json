@@ -1,0 +1,38 @@
+{
+  "measurement_date": "2026-10-18",
+  "source": {
+    "device": "LibreSDR, B210-compatible",
+    "uhd": "4.6.0.0+ds1-5.1ubuntu0.24.04.1",
+    "custom_fpga_sha256": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99",
+    "sample_rate_sps": 2000000,
+    "lo_hz": 434000000,
+    "complex_tone_offset_hz": 100000,
+    "complex_tone_amplitude": 0.1,
+    "software_channel": 0,
+    "uhd_antenna": "TX/RX",
+    "operator_confirmed_connector": "TXA",
+    "duration_seconds_per_run": 14
+  },
+  "analyzer": {
+    "model": "tinySA ULTRA",
+    "hardware": "V0.4.5.1.1",
+    "firmware": "tinySA4_v1.4-156-g4eb315d",
+    "internal_attenuation_db": 30,
+    "lna": "off",
+    "rbw_khz": 3,
+    "external_gain_correction_db": 0,
+    "scan_hz": [
+      434000000,
+      434200000
+    ],
+    "points": 201,
+    "calibration": "Existing offsets retained; no fresh calibration or independent accuracy check"
+  },
+  "path": "LibreSDR TXA -> existing cable/DC block -> tinySA RF INPUT; no external attenuation pads",
+  "dc_block": "Unmarked; user reports BECEN 2piece 2W SMA DC-Block DC to 6 GHz 50 Ohm listing; response not measured",
+  "derived_gain_change_db": 20.03125,
+  "inputs": [
+    "gain-20-result.json",
+    "gain-40-result.json"
+  ]
+}
