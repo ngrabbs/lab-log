@@ -1,0 +1,71 @@
+{
+  "utc_start": "2026-10-18T17:27:10.446817+00:00",
+  "path": "operator-confirmed LibreSDR TXA -> DC block -> tinySA RF INPUT; no external pad",
+  "sdrb": "remains halted",
+  "internal_attenuation_db": 30,
+  "rbw_khz": 3,
+  "external_gain_correction_db": 0,
+  "source_gain": 40,
+  "source_amplitude": 0.1,
+  "scans": [
+    {
+      "stage": "before",
+      "target_peak_hz_dbm": [
+        434095000,
+        -83.0625
+      ],
+      "full_span_peak_hz_dbm": [
+        434120000,
+        -81.5625
+      ],
+      "scan_seconds": 0.502579583786428
+    },
+    {
+      "stage": "active",
+      "target_peak_hz_dbm": [
+        434099000,
+        -42.53125
+      ],
+      "full_span_peak_hz_dbm": [
+        434099000,
+        -42.53125
+      ],
+      "scan_seconds": 0.501135709695518
+    },
+    {
+      "stage": "after",
+      "target_peak_hz_dbm": [
+        434098000,
+        -83.53125
+      ],
+      "full_span_peak_hz_dbm": [
+        434046000,
+        -78.53125
+      ],
+      "scan_seconds": 0.501609617844224
+    }
+  ],
+  "source_result": {
+    "tx_enabled": true,
+    "rx_errors": {},
+    "tx_events": {},
+    "samples": 28016640,
+    "timestamp_discontinuities": 0,
+    "timestamp_missing_samples": 0,
+    "actual": {
+      "rx_rate": 2000000.0,
+      "rx_freq": 437999999.99999917,
+      "rx_gain": 20.0,
+      "clock": 32000000.0,
+      "tx": {
+        "rate": 2000000.0,
+        "freq": 433999999.9999996,
+        "gain": 40.0,
+        "amplitude": 0.1,
+        "offset": 100000
+      }
+    },
+    "elapsed": 14.008767404593527
+  },
+  "status": "measurement-complete; not hardware qualification"
+}
