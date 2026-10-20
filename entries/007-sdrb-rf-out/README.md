@@ -46,8 +46,65 @@ Actual LCD capture during the gain-70 run. Fixed marker: **145.100 MHz, −75.0 
 ![tinySA LCD after the tone stopped](images/145mhz-gain70-off.png)
 Actual LCD capture after stopping; the same marker reads **−87.0 dBm**. Display: 10 dB/div, −40 dBm reference, 145.0–145.2 MHz, external correction still zero. The first 145 MHz run finished before screenshot capture was requested; these images belong to the gain-70 run only.
 
-These checks demonstrate tones through **driver-only Path B** at two frequencies. They do not establish maximum output, final-PA/doubler operation, full frequency response or endurance. Raw bench records are retained separately; only the two useful screen captures are included here.
+These checks demonstrate tones through **driver-only Path B** at two frequencies. They do not establish maximum output, final-PA/doubler operation, full frequency response or endurance. Raw bench records are retained separately; selected actual screen captures are included here.
 
-The temporary override is removed after testing and original dev.3 MPM hashes verified. Further SDRB checks will update this entry; no image build for Ray is planned now.
+## TX-A low-pass path
+
+After a cold boot, same J10 wiring and gain **70 dB**, amplitude **0.1**, eight-second tones. tinySA internal attenuation changed to **10 dB**; external pads remain **40 dB**. Ultra mode enabled above 800 MHz. Software remains the RAM-only `0c8e7f7` Path B override.
+
+| Channel / selected branch | Tone | Before | Tone on | After |
+|---|---:|---:|---:|---:|
+| 1 / TX1A, U19 | 438.1 MHz | −101.8 dBm | **−52.3 dBm** | −104.8 dBm |
+| 0 / TX2A, U23 | 438.1 MHz | −104.3 dBm | −101.8 dBm | −104.8 dBm |
+| 1 / TX1A, U19 | 900.1 MHz | −103.5 dBm | **−56.0 dBm** | −102.2 dBm |
+| 1 / TX1A, U19 | 1300.1 MHz | −100.7 dBm | **−64.8 dBm** | −105.7 dBm |
+| 1 / TX1A, U19 | 1600.1 MHz | −102.4 dBm | **−82.9 dBm** | −103.5 dBm |
+
+TX1 shows a tone at each point; its indicated output falls above 900 MHz. These are uncalibrated source-to-analyzer measurements, not isolated filter insertion loss. **TX2's expected tone was not detected**; no further TX2 frequency checks were run. Its digital/analog path remains unresolved despite no reported stream errors.
+
+![tinySA LCD with the TX1A 1600.1 MHz tone on](images/1600mhz-lowpass-on.png)
+Actual LCD capture, fixed marker **1600.100 MHz, −82.5 dBm**.
+
+![tinySA LCD after the TX1A 1600.1 MHz tone stopped](images/1600mhz-lowpass-off.png)
+After stopping, fixed marker **−108.4 dBm**. Screens use a separate completed sweep after each numerical scan; table values use the strongest bin within ±5 kHz. Actual on/off screens were retained for every completed check.
+
+One initial 900 MHz capture attempt stopped on a malformed tinySA text value outside the tone window. That attempt is retained separately; one repeat completed the numerical scan and screenshots. No invalid bin was substituted or used for a reported tone level.
+
+## TX-B high-pass path
+
+Same conducted setup, channel **1**, gain **70 dB**, amplitude **0.1** and eight-second tones. Temporary native MPM r9 and Python bindings built from `38ed43e2e5e1821fbd8011333648dc7a7185c972`; explicit `sdrb_tx_path=rf_out_b,sdrb_tx_filter=highpass`. TX1B selects U28; TX2B/U30 remains untested. Both banks also pass through common U32/U13 low-pass filters and the AmpPwr1 drivers.
+
+The rebuilt component first reproduced the low-pass 438.1 MHz tone at **−52.8 dBm**, about 0.5 dB below the earlier reading. For high-pass checks, tinySA uses **5 dB internal attenuation**, LNA off and Ultra mode; the external pads remain 40 dB.
+
+| Selected branch | Tone | Before | Tone on | After |
+|---|---:|---:|---:|---:|
+| TX1B / U28 | 2000.1 MHz | −110.9 dBm | **−88.6 dBm** | −107.9 dBm |
+| TX1B / U28 | 2500.1 MHz | −106.7 dBm | **−74.7 dBm** | −104.2 dBm |
+| TX1B / U28 | 3500.1 MHz | −105.1 dBm | −106.1 dBm | −104.9 dBm |
+| TX1B / U28 | 5800.1 MHz | −84.0 dBm | −85.5 dBm | −86.0 dBm |
+
+Tones were detected at **2000.1/2500.1 MHz**, but **not at 3500.1/5800.1 MHz**. Background was much higher at 5800 MHz. No stream or cleanup errors were reported. The absent tones do not establish filter rejection or a hardware fault; source/control behavior and the complete RF/measurement path remain unresolved.
+
+![tinySA LCD with the TX1B 2500.1 MHz tone on](images/2500mhz-highpass-on.png)
+Actual LCD capture at 5 dB internal attenuation: fixed marker **2500.100 MHz, −75.2 dBm**.
+
+![tinySA LCD after the TX1B 2500.1 MHz tone stopped](images/2500mhz-highpass-off.png)
+After stopping, fixed marker **−113.7 dBm**. Numerical peaks and fixed LCD markers come from adjacent sweeps.
+
+The initial 2000/2500 MHz checks used 10 dB internal attenuation and displayed “REDUCED LINEARITY.” Those records are retained; the table uses the repeated checks at 5 dB. The matching [tinySA firmware warning condition](https://github.com/erikkaashoek/tinySA/blob/4eb315d/plot.c#L1891) depends on frequency and configured attenuation.
+
+## Coverage / next check
+
+| Filter | Current evidence through J10 |
+|---|---|
+| U19, TX1A low-pass | Tone at four selected frequencies, 438.1–1600.1 MHz |
+| U23, TX2A low-pass | Attempted at 438.1 MHz; expected tone absent |
+| U28, TX1B high-pass | Tone at 2000.1/2500.1 MHz; absent at 3500.1/5800.1 MHz |
+| U30, TX2B high-pass | Not tested; TX2 baseline unresolved |
+| U32/U13, common low-pass | Included in the responding paths; individual response and stopband unqualified |
+
+Next: resolve TX2 selection and the missing upper-band tone before extending filter tests. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
+
+Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. SDRB is powered and idle, MPM active, no claim or failed service. No image build for Ray is planned.
 
 [Back to Lab Log](../../README.md)
