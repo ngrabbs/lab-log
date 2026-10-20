@@ -352,6 +352,20 @@ Actual LCD: **438.100 MHz, −59.2 dBm**.
 ![tinySA LCD after the timestamped forwarding failure stopped](images/438mhz-dev4-timestamped-failure-off.png)
 After stopping: **−109.7 dBm**. Numerical scans and LCD use adjacent sweeps. Target metadata and three screenshot hashes verified; all **22 installed/boot identities** unchanged. RAM code removed, both transmitters stopped, SDRB powered idle/unclaimed with zero failed services. This was one finite attempt, with the failed result retained; acceptance remains open.
 
+## Single instrumented forwarding check
+
+Private **0.1.0-dev.4-trace.1**, source `672e099278fa64ec5e9144acc1dc4e6f3b981846`; same J1/J10 wiring, reference, rate and gains as above. Boot matches all **24 expected file hashes**, with zero failed services and tracing disabled by the startup guard. One **6.001-second** forwarding flow runs with bounded RAM scheduler/IRQ/internal-packet tracing and one pre-start device-clock read.
+
+No reported TX underflow, RX overflow, decode or cleanup error. The reference reports no stream errors or timestamp discontinuities. Numerical before/on/after peaks after the **20 dB pad**: **−101.66 / −58.66 / −102.16 dBm**. No underflow recurred, so this does **not** establish its cause or close acceptance.
+
+![tinySA LCD during the trace.1 forwarding check](images/438mhz-trace1-forward-on.png)
+Actual LCD: **438.100 MHz, −58.7 dBm**.
+
+![tinySA LCD after the trace.1 forwarding check](images/438mhz-trace1-forward-off.png)
+After stopping: **−103.7 dBm**. Numerical readings and LCD are separate sweeps; the after capture was recovered separately. All three actual LCD/PNG pairs pass hash verification.
+
+The flow and trace-stop commands finish successfully; tracing is verified off before saving the raw trace to SDRB's SD card. The host's 35-second deadline expires during post-stop export. The trace ring overwrites **34,872 earlier events**; detailed coverage analysis is incomplete. Subsequent repeated m75q USB-hub disconnects interrupt offline analysis and prevent a final console check. Last verified state is powered idle/unclaimed, zero failed services, tracing/events off. Further RF checks stop here; MR !6 remains draft. Instrumentation changes the timing environment, and the raw trace stays private.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -364,6 +378,6 @@ After stopping: **−109.7 dBm**. Numerical scans and LCD use adjacent sweeps. T
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains integrated dev.4; the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.1; the preceding live dev.4 contents are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
