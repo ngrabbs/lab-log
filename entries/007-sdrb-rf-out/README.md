@@ -253,21 +253,30 @@ Actual LCD: **438.100 MHz, −58.8 dBm**.
 ![tinySA LCD after forwarding stopped following receive/save](images/438mhz-dev4-after-save-off.png)
 After stopping: **−103.3 dBm**. Numerical peaks and LCD use adjacent sweeps. Metadata/screen hashes verified, diagnostic RAM code removed and all 22 installed/boot identities unchanged. Both transmitters stopped; SDRB idle/unclaimed, zero failed services.
 
-## First forwarding after power cycle
+## First-forwarding and event-time checks
 
 Same dev.4 image, wiring and six-second forwarding settings. One clean halt/operator power cycle, then identity/control checks and the unchanged event-only RAM flow; no preceding RX/save, counter scans or scheduled starts. All 22 installed/boot hashes match. Active forwarding begins about **93 seconds after boot**.
 
 | 438.100 MHz, after 20 dB pad | Before | Forwarding on | After |
 |---|---:|---:|---:|
-| Numerical peak within ±5 kHz | −104.69 dBm | **−58.69 dBm** | −103.19 dBm |
+| First forwarding after power cycle | −104.69 dBm | **−58.69 dBm** | −103.19 dBm |
+| Event-time diagnostic, warm session | −101.69 dBm | **−58.69 dBm** | −102.19 dBm |
 
-**No reported RX/TX or cleanup errors** in 6.001 seconds. The initial console capture/newline probe received zero bytes; a later capture starts during Linux startup and reaches login, so this is not a complete power-on transcript. One clean first-forwarding run does not establish a fix for the earlier intermittent underflows; acceptance remains open.
+**Both checks report no RX/TX or cleanup errors** in 6.001 seconds each. Numerical values use the peak within ±5 kHz. For the power-cycle check, the initial console capture/newline probe received zero bytes; a later capture starts during Linux startup and reaches login, so this is not a complete power-on transcript. One clean first-forwarding run does not establish a fix for the earlier intermittent underflows; acceptance remains open.
 
 ![tinySA LCD during first forwarding after power cycle](images/438mhz-dev4-first-forward-on.png)
 Actual LCD: **438.100 MHz, −59.2 dBm**.
 
 ![tinySA LCD after first forwarding stopped](images/438mhz-dev4-first-forward-off.png)
 After stopping: **−104.2 dBm**. LCD and numerical results use adjacent sweeps. Metadata/screen hashes verified, diagnostic code removed, installed identities unchanged; both transmitters stopped, SDRB idle/unclaimed with zero failed services.
+
+The warm follow-up uses a RAM-only collector that retains existing device-event timestamps/UHD stream-channel numbers, plus one pre-start device-clock read (**1.42 ms**). Fifteen ARM GNU Radio/PMT replay cases pass. **No TX event occurred during RF**, so this run does not exercise event timestamp capture on hardware or establish a fix. No active polling, timed start or maintained image change. The diagnostic is retained privately for a future recurrence during normal work.
+
+![tinySA LCD during the event-time diagnostic](images/438mhz-dev4-event-time-on.png)
+Actual LCD: **438.100 MHz, −58.7 dBm**.
+
+![tinySA LCD after the event-time diagnostic stopped](images/438mhz-dev4-event-time-off.png)
+After stopping: **−106.7 dBm**. Numerical results and LCD use adjacent sweeps. Metadata/screen hashes and all 22 installed/boot identities verified; diagnostic code removed, both transmitters stopped, SDRB idle/unclaimed with zero failed services.
 
 ## Coverage and limits
 
