@@ -386,6 +386,24 @@ After stopping: **−101.1 dBm**. Numerical scans and LCD are separate sweeps; a
 
 The saved trace spans forwarding on both CPUs, with **zero overruns or dropped events**. No underflow occurred to correlate; instrumentation changes timing and this does not establish a fix. All **24 installed/boot identities** match afterward; SDRB is powered idle/unclaimed, tracing/events off, zero failed services. IQ and the checksum-verified raw trace remain on SD; metadata, analysis and screens are archived privately on the host. This was one workflow, with no additional RF repeats. MR !6 acceptance stays open.
 
+## Trace.2 forwarding failure
+
+Private **0.1.0-dev.4-trace.2**, source `b6cfe3452849f5df7ca2d86928ff969c6cfb26f1`. Same J1/J10 wiring, reference and forwarding settings above: **434.1 → 438.1 MHz**, 2.304 MS/s, 8000-byte frames, RX gain 40, TX gain 60, unity multiplier. A RAM adapter imports the installed app, adds the RF_Out device argument and bounded trace hooks; its native result/accounting code is unchanged.
+
+| Six-second check | Result |
+|---|---|
+| Before/on/after, after the 20 dB pad | **−104.13 / −59.13 / −102.13 dBm** |
+| Stream result | **Failed: one timestamped TX underflow**; no reported RX overflow, decode or cleanup error; reference healthy |
+| Shutdown accounting | Queued burst acknowledgement retained as `post_stop_drain`; drain completed |
+
+The underflow maps to **2.2 ms after flow-start return** (1.6 ms clock-read bracket; continuity assumed). The trace spans the run on both CPUs with zero overruns/drops; its 9,579 Linux TX completions return success, which does not prove FPGA delivery. This startup event does not explain the earlier mid-run failures or establish a fix. All 24 identities and final idle state pass; raw trace is checksum-verified on SD, summaries/screens archived privately. No repeat; acceptance remains open.
+
+![tinySA LCD during the trace.2 forwarding failure](images/438mhz-trace2-forward-failure-on.png)
+Actual LCD: **438.100 MHz, −58.6 dBm**.
+
+![tinySA LCD after trace.2 forwarding stopped](images/438mhz-trace2-forward-failure-off.png)
+After stopping: **−106.1 dBm**. Numerical readings and LCD use separate sweeps; all three actual LCD/PNG checksum pairs match.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -398,6 +416,6 @@ The saved trace spans forwarding on both CPUs, with **zero overruns or dropped e
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.1; the preceding live dev.4 contents are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.2; the preceding live trace.1 image and bench data are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
