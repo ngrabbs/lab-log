@@ -111,6 +111,22 @@ Actual LCD capture: fixed marker **438.100 MHz, −49.7 dBm**.
 ![tinySA LCD after the corrected TX2A tone stopped](images/438mhz-tx2-selector-off.png)
 After stopping: **−103.7 dBm** at the fixed marker. Table values use the numerical peak within ±5 kHz; LCD captures use adjacent completed sweeps.
 
+## 3.5 GHz both-sideband check
+
+Same wiring, tx-select.1 FPGA and temporary r9 high-pass override; channel 1 / TX1B, gain 70 dB, amplitude 0.1, 2.304 MS/s. One **12-second** tone, with tinySA scanning **3499.8–3500.2 MHz**, 201 points, 2 kHz spacing, 3 kHz RBW, internal attenuation 5 dB, Ultra on and LNA off.
+
+| Frequency window | Before | Tone on | After |
+|---|---:|---:|---:|
+| LO +100 kHz | −108.4 dBm | −107.4 dBm | −105.1 dBm |
+| LO −100 kHz | −107.1 dBm | −107.1 dBm | −107.4 dBm |
+
+**No tone detected on either side of the LO**; no reported stream or cleanup errors. This does not support a simple frequency inversion. Source inspection retains port B across the tested range and checks PLL lock, but does not establish RF output. A known-tone reference through the same measurement chain is next.
+
+![tinySA LCD during the 3.5 GHz TX1B check](images/3500mhz-both-sides-on.png)
+Actual LCD capture; fixed +100 kHz marker **−111.6 dBm**, a separate sweep from the numerical table.
+
+Two analyzer-only preflights exceeded the original capture-time guard and stopped **before transmission**. The completed check uses 12 seconds to accommodate the measured sweep and LCD-capture time. No calibration was changed. [tinySA documents reduced high-frequency sensitivity and harmonic-mode conversion-loss variation](https://tinysa.org/wiki/pmwiki.php?n=TinySA4.Ultra); absent tones alone do not identify filter rejection.
+
 ## Coverage / next check
 
 | Filter | Current evidence through J10 |
@@ -123,6 +139,6 @@ After stopping: **−103.7 dBm** at the fixed marker. Table values use the numer
 
 Next: investigate the missing TX1B upper-band tone before extending filter tests. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. SDRB is powered and idle, MPM active, no claim or failed service. No image build for Ray is planned.
+Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. SDRB was idle/unclaimed with zero failed services, then cleanly halted for the reference cable move. No image build for Ray is planned.
 
 [Back to Lab Log](../../README.md)
