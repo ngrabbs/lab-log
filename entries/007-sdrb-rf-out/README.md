@@ -366,6 +366,24 @@ After stopping: **−103.7 dBm**. Numerical readings and LCD are separate sweeps
 
 The flow and trace-stop commands finish successfully; tracing is off before saving the trace to SD. A host deadline during post-stop export and subsequent USB-hub disconnects interrupt initial analysis. Recovery later copies the complete **5,233,467-byte** compressed trace to the host with matching SHA-256. Retained events span the full flow on both CPUs; **34,872 initialization events** were overwritten. All **9,752 recorded Linux transmit completions** return success, which does not prove FPGA delivery. No underflow exists to correlate, and instrumentation changes timing. Recovery confirms all **24 file identities**; the final check finds SDRB powered idle/unclaimed, zero failed services, tracing/events off. No additional RF run; MR !6 remains draft. Raw evidence stays private.
 
+## Trace.1 receive/save → forwarding
+
+Same trace.1 image, J1/J10 wiring and settings. One **12-second RAM-first receive/save**, with a four-second LibreSDR tone, followed by one **6.001-second forwarding** run. Tracing covers forwarding only; export occurs after both radios stop.
+
+| Check | Result |
+|---|---|
+| RX RMS before/on/after | **−60.66 / −35.86 / −60.55 dBFS** |
+| Post-stop save | **221,204,704 bytes**; SHA-256 readback matches, complete timestamp coverage, no reported RX error |
+| Forwarding after 20 dB pad, before/on/after | **−106.12 / −59.13 / −105.13 dBm**; no reported RX/TX/decode/cleanup error; reference healthy |
+
+![tinySA LCD during trace.1 forwarding after receive/save](images/438mhz-trace1-workflow-on.png)
+Actual LCD: **438.100 MHz, −59.1 dBm**.
+
+![tinySA LCD after the trace.1 receive/save workflow](images/438mhz-trace1-workflow-off.png)
+After stopping: **−101.1 dBm**. Numerical scans and LCD are separate sweeps; all three actual LCD/PNG pairs pass hash verification.
+
+The saved trace spans forwarding on both CPUs, with **zero overruns or dropped events**. No underflow occurred to correlate; instrumentation changes timing and this does not establish a fix. All **24 installed/boot identities** match afterward; SDRB is powered idle/unclaimed, tracing/events off, zero failed services. IQ and the checksum-verified raw trace remain on SD; metadata, analysis and screens are archived privately on the host. This was one workflow, with no additional RF repeats. MR !6 acceptance stays open.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
