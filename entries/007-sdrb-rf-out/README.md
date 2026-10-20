@@ -113,7 +113,7 @@ After stopping: **−103.7 dBm** at the fixed marker. Table values use the numer
 
 ## 3.5 GHz both-sideband check
 
-Same wiring, tx-select.1 FPGA and temporary r9 high-pass override; channel 1 / TX1B, gain 70 dB, amplitude 0.1, 2.304 MS/s. One **12-second** tone, with tinySA scanning **3499.8–3500.2 MHz**, 201 points, 2 kHz spacing, 3 kHz RBW, internal attenuation 5 dB, Ultra on and LNA off.
+Same wiring with **40 dB external attenuation**, tx-select.1 FPGA and temporary r9 high-pass override; channel 1 / TX1B, gain 70 dB, amplitude 0.1, 2.304 MS/s. One **12-second** tone, with tinySA scanning **3499.8–3500.2 MHz**, 201 points, 2 kHz spacing, 3 kHz RBW, internal attenuation 5 dB, Ultra on and LNA off.
 
 | Frequency window | Before | Tone on | After |
 |---|---:|---:|---:|
@@ -140,18 +140,34 @@ The full 40 dB measurement chain **does detect a weak 3.5 GHz reference**. The o
 ![tinySA LCD during the LibreSDR reference](images/3500mhz-libresdr-reference-40db.png)
 Actual LCD capture. The visible peak lies left of the fixed **3500.100 MHz** marker; that marker reads **−113.1 dBm**. The table follows the observed numerical peak at **3500.094 MHz**, not the nominal marker. No fresh frequency or level calibration.
 
+## 3.5 GHz with a 20 dB pad
+
+Returned J10/RF_Out to the same DC block and tinySA, replacing the 30 +10 dB pads with **one 20 dB / 2 W pad**. Main + AmpPwr1: 9 V / 0.7 A limit; AmpPwr2 disconnected. Captured cold boot and verified boot/software hashes. Same tx-select.1 FPGA, temporary r9 high-pass override, channel 1 / TX1B, gain 70 dB, amplitude 0.1, 2.304 MS/s and **12-second** tone. Analyzer settings and both-sideband span unchanged.
+
+| Tone, measured after the 20 dB pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| 3500.100 MHz | −107.4 dBm | **−89.4 dBm** | −107.6 dBm |
+
+**The 3.5 GHz tone is detected**, with about 18 dB off/on contrast and no reported stream or cleanup errors. Adding the nominal extra 20 dB would put it near **−109.4 dBm**, below the earlier measurement floor, consistent with the previous non-detection. This closes the tone-detection gap at this point; output remains weak and full filter response is unqualified. The 5.8 GHz result remains unresolved.
+
+![tinySA LCD with the 3.5 GHz SDRB tone through a 20 dB pad](images/3500mhz-20db-on.png)
+Actual LCD capture: fixed **3500.100 MHz** marker **−89.1 dBm**.
+
+![tinySA LCD after the 3.5 GHz SDRB tone stopped](images/3500mhz-20db-off.png)
+After stopping: fixed marker **−111.6 dBm**. Numerical peaks and LCD readings use adjacent sweeps. Target metadata read back and SHA256 verified; original software restored and diagnostic RAM removed.
+
 ## Coverage / next check
 
 | Filter | Current evidence through J10 |
 |---|---|
 | U19, TX1A low-pass | Tone at four selected frequencies, 438.1–1600.1 MHz |
 | U23, TX2A low-pass | 438.1 MHz tone demonstrated with tx-select.1 FPGA; absent with original FPGA |
-| U28, TX1B high-pass | Tone at 2000.1/2500.1 MHz; absent at 3500.1/5800.1 MHz |
+| U28, TX1B high-pass | Tone at 2000.1/2500.1 MHz with 40 dB pads, and 3500.1 MHz with 20 dB; 5800.1 MHz unresolved |
 | U30, TX2B high-pass | Not tested |
 | U32/U13, common low-pass | Included in the responding paths; individual response and stopband unqualified |
 
-Next: investigate the missing TX1B upper-band tone before extending filter tests. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
+Next: one bounded 5.8 GHz TX1B check with the 20 dB pad before extending filter tests. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. SDRB was idle/unclaimed with zero failed services, then cleanly halted for the completed LibreSDR reference check. LibreSDR transmission has stopped; SDRB remains halted. No image build for Ray is planned.
+Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. LibreSDR transmission has stopped. After the 20 dB SDRB check, SDRB is powered and idle/unclaimed with zero failed services; the J10 measurement chain retains the single 20 dB pad. No image build for Ray is planned.
 
 [Back to Lab Log](../../README.md)
