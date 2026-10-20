@@ -215,6 +215,26 @@ Actual LCD: **438.100 MHz, −58.7 dBm**. A visible tone does not establish erro
 ![tinySA LCD after dev.4 forwarding stopped](images/438mhz-dev4-forward-off.png)
 After stopping: fixed marker **−109.2 dBm**. Table and LCD use adjacent sweeps. Clean forwarding acceptance remains open.
 
+## Forwarding start follow-up
+
+Same setup and six-second forwarding settings as above. A RAM-only prototype schedules RX 0.5 seconds ahead and TX 50 ms after RX; installed dev.4 stays unchanged.
+
+| Run | TX underflows reported | 438.100 MHz after 20 dB pad |
+|---|---:|---:|
+| Untimed control | **4 — failed** | −58.75 dBm |
+| Timed-start prototype | 0 | −58.75 dBm |
+| Return to untimed control | 0 | −58.75 dBm |
+
+The failed control's notifications arrived 0.173, 0.392, 0.396 and 2.399 seconds into the active phase. These are callback receipt times, not exact FPGA event times. No reported RX overflow or cleanup error. An initial timed observation is inconclusive: its reference source ended before the active capture; the timed run above used a fresh reference verified active through measurement.
+
+Both the timed prototype and the later untimed control were clean, so **timed start has not established an improvement**. Forwarding acceptance remains open. Next proposed check: one receive/save → forwarding sequence with page-fault and scheduling counters at phase boundaries.
+
+![tinySA LCD during the timed-start forwarding prototype](images/438mhz-dev4-timed-on.png)
+Actual LCD during the prototype: **438.100 MHz, −58.8 dBm**. Tone detection alone does not establish a fix.
+
+![tinySA LCD after the timed-start forwarding prototype stopped](images/438mhz-dev4-timed-off.png)
+After stopping: **−109.3 dBm**. LCD and numerical results use adjacent sweeps. Both transmitters stopped; diagnostic code removed, all 22 installed/boot identities unchanged, SDRB idle/unclaimed with zero failed services.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
