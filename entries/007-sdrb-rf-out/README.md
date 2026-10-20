@@ -330,6 +330,28 @@ The intermittent underflow **did not recur**. No device TX event occurred, so ha
 ![tinySA LCD during forwarding after the RF receive/save replay](images/438mhz-dev4-rx-replay-on.png)
 Actual LCD: **438.100 MHz, −59.1 dBm**. Target metadata and all twelve before/on/after screenshots match their hashes. All **22 installed/boot identities** remain unchanged; diagnostic code removed, both transmitters stopped, SDRB powered idle/unclaimed with zero failed services. The saved IQ and raw records remain private.
 
+## Forwarding failure with device timestamps
+
+Same powered dev.4 image (`ed4b273`), J1/J10 wiring, six-second forwarding and reference settings as the preceding replay. A RAM flow uses maintained reporting source `9c8c67c`, plus the explicit RF_Out argument and one pre-start device-clock read. No active polling or streaming-policy change; installed files unchanged. The concrete wrapper passes 21 ARM tests and four anchor checks before RF. An initial off-board wrapper scope failure was corrected and retained privately.
+
+**Failed: three TX underflows**, no reported RX overflow, metadata-decode or cleanup error. The reference has no reported stream errors or timestamp gaps. After the 20 dB pad, numerical before/on/after peaks are **−101.16 / −59.16 / −101.66 dBm**. A visible forwarded tone is not error-free operation.
+
+| Underflow | UHD device time (s) | Estimated seconds after flow start |
+|---|---:|---:|
+| 1 | 6.031214 | 0.347 |
+| 2 | 10.033699 | 4.350 |
+| 3 | 10.034777 | 4.351 |
+
+The one-shot clock-read bracket is **1.44 ms** wide; elapsed-time mapping assumes device-clock continuity and is not calibrated synchronization. All three device timestamps and UHD stream-channel **0** were retained. That local streamer index does not identify physical TX2: this run requests UHD channel **1 / TX1A**. Callback receipts arrive roughly **26–36 ms** after the mapped device events.
+
+Hardware event retention is now exercised. The later events mean this failure cannot be dismissed as startup-only; they do not establish a scheduler, RX-producer or transport cause. The current kernel lacks ftrace and scheduler statistics, so there is no host timing trace to correlate. No fix, new image acceptance or MR merge is claimed.
+
+![tinySA LCD during forwarding with timestamped TX underflows](images/438mhz-dev4-timestamped-failure-on.png)
+Actual LCD: **438.100 MHz, −59.2 dBm**.
+
+![tinySA LCD after the timestamped forwarding failure stopped](images/438mhz-dev4-timestamped-failure-off.png)
+After stopping: **−109.7 dBm**. Numerical scans and LCD use adjacent sweeps. Target metadata and three screenshot hashes verified; all **22 installed/boot identities** unchanged. RAM code removed, both transmitters stopped, SDRB powered idle/unclaimed with zero failed services. This was one finite attempt, with the failed result retained; acceptance remains open.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
