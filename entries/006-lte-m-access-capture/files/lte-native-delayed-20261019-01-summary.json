@@ -1,0 +1,132 @@
+{
+  "label": "lte-native-delayed-20261019-01",
+  "ready_seconds": 38.124211,
+  "test": "Fresh-session single EPS packet; native recording delayed 12 seconds after acceptance observed by coordinator",
+  "delivery": {
+    "modem_accepted": 1,
+    "unique_received": 1,
+    "yamcs_unique": 1,
+    "duplicate_datagrams": 0,
+    "unknown_attempts": 0
+  },
+  "native_delay_after_accept_observed_s": 12.025,
+  "native_recorder": {
+    "seconds_requested": 3.0,
+    "max_bytes": 268435456,
+    "events_allowlisted": [
+      "ENB_PHY_INPUT_SIGNAL",
+      "ENB_PHY_ULSCH_UE_ACK",
+      "ENB_PHY_ULSCH_UE_NACK",
+      "ENB_PHY_PUSCH_IQ",
+      "ENB_MAC_UE_UL_SCHEDULE",
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+    ],
+    "starts_radio": false,
+    "capture_active_observed": true,
+    "active_seconds": 3.010367,
+    "record_exit": 0,
+    "trace_bytes": 190520616,
+    "file_cap_reached": false,
+    "bounded_capture_complete": true,
+    "elapsed_seconds": 3.053788
+  },
+  "native_index_summary": {
+    "trace_bytes": 190520616,
+    "trace_sha256": "c4ede67ff49d92680ee417a6a8125f5107eb8a1eded2297c4fb70ccd0233c6a8",
+    "id_header_sha256": "22f0a7b3e1fb6ee99c06037eab67bdaa59b2da895c3541bd92cf28a74ecb915f",
+    "event_counts": {
+      "ENB_PHY_INPUT_SIGNAL": 3014,
+      "ENB_MAC_UE_UL_SCHEDULE": 151,
+      "ENB_PHY_PUSCH_IQ": 150,
+      "ENB_PHY_ULSCH_UE_ACK": 150
+    },
+    "matched_decode_count": 150
+  },
+  "connected_identity_decode_counts": {
+    "ACK": 150
+  },
+  "other_identity_decode_counts": {},
+  "registration_observations": [
+    {
+      "utc": "2026-10-19T20:25:54.950197+00:00",
+      "seconds_after_accept": 0.24,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 81456,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:25:59.937246+00:00",
+      "seconds_after_accept": 5.227,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 76455,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:26:04.929311+00:00",
+      "seconds_after_accept": 10.219,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 71455,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:26:09.920377+00:00",
+      "seconds_after_accept": 15.21,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 66457,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:26:14.979282+00:00",
+      "seconds_after_accept": 20.269,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 61456,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:26:20.054222+00:00",
+      "seconds_after_accept": 25.344,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 56455,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:26:25.087880+00:00",
+      "seconds_after_accept": 30.377,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 51455,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:26:30.089231+00:00",
+      "seconds_after_accept": 35.379,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 46458,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    }
+  ],
+  "registration_stable_for_35_seconds": true,
+  "rate_result_kbps": null,
+  "cleanup": {
+    "walter_off": true,
+    "outputs_restored": true,
+    "same_ihu_firmware_boot": true,
+    "cleanup_error": null
+  },
+  "limits": "Registration loss did not recur. This is a later working capture, not a failure-transition capture or reliability qualification. Single packet, no throughput result. Native observer changes runtime load; no causal diagnosis or fix claimed."
+}

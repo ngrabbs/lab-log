@@ -1,0 +1,237 @@
+{
+  "label": "lte-msg3-iq-20261019-02",
+  "iq_blocks": 15,
+  "iq_bytes": 6000000,
+  "iq_hashes_verified": true,
+  "receive_overruns": 0,
+  "adc_clipped_sample_fraction": 0.0,
+  "method": "2 MS/s signed IQ, DC mean removed per contiguous chunk, FFT-resampled to 1.92 MS/s. Detect >=0.5 ms regions above -30 dBFS in 100 us energy bins. Search +/-125 us around envelope start for normal-CP 128-sample lag over 14 symbols (CP 10/9 samples). Compare lags 112/144 at that start and a preceding search window. Correlation is normalized complex magnitude.",
+  "standard_reference": "https://www.etsi.org/deliver/etsi_ts/136200_136299/136211/16.06.00_60/ts_136211v160600p.pdf",
+  "limits": "Waveform consistency only; no transport-block/CRC decode, UE identity or shared SFN/subframe alignment. A fitted symbol boundary is not an eNodeB timing-error measurement. Triggered/capped IQ does not cover the entire session.",
+  "bursts": [
+    {
+      "energy_interval_sample_seconds": [
+        26.7723,
+        26.7733
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9763359606007705,
+      "lag112_correlation": 0.05912554504482901,
+      "lag144_correlation": 0.18751883718716117,
+      "cp_fitted_start_sample_seconds": 26.772302083333336,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.17634675298478691,
+        "lag112_correlation": 0.09453654640572787,
+        "lag144_correlation": 0.10025155452502021
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        26.8723,
+        26.8733
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9780793352773298,
+      "lag112_correlation": 0.02500944895858077,
+      "lag144_correlation": 0.07949356034552021,
+      "cp_fitted_start_sample_seconds": 26.872301041666667,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.18166204343245534,
+        "lag112_correlation": 0.09114697253095246,
+        "lag144_correlation": 0.08269812156660929
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        26.9723,
+        26.9733
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9856442022313991,
+      "lag112_correlation": 0.04538622358327891,
+      "lag144_correlation": 0.2216876829978544,
+      "cp_fitted_start_sample_seconds": 26.9723,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.2918787992216822,
+        "lag112_correlation": 0.0667325984154943,
+        "lag144_correlation": 0.10494649589078459
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        27.0723,
+        27.0733
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9827910069020571,
+      "lag112_correlation": 0.31958212355482896,
+      "lag144_correlation": 0.03983965026816962,
+      "cp_fitted_start_sample_seconds": 27.072298958333334,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.20062085415235878,
+        "lag112_correlation": 0.04471050295882062,
+        "lag144_correlation": 0.07096265241863112
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        27.1722,
+        27.1733
+      ],
+      "energy_interval_duration_ms": 1.1,
+      "normal_cp_correlation": 0.9628270121110784,
+      "lag112_correlation": 0.06479767499281261,
+      "lag144_correlation": 0.16797695110125202,
+      "cp_fitted_start_sample_seconds": 27.17229791666667,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.21923595159523568,
+        "lag112_correlation": 0.0878049287412791,
+        "lag144_correlation": 0.04524989832325695
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        37.7922,
+        37.7932
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9862213538599344,
+      "lag112_correlation": 0.18085848277752142,
+      "lag144_correlation": 0.20737359669726493,
+      "cp_fitted_start_sample_seconds": 37.792191145833335,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.2028115577039319,
+        "lag112_correlation": 0.2539677931806309,
+        "lag144_correlation": 0.0838197173587831
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        37.8922,
+        37.8932
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9850483879881871,
+      "lag112_correlation": 0.06642146680697474,
+      "lag144_correlation": 0.14571137687918365,
+      "cp_fitted_start_sample_seconds": 37.892190104166666,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.2202141335822141,
+        "lag112_correlation": 0.09619302300342344,
+        "lag144_correlation": 0.12421690973689128
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        37.9921,
+        37.9932
+      ],
+      "energy_interval_duration_ms": 1.1,
+      "normal_cp_correlation": 0.9875413875591087,
+      "lag112_correlation": 0.11001967906762757,
+      "lag144_correlation": 0.11386727438159103,
+      "cp_fitted_start_sample_seconds": 37.9921890625,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.19217756596086505,
+        "lag112_correlation": 0.07958893372980533,
+        "lag144_correlation": 0.05387655263907858
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        38.0921,
+        38.0932
+      ],
+      "energy_interval_duration_ms": 1.1,
+      "normal_cp_correlation": 0.9885293630563796,
+      "lag112_correlation": 0.1234909770723841,
+      "lag144_correlation": 0.025595520542451032,
+      "cp_fitted_start_sample_seconds": 38.09218802083333,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.22575520862657503,
+        "lag112_correlation": 0.026982590218939725,
+        "lag144_correlation": 0.20041526506445523
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        38.1921,
+        38.1932
+      ],
+      "energy_interval_duration_ms": 1.1,
+      "normal_cp_correlation": 0.986174940043457,
+      "lag112_correlation": 0.06488461109962274,
+      "lag144_correlation": 0.07307909198267278,
+      "cp_fitted_start_sample_seconds": 38.19218697916667,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.1711682049472038,
+        "lag112_correlation": 0.07071858723882801,
+        "lag144_correlation": 0.13169393283923042
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        48.9971,
+        48.9981
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9723307099764072,
+      "lag112_correlation": 0.07261340603092842,
+      "lag144_correlation": 0.06723906321123585,
+      "cp_fitted_start_sample_seconds": 48.997078645833334,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.28579286723615255,
+        "lag112_correlation": 0.055666255440963534,
+        "lag144_correlation": 0.1201749834654535
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        49.0171,
+        49.0181
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.9811726233162462,
+      "lag112_correlation": 0.1703356795844754,
+      "lag144_correlation": 0.1168569358796155,
+      "cp_fitted_start_sample_seconds": 49.01707864583333,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.19511709984774528,
+        "lag112_correlation": 0.08327137807010312,
+        "lag144_correlation": 0.028313046286818116
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        49.0371,
+        49.0381
+      ],
+      "energy_interval_duration_ms": 1.0,
+      "normal_cp_correlation": 0.968840364775945,
+      "lag112_correlation": 0.13333839123328836,
+      "lag144_correlation": 0.11153414571366695,
+      "cp_fitted_start_sample_seconds": 49.03707864583333,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.235658034444599,
+        "lag112_correlation": 0.030480938305357586,
+        "lag144_correlation": 0.1002527861956962
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        49.0574,
+        49.058
+      ],
+      "energy_interval_duration_ms": 0.6,
+      "normal_cp_correlation": 0.9442704544304882,
+      "lag112_correlation": 0.1669797181912426,
+      "lag144_correlation": 0.1655190184884425,
+      "cp_fitted_start_sample_seconds": 49.05750677083333,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.2231717542408465,
+        "lag112_correlation": 0.12138927905973643,
+        "lag144_correlation": 0.02804654112091333
+      }
+    }
+  ]
+}

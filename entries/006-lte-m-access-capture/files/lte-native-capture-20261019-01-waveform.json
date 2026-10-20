@@ -1,0 +1,2742 @@
+{
+  "label": "lte-native-capture-20261019-01",
+  "method": "Configured conditional DMRS fit, both slots, six RBs starting at 13; native input antenna 0, int16 I/Q, 15.36 MS/s, normal CP, cell 0, group hopping enabled, sequence hopping disabled, group assignment 0, common cyclic shift 2 and DCI cyclic shift 0. Remove +7.5 kHz UL offset, estimate residual CFO from prefix with 8-sample edge trims, allow +/-8-sample linear phase/delay. No payload decoder.",
+  "groups": [
+    4,
+    26
+  ],
+  "cyclic_shifts": [
+    4,
+    4
+  ],
+  "ack_input_frames_checked": 51,
+  "samples_per_frame": 15360,
+  "normal_prefix_coherence_range": [
+    0.7552984876943198,
+    0.9225465161923663
+  ],
+  "pilot_coherence_range": [
+    0.8403227093611213,
+    0.8879685775103018
+  ],
+  "pilot_coherence_median": 0.8613633618360023,
+  "control_coherence_median": {
+    "wrong_group": 0.12702770356118542,
+    "wrong_symbol": 0.16842729769354567,
+    "adjacent_unallocated_rbs": 0.1570396808125452
+  },
+  "control_coherence_max": {
+    "wrong_group": 0.14440635932578366,
+    "wrong_symbol": 0.25686269032909936,
+    "adjacent_unallocated_rbs": 0.268970333311866
+  },
+  "max_adc_clip_fraction": 0.0,
+  "synthetic_check": {
+    "known_cfo_hz": 123,
+    "known_delay_samples": 3,
+    "pass": true,
+    "result": {
+      "normal_prefix_coherence": 0.9999997726308644,
+      "residual_cfo_hz_after_7500_removal": 122.98293793743885,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9999999999045137,
+            "delay_samples": 3.0
+          },
+          "wrong_group": {
+            "coherence": 0.13252135753930247,
+            "delay_samples": -8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1618399215892189,
+            "delay_samples": 0.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10364374072910162,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9999999999054253,
+            "delay_samples": 3.0
+          },
+          "wrong_group": {
+            "coherence": 0.13091739121546134,
+            "delay_samples": 3.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.13332544501437532,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.04674334525292554,
+            "delay_samples": 8.0
+          }
+        }
+      ]
+    }
+  },
+  "frames": [
+    {
+      "normal_prefix_coherence": 0.8869038267878812,
+      "residual_cfo_hz_after_7500_removal": -71.3654518073409,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.85232243742021,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12463966396594899,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.14503885219045065,
+            "delay_samples": -1.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10989456778925887,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8546849568593948,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1005932155344714,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.15084572614385267,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.06755785132650215,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 832,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "c1e5ae869aec4b4025441e402885c92e34cab3a05acc87a477ac246e0859b358"
+    },
+    {
+      "normal_prefix_coherence": 0.9087552895320852,
+      "residual_cfo_hz_after_7500_removal": 0.1453031718801502,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.866476449143845,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1310404710532243,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1641907362994701,
+            "delay_samples": -6.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18801275122796504,
+            "delay_samples": -6.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8588437852971198,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11931638253083814,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.19881985976204025,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14045584118546037,
+            "delay_samples": 3.25
+          }
+        }
+      ],
+      "frame": 834,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "e0aa1e493abedeb0fe3acbd288cc3ce51bec7be2da8af5de936819e8f2f777fc"
+    },
+    {
+      "normal_prefix_coherence": 0.9037599587918552,
+      "residual_cfo_hz_after_7500_removal": -2.6266474076787905,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8750054251854588,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.14071865753983429,
+            "delay_samples": 0.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.14283369518525127,
+            "delay_samples": -6.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.13619105328242415,
+            "delay_samples": 6.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8761231498712775,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.10735007890179252,
+            "delay_samples": -3.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1989338098124513,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.20144789671644053,
+            "delay_samples": 3.25
+          }
+        }
+      ],
+      "frame": 836,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "9167ec34ceee5c62b1d60ac5c4218fcb9e5371a9ea4044f23f0b754d990f10bc"
+    },
+    {
+      "normal_prefix_coherence": 0.8976327859779729,
+      "residual_cfo_hz_after_7500_removal": 10.68395290534759,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8613284039964291,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13257448375265996,
+            "delay_samples": 1.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.15511050051879746,
+            "delay_samples": -5.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14598459931654356,
+            "delay_samples": -1.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8621086376223631,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11479565809132686,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.20403582603055082,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15374088184666143,
+            "delay_samples": 3.75
+          }
+        }
+      ],
+      "frame": 838,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "cb5e47e647f2c5ec2abe6cbacb7f762269dc90ea2036bde7a32dc6966048d12f"
+    },
+    {
+      "normal_prefix_coherence": 0.8939064791964824,
+      "residual_cfo_hz_after_7500_removal": -32.918729858423504,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8688423172565671,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13926882620501088,
+            "delay_samples": 1.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.1473237853701145,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.22365064432540394,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8729439929786504,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11806641124575283,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.09008163378459187,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.2553210052819923,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 840,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "9ac21165893df52c51f0099054eba1b0af5bd5d5ee2fc6b0da2621fdf0c554eb"
+    },
+    {
+      "normal_prefix_coherence": 0.9009655390874785,
+      "residual_cfo_hz_after_7500_removal": -47.24165443112681,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8516740742894018,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13137604228589686,
+            "delay_samples": 1.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.1611931539374584,
+            "delay_samples": -6.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.17832641104216757,
+            "delay_samples": -5.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8571596313493937,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11606178653912838,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.19349484612219942,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15286054778900277,
+            "delay_samples": 1.25
+          }
+        }
+      ],
+      "frame": 842,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "deabca3e447ec233c2a678e7db4aba22c04e1c0124be3b5b11322b2c67ecc9ad"
+    },
+    {
+      "normal_prefix_coherence": 0.9054783356352629,
+      "residual_cfo_hz_after_7500_removal": -58.74466423131071,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8731846834603795,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1310778221414766,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.1498603429634068,
+            "delay_samples": 7.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.21201026899625436,
+            "delay_samples": -0.5
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8708919739859042,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12312714281584981,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.19811652267830454,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.17810877105444756,
+            "delay_samples": 0.25
+          }
+        }
+      ],
+      "frame": 844,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "faec0f4c572435ec8c05c70d6be1f4800c85db3800084e03aa715417d571dd2d"
+    },
+    {
+      "normal_prefix_coherence": 0.8982944718871247,
+      "residual_cfo_hz_after_7500_removal": -54.145863300156364,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8466976459627779,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12440834342451379,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.14689518321871203,
+            "delay_samples": -6.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15448140394950707,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8519781971528375,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11523266685488305,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.19606103065757177,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.20671640527699342,
+            "delay_samples": -5.0
+          }
+        }
+      ],
+      "frame": 846,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "f39999c99dc5f81630e77b25d8db40cc95b1e277f54b6a645c4fc8a9d65ce381"
+    },
+    {
+      "normal_prefix_coherence": 0.8985302990528704,
+      "residual_cfo_hz_after_7500_removal": -52.16091748327919,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8639620770057014,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13051314130621627,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.14737244246427067,
+            "delay_samples": -6.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14133656420535234,
+            "delay_samples": 5.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8665655106846983,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1064002872770736,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.18880055133080817,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.11201355996920409,
+            "delay_samples": 5.0
+          }
+        }
+      ],
+      "frame": 848,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "bc86c093e5d487a1fc1e046e0970003b72c4eb49597d1b48a8ce85925e91937b"
+    },
+    {
+      "normal_prefix_coherence": 0.9040805288079132,
+      "residual_cfo_hz_after_7500_removal": -49.97301984925701,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8786648643856338,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13362313643702364,
+            "delay_samples": 1.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.15872587635675234,
+            "delay_samples": -7.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.04245860592030608,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8789742293180681,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12372912248996833,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.21056010214471402,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18716090466699323,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 850,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "21eb605b033cc8ea4a8b91b2b74ce593bf55e3c9ac93948d7a5700c1155b06f2"
+    },
+    {
+      "normal_prefix_coherence": 0.9012770890019765,
+      "residual_cfo_hz_after_7500_removal": -29.638452828148132,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8561861541371485,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13232024397659392,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.16073171414523912,
+            "delay_samples": -6.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14744077128115488,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.856527432271277,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12308185591507702,
+            "delay_samples": -3.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.20199198600920096,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.21618091222654282,
+            "delay_samples": 2.5
+          }
+        }
+      ],
+      "frame": 852,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "3e088268502ce991e2b581f6e18b51abd977d36eed1a4dad77aa88b1d6288566"
+    },
+    {
+      "normal_prefix_coherence": 0.9076889608882192,
+      "residual_cfo_hz_after_7500_removal": -28.08000379621037,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8697077351450517,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13978539348669283,
+            "delay_samples": 0.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.15047652884122636,
+            "delay_samples": -6.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1869085063896308,
+            "delay_samples": -6.5
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8693076903537067,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12029197781331195,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.18518201677315949,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15189425862554623,
+            "delay_samples": 2.5
+          }
+        }
+      ],
+      "frame": 854,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "ce3f2904931ae39f75c54e2885835aed3959c7044dfac724c3e1915396dc244a"
+    },
+    {
+      "normal_prefix_coherence": 0.9037652016018479,
+      "residual_cfo_hz_after_7500_removal": -35.74321499962188,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8558096409375244,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12796226898003335,
+            "delay_samples": 1.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.15927609384268013,
+            "delay_samples": -6.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.13335413029661916,
+            "delay_samples": 2.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8521337703147291,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11044467651238843,
+            "delay_samples": -1.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.19854151679244264,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.268970333311866,
+            "delay_samples": -5.75
+          }
+        }
+      ],
+      "frame": 856,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "159c806052fb91115bcffcd8eaa5ac661e068a6e42d0ff29a6e8980741b03ed4"
+    },
+    {
+      "normal_prefix_coherence": 0.8995881164020184,
+      "residual_cfo_hz_after_7500_removal": -22.852116546911002,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8681338711969188,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13594788218586307,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.15829980163391819,
+            "delay_samples": -6.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10069437990896214,
+            "delay_samples": 4.5
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8645720873536613,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.10902752130427029,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1963400292270476,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1413236180526446,
+            "delay_samples": 2.75
+          }
+        }
+      ],
+      "frame": 858,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "0b73ac987ee147bd302c30ca38ca68df5a5108cd4d16226e376f3bce680e240f"
+    },
+    {
+      "normal_prefix_coherence": 0.9046270050705371,
+      "residual_cfo_hz_after_7500_removal": -26.940351283342835,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8434632476828748,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1368078462490349,
+            "delay_samples": 2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.16220967096493374,
+            "delay_samples": -5.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.16871509107057103,
+            "delay_samples": -4.75
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8440311922206625,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11698280335729172,
+            "delay_samples": -1.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.20977038552085048,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.24827336013066983,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 860,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "1190f2f20e46d7971fae8bd59cae495ada9c5e9235b7943e121a98d492df036d"
+    },
+    {
+      "normal_prefix_coherence": 0.901551891205635,
+      "residual_cfo_hz_after_7500_removal": 10.015428608373348,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8605494712996196,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13461316527745046,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.1597615843814878,
+            "delay_samples": -7.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14943247295747936,
+            "delay_samples": -6.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8574032964873437,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1160238415128407,
+            "delay_samples": -1.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.1905935093072133,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.19445789679273928,
+            "delay_samples": -6.75
+          }
+        }
+      ],
+      "frame": 862,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "4f8bcab5b58600ba8fd03a6059e5ebac120cb87ba569f7b71e9029b86feaefce"
+    },
+    {
+      "normal_prefix_coherence": 0.9063327433322116,
+      "residual_cfo_hz_after_7500_removal": -24.205675013888452,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8778896043822543,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1327614786432976,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.15531244404750963,
+            "delay_samples": -6.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15723730204475803,
+            "delay_samples": -7.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.871726935495988,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11003602909825058,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.20118751408183563,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.2528941813927132,
+            "delay_samples": 0.0
+          }
+        }
+      ],
+      "frame": 864,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "238dbe4815e158ba90329d30008bb039ac5968fabebc4abdd199479e62d60dab"
+    },
+    {
+      "normal_prefix_coherence": 0.9080891128225044,
+      "residual_cfo_hz_after_7500_removal": -28.37447251350281,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8828684219107878,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13081923315916522,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1658166089890397,
+            "delay_samples": -6.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1818356759749452,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8879685775103018,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12675996557440994,
+            "delay_samples": -3.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.20216495364524473,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.12656269048188512,
+            "delay_samples": 1.5
+          }
+        }
+      ],
+      "frame": 866,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "fda49f96731470ac3f05e15ff6463d506e3dfdb9e967d485b3b1c643fb2621a1"
+    },
+    {
+      "normal_prefix_coherence": 0.9043822070417651,
+      "residual_cfo_hz_after_7500_removal": 0.7496373315028827,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.861556149802031,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13244359567340538,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.18653834226643473,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.2016242940034753,
+            "delay_samples": -2.5
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8652369529748043,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11781888451208537,
+            "delay_samples": -2.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.19370965808274046,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1276563856010753,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 868,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "c8944d54feab6de610e3a86c3c0f1ed46d07f9c96f27c62e512b03d55a0b2fc5"
+    },
+    {
+      "normal_prefix_coherence": 0.9019083193942414,
+      "residual_cfo_hz_after_7500_removal": -46.78846495898919,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8814988029969427,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12692469026106,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.19241157874682804,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14741019166479585,
+            "delay_samples": -5.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8789155543158239,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11574801379314874,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.14493222714599355,
+            "delay_samples": 1.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.09244948426433162,
+            "delay_samples": -1.5
+          }
+        }
+      ],
+      "frame": 870,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "44f98269ca5ad42514ee5ae0c298df6b40d1fc5fb088fd0d750cc581731cf7ac"
+    },
+    {
+      "normal_prefix_coherence": 0.9000659555187215,
+      "residual_cfo_hz_after_7500_removal": -8.970976604787857,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8587158536925984,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13406555689216665,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.06294488128920687,
+            "delay_samples": -5.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.25662315678574804,
+            "delay_samples": -0.75
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8676209147354452,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12725861983310421,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.22127580168643615,
+            "delay_samples": -8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18423705656466766,
+            "delay_samples": -6.5
+          }
+        }
+      ],
+      "frame": 872,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "5b5ad4767984836a6313d207ec61184fdfe5d7fef429de98c125e29498736010"
+    },
+    {
+      "normal_prefix_coherence": 0.894865981490034,
+      "residual_cfo_hz_after_7500_removal": 39.12411380372611,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.879218041913037,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13597571005170356,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.19056369666980952,
+            "delay_samples": 7.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14606145456199243,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8713338729051131,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11691949608804265,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1274132016384017,
+            "delay_samples": 0.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.21689572288102707,
+            "delay_samples": 3.75
+          }
+        }
+      ],
+      "frame": 874,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "9e21cea17f792d7dffa3768bb1d143859dc98139ed5f24afc4a0a01d70f5e34a"
+    },
+    {
+      "normal_prefix_coherence": 0.9068831045911834,
+      "residual_cfo_hz_after_7500_removal": -10.499718731514891,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8530492826238304,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13545112600767562,
+            "delay_samples": 1.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.15885946327569894,
+            "delay_samples": 7.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.16270511966485382,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8543676455081478,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11985354950934772,
+            "delay_samples": -2.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.20219711485552203,
+            "delay_samples": 3.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.17295485548107215,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 876,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "985198c0c9da308038f7f67c3d62d9764f5d1d2444f3a235cab49ddc0d932d32"
+    },
+    {
+      "normal_prefix_coherence": 0.9108427273939341,
+      "residual_cfo_hz_after_7500_removal": -21.96785287668855,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8670221094715836,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12713071686131086,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.23503073601408153,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1588339262665662,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.868761949147936,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1138281630947671,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.0634418739462824,
+            "delay_samples": 5.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18604178214098352,
+            "delay_samples": 0.5
+          }
+        }
+      ],
+      "frame": 878,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "7c5308a934dc8a1b86469ba32a5d3f1bfc131c6a0d84946cfda19affc486e7d5"
+    },
+    {
+      "normal_prefix_coherence": 0.9071966408139992,
+      "residual_cfo_hz_after_7500_removal": -25.689989694278324,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8522017676969942,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.14198376445372585,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.22191006728480553,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.2305597777717288,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8509573928528743,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11858103250858966,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.05379884477009351,
+            "delay_samples": 5.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.12452321702365189,
+            "delay_samples": -3.25
+          }
+        }
+      ],
+      "frame": 880,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "c28bab3d82d0884a649e56581788197cc524a4e4b2fcddd8f74aad3419f70911"
+    },
+    {
+      "normal_prefix_coherence": 0.90176943585706,
+      "residual_cfo_hz_after_7500_removal": -18.587257200440263,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8613983196755755,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.14025104070726488,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.22798286668114168,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.23112009090667052,
+            "delay_samples": -1.5
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8660228594895409,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12743499877640768,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.05763377267242409,
+            "delay_samples": 4.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1628657524234992,
+            "delay_samples": -3.5
+          }
+        }
+      ],
+      "frame": 882,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "87f6f215654abc2a970f0d4001aa4a056351cfa4df7dd6234c5f15b54face629"
+    },
+    {
+      "normal_prefix_coherence": 0.904129066656827,
+      "residual_cfo_hz_after_7500_removal": 7.9651238040439205,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8776281419748041,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13363610574183232,
+            "delay_samples": 0.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.2290565510505801,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.07202880812076055,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8764519993612552,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11770621857942758,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.051806897924806465,
+            "delay_samples": 4.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.12613687695189454,
+            "delay_samples": 2.0
+          }
+        }
+      ],
+      "frame": 884,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "f829c7d2b01d98f9caea69743e434b67a297baa45b85566e9b852d7704259783"
+    },
+    {
+      "normal_prefix_coherence": 0.8986852541134738,
+      "residual_cfo_hz_after_7500_removal": -26.212346108370795,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8586585106345271,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13937828908524408,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.21954753212861355,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.0988033943020995,
+            "delay_samples": 3.75
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8595623579216196,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.10590673337119424,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.05494586417739392,
+            "delay_samples": -3.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.13494114518545125,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 886,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "4dcc6bbe59fcd6b76d2ea188567cb68555a52d159a8d7861ca3e23d6c63f1d98"
+    },
+    {
+      "normal_prefix_coherence": 0.9060117038154696,
+      "residual_cfo_hz_after_7500_removal": 25.96011647841739,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8718096265433256,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12723345990418175,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.22264021710194198,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.16275984404308477,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8655732982606211,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12556095591913657,
+            "delay_samples": -2.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.052056505940659505,
+            "delay_samples": 4.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1464909293009072,
+            "delay_samples": -4.75
+          }
+        }
+      ],
+      "frame": 888,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "b3e598635077cfc38bcb9121fe646d4a4b61de2d776b36ed7f27c322ba3af6af"
+    },
+    {
+      "normal_prefix_coherence": 0.8968636928769367,
+      "residual_cfo_hz_after_7500_removal": 33.37578886882539,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8488364289556183,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13521192812890312,
+            "delay_samples": 0.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.1765100118151892,
+            "delay_samples": -1.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.11339354188687362,
+            "delay_samples": 2.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8600979590847725,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11208956553092186,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.25686269032909936,
+            "delay_samples": -7.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.192505446595828,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 890,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "2a222e7d0e3594bc4d769dfcf73a7eda8b3aeb72a6ffe33a97578048d27b6846"
+    },
+    {
+      "normal_prefix_coherence": 0.9036255737286392,
+      "residual_cfo_hz_after_7500_removal": 19.39063684049939,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8665831758171268,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13778363561062576,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.18190796664669878,
+            "delay_samples": -5.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.08028398720246678,
+            "delay_samples": -4.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8603711099186013,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12032566709707782,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.15925722462826136,
+            "delay_samples": -3.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.13571541860425748,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 892,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "bc9f8b19fd5e91d38213d17907945455fe0b4f01743658436012892d816d87c4"
+    },
+    {
+      "normal_prefix_coherence": 0.9074243262636325,
+      "residual_cfo_hz_after_7500_removal": 59.88978399203171,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8480287928923573,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13530461342506303,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.18966711782120277,
+            "delay_samples": -5.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1344434446013833,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8517102936665769,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11097835550462422,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.1680783589547221,
+            "delay_samples": -3.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10431955961637256,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 894,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "e38dfce9efc6c1b461d71a10be16ac7339fc95138648badbb825d360e6ce705b"
+    },
+    {
+      "normal_prefix_coherence": 0.7552984876943198,
+      "residual_cfo_hz_after_7500_removal": -34.81073454970302,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8542142608466392,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1294546127921082,
+            "delay_samples": -0.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.1800746676456515,
+            "delay_samples": -5.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.17303329443169677,
+            "delay_samples": -7.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8644156094302626,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11985279256380221,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.15322408718307265,
+            "delay_samples": -4.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.12113461228302459,
+            "delay_samples": 2.0
+          }
+        }
+      ],
+      "frame": 896,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "674d31af87d218e7bc72c90d0f79a3f85d8929d2763858ad91999efddf2b8cd0"
+    },
+    {
+      "normal_prefix_coherence": 0.9187714579218926,
+      "residual_cfo_hz_after_7500_removal": 27.869331717149944,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.869754165274366,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13875786027282028,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.1720810608092713,
+            "delay_samples": -6.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18204815797421214,
+            "delay_samples": -3.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.868317753089091,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1226507532165573,
+            "delay_samples": -1.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.15761708615103473,
+            "delay_samples": -3.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10636342667232279,
+            "delay_samples": -1.75
+          }
+        }
+      ],
+      "frame": 898,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "4783883ada622f564d6e0c41427aab6474eb2cf1b25b52cda9cf039a589ace61"
+    },
+    {
+      "normal_prefix_coherence": 0.9193608146108138,
+      "residual_cfo_hz_after_7500_removal": 55.967250612090176,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8531565952241159,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1337043986755853,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.16427335736968585,
+            "delay_samples": -5.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.21780239601835066,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8563855390434375,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11690276811179272,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1655957220411092,
+            "delay_samples": -3.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15768235525469917,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 900,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "7075d52302c42bdb390d9fffceb7f987a23f328db0f74cbf7371ca1b0e391362"
+    },
+    {
+      "normal_prefix_coherence": 0.9200165582192387,
+      "residual_cfo_hz_after_7500_removal": 1.4023624068269933,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8703618000768798,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1393082298549478,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.18039185289571893,
+            "delay_samples": -6.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.08561448460989161,
+            "delay_samples": 2.75
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8684927768888148,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11621330066075652,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.15056064665716454,
+            "delay_samples": -3.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18083437667193814,
+            "delay_samples": 2.25
+          }
+        }
+      ],
+      "frame": 902,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "9090d9044aa530b25c32a8d262eb277422fb47e761e5b20304460deed62c082d"
+    },
+    {
+      "normal_prefix_coherence": 0.9204545414491072,
+      "residual_cfo_hz_after_7500_removal": 11.79140880318406,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.854535620710162,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13361478875000457,
+            "delay_samples": 1.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.18494965517984657,
+            "delay_samples": -5.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.16955802740277948,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8477384838378969,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12133303254983091,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.15592592268676655,
+            "delay_samples": -3.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.23210393218954495,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 904,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "0d8fb050821eb88e33c4867645e24897aaee97bb221c062495178cb1ef23beab"
+    },
+    {
+      "normal_prefix_coherence": 0.9178559358021994,
+      "residual_cfo_hz_after_7500_removal": -33.301663631280746,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8622195360956796,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13593335638906415,
+            "delay_samples": 1.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.17400805413135936,
+            "delay_samples": -6.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.06045410071589076,
+            "delay_samples": 7.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8597700337684188,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12564802095689132,
+            "delay_samples": -1.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.16185958543531367,
+            "delay_samples": -3.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.12327653756595677,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 906,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "63dad13c269ce48f3f94a3d17f68b9e067473c850c9a458f53a4be69269ab4c7"
+    },
+    {
+      "normal_prefix_coherence": 0.9156131250719475,
+      "residual_cfo_hz_after_7500_removal": -0.5990154829117981,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8795503042673846,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13725176156426294,
+            "delay_samples": 2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.16569476660190055,
+            "delay_samples": -5.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18789146005878649,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.874306221690285,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1169452560910932,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.16395929302461307,
+            "delay_samples": -3.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15215939250085492,
+            "delay_samples": -5.25
+          }
+        }
+      ],
+      "frame": 908,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "ffa1834f716313bcd2d227340c3a1ef70fa8a793499deeed80f8970d9cde0ed8"
+    },
+    {
+      "normal_prefix_coherence": 0.9225465161923663,
+      "residual_cfo_hz_after_7500_removal": 46.366899775123315,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8569872791744121,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13759129019227254,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.17340516871824424,
+            "delay_samples": -5.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.18458521703362785,
+            "delay_samples": -0.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8548640210010636,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12256130762257726,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.15432570590172742,
+            "delay_samples": -3.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.08658303397594064,
+            "delay_samples": 3.0
+          }
+        }
+      ],
+      "frame": 910,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "a07c91696745d54d10c698f9f9ab31c7615441590e880d11794a739b212d816e"
+    },
+    {
+      "normal_prefix_coherence": 0.9161772388461188,
+      "residual_cfo_hz_after_7500_removal": 2.0760740459000346,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8726923371810948,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12310827977736212,
+            "delay_samples": 0.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.18716328100400903,
+            "delay_samples": -5.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.149608097811434,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8694894067564852,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12787221285788508,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.15570983998345225,
+            "delay_samples": -3.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1702925726662219,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 912,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "a1c8473e9d3744e1793a095d07dbf4c531140cd3025d6bcabf48a592674024dc"
+    },
+    {
+      "normal_prefix_coherence": 0.917899077557556,
+      "residual_cfo_hz_after_7500_removal": 8.002569671408972,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.856061646695104,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.14049844859230592,
+            "delay_samples": 1.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.184305039291301,
+            "delay_samples": -5.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.235163173009446,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8512847771099714,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12177779151454768,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.1583192525783124,
+            "delay_samples": -3.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10237852322793667,
+            "delay_samples": -0.75
+          }
+        }
+      ],
+      "frame": 914,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "1905ed90737d0d868e3285f8648c12180ccfad6cf6c2c0b12fec060d316d7cb5"
+    },
+    {
+      "normal_prefix_coherence": 0.9003757433935559,
+      "residual_cfo_hz_after_7500_removal": -24.708674785797054,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8574566914519048,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12822923024672028,
+            "delay_samples": 0.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.18566970209589112,
+            "delay_samples": -5.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.20527504484296216,
+            "delay_samples": 5.5
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8621069071454346,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13613221778656406,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.1702060624411847,
+            "delay_samples": -3.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.2240752886005888,
+            "delay_samples": -4.25
+          }
+        }
+      ],
+      "frame": 916,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "03e165d22d96daaa16dd6f09f09078edb30bc2141b494f82b4a25ba6337012ef"
+    },
+    {
+      "normal_prefix_coherence": 0.9199581049460147,
+      "residual_cfo_hz_after_7500_removal": 2.936141038278455,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8461484614119343,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1400339767725943,
+            "delay_samples": 8.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.18345857187595838,
+            "delay_samples": -5.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.13478655813958113,
+            "delay_samples": -2.5
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8465446878176391,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12640765094453724,
+            "delay_samples": -2.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.16359456916907392,
+            "delay_samples": -2.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1568420595803324,
+            "delay_samples": 1.0
+          }
+        }
+      ],
+      "frame": 918,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "8417f4298f27bd10bad20cc6719897ca0d7d946222cffdd7eb684a64a2be5514"
+    },
+    {
+      "normal_prefix_coherence": 0.9133922786939306,
+      "residual_cfo_hz_after_7500_removal": -13.081758162766409,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8576435963650767,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1367770288904271,
+            "delay_samples": 1.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.18200502590921439,
+            "delay_samples": -5.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.12690325704993863,
+            "delay_samples": 0.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8556659692005918,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12368053618528593,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.15445210735062956,
+            "delay_samples": -4.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.17622036019921217,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 920,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "0d009b22f24035aeae556c316460eb4024ff0573cbb13a4b40502cde8b6f295e"
+    },
+    {
+      "normal_prefix_coherence": 0.9164937422326497,
+      "residual_cfo_hz_after_7500_removal": -23.910152736545392,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8702888598495951,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.14440635932578366,
+            "delay_samples": 1.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.18597440789419536,
+            "delay_samples": -5.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1516602446513429,
+            "delay_samples": 6.75
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8749860798656787,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11484092821713203,
+            "delay_samples": -3.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.14864979122774796,
+            "delay_samples": -3.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.14972775579870093,
+            "delay_samples": 5.25
+          }
+        }
+      ],
+      "frame": 922,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "0127b95a8a2cd2477ec585bfe756ba6ad63a91017673f75321c96fcf4bc4b989"
+    },
+    {
+      "normal_prefix_coherence": 0.9130578492214743,
+      "residual_cfo_hz_after_7500_removal": -15.324234915149221,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8561970877427658,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.14094041390657738,
+            "delay_samples": 1.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.18898636127143806,
+            "delay_samples": -5.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.19409721758413823,
+            "delay_samples": 7.75
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8577407259639095,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12843293194144656,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.16877623643236925,
+            "delay_samples": -3.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.2670488313546112,
+            "delay_samples": 0.5
+          }
+        }
+      ],
+      "frame": 924,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "9b4576997a3039b68fe117fdf23aa322594a35b64b9db0b74911e4deaa695edc"
+    },
+    {
+      "normal_prefix_coherence": 0.9174953666735501,
+      "residual_cfo_hz_after_7500_removal": 15.762737214034225,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.866800988206283,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13648398648784407,
+            "delay_samples": 1.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.19607563360566052,
+            "delay_samples": -5.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10806705803404335,
+            "delay_samples": -4.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8675286691047662,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11820050518058123,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.15739961712896552,
+            "delay_samples": -3.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.13818485485534304,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 926,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "242b0c214aeeb799ce3dbf3921f7106489a27392199cf68205b0c5e1a57aa5d6"
+    },
+    {
+      "normal_prefix_coherence": 0.9156812493564844,
+      "residual_cfo_hz_after_7500_removal": 13.524245728609113,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8474313358114575,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.1253760187979774,
+            "delay_samples": 0.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.17763727300154977,
+            "delay_samples": -5.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.15970115937867527,
+            "delay_samples": 8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8427208690065888,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.12556109240733526,
+            "delay_samples": -2.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.16062038966606193,
+            "delay_samples": -3.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.2329752247271533,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "frame": 928,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "99358c54b1318d4f8b022d7ee23cc282a2b0a154cc1f09656eb888fc443481c1"
+    },
+    {
+      "normal_prefix_coherence": 0.9168885840813641,
+      "residual_cfo_hz_after_7500_removal": -6.247918822524981,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8580862999787249,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13844936816559325,
+            "delay_samples": 0.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.1815216105498073,
+            "delay_samples": -5.75
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.19338112335405094,
+            "delay_samples": 6.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.857232746646648,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11691679187972892,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.15943712539210456,
+            "delay_samples": -3.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1174655895765354,
+            "delay_samples": 8.0
+          }
+        }
+      ],
+      "frame": 930,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "409021c5ebc52b4772f62b337791b4defe5a3bc51e47c0e1bf541c17eff41edb"
+    },
+    {
+      "normal_prefix_coherence": 0.9165476349014047,
+      "residual_cfo_hz_after_7500_removal": -10.73265507961633,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.846110631194871,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.13838999057929402,
+            "delay_samples": 0.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.18017864489952762,
+            "delay_samples": -5.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.22605757139490895,
+            "delay_samples": 2.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.8403227093611213,
+            "delay_samples": 8.0
+          },
+          "wrong_group": {
+            "coherence": 0.11495404698566981,
+            "delay_samples": -2.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.1474627279923413,
+            "delay_samples": -3.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.149485516871147,
+            "delay_samples": 1.25
+          }
+        }
+      ],
+      "frame": 932,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "bec63357a61d601c521384ed5773751b3155bc3f913894caa2c0fdbe0850235c"
+    }
+  ],
+  "limits": "Checks sample-buffer consistency with the known working eNodeB context; not independent payload/CRC decoding, absolute SFN validation or a demonstrated failed-session cause. Periodic reference signals alone cannot exclude a whole-frame buffer lag. CFO values are prefix-based estimates after the assumed UL offset correction, not calibrated oscillator error. Raw trace includes another temporary RNTI NACK, which is excluded from this connected-UE working reference."
+}

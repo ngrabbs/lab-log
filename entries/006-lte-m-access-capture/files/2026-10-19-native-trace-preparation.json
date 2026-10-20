@@ -1,0 +1,70 @@
+{
+  "build_complete": true,
+  "source_head": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+  "overlay_file_count": 17,
+  "overlay_patch_sha256": "2f87f93f86cf7ee16728e319be2a49b3da4e187be2c6916ccb7122ed776df81e",
+  "baseline_binary_sha256": "5c5de8e17db509b35823f401b99c7fdbe28144307da0be24fbc777c569768e11",
+  "diagnostic_binary_sha256": "384fd107b9a395e3c916abfdc0da7f15bca54095b46ea8786353f45fbc77201a",
+  "runtime_module_sha256": {
+    "libcoding.so": "d1b459dcc33d23e8960aa71890cfc0c2565571dff00c52454a72cb3e93bbb6aa",
+    "libparams_libconfig.so": "ce2875f7c3f980af99dc8dc8ba154c708398e5c833057ffe1528e9482d567371",
+    "libdfts.so": "007ab51ac63368f20236f77300d8a48f6a21c8ae22b244c841de42db3b5cb4fc",
+    "liboai_usrpdevif.so": "86d7495947ab8a574d5454b914f7a11c7762b917979c421598efb1be9456ec9c",
+    "liboai_device.so": "86d7495947ab8a574d5454b914f7a11c7762b917979c421598efb1be9456ec9c"
+  },
+  "t_tracer_enabled_in_build": true,
+  "active_source_status_and_hashes_unchanged": true,
+  "active_binary_unchanged": true,
+  "missing_dynamic_libraries": [],
+  "cli_help_empty_no_radio_config_exit": 255,
+  "cli_help_displayed": true,
+  "trace_option_string_in_binary": true,
+  "diagnostic_cell_started": false,
+  "rf_qualified": false,
+  "synthetic_transport": {
+    "synthetic_only": true,
+    "radio_started": false,
+    "bounded_real_tracer_transport_passed": true,
+    "matched_sample_decode_events": 456,
+    "all_decode_events_matched": true,
+    "extracted_sample_bytes_exact": true,
+    "capture_bytes": 299736
+  },
+  "synthetic_bounds": {
+    "synthetic_control_test_only": true,
+    "radio_started": false,
+    "checks": [
+      {
+        "case": "time-stop",
+        "passed": true,
+        "bytes": 345056,
+        "valid_capture": true
+      },
+      {
+        "case": "byte-cap",
+        "passed": true,
+        "bytes": 1048576,
+        "valid_capture": false
+      }
+    ]
+  },
+  "synthetic_parser": {
+    "synthetic_only": true,
+    "matched_ack_nack_events": 2,
+    "truncated_trace_rejected": true,
+    "radio_started": false
+  },
+  "source_limits": {
+    "source_head": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+    "source_file_sha256": {
+      "openair2/LAYER2/rlc_v2/rlc_oai_api.c": "ef183ff0d73249a95251b28dee640d9334b486a5821d6a5cd30b3ed2fedbe0d6",
+      "openair2/RRC/LTE/rrc_eNB.c": "c145afa77df041669db358d96775a9a55010fa8c5a4b3a82e5ebbc509e157f23",
+      "openair2/RRC/LTE/rrc_eNB_GTPV1U.c": "7e16e2368483c0d4da02430fcd04653b9b22d2b139df299638112b10329b4114",
+      "openair1/SCHED/phy_procedures_lte_eNb.c": "83a1b47dd50993675e8458429766c88a1d61a9c5e176d8220c476d58b2581e41"
+    },
+    "release_path": "An unsuccessful SRB RLC SDU can call process_unsuccessful_rlc_sdu_indication, set release flag 4, send release completion, delete tunnels and fast-forward the RRC removal timer. A pending RRC-release acknowledgement can also transition to flag 4.",
+    "observed_in_original_failed_session": false,
+    "limits": "Original RLC/RRC info levels hide these debug events; a source path is not an identified historical trigger. New debug probe failed before registration, so it did not confirm the path.",
+    "rx_hook_limit": "Existing native input trace labels frame/subframe but has an explicit source TODO about correct rxdata; independently qualify buffer selection/alignment with a verified working reference before timing/DMRS conclusions."
+  }
+}

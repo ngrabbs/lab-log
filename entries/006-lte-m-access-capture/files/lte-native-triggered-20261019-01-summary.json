@@ -1,0 +1,160 @@
+{
+  "label": "lte-native-triggered-20261019-01",
+  "ready_seconds": 27.19177,
+  "test": "Fresh-session single EPS packet; triggered six-second native ring plus one second after trigger",
+  "delivery": {
+    "modem_accepted": 1,
+    "unique_received": 1,
+    "yamcs_unique": 1,
+    "duplicate_datagrams": 0,
+    "unknown_attempts": 0
+  },
+  "recorder": {
+    "pre_seconds_requested": 6,
+    "post_seconds_requested": 1,
+    "max_elapsed_seconds": 45,
+    "no_trigger_observation_seconds": 37,
+    "ring_byte_cap": 402653184,
+    "output_byte_cap": 536870912,
+    "events_allowlisted": [
+      "ENB_PHY_INPUT_SIGNAL",
+      "ENB_PHY_ULSCH_UE_ACK",
+      "ENB_PHY_ULSCH_UE_NACK",
+      "ENB_MAC_UE_UL_SCHEDULE",
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+    ],
+    "starts_radio": false,
+    "triggered": true,
+    "valid": true,
+    "trigger": {
+      "reason": "four_consecutive_connected_nacks",
+      "utc_ns": 1792442347597416637,
+      "trace_timestamp_ns": 1792442347594791093
+    },
+    "trace_bytes": 205517876,
+    "trace_sha256": "1c2570bb0622192e8e2cf45ce2d986a92bbd04d41bd9b6317511daa1a1336e68",
+    "total_stream_bytes": 205375304,
+    "event_counts": {
+      "ENB_PHY_INPUT_SIGNAL": 3340,
+      "ENB_MAC_UE_UL_SCHEDULE": 155,
+      "ENB_PHY_ULSCH_UE_ACK": 152,
+      "ENB_PHY_ULSCH_UE_NACK": 17,
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION": 12
+    },
+    "light_events": 336,
+    "ring_cap_evictions": 0,
+    "selected_span_seconds": 3.338435133046005,
+    "pre_trigger_seconds_retained": 2.338271043030545,
+    "post_trigger_seconds_retained": 1.0001640900154598,
+    "active_seconds": 3.758612839039415,
+    "elapsed_seconds": 3.7639123349799775
+  },
+  "snapshot_index": {
+    "trace_bytes": 205517876,
+    "trace_sha256": "1c2570bb0622192e8e2cf45ce2d986a92bbd04d41bd9b6317511daa1a1336e68",
+    "id_header_sha256": "22f0a7b3e1fb6ee99c06037eab67bdaa59b2da895c3541bd92cf28a74ecb915f",
+    "event_counts": {
+      "ENB_PHY_INPUT_SIGNAL": 3340,
+      "ENB_MAC_UE_UL_SCHEDULE": 155,
+      "ENB_PHY_ULSCH_UE_ACK": 152,
+      "ENB_PHY_ULSCH_UE_NACK": 17,
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION": 12
+    },
+    "matched_decode_count": 169
+  },
+  "connected_identity_decode_counts": {
+    "ACK": 151,
+    "NACK": 16
+  },
+  "other_identity_decode_counts": {
+    "NACK": 1,
+    "ACK": 1
+  },
+  "registration_observations": [
+    {
+      "utc": "2026-10-19T20:39:05.978425+00:00",
+      "seconds_after_accept": 0.214,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 91963,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:39:10.981421+00:00",
+      "seconds_after_accept": 5.217,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 86960,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:39:16.013093+00:00",
+      "seconds_after_accept": 10.248,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 81962,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:39:21.115296+00:00",
+      "seconds_after_accept": 15.351,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 76963,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:39:26.145291+00:00",
+      "seconds_after_accept": 20.381,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 71961,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:39:31.145107+00:00",
+      "seconds_after_accept": 25.38,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 66961,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:39:36.145082+00:00",
+      "seconds_after_accept": 30.38,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 61961,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:39:41.145097+00:00",
+      "seconds_after_accept": 35.38,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 56961,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    }
+  ],
+  "registration_stable_for_35_seconds": true,
+  "receiver_utc": [
+    "2026-10-19T20:39:05.675275+00:00"
+  ],
+  "trigger_armed_utc": "2026-10-19T20:39:07.439186+00:00",
+  "rate_result_kbps": null,
+  "cleanup": {
+    "walter_off": true,
+    "outputs_restored": true,
+    "same_ihu_firmware_boot": true,
+    "error": null
+  },
+  "limits": "Triggered decode failures are not application packet loss or a demonstrated registration-loss cause. The observer streams native samples continuously until its trigger/deadline and can affect runtime load. Native software joins do not independently verify payload, CRC or absolute RF frame alignment. One packet, no throughput claim."
+}

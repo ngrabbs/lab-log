@@ -1,0 +1,53 @@
+{
+  "label": "lte-independent-rf-20261019-02",
+  "downlink_before_attempt": {
+    "band_center_hz": 751000000,
+    "integrated_width_hz": 9000000,
+    "off_median_linear": 1.5734360204078257e-05,
+    "on_median_linear": 0.00028284365544095635,
+    "on_minus_off_db": 12.546973532054515,
+    "positive_gate_db": 6,
+    "gate_passed": true,
+    "limits": "Controlled cell OFF/ON relative RF contrast; not calibrated power or decoded cell identity"
+  },
+  "uplink_seconds": 150,
+  "time_bin_seconds": 0.0001,
+  "threshold_method": "Each channel first5s p99 +6dB; first5s completed before RF admission",
+  "channels": [
+    {
+      "channel": "configured_prach",
+      "center_hz": 778400000,
+      "width_hz": 1080000,
+      "baseline_p99_linear": 5.196649453864666e-06,
+      "trigger_threshold_dbfs": -46.84276590578409,
+      "peak_dbfs": -51.26703741131489,
+      "peak_above_baseline_p99_db": 1.5757283690554946,
+      "bins_above_threshold": 0
+    },
+    {
+      "channel": "configured_msg3",
+      "center_hz": 780020000,
+      "width_hz": 360000,
+      "baseline_p99_linear": 2.053781145150424e-06,
+      "trigger_threshold_dbfs": -50.87445821176884,
+      "peak_dbfs": -54.56980583173501,
+      "peak_above_baseline_p99_db": 2.304652543508029,
+      "bins_above_threshold": 0
+    }
+  ],
+  "observer_overruns": 0,
+  "observer_clipped_sample_fraction": 0.0,
+  "power_file_sha256": "ce9e7a7a1414fafcfe5aa357d30dc197cfb859a315f245a9fb8f2dbf9238805d",
+  "prior_working_reference": {
+    "label": "lte-access-pair-20261019-01",
+    "same_receiver_frequency_rate_filter_lna_vga": true,
+    "seconds": 145.0,
+    "bins_above_own_threshold": [
+      2304,
+      217
+    ],
+    "limits": "Earlier session, not simultaneous sensitivity calibration"
+  },
+  "post_timeout_downlink_check": "Skipped: insufficient time before cell shutdown; no post-timeout DL measurement",
+  "limits": "No above-threshold power bins in these two observed allocations, not proof of no modem RF. Weaker/off-frequency transmissions remain possible. Downlink ON/OFF checked before RF admission, not continuously during timeout. No independent cell ID, PRACH payload or CRC decode. No common cause established with earlier Msg3 retries or accepted-but-undelivered sessions."
+}

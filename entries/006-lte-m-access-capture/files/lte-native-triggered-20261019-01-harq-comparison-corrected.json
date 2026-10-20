@@ -1,0 +1,5851 @@
+{
+  "label": "lte-native-triggered-20261019-01",
+  "method": "Exact-byte saved native trace, corrected body timestamp offset0; FDD four-subframe schedule/receive join with identity, frame/subframe and <=100ms time bound; compare nearby ACK records. No new RF run.",
+  "trace_sha256": "1c2570bb0622192e8e2cf45ce2d986a92bbd04d41bd9b6317511daa1a1336e68",
+  "timestamp_correction": "Previous waveform.json schedule.timestamp_ns was parsed at offset4 in a record body without the length prefix. Those schedule timestamps are invalid. This file re-parses at offset0 and validates nsec. Previous frame-based counts, waveform fits and independently parsed input_timestamp_ns remain unchanged.",
+  "measured_summary": {
+    "joined_attempts": 167,
+    "new_transmissions": 155,
+    "first_attempt_ack": 151,
+    "failed_blocks": 4,
+    "retransmissions": 12,
+    "successful_retransmissions": 0,
+    "ndi_toggle_errors": 0,
+    "new_tbs_bytes": [
+      51
+    ],
+    "harq_ids": [
+      0
+    ],
+    "mcs_fields": [
+      4
+    ],
+    "nb_rb": [
+      6
+    ],
+    "schedule_to_input_ms_range": [
+      3.840547,
+      22.227373
+    ]
+  },
+  "failed_blocks": [
+    {
+      "new_frame": 992,
+      "ndi_observed_on_new": 1,
+      "tbs_bytes_observed_on_new": 51,
+      "attempts": [
+        {
+          "frame": 992,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346556952386,
+            "frame": 992,
+            "subframe": 5,
+            "target_frame": 992,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": 51,
+            "ndi_observed": 1,
+            "round": 0,
+            "new": true
+          },
+          "input_timestamp_ns": 1792442346579179759,
+          "schedule_to_input_ms": 22.227373,
+          "normal_prefix_coherence": 0.03178641147420479,
+          "dmrs_slot_coherences": [
+            0.22949002204686283,
+            0.1662381680096318
+          ],
+          "pilot_group": "weak_both_below_0.3",
+          "source_expected_rv_not_runtime_measured": 0,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 994,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346587382799,
+            "frame": 994,
+            "subframe": 5,
+            "target_frame": 994,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 1,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442346592572498,
+          "schedule_to_input_ms": 5.189699,
+          "normal_prefix_coherence": 0.058104913806946004,
+          "dmrs_slot_coherences": [
+            0.1691327935233742,
+            0.12840954593408782
+          ],
+          "pilot_group": "weak_both_below_0.3",
+          "source_expected_rv_not_runtime_measured": 2,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 996,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346600689019,
+            "frame": 996,
+            "subframe": 5,
+            "target_frame": 996,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 2,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442346606002459,
+          "schedule_to_input_ms": 5.31344,
+          "normal_prefix_coherence": 0.02815470984051786,
+          "dmrs_slot_coherences": [
+            0.18241980111365297,
+            0.15276655618556462
+          ],
+          "pilot_group": "weak_both_below_0.3",
+          "source_expected_rv_not_runtime_measured": 3,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 998,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346614013220,
+            "frame": 998,
+            "subframe": 5,
+            "target_frame": 998,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 3,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442346617853767,
+          "schedule_to_input_ms": 3.840547,
+          "normal_prefix_coherence": 0.04657585907754452,
+          "dmrs_slot_coherences": [
+            0.04064540062171771,
+            0.15211451891710004
+          ],
+          "pilot_group": "weak_both_below_0.3",
+          "source_expected_rv_not_runtime_measured": 1,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        }
+      ]
+    },
+    {
+      "new_frame": 0,
+      "ndi_observed_on_new": 0,
+      "tbs_bytes_observed_on_new": 51,
+      "attempts": [
+        {
+          "frame": 0,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346866744472,
+            "frame": 0,
+            "subframe": 5,
+            "target_frame": 0,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": 51,
+            "ndi_observed": 0,
+            "round": 0,
+            "new": true
+          },
+          "input_timestamp_ns": 1792442346874597215,
+          "schedule_to_input_ms": 7.852743,
+          "normal_prefix_coherence": 0.7151050938491796,
+          "dmrs_slot_coherences": [
+            0.9794143441645923,
+            0.9836136259835169
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 0,
+          "ndi_inherited_from_new_not_runtime_measured": 0
+        },
+        {
+          "frame": 2,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346886659931,
+            "frame": 2,
+            "subframe": 5,
+            "target_frame": 2,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 1,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442346894516137,
+          "schedule_to_input_ms": 7.856206,
+          "normal_prefix_coherence": 0.7378329986104694,
+          "dmrs_slot_coherences": [
+            0.9836630847960605,
+            0.9839609779789721
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 2,
+          "ndi_inherited_from_new_not_runtime_measured": 0
+        },
+        {
+          "frame": 4,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346906634539,
+            "frame": 4,
+            "subframe": 5,
+            "target_frame": 4,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 2,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442346914481208,
+          "schedule_to_input_ms": 7.846669,
+          "normal_prefix_coherence": 0.7379221332761072,
+          "dmrs_slot_coherences": [
+            0.9839606920642698,
+            0.9842613868668089
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 3,
+          "ndi_inherited_from_new_not_runtime_measured": 0
+        },
+        {
+          "frame": 6,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442346926715628,
+            "frame": 6,
+            "subframe": 5,
+            "target_frame": 6,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 3,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442346934587464,
+          "schedule_to_input_ms": 7.871836,
+          "normal_prefix_coherence": 0.26743183155154593,
+          "dmrs_slot_coherences": [
+            0.9805057454855372,
+            0.9817166151296735
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 1,
+          "ndi_inherited_from_new_not_runtime_measured": 0
+        }
+      ]
+    },
+    {
+      "new_frame": 20,
+      "ndi_observed_on_new": 1,
+      "tbs_bytes_observed_on_new": 51,
+      "attempts": [
+        {
+          "frame": 20,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347075978147,
+            "frame": 20,
+            "subframe": 5,
+            "target_frame": 20,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": 51,
+            "ndi_observed": 1,
+            "round": 0,
+            "new": true
+          },
+          "input_timestamp_ns": 1792442347080497622,
+          "schedule_to_input_ms": 4.519475,
+          "normal_prefix_coherence": 0.02810159375277875,
+          "dmrs_slot_coherences": [
+            0.21331886973001313,
+            0.16015100953025393
+          ],
+          "pilot_group": "weak_both_below_0.3",
+          "source_expected_rv_not_runtime_measured": 0,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 22,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347087804271,
+            "frame": 22,
+            "subframe": 5,
+            "target_frame": 22,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 1,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442347094474270,
+          "schedule_to_input_ms": 6.669999,
+          "normal_prefix_coherence": 0.03753932701187506,
+          "dmrs_slot_coherences": [
+            0.12184048735077016,
+            0.15773371519227705
+          ],
+          "pilot_group": "weak_both_below_0.3",
+          "source_expected_rv_not_runtime_measured": 2,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 24,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347106755876,
+            "frame": 24,
+            "subframe": 5,
+            "target_frame": 24,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 2,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442347114593785,
+          "schedule_to_input_ms": 7.837909,
+          "normal_prefix_coherence": 0.9343462729865595,
+          "dmrs_slot_coherences": [
+            0.9940026242116002,
+            0.9943815502121036
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 3,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 26,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347126656428,
+            "frame": 26,
+            "subframe": 5,
+            "target_frame": 26,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 3,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442347134509189,
+          "schedule_to_input_ms": 7.852761,
+          "normal_prefix_coherence": 0.951895751111643,
+          "dmrs_slot_coherences": [
+            0.9953640540645593,
+            0.994613442598666
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 1,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        }
+      ]
+    },
+    {
+      "new_frame": 66,
+      "ndi_observed_on_new": 1,
+      "tbs_bytes_observed_on_new": 51,
+      "attempts": [
+        {
+          "frame": 66,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347526742564,
+            "frame": 66,
+            "subframe": 5,
+            "target_frame": 66,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": 51,
+            "ndi_observed": 1,
+            "round": 0,
+            "new": true
+          },
+          "input_timestamp_ns": 1792442347534589991,
+          "schedule_to_input_ms": 7.847427,
+          "normal_prefix_coherence": 0.7895180932370629,
+          "dmrs_slot_coherences": [
+            0.9910973110160252,
+            0.988495131628617
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 0,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 68,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347546661690,
+            "frame": 68,
+            "subframe": 5,
+            "target_frame": 68,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 1,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442347554541673,
+          "schedule_to_input_ms": 7.879983,
+          "normal_prefix_coherence": 0.7986979740848064,
+          "dmrs_slot_coherences": [
+            0.9841590841395629,
+            0.989252569068022
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 2,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 70,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347566625056,
+            "frame": 70,
+            "subframe": 5,
+            "target_frame": 70,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 2,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442347574483040,
+          "schedule_to_input_ms": 7.857984,
+          "normal_prefix_coherence": 0.804325479559955,
+          "dmrs_slot_coherences": [
+            0.9878046349881873,
+            0.9895159046282609
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 3,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        },
+        {
+          "frame": 72,
+          "subframe": 9,
+          "result": "NACK",
+          "schedule": {
+            "timestamp_ns": 1792442347586769090,
+            "frame": 72,
+            "subframe": 5,
+            "target_frame": 72,
+            "target_subframe": 9,
+            "harq": 0,
+            "mcs": 4,
+            "first_rb_within_narrowband": 0,
+            "nb_rb": 6,
+            "tbs_bytes_observed": null,
+            "ndi_observed": null,
+            "round": 3,
+            "new": false
+          },
+          "input_timestamp_ns": 1792442347594608500,
+          "schedule_to_input_ms": 7.83941,
+          "normal_prefix_coherence": 0.7843304300932916,
+          "dmrs_slot_coherences": [
+            0.988006236162162,
+            0.9897683311646754
+          ],
+          "pilot_group": "strong_both_above_0.95",
+          "source_expected_rv_not_runtime_measured": 1,
+          "ndi_inherited_from_new_not_runtime_measured": 1
+        }
+      ]
+    }
+  ],
+  "all_attempts": [
+    {
+      "frame": 864,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345266711057,
+        "frame": 864,
+        "subframe": 5,
+        "target_frame": 864,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345274517633,
+      "schedule_to_input_ms": 7.806576,
+      "normal_prefix_coherence": 0.8342503398675261,
+      "dmrs_slot_coherences": [
+        0.9910702163253838,
+        0.9915540767914824
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 866,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345286634091,
+        "frame": 866,
+        "subframe": 5,
+        "target_frame": 866,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345294479556,
+      "schedule_to_input_ms": 7.845465,
+      "normal_prefix_coherence": 0.7787034321302961,
+      "dmrs_slot_coherences": [
+        0.9901108605693016,
+        0.9907049352433653
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 868,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345306726921,
+        "frame": 868,
+        "subframe": 5,
+        "target_frame": 868,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345314592293,
+      "schedule_to_input_ms": 7.865372,
+      "normal_prefix_coherence": 0.8589017860796343,
+      "dmrs_slot_coherences": [
+        0.9928759926088705,
+        0.9927915710362815
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 870,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345326699992,
+        "frame": 870,
+        "subframe": 5,
+        "target_frame": 870,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345334536290,
+      "schedule_to_input_ms": 7.836298,
+      "normal_prefix_coherence": 0.8715210554689773,
+      "dmrs_slot_coherences": [
+        0.9927019775334048,
+        0.9944781987345067
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 872,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345346652247,
+        "frame": 872,
+        "subframe": 5,
+        "target_frame": 872,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345354479823,
+      "schedule_to_input_ms": 7.827576,
+      "normal_prefix_coherence": 0.8698180207290408,
+      "dmrs_slot_coherences": [
+        0.9939012115276948,
+        0.9939678188586333
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 874,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345366758707,
+        "frame": 874,
+        "subframe": 5,
+        "target_frame": 874,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345374615561,
+      "schedule_to_input_ms": 7.856854,
+      "normal_prefix_coherence": 0.8557923074203247,
+      "dmrs_slot_coherences": [
+        0.9936076579305119,
+        0.9931066473604144
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 876,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345386700445,
+        "frame": 876,
+        "subframe": 5,
+        "target_frame": 876,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345394515613,
+      "schedule_to_input_ms": 7.815168,
+      "normal_prefix_coherence": 0.868022543354809,
+      "dmrs_slot_coherences": [
+        0.9928027699555043,
+        0.9936891263252895
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 878,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345406613608,
+        "frame": 878,
+        "subframe": 5,
+        "target_frame": 878,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345414480276,
+      "schedule_to_input_ms": 7.866668,
+      "normal_prefix_coherence": 0.8204235956368784,
+      "dmrs_slot_coherences": [
+        0.9937984851989685,
+        0.9895220780002028
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 880,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345426748030,
+        "frame": 880,
+        "subframe": 5,
+        "target_frame": 880,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345434591903,
+      "schedule_to_input_ms": 7.843873,
+      "normal_prefix_coherence": 0.8635920877012724,
+      "dmrs_slot_coherences": [
+        0.9943361235791165,
+        0.9940064708438039
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 882,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345446679508,
+        "frame": 882,
+        "subframe": 5,
+        "target_frame": 882,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345454536251,
+      "schedule_to_input_ms": 7.856743,
+      "normal_prefix_coherence": 0.8623754158081098,
+      "dmrs_slot_coherences": [
+        0.9946648092085447,
+        0.994150380485632
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 884,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345466631394,
+        "frame": 884,
+        "subframe": 5,
+        "target_frame": 884,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345474480488,
+      "schedule_to_input_ms": 7.849094,
+      "normal_prefix_coherence": 0.862081099052531,
+      "dmrs_slot_coherences": [
+        0.9923017351607878,
+        0.9944224271682626
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 886,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345486742446,
+        "frame": 886,
+        "subframe": 5,
+        "target_frame": 886,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345494603300,
+      "schedule_to_input_ms": 7.860854,
+      "normal_prefix_coherence": 0.8540130801183426,
+      "dmrs_slot_coherences": [
+        0.9939114670333892,
+        0.9924530756897357
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 888,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345506678683,
+        "frame": 888,
+        "subframe": 5,
+        "target_frame": 888,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345514546167,
+      "schedule_to_input_ms": 7.867484,
+      "normal_prefix_coherence": 0.8598235185049851,
+      "dmrs_slot_coherences": [
+        0.9937553575598562,
+        0.9928052253659858
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 890,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345526623995,
+        "frame": 890,
+        "subframe": 5,
+        "target_frame": 890,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345534474182,
+      "schedule_to_input_ms": 7.850187,
+      "normal_prefix_coherence": 0.8582929748885851,
+      "dmrs_slot_coherences": [
+        0.9938737233581523,
+        0.9933375255418324
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 892,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345546710362,
+        "frame": 892,
+        "subframe": 5,
+        "target_frame": 892,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345554599457,
+      "schedule_to_input_ms": 7.889095,
+      "normal_prefix_coherence": 0.8751285463463392,
+      "dmrs_slot_coherences": [
+        0.9935546951742108,
+        0.9939526567738663
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 894,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345566674784,
+        "frame": 894,
+        "subframe": 5,
+        "target_frame": 894,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345574532472,
+      "schedule_to_input_ms": 7.857688,
+      "normal_prefix_coherence": 0.8626196800027445,
+      "dmrs_slot_coherences": [
+        0.9933664591463309,
+        0.9945047463883234
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 896,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345586636281,
+        "frame": 896,
+        "subframe": 5,
+        "target_frame": 896,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345594475950,
+      "schedule_to_input_ms": 7.839669,
+      "normal_prefix_coherence": 0.8642069746337557,
+      "dmrs_slot_coherences": [
+        0.9946740204906479,
+        0.9935943683282463
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 898,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345606753815,
+        "frame": 898,
+        "subframe": 5,
+        "target_frame": 898,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345614596354,
+      "schedule_to_input_ms": 7.842539,
+      "normal_prefix_coherence": 0.8659331736188249,
+      "dmrs_slot_coherences": [
+        0.9935517844520116,
+        0.9936694271569406
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 900,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345626722423,
+        "frame": 900,
+        "subframe": 5,
+        "target_frame": 900,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345634533758,
+      "schedule_to_input_ms": 7.811335,
+      "normal_prefix_coherence": 0.8692175516441475,
+      "dmrs_slot_coherences": [
+        0.9926959137187826,
+        0.9929286515139432
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 902,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345646659104,
+        "frame": 902,
+        "subframe": 5,
+        "target_frame": 902,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345654485032,
+      "schedule_to_input_ms": 7.825928,
+      "normal_prefix_coherence": 0.8673132165519744,
+      "dmrs_slot_coherences": [
+        0.9930292260597351,
+        0.9931446503602624
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 904,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345666748157,
+        "frame": 904,
+        "subframe": 5,
+        "target_frame": 904,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345674564177,
+      "schedule_to_input_ms": 7.81602,
+      "normal_prefix_coherence": 0.8576646373968955,
+      "dmrs_slot_coherences": [
+        0.9934107666895995,
+        0.9934909312118322
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 906,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345686699246,
+        "frame": 906,
+        "subframe": 5,
+        "target_frame": 906,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345694516785,
+      "schedule_to_input_ms": 7.817539,
+      "normal_prefix_coherence": 0.8609865224121914,
+      "dmrs_slot_coherences": [
+        0.9935486244408838,
+        0.9947586961795029
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 908,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345706647409,
+        "frame": 908,
+        "subframe": 5,
+        "target_frame": 908,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345714495596,
+      "schedule_to_input_ms": 7.848187,
+      "normal_prefix_coherence": 0.8621255046940032,
+      "dmrs_slot_coherences": [
+        0.9933473620314947,
+        0.9916582624115914
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 910,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345726754443,
+        "frame": 910,
+        "subframe": 5,
+        "target_frame": 910,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345734560222,
+      "schedule_to_input_ms": 7.805779,
+      "normal_prefix_coherence": 0.8437472899967206,
+      "dmrs_slot_coherences": [
+        0.9921051363217015,
+        0.9925052035053876
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 912,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345746684550,
+        "frame": 912,
+        "subframe": 5,
+        "target_frame": 912,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345754515386,
+      "schedule_to_input_ms": 7.830836,
+      "normal_prefix_coherence": 0.8519418536086221,
+      "dmrs_slot_coherences": [
+        0.9925273354460487,
+        0.9934885686882569
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 914,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345766640380,
+        "frame": 914,
+        "subframe": 5,
+        "target_frame": 914,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345774476104,
+      "schedule_to_input_ms": 7.835724,
+      "normal_prefix_coherence": 0.854131427601541,
+      "dmrs_slot_coherences": [
+        0.991641327327923,
+        0.9940756967263265
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 916,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345786721470,
+        "frame": 916,
+        "subframe": 5,
+        "target_frame": 916,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345794565249,
+      "schedule_to_input_ms": 7.843779,
+      "normal_prefix_coherence": 0.8477373246206674,
+      "dmrs_slot_coherences": [
+        0.9932631188305352,
+        0.9933096650163957
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 918,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345806687503,
+        "frame": 918,
+        "subframe": 5,
+        "target_frame": 918,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345814523283,
+      "schedule_to_input_ms": 7.83578,
+      "normal_prefix_coherence": 0.8572051827817835,
+      "dmrs_slot_coherences": [
+        0.99246615845302,
+        0.9935492258350295
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 920,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345826630129,
+        "frame": 920,
+        "subframe": 5,
+        "target_frame": 920,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345834480057,
+      "schedule_to_input_ms": 7.849928,
+      "normal_prefix_coherence": 0.8599003547608048,
+      "dmrs_slot_coherences": [
+        0.9945511800706067,
+        0.992550239113153
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 922,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345846732034,
+        "frame": 922,
+        "subframe": 5,
+        "target_frame": 922,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345854602591,
+      "schedule_to_input_ms": 7.870557,
+      "normal_prefix_coherence": 0.8647388248007646,
+      "dmrs_slot_coherences": [
+        0.9931842499795772,
+        0.9914334423169591
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 924,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345866685660,
+        "frame": 924,
+        "subframe": 5,
+        "target_frame": 924,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345874542273,
+      "schedule_to_input_ms": 7.856613,
+      "normal_prefix_coherence": 0.8509552088868785,
+      "dmrs_slot_coherences": [
+        0.9946188659466356,
+        0.9934573743904727
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 926,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345886645175,
+        "frame": 926,
+        "subframe": 5,
+        "target_frame": 926,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345894477714,
+      "schedule_to_input_ms": 7.832539,
+      "normal_prefix_coherence": 0.8487126024582415,
+      "dmrs_slot_coherences": [
+        0.9931692610724673,
+        0.9938793021359215
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 928,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345906737283,
+        "frame": 928,
+        "subframe": 5,
+        "target_frame": 928,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345914603433,
+      "schedule_to_input_ms": 7.86615,
+      "normal_prefix_coherence": 0.7967369553737808,
+      "dmrs_slot_coherences": [
+        0.9893188134691059,
+        0.9800318723374097
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 930,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345926690020,
+        "frame": 930,
+        "subframe": 5,
+        "target_frame": 930,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345934519392,
+      "schedule_to_input_ms": 7.829372,
+      "normal_prefix_coherence": 0.8485946334204667,
+      "dmrs_slot_coherences": [
+        0.9935382868456172,
+        0.9918480165801704
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 932,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345946632257,
+        "frame": 932,
+        "subframe": 5,
+        "target_frame": 932,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345954475278,
+      "schedule_to_input_ms": 7.843021,
+      "normal_prefix_coherence": 0.8524505789140553,
+      "dmrs_slot_coherences": [
+        0.9926907397462198,
+        0.992593074700042
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 934,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345966723773,
+        "frame": 934,
+        "subframe": 5,
+        "target_frame": 934,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345974602534,
+      "schedule_to_input_ms": 7.878761,
+      "normal_prefix_coherence": 0.8504955612628591,
+      "dmrs_slot_coherences": [
+        0.9937004485885896,
+        0.9913242056733039
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 936,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442345986732343,
+        "frame": 936,
+        "subframe": 5,
+        "target_frame": 936,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442345994550530,
+      "schedule_to_input_ms": 7.818187,
+      "normal_prefix_coherence": 0.8522725490798917,
+      "dmrs_slot_coherences": [
+        0.9943384912388274,
+        0.992503544652812
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 938,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346006668136,
+        "frame": 938,
+        "subframe": 5,
+        "target_frame": 938,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346014473656,
+      "schedule_to_input_ms": 7.80552,
+      "normal_prefix_coherence": 0.8535779210287219,
+      "dmrs_slot_coherences": [
+        0.9922741748736708,
+        0.9931214546639234
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 940,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346026731059,
+        "frame": 940,
+        "subframe": 5,
+        "target_frame": 940,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346034596653,
+      "schedule_to_input_ms": 7.865594,
+      "normal_prefix_coherence": 0.8460129060653142,
+      "dmrs_slot_coherences": [
+        0.9931193149639818,
+        0.994395080692625
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 942,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346046679444,
+        "frame": 942,
+        "subframe": 5,
+        "target_frame": 942,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346054534909,
+      "schedule_to_input_ms": 7.855465,
+      "normal_prefix_coherence": 0.8361062261132949,
+      "dmrs_slot_coherences": [
+        0.9922325122091339,
+        0.9922020179268211
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 944,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346066671274,
+        "frame": 944,
+        "subframe": 5,
+        "target_frame": 944,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346074510739,
+      "schedule_to_input_ms": 7.839465,
+      "normal_prefix_coherence": 0.8418558580138819,
+      "dmrs_slot_coherences": [
+        0.9938071126708623,
+        0.9950557094988712
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 946,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346086727437,
+        "frame": 946,
+        "subframe": 5,
+        "target_frame": 946,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346094591143,
+      "schedule_to_input_ms": 7.863706,
+      "normal_prefix_coherence": 0.8517610958370382,
+      "dmrs_slot_coherences": [
+        0.9927966356050162,
+        0.9920351608648469
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 948,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346106729786,
+        "frame": 948,
+        "subframe": 5,
+        "target_frame": 948,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346114519306,
+      "schedule_to_input_ms": 7.78952,
+      "normal_prefix_coherence": 0.7555688467631826,
+      "dmrs_slot_coherences": [
+        0.9891841116666042,
+        0.9913771335066094
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 950,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346126794986,
+        "frame": 950,
+        "subframe": 5,
+        "target_frame": 950,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346134589784,
+      "schedule_to_input_ms": 7.794798,
+      "normal_prefix_coherence": 0.8441005130027484,
+      "dmrs_slot_coherences": [
+        0.9926941488628938,
+        0.9939656444899799
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 952,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346146814798,
+        "frame": 952,
+        "subframe": 5,
+        "target_frame": 952,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346154632226,
+      "schedule_to_input_ms": 7.817428,
+      "normal_prefix_coherence": 0.850487706692446,
+      "dmrs_slot_coherences": [
+        0.992310798637256,
+        0.9948522727546281
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 954,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346166768461,
+        "frame": 954,
+        "subframe": 5,
+        "target_frame": 954,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346174544185,
+      "schedule_to_input_ms": 7.775724,
+      "normal_prefix_coherence": 0.8476106181136002,
+      "dmrs_slot_coherences": [
+        0.9936490319985934,
+        0.9918178028545946
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 956,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346186703828,
+        "frame": 956,
+        "subframe": 5,
+        "target_frame": 956,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346194489033,
+      "schedule_to_input_ms": 7.785205,
+      "normal_prefix_coherence": 0.8496264720532756,
+      "dmrs_slot_coherences": [
+        0.9928020762456302,
+        0.994625342349732
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 958,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346206829399,
+        "frame": 958,
+        "subframe": 5,
+        "target_frame": 958,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346214634956,
+      "schedule_to_input_ms": 7.805557,
+      "normal_prefix_coherence": 0.852345256181135,
+      "dmrs_slot_coherences": [
+        0.9929772181887091,
+        0.9916953408032307
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 960,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346226761932,
+        "frame": 960,
+        "subframe": 5,
+        "target_frame": 960,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346234523786,
+      "schedule_to_input_ms": 7.761854,
+      "normal_prefix_coherence": 0.8518624347885424,
+      "dmrs_slot_coherences": [
+        0.993237761596586,
+        0.9934540741333252
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 962,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346246688392,
+        "frame": 962,
+        "subframe": 5,
+        "target_frame": 962,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346254490338,
+      "schedule_to_input_ms": 7.801946,
+      "normal_prefix_coherence": 0.8569187926116932,
+      "dmrs_slot_coherences": [
+        0.9942170402194621,
+        0.9925905461271671
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 964,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346266734759,
+        "frame": 964,
+        "subframe": 5,
+        "target_frame": 964,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346274590705,
+      "schedule_to_input_ms": 7.855946,
+      "normal_prefix_coherence": 0.8519569544827145,
+      "dmrs_slot_coherences": [
+        0.9928621538136846,
+        0.9931193852502102
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 966,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346286683552,
+        "frame": 966,
+        "subframe": 5,
+        "target_frame": 966,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346294520628,
+      "schedule_to_input_ms": 7.837076,
+      "normal_prefix_coherence": 0.8653779927967017,
+      "dmrs_slot_coherences": [
+        0.9925862749921073,
+        0.9922972870978429
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 968,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346306691807,
+        "frame": 968,
+        "subframe": 5,
+        "target_frame": 968,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346314494124,
+      "schedule_to_input_ms": 7.802317,
+      "normal_prefix_coherence": 0.8609723506117357,
+      "dmrs_slot_coherences": [
+        0.9937810304824887,
+        0.9927131387103348
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 970,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346326745508,
+        "frame": 970,
+        "subframe": 5,
+        "target_frame": 970,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346334587769,
+      "schedule_to_input_ms": 7.842261,
+      "normal_prefix_coherence": 0.8543656080433925,
+      "dmrs_slot_coherences": [
+        0.9927161572133573,
+        0.9931855693854138
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 972,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346346655282,
+        "frame": 972,
+        "subframe": 5,
+        "target_frame": 972,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346354511895,
+      "schedule_to_input_ms": 7.856613,
+      "normal_prefix_coherence": 0.8532786387431119,
+      "dmrs_slot_coherences": [
+        0.9930802018480736,
+        0.9923775873767273
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 974,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346366619075,
+        "frame": 974,
+        "subframe": 5,
+        "target_frame": 974,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346374473095,
+      "schedule_to_input_ms": 7.85402,
+      "normal_prefix_coherence": 0.84889599101728,
+      "dmrs_slot_coherences": [
+        0.992894784579294,
+        0.9944666456674609
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 976,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346386741275,
+        "frame": 976,
+        "subframe": 5,
+        "target_frame": 976,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346394587129,
+      "schedule_to_input_ms": 7.845854,
+      "normal_prefix_coherence": 0.8564316847498545,
+      "dmrs_slot_coherences": [
+        0.9916994812760338,
+        0.9913672865031404
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 978,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346406759235,
+        "frame": 978,
+        "subframe": 5,
+        "target_frame": 978,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346414510681,
+      "schedule_to_input_ms": 7.751446,
+      "normal_prefix_coherence": 0.8520887226386166,
+      "dmrs_slot_coherences": [
+        0.9930996350479709,
+        0.9945853103456939
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 980,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346426630398,
+        "frame": 980,
+        "subframe": 5,
+        "target_frame": 980,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346434479085,
+      "schedule_to_input_ms": 7.848687,
+      "normal_prefix_coherence": 0.846415421569792,
+      "dmrs_slot_coherences": [
+        0.9928869129525717,
+        0.9916402433491563
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 982,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346446746673,
+        "frame": 982,
+        "subframe": 5,
+        "target_frame": 982,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346454606804,
+      "schedule_to_input_ms": 7.860131,
+      "normal_prefix_coherence": 0.8515940701895872,
+      "dmrs_slot_coherences": [
+        0.9941421165028844,
+        0.9934903224374102
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 984,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346466755151,
+        "frame": 984,
+        "subframe": 5,
+        "target_frame": 984,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346474531264,
+      "schedule_to_input_ms": 7.776113,
+      "normal_prefix_coherence": 0.8554085334437108,
+      "dmrs_slot_coherences": [
+        0.9929389696467852,
+        0.9935148194316776
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 986,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346486652888,
+        "frame": 986,
+        "subframe": 5,
+        "target_frame": 986,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346494473519,
+      "schedule_to_input_ms": 7.820631,
+      "normal_prefix_coherence": 0.8520510791492824,
+      "dmrs_slot_coherences": [
+        0.9926175190058446,
+        0.9942857215079216
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 988,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346506725533,
+        "frame": 988,
+        "subframe": 5,
+        "target_frame": 988,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346514608646,
+      "schedule_to_input_ms": 7.883113,
+      "normal_prefix_coherence": 0.8597021621254795,
+      "dmrs_slot_coherences": [
+        0.9924816581365916,
+        0.9936681422189928
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 990,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346526747715,
+        "frame": 990,
+        "subframe": 5,
+        "target_frame": 990,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346534521494,
+      "schedule_to_input_ms": 7.773779,
+      "normal_prefix_coherence": 0.8616643318548037,
+      "dmrs_slot_coherences": [
+        0.9929131179802207,
+        0.995303394781496
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 992,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346556952386,
+        "frame": 992,
+        "subframe": 5,
+        "target_frame": 992,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346579179759,
+      "schedule_to_input_ms": 22.227373,
+      "normal_prefix_coherence": 0.03178641147420479,
+      "dmrs_slot_coherences": [
+        0.22949002204686283,
+        0.1662381680096318
+      ],
+      "pilot_group": "weak_both_below_0.3",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 994,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346587382799,
+        "frame": 994,
+        "subframe": 5,
+        "target_frame": 994,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 1,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442346592572498,
+      "schedule_to_input_ms": 5.189699,
+      "normal_prefix_coherence": 0.058104913806946004,
+      "dmrs_slot_coherences": [
+        0.1691327935233742,
+        0.12840954593408782
+      ],
+      "pilot_group": "weak_both_below_0.3",
+      "source_expected_rv_not_runtime_measured": 2,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 996,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346600689019,
+        "frame": 996,
+        "subframe": 5,
+        "target_frame": 996,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 2,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442346606002459,
+      "schedule_to_input_ms": 5.31344,
+      "normal_prefix_coherence": 0.02815470984051786,
+      "dmrs_slot_coherences": [
+        0.18241980111365297,
+        0.15276655618556462
+      ],
+      "pilot_group": "weak_both_below_0.3",
+      "source_expected_rv_not_runtime_measured": 3,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 998,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346614013220,
+        "frame": 998,
+        "subframe": 5,
+        "target_frame": 998,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 3,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442346617853767,
+      "schedule_to_input_ms": 3.840547,
+      "normal_prefix_coherence": 0.04657585907754452,
+      "dmrs_slot_coherences": [
+        0.04064540062171771,
+        0.15211451891710004
+      ],
+      "pilot_group": "weak_both_below_0.3",
+      "source_expected_rv_not_runtime_measured": 1,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 1000,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346626726920,
+        "frame": 1000,
+        "subframe": 5,
+        "target_frame": 1000,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346634586329,
+      "schedule_to_input_ms": 7.859409,
+      "normal_prefix_coherence": 0.9658011700378647,
+      "dmrs_slot_coherences": [
+        0.9974560109174684,
+        0.9977420699153331
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 1002,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346646649287,
+        "frame": 1002,
+        "subframe": 5,
+        "target_frame": 1002,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346654517381,
+      "schedule_to_input_ms": 7.868094,
+      "normal_prefix_coherence": 0.9806912498070041,
+      "dmrs_slot_coherences": [
+        0.9983779644778689,
+        0.9985194163972769
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 1004,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346666629061,
+        "frame": 1004,
+        "subframe": 5,
+        "target_frame": 1004,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346674479970,
+      "schedule_to_input_ms": 7.850909,
+      "normal_prefix_coherence": 0.9864481884206644,
+      "dmrs_slot_coherences": [
+        0.9987678321743131,
+        0.9988951010442706
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 1006,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346686717558,
+        "frame": 1006,
+        "subframe": 5,
+        "target_frame": 1006,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346694588004,
+      "schedule_to_input_ms": 7.870446,
+      "normal_prefix_coherence": 0.9876098854071753,
+      "dmrs_slot_coherences": [
+        0.9987849078247615,
+        0.9989601907556539
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 1008,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346706673943,
+        "frame": 1008,
+        "subframe": 5,
+        "target_frame": 1008,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346714523927,
+      "schedule_to_input_ms": 7.849984,
+      "normal_prefix_coherence": 0.9882851364178291,
+      "dmrs_slot_coherences": [
+        0.9987966094188271,
+        0.9988926551808572
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 1010,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346726634736,
+        "frame": 1010,
+        "subframe": 5,
+        "target_frame": 1010,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346734484775,
+      "schedule_to_input_ms": 7.850039,
+      "normal_prefix_coherence": 0.9792202348698158,
+      "dmrs_slot_coherences": [
+        0.9977948111735762,
+        0.9981509874665877
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 1012,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346746728233,
+        "frame": 1012,
+        "subframe": 5,
+        "target_frame": 1012,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346754586494,
+      "schedule_to_input_ms": 7.858261,
+      "normal_prefix_coherence": 0.9820680734832438,
+      "dmrs_slot_coherences": [
+        0.9987877583722665,
+        0.9988063248125574
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 1014,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346766663433,
+        "frame": 1014,
+        "subframe": 5,
+        "target_frame": 1014,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346774522194,
+      "schedule_to_input_ms": 7.858761,
+      "normal_prefix_coherence": 0.9714672371923377,
+      "dmrs_slot_coherences": [
+        0.9982604163169351,
+        0.9984546847603649
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 1016,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346786636522,
+        "frame": 1016,
+        "subframe": 5,
+        "target_frame": 1016,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346794475024,
+      "schedule_to_input_ms": 7.838502,
+      "normal_prefix_coherence": 0.9400522893092433,
+      "dmrs_slot_coherences": [
+        0.9972492434711344,
+        0.9972146827798984
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 1018,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346806718704,
+        "frame": 1018,
+        "subframe": 5,
+        "target_frame": 1018,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346814585891,
+      "schedule_to_input_ms": 7.867187,
+      "normal_prefix_coherence": 0.8914249122759091,
+      "dmrs_slot_coherences": [
+        0.9951010702895446,
+        0.9956919139386508
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 1020,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346826653256,
+        "frame": 1020,
+        "subframe": 5,
+        "target_frame": 1020,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346834530888,
+      "schedule_to_input_ms": 7.877632,
+      "normal_prefix_coherence": 0.8244208372379531,
+      "dmrs_slot_coherences": [
+        0.9922110418221438,
+        0.9919034126438583
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 1022,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346846647345,
+        "frame": 1022,
+        "subframe": 5,
+        "target_frame": 1022,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346854474088,
+      "schedule_to_input_ms": 7.826743,
+      "normal_prefix_coherence": 0.7510289137680545,
+      "dmrs_slot_coherences": [
+        0.9873620892080786,
+        0.9883520454461174
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 0,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346866744472,
+        "frame": 0,
+        "subframe": 5,
+        "target_frame": 0,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346874597215,
+      "schedule_to_input_ms": 7.852743,
+      "normal_prefix_coherence": 0.7151050938491796,
+      "dmrs_slot_coherences": [
+        0.9794143441645923,
+        0.9836136259835169
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 2,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346886659931,
+        "frame": 2,
+        "subframe": 5,
+        "target_frame": 2,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 1,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442346894516137,
+      "schedule_to_input_ms": 7.856206,
+      "normal_prefix_coherence": 0.7378329986104694,
+      "dmrs_slot_coherences": [
+        0.9836630847960605,
+        0.9839609779789721
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 2,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 4,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346906634539,
+        "frame": 4,
+        "subframe": 5,
+        "target_frame": 4,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 2,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442346914481208,
+      "schedule_to_input_ms": 7.846669,
+      "normal_prefix_coherence": 0.7379221332761072,
+      "dmrs_slot_coherences": [
+        0.9839606920642698,
+        0.9842613868668089
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 3,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 6,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442346926715628,
+        "frame": 6,
+        "subframe": 5,
+        "target_frame": 6,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 3,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442346934587464,
+      "schedule_to_input_ms": 7.871836,
+      "normal_prefix_coherence": 0.26743183155154593,
+      "dmrs_slot_coherences": [
+        0.9805057454855372,
+        0.9817166151296735
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 1,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 8,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346946655069,
+        "frame": 8,
+        "subframe": 5,
+        "target_frame": 8,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346954514108,
+      "schedule_to_input_ms": 7.859039,
+      "normal_prefix_coherence": 0.7677405141097279,
+      "dmrs_slot_coherences": [
+        0.9893505157410057,
+        0.990120019579328
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 10,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346966625029,
+        "frame": 10,
+        "subframe": 5,
+        "target_frame": 10,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346974481309,
+      "schedule_to_input_ms": 7.85628,
+      "normal_prefix_coherence": 0.7624237672693246,
+      "dmrs_slot_coherences": [
+        0.9894454821644835,
+        0.9903598500221794
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 12,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442346986716137,
+        "frame": 12,
+        "subframe": 5,
+        "target_frame": 12,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442346994589528,
+      "schedule_to_input_ms": 7.873391,
+      "normal_prefix_coherence": 0.7456668199277403,
+      "dmrs_slot_coherences": [
+        0.985346932218857,
+        0.9869681387056077
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 14,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347006670226,
+        "frame": 14,
+        "subframe": 5,
+        "target_frame": 14,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347014516098,
+      "schedule_to_input_ms": 7.845872,
+      "normal_prefix_coherence": 0.7664715180429804,
+      "dmrs_slot_coherences": [
+        0.9877087682716132,
+        0.9866582205388816
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 16,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347026625519,
+        "frame": 16,
+        "subframe": 5,
+        "target_frame": 16,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347034469576,
+      "schedule_to_input_ms": 7.844057,
+      "normal_prefix_coherence": 0.7392386387733958,
+      "dmrs_slot_coherences": [
+        0.9884115623549834,
+        0.9891890104625062
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 18,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347046706497,
+        "frame": 18,
+        "subframe": 5,
+        "target_frame": 18,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347066551049,
+      "schedule_to_input_ms": 19.844552,
+      "normal_prefix_coherence": 0.7404609684850997,
+      "dmrs_slot_coherences": [
+        0.9858209381323445,
+        0.9854523083793602
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 20,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347075978147,
+        "frame": 20,
+        "subframe": 5,
+        "target_frame": 20,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347080497622,
+      "schedule_to_input_ms": 4.519475,
+      "normal_prefix_coherence": 0.02810159375277875,
+      "dmrs_slot_coherences": [
+        0.21331886973001313,
+        0.16015100953025393
+      ],
+      "pilot_group": "weak_both_below_0.3",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 22,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347087804271,
+        "frame": 22,
+        "subframe": 5,
+        "target_frame": 22,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 1,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442347094474270,
+      "schedule_to_input_ms": 6.669999,
+      "normal_prefix_coherence": 0.03753932701187506,
+      "dmrs_slot_coherences": [
+        0.12184048735077016,
+        0.15773371519227705
+      ],
+      "pilot_group": "weak_both_below_0.3",
+      "source_expected_rv_not_runtime_measured": 2,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 24,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347106755876,
+        "frame": 24,
+        "subframe": 5,
+        "target_frame": 24,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 2,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442347114593785,
+      "schedule_to_input_ms": 7.837909,
+      "normal_prefix_coherence": 0.9343462729865595,
+      "dmrs_slot_coherences": [
+        0.9940026242116002,
+        0.9943815502121036
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 3,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 26,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347126656428,
+        "frame": 26,
+        "subframe": 5,
+        "target_frame": 26,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 3,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442347134509189,
+      "schedule_to_input_ms": 7.852761,
+      "normal_prefix_coherence": 0.951895751111643,
+      "dmrs_slot_coherences": [
+        0.9953640540645593,
+        0.994613442598666
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 1,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 28,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347146605313,
+        "frame": 28,
+        "subframe": 5,
+        "target_frame": 28,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347154469500,
+      "schedule_to_input_ms": 7.864187,
+      "normal_prefix_coherence": 0.9716532600568981,
+      "dmrs_slot_coherences": [
+        0.9955951785999491,
+        0.9966231192185
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 30,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347166731106,
+        "frame": 30,
+        "subframe": 5,
+        "target_frame": 30,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347174595867,
+      "schedule_to_input_ms": 7.864761,
+      "normal_prefix_coherence": 0.9871909551169781,
+      "dmrs_slot_coherences": [
+        0.9975249438125001,
+        0.9982737325419369
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 32,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347186669973,
+        "frame": 32,
+        "subframe": 5,
+        "target_frame": 32,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347194521623,
+      "schedule_to_input_ms": 7.85165,
+      "normal_prefix_coherence": 0.9893362639617593,
+      "dmrs_slot_coherences": [
+        0.997529048836367,
+        0.9982499444881813
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 34,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347206614803,
+        "frame": 34,
+        "subframe": 5,
+        "target_frame": 34,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347214475601,
+      "schedule_to_input_ms": 7.860798,
+      "normal_prefix_coherence": 0.9853089362231363,
+      "dmrs_slot_coherences": [
+        0.9975742228856961,
+        0.9980987580346639
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 36,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347226718559,
+        "frame": 36,
+        "subframe": 5,
+        "target_frame": 36,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347234591061,
+      "schedule_to_input_ms": 7.872502,
+      "normal_prefix_coherence": 0.9757545543428665,
+      "dmrs_slot_coherences": [
+        0.9975462423451269,
+        0.9979945066692497
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 38,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347246650333,
+        "frame": 38,
+        "subframe": 5,
+        "target_frame": 38,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347254518168,
+      "schedule_to_input_ms": 7.867835,
+      "normal_prefix_coherence": 0.9552389337400834,
+      "dmrs_slot_coherences": [
+        0.996632688632103,
+        0.9968960284571401
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 40,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347266651737,
+        "frame": 40,
+        "subframe": 5,
+        "target_frame": 40,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347274471832,
+      "schedule_to_input_ms": 7.820095,
+      "normal_prefix_coherence": 0.907594041383392,
+      "dmrs_slot_coherences": [
+        0.9952164510214544,
+        0.995780563761694
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 42,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347286700623,
+        "frame": 42,
+        "subframe": 5,
+        "target_frame": 42,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347294590829,
+      "schedule_to_input_ms": 7.890206,
+      "normal_prefix_coherence": 0.8689769907318705,
+      "dmrs_slot_coherences": [
+        0.9919301430358097,
+        0.9923407830054649
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 44,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347306654767,
+        "frame": 44,
+        "subframe": 5,
+        "target_frame": 44,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347314524547,
+      "schedule_to_input_ms": 7.86978,
+      "normal_prefix_coherence": 0.8185964736549547,
+      "dmrs_slot_coherences": [
+        0.9873351773911873,
+        0.9903628754587248
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 46,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347326615708,
+        "frame": 46,
+        "subframe": 5,
+        "target_frame": 46,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347334488877,
+      "schedule_to_input_ms": 7.873169,
+      "normal_prefix_coherence": 0.7437716218086267,
+      "dmrs_slot_coherences": [
+        0.9854056194199033,
+        0.9892931244706109
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 48,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347346750798,
+        "frame": 48,
+        "subframe": 5,
+        "target_frame": 48,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347354589596,
+      "schedule_to_input_ms": 7.838798,
+      "normal_prefix_coherence": 0.7639612950817516,
+      "dmrs_slot_coherences": [
+        0.9866440996446837,
+        0.9885397631839551
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 50,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347366655553,
+        "frame": 50,
+        "subframe": 5,
+        "target_frame": 50,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347374522870,
+      "schedule_to_input_ms": 7.867317,
+      "normal_prefix_coherence": 0.724591057520394,
+      "dmrs_slot_coherences": [
+        0.9841382003775647,
+        0.9857532265728887
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 52,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347386651902,
+        "frame": 52,
+        "subframe": 5,
+        "target_frame": 52,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347394470774,
+      "schedule_to_input_ms": 7.818872,
+      "normal_prefix_coherence": 0.7652372898486969,
+      "dmrs_slot_coherences": [
+        0.984748936013382,
+        0.9862084916594694
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 54,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347406712899,
+        "frame": 54,
+        "subframe": 5,
+        "target_frame": 54,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347414589753,
+      "schedule_to_input_ms": 7.876854,
+      "normal_prefix_coherence": 0.7742652068993536,
+      "dmrs_slot_coherences": [
+        0.987992205352831,
+        0.9892697885446156
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 56,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347426662247,
+        "frame": 56,
+        "subframe": 5,
+        "target_frame": 56,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347434520786,
+      "schedule_to_input_ms": 7.858539,
+      "normal_prefix_coherence": 0.7628827650266797,
+      "dmrs_slot_coherences": [
+        0.9877004370274979,
+        0.985618605812228
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 58,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347446671003,
+        "frame": 58,
+        "subframe": 5,
+        "target_frame": 58,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347454499042,
+      "schedule_to_input_ms": 7.828039,
+      "normal_prefix_coherence": 0.7625099092669464,
+      "dmrs_slot_coherences": [
+        0.9847500769385585,
+        0.9885257842254552
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 60,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347466724944,
+        "frame": 60,
+        "subframe": 5,
+        "target_frame": 60,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347474605020,
+      "schedule_to_input_ms": 7.880076,
+      "normal_prefix_coherence": 0.7610171732982307,
+      "dmrs_slot_coherences": [
+        0.9877915462280294,
+        0.9866080462514374
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 62,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347486678607,
+        "frame": 62,
+        "subframe": 5,
+        "target_frame": 62,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347494540165,
+      "schedule_to_input_ms": 7.861558,
+      "normal_prefix_coherence": 0.7983316148357671,
+      "dmrs_slot_coherences": [
+        0.9879402277943065,
+        0.9866874024467509
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 64,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347506664493,
+        "frame": 64,
+        "subframe": 5,
+        "target_frame": 64,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347514471291,
+      "schedule_to_input_ms": 7.806798,
+      "normal_prefix_coherence": 0.7786798866925267,
+      "dmrs_slot_coherences": [
+        0.9863266749778213,
+        0.9878774381401817
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 66,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347526742564,
+        "frame": 66,
+        "subframe": 5,
+        "target_frame": 66,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347534589991,
+      "schedule_to_input_ms": 7.847427,
+      "normal_prefix_coherence": 0.7895180932370629,
+      "dmrs_slot_coherences": [
+        0.9910973110160252,
+        0.988495131628617
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 68,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347546661690,
+        "frame": 68,
+        "subframe": 5,
+        "target_frame": 68,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 1,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442347554541673,
+      "schedule_to_input_ms": 7.879983,
+      "normal_prefix_coherence": 0.7986979740848064,
+      "dmrs_slot_coherences": [
+        0.9841590841395629,
+        0.989252569068022
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 2,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 70,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347566625056,
+        "frame": 70,
+        "subframe": 5,
+        "target_frame": 70,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 2,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442347574483040,
+      "schedule_to_input_ms": 7.857984,
+      "normal_prefix_coherence": 0.804325479559955,
+      "dmrs_slot_coherences": [
+        0.9878046349881873,
+        0.9895159046282609
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 3,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 72,
+      "subframe": 9,
+      "result": "NACK",
+      "schedule": {
+        "timestamp_ns": 1792442347586769090,
+        "frame": 72,
+        "subframe": 5,
+        "target_frame": 72,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": null,
+        "ndi_observed": null,
+        "round": 3,
+        "new": false
+      },
+      "input_timestamp_ns": 1792442347594608500,
+      "schedule_to_input_ms": 7.83941,
+      "normal_prefix_coherence": 0.7843304300932916,
+      "dmrs_slot_coherences": [
+        0.988006236162162,
+        0.9897683311646754
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 1,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 74,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347606660161,
+        "frame": 74,
+        "subframe": 5,
+        "target_frame": 74,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347614510941,
+      "schedule_to_input_ms": 7.85078,
+      "normal_prefix_coherence": 0.773794447968765,
+      "dmrs_slot_coherences": [
+        0.9888396475892863,
+        0.988760046734788
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 76,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347626614046,
+        "frame": 76,
+        "subframe": 5,
+        "target_frame": 76,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347634492382,
+      "schedule_to_input_ms": 7.878336,
+      "normal_prefix_coherence": 0.7854251486060964,
+      "dmrs_slot_coherences": [
+        0.9874378925567289,
+        0.9889062240307095
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 78,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347646859451,
+        "frame": 78,
+        "subframe": 5,
+        "target_frame": 78,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347654641360,
+      "schedule_to_input_ms": 7.781909,
+      "normal_prefix_coherence": 0.7854044490321073,
+      "dmrs_slot_coherences": [
+        0.9870693519898585,
+        0.9895116352706529
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 80,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347666825540,
+        "frame": 80,
+        "subframe": 5,
+        "target_frame": 80,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347674542449,
+      "schedule_to_input_ms": 7.716909,
+      "normal_prefix_coherence": 0.7808487223205847,
+      "dmrs_slot_coherences": [
+        0.9880274489291501,
+        0.9899242645464081
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 82,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347686688740,
+        "frame": 82,
+        "subframe": 5,
+        "target_frame": 82,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347694512297,
+      "schedule_to_input_ms": 7.823557,
+      "normal_prefix_coherence": 0.780521818477771,
+      "dmrs_slot_coherences": [
+        0.9885469379360053,
+        0.9877726772733553
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 84,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347706793403,
+        "frame": 84,
+        "subframe": 5,
+        "target_frame": 84,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347714630979,
+      "schedule_to_input_ms": 7.837576,
+      "normal_prefix_coherence": 0.7957954949223662,
+      "dmrs_slot_coherences": [
+        0.9901814047747844,
+        0.9902425143105071
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 86,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347726744993,
+        "frame": 86,
+        "subframe": 5,
+        "target_frame": 86,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347734527865,
+      "schedule_to_input_ms": 7.782872,
+      "normal_prefix_coherence": 0.7831904978233584,
+      "dmrs_slot_coherences": [
+        0.9901595139224351,
+        0.9884606761531555
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 88,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347746646878,
+        "frame": 88,
+        "subframe": 5,
+        "target_frame": 88,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347754468454,
+      "schedule_to_input_ms": 7.821576,
+      "normal_prefix_coherence": 0.34998783192007643,
+      "dmrs_slot_coherences": [
+        0.9861284942531021,
+        0.9863137932778638
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 90,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347766716615,
+        "frame": 90,
+        "subframe": 5,
+        "target_frame": 90,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347774589765,
+      "schedule_to_input_ms": 7.87315,
+      "normal_prefix_coherence": 0.8262371751189908,
+      "dmrs_slot_coherences": [
+        0.9925396191968289,
+        0.9905361514677802
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 92,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347786687612,
+        "frame": 92,
+        "subframe": 5,
+        "target_frame": 92,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347794512540,
+      "schedule_to_input_ms": 7.824928,
+      "normal_prefix_coherence": 0.8147521682539409,
+      "dmrs_slot_coherences": [
+        0.9895307699209598,
+        0.9918985280627257
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 94,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347806634164,
+        "frame": 94,
+        "subframe": 5,
+        "target_frame": 94,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347814480499,
+      "schedule_to_input_ms": 7.846335,
+      "normal_prefix_coherence": 0.8144849651636153,
+      "dmrs_slot_coherences": [
+        0.9918936750016513,
+        0.9910231007199559
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 96,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347826784198,
+        "frame": 96,
+        "subframe": 5,
+        "target_frame": 96,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347834616033,
+      "schedule_to_input_ms": 7.831835,
+      "normal_prefix_coherence": 0.8171973455141357,
+      "dmrs_slot_coherences": [
+        0.9920222797679079,
+        0.9911671200959952
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 98,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347846764639,
+        "frame": 98,
+        "subframe": 5,
+        "target_frame": 98,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347854522178,
+      "schedule_to_input_ms": 7.757539,
+      "normal_prefix_coherence": 0.7361431554905057,
+      "dmrs_slot_coherences": [
+        0.9871041986412041,
+        0.9866387680286611
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 100,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347866708802,
+        "frame": 100,
+        "subframe": 5,
+        "target_frame": 100,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347874502785,
+      "schedule_to_input_ms": 7.793983,
+      "normal_prefix_coherence": 0.8516103501951444,
+      "dmrs_slot_coherences": [
+        0.9922789968895152,
+        0.9921457750467344
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 102,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347886786280,
+        "frame": 102,
+        "subframe": 5,
+        "target_frame": 102,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347894601856,
+      "schedule_to_input_ms": 7.815576,
+      "normal_prefix_coherence": 0.8562084388922125,
+      "dmrs_slot_coherences": [
+        0.9929196000439924,
+        0.9933705949024063
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 104,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347906727943,
+        "frame": 104,
+        "subframe": 5,
+        "target_frame": 104,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347914530982,
+      "schedule_to_input_ms": 7.803039,
+      "normal_prefix_coherence": 0.8551964365456298,
+      "dmrs_slot_coherences": [
+        0.9924810031060278,
+        0.9908290499088795
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 106,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347926627180,
+        "frame": 106,
+        "subframe": 5,
+        "target_frame": 106,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347934496794,
+      "schedule_to_input_ms": 7.869614,
+      "normal_prefix_coherence": 0.8546919171030738,
+      "dmrs_slot_coherences": [
+        0.9925999616417682,
+        0.992615045299959
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 108,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347946910474,
+        "frame": 108,
+        "subframe": 5,
+        "target_frame": 108,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347954591753,
+      "schedule_to_input_ms": 7.681279,
+      "normal_prefix_coherence": 0.8478377012526936,
+      "dmrs_slot_coherences": [
+        0.9931963749796288,
+        0.9927248562058535
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 110,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347966690266,
+        "frame": 110,
+        "subframe": 5,
+        "target_frame": 110,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347974542454,
+      "schedule_to_input_ms": 7.852188,
+      "normal_prefix_coherence": 0.8442187953850442,
+      "dmrs_slot_coherences": [
+        0.9930792479588598,
+        0.9930427588964323
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 112,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442347986692226,
+        "frame": 112,
+        "subframe": 5,
+        "target_frame": 112,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442347994531598,
+      "schedule_to_input_ms": 7.839372,
+      "normal_prefix_coherence": 0.8500135171343213,
+      "dmrs_slot_coherences": [
+        0.9912518432202984,
+        0.9937088005495229
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 114,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348006876168,
+        "frame": 114,
+        "subframe": 5,
+        "target_frame": 114,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348014636947,
+      "schedule_to_input_ms": 7.760779,
+      "normal_prefix_coherence": 0.8557460318534261,
+      "dmrs_slot_coherences": [
+        0.9923268912460664,
+        0.9921633335366792
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 116,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348026774571,
+        "frame": 116,
+        "subframe": 5,
+        "target_frame": 116,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348034518277,
+      "schedule_to_input_ms": 7.743706,
+      "normal_prefix_coherence": 0.8402473253231143,
+      "dmrs_slot_coherences": [
+        0.9914141859983595,
+        0.9908028701146067
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 118,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348046858698,
+        "frame": 118,
+        "subframe": 5,
+        "target_frame": 118,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348054562329,
+      "schedule_to_input_ms": 7.703631,
+      "normal_prefix_coherence": 0.8337554953195409,
+      "dmrs_slot_coherences": [
+        0.9912773810307917,
+        0.9915934426502201
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 120,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348066876268,
+        "frame": 120,
+        "subframe": 5,
+        "target_frame": 120,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348074644974,
+      "schedule_to_input_ms": 7.768706,
+      "normal_prefix_coherence": 0.83581196263282,
+      "dmrs_slot_coherences": [
+        0.9927419523083223,
+        0.9920467715544116
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 122,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348086671172,
+        "frame": 122,
+        "subframe": 5,
+        "target_frame": 122,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348094511989,
+      "schedule_to_input_ms": 7.840817,
+      "normal_prefix_coherence": 0.8497144836902757,
+      "dmrs_slot_coherences": [
+        0.9923160449125079,
+        0.9938445923648676
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 124,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348106612742,
+        "frame": 124,
+        "subframe": 5,
+        "target_frame": 124,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348114475041,
+      "schedule_to_input_ms": 7.862299,
+      "normal_prefix_coherence": 0.8422171722758949,
+      "dmrs_slot_coherences": [
+        0.9930124639468946,
+        0.9933083812822119
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 126,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348126733184,
+        "frame": 126,
+        "subframe": 5,
+        "target_frame": 126,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348134594556,
+      "schedule_to_input_ms": 7.861372,
+      "normal_prefix_coherence": 0.8394684672174845,
+      "dmrs_slot_coherences": [
+        0.993523160863611,
+        0.9921493168242864
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 128,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348146655106,
+        "frame": 128,
+        "subframe": 5,
+        "target_frame": 128,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348154505941,
+      "schedule_to_input_ms": 7.850835,
+      "normal_prefix_coherence": 0.8367647410952599,
+      "dmrs_slot_coherences": [
+        0.9932809995753569,
+        0.9916630445988308
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 130,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348166626380,
+        "frame": 130,
+        "subframe": 5,
+        "target_frame": 130,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348174487975,
+      "schedule_to_input_ms": 7.861595,
+      "normal_prefix_coherence": 0.8516013712193243,
+      "dmrs_slot_coherences": [
+        0.9928481239772525,
+        0.9926321767907536
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 132,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348186759137,
+        "frame": 132,
+        "subframe": 5,
+        "target_frame": 132,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348194560916,
+      "schedule_to_input_ms": 7.801779,
+      "normal_prefix_coherence": 0.8389791633942046,
+      "dmrs_slot_coherences": [
+        0.9926126298259214,
+        0.9925103220458107
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 134,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348206645837,
+        "frame": 134,
+        "subframe": 5,
+        "target_frame": 134,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348214518227,
+      "schedule_to_input_ms": 7.87239,
+      "normal_prefix_coherence": 0.849700255099302,
+      "dmrs_slot_coherences": [
+        0.9915497383879165,
+        0.9936816405327317
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 136,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348226634703,
+        "frame": 136,
+        "subframe": 5,
+        "target_frame": 136,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348234472261,
+      "schedule_to_input_ms": 7.837558,
+      "normal_prefix_coherence": 0.8471655212932863,
+      "dmrs_slot_coherences": [
+        0.9928654876216009,
+        0.9934667758374568
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 138,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348246731719,
+        "frame": 138,
+        "subframe": 5,
+        "target_frame": 138,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348254563184,
+      "schedule_to_input_ms": 7.831465,
+      "normal_prefix_coherence": 0.8415658578327259,
+      "dmrs_slot_coherences": [
+        0.9929431795276731,
+        0.9930672032287199
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 140,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348266660197,
+        "frame": 140,
+        "subframe": 5,
+        "target_frame": 140,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348274510976,
+      "schedule_to_input_ms": 7.850779,
+      "normal_prefix_coherence": 0.8393518370014311,
+      "dmrs_slot_coherences": [
+        0.9927000704951022,
+        0.9913806449173157
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 142,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348286604860,
+        "frame": 142,
+        "subframe": 5,
+        "target_frame": 142,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348294476491,
+      "schedule_to_input_ms": 7.871631,
+      "normal_prefix_coherence": 0.8447151051757396,
+      "dmrs_slot_coherences": [
+        0.9920284596433945,
+        0.9932488744737396
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 144,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348306707727,
+        "frame": 144,
+        "subframe": 5,
+        "target_frame": 144,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348314563636,
+      "schedule_to_input_ms": 7.855909,
+      "normal_prefix_coherence": 0.8381737426108082,
+      "dmrs_slot_coherences": [
+        0.9905502408480283,
+        0.9930258030422281
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 146,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348326656186,
+        "frame": 146,
+        "subframe": 5,
+        "target_frame": 146,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348334511651,
+      "schedule_to_input_ms": 7.855465,
+      "normal_prefix_coherence": 0.8451488858612343,
+      "dmrs_slot_coherences": [
+        0.992476145694675,
+        0.9931149448536353
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 148,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348346624479,
+        "frame": 148,
+        "subframe": 5,
+        "target_frame": 148,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348354484444,
+      "schedule_to_input_ms": 7.859965,
+      "normal_prefix_coherence": 0.8542209726969692,
+      "dmrs_slot_coherences": [
+        0.9916310582242678,
+        0.9938022735439441
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 150,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348366744847,
+        "frame": 150,
+        "subframe": 5,
+        "target_frame": 150,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348374570219,
+      "schedule_to_input_ms": 7.825372,
+      "normal_prefix_coherence": 0.7794856718552592,
+      "dmrs_slot_coherences": [
+        0.9898762555061701,
+        0.9902711991679586
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 152,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348386678639,
+        "frame": 152,
+        "subframe": 5,
+        "target_frame": 152,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348394508623,
+      "schedule_to_input_ms": 7.829984,
+      "normal_prefix_coherence": 0.8399644642082112,
+      "dmrs_slot_coherences": [
+        0.9926141213099722,
+        0.9921932557129192
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 154,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348406628395,
+        "frame": 154,
+        "subframe": 5,
+        "target_frame": 154,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348414467138,
+      "schedule_to_input_ms": 7.838743,
+      "normal_prefix_coherence": 0.844587015605726,
+      "dmrs_slot_coherences": [
+        0.9920063699560936,
+        0.99279299698823
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 156,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348426723188,
+        "frame": 156,
+        "subframe": 5,
+        "target_frame": 156,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348434597986,
+      "schedule_to_input_ms": 7.874798,
+      "normal_prefix_coherence": 0.8580508845418602,
+      "dmrs_slot_coherences": [
+        0.9919120767617229,
+        0.9918515707468006
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 158,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348446656555,
+        "frame": 158,
+        "subframe": 5,
+        "target_frame": 158,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348454513353,
+      "schedule_to_input_ms": 7.856798,
+      "normal_prefix_coherence": 0.838610166938492,
+      "dmrs_slot_coherences": [
+        0.9917886171801815,
+        0.993373284236294
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 160,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348466615496,
+        "frame": 160,
+        "subframe": 5,
+        "target_frame": 160,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348474466164,
+      "schedule_to_input_ms": 7.850668,
+      "normal_prefix_coherence": 0.7648523294734544,
+      "dmrs_slot_coherences": [
+        0.9861513152228191,
+        0.9897699569981986
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 162,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348486717474,
+        "frame": 162,
+        "subframe": 5,
+        "target_frame": 162,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348494593032,
+      "schedule_to_input_ms": 7.875558,
+      "normal_prefix_coherence": 0.8422175373827026,
+      "dmrs_slot_coherences": [
+        0.9918253029245735,
+        0.9916188741759551
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 164,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348506670156,
+        "frame": 164,
+        "subframe": 5,
+        "target_frame": 164,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348514509880,
+      "schedule_to_input_ms": 7.839724,
+      "normal_prefix_coherence": 0.8500450762465465,
+      "dmrs_slot_coherences": [
+        0.992463941211436,
+        0.9927963050566937
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 166,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348526593430,
+        "frame": 166,
+        "subframe": 5,
+        "target_frame": 166,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348534464451,
+      "schedule_to_input_ms": 7.871021,
+      "normal_prefix_coherence": 0.8395368995062709,
+      "dmrs_slot_coherences": [
+        0.9929051364820323,
+        0.993499579556274
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 168,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348546722168,
+        "frame": 168,
+        "subframe": 5,
+        "target_frame": 168,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348554621225,
+      "schedule_to_input_ms": 7.899057,
+      "normal_prefix_coherence": 0.8346374869774666,
+      "dmrs_slot_coherences": [
+        0.9905840589816488,
+        0.9939252884991148
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    },
+    {
+      "frame": 170,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348566652775,
+        "frame": 170,
+        "subframe": 5,
+        "target_frame": 170,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 0,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348574517277,
+      "schedule_to_input_ms": 7.864502,
+      "normal_prefix_coherence": 0.8342862749637782,
+      "dmrs_slot_coherences": [
+        0.9924138938111002,
+        0.9917487164163502
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 0
+    },
+    {
+      "frame": 172,
+      "subframe": 9,
+      "result": "ACK",
+      "schedule": {
+        "timestamp_ns": 1792442348586603161,
+        "frame": 172,
+        "subframe": 5,
+        "target_frame": 172,
+        "target_subframe": 9,
+        "harq": 0,
+        "mcs": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes_observed": 51,
+        "ndi_observed": 1,
+        "round": 0,
+        "new": true
+      },
+      "input_timestamp_ns": 1792442348594469848,
+      "schedule_to_input_ms": 7.866687,
+      "normal_prefix_coherence": 0.8638183478292576,
+      "dmrs_slot_coherences": [
+        0.9934531756211442,
+        0.9953167563791154
+      ],
+      "pilot_group": "strong_both_above_0.95",
+      "source_expected_rv_not_runtime_measured": 0,
+      "ndi_inherited_from_new_not_runtime_measured": 1
+    }
+  ],
+  "limits": "No actual receiver NDI/RV/soft-buffer reset or turbo iteration count in this capture. Expected RV0,2,3,1 and inherited NDI are source-based inferences, not measured decoder state. Native frame/sample joins do not prove absolute RF alignment. Decode failures are not telemetry packet losses or an established registration-loss cause.",
+  "adjacent_ack_references": [
+    {
+      "failed_new_frame": 992,
+      "previous_ack": {
+        "frame": 990,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442346526747715,
+          "frame": 990,
+          "subframe": 5,
+          "target_frame": 990,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 0,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442346534521494,
+        "schedule_to_input_ms": 7.773779,
+        "normal_prefix_coherence": 0.8616643318548037,
+        "dmrs_slot_coherences": [
+          0.9929131179802207,
+          0.995303394781496
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 0
+      },
+      "next_ack": {
+        "frame": 1000,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442346626726920,
+          "frame": 1000,
+          "subframe": 5,
+          "target_frame": 1000,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 0,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442346634586329,
+        "schedule_to_input_ms": 7.859409,
+        "normal_prefix_coherence": 0.9658011700378647,
+        "dmrs_slot_coherences": [
+          0.9974560109174684,
+          0.9977420699153331
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 0
+      }
+    },
+    {
+      "failed_new_frame": 0,
+      "previous_ack": {
+        "frame": 1022,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442346846647345,
+          "frame": 1022,
+          "subframe": 5,
+          "target_frame": 1022,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 1,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442346854474088,
+        "schedule_to_input_ms": 7.826743,
+        "normal_prefix_coherence": 0.7510289137680545,
+        "dmrs_slot_coherences": [
+          0.9873620892080786,
+          0.9883520454461174
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 1
+      },
+      "next_ack": {
+        "frame": 8,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442346946655069,
+          "frame": 8,
+          "subframe": 5,
+          "target_frame": 8,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 1,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442346954514108,
+        "schedule_to_input_ms": 7.859039,
+        "normal_prefix_coherence": 0.7677405141097279,
+        "dmrs_slot_coherences": [
+          0.9893505157410057,
+          0.990120019579328
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 1
+      }
+    },
+    {
+      "failed_new_frame": 20,
+      "previous_ack": {
+        "frame": 18,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442347046706497,
+          "frame": 18,
+          "subframe": 5,
+          "target_frame": 18,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 0,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442347066551049,
+        "schedule_to_input_ms": 19.844552,
+        "normal_prefix_coherence": 0.7404609684850997,
+        "dmrs_slot_coherences": [
+          0.9858209381323445,
+          0.9854523083793602
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 0
+      },
+      "next_ack": {
+        "frame": 28,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442347146605313,
+          "frame": 28,
+          "subframe": 5,
+          "target_frame": 28,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 0,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442347154469500,
+        "schedule_to_input_ms": 7.864187,
+        "normal_prefix_coherence": 0.9716532600568981,
+        "dmrs_slot_coherences": [
+          0.9955951785999491,
+          0.9966231192185
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 0
+      }
+    },
+    {
+      "failed_new_frame": 66,
+      "previous_ack": {
+        "frame": 64,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442347506664493,
+          "frame": 64,
+          "subframe": 5,
+          "target_frame": 64,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 0,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442347514471291,
+        "schedule_to_input_ms": 7.806798,
+        "normal_prefix_coherence": 0.7786798866925267,
+        "dmrs_slot_coherences": [
+          0.9863266749778213,
+          0.9878774381401817
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 0
+      },
+      "next_ack": {
+        "frame": 74,
+        "subframe": 9,
+        "result": "ACK",
+        "schedule": {
+          "timestamp_ns": 1792442347606660161,
+          "frame": 74,
+          "subframe": 5,
+          "target_frame": 74,
+          "target_subframe": 9,
+          "harq": 0,
+          "mcs": 4,
+          "first_rb_within_narrowband": 0,
+          "nb_rb": 6,
+          "tbs_bytes_observed": 51,
+          "ndi_observed": 0,
+          "round": 0,
+          "new": true
+        },
+        "input_timestamp_ns": 1792442347614510941,
+        "schedule_to_input_ms": 7.85078,
+        "normal_prefix_coherence": 0.773794447968765,
+        "dmrs_slot_coherences": [
+          0.9888396475892863,
+          0.988760046734788
+        ],
+        "pilot_group": "strong_both_above_0.95",
+        "source_expected_rv_not_runtime_measured": 0,
+        "ndi_inherited_from_new_not_runtime_measured": 0
+      }
+    }
+  ],
+  "source_review": {
+    "source_head": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+    "dirty_source_hashes": {
+      "openair2/LAYER2/MAC/eNB_scheduler_ulsch.c": "2bd047db324d409aabe99b5a035996e62344ef3112ad02b05140892b7cc975b5",
+      "openair1/PHY/LTE_TRANSPORT/dci_tools.c": "c6da91686e06168e8fa2396b10fc577e0299ff0f6ba35520bd7c26614319ab4c",
+      "openair1/SCHED/phy_procedures_lte_eNb.c": "83a1b47dd50993675e8458429766c88a1d61a9c5e176d8220c476d58b2581e41"
+    },
+    "new_data_toggle": {
+      "path": "openair2/LAYER2/MAC/eNB_scheduler_ulsch.c",
+      "line": 2117,
+      "finding": "LTE-M new transmissions toggle oldNDI_UL and set MCS4/TBS from six RBs."
+    },
+    "retry_rv": {
+      "path": "openair2/LAYER2/MAC/eNB_scheduler_ulsch.c",
+      "lines": [
+        1961,
+        2333,
+        2361
+      ],
+      "finding": "Source maps rounds0..3 to RV0,2,3,1 and supplies the same mapping to grant and receiver config. Runtime RV/NDI not in saved trace."
+    },
+    "retry_exhaustion": {
+      "path": "openair2/LAYER2/MAC/eNB_scheduler_ulsch.c",
+      "line": 204,
+      "finding": "MAC resets round after failure at round3; observed four-failure groups are consistent with this path."
+    },
+    "phy_state_cleanup": {
+      "path": "openair1/SCHED/phy_procedures_lte_eNb.c",
+      "line": 1263,
+      "finding": "On decode abort with round>=3, PHY clears status/handled/mask and resets round. The saved trace lacks these runtime field values."
+    },
+    "existing_grant_trace_limit": {
+      "path": "openair1/PHY/LTE_TRANSPORT/dci_tools.c",
+      "lines": [
+        2134,
+        2135,
+        2136,
+        2149
+      ],
+      "finding": "LTE-M ENB_PHY_ULSCH_UE_DCI reports a legacy calculated HARQ ID marked TODO and round=-1, while actual dci_alloc HARQ uses rel13->harq_process. This is a diagnostic field limitation, not evidence of an on-air grant error. Saved capture did not enable this event."
+    },
+    "next_observation": "Add narrow diagnostic-only events at actual grant construction, receive configuration and decode completion: identity/frame, HARQ, NDI, RV, TBS, MCS, allocation, round, new-data/soft-buffer-reset decision, decode return/abort status. Keep original radio tree/binary and all production MCU firmware unchanged."
+  }
+}

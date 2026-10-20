@@ -1,0 +1,91 @@
+{
+  "label": "lte-phy-context-20261019-02",
+  "method": "Selected numeric PHY log fields after first nonempty CCCH and before host LTE OFF command at 16:41:11.326560 UTC; whole-log counts separately labeled; log events, not identified transmissions or packet error rates. No raw payloads.",
+  "first_nonempty_ccch_utc": "2026-10-19T16:40:44.488+00:00",
+  "oai_log_bytes": 636725846,
+  "whole_log_selected_counts": {
+    "Demodulating PUSCH": 2658,
+    "LLL": 326,
+    "Error receiving ULSCH": 2621
+  },
+  "post_ccch_demodulation_groups": [
+    {
+      "harq_pid": 0,
+      "first_rb": 13,
+      "nb_rb": 6,
+      "Qm": 2,
+      "TBS_bits": 408,
+      "rv": 0,
+      "cyclic_shift": 4,
+      "demodulations": 362,
+      "decode_error_logs": 326,
+      "target_mismatches": 0,
+      "first_utc": "2026-10-19T16:40:44.533+00:00",
+      "last_utc": "2026-10-19T16:41:11.253+00:00",
+      "distinct_temporary_rntis": 1
+    },
+    {
+      "harq_pid": 0,
+      "first_rb": 13,
+      "nb_rb": 6,
+      "Qm": 2,
+      "TBS_bits": 408,
+      "rv": 2,
+      "cyclic_shift": 4,
+      "demodulations": 326,
+      "decode_error_logs": 326,
+      "target_mismatches": 0,
+      "first_utc": "2026-10-19T16:40:44.876+00:00",
+      "last_utc": "2026-10-19T16:41:11.273+00:00",
+      "distinct_temporary_rntis": 1
+    },
+    {
+      "harq_pid": 0,
+      "first_rb": 13,
+      "nb_rb": 6,
+      "Qm": 2,
+      "TBS_bits": 408,
+      "rv": 3,
+      "cyclic_shift": 4,
+      "demodulations": 326,
+      "decode_error_logs": 326,
+      "target_mismatches": 0,
+      "first_utc": "2026-10-19T16:40:44.893+00:00",
+      "last_utc": "2026-10-19T16:41:11.293+00:00",
+      "distinct_temporary_rntis": 1
+    },
+    {
+      "harq_pid": 0,
+      "first_rb": 13,
+      "nb_rb": 2,
+      "Qm": 2,
+      "TBS_bits": 224,
+      "rv": 0,
+      "cyclic_shift": 2,
+      "demodulations": 129,
+      "decode_error_logs": 129,
+      "target_mismatches": 0,
+      "first_utc": "2026-10-19T16:40:44.898+00:00",
+      "last_utc": "2026-10-19T16:41:02.828+00:00",
+      "distinct_temporary_rntis": 129
+    },
+    {
+      "harq_pid": 0,
+      "first_rb": 13,
+      "nb_rb": 6,
+      "Qm": 2,
+      "TBS_bits": 408,
+      "rv": 1,
+      "cyclic_shift": 4,
+      "demodulations": 326,
+      "decode_error_logs": 326,
+      "target_mismatches": 0,
+      "first_utc": "2026-10-19T16:40:44.913+00:00",
+      "last_utc": "2026-10-19T16:41:11.313+00:00",
+      "distinct_temporary_rntis": 1
+    }
+  ],
+  "ground_binary_sha256": "5c5de8e17db509b35823f401b99c7fdbe28144307da0be24fbc777c569768e11",
+  "baseline_profile_sha256": "f3e0bb50c554d240cbd566a4773da981ed04bbd507e9a642a2e84a952541bac8",
+  "debug_profile_sha256": "c993e321eafc3de6863a4144bdedff7e636ff561731e592c5214edfc8bf7067a"
+}

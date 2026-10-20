@@ -1,0 +1,11 @@
+started_utc,label,requested_pps,nominal_window_seconds,complete_window,valid_rate_measurement,planned_slots,attempted,skipped_slots,local_refusals,peer_refusals,unknown_outcomes,modem_accepted,unique_received,yamcs_unique,missing_modem_accepted,duplicates,received_kbps,stop_reason,off_confirmed,same_ihu_firmware_boot
+2026-10-19T13:28:41.752411+00:00,lte-rate-1pps-20261019-01,1.0,30,True,True,30,30,0,0,0,0,30,30,30,0,0,1.024,NONE,True,True
+2026-10-19T13:49:20.334052+00:00,lte-rate-1pps-20261019-02,1.0,30,True,True,30,30,0,0,0,0,30,30,30,0,0,1.024,NONE,True,True
+2026-10-19T13:52:00.991216+00:00,lte-rate-1pps-20261019-03,1.0,30,True,True,30,30,0,0,0,0,30,30,30,0,0,1.024,NONE,True,True
+2026-10-19T13:54:47.046166+00:00,lte-rate-2pps-20261019-01,2.0,30,False,False,60,8,,1,0,0,7,7,7,0,0,,IHU_SENSOR_BUSY,True,True
+2026-10-19T13:57:46.447272+00:00,lte-rate-2pps-20261019-02,2.0,30,True,True,60,60,0,0,0,0,60,60,60,0,0,2.048,NONE,True,True
+2026-10-19T14:00:17.498289+00:00,lte-rate-5pps-20261019-01,5.0,30,True,True,150,84,66,0,0,0,84,84,84,0,0,2.8672,NONE,True,True
+2026-10-19T14:02:48.573232+00:00,lte-rate-2pps-20261019-03,2.0,30,False,False,60,46,,0,1,0,45,0,0,45,0,,WALTER_NOT_READY,True,True
+2026-10-19T14:08:40.429625+00:00,lte-rate-2pps-20261019-04,2.0,30,True,True,60,60,0,0,0,0,60,60,60,0,0,2.048,NONE,True,True
+2026-10-19T14:11:15.766715+00:00,lte-rate-5pps-20261019-02,5.0,30,True,True,150,84,66,0,0,0,84,84,84,0,0,2.8672,NONE,True,True
+2026-10-19T14:13:46.900339+00:00,lte-rate-5pps-20261019-03,5.0,30,False,False,150,62,,1,1,0,60,0,0,60,0,,WALTER_NOT_READY,True,True

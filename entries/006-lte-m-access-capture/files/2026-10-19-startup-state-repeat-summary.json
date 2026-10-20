@@ -1,0 +1,183 @@
+{
+  "label": "lte-release-startup-20261019-02",
+  "setup": {
+    "profile": "enb.band13.emtc.ce300tx20rlcdebug.conf",
+    "changes": "RLC/RRC debug only; RF settings and PHY logging unchanged",
+    "production_firmware_changed": false,
+    "binary_sha256": "cba64491284fc672369b967da657049c8057deeb50548a28e3558369f5b6027a",
+    "observer": "Scalar only, all identities, connected before IHU/RF admission",
+    "observer_cap_bytes": 16777216,
+    "observer_deadline_seconds": 140
+  },
+  "observer_ready_before_host_utc": "2026-10-19T22:07:04.502814+00:00",
+  "rf_admitted_utc": "2026-10-19T22:07:05.795478+00:00",
+  "ready_seconds": 66.086604,
+  "modem_accepted": 1,
+  "receiver": 1,
+  "yamcs": 1,
+  "registration_observations": [
+    {
+      "utc": "2026-10-19T22:08:12.531126+00:00",
+      "seconds_after_accept": 0.252,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 53522,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T22:08:17.533081+00:00",
+      "seconds_after_accept": 5.254,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 48519,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T22:08:22.506271+00:00",
+      "seconds_after_accept": 10.227,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 43520,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T22:08:27.495369+00:00",
+      "seconds_after_accept": 15.216,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 38520,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T22:08:32.496526+00:00",
+      "seconds_after_accept": 20.217,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 33517,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T22:08:37.530656+00:00",
+      "seconds_after_accept": 25.251,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 28520,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T22:08:42.601265+00:00",
+      "seconds_after_accept": 30.322,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 23522,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T22:08:47.643291+00:00",
+      "seconds_after_accept": 35.364,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 18521,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    }
+  ],
+  "capture": {
+    "valid": true,
+    "scalar_only": true,
+    "all_identities": true,
+    "byte_cap": 16777216,
+    "deadline_seconds": 140,
+    "events_allowlisted": [
+      "ENB_PHY_LTEM_GRANT_STATE",
+      "ENB_PHY_LTEM_RX_STATE",
+      "ENB_PHY_LTEM_RATE_STATE",
+      "ENB_PHY_LTEM_SEGMENT_STATE",
+      "ENB_PHY_LTEM_POST_STATE",
+      "ENB_PHY_ULSCH_UE_ACK",
+      "ENB_PHY_ULSCH_UE_NACK",
+      "ENB_MAC_UE_UL_SCHEDULE",
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+    ],
+    "started_utc_ns": 1792447624533485578,
+    "metadata_ready_utc_ns": 1792447624535689322,
+    "stop_reason": "host_finished",
+    "trace_bytes": 1212686,
+    "event_counts": {
+      "ENB_PHY_LTEM_RX_STATE": 1978,
+      "ENB_PHY_LTEM_RATE_STATE": 1978,
+      "ENB_PHY_LTEM_SEGMENT_STATE": 1978,
+      "ENB_PHY_LTEM_POST_STATE": 1978,
+      "ENB_PHY_ULSCH_UE_NACK": 203,
+      "ENB_PHY_ULSCH_UE_ACK": 1775,
+      "ENB_MAC_UE_UL_SCHEDULE": 1813,
+      "ENB_PHY_LTEM_GRANT_STATE": 1929,
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION": 117
+    },
+    "elapsed_seconds": 104.40709007397527,
+    "incomplete_tail_bytes": 0,
+    "finished_utc_ns": 1792447728940585022,
+    "trace_sha256": "8c776eb2dc32ee1dc54fcf0f93962c38d0bb93ed90248dfc966dbc4ab2787cb0"
+  },
+  "state_checks": [
+    {
+      "label": "lte-release-startup-20261019-02",
+      "connected_identity_event_counts": {
+        "ENB_PHY_LTEM_RX_STATE": 1930,
+        "ENB_PHY_LTEM_RATE_STATE": 1930,
+        "ENB_PHY_LTEM_SEGMENT_STATE": 1930,
+        "ENB_PHY_LTEM_POST_STATE": 1930,
+        "ENB_PHY_LTEM_GRANT_STATE": 1929
+      },
+      "complete_chains": 1929,
+      "decode_results": {
+        "ACK": 1773,
+        "NACK": 156
+      },
+      "mismatch_counts": {},
+      "rnti": 27135,
+      "incomplete_chains": 0,
+      "mac_paired_chains": 1929
+    }
+  ],
+  "stop_command_utc": "2026-10-19T22:08:48.097184+00:00",
+  "release_transitions": [
+    {
+      "utc": "2026-10-19T22:08:11.187+00:00",
+      "marker": "reconfiguration_complete"
+    },
+    {
+      "utc": "2026-10-19T22:08:11.189+00:00",
+      "marker": "reconfiguration_complete"
+    },
+    {
+      "utc": "2026-10-19T22:08:11.189+00:00",
+      "marker": "reconfiguration_complete"
+    }
+  ],
+  "cleanup": {
+    "walter_off": true,
+    "all_six_outputs_zero": true,
+    "ihu_firmware_boot_unchanged": true,
+    "can_errors_zero": true,
+    "original_head_unchanged": true,
+    "original_status_unchanged": true,
+    "original_overlay_unchanged": true,
+    "original_binary_unchanged": true,
+    "rx_reference_binary_unchanged": true,
+    "diagnostic_binary_unchanged": true,
+    "baseline_profile_unchanged": true,
+    "radio_and_core_stopped": true,
+    "recorder_stopped": true,
+    "debug_profile_logging_only": true
+  },
+  "rate_result_kbps": null,
+  "limits": "One delivered EPS packet, registered through35.364s. Early-release/missing-delivery failure did not recur. No release request/removal marker in this bounded log, including after commanded OFF before cell stop; this does not prove no future release. State checks compare internal eNodeB records, not independently decoded RF, and are not a packet error rate or speed measurement."
+}

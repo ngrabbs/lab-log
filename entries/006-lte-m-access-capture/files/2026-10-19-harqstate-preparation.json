@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-19",
+  "diagnostic_only": true,
+  "radio_started": false,
+  "rf_qualified": false,
+  "source_head": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+  "diagnostic_binary_sha256": "cba64491284fc672369b967da657049c8057deeb50548a28e3558369f5b6027a",
+  "source_sha256": {
+    "openair1/PHY/LTE_TRANSPORT/dci_tools.c": "258843d3535d4482b3e1f04c9941969cbfe3d7d322a76420cfb172b2ef05b531",
+    "openair1/PHY/LTE_TRANSPORT/ulsch_decoding.c": "d56003b93915eb5814ffee02df22eab7c9c6b383cc6b72802350151f265f82bd",
+    "openair1/SCHED/phy_procedures_lte_eNb.c": "88300e817534d33a2f450ab7c63356da3e245b26678846bfdcb09594fcc53902",
+    "common/utils/T/T_messages.txt": "6d56c777ba0ba7296161072834c3f93d838e0d7157fdd71cd4363242b495facb"
+  },
+  "instrumentation_patch_sha256": "2523726331eac5659c376519631b5542ca2e776df3baecf9347582ac59274773",
+  "additions_only": true,
+  "vcd_checker_exit": 0,
+  "synthetic_transport": {
+    "synthetic_only": true,
+    "radio_started": false,
+    "actual_c_tracer_transport": true,
+    "scalar_event_types": 5,
+    "events_checked": 1150,
+    "all_signed_field_values_exact": true,
+    "timestamp_and_length_validation": true,
+    "truncated_input_rejected": true,
+    "id_header_sha256": "ffc689794697f2b67810c6d274dc2fd9e5786560f855e2f948d74fae3b285784",
+    "schema_sha256": "a264f52960e4357d6dcbf3bb76df4f49998708b2c8d080fbc1f4387fc6e82eee"
+  },
+  "synthetic_observer": {
+    "synthetic-harq-trigger-nack-01": {
+      "valid": true,
+      "trigger_reason": "four_consecutive_connected_nacks",
+      "error": null,
+      "trace_bytes": 6009644
+    },
+    "synthetic-harq-trigger-external-01": {
+      "valid": true,
+      "trigger_reason": "registration_report",
+      "error": null,
+      "trace_bytes": 5823764
+    },
+    "synthetic-harq-trigger-malformed-01": {
+      "valid": false,
+      "trigger_reason": null,
+      "error": "Invalid record length",
+      "trace_bytes": null
+    },
+    "synthetic-harq-trigger-badstate-01": {
+      "valid": false,
+      "trigger_reason": null,
+      "error": "State schema mismatch",
+      "trace_bytes": null
+    }
+  },
+  "physim_tests": [
+    {
+      "name": "physim.4g.ulsim.test3",
+      "seconds": 53.2645,
+      "ctest_reported_pass": true
+    },
+    {
+      "name": "physim.4g.ulsim.test4",
+      "seconds": 60.4117,
+      "ctest_reported_pass": true
+    }
+  ],
+  "original_source_and_binary_unchanged": true,
+  "working_reference_build_unchanged": true,
+  "production_firmware_changed": false,
+  "no_radio_core_capture_processes": true,
+  "field_notes": {
+    "GRANT_STATE": "Reads constructed 10 MHz DCI bitfields; TBS is derived from the configured MCS/RB table, not an independently decoded over-air field.",
+    "RX_STATE": "Records input/stored NDI, RV, TBS, round and context-reset decision after receiver setup.",
+    "RATE_STATE": "clear_soft_buffer is the Boolean argument supplied to rate unmatching (RV==0). This is separate from receiver context reset.",
+    "SEGMENT_STATE": "decode_iterations is the actual decoder return value. rate_status=-1 marks rate-unmatching failure; 0 marks the normal branch, not its literal function return value.",
+    "POST_STATE": "Records final-segment abort/status/round before completion cleanup."
+  },
+  "preparation_corrections": [
+    "Moved error-path trace before task completion publication during review.",
+    "Moved scalar events before the VCD tail required by the database checker; regenerated IDs and repeated transport checks.",
+    "Fixed reader bookkeeping that shadowed the schema path; rechecked retained synthetic data."
+  ],
+  "limits": "Offline build/serialization and LTE uplink simulation checks only; not a real Walter attach, over-air grant decode, LTE-M-specific HARQ recovery proof or demonstrated failure fix."
+}

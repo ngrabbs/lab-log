@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-19",
+  "comparison": [
+    {
+      "label": "lte-rate-5pps-20261019-02",
+      "approximate_active_utc_window": {
+        "start": "2026-10-19T14:11:43.085",
+        "end": "2026-10-19T14:12:13.266"
+      },
+      "scheduled_uplink_grant_log_messages": 1509,
+      "decoded_scheduled_uplink_log_messages": 1122,
+      "failed_scheduled_uplink_log_messages": 387,
+      "uplink_data_channel_log_messages": 924
+    },
+    {
+      "label": "lte-rate-5pps-20261019-03",
+      "approximate_active_utc_window": {
+        "start": "2026-10-19T14:14:15.756",
+        "end": "2026-10-19T14:14:39.047"
+      },
+      "scheduled_uplink_grant_log_messages": 1165,
+      "decoded_scheduled_uplink_log_messages": 0,
+      "failed_scheduled_uplink_log_messages": 1165,
+      "uplink_data_channel_log_messages": 0
+    },
+    {
+      "label": "lte-rate-2pps-20261019-03",
+      "approximate_active_utc_window": {
+        "start": "2026-10-19T14:03:18.103",
+        "end": "2026-10-19T14:03:40.771"
+      },
+      "scheduled_uplink_grant_log_messages": 12,
+      "decoded_scheduled_uplink_log_messages": 0,
+      "failed_scheduled_uplink_log_messages": 13,
+      "uplink_data_channel_log_messages": 0
+    }
+  ],
+  "method": "Count selected MAC log messages during approximate active UTC intervals from host send start to last response. Counts are log events, not application packets or calibrated RF statistics. Cross-host one-way timing was not calibrated.",
+  "finding": "Failed sessions have no successfully decoded scheduled uplink or user-data-channel log messages in these intervals. The trace boundary is before ground UDP/Yamcs; missing UE transmissions versus eNodeB decode/scheduling error remains unresolved."
+}

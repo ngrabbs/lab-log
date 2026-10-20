@@ -1,0 +1,15 @@
+{
+  "label": "lte-rate-2pps-20261019-01",
+  "requested_pps": 2,
+  "completed_30_second_window": false,
+  "modem_accepted": 7,
+  "unique_received": 7,
+  "yamcs_unique": 7,
+  "missing_accepted": 0,
+  "duplicate_datagrams": 0,
+  "explicit_local_refusal": "SENSOR_BUSY",
+  "received_kbps": null,
+  "off_confirmed": true,
+  "same_ihu_firmware_boot": true,
+  "note": "Host stopped on explicit refusal before transmission; not a valid rate point. Its legacy attempt field says UNKNOWN, but the recorded terminal response is REJECT reason=SENSOR_BUSY."
+}

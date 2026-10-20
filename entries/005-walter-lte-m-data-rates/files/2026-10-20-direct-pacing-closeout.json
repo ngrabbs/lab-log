@@ -1,0 +1,126 @@
+{
+  "date_utc": "2026-10-20",
+  "date_local": "2026-10-19",
+  "scope": "Bounded direct Walter pacing check; synthetic UDP, not full IHU path",
+  "points": [
+    {
+      "point": 1,
+      "run": 2026102008,
+      "registered_ready_seconds": 16.554,
+      "packet_bytes": 512,
+      "offer_seconds": 30,
+      "offered_pps": 2,
+      "attempted": 60,
+      "accepted": 60,
+      "received": 60,
+      "in_window": 60,
+      "late": 0,
+      "missing": 0,
+      "received_kbps": 8.192,
+      "radio_children": {
+        "oai": 124,
+        "epc": 124
+      },
+      "off_confirmed": true,
+      "counts_file": "2026-10-20-direct-slot-512-2pps30.json",
+      "receipts_file": "2026-10-20-direct-slot-512-2pps30-receipts.csv"
+    },
+    {
+      "point": 2,
+      "run": 2026102009,
+      "registered_ready_seconds": 16.054,
+      "packet_bytes": 512,
+      "offer_seconds": 30,
+      "offered_pps": 2,
+      "attempted": 60,
+      "accepted": 60,
+      "received": 60,
+      "in_window": 60,
+      "late": 0,
+      "missing": 0,
+      "received_kbps": 8.192,
+      "radio_children": {
+        "oai": 124,
+        "epc": 124
+      },
+      "off_confirmed": true,
+      "counts_file": "2026-10-20-direct-slot-512-2pps30-repeat02.json",
+      "receipts_file": "2026-10-20-direct-slot-512-2pps30-repeat02-receipts.csv"
+    },
+    {
+      "point": 3,
+      "run": 2026102010,
+      "registered_ready_seconds": 15.925,
+      "packet_bytes": 512,
+      "offer_seconds": 30,
+      "offered_pps": 2,
+      "attempted": 60,
+      "accepted": 60,
+      "received": 60,
+      "in_window": 60,
+      "late": 0,
+      "missing": 0,
+      "received_kbps": 8.192,
+      "radio_children": {
+        "oai": 124,
+        "epc": 124
+      },
+      "off_confirmed": true,
+      "counts_file": "2026-10-20-direct-slot-512-2pps30-repeat03.json",
+      "receipts_file": "2026-10-20-direct-slot-512-2pps30-repeat03-receipts.csv"
+    }
+  ],
+  "total_attempted": 180,
+  "total_accepted": 180,
+  "total_received": 180,
+  "total_in_window": 180,
+  "total_late": 0,
+  "total_missing": 0,
+  "each_offer_seconds": 30,
+  "separate_sessions": true,
+  "continuous_90_second_run": false,
+  "matched_goodput_kbps": 8.192,
+  "best_ten_second_burst_kbps": 11.8784,
+  "repeat_policy": "At most two repeats after the initial point; stop on first anomaly; both passed",
+  "restore": {
+    "full_flash_bytes": 16777216,
+    "backup_sha256": "218ef554410084d6fea1490388fac96309d2f58b7dc35379f49ce9f40521f343",
+    "flash_parameters_kept": true,
+    "full_image_verified": true,
+    "usb_identity_verified": true,
+    "version": "0.3.0",
+    "git": "9fcb0209f1bb192369fce34d863a3862f8040de6",
+    "dirty": false,
+    "modem_off": true,
+    "rf_windows_opened": 0,
+    "ihu_chain_check": {
+      "date_local": "2026-10-20",
+      "verified": true,
+      "ihu_version": "0.15.0",
+      "comms_version": "0.8.0",
+      "walter_version": "0.3.0",
+      "all_firmware_clean": true,
+      "modem_state": 0,
+      "registered": 0,
+      "radio_window_ms": 0,
+      "can_normal": true,
+      "can_error_registers_zero": true,
+      "final_check_errors_unchanged": true,
+      "output_permissions_unchanged": true,
+      "rf_command_sent": false,
+      "initial_anomalies": [
+        "Stale Walter peer after restoration: one UNKNOWN_REMOTE_LINK, then HELLO_REQUIRED",
+        "Background discovery temporarily rejected HELLO as BUSY_TARGET_SWITCH"
+      ],
+      "recovery": "Renewed HELLO; final identity/OFF check passed without further unknown/error increments"
+    }
+  },
+  "production_ihu_changed": false,
+  "production_walter_mcu_changed": false,
+  "ground_candidate_left_installed": true,
+  "limits": [
+    "Three separate 30-second paced runs, not a continuous 90-second run, long-term reliability qualification or maximum LTE-M rate.",
+    "Earlier session failures remain part of the record. The previous two-context crash condition was not demonstrated in these repeats.",
+    "ESP32 full-image restore does not restore external Sequans modem NVM; no modem firmware/RAT/operator programming was performed."
+  ]
+}

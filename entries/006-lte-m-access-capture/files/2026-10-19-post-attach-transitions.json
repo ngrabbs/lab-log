@@ -1,0 +1,32 @@
+{
+  "method": "Selected event names and timestamps from private OAI/EPC logs; no payloads. Not evidence that the three failures share a cause. No new RF run.",
+  "sessions": [
+    {
+      "label": "lte-rate-2pps-20261019-03",
+      "rrc_reconfiguration_complete_utc": "2026-10-19T14:03:17.848+00:00",
+      "last_ul_dcch_log_utc": "2026-10-19T14:03:17.925+00:00",
+      "first_telemetry_offer_utc": "2026-10-19T14:03:18.103296+00:00",
+      "active_ue_removed_utc": "2026-10-19T14:03:18.350+00:00",
+      "removal_label": "UE_CONTEXT_RELEASE_Complete / ue_release_timer_rrc timeout",
+      "removal_trigger": "unresolved; no matching release-request marker in selected logs"
+    },
+    {
+      "label": "lte-rate-5pps-20261019-03",
+      "rrc_reconfiguration_complete_utc": "2026-10-19T14:14:15.307+00:00",
+      "last_ul_dcch_log_utc": "2026-10-19T14:14:15.445+00:00",
+      "first_telemetry_offer_utc": "2026-10-19T14:14:15.756945+00:00",
+      "radio_connection_lost_release_request_utc": "2026-10-19T14:14:40.322+00:00",
+      "active_ue_removed_utc": "2026-10-19T14:14:40.810+00:00",
+      "release_cause": 21
+    },
+    {
+      "label": "lte-phy-context-20261019-02",
+      "rrc_reconfiguration_complete_utc": "2026-10-19T16:40:45.215+00:00",
+      "last_ul_dcch_log_utc": "2026-10-19T16:40:45.353+00:00",
+      "first_telemetry_offer_utc": "2026-10-19T16:40:45.688662+00:00",
+      "radio_connection_lost_release_request_utc": "2026-10-19T16:41:35.918+00:00",
+      "active_ue_removed_utc": "2026-10-19T16:41:36.406+00:00",
+      "release_cause": 21
+    }
+  ]
+}

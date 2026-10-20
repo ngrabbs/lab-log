@@ -1,0 +1,5 @@
+label,ready_elapsed_s,modem_accepted,unique_received,yamcs_unique,duplicates,registered_at_last_observation,registration_drop_events,off_confirmed,same_ihu_firmware_boot
+lte-session-probe-20261019-01,53.955635,1,1,1,0,1,0,True,True
+lte-session-probe-20261019-02,21.640577,1,1,1,0,1,0,True,True
+lte-session-probe-20261019-03,43.679483,1,1,1,0,1,0,True,True
+lte-session-probe-20261019-04,22.193878,1,1,1,0,1,0,True,True

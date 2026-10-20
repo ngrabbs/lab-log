@@ -1,0 +1,189 @@
+{
+  "date_utc": "2026-10-20",
+  "activity": "Offline saved-log/source analysis; zero RF windows, no production changes",
+  "finding": "Confirmed pointer/count bookkeeping defect in reduced reproduction; likely crash mechanism, not runtime-confirmed",
+  "source_files": {
+    "openair1/PHY/LTE_TRANSPORT/dci_tools_common.c": "b896f14d7c68a753936a50ab0ce93f6da519d39711ca6f48b1f37148b2c46b1e",
+    "openair1/PHY/LTE_TRANSPORT/dci_tools.c": "c6da91686e06168e8fa2396b10fc577e0299ff0f6ba35520bd7c26614319ab4c",
+    "openair1/SCHED/fapi_l1.c": "718a64dbca8494afde77da33a6b658b9225e4da2bae22c7266272d834ff4bbf2",
+    "openair2/LAYER2/MAC/eNB_scheduler_dlsch.c": "b4f2de46d673f58bc360c686b5fb20811368a1c9e61590c30a2c5544503a14ba",
+    "openair2/LAYER2/MAC/eNB_scheduler_primitives.c": "43b7f30c07b168f1686a709df011353a58562d702fa3357a16039fce2b709634",
+    "openair2/LAYER2/MAC/eNB_scheduler_RA.c": "5781f13bb9b6ee3b3b3d287827c2bcdefc399762d7abb7cfcbb56015847fd50b",
+    "nfapi/open-nFAPI/nfapi/public_inc/nfapi_interface.h": "7be9dca734c6851eca251b0e7780d8c7d56412b3a592e369c7ecf45ccca1ef54",
+    "nfapi/open-nFAPI/nfapi/public_inc/nfapi_common_interface.h": "be111c88cea2c9ec841d63082cb39fba5c35472b0d1f0f182978ee15987fa127"
+  },
+  "source_locations": {
+    "pointer_selected_before_ue_loop": "eNB_scheduler_dlsch.c:1218",
+    "ue_loop": "eNB_scheduler_dlsch.c:1266",
+    "mpdcch_write": "eNB_scheduler_dlsch.c:1695",
+    "count_increment": "eNB_scheduler_dlsch.c:1743",
+    "format1_assertion": "dci_tools.c:657",
+    "allocation_converter": "dci_tools_common.c:307",
+    "nfapi_zero_type": "nfapi_interface.h:248",
+    "nfapi_zero_format": "nfapi_interface.h:263"
+  },
+  "mechanism": "Two qualifying UE control-message appends reuse one slot but increment number_pdu twice. A zero counted hole dispatches as legacy DCI Format1 with zero allocation; conv_nprb returns0.",
+  "selected_saved_events": {
+    "lte-direct-5pps-20261020-01": [
+      {
+        "line": 64056,
+        "utc": "2026-10-20T00:32:40.482+00:00",
+        "marker": "processing LTE_RRCConnectionSetupComplete"
+      },
+      {
+        "line": 271702,
+        "utc": "2026-10-20T00:32:58.262+00:00",
+        "marker": "processing LTE_RRCConnectionSetupComplete"
+      },
+      {
+        "line": 271726,
+        "utc": "2026-10-20T00:32:58.262+00:00",
+        "marker": "Generate DLSCH Release",
+        "rnti": "a21b"
+      },
+      {
+        "line": 275415,
+        "utc": "2026-10-20T00:32:58.484+00:00",
+        "marker": "Assertion (NPRB > 0)"
+      }
+    ],
+    "lte-direct-rlcdiag-20261020-02": [
+      {
+        "line": 65577,
+        "utc": "2026-10-20T00:27:35.889+00:00",
+        "marker": "processing LTE_RRCConnectionSetupComplete"
+      },
+      {
+        "line": 544572,
+        "utc": "2026-10-20T00:28:21.606+00:00",
+        "marker": "Generate DLSCH Release",
+        "rnti": "320d"
+      }
+    ]
+  },
+  "fixture": {
+    "kind": "Reduced slot-lifecycle reproducer using captured real NFAPI structs and verbatim conv_nprb; not full scheduler or live replay",
+    "compiler": "cc -std=c11 -DMAX_NUM_CCs=1 -Wall -Wextra -Werror -fsanitize=address,undefined -g",
+    "cases": [
+      {
+        "prefix": 0,
+        "contexts": 1,
+        "refresh": false,
+        "stale_nonzero_slot": false,
+        "counted_added": 1,
+        "mpdcch_records": 1,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      },
+      {
+        "prefix": 0,
+        "contexts": 2,
+        "refresh": false,
+        "stale_nonzero_slot": false,
+        "counted_added": 2,
+        "mpdcch_records": 1,
+        "zero_slot_format1": 1,
+        "nprb": 0
+      },
+      {
+        "prefix": 0,
+        "contexts": 2,
+        "refresh": true,
+        "stale_nonzero_slot": false,
+        "counted_added": 2,
+        "mpdcch_records": 2,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      },
+      {
+        "prefix": 0,
+        "contexts": 2,
+        "refresh": false,
+        "stale_nonzero_slot": true,
+        "counted_added": 2,
+        "mpdcch_records": 1,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      },
+      {
+        "prefix": 0,
+        "contexts": 2,
+        "refresh": true,
+        "stale_nonzero_slot": true,
+        "counted_added": 2,
+        "mpdcch_records": 2,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      },
+      {
+        "prefix": 3,
+        "contexts": 1,
+        "refresh": false,
+        "stale_nonzero_slot": false,
+        "counted_added": 1,
+        "mpdcch_records": 1,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      },
+      {
+        "prefix": 3,
+        "contexts": 2,
+        "refresh": false,
+        "stale_nonzero_slot": false,
+        "counted_added": 2,
+        "mpdcch_records": 1,
+        "zero_slot_format1": 1,
+        "nprb": 0
+      },
+      {
+        "prefix": 3,
+        "contexts": 2,
+        "refresh": true,
+        "stale_nonzero_slot": false,
+        "counted_added": 2,
+        "mpdcch_records": 2,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      },
+      {
+        "prefix": 3,
+        "contexts": 2,
+        "refresh": false,
+        "stale_nonzero_slot": true,
+        "counted_added": 2,
+        "mpdcch_records": 1,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      },
+      {
+        "prefix": 3,
+        "contexts": 2,
+        "refresh": true,
+        "stale_nonzero_slot": true,
+        "counted_added": 2,
+        "mpdcch_records": 2,
+        "zero_slot_format1": 0,
+        "nprb": 99
+      }
+    ],
+    "sanitizers": "AddressSanitizer and UndefinedBehaviorSanitizer passed",
+    "dependency_note": "MAX_NUM_CCs=1 is an isolated header dependency setting, not a claim about radio build configuration"
+  },
+  "candidate": {
+    "file": "candidate-slot-refresh.patch",
+    "sha256": "275d58db827e528374f76f7d862568dfda127948044a7fdae183022c43b64712",
+    "description": "Refresh current append slot immediately before each MPDCCH record; assertion retained",
+    "applied_to_running_checkout": false,
+    "full_radio_build": false,
+    "rf_test": false,
+    "apply_check_against_captured_source": true
+  },
+  "limits": [
+    "Runtime PDU slot contents and allocation inputs were not captured; zero-hole explanation is strongly supported, not proven for the live crash.",
+    "A counted hole can contain stale nonzero data; the fixture checks this separately, without claiming every hole crashes.",
+    "Missing uplink packets begin before the crash and new context; this finding does not explain all 38 missing packets or prior session failures.",
+    "Candidate corrects slot bookkeeping only; full scheduler/multi-context behavior and independent RF verification remain unqualified."
+  ],
+  "ground_integrity_unchanged": true,
+  "radio_core_stopped": true
+}

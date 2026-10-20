@@ -1,0 +1,30 @@
+{
+  "capture_runs": 2,
+  "received_packets": 120,
+  "packet_bytes": 128,
+  "goodput_per_run_kbps": [
+    2.048,
+    2.048
+  ],
+  "qualified_pair_start_spacings_ms": [
+    13.0,
+    13.0,
+    12.9,
+    13.0
+  ],
+  "spacing_resolution_ms": 0.1,
+  "root_fit_scope": "Compare u129 and u688 roots; strong events favor u688, the configured logical root89. Integer-frequency/shift ambiguity remains; preamble60 is consistent with ground logs, not independently established by a validated blind decoder.",
+  "weak_successful_pair": {
+    "conditional_preamble_start_s": 49.013543229166665,
+    "response_band_start_s": 49.0266,
+    "candidate_spacing_ms": 13.056770833337339,
+    "preamble_template_coherence": 0.2562581269339713,
+    "preceding_control": 0.060444581854049606,
+    "other_root_control": 0.06404673530819907,
+    "hypothesis": "Root u688, preamble60 as reported by ground logs; a conditional model fit."
+  },
+  "prach_source_map_sha256": "ebcbdafdc7997c5acef8a749273e0dc608d3f56700b8ae007cf901a7dbb5f37d",
+  "validation": "Synthetic band-tone scaling, prefix/off-lag, known root/preamble/fractional-frequency and full-template timing checks passed. Both real receive streams have zero overruns and clipped ADC samples.",
+  "finding": "Both sessions delivered telemetry. The first had 18 Msg3 error log events before one nonempty Msg3 CCCH indication. Strong retry candidates and a conditional weak successful-access candidate show similar ~13 ms preamble-to-response spacing. No gross timing offset or receiver fix is established.",
+  "limits": "No Msg3/RAR CRC decode, transmitter identity or absolute SFN alignment. Power trigger and 40 MB cap mean partial IQ. Analog filter rolloff prevents calibrated cross-band power comparison."
+}

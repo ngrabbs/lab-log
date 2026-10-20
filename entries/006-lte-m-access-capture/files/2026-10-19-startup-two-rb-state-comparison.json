@@ -1,0 +1,86 @@
+[
+  {
+    "label": "lte-release-startup-20261019-01",
+    "two_rb_rx_records": 27,
+    "outcomes": {
+      "NACK": 25,
+      "ACK": 2
+    },
+    "configurations": [
+      {
+        "count": 27,
+        "fields": {
+          "clear_soft_buffer": 1,
+          "max_iterations": 4,
+          "rate_status": 0,
+          "rx": {
+            "context_reset": 1,
+            "first_rb": 13,
+            "harq": 0,
+            "input_ndi": 0,
+            "nb_rb": 2,
+            "ndi": 0,
+            "new_ulsch": 1,
+            "qm": 2,
+            "rep_number": 1,
+            "rep_total": 1,
+            "round": 0,
+            "rv": 0,
+            "tbs_bits": 224
+          }
+        }
+      }
+    ],
+    "decoder_iterations": {
+      "ACK": {
+        "2": 2
+      },
+      "NACK": {
+        "5": 25
+      }
+    },
+    "limits": "Two-RB receiver snapshots, time/identity-bounded scalar joins. No independent RF/CRC decode; no claim of correct UE grant receipt. RA attribution needs log correlation. No packet-rate result."
+  },
+  {
+    "label": "lte-release-startup-20261019-02",
+    "two_rb_rx_records": 49,
+    "outcomes": {
+      "NACK": 47,
+      "ACK": 2
+    },
+    "configurations": [
+      {
+        "count": 49,
+        "fields": {
+          "clear_soft_buffer": 1,
+          "max_iterations": 4,
+          "rate_status": 0,
+          "rx": {
+            "context_reset": 1,
+            "first_rb": 13,
+            "harq": 0,
+            "input_ndi": 0,
+            "nb_rb": 2,
+            "ndi": 0,
+            "new_ulsch": 1,
+            "qm": 2,
+            "rep_number": 1,
+            "rep_total": 1,
+            "round": 0,
+            "rv": 0,
+            "tbs_bits": 224
+          }
+        }
+      }
+    ],
+    "decoder_iterations": {
+      "ACK": {
+        "2": 2
+      },
+      "NACK": {
+        "5": 47
+      }
+    },
+    "limits": "Two-RB receiver snapshots, time/identity-bounded scalar joins. No independent RF/CRC decode; no claim of correct UE grant receipt. RA attribution needs log correlation. No packet-rate result."
+  }
+]

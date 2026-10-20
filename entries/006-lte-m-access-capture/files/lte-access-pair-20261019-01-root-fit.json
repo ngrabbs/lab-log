@@ -1,0 +1,211 @@
+{
+  "label": "lte-access-pair-20261019-01",
+  "candidates": [
+    {
+      "band_start_s": 27.5137,
+      "prefix_fit_start_s": 27.513749479166666,
+      "cp_correlation": 0.8896979327423319,
+      "best_fits": [
+        {
+          "root_u": 688,
+          "coherence": 0.8664697210628602,
+          "cfo_fractional_hz": -143.875501489709,
+          "cfo_integer_bins": 6,
+          "cyclic_shift_estimate": 780,
+          "nearest_preamble_index": 60,
+          "shift_residual_samples": 0.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.8660609510152932,
+          "cfo_fractional_hz": -143.875501489709,
+          "cfo_integer_bins": 4,
+          "cyclic_shift_estimate": 680,
+          "nearest_preamble_index": 52,
+          "shift_residual_samples": 4.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.8659969802912098,
+          "cfo_fractional_hz": -143.875501489709,
+          "cfo_integer_bins": 5,
+          "cyclic_shift_estimate": 730,
+          "nearest_preamble_index": 56,
+          "shift_residual_samples": 2.0
+        }
+      ]
+    },
+    {
+      "band_start_s": 27.553700000000003,
+      "prefix_fit_start_s": 27.553748958333333,
+      "cp_correlation": 0.976778743347574,
+      "best_fits": [
+        {
+          "root_u": 688,
+          "coherence": 0.9897619426831484,
+          "cfo_fractional_hz": -92.61789160285977,
+          "cfo_integer_bins": 6,
+          "cyclic_shift_estimate": 780,
+          "nearest_preamble_index": 60,
+          "shift_residual_samples": 0.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.9892106145885313,
+          "cfo_fractional_hz": -92.61789160285977,
+          "cfo_integer_bins": 7,
+          "cyclic_shift_estimate": 830,
+          "nearest_preamble_index": 64,
+          "shift_residual_samples": -2.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.989051915228861,
+          "cfo_fractional_hz": -92.61789160285977,
+          "cfo_integer_bins": 5,
+          "cyclic_shift_estimate": 730,
+          "nearest_preamble_index": 56,
+          "shift_residual_samples": 2.0
+        }
+      ]
+    },
+    {
+      "band_start_s": 27.593700000000002,
+      "prefix_fit_start_s": 27.5937484375,
+      "cp_correlation": 0.9981706086761919,
+      "best_fits": [
+        {
+          "root_u": 688,
+          "coherence": 0.8573647535118606,
+          "cfo_fractional_hz": -58.21436786862794,
+          "cfo_integer_bins": 6,
+          "cyclic_shift_estimate": 780,
+          "nearest_preamble_index": 60,
+          "shift_residual_samples": 0.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.8572468473400631,
+          "cfo_fractional_hz": -58.21436786862794,
+          "cfo_integer_bins": 7,
+          "cyclic_shift_estimate": 830,
+          "nearest_preamble_index": 64,
+          "shift_residual_samples": -2.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.8571322216858778,
+          "cfo_fractional_hz": -58.21436786862794,
+          "cfo_integer_bins": 8,
+          "cyclic_shift_estimate": 41,
+          "nearest_preamble_index": 3,
+          "shift_residual_samples": 2.0
+        }
+      ]
+    },
+    {
+      "band_start_s": 27.6937,
+      "prefix_fit_start_s": 27.693747395833334,
+      "cp_correlation": 0.9896111619647068,
+      "best_fits": [
+        {
+          "root_u": 688,
+          "coherence": 0.771887658305277,
+          "cfo_fractional_hz": -72.88299617864206,
+          "cfo_integer_bins": 8,
+          "cyclic_shift_estimate": 41,
+          "nearest_preamble_index": 3,
+          "shift_residual_samples": 2.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.771513032616163,
+          "cfo_fractional_hz": -72.88299617864206,
+          "cfo_integer_bins": 7,
+          "cyclic_shift_estimate": 830,
+          "nearest_preamble_index": 64,
+          "shift_residual_samples": -2.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.7712742204716281,
+          "cfo_fractional_hz": -72.88299617864206,
+          "cfo_integer_bins": 6,
+          "cyclic_shift_estimate": 780,
+          "nearest_preamble_index": 60,
+          "shift_residual_samples": 0.0
+        }
+      ]
+    },
+    {
+      "band_start_s": 38.5737,
+      "prefix_fit_start_s": 38.573644270833334,
+      "cp_correlation": 0.871784456557,
+      "best_fits": [
+        {
+          "root_u": 688,
+          "coherence": 0.8228368520835265,
+          "cfo_fractional_hz": -63.4762120370521,
+          "cfo_integer_bins": 5,
+          "cyclic_shift_estimate": 731,
+          "nearest_preamble_index": 56,
+          "shift_residual_samples": 3.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.8227724561869134,
+          "cfo_fractional_hz": -63.4762120370521,
+          "cfo_integer_bins": 7,
+          "cyclic_shift_estimate": 831,
+          "nearest_preamble_index": 64,
+          "shift_residual_samples": -1.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.8227692398060255,
+          "cfo_fractional_hz": -63.4762120370521,
+          "cfo_integer_bins": 6,
+          "cyclic_shift_estimate": 781,
+          "nearest_preamble_index": 60,
+          "shift_residual_samples": 1.0
+        }
+      ]
+    },
+    {
+      "band_start_s": 38.6736,
+      "prefix_fit_start_s": 38.67364270833333,
+      "cp_correlation": 0.9174392564271355,
+      "best_fits": [
+        {
+          "root_u": 688,
+          "coherence": 0.966076778065988,
+          "cfo_fractional_hz": -64.41275965923877,
+          "cfo_integer_bins": 6,
+          "cyclic_shift_estimate": 780,
+          "nearest_preamble_index": 60,
+          "shift_residual_samples": 0.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.9654203863860161,
+          "cfo_fractional_hz": -64.41275965923877,
+          "cfo_integer_bins": 7,
+          "cyclic_shift_estimate": 830,
+          "nearest_preamble_index": 64,
+          "shift_residual_samples": -2.0
+        },
+        {
+          "root_u": 688,
+          "coherence": 0.9650357560135718,
+          "cfo_fractional_hz": -64.41275965923877,
+          "cfo_integer_bins": 5,
+          "cyclic_shift_estimate": 730,
+          "nearest_preamble_index": 56,
+          "shift_residual_samples": 2.0
+        }
+      ]
+    }
+  ],
+  "method": "CP-based fractional CFO estimate, 1536-point PRACH FFT, compare roots u129/u688 (logical root 0/89 in checked-out OAI table), search integer CFO bins +/-8, infer nearest NCS=13 shift.",
+  "limits": "Experimental fit, not a validated preamble decoder. Prefix start ambiguity and integer CFO ambiguity affect inferred preamble index. No UE identity or attach-message decode."
+}

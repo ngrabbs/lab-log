@@ -1,0 +1,115 @@
+{
+  "label": "lte-session-probe-20261019-03",
+  "started_utc": "2026-10-19T14:29:21.697483+00:00",
+  "test": "one fresh EPS packet, then 35 seconds of read-only observations",
+  "ready_elapsed_s": 43.679483,
+  "packet_bytes": 128,
+  "modem_accepted": 1,
+  "unique_received": 1,
+  "yamcs_unique": 1,
+  "duplicates": 0,
+  "packet_receipts": [
+    {
+      "hex": "0901c1ef007901010010020100000000000000006b8f3ddb008582cc00600102020101010102020000000000000001f0008582cc0000000000000001000029a800002724fffffdb600015a750000580b0000271000002710000000010800000000000000000000670003194317aefffc025d342201e80000000720e2000103cc",
+      "sent_utc": "2026-10-19T14:30:11.952859+00:00",
+      "modem_accepted_utc": "2026-10-19T14:30:12.359439+00:00",
+      "receiver_utc": [
+        "2026-10-19T14:30:12.447167+00:00"
+      ]
+    }
+  ],
+  "ground_checks": [
+    {
+      "checked_utc": "2026-10-19T14:30:15.194583+00:00",
+      "seconds_after_accept_observed": 2.427,
+      "received_utc": [
+        "2026-10-19T14:30:12.447167+00:00"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "utc": "2026-10-19T14:30:12.739515+00:00",
+      "seconds_after_accept": 0.38,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 75850,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T14:30:17.754856+00:00",
+      "seconds_after_accept": 5.395,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 70849,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T14:30:22.707027+00:00",
+      "seconds_after_accept": 10.347,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 65850,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T14:30:27.655927+00:00",
+      "seconds_after_accept": 15.296,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 60846,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T14:30:32.635767+00:00",
+      "seconds_after_accept": 20.276,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 55851,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T14:30:37.609944+00:00",
+      "seconds_after_accept": 25.25,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 50850,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T14:30:42.600129+00:00",
+      "seconds_after_accept": 30.24,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 45851,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T14:30:47.598111+00:00",
+      "seconds_after_accept": 35.238,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 40849,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    }
+  ],
+  "end_diagnostics": {
+    "state": 6,
+    "registered": 1,
+    "remaining_window_ms": 40610,
+    "last_cereg": 1,
+    "registration_drop_events": 0
+  },
+  "off_confirmed": true,
+  "same_ihu_firmware_boot": true,
+  "error": null,
+  "delivery_proven": true
+}

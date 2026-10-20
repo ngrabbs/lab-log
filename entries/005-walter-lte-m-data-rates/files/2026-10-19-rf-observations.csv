@@ -1,0 +1,4 @@
+label,requested_pps,modem_accepted,unique_received,yamcs_unique,rx_center_hz,lna_db,vga_db,samples_received,receive_overruns,clipped_sample_fraction,off_confirmed,same_ihu_firmware_boot
+lte-rf-observe-20261019-01,2.0,60,60,60,782000000,0,8,1450000000,0,0.0,True,True
+lte-rf-observe-20261019-02,5.0,85,85,85,782000000,0,8,1450000000,0,0.0,True,True
+lte-rf-observe-20261019-03,2.0,60,60,60,781000000,0,8,1450000000,0,0.0,True,True

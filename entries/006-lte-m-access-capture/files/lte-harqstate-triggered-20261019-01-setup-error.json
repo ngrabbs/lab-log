@@ -1,0 +1,11 @@
+{
+  "label": "lte-harqstate-triggered-20261019-01",
+  "ready_seconds": 26.818387,
+  "failure": "Recorder capture parent directory did not exist; observer failed before telemetry. Fixed directory creation and checked the missing-parent case with a synthetic stream.",
+  "telemetry_attempts": 0,
+  "modem_accepted": 0,
+  "off_confirmed": true,
+  "same_ihu_firmware_boot": true,
+  "outputs_restored": true,
+  "packet_loss_result": null
+}

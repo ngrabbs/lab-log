@@ -1,0 +1,61 @@
+{
+  "label": "lte-release-trace-20261019-01",
+  "profile_changes": [
+    "rlc_log_level info -> debug",
+    "rrc_log_level info -> debug"
+  ],
+  "phy_log_level": "info",
+  "production_firmware_changed": false,
+  "tx_settings_changed": false,
+  "result": {
+    "label": "lte-release-trace-20261019-01",
+    "test": "session_probe",
+    "packet_bytes": 128,
+    "requested_pps": 1,
+    "measurement_seconds": 0,
+    "planned_slots": 0,
+    "attempted": 0,
+    "skipped_slots": 0,
+    "local_refused_slots": 0,
+    "unknown_attempts": 0,
+    "modem_accepted": 0,
+    "unique_received": 0,
+    "matching_udp_ingress": 0,
+    "duplicate_datagrams": 0,
+    "missing_accepted": 0,
+    "yamcs_unique": 0,
+    "received_in_window": 0,
+    "late_received": 0,
+    "measurement_complete": false,
+    "valid_rate_measurement": false,
+    "received_kbps": null,
+    "window_definition": "single-packet baseline; no rate claim",
+    "command_ack_seconds_median": null,
+    "command_ack_seconds_max": null,
+    "off_confirmed": true,
+    "same_ihu_firmware_boot": true,
+    "error": "No registered READY",
+    "success": false,
+    "end_modem_before_stop": {
+      "state": 3,
+      "registered": 0,
+      "remaining_window_ms": 29753,
+      "last_cereg": 2,
+      "registration_drop_events": 0
+    }
+  },
+  "selected_log_events": {
+    "generated_rar_br": 36,
+    "unsuccessful_msg3": 36,
+    "nonempty_msg3_ccch": 0,
+    "rlc_max_retx_debug": 0,
+    "rrc_link_failure_debug": 0
+  },
+  "count_limits": "Whole bounded-run log events include false detections and post-OFF activity; not packet error rates. The run did not reach the intended release-path observation.",
+  "cleanup": {
+    "same_ihu_firmware_boot": true,
+    "walter_off": true,
+    "outputs_restored": true,
+    "can_tec_rec_errors_zero": true
+  }
+}

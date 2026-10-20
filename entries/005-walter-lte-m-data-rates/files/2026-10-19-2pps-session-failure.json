@@ -1,0 +1,26 @@
+{
+  "label": "lte-rate-2pps-20261019-03",
+  "requested_pps": 2,
+  "completed_30_second_window": false,
+  "modem_accepted": 45,
+  "unique_received": 0,
+  "yamcs_unique": 0,
+  "missing_modem_accepted": 45,
+  "received_kbps": null,
+  "terminal_response": "PEER_REJECTED reason=8",
+  "reason_name_from_installed_source": "UL_ERR_NOT_READY",
+  "cached_diagnostics_after_stop": {
+    "state": 0,
+    "registered": 0,
+    "remaining_window_ms": 0,
+    "last_cereg": 4,
+    "send_admission_cereg": 1,
+    "registration_drop_events": 1,
+    "last_cereg_elapsed_ms": 44553
+  },
+  "gtpu_or_native_udp_datagrams_captured": 0,
+  "receiver_service_active_at_followup": true,
+  "off_confirmed": true,
+  "same_ihu_firmware_boot": true,
+  "interpretation": "Modem acceptance did not establish delivery. This aborted session has no valid full-window rate result; registration loss was observed, root cause unresolved."
+}

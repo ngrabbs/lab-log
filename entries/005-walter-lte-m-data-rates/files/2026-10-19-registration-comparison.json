@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "label": "lte-rf-narrow-20261019-04",
+      "rar_generated_log_events": 305,
+      "msg3_ok_log_events": 76,
+      "msg3_error_log_events": 229,
+      "msg3_no_signal_log_events": 304,
+      "rrc_setup_complete_log_events": 1,
+      "epc_attach_request_log_events": 7,
+      "epc_attach_complete_log_events": 1
+    },
+    {
+      "label": "lte-rf-narrow-20261019-05",
+      "rar_generated_log_events": 40,
+      "msg3_ok_log_events": 0,
+      "msg3_error_log_events": 40,
+      "msg3_no_signal_log_events": 40,
+      "rrc_setup_complete_log_events": 0,
+      "epc_attach_request_log_events": 0,
+      "epc_attach_complete_log_events": 0
+    }
+  ],
+  "method": "Exact selected log-message substring counts over each complete bounded radio/core run. These are log events, not packet error rates or identified UE transmissions. Radio events can include false detections and post-Walter-OFF activity."
+}

@@ -1,0 +1,296 @@
+{
+  "labels": [
+    "lte-harqstate-baseline-20261019-01",
+    "lte-harqstate-triggered-20261019-01",
+    "lte-harqstate-triggered-20261019-02"
+  ],
+  "diagnostic_binary_sha256": "cba64491284fc672369b967da657049c8057deeb50548a28e3558369f5b6027a",
+  "profile": "Original band-13 profile; RF and log settings unchanged.",
+  "results": [
+    {
+      "label": "lte-harqstate-baseline-20261019-01",
+      "ready_seconds": 56.0231,
+      "modem_accepted": 1,
+      "receiver": 1,
+      "yamcs": 1,
+      "registration_stable_for_observation": true
+    },
+    {
+      "label": "lte-harqstate-triggered-20261019-01",
+      "ready_seconds": 26.818387,
+      "telemetry_attempts": 0,
+      "outcome": "Observer setup error; send gate stopped telemetry"
+    },
+    {
+      "label": "lte-harqstate-triggered-20261019-02",
+      "ready_seconds": 22.262914,
+      "modem_accepted": 1,
+      "receiver": 0,
+      "yamcs": 0,
+      "registration_stable_for_observation": true
+    }
+  ],
+  "rrc_transitions": [
+    {
+      "utc": "2026-10-19T21:33:50.838+00:00",
+      "context": "initial",
+      "marker": "Generating RRCConnectionSetup"
+    },
+    {
+      "utc": "2026-10-19T21:33:50.903+00:00",
+      "context": "initial",
+      "marker": "RRCConnectionSetupComplete"
+    },
+    {
+      "utc": "2026-10-19T21:33:51.846+00:00",
+      "context": "initial",
+      "marker": "RRCConnectionReconfigurationComplete"
+    },
+    {
+      "utc": "2026-10-19T21:33:52.309+00:00",
+      "context": "initial",
+      "marker": "Removed UE"
+    },
+    {
+      "utc": "2026-10-19T21:33:58.118+00:00",
+      "context": "later",
+      "marker": "Generating RRCConnectionSetup"
+    },
+    {
+      "utc": "2026-10-19T21:33:58.143+00:00",
+      "context": "later",
+      "marker": "RRCConnectionSetupComplete"
+    },
+    {
+      "utc": "2026-10-19T21:33:58.406+00:00",
+      "context": "later",
+      "marker": "RRCConnectionReconfigurationComplete"
+    }
+  ],
+  "host_telemetry_offer_utc": "2026-10-19T21:33:52.857973+00:00",
+  "modem_accepted_utc": "2026-10-19T21:33:53.168306+00:00",
+  "initial_context_removed_before_offer_seconds_using_host_clocks": 0.548973,
+  "clock_audit": {
+    "ground": {
+      "samples": [
+        {
+          "rtt_ms": 165.365,
+          "offset_lower_ms": 56.238027,
+          "offset_upper_ms": 221.603027
+        },
+        {
+          "rtt_ms": 162.225,
+          "offset_lower_ms": 55.529781,
+          "offset_upper_ms": 217.754781
+        },
+        {
+          "rtt_ms": 169.745,
+          "offset_lower_ms": 55.264834,
+          "offset_upper_ms": 225.009834
+        },
+        {
+          "rtt_ms": 174.5,
+          "offset_lower_ms": 55.965828,
+          "offset_upper_ms": 230.465828
+        },
+        {
+          "rtt_ms": 189.593,
+          "offset_lower_ms": 55.951544,
+          "offset_upper_ms": 245.544544
+        }
+      ],
+      "offset_lower_ms": 56.238027,
+      "offset_upper_ms": 217.754781
+    },
+    "console_host": {
+      "samples": [
+        {
+          "rtt_ms": 439.241,
+          "offset_lower_ms": 53.086536,
+          "offset_upper_ms": 492.327536
+        },
+        {
+          "rtt_ms": 194.118,
+          "offset_lower_ms": 53.393256,
+          "offset_upper_ms": 247.511256
+        },
+        {
+          "rtt_ms": 185.795,
+          "offset_lower_ms": 54.453939,
+          "offset_upper_ms": 240.248939
+        },
+        {
+          "rtt_ms": 178.798,
+          "offset_lower_ms": 53.359277,
+          "offset_upper_ms": 232.157277
+        },
+        {
+          "rtt_ms": 198.329,
+          "offset_lower_ms": 53.402045,
+          "offset_upper_ms": 251.731045
+        }
+      ],
+      "offset_lower_ms": 54.453939,
+      "offset_upper_ms": 232.157277
+    },
+    "ground_minus_console_offset_ms_bound": [
+      -175.91924999999998,
+      163.30084200000002
+    ],
+    "method": "After-run remote time.time_ns bracketed by local wall-clock calls; bounds include SSH roundtrip. Assumes no clock steps since captured events; no one-way latency measurement."
+  },
+  "recorder": {
+    "pre_seconds_requested": 6,
+    "post_seconds_requested": 1,
+    "max_elapsed_seconds": 45,
+    "no_trigger_observation_seconds": 37,
+    "ring_byte_cap": 402653184,
+    "output_byte_cap": 536870912,
+    "events_allowlisted": [
+      "ENB_PHY_INPUT_SIGNAL",
+      "ENB_PHY_ULSCH_UE_ACK",
+      "ENB_PHY_ULSCH_UE_NACK",
+      "ENB_MAC_UE_UL_SCHEDULE",
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+      "ENB_PHY_LTEM_GRANT_STATE",
+      "ENB_PHY_LTEM_RX_STATE",
+      "ENB_PHY_LTEM_RATE_STATE",
+      "ENB_PHY_LTEM_SEGMENT_STATE",
+      "ENB_PHY_LTEM_POST_STATE"
+    ],
+    "starts_radio": false,
+    "triggered": false,
+    "valid": true,
+    "no_trigger_timeout": true,
+    "trigger": {},
+    "trace_bytes": 61716970,
+    "trace_sha256": "781ef597521d61ea61e3c02e6b31637c456de7e391bf420d0b90ad9241f2f769",
+    "total_stream_bytes": 2275899840,
+    "event_counts": {
+      "ENB_PHY_INPUT_SIGNAL": 37002,
+      "ENB_PHY_LTEM_RX_STATE": 1605,
+      "ENB_PHY_LTEM_RATE_STATE": 1605,
+      "ENB_PHY_LTEM_SEGMENT_STATE": 1605,
+      "ENB_PHY_LTEM_POST_STATE": 1605,
+      "ENB_PHY_ULSCH_UE_NACK": 62,
+      "ENB_PHY_ULSCH_UE_ACK": 1543,
+      "ENB_MAC_UE_UL_SCHEDULE": 1551,
+      "ENB_PHY_LTEM_GRANT_STATE": 1577,
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION": 26
+    },
+    "light_events": 11179,
+    "ring_cap_evictions": 0,
+    "selected_span_seconds": 0.9999590709921904,
+    "pre_trigger_seconds_retained": null,
+    "post_trigger_seconds_retained": null,
+    "active_seconds": 37.171143664978445,
+    "elapsed_seconds": 37.176998347975314
+  },
+  "full_state_analysis": {
+    "source": "Full 37-second scalar event stream retained separately from rolling IQ snapshot",
+    "initial_context_state_events": 0,
+    "later_context_events_per_stage": {
+      "ENB_PHY_LTEM_RX_STATE": 1577,
+      "ENB_PHY_LTEM_RATE_STATE": 1577,
+      "ENB_PHY_LTEM_SEGMENT_STATE": 1577,
+      "ENB_PHY_LTEM_POST_STATE": 1577,
+      "ENB_PHY_LTEM_GRANT_STATE": 1577
+    },
+    "complete_chains": 1576,
+    "complete_chain_decode_results": {
+      "ACK": 1542,
+      "NACK": 34
+    },
+    "mac_paired_chains": 1576,
+    "mismatch_counts": {},
+    "incomplete_grant_chains": 1,
+    "trigger_limitation": "Snapshot trigger stayed on initial identity; later identity was not eligible. Raw snapshot is final one-second fallback, not the initial context release.",
+    "full_light_event_stream_sha256": "23fdbd9fb01641443dcfae4e5742085b29191f1209a948fc265f3f4be7974bee"
+  },
+  "registration_observations": [
+    {
+      "utc": "2026-10-19T21:33:53.377991+00:00",
+      "seconds_after_accept": 0.209,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 96768,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:33:58.390422+00:00",
+      "seconds_after_accept": 5.222,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 91765,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:34:03.406543+00:00",
+      "seconds_after_accept": 10.238,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 86768,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:34:08.476260+00:00",
+      "seconds_after_accept": 15.308,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 81767,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:34:13.534240+00:00",
+      "seconds_after_accept": 20.366,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 76770,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:34:18.552563+00:00",
+      "seconds_after_accept": 25.384,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 71767,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:34:23.548404+00:00",
+      "seconds_after_accept": 30.38,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 66767,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:34:28.551646+00:00",
+      "seconds_after_accept": 35.383,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 61770,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    }
+  ],
+  "cleanup": {
+    "walter_off": true,
+    "outputs_restored": true,
+    "same_ihu_firmware_boot": true,
+    "ihu_boot": 1804549595,
+    "can_errors_zero": true,
+    "original_source_binary_and_rf_profile_unchanged": true,
+    "working_rx_reference_unchanged": true,
+    "all_radio_core_capture_simulation_processes_stopped": true
+  },
+  "rate_result_kbps": null,
+  "limits": "The initial context was removed before telemetry was offered while modem readiness remained asserted. Release cause is not established. Later-context internal consistency does not exonerate the missing initial-context activity or prove UE grant receipt. Cross-host ordering uses after-run clock bounds and assumes no clock step. Capture began after READY, so it missed the initial context state/release path. No root-cause fix or LTE-M speed claim."
+}

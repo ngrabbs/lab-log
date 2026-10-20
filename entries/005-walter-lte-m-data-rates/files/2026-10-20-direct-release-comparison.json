@@ -1,0 +1,120 @@
+{
+  "date_utc": "2026-10-20",
+  "date_local": "2026-10-19",
+  "analysis_only": true,
+  "new_rf_runs": 0,
+  "firmware_changed": false,
+  "comparison": [
+    {
+      "label": "lte-direct-rate-20261020-2pps-01",
+      "input_sha256": {
+        "oai-private.log": "696542abb07c3628443b301c8e1351ae2710df7f99304d0c07269f991f0c5171",
+        "epc-private.log": "c7e3d76ab8629f201ad03e3999a6bf6be59ea1664df5cbb03963fe35d2e4e81c"
+      },
+      "reconfiguration_complete_utc": "2026-10-20T00:05:57.205000+00:00",
+      "comparison_end_exclusive_utc": "2026-10-20T00:05:58.421000+00:00",
+      "comparison_seconds": 1.216,
+      "scheduled_ul_ok": 2,
+      "scheduled_ul_error": 58,
+      "lcid2_pending_status_events": 690,
+      "lcid2_reported_sizes": [
+        2,
+        61,
+        63
+      ],
+      "lcid2_last_pending_seconds": 1.215,
+      "first_tunnel_delete_seconds": 1.216,
+      "events": {
+        "rrc_cleanup_timer": "2026-10-20T00:05:58.422000+00:00",
+        "attach_complete": "2026-10-20T00:05:57.206000+00:00",
+        "emm_information": "2026-10-20T00:05:57.207000+00:00",
+        "core_release_complete": "2026-10-20T00:05:58.421000+00:00"
+      },
+      "max_retx_debug_markers": 0,
+      "host_final_off_confirmed_utc": "2026-10-20T00:06:08.814202+00:00",
+      "host_off": true,
+      "delivered": 0
+    },
+    {
+      "label": "lte-direct-512-20261019-01",
+      "input_sha256": {
+        "oai-private.log": "37ea0b244bdd966fa4258634febec5120033b4bd8b802486f939fd268f10d515",
+        "epc-private.log": "7ed5c653861000cdae206638afd5fbaef1eebad49806545f8966b7eaacf5197a"
+      },
+      "reconfiguration_complete_utc": "2026-10-19T23:55:04.032000+00:00",
+      "comparison_end_exclusive_utc": "2026-10-19T23:55:05.248000+00:00",
+      "comparison_seconds": 1.216,
+      "scheduled_ul_ok": 48,
+      "scheduled_ul_error": 12,
+      "lcid2_pending_status_events": 123,
+      "lcid2_reported_sizes": [
+        2,
+        61,
+        63
+      ],
+      "lcid2_last_pending_seconds": 0.136,
+      "first_tunnel_delete_seconds": 45.541,
+      "events": {
+        "release_request": "2026-10-19T23:55:49.086000+00:00",
+        "rrc_release_generated": "2026-10-19T23:55:49.087000+00:00",
+        "rrc_cleanup_timer": "2026-10-19T23:55:49.574000+00:00",
+        "attach_complete": "2026-10-19T23:55:04.032000+00:00",
+        "emm_information": "2026-10-19T23:55:04.033000+00:00",
+        "core_release_request": "2026-10-19T23:55:49.086000+00:00",
+        "core_release_complete": "2026-10-19T23:55:49.573000+00:00"
+      },
+      "max_retx_debug_markers": 0,
+      "host_final_off_confirmed_utc": "2026-10-19T23:55:24.231205+00:00",
+      "host_off": true,
+      "delivered": 10
+    }
+  ],
+  "source": {
+    "head": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+    "files": {
+      "openair2/RRC/LTE/rrc_eNB.c": "c145afa77df041669db358d96775a9a55010fa8c5a4b3a82e5ebbc509e157f23",
+      "openair2/LAYER2/rlc_v2/rlc_oai_api.c": "ef183ff0d73249a95251b28dee640d9334b486a5821d6a5cd30b3ed2fedbe0d6",
+      "openair2/RRC/LTE/rrc_eNB_GTPV1U.c": "7e16e2368483c0d4da02430fcd04653b9b22d2b139df299638112b10329b4114",
+      "openair2/LAYER2/MAC/pre_processor.c": "946f32a9c7f9428c08baec9baaa360b311926e4cb7443f77ae77911edb585027"
+    }
+  },
+  "source_paths": [
+    {
+      "file": "openair2/LAYER2/rlc_v2/rlc_oai_api.c",
+      "line": 461,
+      "function": "max_retx_reached",
+      "finding": "SRB retry exhaustion sends unsuccessful RLC_SDU_INDICATION; its max-RETX message is debug-only."
+    },
+    {
+      "file": "openair2/RRC/LTE/rrc_eNB.c",
+      "line": 7043,
+      "function": "process_unsuccessful_rlc_sdu_indication",
+      "finding": "Sets release flag4 for a UE not already in the release list."
+    },
+    {
+      "file": "openair2/RRC/LTE/rrc_eNB.c",
+      "line": 7279,
+      "function": "rrc_subframe_process",
+      "finding": "Flag4 causes release complete, tunnel deletion and RRC cleanup timer."
+    },
+    {
+      "file": "openair2/RRC/LTE/rrc_eNB_GTPV1U.c",
+      "line": 64,
+      "function": "rrc_eNB_send_GTPV1U_ENB_DELETE_TUNNEL_REQ",
+      "finding": "Advances an already-running RRC release timer to its threshold."
+    }
+  ],
+  "logging": {
+    "rlc": "info",
+    "rrc": "info"
+  },
+  "inference": "Strong lead: signaling retransmission exhaustion can produce this direct cleanup sequence. Exact callback and SRB identity were not logged; SRB2 is a candidate because LCID2 remains pending.",
+  "retry_exhaustion_runtime_confirmed": false,
+  "exact_srb_identified": false,
+  "limitations": [
+    "RLC/RRC profile levels are info; decisive max-RETX/failure logs are debug-only. Absence of those messages is not evidence they did not execute.",
+    "No precise UTC on individual USB modem responses: network-vs-modem-reset causal ordering is not established.",
+    "Decode events are not UDP packet counts, calibrated RF measurements, or a capacity estimate.",
+    "Single working/failed pair with different offered rates does not establish rate dependence."
+  ]
+}

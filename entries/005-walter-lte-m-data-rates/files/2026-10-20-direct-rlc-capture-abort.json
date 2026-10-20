@@ -1,0 +1,49 @@
+{
+  "date_utc": "2026-10-20",
+  "date_local": "2026-10-19",
+  "label": "lte-direct-rlcdiag-20261020-01",
+  "profile": "enb.band13.emtc.ce300tx20rlcdebug.conf",
+  "profile_change": "RLC/RRC info -> debug only; radio parameters unchanged",
+  "rf_windows": 1,
+  "registered_ready": false,
+  "benchmark_run_started": false,
+  "benchmark_packets_attempted": 0,
+  "unique_received": 0,
+  "measurement_complete": false,
+  "received_kbps": null,
+  "collector_error": "Expecting ',' delimiter: line 1 column 29 (char 28)",
+  "original_cleanup_error": "Expecting value: line 1 column 1 (char 0)",
+  "initial_collector_off_confirmation": false,
+  "manual_off_recovery_confirmed": true,
+  "reader_fix": {
+    "partial_reads_buffered": true,
+    "raw_bytes_and_chunk_timestamps_preserved": true,
+    "complete_invalid_lines_reported": true,
+    "bounded_idempotent_status_retries_for_cleanup": true,
+    "host_only_tests": "Every split boundary, one-byte reads, combined lines, timeout/resume, raw-byte accounting, oversized-line bounds",
+    "live_off_only_check": {
+      "rf_windows": 0,
+      "status_replies": 12,
+      "json_errors": 0,
+      "off_confirmed": true,
+      "raw_bytes": 7463,
+      "trailing_partial_bytes": 0
+    }
+  },
+  "limitations": [
+    "The original offending fragment was not saved; the first collector treated timed-out readline results as complete JSON.",
+    "A subsequent OFF-only check saved a status response stalled at 83 bytes with no newline. Its transport-side cause is unresolved.",
+    "The revised reader passed host and OFF-only checks; it has not yet completed an RF capture.",
+    "No valid registration-loss/SRB retry event or throughput measurement was obtained."
+  ],
+  "clock_probes_recorded": true,
+  "ground_radio_core_stopped": true,
+  "ground_integrity_unchanged": true,
+  "firmware_changed": false,
+  "source_sha256": {
+    "direct_usb_timed_v1.py": "709ba94ee6a81f9b5ae6e73dd575bd247c7adbd8fb46e9288469bc00e5c1f370",
+    "direct_usb_timed_v2.py": "e51d42d7bf67a2a44867a33e3018df29801d910a1cb2eb4d95c0d5fcb3c079b8",
+    "usb_json_lines.py": "445c178993804b43deaf71669917e8a618d00e79c2934dae38d642339e0d7125",
+    "check_usb_json_lines.py": "9de9c16238205da483604f88ab68f45c2bb6ed2679806883c0c714e5bdd75cd2"
+  }
+}

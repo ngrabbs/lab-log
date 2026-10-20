@@ -1,0 +1,331 @@
+{
+  "label": "lte-access-pair-20261019-01",
+  "ready_seconds": 42.764156,
+  "rf_settings": {
+    "test": "receive_only_relative_power",
+    "started_utc": "2026-10-19T16:13:11.764200+00:00",
+    "frequency_hz": 779100000,
+    "sample_rate_hz": 5000000,
+    "baseband_filter_hz": 2500000,
+    "lna_db": 16,
+    "vga_db": 8,
+    "spectrum_bin_width_hz": 50000,
+    "narrowband_fully_in_capture": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "rf_amplifier_enabled": false,
+    "antenna_power_enabled": false,
+    "requested_seconds": 145,
+    "iq_saved": true,
+    "power_units": "linear mean squared complex amplitude / 128^2; uncalibrated",
+    "time_resolution_seconds": 0.0001,
+    "spectrum_time_resolution_seconds": 0.001,
+    "hardware_timestamps": false,
+    "timing_note": "Sample-relative intervals only; host timestamps include unknown USB/processing delay. Stream continuity requires inspecting transfer statistics.",
+    "iq_format": "interleaved signed int8 I,Q",
+    "iq_trigger_channels": [
+      "configured_prach",
+      "configured_msg3"
+    ],
+    "iq_trigger_baseline_seconds": 5,
+    "iq_trigger_margin_db": 6,
+    "iq_max_blocks": 40,
+    "iq_blocks": [
+      {
+        "file": "iq-block-0268.cs8",
+        "first_complex_sample_index": 134000000,
+        "complex_samples": 500000,
+        "sha256": "3a2b26169523407e7a9c837a1a67d01cc7d6678bce5d42f98b6ee86ae4c8249b"
+      },
+      {
+        "file": "iq-block-0269.cs8",
+        "first_complex_sample_index": 134500000,
+        "complex_samples": 500000,
+        "sha256": "6f36b52c8f3a870ca2121bc73e9d33e3cbe6f0a5c1a8af2b8272d84a0d9faa7c"
+      },
+      {
+        "file": "iq-block-0270.cs8",
+        "first_complex_sample_index": 135000000,
+        "complex_samples": 500000,
+        "sha256": "008c367d9be05d4a1fc2b01331da76d6208d6da04cbec3bc979075b6e27c8bb8"
+      },
+      {
+        "file": "iq-block-0271.cs8",
+        "first_complex_sample_index": 135500000,
+        "complex_samples": 500000,
+        "sha256": "c8b6c7177714a26cf6aec4a7f21972b8fa9376bd5814558f082d43cf36569385"
+      },
+      {
+        "file": "iq-block-0272.cs8",
+        "first_complex_sample_index": 136000000,
+        "complex_samples": 500000,
+        "sha256": "0d030bff27ef781744cf56d9cdae45ad978f2e18956962cc8dca6bbcadfc8356"
+      },
+      {
+        "file": "iq-block-0273.cs8",
+        "first_complex_sample_index": 136500000,
+        "complex_samples": 500000,
+        "sha256": "56084798c2a7fa3b8a0d53d82f630e1fd3711b146ce1c6047c0be93630bd7c85"
+      },
+      {
+        "file": "iq-block-0274.cs8",
+        "first_complex_sample_index": 137000000,
+        "complex_samples": 500000,
+        "sha256": "c4e32aa0013273a2debc2e075bc7083f1ee9b72a14cd86b013ae0a13b40ad12c"
+      },
+      {
+        "file": "iq-block-0275.cs8",
+        "first_complex_sample_index": 137500000,
+        "complex_samples": 500000,
+        "sha256": "df42b3f96e827ccd603513f7d9f99d17a958222b1718ad0ed6e2bc06d4c22b89"
+      },
+      {
+        "file": "iq-block-0276.cs8",
+        "first_complex_sample_index": 138000000,
+        "complex_samples": 500000,
+        "sha256": "9b57699b9b76ec2b6a0d75f05f4a9ea4329287d5f86d6dbc58c820ed5b503ac1"
+      },
+      {
+        "file": "iq-block-0277.cs8",
+        "first_complex_sample_index": 138500000,
+        "complex_samples": 500000,
+        "sha256": "f0531228753f4b32a1a1d23c5b23d996f8a1ac2d553431e39a718d86af89de3d"
+      },
+      {
+        "file": "iq-block-0278.cs8",
+        "first_complex_sample_index": 139000000,
+        "complex_samples": 500000,
+        "sha256": "e37f2232ff62d1660ae26a0c6246d2e3a7fae880e0d76a07241ef8c21653f7e3"
+      },
+      {
+        "file": "iq-block-0379.cs8",
+        "first_complex_sample_index": 189500000,
+        "complex_samples": 500000,
+        "sha256": "fca4f503a4cc033519b17e131c813adde1520cd13b5e8a5f976a49dc7ea7755b"
+      },
+      {
+        "file": "iq-block-0380.cs8",
+        "first_complex_sample_index": 190000000,
+        "complex_samples": 500000,
+        "sha256": "4d169c0a7d1f238702462db670b514492cf18dd7a2c44c26ca23da1c9fa43cf6"
+      },
+      {
+        "file": "iq-block-0381.cs8",
+        "first_complex_sample_index": 190500000,
+        "complex_samples": 500000,
+        "sha256": "a750413be7e507c174ac539cb663716598159fc7d751560210371d018223112d"
+      },
+      {
+        "file": "iq-block-0382.cs8",
+        "first_complex_sample_index": 191000000,
+        "complex_samples": 500000,
+        "sha256": "9ed977652dfe31bd1a5d346b9479946005f29d7cd2ceb0bdee134a143917fc7b"
+      },
+      {
+        "file": "iq-block-0383.cs8",
+        "first_complex_sample_index": 191500000,
+        "complex_samples": 500000,
+        "sha256": "ccdac8fc63d211805e7a0ccf17918e34628653f9e3b73fd3d1ee9abff219564b"
+      },
+      {
+        "file": "iq-block-0384.cs8",
+        "first_complex_sample_index": 192000000,
+        "complex_samples": 500000,
+        "sha256": "6fa2d8de0a5af574e821c6c8b6f2fa78c154e72f4de9093acfc9dc2f648a2b9d"
+      },
+      {
+        "file": "iq-block-0385.cs8",
+        "first_complex_sample_index": 192500000,
+        "complex_samples": 500000,
+        "sha256": "981a291aaeda98f26389dbe205402c4cfeaf06da280537c201bab080ea9fe1a7"
+      },
+      {
+        "file": "iq-block-0386.cs8",
+        "first_complex_sample_index": 193000000,
+        "complex_samples": 500000,
+        "sha256": "c2ce13ee582c0f0d274d976bc887c283ea628bf2ac128a3dd71f2dc0878968fb"
+      },
+      {
+        "file": "iq-block-0387.cs8",
+        "first_complex_sample_index": 193500000,
+        "complex_samples": 500000,
+        "sha256": "da49f45c76904b26f0f87eecb563acac331ef4b958e7c82f37ccde5eb0bf976d"
+      },
+      {
+        "file": "iq-block-0489.cs8",
+        "first_complex_sample_index": 244500000,
+        "complex_samples": 500000,
+        "sha256": "5ca9504b385885eb6582f3d9eda4ee7beb668af388f1a8d0ad166b71529d4dfa"
+      },
+      {
+        "file": "iq-block-0490.cs8",
+        "first_complex_sample_index": 245000000,
+        "complex_samples": 500000,
+        "sha256": "79d86d46c132a063f9d9071831a793309069169dfc051f512e00d108a9fb9d6e"
+      },
+      {
+        "file": "iq-block-0491.cs8",
+        "first_complex_sample_index": 245500000,
+        "complex_samples": 500000,
+        "sha256": "35fcbd26e9ef44428b71cf206b2495ed0a23a0fb7fa868b0b1598a6141ccc30e"
+      },
+      {
+        "file": "iq-block-0493.cs8",
+        "first_complex_sample_index": 246500000,
+        "complex_samples": 500000,
+        "sha256": "ba2fbf74f541d5e44122c4fdeccf5485695cda02ebce4dcaace2acf9057710a0"
+      },
+      {
+        "file": "iq-block-0494.cs8",
+        "first_complex_sample_index": 247000000,
+        "complex_samples": 500000,
+        "sha256": "b210da8249a95fa51d0779494083fe3f5548eea7d6f08b300a1e8be6d6492f86"
+      },
+      {
+        "file": "iq-block-0495.cs8",
+        "first_complex_sample_index": 247500000,
+        "complex_samples": 500000,
+        "sha256": "a09697f7664bd45264df781daeeba29837baccb174ea592853ca23b070edbed3"
+      },
+      {
+        "file": "iq-block-0496.cs8",
+        "first_complex_sample_index": 248000000,
+        "complex_samples": 500000,
+        "sha256": "f3d4b2c245dde677bf6c8fb1324ead5bbdbf4f2c0f57cf03fbc1fbaa2d875416"
+      },
+      {
+        "file": "iq-block-0497.cs8",
+        "first_complex_sample_index": 248500000,
+        "complex_samples": 500000,
+        "sha256": "07723070a6dffd78b8b8dedb8d5f044656210dfbd57aca6fae0f4b86d5c943cf"
+      },
+      {
+        "file": "iq-block-0498.cs8",
+        "first_complex_sample_index": 249000000,
+        "complex_samples": 500000,
+        "sha256": "a2770a6bffd363802acdc0ba22dca0c59f56bf0591a56ca9ec80955a9c49fae8"
+      },
+      {
+        "file": "iq-block-0499.cs8",
+        "first_complex_sample_index": 249500000,
+        "complex_samples": 500000,
+        "sha256": "46ebe8ad9fd56baa28fdd98b66259329fd880e38b48fd77d9adbcf91734dd677"
+      },
+      {
+        "file": "iq-block-0500.cs8",
+        "first_complex_sample_index": 250000000,
+        "complex_samples": 500000,
+        "sha256": "50e75d9f644832918c334f642146074f879510a0c891e61d00587acf97c60f6c"
+      },
+      {
+        "file": "iq-block-0501.cs8",
+        "first_complex_sample_index": 250500000,
+        "complex_samples": 500000,
+        "sha256": "849d60ac02f4b35d4247bdd842ddfe8ca61e1285e0bdf3f318c09a67af4be8ed"
+      },
+      {
+        "file": "iq-block-0502.cs8",
+        "first_complex_sample_index": 251000000,
+        "complex_samples": 500000,
+        "sha256": "e5d7d9926b2f78e539c2cf89bec26149f8ea7487c2b33d9d0bd71e87111e6aa6"
+      },
+      {
+        "file": "iq-block-0503.cs8",
+        "first_complex_sample_index": 251500000,
+        "complex_samples": 500000,
+        "sha256": "196219bf688ac73bff31f55fe7550a3df93697bbdad8b1c551613388c56b5a1d"
+      },
+      {
+        "file": "iq-block-0505.cs8",
+        "first_complex_sample_index": 252500000,
+        "complex_samples": 500000,
+        "sha256": "dd0755a7e4048255ee122fd3dfef6fdf39974ae2875634973ec5280f48aa1b0f"
+      },
+      {
+        "file": "iq-block-0506.cs8",
+        "first_complex_sample_index": 253000000,
+        "complex_samples": 500000,
+        "sha256": "bdd30a8187d9666ca72cfbfbe64a027a4ef0e373d838ddd292c9da3db3ebb12d"
+      },
+      {
+        "file": "iq-block-0507.cs8",
+        "first_complex_sample_index": 253500000,
+        "complex_samples": 500000,
+        "sha256": "c2160c9fffdf1ba1d0eb24316e40016d2fe2a1669aa10ab65373927f95369c50"
+      },
+      {
+        "file": "iq-block-0508.cs8",
+        "first_complex_sample_index": 254000000,
+        "complex_samples": 500000,
+        "sha256": "086c5e8012138f5c4fc8ae8b51ad87e2a55583c1368a22c5ab081ea6753c2485"
+      },
+      {
+        "file": "iq-block-0509.cs8",
+        "first_complex_sample_index": 254500000,
+        "complex_samples": 500000,
+        "sha256": "d63fbaa253a0c36aed9c1789078d4d6e559b0faa4fbaf72b1d280026dcdb7ad1"
+      },
+      {
+        "file": "iq-block-0510.cs8",
+        "first_complex_sample_index": 255000000,
+        "complex_samples": 500000,
+        "sha256": "2399bdf7206c0e8ec5507f86528fbc70410fb458066168dde94d56618e3c8027"
+      }
+    ],
+    "access_channel_center_hz": [
+      778400000,
+      780020000
+    ],
+    "access_channel_width_hz": [
+      1080000,
+      360000
+    ],
+    "analog_filter_note": "2.5 MHz lowpass is not a brick wall. PRACH/2-PRB Msg3 allocation fits the nominal filter view; full 6-PRB data NB2 extends into filter rolloff. No calibrated cross-band amplitude comparison.",
+    "first_read_utc": "2026-10-19T16:13:11.889873+00:00",
+    "iq_trigger_threshold_dbfs": [
+      -46.475510613656695,
+      -50.53893766616962
+    ],
+    "transfer_exit": 0,
+    "samples_received": 725000000,
+    "sample_seconds": 145.0,
+    "last_read_utc": "2026-10-19T16:15:38.790331+00:00",
+    "elapsed_wall_seconds": 147.026,
+    "receive_buffer_bytes": 67108864,
+    "max_reported_overruns": 0,
+    "iq_bytes_saved": 40000000,
+    "iq_cap_reached": true,
+    "clipped_sample_fraction": 0.0,
+    "max_block_clip_fraction": 0.0,
+    "total_power_dbfs_median": -38.367495148897845,
+    "narrowband_power_dbfs_median": [
+      -53.942258628956424,
+      -53.94455954534664,
+      -53.93740421473566,
+      -56.05927201450784,
+      -150.0,
+      -150.0,
+      -150.0,
+      -150.0
+    ],
+    "finished_utc": "2026-10-19T16:15:42.498940+00:00"
+  },
+  "private_power_npz_sha256": "a17d7d7bab8e927e79adfe37dd27e61af53c4668603a941941f2799050d464ab",
+  "modem_accepted": 60,
+  "unique_received": 60,
+  "yamcs_unique": 60,
+  "goodput_kbps": 2.048,
+  "off_confirmed": true,
+  "same_ihu_firmware_boot": true,
+  "outputs_restored": true,
+  "can_errors_zero": true,
+  "production_firmware_changed": false,
+  "ground_transmit_settings_changed": false
+}

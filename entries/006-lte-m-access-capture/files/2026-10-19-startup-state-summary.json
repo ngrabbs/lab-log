@@ -1,0 +1,200 @@
+{
+  "label": "lte-release-startup-20261019-01",
+  "setup": {
+    "profile": "enb.band13.emtc.ce300tx20rlcdebug.conf",
+    "changes": "RLC/RRC debug only; PHY info and RF settings unchanged",
+    "production_firmware_changed": false,
+    "binary_sha256": "cba64491284fc672369b967da657049c8057deeb50548a28e3558369f5b6027a",
+    "observer": "Scalar only; all identities; connected before IHU driver and RF admission",
+    "observer_deadline_seconds": 140,
+    "observer_cap_bytes": 16777216
+  },
+  "ready_seconds": 33.844336,
+  "observer_ready_before_host_utc": "2026-10-19T21:49:08.881061+00:00",
+  "rf_admitted_utc": "2026-10-19T21:49:10.199787+00:00",
+  "modem_accepted": 1,
+  "receiver": 1,
+  "yamcs": 1,
+  "registration_observations": [
+    {
+      "utc": "2026-10-19T21:49:44.928036+00:00",
+      "seconds_after_accept": 0.372,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 85646,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:49:49.928136+00:00",
+      "seconds_after_accept": 5.372,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 80646,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:49:54.935829+00:00",
+      "seconds_after_accept": 10.38,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 75646,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:49:59.937922+00:00",
+      "seconds_after_accept": 15.382,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 70643,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:50:04.908269+00:00",
+      "seconds_after_accept": 20.352,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 65643,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:50:09.848080+00:00",
+      "seconds_after_accept": 25.292,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 60645,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:50:14.826243+00:00",
+      "seconds_after_accept": 30.27,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 55643,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T21:50:19.800225+00:00",
+      "seconds_after_accept": 35.244,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 50644,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    }
+  ],
+  "capture": {
+    "valid": true,
+    "scalar_only": true,
+    "all_identities": true,
+    "byte_cap": 16777216,
+    "deadline_seconds": 140,
+    "events_allowlisted": [
+      "ENB_PHY_LTEM_GRANT_STATE",
+      "ENB_PHY_LTEM_RX_STATE",
+      "ENB_PHY_LTEM_RATE_STATE",
+      "ENB_PHY_LTEM_SEGMENT_STATE",
+      "ENB_PHY_LTEM_POST_STATE",
+      "ENB_PHY_ULSCH_UE_ACK",
+      "ENB_PHY_ULSCH_UE_NACK",
+      "ENB_MAC_UE_UL_SCHEDULE",
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+    ],
+    "started_utc_ns": 1792446548828870775,
+    "metadata_ready_utc_ns": 1792446548831124522,
+    "stop_reason": "host_finished",
+    "trace_bytes": 1198282,
+    "event_counts": {
+      "ENB_PHY_LTEM_RX_STATE": 1945,
+      "ENB_PHY_LTEM_RATE_STATE": 1945,
+      "ENB_PHY_LTEM_SEGMENT_STATE": 1945,
+      "ENB_PHY_LTEM_POST_STATE": 1945,
+      "ENB_PHY_ULSCH_UE_NACK": 83,
+      "ENB_PHY_ULSCH_UE_ACK": 1862,
+      "ENB_MAC_UE_UL_SCHEDULE": 1875,
+      "ENB_PHY_LTEM_GRANT_STATE": 1918,
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION": 44
+    },
+    "elapsed_seconds": 71.9779216190218,
+    "incomplete_tail_bytes": 0,
+    "finished_utc_ns": 1792446620806800931,
+    "trace_sha256": "2c5791fb4055d94eeba18661a51a90f8028ac072323ae40a2098685e623a4f46"
+  },
+  "state_checks": [
+    {
+      "label": "lte-release-startup-20261019-01",
+      "connected_identity_event_counts": {
+        "ENB_PHY_LTEM_RX_STATE": 1919,
+        "ENB_PHY_LTEM_RATE_STATE": 1919,
+        "ENB_PHY_LTEM_SEGMENT_STATE": 1919,
+        "ENB_PHY_LTEM_POST_STATE": 1919,
+        "ENB_PHY_LTEM_GRANT_STATE": 1918
+      },
+      "complete_chains": 1918,
+      "decode_results": {
+        "ACK": 1860,
+        "NACK": 58
+      },
+      "mismatch_counts": {},
+      "rnti": 26980,
+      "incomplete_chains": 0,
+      "mac_paired_chains": 1918
+    }
+  ],
+  "stop_command_utc": "2026-10-19T21:50:20.088252+00:00",
+  "release_transitions": [
+    {
+      "utc": "2026-10-19T21:49:43.253+00:00",
+      "marker": "reconfiguration_complete"
+    },
+    {
+      "utc": "2026-10-19T21:49:43.255+00:00",
+      "marker": "reconfiguration_complete"
+    },
+    {
+      "utc": "2026-10-19T21:49:43.255+00:00",
+      "marker": "reconfiguration_complete"
+    },
+    {
+      "utc": "2026-10-19T21:50:44.990+00:00",
+      "marker": "release_request",
+      "cause": 21
+    },
+    {
+      "utc": "2026-10-19T21:50:45.476+00:00",
+      "marker": "srb_max_retx",
+      "srb": 1
+    },
+    {
+      "utc": "2026-10-19T21:50:45.477+00:00",
+      "marker": "context_removed"
+    },
+    {
+      "utc": "2026-10-19T21:50:45.479+00:00",
+      "marker": "context_removed"
+    }
+  ],
+  "cleanup": {
+    "walter_off": true,
+    "all_six_outputs_zero": true,
+    "ihu_firmware_boot_unchanged": true,
+    "can_errors_zero": true,
+    "original_head_unchanged": true,
+    "original_status_unchanged": true,
+    "original_overlay_unchanged": true,
+    "original_binary_unchanged": true,
+    "rx_reference_binary_unchanged": true,
+    "diagnostic_binary_unchanged": true,
+    "baseline_profile_unchanged": true,
+    "radio_and_core_stopped": true,
+    "recorder_stopped": true
+  },
+  "rate_result_kbps": null,
+  "limits": "One delivered EPS packet and 35 seconds registered. Early pre-telemetry removal did not recur. Post-OFF release request logged cause21/radio connection with UE lost; SRB1 max-retry follows that request and is not established as its trigger. State checks are internal eNodeB consistency, not independent RF payload decoding or a packet error rate. No IQ recorded and no new speed/failure-fix claim."
+}

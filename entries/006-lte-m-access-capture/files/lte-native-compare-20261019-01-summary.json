@@ -1,0 +1,148 @@
+{
+  "label": "lte-native-compare-20261019-01",
+  "date": "2026-10-19",
+  "test": "Single EPS packet, fresh attach, one-second native capture, 35-second registration observation",
+  "ready_seconds": 21.913106,
+  "delivery": {
+    "accepted": 1,
+    "receiver": 1,
+    "yamcs": 1,
+    "duplicates": 0,
+    "unknown_sends": 0
+  },
+  "rate_result_kbps": null,
+  "observations": [
+    {
+      "utc": "2026-10-19T20:16:53.104152+00:00",
+      "seconds_after_accept": 0.38,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 97046,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:16:58.105275+00:00",
+      "seconds_after_accept": 5.381,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 92046,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:17:03.109986+00:00",
+      "seconds_after_accept": 10.386,
+      "state": 6,
+      "registered": 1,
+      "remaining_window_ms": 87049,
+      "last_cereg": 1,
+      "registration_drop_events": 0
+    },
+    {
+      "utc": "2026-10-19T20:17:08.107384+00:00",
+      "seconds_after_accept": 15.383,
+      "state": 6,
+      "registered": 0,
+      "remaining_window_ms": 82045,
+      "last_cereg": 2,
+      "registration_drop_events": 1
+    },
+    {
+      "utc": "2026-10-19T20:17:13.060118+00:00",
+      "seconds_after_accept": 20.336,
+      "state": 6,
+      "registered": 0,
+      "remaining_window_ms": 77047,
+      "last_cereg": 2,
+      "registration_drop_events": 1
+    },
+    {
+      "utc": "2026-10-19T20:17:18.014285+00:00",
+      "seconds_after_accept": 25.29,
+      "state": 6,
+      "registered": 0,
+      "remaining_window_ms": 72043,
+      "last_cereg": 2,
+      "registration_drop_events": 1
+    },
+    {
+      "utc": "2026-10-19T20:17:22.979470+00:00",
+      "seconds_after_accept": 30.255,
+      "state": 6,
+      "registered": 0,
+      "remaining_window_ms": 67048,
+      "last_cereg": 2,
+      "registration_drop_events": 1
+    },
+    {
+      "utc": "2026-10-19T20:17:27.968373+00:00",
+      "seconds_after_accept": 35.244,
+      "state": 6,
+      "registered": 0,
+      "remaining_window_ms": 62048,
+      "last_cereg": 2,
+      "registration_drop_events": 1
+    }
+  ],
+  "native_recorder": {
+    "seconds_requested": 1.0,
+    "max_bytes": 134217728,
+    "events_allowlisted": [
+      "ENB_PHY_INPUT_SIGNAL",
+      "ENB_PHY_ULSCH_UE_ACK",
+      "ENB_PHY_ULSCH_UE_NACK",
+      "ENB_PHY_PUSCH_IQ",
+      "ENB_MAC_UE_UL_SCHEDULE",
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+    ],
+    "starts_radio": false,
+    "capture_active_observed": true,
+    "active_seconds": 1.010329,
+    "record_exit": 0,
+    "trace_bytes": 64707292,
+    "file_cap_reached": false,
+    "bounded_capture_complete": true,
+    "elapsed_seconds": 1.064325
+  },
+  "native_index_summary": {
+    "trace_bytes": 64707292,
+    "trace_sha256": "62b7db82ec92d3ead8d37f08526d6cfff7e9d0b75eafe67c94965d47154915c1",
+    "id_header_sha256": "22f0a7b3e1fb6ee99c06037eab67bdaa59b2da895c3541bd92cf28a74ecb915f",
+    "event_counts": {
+      "ENB_PHY_INPUT_SIGNAL": 1021,
+      "ENB_MAC_UE_UL_SCHEDULE": 48,
+      "ENB_PHY_PUSCH_IQ": 53,
+      "ENB_PHY_ULSCH_UE_ACK": 47,
+      "ENB_PHY_ULSCH_UE_NACK": 6,
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION": 3
+    },
+    "matched_decode_count": 53
+  },
+  "connected_identity_decode_counts": {
+    "ACK": 47,
+    "NACK": 4
+  },
+  "other_identity_decode_counts": {
+    "NACK": 2
+  },
+  "connected_identity_nack_input_times_ns": [
+    1792441012224844614,
+    1792441012244969617,
+    1792441012264873212,
+    1792441012284839566
+  ],
+  "host_first_offer_utc": "2026-10-19T20:16:52.320976+00:00",
+  "receiver_utc": [
+    "2026-10-19T20:16:52.545641+00:00"
+  ],
+  "delivery_coordinator_success": true,
+  "registration_stable_for_35_seconds": false,
+  "cleanup": {
+    "off_confirmed": true,
+    "same_ihu_firmware_boot": true,
+    "original_outputs_restored": true,
+    "error": null
+  },
+  "limits": "Packet delivery passed, registration stability failed. First unregistered check bounds the loss time, not its exact onset. Native capture covers initial delivery, not the later registration loss. ACK/NACK events are eNodeB decode results, not application packet counts or an independently measured packet error rate. No throughput measurement or failure fix."
+}

@@ -1,0 +1,56 @@
+{
+  "label": "lte-rf-narrow-20261019-05",
+  "private_power_npz_sha256": "2cf9d157092da073c582712bdc4307c7bbaaf2f104316e3b883c3681acdc50fe",
+  "method": "Selected 3 ms burst windows: maximum spectrum per 20 kHz bin minus median spectrum during sample-relative seconds 105\u2013130, clipped at zero; weighted center and central 90% excess-power interval. Relative power only.",
+  "burst_spectrum_checks": [
+    {
+      "sample_relative_window_s": [
+        22.32,
+        22.323
+      ],
+      "excess_power_weighted_center_hz": 780016696,
+      "central_90_percent_frequency_span_hz": [
+        779845000,
+        780185000
+      ]
+    },
+    {
+      "sample_relative_window_s": [
+        33.28,
+        33.283
+      ],
+      "excess_power_weighted_center_hz": 780032013,
+      "central_90_percent_frequency_span_hz": [
+        779865000,
+        780205000
+      ]
+    },
+    {
+      "sample_relative_window_s": [
+        44.28,
+        44.283
+      ],
+      "excess_power_weighted_center_hz": 780030125,
+      "central_90_percent_frequency_span_hz": [
+        779885000,
+        780185000
+      ]
+    }
+  ],
+  "generated_rar_grant": {
+    "log_events": 40,
+    "narrowband_index": 2,
+    "six_prb_riv": 6,
+    "first_rb_in_narrowband": 0,
+    "allocated_prbs": 2,
+    "mcs": 7,
+    "inferred_first_ul_carrier_rb": 13,
+    "inferred_ul_span_hz": [
+      779840000,
+      780200000
+    ],
+    "inferred_ul_center_hz": 780020000
+  },
+  "grant_method": "Generated RAR bytes decoded using current ground fill_rar_br packing for 50 PRB / 3 narrowband-index bits; MAC source assigns first 2 PRBs of NB2. This does not prove UE reception or decoding of the RAR.",
+  "interpretation": "Observed burst spectra are consistent with the generated two-PRB Msg3 grant. No LTE waveform was decoded, transmitter identity is unproven, and subframe timing has not been aligned."
+}

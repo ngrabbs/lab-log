@@ -1,0 +1,8 @@
+{
+  "label": "lte-native-baseline-20261019-01",
+  "cell_started": false,
+  "modem_window_opened": false,
+  "cause": "Config pre-parser scans the second character of every argument for O. A non-final WORKER_DISABLE value caused it to treat the following --T_stdout as a filename.",
+  "workaround": "Move trace options before -O and leave WORKER_DISABLE last; no radio source patch or firmware change.",
+  "offline_argument_preflight_trace_off_and_on_passed": true
+}

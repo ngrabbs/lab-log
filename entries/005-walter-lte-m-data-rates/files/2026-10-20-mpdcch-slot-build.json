@@ -1,0 +1,64 @@
+{
+  "date_utc": "2026-10-20",
+  "date_local": "2026-10-19",
+  "activity": "Applied MPDCCH append-slot patch and rebuilt existing ground checkout at user request",
+  "source_head": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+  "patch_sha256": "275d58db827e528374f76f7d862568dfda127948044a7fdae183022c43b64712",
+  "before_binary_sha256": "5c5de8e17db509b35823f401b99c7fdbe28144307da0be24fbc777c569768e11",
+  "after_binary_sha256": "5b19f79079d0e750b6ac9251982b85a79ab3a0eb1c7574ff3c309033d861871c",
+  "before_scheduler_sha256": "b4f2de46d673f58bc360c686b5fb20811368a1c9e61590c30a2c5544503a14ba",
+  "after_scheduler_sha256": "92d530865a6173a4e06148cf3c6a0750739aaf04909fa2198e541127167d5832",
+  "backup": {
+    "files": 22,
+    "verified_on_ground": true,
+    "verified_local_copy": true,
+    "original_binary_retained": true,
+    "prior_source_diff_and_index_diff_retained": true
+  },
+  "source_delta": "Only MPDCCH append-slot lookup/comment added; prior overlay retained, PHY assertion unchanged",
+  "build": {
+    "exit": 0,
+    "target": "lte-softmodem",
+    "in_existing_build_directory": true,
+    "cache_unchanged": true,
+    "runtime_libraries_unchanged": true
+  },
+  "tests": [
+    {
+      "name": "lte.mac.emtc_msg4_action",
+      "result": "passed"
+    },
+    {
+      "name": "lte.mac.emtc_ul_rx_harq_pid",
+      "result": "passed"
+    },
+    {
+      "name": "lte.phy.emtc_dlsch_context",
+      "result": "passed"
+    }
+  ],
+  "integrity": {
+    "original_head_unchanged": true,
+    "original_status_unchanged": true,
+    "candidate_overlay_matches_build": true,
+    "candidate_binary_matches_build": true,
+    "rx_reference_binary_unchanged": true,
+    "diagnostic_binary_unchanged": true,
+    "baseline_profile_unchanged": true,
+    "runtime_libraries_match_build": true,
+    "cmake_cache_matches_build": true,
+    "radio_and_core_stopped": true,
+    "recorder_stopped": true,
+    "debug_profile_logging_only": true
+  },
+  "new_rf_windows": 0,
+  "ihu_firmware_changed": false,
+  "walter_mcu_firmware_changed": false,
+  "walter_firmware_changed": false,
+  "limits": [
+    "Full radio compilation and three existing helper tests passed; no RF comparison yet.",
+    "Existing helper tests do not execute the entire multi-context LTE-M scheduler; reduced fixture evidence remains separately recorded.",
+    "Live crash causality, missing-packet cause and a common cause for prior failures remain unconfirmed."
+  ],
+  "best_measured_direct_kbps": 7.7824
+}

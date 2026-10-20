@@ -1,0 +1,61 @@
+{
+  "label": "lte-msg3-iq-20261019-01",
+  "iq_blocks": 2,
+  "iq_bytes": 800000,
+  "iq_hashes_verified": true,
+  "receive_overruns": 0,
+  "adc_clipped_sample_fraction": 0.0,
+  "method": "2 MS/s signed IQ, DC mean removed per contiguous chunk, FFT-resampled to 1.92 MS/s. Detect >=0.5 ms regions above -30 dBFS in 100 us energy bins. Search +/-125 us around envelope start for normal-CP 128-sample lag over 14 symbols (CP 10/9 samples). Compare lags 112/144 at that start and a preceding search window. Correlation is normalized complex magnitude.",
+  "standard_reference": "https://www.etsi.org/deliver/etsi_ts/136200_136299/136211/16.06.00_60/ts_136211v160600p.pdf",
+  "limits": "Waveform consistency only; no transport-block/CRC decode, UE identity or shared SFN/subframe alignment. A fitted symbol boundary is not an eNodeB timing-error measurement. Triggered/capped IQ does not cover the entire session.",
+  "bursts": [
+    {
+      "energy_interval_sample_seconds": [
+        22.7383,
+        22.7392
+      ],
+      "energy_interval_duration_ms": 0.9,
+      "normal_cp_correlation": 0.9656335071663065,
+      "lag112_correlation": 0.04035424774198811,
+      "lag144_correlation": 0.21456691239251832,
+      "cp_fitted_start_sample_seconds": 22.738181770833336,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.21490853240755461,
+        "lag112_correlation": 0.04731323461727243,
+        "lag144_correlation": 0.15190679887693243
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        22.7582,
+        22.7593
+      ],
+      "energy_interval_duration_ms": 1.1,
+      "normal_cp_correlation": 0.981930838743168,
+      "lag112_correlation": 0.18142913597625188,
+      "lag144_correlation": 0.050846764968642405,
+      "cp_fitted_start_sample_seconds": 22.758253125000003,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.1718956981256451,
+        "lag112_correlation": 0.08711890953023532,
+        "lag144_correlation": 0.05383215353332559
+      }
+    },
+    {
+      "energy_interval_sample_seconds": [
+        22.7783,
+        22.7792
+      ],
+      "energy_interval_duration_ms": 0.9,
+      "normal_cp_correlation": 0.9650118548365755,
+      "lag112_correlation": 0.16113558625289184,
+      "lag144_correlation": 0.13990363883116114,
+      "cp_fitted_start_sample_seconds": 22.778253125000003,
+      "comparison_before_burst": {
+        "normal_cp_correlation": 0.14966576266714776,
+        "lag112_correlation": 0.16039040065682258,
+        "lag144_correlation": 0.09249730668142045
+      }
+    }
+  ]
+}

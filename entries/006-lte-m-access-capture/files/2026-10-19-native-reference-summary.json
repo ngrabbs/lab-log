@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-19",
+  "isolated_binary_sha256": "384fd107b9a395e3c916abfdc0da7f15bca54095b46ea8786353f45fbc77201a",
+  "profile": "Original band-13 profile; TX/RX/attenuation unchanged; PHY info / MAC debug / RLC-RRC info.",
+  "ready_seconds": {
+    "trace_off": 27.61717,
+    "trace_on": 16.696178
+  },
+  "delivery": {
+    "trace_off": {
+      "accepted": 1,
+      "receiver": 1,
+      "yamcs": 1
+    },
+    "trace_on": {
+      "accepted": 1,
+      "receiver": 1,
+      "yamcs": 1
+    }
+  },
+  "observation": "Eight diagnostic checks over 35 seconds per session; registered throughout, zero drop events. Single-packet tests; no throughput result.",
+  "native_recorder": {
+    "seconds_requested": 1.0,
+    "max_bytes": 134217728,
+    "events_allowlisted": [
+      "ENB_PHY_INPUT_SIGNAL",
+      "ENB_PHY_ULSCH_UE_ACK",
+      "ENB_PHY_ULSCH_UE_NACK",
+      "ENB_PHY_PUSCH_IQ",
+      "ENB_MAC_UE_UL_SCHEDULE",
+      "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+    ],
+    "starts_radio": false,
+    "capture_active_observed": true,
+    "active_seconds": 1.001267,
+    "record_exit": 0,
+    "trace_bytes": 64120248,
+    "file_cap_reached": false,
+    "bounded_capture_complete": true,
+    "elapsed_seconds": 1.055135
+  },
+  "native_index_summary": {
+    "trace_bytes": 64120248,
+    "trace_sha256": "ede5a98ed9e65685db812a5db75d9800ca9674c5858891fdaed8375b6fe01eca",
+    "id_header_sha256": "22f0a7b3e1fb6ee99c06037eab67bdaa59b2da895c3541bd92cf28a74ecb915f",
+    "event_counts": {
+      "ENB_PHY_INPUT_SIGNAL": 1012,
+      "ENB_MAC_UE_UL_SCHEDULE": 51,
+      "ENB_PHY_PUSCH_IQ": 52,
+      "ENB_PHY_ULSCH_UE_ACK": 51,
+      "ENB_PHY_ULSCH_UE_NACK": 1
+    },
+    "matched_decode_count": 52
+  },
+  "connected_context_reference": {
+    "ack_decode_events": 51,
+    "nack_decode_events": 0,
+    "other_temporary_identity_nack_events_excluded": 1,
+    "input_frames_checked": 51,
+    "samples_per_subframe": 15360,
+    "sample_rate_hz": 15360000,
+    "sample_format": "little-endian int16 interleaved I/Q",
+    "normal_prefix_coherence_range": [
+      0.7552984876943198,
+      0.9225465161923663
+    ],
+    "dmrs_coherence_range": [
+      0.8403227093611213,
+      0.8879685775103018
+    ],
+    "dmrs_coherence_median": 0.8613633618360023,
+    "control_coherence_max": {
+      "wrong_group": 0.14440635932578366,
+      "wrong_symbol": 0.25686269032909936,
+      "adjacent_unallocated_rbs": 0.268970333311866
+    },
+    "adc_clip_fraction_max": 0.0
+  },
+  "rf_qualified_for_working_reference": true,
+  "absolute_sfn_independently_verified": false,
+  "failed_session_comparison_performed": false,
+  "failure_cause_fixed": false,
+  "cleanup": {
+    "walter_off": true,
+    "outputs_restored": true,
+    "same_ihu_firmware_boot": true,
+    "ihu_boot": 1804549595,
+    "can_errors_zero": true,
+    "cell_core_capture_stopped": true
+  },
+  "limits": "Checks sample-buffer consistency with the known working eNodeB context; not independent payload/CRC decoding, absolute SFN validation or a demonstrated failed-session cause. Periodic reference signals alone cannot exclude a whole-frame buffer lag. CFO values are prefix-based estimates after the assumed UL offset correction, not calibrated oscillator error. Raw trace includes another temporary RNTI NACK, which is excluded from this connected-UE working reference."
+}

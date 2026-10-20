@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-19",
+  "scope": "Read-only setup inventory; no RF test or firmware changes",
+  "radio_usb_identity": "USRP B210-compatible",
+  "uhd_version": "4.8.0.0+ds1-2",
+  "ground_checkout": {
+    "branch": "feature/ihu-eps-definitions",
+    "commit": "9b714354fd0ca63ff51502d462ad13d26b3a837f",
+    "local_changes": true
+  },
+  "oai_source": {
+    "branch": "ember/lte-m-msg3-cleanup",
+    "commit": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+    "local_changes": true
+  },
+  "sha256": {
+    "oai_binary": "5c5de8e17db509b35823f401b99c7fdbe28144307da0be24fbc777c569768e11",
+    "epc_binary": "717dcd0b276c4cc80974a563cc0517358f1fc94fb0913d9976be3f3b0ea98a97",
+    "custom_fpga_image": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99"
+  },
+  "enodeb_epc_processes_running": false,
+  "throughput_measured": false,
+  "ihu_console": {
+    "recovery": "Targeted USB2 hub reset; backup SSD remained connected",
+    "version": "0.15.0",
+    "source_commit": "701e96c00c8a9a207d29a746eee74c7108a2a1b3",
+    "dirty": false,
+    "configuration": "GROUND_TEST",
+    "mode": "SAFE",
+    "can_normal": true,
+    "can_tec": 0,
+    "can_rec": 0,
+    "all_output_switches_off": true,
+    "firmware_changed": false
+  },
+  "walter_mcu": {
+    "reported_component": "LTE_CAN",
+    "version": "0.8.0",
+    "source_commit": "9fcb0209f1bb192369fce34d863a3862f8040de6",
+    "dirty": false,
+    "can_hello_passed": true
+  },
+  "walter_esp32": {
+    "reported_component": "WALTER",
+    "version": "0.3.0",
+    "source_commit": "9fcb0209f1bb192369fce34d863a3862f8040de6",
+    "dirty": false,
+    "modem_state": "OFF",
+    "remaining_rf_window_ms": 0
+  },
+  "sequans_radio_firmware_requeried": false,
+  "eps": {
+    "battery_connected": false,
+    "battery_connection_source": "user confirmation",
+    "raw_vbat": 4,
+    "raw_charger_state": 2048,
+    "raw_telemetry_status": 1,
+    "interpretation": "Battery absent; not a battery-health measurement"
+  },
+  "persistent_lte_listener_active": true
+}

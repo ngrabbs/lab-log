@@ -1,0 +1,51 @@
+{
+  "label": "lte-access-pair-20261019-02",
+  "selection": "through first nonempty Msg3 CCCH; no payloads",
+  "rows": [
+    {
+      "rar_utc": "2026-10-19T16:22:35.704+00:00",
+      "rar_frame": 443,
+      "rar_subframe": 8,
+      "temporary_crnti": "865a",
+      "preamble": 60,
+      "timing_advance_command": 1,
+      "grant_hex": "4c760",
+      "grant": {
+        "narrowband": 2,
+        "riv": 6,
+        "repetition_code": 0,
+        "mcs": 7,
+        "tpc": 3,
+        "cqi_request": 0,
+        "ul_delay": 0,
+        "mpdcch_nb_index": 0
+      },
+      "rar_wire_identity_matches": true,
+      "scheduled_msg3": {
+        "ce_level": 0,
+        "frame": 444,
+        "subframe": 4
+      },
+      "receive": {
+        "utc": "2026-10-19T16:22:35.714+00:00",
+        "pointer_label": "OK",
+        "temporary_crnti": "865a",
+        "round": 0,
+        "ra_id": 0,
+        "ul_cqi": 184,
+        "timing_advance_raw": 31
+      },
+      "expected_msg3_frame": 444,
+      "expected_msg3_subframe": 4,
+      "phy_demodulation": null,
+      "nonempty_ccch": true
+    }
+  ],
+  "counts": {
+    "rar": 1,
+    "receive": 1,
+    "identity_matches": 1,
+    "phy_context": 0,
+    "nonempty_ccch": 1
+  }
+}

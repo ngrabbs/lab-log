@@ -1,0 +1,97 @@
+{
+  "label": "lte-msg3-iq-20261019-02",
+  "first_successful_ccch_log_utc": "2026-10-19T15:57:31.068",
+  "msg3_scheduled_before_first_ccch": 17,
+  "msg3_error_log_events_before_first_ccch": 16,
+  "msg3_ok_log_events_through_first_ccch": 1,
+  "error_events": [
+    {
+      "utc": "2026-10-19T15:57:09.008",
+      "ul_cqi": 177,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:09.108",
+      "ul_cqi": 185,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:09.208",
+      "ul_cqi": 194,
+      "timing_advance": 30
+    },
+    {
+      "utc": "2026-10-19T15:57:09.308",
+      "ul_cqi": 201,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:09.408",
+      "ul_cqi": 211,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:09.508",
+      "ul_cqi": 217,
+      "timing_advance": 30
+    },
+    {
+      "utc": "2026-10-19T15:57:09.608",
+      "ul_cqi": 225,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:09.708",
+      "ul_cqi": 230,
+      "timing_advance": 30
+    },
+    {
+      "utc": "2026-10-19T15:57:20.028",
+      "ul_cqi": 174,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:20.128",
+      "ul_cqi": 185,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:20.228",
+      "ul_cqi": 192,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:20.328",
+      "ul_cqi": 201,
+      "timing_advance": 30
+    },
+    {
+      "utc": "2026-10-19T15:57:20.428",
+      "ul_cqi": 208,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:20.528",
+      "ul_cqi": 218,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:20.628",
+      "ul_cqi": 224,
+      "timing_advance": 31
+    },
+    {
+      "utc": "2026-10-19T15:57:20.728",
+      "ul_cqi": 231,
+      "timing_advance": 31
+    }
+  ],
+  "ok_events": [
+    {
+      "utc": "2026-10-19T15:57:31.068",
+      "ul_cqi": 183,
+      "timing_advance": 32
+    }
+  ],
+  "method": "Selected eNodeB log events through the first nonempty Msg3 CCCH indication. These are log messages, not identified RF packets or calibrated timing measurements."
+}

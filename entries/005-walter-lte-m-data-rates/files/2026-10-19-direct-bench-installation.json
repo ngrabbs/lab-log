@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-19",
+  "phase": "temporary direct-Walter benchmark installation",
+  "identity": {
+    "event": "identity",
+    "role": "WALTER_THROUGHPUT_TEMP",
+    "version": "0.1.0",
+    "git": "06680f3d256bc71e107fe5be377b929e5bf25033",
+    "source_sha256": "391f67568ce7062faa4030523a1da08d2aff3b7bff7b5158c2f8301d2b65a24b",
+    "uart_baud": 115200,
+    "log_drops": 0
+  },
+  "application_sha256": "8fa818c5ec34644cde870b47506a1906d6361994377bfe9eeaecf177ca13ddbe",
+  "backup": {
+    "complete_images": 2,
+    "bytes_per_image": 16777216,
+    "matching": true,
+    "off_host_verified_before_write": true,
+    "method": "Programmed regions read; erased regions checksum-verified; whole-image device checksums before/after each snapshot"
+  },
+  "upload_passed": true,
+  "application_flash_verified": true,
+  "startup_off": true,
+  "off_state_checks": 6,
+  "invalid_windows_rejected": true,
+  "run_off_rejected": true,
+  "query_off_rejected": true,
+  "final_off": true,
+  "radio_window_opened": false,
+  "ihu_firmware_changed": false,
+  "walter_mcu_firmware_changed": false,
+  "direct_rf_rate_measured": false
+}

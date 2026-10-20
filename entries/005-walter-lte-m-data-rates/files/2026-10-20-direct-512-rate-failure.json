@@ -1,0 +1,73 @@
+{
+  "label": "lte-direct-rate-20261020-2pps-01",
+  "date_utc": "2026-10-20",
+  "date_local": "2026-10-19",
+  "requested_pps": 2,
+  "packet_bytes": 512,
+  "requested_window_seconds": 10,
+  "path": "USB -> Walter ESP32 -> modem UART/AT -> LTE-M -> LibreSDR -> separate UDP receiver",
+  "receiver_port": 51002,
+  "identity": {
+    "event": "identity",
+    "role": "WALTER_THROUGHPUT_TEMP",
+    "version": "0.1.0",
+    "git": "06680f3d256bc71e107fe5be377b929e5bf25033",
+    "source_sha256": "391f67568ce7062faa4030523a1da08d2aff3b7bff7b5158c2f8301d2b65a24b",
+    "uart_baud": 115200,
+    "log_drops": 0
+  },
+  "profile": "enb.band13.emtc.ce300tx20diag.conf",
+  "rf_setup": {
+    "libresdr_antennas": "stock, all fitted",
+    "walter_antenna": "Full Band LTE Antenna 698-960/1710-2690 MHz",
+    "separation_m": 1
+  },
+  "registered_ready_seconds": 60.574,
+  "registered_before_run": 1,
+  "registration_responses_during_run": [
+    "+CEREG: 2"
+  ],
+  "stop_reason": "registration_lost",
+  "measurement": {
+    "run": 2026102001,
+    "packet_bytes": 512,
+    "measurement_seconds": 10,
+    "planned_slots": 20,
+    "attempted": 3,
+    "skipped": 0,
+    "unreached": 17,
+    "modem_accepted": 3,
+    "modem_rejected": 0,
+    "unknown": 0,
+    "unique_received": 0,
+    "duplicates": 0,
+    "accepted_missing": [
+      0,
+      1,
+      2
+    ],
+    "unknown_received": [],
+    "received_in_window": 0,
+    "late_received": 0,
+    "measurement_complete": false,
+    "received_kbps": null,
+    "window": "Fixed sender-requested duration beginning at first valid receiver arrival",
+    "limits": "Direct ESP32/modem UART/AT goodput, not maximum LTE-M PHY rate. UART115200 8N1, one transaction in flight. Skipped slots were not attempted. Arrival clocks do not establish one-way latency."
+  },
+  "receiver_summary": {
+    "unique": 0,
+    "duplicates": 0,
+    "bad": 0,
+    "out_of_order": 0
+  },
+  "rf_windows": 1,
+  "off_confirmed": true,
+  "log_drops": 0,
+  "ground_radio_core_stopped": true,
+  "ground_integrity_unchanged": true,
+  "ihu_firmware_changed": false,
+  "walter_mcu_firmware_changed": false,
+  "next_5pps_attempted": false,
+  "retries": 0,
+  "interpretation": "Accepted-but-undelivered symptom occurred on the direct path, bypassing IHU/CAN. Cause and rate dependence are unresolved; no valid rate or maximum throughput result."
+}

@@ -1,0 +1,290 @@
+{
+  "planned_maximum_sessions": 3,
+  "stop_rule": "Stop at first failed session; require OFF, restored outputs, unchanged firmware and zero CAN errors before another session",
+  "completed_sessions": 2,
+  "stop_reason": "First unsuccessful session",
+  "setup": {
+    "profile": "enb.band13.emtc.ce300tx20rlcdebug.conf",
+    "rf_changes": false,
+    "production_firmware_changed": false,
+    "observer": "Same scalar-only all-identity recorder before IHU/RF admission,16MiB/140s; no IQ or payload"
+  },
+  "runs": [
+    {
+      "label": "lte-release-startup-20261019-03",
+      "ready_seconds": 21.809862,
+      "telemetry_attempts": 1,
+      "modem_accepted": 1,
+      "receiver_unique": 1,
+      "yamcs_match": true,
+      "registered_for_observation": true,
+      "registration_observations": [
+        {
+          "utc": "2026-10-19T22:11:24.784075+00:00",
+          "seconds_after_accept": 0.42,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 97703,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        },
+        {
+          "utc": "2026-10-19T22:11:29.766977+00:00",
+          "seconds_after_accept": 5.403,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 92704,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        },
+        {
+          "utc": "2026-10-19T22:11:34.699078+00:00",
+          "seconds_after_accept": 10.335,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 87701,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        },
+        {
+          "utc": "2026-10-19T22:11:39.658855+00:00",
+          "seconds_after_accept": 15.295,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 82704,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        },
+        {
+          "utc": "2026-10-19T22:11:44.654958+00:00",
+          "seconds_after_accept": 20.291,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 77700,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        },
+        {
+          "utc": "2026-10-19T22:11:49.659060+00:00",
+          "seconds_after_accept": 25.295,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 72702,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        },
+        {
+          "utc": "2026-10-19T22:11:54.654104+00:00",
+          "seconds_after_accept": 30.29,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 67703,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        },
+        {
+          "utc": "2026-10-19T22:11:59.623410+00:00",
+          "seconds_after_accept": 35.259,
+          "state": 6,
+          "registered": 1,
+          "remaining_window_ms": 62703,
+          "last_cereg": 1,
+          "registration_drop_events": 0
+        }
+      ],
+      "native_capture": {
+        "valid": true,
+        "scalar_only": true,
+        "all_identities": true,
+        "byte_cap": 16777216,
+        "deadline_seconds": 140,
+        "events_allowlisted": [
+          "ENB_PHY_LTEM_GRANT_STATE",
+          "ENB_PHY_LTEM_RX_STATE",
+          "ENB_PHY_LTEM_RATE_STATE",
+          "ENB_PHY_LTEM_SEGMENT_STATE",
+          "ENB_PHY_LTEM_POST_STATE",
+          "ENB_PHY_ULSCH_UE_ACK",
+          "ENB_PHY_ULSCH_UE_NACK",
+          "ENB_MAC_UE_UL_SCHEDULE",
+          "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+        ],
+        "started_utc_ns": 1792447860759875567,
+        "metadata_ready_utc_ns": 1792447860762174627,
+        "stop_reason": "host_finished",
+        "trace_bytes": 1179550,
+        "event_counts": {
+          "ENB_PHY_LTEM_RX_STATE": 1911,
+          "ENB_PHY_LTEM_RATE_STATE": 1910,
+          "ENB_PHY_LTEM_SEGMENT_STATE": 1910,
+          "ENB_PHY_LTEM_POST_STATE": 1910,
+          "ENB_PHY_ULSCH_UE_ACK": 1484,
+          "ENB_MAC_UE_UL_SCHEDULE": 1583,
+          "ENB_PHY_LTEM_GRANT_STATE": 1892,
+          "ENB_PHY_ULSCH_UE_NACK": 426,
+          "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION": 309
+        },
+        "elapsed_seconds": 59.697282512963284,
+        "incomplete_tail_bytes": 0,
+        "finished_utc_ns": 1792447920457166951,
+        "trace_sha256": "140b421a653ab69ddce3c4c310ee8873c1f2e68ee9fbf96f395d4655dd8111b8"
+      },
+      "state_checks": [
+        {
+          "label": "lte-release-startup-20261019-03",
+          "connected_identity_event_counts": {
+            "ENB_PHY_LTEM_RX_STATE": 1893,
+            "ENB_PHY_LTEM_RATE_STATE": 1892,
+            "ENB_PHY_LTEM_SEGMENT_STATE": 1892,
+            "ENB_PHY_LTEM_POST_STATE": 1892,
+            "ENB_PHY_LTEM_GRANT_STATE": 1892
+          },
+          "complete_chains": 1891,
+          "decode_results": {
+            "ACK": 1480,
+            "NACK": 411
+          },
+          "mismatch_counts": {},
+          "rnti": 59552,
+          "incomplete_chains": 1,
+          "mac_paired_chains": 1891
+        }
+      ],
+      "stop_command_utc": "2026-10-19T22:11:59.896376+00:00",
+      "transitions": [
+        {
+          "utc": "2026-10-19T22:11:23.360+00:00",
+          "marker": "reconfiguration_complete"
+        },
+        {
+          "utc": "2026-10-19T22:11:23.363+00:00",
+          "marker": "reconfiguration_complete"
+        },
+        {
+          "utc": "2026-10-19T22:11:23.363+00:00",
+          "marker": "reconfiguration_complete"
+        },
+        {
+          "utc": "2026-10-19T22:12:24.797+00:00",
+          "marker": "release_request",
+          "cause": 21
+        },
+        {
+          "utc": "2026-10-19T22:12:25.283+00:00",
+          "marker": "srb_max_retx",
+          "srb": 1
+        },
+        {
+          "utc": "2026-10-19T22:12:25.284+00:00",
+          "marker": "context_removed"
+        },
+        {
+          "utc": "2026-10-19T22:12:25.286+00:00",
+          "marker": "context_removed"
+        }
+      ],
+      "host_error": null,
+      "end_modem_before_stop": {
+        "state": 6,
+        "registered": 1,
+        "remaining_window_ms": 62443,
+        "last_cereg": 1,
+        "registration_drop_events": 0
+      },
+      "selected_log_counts": {
+        "Generating RAR BR": 19,
+        "ULSCH in error": 1671,
+        "Decoding UL CCCH": 1
+      },
+      "success": true,
+      "cleanup": {
+        "walter_off": true,
+        "all_six_outputs_zero": true,
+        "unchanged_ihu_firmware_boot": true,
+        "can_errors_zero": true,
+        "original_head_unchanged": true,
+        "original_status_unchanged": true,
+        "original_overlay_unchanged": true,
+        "original_binary_unchanged": true,
+        "rx_reference_binary_unchanged": true,
+        "diagnostic_binary_unchanged": true,
+        "baseline_profile_unchanged": true,
+        "radio_and_core_stopped": true,
+        "recorder_stopped": true,
+        "debug_profile_logging_only": true
+      }
+    },
+    {
+      "label": "lte-release-startup-20261019-04",
+      "ready_seconds": null,
+      "telemetry_attempts": 0,
+      "modem_accepted": 0,
+      "receiver_unique": 0,
+      "yamcs_match": false,
+      "registered_for_observation": false,
+      "registration_observations": [],
+      "native_capture": {
+        "valid": true,
+        "scalar_only": true,
+        "all_identities": true,
+        "byte_cap": 16777216,
+        "deadline_seconds": 140,
+        "events_allowlisted": [
+          "ENB_PHY_LTEM_GRANT_STATE",
+          "ENB_PHY_LTEM_RX_STATE",
+          "ENB_PHY_LTEM_RATE_STATE",
+          "ENB_PHY_LTEM_SEGMENT_STATE",
+          "ENB_PHY_LTEM_POST_STATE",
+          "ENB_PHY_ULSCH_UE_ACK",
+          "ENB_PHY_ULSCH_UE_NACK",
+          "ENB_MAC_UE_UL_SCHEDULE",
+          "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+        ],
+        "started_utc_ns": 1792448026352973215,
+        "metadata_ready_utc_ns": 1792448026356889778,
+        "stop_reason": "host_finished",
+        "trace_bytes": 144306,
+        "event_counts": {},
+        "elapsed_seconds": 93.98128593701404,
+        "incomplete_tail_bytes": 0,
+        "finished_utc_ns": 1792448120334272948,
+        "trace_sha256": "da6c0c40bd01422c5877ffea650adf152d39b4c063fa68bf7e01567aba6f9b6c"
+      },
+      "state_checks": [],
+      "stop_command_utc": "2026-10-19T22:15:19.697014+00:00",
+      "transitions": [],
+      "host_error": "No registered READY",
+      "end_modem_before_stop": {
+        "state": 3,
+        "registered": 0,
+        "remaining_window_ms": 29461,
+        "last_cereg": 4,
+        "registration_drop_events": 0
+      },
+      "selected_log_counts": {
+        "Generating RAR BR": 0,
+        "ULSCH in error": 0,
+        "Decoding UL CCCH": 0
+      },
+      "success": false,
+      "cleanup": {
+        "walter_off": true,
+        "all_six_outputs_zero": true,
+        "unchanged_ihu_firmware_boot": true,
+        "can_errors_zero": true,
+        "original_head_unchanged": true,
+        "original_status_unchanged": true,
+        "original_overlay_unchanged": true,
+        "original_binary_unchanged": true,
+        "rx_reference_binary_unchanged": true,
+        "diagnostic_binary_unchanged": true,
+        "baseline_profile_unchanged": true,
+        "radio_and_core_stopped": true,
+        "recorder_stopped": true,
+        "debug_profile_logging_only": true
+      }
+    }
+  ],
+  "rate_result_kbps": null,
+  "limits": "Single EPS packet per session plus35-second registration observation. Decoder ACK/NACK events are not EPS packet counts or a packet error rate. Internal consistency is not independent RF decoding. Sessions do not establish a fix, modem maximum or statistical reliability."
+}

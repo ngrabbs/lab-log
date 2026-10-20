@@ -1,0 +1,19 @@
+{
+  "records": [
+    {
+      "label": "lte-access-pair-20261019-01",
+      "msg3_error_events_before_first_nonempty_ccch": 18,
+      "msg3_nonnull_events_through_first_nonempty_ccch": 1,
+      "generated_rar_before_first_nonempty_ccch": 19,
+      "first_nonempty_ccch_utc": "2026-10-19T16:14:00.801"
+    },
+    {
+      "label": "lte-access-pair-20261019-02",
+      "msg3_error_events_before_first_nonempty_ccch": 0,
+      "msg3_nonnull_events_through_first_nonempty_ccch": 1,
+      "generated_rar_before_first_nonempty_ccch": 1,
+      "first_nonempty_ccch_utc": "2026-10-19T16:22:35.714"
+    }
+  ],
+  "method": "Selected eNodeB log-message counts up to the first nonempty Msg3 CCCH indication; not identified physical packet counts or BLER."
+}

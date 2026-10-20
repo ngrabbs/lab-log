@@ -1,0 +1,8 @@
+label,requested_pps,measurement_seconds,planned_slots,attempted,skipped_slots,local_refused_slots,unknown_attempts,modem_accepted,unique_received,yamcs_unique,received_in_window,late_received,received_kbps,missing_accepted,duplicate_datagrams,command_ack_seconds_median,command_ack_seconds_max,off_confirmed,same_ihu_firmware_boot
+lte-rate-1pps-20261019-01,1.0,30,30,30,0,0,0,30,30,30,30,0,1.024,0,0,0.31977500000000003,0.404075,True,True
+lte-rate-1pps-20261019-02,1.0,30,30,30,0,0,0,30,30,30,30,0,1.024,0,0,0.3506945,0.432588,True,True
+lte-rate-1pps-20261019-03,1.0,30,30,30,0,0,0,30,30,30,30,0,1.024,0,0,0.36381050000000004,0.442195,True,True
+lte-rate-2pps-20261019-02,2.0,30,60,60,0,0,0,60,60,60,60,0,2.048,0,0,0.39731,0.451553,True,True
+lte-rate-2pps-20261019-04,2.0,30,60,60,0,0,0,60,60,60,60,0,2.048,0,0,0.323596,0.395657,True,True
+lte-rate-5pps-20261019-01,5.0,30,150,84,66,0,0,84,84,84,84,0,2.8672,0,0,0.3611105,0.438352,True,True
+lte-rate-5pps-20261019-02,5.0,30,150,84,66,0,0,84,84,84,84,0,2.8672,0,0,0.3599315,0.442301,True,True

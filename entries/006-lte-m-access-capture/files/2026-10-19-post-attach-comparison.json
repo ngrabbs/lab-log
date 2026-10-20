@@ -1,0 +1,1149 @@
+{
+  "method": "Numeric saved-log comparison, first nonempty Msg3 CCCH identity only; ends at host cleanup completion. Nonnull MAC buffer labels are not independent CRC or RF proof. No new RF runs. Measurement interval starts at first host telemetry offer. Power accumulator is scheduler bookkeeping, not measured UE power. PHY fields unavailable in old working logs.",
+  "sessions": [
+    {
+      "label": "lte-access-pair-20261019-01",
+      "selected_first_ccch_utc": "2026-10-19T16:14:00.801+00:00",
+      "measurement_started_utc": "2026-10-19T16:14:01.804277+00:00",
+      "host_finished_utc": "2026-10-19T16:14:43.061901+00:00",
+      "accepted": 60,
+      "receiver_unique": 60,
+      "before_host_finish": {
+        "receive_callback_count": 2112,
+        "nonnull_pointer_callbacks": 1837,
+        "error_pointer_callbacks": 275,
+        "last_nonnull_callback_utc": "2026-10-19T16:14:42.706+00:00",
+        "nonnull_cqi_min_max": [
+          150,
+          194
+        ],
+        "scheduling_harq_ids": [
+          0
+        ],
+        "allocation_narrowbands": [
+          2
+        ],
+        "allocation_target_subframes": [
+          9
+        ],
+        "scheduled_to_target_offsets_subframes": [
+          4
+        ],
+        "nonneutral_power_commands": 27,
+        "power_command_values": {
+          "2": 10,
+          "0": 17
+        },
+        "power_accumulator_min_max": [
+          -11,
+          1
+        ],
+        "last_power_command": {
+          "utc": "2026-10-19T16:14:41.219+00:00",
+          "kind": "power",
+          "frame": 128,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 2,
+          "accumulated": -7,
+          "snr": 15,
+          "target_snr": 20
+        },
+        "dci_static_field_sets": []
+      },
+      "measurement_interval": {
+        "receive_callbacks": 2063,
+        "nonnull_callbacks": 1801,
+        "error_callbacks": 262,
+        "ul_dtch_log_markers": 636
+      },
+      "control_markers_first": {
+        "RRCConnectionSetupComplete": "2026-10-19T16:14:00.866+00:00",
+        "SecurityModeCommand": "2026-10-19T16:14:01.131+00:00",
+        "RRCConnectionReconfiguration": "2026-10-19T16:14:01.386+00:00"
+      },
+      "selected_transition": {
+        "last_nonnull_receive": {
+          "utc": "2026-10-19T16:14:42.706+00:00",
+          "kind": "receive",
+          "harq": 0,
+          "cc": 0,
+          "frame": 276,
+          "subframe": 9,
+          "pointer_label": "OK",
+          "round": 0,
+          "rnti": "2b37",
+          "ue": 0,
+          "cqi": 173,
+          "ta": 31
+        },
+        "last_schedule_before": {
+          "utc": "2026-10-19T16:14:42.698+00:00",
+          "kind": "schedule",
+          "harq": 0,
+          "frame": 276,
+          "subframe": 5,
+          "ue": 0,
+          "rnti": "2b37",
+          "round": 0,
+          "sr": 0,
+          "inactive": 13,
+          "failure_timer": 0,
+          "cqi_timer": 41898
+        },
+        "last_power_before": {
+          "utc": "2026-10-19T16:14:41.219+00:00",
+          "kind": "power",
+          "frame": 128,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 2,
+          "accumulated": -7,
+          "snr": 15,
+          "target_snr": 20
+        },
+        "first_six_receives_after": [
+          {
+            "utc": "2026-10-19T16:14:42.726+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 278,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "2b37",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:14:42.746+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 280,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "2b37",
+            "ue": 0,
+            "cqi": 121,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:14:42.766+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 282,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 2,
+            "rnti": "2b37",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:14:42.786+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 284,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 3,
+            "rnti": "2b37",
+            "ue": 0,
+            "cqi": 120,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:14:42.806+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 286,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "2b37",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:14:42.826+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 288,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "2b37",
+            "ue": 0,
+            "cqi": 123,
+            "ta": 31
+          }
+        ]
+      }
+    },
+    {
+      "label": "lte-access-pair-20261019-02",
+      "selected_first_ccch_utc": "2026-10-19T16:22:35.714+00:00",
+      "measurement_started_utc": "2026-10-19T16:22:36.672671+00:00",
+      "host_finished_utc": "2026-10-19T16:23:17.248669+00:00",
+      "accepted": 60,
+      "receiver_unique": 60,
+      "before_host_finish": {
+        "receive_callback_count": 2075,
+        "nonnull_pointer_callbacks": 1591,
+        "error_pointer_callbacks": 484,
+        "last_nonnull_callback_utc": "2026-10-19T16:23:17.039+00:00",
+        "nonnull_cqi_min_max": [
+          129,
+          202
+        ],
+        "scheduling_harq_ids": [
+          0
+        ],
+        "allocation_narrowbands": [
+          2
+        ],
+        "allocation_target_subframes": [
+          9
+        ],
+        "scheduled_to_target_offsets_subframes": [
+          4
+        ],
+        "nonneutral_power_commands": 76,
+        "power_command_values": {
+          "2": 51,
+          "0": 25
+        },
+        "power_accumulator_min_max": [
+          -7,
+          26
+        ],
+        "last_power_command": {
+          "utc": "2026-10-19T16:23:17.232+00:00",
+          "kind": "power",
+          "frame": 500,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 2,
+          "accumulated": 26,
+          "snr": 1,
+          "target_snr": 20
+        },
+        "dci_static_field_sets": []
+      },
+      "measurement_interval": {
+        "receive_callbacks": 2029,
+        "nonnull_callbacks": 1553,
+        "error_callbacks": 476,
+        "ul_dtch_log_markers": 630
+      },
+      "control_markers_first": {
+        "RRCConnectionSetupComplete": "2026-10-19T16:22:35.800+00:00",
+        "SecurityModeCommand": "2026-10-19T16:22:36.066+00:00",
+        "RRCConnectionReconfiguration": "2026-10-19T16:22:36.319+00:00"
+      },
+      "selected_transition": {
+        "last_nonnull_receive": {
+          "utc": "2026-10-19T16:23:17.039+00:00",
+          "kind": "receive",
+          "harq": 0,
+          "cc": 0,
+          "frame": 480,
+          "subframe": 9,
+          "pointer_label": "OK",
+          "round": 0,
+          "rnti": "865a",
+          "ue": 0,
+          "cqi": 130,
+          "ta": 31
+        },
+        "last_schedule_before": {
+          "utc": "2026-10-19T16:23:17.032+00:00",
+          "kind": "schedule",
+          "harq": 0,
+          "frame": 480,
+          "subframe": 5,
+          "ue": 0,
+          "rnti": "865a",
+          "round": 0,
+          "sr": 0,
+          "inactive": 93,
+          "failure_timer": 0,
+          "cqi_timer": 41318
+        },
+        "last_power_before": {
+          "utc": "2026-10-19T16:23:17.032+00:00",
+          "kind": "power",
+          "frame": 480,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 2,
+          "accumulated": 16,
+          "snr": 0,
+          "target_snr": 20
+        },
+        "first_six_receives_after": [
+          {
+            "utc": "2026-10-19T16:23:17.059+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 482,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "865a",
+            "ue": 0,
+            "cqi": 130,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:23:17.079+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 484,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "865a",
+            "ue": 0,
+            "cqi": 130,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:23:17.099+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 486,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 2,
+            "rnti": "865a",
+            "ue": 0,
+            "cqi": 131,
+            "ta": 30
+          },
+          {
+            "utc": "2026-10-19T16:23:17.119+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 488,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 3,
+            "rnti": "865a",
+            "ue": 0,
+            "cqi": 129,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:23:17.139+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 490,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "865a",
+            "ue": 0,
+            "cqi": 129,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:23:17.159+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 492,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "865a",
+            "ue": 0,
+            "cqi": 130,
+            "ta": 34
+          }
+        ]
+      }
+    },
+    {
+      "label": "lte-rf-narrow-20261019-04",
+      "selected_first_ccch_utc": "2026-10-19T15:11:12.768+00:00",
+      "measurement_started_utc": "2026-10-19T15:11:13.772611+00:00",
+      "host_finished_utc": "2026-10-19T15:11:54.635271+00:00",
+      "accepted": 90,
+      "receiver_unique": 90,
+      "before_host_finish": {
+        "receive_callback_count": 2092,
+        "nonnull_pointer_callbacks": 1604,
+        "error_pointer_callbacks": 488,
+        "last_nonnull_callback_utc": "2026-10-19T15:11:54.253+00:00",
+        "nonnull_cqi_min_max": [
+          152,
+          196
+        ],
+        "scheduling_harq_ids": [
+          0
+        ],
+        "allocation_narrowbands": [
+          2
+        ],
+        "allocation_target_subframes": [
+          9
+        ],
+        "scheduled_to_target_offsets_subframes": [
+          4
+        ],
+        "nonneutral_power_commands": 39,
+        "power_command_values": {
+          "2": 15,
+          "0": 24
+        },
+        "power_accumulator_min_max": [
+          -16,
+          1
+        ],
+        "last_power_command": {
+          "utc": "2026-10-19T15:11:49.045+00:00",
+          "kind": "power",
+          "frame": 1012,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 0,
+          "accumulated": -9,
+          "snr": 25,
+          "target_snr": 20
+        },
+        "dci_static_field_sets": []
+      },
+      "measurement_interval": {
+        "receive_callbacks": 2044,
+        "nonnull_callbacks": 1568,
+        "error_callbacks": 476,
+        "ul_dtch_log_markers": 1026
+      },
+      "control_markers_first": {
+        "RRCConnectionSetupComplete": "2026-10-19T15:11:12.853+00:00",
+        "SecurityModeCommand": "2026-10-19T15:11:13.118+00:00",
+        "RRCConnectionReconfiguration": "2026-10-19T15:11:13.373+00:00"
+      },
+      "selected_transition": {
+        "last_nonnull_receive": {
+          "utc": "2026-10-19T15:11:54.253+00:00",
+          "kind": "receive",
+          "harq": 0,
+          "cc": 0,
+          "frame": 508,
+          "subframe": 9,
+          "pointer_label": "OK",
+          "round": 0,
+          "rnti": "66b2",
+          "ue": 0,
+          "cqi": 170,
+          "ta": 32
+        },
+        "last_schedule_before": {
+          "utc": "2026-10-19T15:11:54.245+00:00",
+          "kind": "schedule",
+          "harq": 0,
+          "frame": 508,
+          "subframe": 5,
+          "ue": 0,
+          "rnti": "66b2",
+          "round": 0,
+          "sr": 0,
+          "inactive": 13,
+          "failure_timer": 0,
+          "cqi_timer": 41478
+        },
+        "last_power_before": {
+          "utc": "2026-10-19T15:11:49.045+00:00",
+          "kind": "power",
+          "frame": 1012,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 0,
+          "accumulated": -9,
+          "snr": 25,
+          "target_snr": 20
+        },
+        "first_six_receives_after": [
+          {
+            "utc": "2026-10-19T15:11:54.273+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 510,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "66b2",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T15:11:54.293+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 512,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "66b2",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T15:11:54.313+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 514,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 2,
+            "rnti": "66b2",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T15:11:54.333+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 516,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 3,
+            "rnti": "66b2",
+            "ue": 0,
+            "cqi": 123,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T15:11:54.353+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 518,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "66b2",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T15:11:54.373+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 520,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "66b2",
+            "ue": 0,
+            "cqi": 123,
+            "ta": 31
+          }
+        ]
+      }
+    },
+    {
+      "label": "lte-rate-2pps-20261019-03",
+      "selected_first_ccch_utc": "2026-10-19T14:03:17.060+00:00",
+      "measurement_started_utc": "2026-10-19T14:03:18.103296+00:00",
+      "host_finished_utc": "2026-10-19T14:03:42.134677+00:00",
+      "accepted": 45,
+      "receiver_unique": 0,
+      "before_host_finish": {
+        "receive_callback_count": 64,
+        "nonnull_pointer_callbacks": 32,
+        "error_pointer_callbacks": 32,
+        "last_nonnull_callback_utc": "2026-10-19T14:03:17.945+00:00",
+        "nonnull_cqi_min_max": [
+          164,
+          207
+        ],
+        "scheduling_harq_ids": [
+          0
+        ],
+        "allocation_narrowbands": [
+          2
+        ],
+        "allocation_target_subframes": [
+          9
+        ],
+        "scheduled_to_target_offsets_subframes": [
+          4
+        ],
+        "nonneutral_power_commands": 13,
+        "power_command_values": {
+          "2": 1,
+          "0": 12
+        },
+        "power_accumulator_min_max": [
+          -11,
+          1
+        ],
+        "last_power_command": {
+          "utc": "2026-10-19T14:03:17.937+00:00",
+          "kind": "power",
+          "frame": 268,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 0,
+          "accumulated": -11,
+          "snr": 26,
+          "target_snr": 20
+        },
+        "dci_static_field_sets": []
+      },
+      "measurement_interval": {
+        "receive_callbacks": 13,
+        "nonnull_callbacks": 0,
+        "error_callbacks": 13,
+        "ul_dtch_log_markers": 0
+      },
+      "control_markers_first": {
+        "RRCConnectionSetupComplete": "2026-10-19T14:03:17.125+00:00",
+        "SecurityModeCommand": "2026-10-19T14:03:17.411+00:00",
+        "RRCConnectionReconfiguration": "2026-10-19T14:03:17.665+00:00"
+      },
+      "selected_transition": {
+        "last_nonnull_receive": {
+          "utc": "2026-10-19T14:03:17.945+00:00",
+          "kind": "receive",
+          "harq": 0,
+          "cc": 0,
+          "frame": 268,
+          "subframe": 9,
+          "pointer_label": "OK",
+          "round": 0,
+          "rnti": "99f1",
+          "ue": 0,
+          "cqi": 171,
+          "ta": 31
+        },
+        "last_schedule_before": {
+          "utc": "2026-10-19T14:03:17.937+00:00",
+          "kind": "schedule",
+          "harq": 0,
+          "frame": 268,
+          "subframe": 5,
+          "ue": 0,
+          "rnti": "99f1",
+          "round": 0,
+          "sr": 0,
+          "inactive": 13,
+          "failure_timer": 0,
+          "cqi_timer": 878
+        },
+        "last_power_before": {
+          "utc": "2026-10-19T14:03:17.937+00:00",
+          "kind": "power",
+          "frame": 268,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 0,
+          "accumulated": -11,
+          "snr": 26,
+          "target_snr": 20
+        },
+        "first_six_receives_after": [
+          {
+            "utc": "2026-10-19T14:03:17.965+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 270,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "99f1",
+            "ue": 0,
+            "cqi": 123,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:03:17.985+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 272,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "99f1",
+            "ue": 0,
+            "cqi": 120,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:03:18.005+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 274,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 2,
+            "rnti": "99f1",
+            "ue": 0,
+            "cqi": 119,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:03:18.025+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 276,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 3,
+            "rnti": "99f1",
+            "ue": 0,
+            "cqi": 120,
+            "ta": 32
+          },
+          {
+            "utc": "2026-10-19T14:03:18.045+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 278,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "99f1",
+            "ue": 0,
+            "cqi": 120,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:03:18.065+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 280,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "99f1",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          }
+        ]
+      }
+    },
+    {
+      "label": "lte-phy-context-20261019-02",
+      "selected_first_ccch_utc": "2026-10-19T16:40:44.488+00:00",
+      "measurement_started_utc": "2026-10-19T16:40:45.688662+00:00",
+      "host_finished_utc": "2026-10-19T16:41:11.985330+00:00",
+      "accepted": 45,
+      "receiver_unique": 0,
+      "before_host_finish": {
+        "receive_callback_count": 1373,
+        "nonnull_pointer_callbacks": 36,
+        "error_pointer_callbacks": 1337,
+        "last_nonnull_callback_utc": "2026-10-19T16:41:09.713+00:00",
+        "nonnull_cqi_min_max": [
+          124,
+          208
+        ],
+        "scheduling_harq_ids": [
+          0
+        ],
+        "allocation_narrowbands": [
+          2
+        ],
+        "allocation_target_subframes": [
+          9
+        ],
+        "scheduled_to_target_offsets_subframes": [
+          4
+        ],
+        "nonneutral_power_commands": 968,
+        "power_command_values": {
+          "2": 952,
+          "0": 16
+        },
+        "power_accumulator_min_max": [
+          -128,
+          127
+        ],
+        "last_power_command": {
+          "utc": "2026-10-19T16:41:11.985+00:00",
+          "kind": "power",
+          "frame": 298,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 2,
+          "accumulated": -88,
+          "snr": -2,
+          "target_snr": 20
+        },
+        "dci_static_field_sets": [
+          {
+            "type": 0,
+            "hopping": 0,
+            "narrowband": 2,
+            "riv": 11,
+            "mcs": 4,
+            "rep_code": 0,
+            "harq": 0
+          }
+        ]
+      },
+      "measurement_interval": {
+        "receive_callbacks": 1315,
+        "nonnull_callbacks": 2,
+        "error_callbacks": 1313,
+        "ul_dtch_log_markers": 0
+      },
+      "control_markers_first": {
+        "RRCConnectionSetupComplete": "2026-10-19T16:40:44.574+00:00",
+        "SecurityModeCommand": "2026-10-19T16:40:44.839+00:00",
+        "RRCConnectionReconfiguration": "2026-10-19T16:40:45.095+00:00"
+      },
+      "selected_transition": {
+        "last_nonnull_receive": {
+          "utc": "2026-10-19T16:41:09.713+00:00",
+          "kind": "receive",
+          "harq": 0,
+          "cc": 0,
+          "frame": 70,
+          "subframe": 9,
+          "pointer_label": "OK",
+          "round": 0,
+          "rnti": "847",
+          "ue": 0,
+          "cqi": 124,
+          "ta": 31
+        },
+        "last_schedule_before": {
+          "utc": "2026-10-19T16:41:09.705+00:00",
+          "kind": "schedule",
+          "harq": 0,
+          "frame": 70,
+          "subframe": 5,
+          "ue": 0,
+          "rnti": "847",
+          "round": 0,
+          "sr": 0,
+          "inactive": 16733,
+          "failure_timer": 0,
+          "cqi_timer": 25218
+        },
+        "last_power_before": {
+          "utc": "2026-10-19T16:41:09.705+00:00",
+          "kind": "power",
+          "frame": 70,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 2,
+          "accumulated": 54,
+          "snr": -2,
+          "target_snr": 20
+        },
+        "first_six_receives_after": [
+          {
+            "utc": "2026-10-19T16:41:09.733+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 72,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "847",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:41:09.753+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 74,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "847",
+            "ue": 0,
+            "cqi": 122,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:41:09.773+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 76,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 2,
+            "rnti": "847",
+            "ue": 0,
+            "cqi": 120,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:41:09.793+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 78,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 3,
+            "rnti": "847",
+            "ue": 0,
+            "cqi": 121,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:41:09.813+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 80,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "847",
+            "ue": 0,
+            "cqi": 121,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T16:41:09.833+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 82,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "847",
+            "ue": 0,
+            "cqi": 123,
+            "ta": 31
+          }
+        ]
+      }
+    },
+    {
+      "label": "lte-rate-5pps-20261019-03",
+      "selected_first_ccch_utc": "2026-10-19T14:14:14.380+00:00",
+      "measurement_started_utc": "2026-10-19T14:14:15.756945+00:00",
+      "host_finished_utc": "2026-10-19T14:14:40.199017+00:00",
+      "accepted": 60,
+      "receiver_unique": 0,
+      "before_host_finish": {
+        "receive_callback_count": 1290,
+        "nonnull_pointer_callbacks": 37,
+        "error_pointer_callbacks": 1253,
+        "last_nonnull_callback_utc": "2026-10-19T14:14:15.445+00:00",
+        "nonnull_cqi_min_max": [
+          161,
+          205
+        ],
+        "scheduling_harq_ids": [
+          0
+        ],
+        "allocation_narrowbands": [
+          2
+        ],
+        "allocation_target_subframes": [
+          9
+        ],
+        "scheduled_to_target_offsets_subframes": [
+          4
+        ],
+        "nonneutral_power_commands": 17,
+        "power_command_values": {
+          "2": 1,
+          "0": 16
+        },
+        "power_accumulator_min_max": [
+          -15,
+          1
+        ],
+        "last_power_command": {
+          "utc": "2026-10-19T14:14:15.437+00:00",
+          "kind": "power",
+          "frame": 214,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 0,
+          "accumulated": -15,
+          "snr": 25,
+          "target_snr": 20
+        },
+        "dci_static_field_sets": []
+      },
+      "measurement_interval": {
+        "receive_callbacks": 1222,
+        "nonnull_callbacks": 0,
+        "error_callbacks": 1222,
+        "ul_dtch_log_markers": 0
+      },
+      "control_markers_first": {
+        "RRCConnectionSetupComplete": "2026-10-19T14:14:14.445+00:00",
+        "SecurityModeCommand": "2026-10-19T14:14:14.690+00:00",
+        "RRCConnectionReconfiguration": "2026-10-19T14:14:15.185+00:00"
+      },
+      "selected_transition": {
+        "last_nonnull_receive": {
+          "utc": "2026-10-19T14:14:15.445+00:00",
+          "kind": "receive",
+          "harq": 0,
+          "cc": 0,
+          "frame": 214,
+          "subframe": 9,
+          "pointer_label": "OK",
+          "round": 0,
+          "rnti": "41e2",
+          "ue": 0,
+          "cqi": 161,
+          "ta": 31
+        },
+        "last_schedule_before": {
+          "utc": "2026-10-19T14:14:15.437+00:00",
+          "kind": "schedule",
+          "harq": 0,
+          "frame": 214,
+          "subframe": 5,
+          "ue": 0,
+          "rnti": "41e2",
+          "round": 0,
+          "sr": 0,
+          "inactive": 93,
+          "failure_timer": 0,
+          "cqi_timer": 1058
+        },
+        "last_power_before": {
+          "utc": "2026-10-19T14:14:15.437+00:00",
+          "kind": "power",
+          "frame": 214,
+          "subframe": 5,
+          "harq": 0,
+          "tpc": 0,
+          "accumulated": -15,
+          "snr": 25,
+          "target_snr": 20
+        },
+        "first_six_receives_after": [
+          {
+            "utc": "2026-10-19T14:14:15.465+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 216,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "41e2",
+            "ue": 0,
+            "cqi": 159,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:14:15.485+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 218,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "41e2",
+            "ue": 0,
+            "cqi": 158,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:14:15.505+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 220,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 2,
+            "rnti": "41e2",
+            "ue": 0,
+            "cqi": 157,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:14:15.525+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 222,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 3,
+            "rnti": "41e2",
+            "ue": 0,
+            "cqi": 156,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:14:15.545+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 224,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 0,
+            "rnti": "41e2",
+            "ue": 0,
+            "cqi": 156,
+            "ta": 31
+          },
+          {
+            "utc": "2026-10-19T14:14:15.565+00:00",
+            "kind": "receive",
+            "harq": 0,
+            "cc": 0,
+            "frame": 226,
+            "subframe": 9,
+            "pointer_label": "in error",
+            "round": 1,
+            "rnti": "41e2",
+            "ue": 0,
+            "cqi": 155,
+            "ta": 31
+          }
+        ]
+      }
+    }
+  ]
+}

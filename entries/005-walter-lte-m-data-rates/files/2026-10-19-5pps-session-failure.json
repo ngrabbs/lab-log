@@ -1,0 +1,22 @@
+{
+  "label": "lte-rate-5pps-20261019-03",
+  "requested_pps": 5,
+  "completed_30_second_window": false,
+  "modem_accepted": 60,
+  "unique_received": 0,
+  "yamcs_unique": 0,
+  "missing_modem_accepted": 60,
+  "received_kbps": null,
+  "terminal_response": "PEER_REJECTED reason=8",
+  "reason_name_from_installed_source": "UL_ERR_NOT_READY",
+  "diagnostics_before_stop": {
+    "state": 6,
+    "registered": 0,
+    "remaining_window_ms": 74510,
+    "last_cereg": 4,
+    "registration_drop_events": 1
+  },
+  "off_confirmed": true,
+  "same_ihu_firmware_boot": true,
+  "interpretation": "Second session with modem acceptance but zero observed delivery; registration loss recorded. Sweep stopped; root cause unresolved."
+}

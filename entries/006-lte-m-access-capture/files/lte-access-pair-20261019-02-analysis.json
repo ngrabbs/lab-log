@@ -1,0 +1,288 @@
+{
+  "label": "lte-access-pair-20261019-02",
+  "settings": {
+    "frequency_hz": 779100000,
+    "sample_rate_hz": 5000000,
+    "baseband_filter_hz": 2500000,
+    "lna_db": 24,
+    "vga_db": 0,
+    "access_channel_center_hz": [
+      778400000,
+      780020000
+    ],
+    "access_channel_width_hz": [
+      1080000,
+      360000
+    ],
+    "iq_trigger_threshold_dbfs": [
+      -47.21084883016265,
+      -51.1314225970531
+    ],
+    "iq_bytes_saved": 40000000,
+    "iq_cap_reached": true,
+    "max_reported_overruns": 0,
+    "clipped_sample_fraction": 0.0
+  },
+  "bringup_approx_sample_end_s": 21.896533,
+  "event_time_resolution_s": 0.0001,
+  "prach_band_candidates": [
+    {
+      "start_s": 21.5302,
+      "end_s": 21.5305,
+      "peak_dbfs": -34.82488250732422,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.41886034912679654,
+        "lag1408_correlation": 0.16628163120628286,
+        "lag1664_correlation": 0.25597526375246715
+      }
+    },
+    {
+      "start_s": 21.530900000000003,
+      "end_s": 21.5313,
+      "peak_dbfs": -36.90605545043945,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.08494306700906602,
+        "lag1408_correlation": 0.0677240980680509,
+        "lag1664_correlation": 0.023444047804568022
+      }
+    },
+    {
+      "start_s": 21.5702,
+      "end_s": 21.5713,
+      "peak_dbfs": -29.545146942138672,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.42666627652289163,
+        "lag1408_correlation": 0.15490704484105172,
+        "lag1664_correlation": 0.2523336528288637
+      }
+    },
+    {
+      "start_s": 21.610200000000003,
+      "end_s": 21.6113,
+      "peak_dbfs": -29.681175231933594,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.424638700158071,
+        "lag1408_correlation": 0.16622955076498486,
+        "lag1664_correlation": 0.2600211256915459
+      }
+    },
+    {
+      "start_s": 21.6502,
+      "end_s": 21.651300000000003,
+      "peak_dbfs": -29.566539764404297,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.42608394391630927,
+        "lag1408_correlation": 0.1585454750790587,
+        "lag1664_correlation": 0.2520443455812745
+      }
+    },
+    {
+      "start_s": 21.6902,
+      "end_s": 21.691300000000002,
+      "peak_dbfs": -29.5693302154541,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.4340755536060436,
+        "lag1408_correlation": 0.15526632175770572,
+        "lag1664_correlation": 0.24981552919291308
+      }
+    },
+    {
+      "start_s": 21.7302,
+      "end_s": 21.7313,
+      "peak_dbfs": -29.526145935058594,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.4362086167178615,
+        "lag1408_correlation": 0.15306287507268165,
+        "lag1664_correlation": 0.24253114778297002
+      }
+    },
+    {
+      "start_s": 21.770200000000003,
+      "end_s": 21.7713,
+      "peak_dbfs": -29.505786895751953,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.4266173864884414,
+        "lag1408_correlation": 0.15777675555285472,
+        "lag1664_correlation": 0.2678780461550883
+      }
+    },
+    {
+      "start_s": 21.810200000000002,
+      "end_s": 21.811300000000003,
+      "peak_dbfs": -27.59886932373047,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.34937187652034846,
+        "lag1408_correlation": 0.1551854041614212,
+        "lag1664_correlation": 0.29047240488794573
+      }
+    },
+    {
+      "start_s": 21.8504,
+      "end_s": 21.851300000000002,
+      "peak_dbfs": -29.38041877746582,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.4147717655672272,
+        "lag1408_correlation": 0.1879977865974875,
+        "lag1664_correlation": 0.05132925380122991
+      }
+    },
+    {
+      "start_s": 21.8902,
+      "end_s": 21.8913,
+      "peak_dbfs": -29.614599227905273,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "prach_format0_cp_correlation": 0.4280774212590832,
+        "lag1408_correlation": 0.16365722770889155,
+        "lag1664_correlation": 0.2630747171480524
+      }
+    }
+  ],
+  "msg3_band_candidates": [
+    {
+      "start_s": 21.0532,
+      "end_s": 21.053700000000003,
+      "peak_dbfs": -49.93074035644531,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "normal_cp_correlation": 0.5340602759371856,
+        "lag112_correlation": 0.06000775633038227,
+        "lag144_correlation": 0.1173418859593103
+      }
+    },
+    {
+      "start_s": 21.053800000000003,
+      "end_s": 21.054100000000002,
+      "peak_dbfs": -49.55633544921875,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "normal_cp_correlation": 0.41729464832945035,
+        "lag112_correlation": 0.21801332158036674,
+        "lag144_correlation": 0.09006327324898197
+      }
+    },
+    {
+      "start_s": 21.5382,
+      "end_s": 21.5392,
+      "peak_dbfs": -47.90807342529297,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "normal_cp_correlation": 0.6424732951164233,
+        "lag112_correlation": 0.038320257984758965,
+        "lag144_correlation": 0.17366260717060858
+      }
+    },
+    {
+      "start_s": 21.5582,
+      "end_s": 21.5592,
+      "peak_dbfs": -48.673397064208984,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "normal_cp_correlation": 0.6404218158084113,
+        "lag112_correlation": 0.06088524709893087,
+        "lag144_correlation": 0.2822519007433671
+      }
+    },
+    {
+      "start_s": 21.5786,
+      "end_s": 21.5792,
+      "peak_dbfs": -49.623470306396484,
+      "iq_context_retained": true,
+      "waveform_check": {
+        "normal_cp_correlation": 0.5856038060188035,
+        "lag112_correlation": 0.08187416299763518,
+        "lag144_correlation": 0.24674104681889303
+      }
+    }
+  ],
+  "temporal_candidates": [
+    {
+      "prach_band_start_s": 21.5302,
+      "candidate_msg3_band_start_s": [
+        21.5382,
+        21.5582,
+        21.5786
+      ],
+      "candidate_start_spacings_ms": [
+        8.0,
+        28.0,
+        48.4
+      ]
+    },
+    {
+      "prach_band_start_s": 21.530900000000003,
+      "candidate_msg3_band_start_s": [
+        21.5382,
+        21.5582,
+        21.5786
+      ],
+      "candidate_start_spacings_ms": [
+        7.3,
+        27.3,
+        47.7
+      ]
+    },
+    {
+      "prach_band_start_s": 21.5702,
+      "candidate_msg3_band_start_s": [
+        21.5786
+      ],
+      "candidate_start_spacings_ms": [
+        8.4
+      ]
+    },
+    {
+      "prach_band_start_s": 21.610200000000003,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    },
+    {
+      "prach_band_start_s": 21.6502,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    },
+    {
+      "prach_band_start_s": 21.6902,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    },
+    {
+      "prach_band_start_s": 21.7302,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    },
+    {
+      "prach_band_start_s": 21.770200000000003,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    },
+    {
+      "prach_band_start_s": 21.810200000000002,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    },
+    {
+      "prach_band_start_s": 21.8504,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    },
+    {
+      "prach_band_start_s": 21.8902,
+      "candidate_msg3_band_start_s": [],
+      "candidate_start_spacings_ms": []
+    }
+  ],
+  "method": "Use 100 us band-power bins above first-5s baseline p99 + 6 dB; retain event lengths 0.3\u20132.5 ms during approximate pre-READY interval. For retained IQ, mix each configured band to baseband and FFT resample 5 MS/s to 1.92 MS/s. PRACH format-0 CP: lag 1536 over 198 samples with nearby lag controls. Msg3-band normal-CP consistency: lag 128 over 14-symbol CP pattern with nearby lag controls. Temporal matching lists all later Msg3-band candidates 3\u201350 ms after each preamble-band event.",
+  "standard_reference": "https://www.etsi.org/deliver/etsi_ts/136200_136299/136211/14.04.00_60/ts_136211v140400p.pdf",
+  "limits": "Frequency/time/waveform candidates only; no preamble ID, RAR or Msg3 CRC decode and no transmitter identity. Multiple candidates remain ambiguous. Shared HackRF sample indices establish relative spacing, not absolute eNodeB SFN alignment. Analog filter rolloff prevents calibrated cross-band power comparison."
+}

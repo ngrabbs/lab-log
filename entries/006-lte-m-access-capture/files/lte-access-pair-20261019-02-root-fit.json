@@ -1,0 +1,6 @@
+{
+  "label": "lte-access-pair-20261019-02",
+  "candidates": [],
+  "method": "CP-based fractional CFO estimate, 1536-point PRACH FFT, compare roots u129/u688 (logical root 0/89 in checked-out OAI table), search integer CFO bins +/-8, infer nearest NCS=13 shift.",
+  "limits": "Experimental fit, not a validated preamble decoder. Prefix start ambiguity and integer CFO ambiguity affect inferred preamble index. No UE identity or attach-message decode."
+}

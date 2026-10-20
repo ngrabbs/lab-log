@@ -1,0 +1,40 @@
+{
+  "label": "lte-access-pair-20261019-01",
+  "hypothesis": {
+    "root_u": 688,
+    "preamble_index": 60,
+    "NCS": 13,
+    "format": 0
+  },
+  "method": "Normalized full 1734-sample format-0 template correlation at 1.92 MS/s; search +/-125 us and template frequency offsets 7300\u20137540 Hz. Frequency offset is relative to the chosen nominal capture-band center, not a modem frequency-error measurement. Ground-log preamble hypothesis is used, not independently inferred.",
+  "limits": "Conditional fit, not a blind validated preamble decoder; cyclic-shift/time ambiguity remains. No RAR/Msg3 decode or absolute SFN alignment.",
+  "fits": [
+    {
+      "requested_at_s": 27.5937,
+      "retained": true,
+      "conditional_prefix_start_s": 27.593748958333332,
+      "coherence": 0.8967558361053947,
+      "template_offset_hz": 7440,
+      "preceding_window_control": 0.06482702215924842,
+      "root129_control": 0.0806957437962311
+    },
+    {
+      "requested_at_s": 49.0136,
+      "retained": true,
+      "conditional_prefix_start_s": 49.013543229166665,
+      "coherence": 0.2562581269339713,
+      "template_offset_hz": 7520,
+      "preceding_window_control": 0.060444581854049606,
+      "root129_control": 0.06404673530819907
+    },
+    {
+      "requested_at_s": 26.9737,
+      "retained": true,
+      "conditional_prefix_start_s": 26.973754687499998,
+      "coherence": 0.15395972907159547,
+      "template_offset_hz": 7420,
+      "preceding_window_control": 0.07429956627506634,
+      "root129_control": 0.06389844753634186
+    }
+  ]
+}

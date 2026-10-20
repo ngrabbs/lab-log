@@ -1,0 +1,482 @@
+{
+  "label": "lte-native-triggered-20261019-01",
+  "method": "Configured conditional DMRS fit, both slots, six RBs starting at 13; native input antenna 0, int16 I/Q, 15.36 MS/s, normal CP, cell 0, group hopping enabled, sequence hopping disabled, group assignment 0, common cyclic shift 2 and DCI cyclic shift 0. Remove +7.5 kHz UL offset, estimate residual CFO from prefix with 8-sample edge trims, allow +/-8-sample linear phase/delay. No payload decoder.",
+  "nack_count": 16,
+  "rows": [
+    {
+      "frame": 992,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346579179759,
+      "normal_prefix_coherence": 0.03178641147420479,
+      "dmrs_slot_coherences": [
+        0.22949002204686283,
+        0.1662381680096318
+      ],
+      "sample_sha256": "90bf96e634f53eb7dd9d426fa7905f2b994655bafe409e7055d74758f248d19c",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE",
+        "timestamp_ns": 2392092283299168432093659136,
+        "frame": 992,
+        "subframe": 5,
+        "assumed_target_frame": 992,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": 51,
+        "ndi": 1,
+        "round": null
+      }
+    },
+    {
+      "frame": 994,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346592572498,
+      "normal_prefix_coherence": 0.058104913806946004,
+      "dmrs_slot_coherences": [
+        0.1691327935233742,
+        0.12840954593408782
+      ],
+      "sample_sha256": "4132d06fd23c6cfc0b4e17223c23009411df5a674820483ee7564a2c052fefb1",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 2522789911937941684388626432,
+        "frame": 994,
+        "subframe": 5,
+        "assumed_target_frame": 994,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 1
+      }
+    },
+    {
+      "frame": 996,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346606002459,
+      "normal_prefix_coherence": 0.02815470984051786,
+      "dmrs_slot_coherences": [
+        0.18241980111365297,
+        0.15276655618556462
+      ],
+      "sample_sha256": "541554bbf5de5bef7c87d3f10af252327714777e00766764931db7690af4a0f7",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 2579939691671322804388626432,
+        "frame": 996,
+        "subframe": 5,
+        "assumed_target_frame": 996,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 2
+      }
+    },
+    {
+      "frame": 998,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346617853767,
+      "normal_prefix_coherence": 0.04657585907754452,
+      "dmrs_slot_coherences": [
+        0.04064540062171771,
+        0.15211451891710004
+      ],
+      "sample_sha256": "335b274b45a6c20cb143d17b4bb5b476a497fb17643c048317e0d5a3ed00d5f8",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 2637166699211653300388626432,
+        "frame": 998,
+        "subframe": 5,
+        "assumed_target_frame": 998,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 3
+      }
+    },
+    {
+      "frame": 0,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346874597215,
+      "normal_prefix_coherence": 0.7151050938491796,
+      "dmrs_slot_coherences": [
+        0.9794143441645923,
+        0.9836136259835169
+      ],
+      "sample_sha256": "1e014e2b643a9eb6168a8135391b2fa72e9b319e0a8bd2417007d8210349f5e4",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE",
+        "timestamp_ns": 3722639161228787888093659136,
+        "frame": 0,
+        "subframe": 5,
+        "assumed_target_frame": 0,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": 51,
+        "ndi": 0,
+        "round": null
+      }
+    },
+    {
+      "frame": 2,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346894516137,
+      "normal_prefix_coherence": 0.7378329986104694,
+      "dmrs_slot_coherences": [
+        0.9836630847960605,
+        0.9839609779789721
+      ],
+      "sample_sha256": "0be148206748353397af32ba4c3bb2caab350aa0ddecd5bc2346f3c278a86bd8",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 3808175406318616756388626432,
+        "frame": 2,
+        "subframe": 5,
+        "assumed_target_frame": 2,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 1
+      }
+    },
+    {
+      "frame": 4,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346914481208,
+      "normal_prefix_coherence": 0.7379221332761072,
+      "dmrs_slot_coherences": [
+        0.9839606920642698,
+        0.9842613868668089
+      ],
+      "sample_sha256": "81a6c88eb4d3ddb06d3447444337515d04e127c570ab9850d7ceb8b1d520764b",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 3893965694429036724388626432,
+        "frame": 4,
+        "subframe": 5,
+        "assumed_target_frame": 4,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 2
+      }
+    },
+    {
+      "frame": 6,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442346934587464,
+      "normal_prefix_coherence": 0.26743183155154593,
+      "dmrs_slot_coherences": [
+        0.9805057454855372,
+        0.9817166151296735
+      ],
+      "sample_sha256": "cd819530efdc62d550c802ed101c029be5e6f048f1c572e8fde5d98f7b06ff46",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 3980213314952102068388626432,
+        "frame": 6,
+        "subframe": 5,
+        "assumed_target_frame": 6,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 3
+      }
+    },
+    {
+      "frame": 20,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347080497622,
+      "normal_prefix_coherence": 0.02810159375277875,
+      "dmrs_slot_coherences": [
+        0.21331886973001313,
+        0.16015100953025393
+      ],
+      "sample_sha256": "4a08fb1173bbfc45f2b28a30ebd9eb7e9846f84298ac6c83024941ed05c300b9",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE",
+        "timestamp_ns": 326323656575680688093659136,
+        "frame": 20,
+        "subframe": 5,
+        "assumed_target_frame": 20,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": 51,
+        "ndi": 1,
+        "round": null
+      }
+    },
+    {
+      "frame": 22,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347094474270,
+      "normal_prefix_coherence": 0.03753932701187506,
+      "dmrs_slot_coherences": [
+        0.12184048735077016,
+        0.15773371519227705
+      ],
+      "sample_sha256": "3b9e7ad47c77c8d7ff19b65215c99c8295f6ed38fa3979985e7824bdf8dbe1c7",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 377116472394121396388626432,
+        "frame": 22,
+        "subframe": 5,
+        "assumed_target_frame": 22,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 1
+      }
+    },
+    {
+      "frame": 24,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347114593785,
+      "normal_prefix_coherence": 0.9343462729865595,
+      "dmrs_slot_coherences": [
+        0.9940026242116002,
+        0.9943815502121036
+      ],
+      "sample_sha256": "11de8899735952cc8440296f080d061d387428eb22ae7da165b2c436520aabed",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 458512996075831476388626432,
+        "frame": 24,
+        "subframe": 5,
+        "assumed_target_frame": 24,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 2
+      }
+    },
+    {
+      "frame": 26,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347134509189,
+      "normal_prefix_coherence": 0.951895751111643,
+      "dmrs_slot_coherences": [
+        0.9953640540645593,
+        0.994613442598666
+      ],
+      "sample_sha256": "34012cf8786c911b8eaf9c0c62d53de88c24d791e9fe103b7280618a57362d34",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 543985216088178868388626432,
+        "frame": 26,
+        "subframe": 5,
+        "assumed_target_frame": 26,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 3
+      }
+    },
+    {
+      "frame": 66,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347534589991,
+      "normal_prefix_coherence": 0.7895180932370629,
+      "dmrs_slot_coherences": [
+        0.9910973110160252,
+        0.988495131628617
+      ],
+      "sample_sha256": "f6d6eb11841e64f860ae88823cf2e092e9456060e7a044ad9c019e4d3c9e6b57",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE",
+        "timestamp_ns": 2262342085791187120093659136,
+        "frame": 66,
+        "subframe": 5,
+        "assumed_target_frame": 66,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": 51,
+        "ndi": 1,
+        "round": null
+      }
+    },
+    {
+      "frame": 68,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347554541673,
+      "normal_prefix_coherence": 0.7986979740848064,
+      "dmrs_slot_coherences": [
+        0.9841590841395629,
+        0.989252569068022
+      ],
+      "sample_sha256": "77c9d26d4ced07f4573ba1bec5a898847bfddb2054f18d4611a27002f828a35d",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 2347894080526090420388626432,
+        "frame": 68,
+        "subframe": 5,
+        "assumed_target_frame": 68,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 1
+      }
+    },
+    {
+      "frame": 70,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347574483040,
+      "normal_prefix_coherence": 0.804325479559955,
+      "dmrs_slot_coherences": [
+        0.9878046349881873,
+        0.9895159046282609
+      ],
+      "sample_sha256": "203c330b5710fe61187e41f04f66b5e238ea54a8fe4046748f494d51283d3328",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 2433636084614168756388626432,
+        "frame": 70,
+        "subframe": 5,
+        "assumed_target_frame": 70,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 2
+      }
+    },
+    {
+      "frame": 72,
+      "subframe": 9,
+      "input_timestamp_ns": 1792442347594608500,
+      "normal_prefix_coherence": 0.7843304300932916,
+      "dmrs_slot_coherences": [
+        0.988006236162162,
+        0.9897683311646754
+      ],
+      "sample_sha256": "a48638f46a4a2e6f6d36c5b26954e1ae08c17fceff285254fee261cfafdbb714",
+      "schedule": {
+        "event": "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION",
+        "timestamp_ns": 2520154051853680820388626432,
+        "frame": 72,
+        "subframe": 5,
+        "assumed_target_frame": 72,
+        "assumed_target_subframe": 9,
+        "harq": 0,
+        "mcs_field": 4,
+        "first_rb_within_narrowband": 0,
+        "nb_rb": 6,
+        "tbs_bytes": null,
+        "ndi": null,
+        "round": 3
+      }
+    }
+  ],
+  "limits": "Schedule join assumes the checked FDD four-subframe lookahead and six-RB narrowband-2 allocation; verify against numeric MAC allocation logs. Native software record alignment is not independent RF timing or payload verification. Low conditional pilot coherence alone does not prove Walter was silent. No registration-loss cause established.",
+  "new_transmission_allocation_log_check": {
+    "method": "Four new-transmission MAC allocation log fields in native capture interval; retransmissions checked separately in trace",
+    "rows": [
+      {
+        "schedule_frame": 992,
+        "schedule_subframe": 5,
+        "target_frame": 992,
+        "target_subframe": 9,
+        "narrowband": 2
+      },
+      {
+        "schedule_frame": 0,
+        "schedule_subframe": 5,
+        "target_frame": 0,
+        "target_subframe": 9,
+        "narrowband": 2
+      },
+      {
+        "schedule_frame": 20,
+        "schedule_subframe": 5,
+        "target_frame": 20,
+        "target_subframe": 9,
+        "narrowband": 2
+      },
+      {
+        "schedule_frame": 66,
+        "schedule_subframe": 5,
+        "target_frame": 66,
+        "target_subframe": 9,
+        "narrowband": 2
+      }
+    ]
+  },
+  "conditional_fits": {
+    "ACK": {
+      "frames": 151,
+      "dmrs_coherence_range": [
+        0.9800318723374097,
+        0.9989601907556539
+      ]
+    },
+    "NACK": {
+      "frames": 16,
+      "dmrs_coherence_range": [
+        0.04064540062171771,
+        0.9953640540645593
+      ]
+    }
+  },
+  "control_coherence_max": {
+    "wrong_group": 0.19273936895640875,
+    "wrong_symbol": 0.25010180510247654,
+    "adjacent_unallocated_rbs": 0.339277141482214
+  },
+  "max_adc_clip_fraction": 0.0,
+  "synthetic_check_passed": true,
+  "weak_conditional_pilot_count": 6,
+  "strong_conditional_pilot_count": 10
+}

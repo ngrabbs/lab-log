@@ -1,0 +1,47 @@
+{
+  "records": [
+    {
+      "label": "lte-msg3-iq-20261019-01",
+      "ready_seconds": 15.647041,
+      "modem_accepted": 54,
+      "received": 54,
+      "yamcs": 54,
+      "local_sensor_busy": 6,
+      "received_kbps": 1.8432,
+      "iq_bytes": 800000,
+      "analyzed_bursts": 3,
+      "normal_cp_correlation_range": [
+        0.9650118548365755,
+        0.981930838743168
+      ],
+      "off_confirmed": true,
+      "same_ihu_firmware_boot": true
+    },
+    {
+      "label": "lte-msg3-iq-20261019-02",
+      "ready_seconds": 42.139925,
+      "modem_accepted": 60,
+      "received": 60,
+      "yamcs": 60,
+      "local_sensor_busy": 0,
+      "received_kbps": 2.048,
+      "iq_bytes": 6000000,
+      "analyzed_bursts": 14,
+      "normal_cp_correlation_range": [
+        0.9442704544304882,
+        0.9885293630563796
+      ],
+      "off_confirmed": true,
+      "same_ihu_firmware_boot": true
+    }
+  ],
+  "source_check": {
+    "path": "openair2/LAYER2/MAC/eNB_scheduler_ulsch.c",
+    "sha256": "2bd047db324d409aabe99b5a035996e62344ef3112ad02b05140892b7cc975b5",
+    "finding": "No signal in Msg3 is emitted for a NULL or all-zero payload buffer, not a measurement of absent RF. The nearby OK label tests non-NULL payload; a nonempty CCCH indication is a stronger success marker."
+  },
+  "analysis_validation": "Known synthetic normal-CP OFDM boundary, off-lag comparison, noise control and FFT resampling tone checks passed.",
+  "rf_setup": "Unchanged 780.38 MHz, 2 MS/s, 1.75 MHz filter, LNA 24 / VGA 16 dB. Receive-only RF amplifier and antenna power off.",
+  "iq_capture": "Save preceding/current 100 ms IQ blocks when NB2 100 us power exceeds -30 dBFS; maximum 24 blocks / 9.6 MB per session. Raw IQ stays private.",
+  "limitations": "Both complete sessions passed; no new final registration timeout or accepted-but-undelivered session reproduced. Early error log events and observed bursts have not been paired by validated clock/subframe alignment. Correlation is waveform evidence, not Msg3 payload decode or identified UE transmission."
+}

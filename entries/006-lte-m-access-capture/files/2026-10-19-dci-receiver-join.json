@@ -1,0 +1,29 @@
+{
+  "label": "lte-phy-context-20261019-02",
+  "method": "Join saved DCI6-0A programming to PHY PUSCH setup/demodulation for configured +4-subframe target, numeric frame/subframe and log timestamps within 20 ms; ends at host cleanup completion. This verifies internal eNodeB consistency, not UE receipt, waveform timing or decoded DCI over air.",
+  "grant_count": 1374,
+  "program_matches": 1373,
+  "demod_matches": 1373,
+  "mismatch_count": 0,
+  "mismatches": [],
+  "unmatched": [
+    {
+      "grant_utc": "2026-10-19T16:41:11.985+00:00",
+      "grant_frame": 298,
+      "grant_subframe": 5,
+      "target_frame": 298,
+      "target_subframe": 9,
+      "ndi": 1,
+      "rv": 2,
+      "program_found": false,
+      "demod_found": false,
+      "issues": []
+    }
+  ],
+  "rv_counts": {
+    "0": 371,
+    "2": 335,
+    "3": 334,
+    "1": 334
+  }
+}

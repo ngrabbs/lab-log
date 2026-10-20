@@ -1,0 +1,305 @@
+{
+  "input_label": "lte-native-compare-20261019-01",
+  "method": "Configured conditional DMRS fit, both slots, six RBs starting at 13; native input antenna 0, int16 I/Q, 15.36 MS/s, normal CP, cell 0, group hopping enabled, sequence hopping disabled, group assignment 0, common cyclic shift 2 and DCI cyclic shift 0. Remove +7.5 kHz UL offset, estimate residual CFO from prefix with 8-sample edge trims, allow +/-8-sample linear phase/delay. No payload decoder.",
+  "synthetic_check_passed": true,
+  "allocation_checks": {
+    "method": "Selected MAC receiver allocation log fields, connected identity only",
+    "allocations": [
+      {
+        "frame": 262,
+        "subframe": 9,
+        "narrowband": 2
+      },
+      {
+        "frame": 268,
+        "subframe": 9,
+        "narrowband": 2
+      },
+      {
+        "frame": 268,
+        "subframe": 9,
+        "narrowband": 2
+      },
+      {
+        "frame": 268,
+        "subframe": 9,
+        "narrowband": 2
+      }
+    ]
+  },
+  "pusch_context_for_nacks": [
+    {
+      "frame": 262,
+      "subframe": 9,
+      "nb_rb": 6,
+      "carrier_rb": 50,
+      "symbols": 14
+    },
+    {
+      "frame": 264,
+      "subframe": 9,
+      "nb_rb": 6,
+      "carrier_rb": 50,
+      "symbols": 14
+    },
+    {
+      "frame": 266,
+      "subframe": 9,
+      "nb_rb": 6,
+      "carrier_rb": 50,
+      "symbols": 14
+    },
+    {
+      "frame": 268,
+      "subframe": 9,
+      "nb_rb": 6,
+      "carrier_rb": 50,
+      "symbols": 14
+    }
+  ],
+  "conditional_fits": {
+    "ACK": {
+      "frames": 47,
+      "dmrs_coherence_range": [
+        0.9869898031290653,
+        0.994447852002089
+      ],
+      "normal_prefix_range": [
+        0.7285695483078265,
+        0.8552632024658584
+      ]
+    },
+    "NACK": {
+      "frames": 4,
+      "dmrs_coherence_range": [
+        0.9900134294077122,
+        0.993554653994906
+      ],
+      "normal_prefix_range": [
+        0.7316804613496701,
+        0.845841102866338
+      ]
+    }
+  },
+  "control_coherence_max": {
+    "wrong_group": 0.1531373650042136,
+    "wrong_symbol": 0.28309164848021595,
+    "adjacent_unallocated_rbs": 0.2530597748194857
+  },
+  "max_adc_clip_fraction": 0.0,
+  "nack_buffers": [
+    {
+      "normal_prefix_coherence": 0.7316804613496701,
+      "residual_cfo_hz_after_7500_removal": -12.977674807361005,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9900134294077122,
+            "delay_samples": 4.75
+          },
+          "wrong_group": {
+            "coherence": 0.1348207281788052,
+            "delay_samples": 4.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.10516857017353959,
+            "delay_samples": 4.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.10472304994924152,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9904188429206762,
+            "delay_samples": 4.75
+          },
+          "wrong_group": {
+            "coherence": 0.13810201913978454,
+            "delay_samples": 4.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.22961900540678803,
+            "delay_samples": -6.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1659049775730175,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "result": "NACK",
+      "frame": 262,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "749e170290741cd1124e1e6ae68cdc97f954e8f617e4bad1c7c515aaf2e1e2a1"
+    },
+    {
+      "normal_prefix_coherence": 0.845841102866338,
+      "residual_cfo_hz_after_7500_removal": -25.49570460896452,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9913224464011968,
+            "delay_samples": 4.5
+          },
+          "wrong_group": {
+            "coherence": 0.13681406900370702,
+            "delay_samples": -7.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.15635176813233356,
+            "delay_samples": 8.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.11608944926479818,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9913517830132782,
+            "delay_samples": 4.75
+          },
+          "wrong_group": {
+            "coherence": 0.14894349609439497,
+            "delay_samples": 4.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.23325813684200103,
+            "delay_samples": -6.5
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1724689860319774,
+            "delay_samples": 4.25
+          }
+        }
+      ],
+      "result": "NACK",
+      "frame": 264,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "f47d843fcaf3bd653b9996e149d42b63c14a8c3bb1ad9534e2dbd9b25e9408cf"
+    },
+    {
+      "normal_prefix_coherence": 0.8338241454356956,
+      "residual_cfo_hz_after_7500_removal": -22.633055003026563,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9918324041926435,
+            "delay_samples": 5.0
+          },
+          "wrong_group": {
+            "coherence": 0.1394969352013291,
+            "delay_samples": 3.25
+          },
+          "wrong_symbol": {
+            "coherence": 0.10471845959167529,
+            "delay_samples": 2.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.1818593121428101,
+            "delay_samples": 0.25
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9935137446275913,
+            "delay_samples": 5.0
+          },
+          "wrong_group": {
+            "coherence": 0.11851277827761068,
+            "delay_samples": 4.75
+          },
+          "wrong_symbol": {
+            "coherence": 0.12026502016366489,
+            "delay_samples": 5.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.12977349077907072,
+            "delay_samples": -8.0
+          }
+        }
+      ],
+      "result": "NACK",
+      "frame": 266,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "e41b91677927bfaeb125e378475b6932b3800798ab5643cdb3dd29b24b76b8f7"
+    },
+    {
+      "normal_prefix_coherence": 0.8294576116847079,
+      "residual_cfo_hz_after_7500_removal": 32.0209935366167,
+      "slots": [
+        {
+          "slot": 0,
+          "group": 4,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.993554653994906,
+            "delay_samples": 4.5
+          },
+          "wrong_group": {
+            "coherence": 0.14868240493624812,
+            "delay_samples": 3.0
+          },
+          "wrong_symbol": {
+            "coherence": 0.20244605655224965,
+            "delay_samples": 6.25
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.16131313693648114,
+            "delay_samples": -8.0
+          }
+        },
+        {
+          "slot": 1,
+          "group": 26,
+          "cyclic_shift": 4,
+          "pilot": {
+            "coherence": 0.9932843424210356,
+            "delay_samples": 4.75
+          },
+          "wrong_group": {
+            "coherence": 0.12304600106172459,
+            "delay_samples": 4.5
+          },
+          "wrong_symbol": {
+            "coherence": 0.11040249198336224,
+            "delay_samples": 4.0
+          },
+          "adjacent_unallocated_rbs": {
+            "coherence": 0.132566066225243,
+            "delay_samples": 1.5
+          }
+        }
+      ],
+      "result": "NACK",
+      "frame": 268,
+      "subframe": 9,
+      "adc_clip_fraction": 0.0,
+      "input_sha256": "dd3653121ed6a1473767939721dc4547017eba3b5645adbb13a814b1d43f7795"
+    }
+  ],
+  "limits": "Fits assume configured six-RB allocation beginning at carrier RB13, common cyclic shift 2 and DCI shift 0. Matching six-RB receive records and narrowband-2 allocation logs support that context; this is not independent DCI or payload decoding. Strong reference signals do not prove payload/CRC correctness, absolute frame alignment or explain the registration loss about 15 seconds later. NACKs precede the telemetry offer; they are not lost EPS packets."
+}

@@ -1,0 +1,140 @@
+{
+  "label": "lte-direct-rlcdiag-20261020-02",
+  "date": "2026-10-20",
+  "run": 2026102004,
+  "path": "USB -> Walter ESP32 -> modem UART/AT -> LTE-M -> LibreSDR -> separate UDP receiver",
+  "receiver_port": 51002,
+  "profile": "enb.band13.emtc.ce300tx20rlcdebug.conf",
+  "rf_setup": {
+    "libresdr_antennas": "stock, all fitted",
+    "walter_antenna": "Full Band LTE Antenna 698-960/1710-2690 MHz",
+    "separation_m": 1
+  },
+  "identity": {
+    "event": "identity",
+    "role": "WALTER_THROUGHPUT_TEMP",
+    "version": "0.1.0",
+    "git": "06680f3d256bc71e107fe5be377b929e5bf25033",
+    "source_sha256": "391f67568ce7062faa4030523a1da08d2aff3b7bff7b5158c2f8301d2b65a24b",
+    "uart_baud": 115200,
+    "log_drops": 0,
+    "host_utc": "2026-10-20T00:27:19.836377+00:00",
+    "host_monotonic_ns": 4962058907794118
+  },
+  "modem_firmware": [
+    "UE8.2.1.0"
+  ],
+  "operator_responses": [
+    "+COPS: 1",
+    "+COPS: 1,2,\"99970\",7"
+  ],
+  "signal_response": [
+    "+CSQ: 29,99"
+  ],
+  "registered_ready_seconds": 16.854,
+  "measurement": {
+    "run": 2026102004,
+    "packet_bytes": 512,
+    "measurement_seconds": 10,
+    "planned_slots": 20,
+    "attempted": 20,
+    "skipped": 0,
+    "unreached": 0,
+    "modem_accepted": 20,
+    "modem_rejected": 0,
+    "unknown": 0,
+    "unique_received": 20,
+    "duplicates": 0,
+    "accepted_missing": [],
+    "unknown_received": [],
+    "received_in_window": 19,
+    "late_received": 1,
+    "measurement_complete": true,
+    "received_kbps": 7.7824,
+    "window": "Fixed sender-requested duration beginning at first valid receiver arrival",
+    "limits": "Direct ESP32/modem UART/AT goodput, not maximum LTE-M PHY rate. UART115200 8N1, one transaction in flight. Skipped slots were not attempted. Arrival clocks do not establish one-way latency."
+  },
+  "receiver_checks": {
+    "unique": 20,
+    "bad": 0,
+    "duplicates": 0,
+    "out_of_order": 0
+  },
+  "rf_windows": 1,
+  "off_confirmed": true,
+  "log_drops": 0,
+  "ground_radio_core_stopped": true,
+  "ground_existing_source_binary_profile_unchanged": true,
+  "ihu_firmware_changed": false,
+  "walter_mcu_firmware_changed": false,
+  "modem_maximum_measured": false,
+  "notes": "512-byte synthetic UDP payload includes a 32-byte benchmark header. UART 115200 baud, 8N1; one AT send transaction at a time. This is one low-rate delivery check, not a reliability result.",
+  "debug_capture": {
+    "reader_version": 2,
+    "usb_json_errors": 0,
+    "raw_bytes": 10105,
+    "profile_change": "RLC/RRC logging only",
+    "failure_reproduced": false,
+    "analysis": {
+      "failure_reproduced": false,
+      "host_off_event_utc": "2026-10-20T00:27:56.741442+00:00",
+      "transitions": [
+        {
+          "utc": "2026-10-20T00:27:36.548+00:00",
+          "marker": "reconfiguration_complete"
+        },
+        {
+          "utc": "2026-10-20T00:27:36.551+00:00",
+          "marker": "reconfiguration_complete"
+        },
+        {
+          "utc": "2026-10-20T00:27:36.551+00:00",
+          "marker": "reconfiguration_complete"
+        },
+        {
+          "utc": "2026-10-20T00:28:21.605+00:00",
+          "marker": "release_request",
+          "cause": 21
+        },
+        {
+          "utc": "2026-10-20T00:28:22.091+00:00",
+          "marker": "srb_max_retx",
+          "srb": 1
+        },
+        {
+          "utc": "2026-10-20T00:28:22.092+00:00",
+          "marker": "context_removed"
+        },
+        {
+          "utc": "2026-10-20T00:28:22.094+00:00",
+          "marker": "context_removed"
+        }
+      ],
+      "clock_probe_offset_ranges": [
+        {
+          "probe": "before",
+          "ground_minus_usb_host_seconds": [
+            -0.191688772,
+            0.157167876
+          ]
+        },
+        {
+          "probe": "after",
+          "ground_minus_usb_host_seconds": [
+            -0.537688018,
+            0.165317209
+          ]
+        }
+      ],
+      "interpretation": "SRB1 retry exhaustion is after commanded OFF, a shutdown reference; earlier live-session cause remains unconfirmed.",
+      "clock_limits": "Probe-derived offset bounds; ordering assumes no clock step between probes. Host receipt timestamps are not hardware radio timestamps.",
+      "raw_log_sha256": {
+        "oai-private.log": "fec77864e0f1a3f7ebb84f25edbc4d515b889dfffe6b5f4583eb0a8d9d5d956a",
+        "epc-private.log": "40387f07a4bd5f36cb8afc6921b9f4e632eebca8ea307c788dfe94528a6ef639",
+        "sender.jsonl": "830a750eccc7feb31def36b1269dde877172c58772b9e0bb761e374c06915d2e",
+        "raw-usb.bin": "0c4647529980dec32ac58b8603ae0a7ac877d6edad96555853870b7a5bab72bd",
+        "raw-chunks.jsonl": "0471b5e816265c8a4b238e583816eb2a1f7035427f462559b871baece20192e5"
+      }
+    }
+  }
+}

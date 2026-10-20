@@ -1,0 +1,13 @@
+{
+  "source_head": "29d5fa7d38bb1ee8935ef7ae30a396d53772ea4f",
+  "source_file_sha256": {
+    "openair2/LAYER2/rlc_v2/rlc_oai_api.c": "ef183ff0d73249a95251b28dee640d9334b486a5821d6a5cd30b3ed2fedbe0d6",
+    "openair2/RRC/LTE/rrc_eNB.c": "c145afa77df041669db358d96775a9a55010fa8c5a4b3a82e5ebbc509e157f23",
+    "openair2/RRC/LTE/rrc_eNB_GTPV1U.c": "7e16e2368483c0d4da02430fcd04653b9b22d2b139df299638112b10329b4114",
+    "openair1/SCHED/phy_procedures_lte_eNb.c": "83a1b47dd50993675e8458429766c88a1d61a9c5e176d8220c476d58b2581e41"
+  },
+  "release_path": "An unsuccessful SRB RLC SDU can call process_unsuccessful_rlc_sdu_indication, set release flag 4, send release completion, delete tunnels and fast-forward the RRC removal timer. A pending RRC-release acknowledgement can also transition to flag 4.",
+  "observed_in_original_failed_session": false,
+  "limits": "Original RLC/RRC info levels hide these debug events; a source path is not an identified historical trigger. New debug probe failed before registration, so it did not confirm the path.",
+  "rx_hook_limit": "Existing native input trace labels frame/subframe but has an explicit source TODO about correct rxdata; independently qualify buffer selection/alignment with a verified working reference before timing/DMRS conclusions."
+}

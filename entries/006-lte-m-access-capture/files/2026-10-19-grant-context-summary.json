@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-19",
+  "selection": "Saved paired-band sessions and one additional PHY-debug data session; no firmware/build or RF settings changed.",
+  "profile_change": "Copied profile: only phy_log_level info -> debug. Baseline unchanged and remains the normal profile.",
+  "failed_start": {
+    "label": "lte-phy-context-20261019-01",
+    "cause": "Quoting error in temporary config; corrected before second launch",
+    "cell_started": false,
+    "modem_window_opened": false,
+    "included_in_radio_trial_count": false
+  },
+  "debug_session": {
+    "label": "lte-phy-context-20261019-02",
+    "ready_seconds": 16.328147,
+    "accepted": 45,
+    "received": 0,
+    "yamcs": 0,
+    "local_refusals": 5,
+    "peer_rejections": 1,
+    "unknown_attempts": 0,
+    "unreached_slots": 9,
+    "registration_drops": 1,
+    "final_cereg": 4,
+    "complete_rate_window": false,
+    "goodput_kbps": null,
+    "hackrf_capture": false
+  },
+  "cleanup": {
+    "walter_off": true,
+    "all_six_ihu_output_flags_zero": true,
+    "same_ihu_firmware_and_boot": true,
+    "ihu_boot": 1804549595,
+    "can_tec": 0,
+    "can_rec": 0,
+    "can_errors": 0,
+    "radio_core_capture_stopped": true
+  },
+  "limits": [
+    "A generated RAR is not proof Walter received that RAR over the air.",
+    "The successful Msg3 PHY context matches assigned identity/frame/allocation; unsuccessful Msg3 PHY context comparison still missing.",
+    "Verbose PHY logging changes real-time load. This failure resembles earlier zero-delivery failures but common cause is unproven.",
+    "Post-CCCH PHY groups end before host OFF command; whole-log counts include later activity and are not packet error rates."
+  ]
+}

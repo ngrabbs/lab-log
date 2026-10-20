@@ -1,0 +1,178 @@
+{
+  "status": "Reliability investigation parked; no further startup repeats planned",
+  "setup": {
+    "rf_changes": false,
+    "production_firmware_changed": false,
+    "profile": "enb.band13.emtc.ce300tx20rlcdebug.conf",
+    "binary_sha256": "cba64491284fc672369b967da657049c8057deeb50548a28e3558369f5b6027a",
+    "modem_window_seconds": 120,
+    "registration_limit_seconds": 90,
+    "radio_limit_seconds": 170,
+    "receiver_amplifier": false,
+    "receiver_antenna_power": false
+  },
+  "receiver_qualification": {
+    "label": "lte-independent-rf-20261019-01",
+    "low_gain": {
+      "lna_db": 0,
+      "vga_db": 8,
+      "contrast": {
+        "band_center_hz": 751000000,
+        "integrated_width_hz": 9000000,
+        "off_median_linear": 1.4887834367982578e-05,
+        "on_median_linear": 2.699323886190541e-05,
+        "on_minus_off_db": 2.5842346928196935,
+        "positive_gate_db": 6,
+        "gate_passed": false,
+        "limits": "Controlled cell OFF/ON relative RF contrast; not calibrated power or decoded cell identity"
+      },
+      "outcome": "Below preselected6dB gate; Walter window not opened, no telemetry attempted"
+    },
+    "matched_gain16_on_then_off": {
+      "powers": {
+        "dl-off16": 1.5525341950706206e-05,
+        "dl-on16": 0.0004974836483597755
+      },
+      "matched_lna_db": 16,
+      "matched_vga_db": 8,
+      "on_minus_off_db": 15.05737636190611,
+      "overruns": 0,
+      "clipping": 0,
+      "cell_on_capture_precedes_cell_off_capture": true
+    },
+    "limits": "Receiver gain qualification, not an LTE link fix. Power uncalibrated; no decoded cell identity."
+  },
+  "attach_trial": {
+    "label": "lte-independent-rf-20261019-02",
+    "downlink_off": {
+      "frequency_hz": 751000000,
+      "sample_rate_hz": 10000000,
+      "baseband_filter_hz": 10000000,
+      "lna_db": 16,
+      "vga_db": 8,
+      "sample_seconds": 3.0,
+      "samples_received": 30000000,
+      "max_reported_overruns": 0,
+      "clipped_sample_fraction": 0.0,
+      "first_read_utc": "2026-10-19T22:24:28.382868+00:00",
+      "last_read_utc": "2026-10-19T22:24:33.300128+00:00"
+    },
+    "downlink_on": {
+      "frequency_hz": 751000000,
+      "sample_rate_hz": 10000000,
+      "baseband_filter_hz": 10000000,
+      "lna_db": 16,
+      "vga_db": 8,
+      "sample_seconds": 3.0,
+      "samples_received": 30000000,
+      "max_reported_overruns": 0,
+      "clipped_sample_fraction": 0.0,
+      "first_read_utc": "2026-10-19T22:24:40.442246+00:00",
+      "last_read_utc": "2026-10-19T22:24:45.357726+00:00"
+    },
+    "downlink_contrast": {
+      "band_center_hz": 751000000,
+      "integrated_width_hz": 9000000,
+      "off_median_linear": 1.5734360204078257e-05,
+      "on_median_linear": 0.00028284365544095635,
+      "on_minus_off_db": 12.546973532054515,
+      "positive_gate_db": 6,
+      "gate_passed": true,
+      "limits": "Controlled cell OFF/ON relative RF contrast; not calibrated power or decoded cell identity"
+    },
+    "observer_ready_before_host_utc": "2026-10-19T22:24:52.035361+00:00",
+    "rf_window_command_utc": "2026-10-19T22:24:53.147919+00:00",
+    "stop_command_utc": "2026-10-19T22:26:23.812394+00:00",
+    "ready_seconds": null,
+    "host_error": "No registered READY",
+    "telemetry_attempts": 0,
+    "modem_accepted": 0,
+    "receiver": 0,
+    "yamcs": 0,
+    "end_modem_before_stop": {
+      "state": 3,
+      "registered": 0,
+      "remaining_window_ms": 29827,
+      "last_cereg": 4,
+      "registration_drop_events": 0
+    },
+    "uplink": {
+      "frequency_hz": 779100000,
+      "sample_rate_hz": 5000000,
+      "baseband_filter_hz": 2500000,
+      "lna_db": 16,
+      "vga_db": 8,
+      "sample_seconds": 150.0,
+      "samples_received": 750000000,
+      "max_reported_overruns": 0,
+      "clipped_sample_fraction": 0.0,
+      "first_read_utc": "2026-10-19T22:24:46.484038+00:00",
+      "last_read_utc": "2026-10-19T22:27:18.383773+00:00"
+    },
+    "scalar_capture": {
+      "valid": true,
+      "scalar_only": true,
+      "all_identities": true,
+      "byte_cap": 16777216,
+      "deadline_seconds": 140,
+      "events_allowlisted": [
+        "ENB_PHY_LTEM_GRANT_STATE",
+        "ENB_PHY_LTEM_RX_STATE",
+        "ENB_PHY_LTEM_RATE_STATE",
+        "ENB_PHY_LTEM_SEGMENT_STATE",
+        "ENB_PHY_LTEM_POST_STATE",
+        "ENB_PHY_ULSCH_UE_ACK",
+        "ENB_PHY_ULSCH_UE_NACK",
+        "ENB_MAC_UE_UL_SCHEDULE",
+        "ENB_MAC_UE_UL_SCHEDULE_RETRANSMISSION"
+      ],
+      "started_utc_ns": 1792448691965541098,
+      "metadata_ready_utc_ns": 1792448691968900976,
+      "stop_reason": "host_finished",
+      "trace_bytes": 144306,
+      "event_counts": {},
+      "elapsed_seconds": 92.44859627401456,
+      "incomplete_tail_bytes": 0,
+      "finished_utc_ns": 1792448784414151317,
+      "trace_sha256": "049b6f378f46cf5fa993ba8e4c79e5f23a9a47c01f69a430aff913f01ac84545"
+    },
+    "selected_log_counts": {
+      "Generating RAR BR": 0,
+      "ULSCH in error": 0,
+      "Decoding UL CCCH": 0
+    },
+    "interpretation": "Modem acquisition/network-selection is a useful lead for this no-access timeout; not a proven cause and not established as the cause of earlier failures."
+  },
+  "source_observation": {
+    "app_git": "9fcb0209f1bb192369fce34d863a3862f8040de6",
+    "source_blob": "fe359dcb21748dc285b35fff01276a5af5cad563",
+    "installed_revision_source": "firmware/walter_lte_bench/src/main.cpp",
+    "current_relocated_source": "firmware/walter/src/main.cpp",
+    "same_blob": true,
+    "configured_band": 13,
+    "operator_command": "AT+COPS?",
+    "explicit_network_selection_in_configuration": false,
+    "live_operator_mode_observed": false,
+    "limits": "Source queries operator status but does not explicitly select the lab operator. This does not establish the modem actual selection mode, backoff state or failure cause."
+  },
+  "cleanup": {
+    "walter_off": true,
+    "outputs_restored_all_six_zero": true,
+    "ihu_firmware_boot_unchanged": true,
+    "can_normal_errors_zero": true,
+    "hackrf_transfer_stopped": true,
+    "original_head_unchanged": true,
+    "original_status_unchanged": true,
+    "original_overlay_unchanged": true,
+    "original_binary_unchanged": true,
+    "rx_reference_binary_unchanged": true,
+    "diagnostic_binary_unchanged": true,
+    "baseline_profile_unchanged": true,
+    "radio_and_core_stopped": true,
+    "recorder_stopped": true,
+    "debug_profile_logging_only": true
+  },
+  "rate_result_kbps": null,
+  "next_work": "Prepare temporary direct-Walter benchmark with live operator/modem-state visibility, production backup/restore and separate UDP endpoint; leave IHU unchanged.",
+  "limits": "No above-threshold power bins in these two observed allocations, not proof of no modem RF. Weaker/off-frequency transmissions remain possible. Downlink ON/OFF checked before RF admission, not continuously during timeout. No independent cell ID, PRACH payload or CRC decode. No common cause established with earlier Msg3 retries or accepted-but-undelivered sessions."
+}
