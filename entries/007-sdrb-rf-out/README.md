@@ -278,6 +278,22 @@ Actual LCD: **438.100 MHz, −58.7 dBm**.
 ![tinySA LCD after the event-time diagnostic stopped](images/438mhz-dev4-event-time-off.png)
 After stopping: **−106.7 dBm**. Numerical results and LCD use adjacent sweeps. Metadata/screen hashes and all 22 installed/boot identities verified; diagnostic code removed, both transmitters stopped, SDRB idle/unclaimed with zero failed services.
 
+## RAM-backed file playback
+
+Same dev.4/J10 setup; LibreSDR stopped, no RX stream. Repeat a RAM-backed **73,728-sample / 589,824-byte cf32_le file**, containing a unit-amplitude +100 kHz complex tone (25 cycles per 576 samples). CLI multiplier **0.1**, channel **1 / TX-A low-pass**, TX gain **70 dB**, 2.304 MS/s / 8000-byte frames, six-second request. The RAM flow retains event metadata and adds the native RF_Out argument; the maintained file-source → multiply → UHD-sink graph is unchanged.
+
+| 438.100 MHz, after 20 dB pad | Before | File playback on | After |
+|---|---:|---:|---:|
+| Numerical peak within ±5 kHz | −100.69 dBm | **−33.19 dBm** | −100.19 dBm |
+
+Completed in **6.002 seconds**, with no reported TX or cleanup errors. Waveform hash matches before/after playback; target metadata/screens and all 22 installed/boot identities verified. RAM code/input removed, SDRB idle/unclaimed, zero failed services. This establishes one **RAM-backed** playback check; SD-backed playback, arbitrary input files/rates and endurance remain unqualified. The forwarding underflow is still open.
+
+![tinySA LCD during RAM-backed file playback](images/438mhz-dev4-file-tx-on.png)
+Actual LCD marker: **438.100 MHz, −33.2 dBm**. The −40 dBm display reference clips the top of the trace; the table retains the numerical scan result. This is not a spectral-purity measurement.
+
+![tinySA LCD after file playback stopped](images/438mhz-dev4-file-tx-off.png)
+After stopping: **−107.2 dBm**. LCD and numerical results use adjacent sweeps; no fresh calibration.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
