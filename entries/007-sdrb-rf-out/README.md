@@ -187,13 +187,33 @@ Cold-booted **0.1.0-dev.4**, source `ed4b273`, with the selector-corrected FPGA 
 |---|---:|---:|---:|
 | 438.100 MHz | −104.1 dBm | **−33.1 dBm** | −101.1 dBm |
 
-Tone detected and returned to background; no reported stream or cleanup errors. Target metadata read back and SHA256 verified; diagnostic code removed and installed hashes rechecked. This closes the TX1A tone-detection check on the new FPGA/image at this setting; RF receive/forwarding acceptance remains pending.
+Tone detected and returned to background; no reported stream or cleanup errors. Target metadata read back and SHA256 verified; diagnostic code removed and installed hashes rechecked. This closes the TX1A tone-detection check on the new FPGA/image at this setting; RF receive passes below; clean forwarding acceptance remains open.
 
 ![tinySA LCD with the dev.4 TX1A tone](images/438mhz-dev4-tx1a-on.png)
 Actual LCD, fixed marker **438.100 MHz, −33.1 dBm**.
 
 ![tinySA LCD after the dev.4 TX1A tone stopped](images/438mhz-dev4-tx1a-off.png)
 After stopping, fixed marker **−105.6 dBm**. Table values use the numerical peak within ±5 kHz; LCD captures use adjacent sweeps.
+
+## dev.4 receive and forwarding
+
+Added **LibreSDR TXRA → DC block → 10 dB / 2 W pad → J1/Antenna_in**; the J10 → DC block → 20 dB → tinySA path is unchanged. LibreSDR: 434 MHz LO +100 kHz, gain 40 dB, amplitude 0.1, 2 MS/s. SDRB: channel 1, RX gain 40, 2.304 MS/s and 8000-byte frames. Same dev.4 image and installed native r9, boot/software identities verified after the wiring cold boot.
+
+A **12-second stock-CLI RX capture** contains four seconds of source tone. RMS is **−59.9 / −35.6 / −60.3 dBFS** before/on/after; the on-state peak is near +100 kHz. Saved-file hash and complete timestamp coverage pass; no reported overflow or cleanup errors.
+
+Forwarding uses the RAM flow with the native J10 argument, **434.1 → 438.1 MHz**, TX gain 60 dB, unity multiplier and **six seconds**. Same tinySA settings as the dev.4 TX1A check:
+
+| After the 20 dB pad | Before | Forwarding on | After | Stream result |
+|---|---:|---:|---:|---|
+| 438.100 MHz | −100.7 dBm | **−58.7 dBm** | −101.7 dBm | **Failed: three TX underflows**, no RX overflow or cleanup error |
+
+A single six-second diagnostic repeat added event-receipt timestamps around start/active/stop and reported **zero underflows**. The intermittent failure remains unresolved; that clean repeat does not establish a fix. The originally planned second run was stopped after the first failure. Metadata readback/SHA and actual screen hashes verified; diagnostic code removed, installed hashes unchanged, both transmitters stopped and SDRB idle/unclaimed with zero failed services.
+
+![tinySA LCD during dev.4 forwarding with reported underflows](images/438mhz-dev4-forward-on.png)
+Actual LCD: **438.100 MHz, −58.7 dBm**. A visible tone does not establish error-free forwarding.
+
+![tinySA LCD after dev.4 forwarding stopped](images/438mhz-dev4-forward-off.png)
+After stopping: fixed marker **−109.2 dBm**. Table and LCD use adjacent sweeps. Clean forwarding acceptance remains open.
 
 ## Coverage and limits
 
