@@ -120,12 +120,25 @@ Same wiring, tx-select.1 FPGA and temporary r9 high-pass override; channel 1 / T
 | LO +100 kHz | −108.4 dBm | −107.4 dBm | −105.1 dBm |
 | LO −100 kHz | −107.1 dBm | −107.1 dBm | −107.4 dBm |
 
-**No tone detected on either side of the LO**; no reported stream or cleanup errors. This does not support a simple frequency inversion. Source inspection retains port B across the tested range and checks PLL lock, but does not establish RF output. A known-tone reference through the same measurement chain is next.
+**No tone detected on either side of the LO**; no reported stream or cleanup errors. This does not support a simple frequency inversion. Source inspection retains port B across the tested range and checks PLL lock, but does not establish RF output. The reference check below uses the same measurement chain.
 
 ![tinySA LCD during the 3.5 GHz TX1B check](images/3500mhz-both-sides-on.png)
 Actual LCD capture; fixed +100 kHz marker **−111.6 dBm**, a separate sweep from the numerical table.
 
 Two analyzer-only preflights exceeded the original capture-time guard and stopped **before transmission**. The completed check uses 12 seconds to accommodate the measured sweep and LCD-capture time. No calibration was changed. [tinySA documents reduced high-frequency sensitivity and harmonic-mode conversion-loss variation](https://tinysa.org/wiki/pmwiki.php?n=TinySA4.Ultra); absent tones alone do not identify filter rejection.
+
+## LibreSDR measurement-chain reference
+
+Moved the existing measurement chain to **LibreSDR TXRA** (operator-confirmed printed label); SDRB remained halted with its RF output disconnected. Same DC block, **30 dB + 10 dB pads**, tinySA input and analyzer settings. LibreSDR: LO 3.5 GHz, +100 kHz complex tone, gain 40 dB, amplitude 0.1, 2 MS/s, **14 seconds**, verified custom B210 FPGA. No reported TX/RX errors or timestamp gaps.
+
+| Observed-tone window | Before | Tone on | After |
+|---|---:|---:|---:|
+| ±5 kHz around 3500.094 MHz | −104.1 dBm | **−91.6 dBm** | −106.1 dBm |
+
+The full 40 dB measurement chain **does detect a weak 3.5 GHz reference**. The owner noted that this much attenuation often buries LibreSDR output; this check has only about 12.5–14.5 dB off/on contrast. It does not establish SDRB output power or a filter fault. Use less external attenuation for the next bounded SDRB check rather than treating a background-level reading as rejection.
+
+![tinySA LCD during the LibreSDR reference](images/3500mhz-libresdr-reference-40db.png)
+Actual LCD capture. The visible peak lies left of the fixed **3500.100 MHz** marker; that marker reads **−113.1 dBm**. The table follows the observed numerical peak at **3500.094 MHz**, not the nominal marker. No fresh frequency or level calibration.
 
 ## Coverage / next check
 
@@ -139,6 +152,6 @@ Two analyzer-only preflights exceeded the original capture-time guard and stoppe
 
 Next: investigate the missing TX1B upper-band tone before extending filter tests. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. SDRB was idle/unclaimed with zero failed services, then cleanly halted for the reference cable move. No image build for Ray is planned.
+Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. SDRB was idle/unclaimed with zero failed services, then cleanly halted for the completed LibreSDR reference check. LibreSDR transmission has stopped; SDRB remains halted. No image build for Ray is planned.
 
 [Back to Lab Log](../../README.md)
