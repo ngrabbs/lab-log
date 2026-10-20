@@ -334,7 +334,9 @@ Actual LCD: **438.100 MHz, −59.1 dBm**. Target metadata and all twelve before/
 
 Same powered dev.4 image (`ed4b273`), J1/J10 wiring, six-second forwarding and reference settings as the preceding replay. A RAM flow uses maintained reporting source `9c8c67c`, plus the explicit RF_Out argument and one pre-start device-clock read. No active polling or streaming-policy change; installed files unchanged. The concrete wrapper passes 21 ARM tests and four anchor checks before RF. An initial off-board wrapper scope failure was corrected and retained privately.
 
-**Failed: three TX underflows**, no reported RX overflow, metadata-decode or cleanup error. The reference has no reported stream errors or timestamp gaps. After the 20 dB pad, numerical before/on/after peaks are **−101.16 / −59.16 / −101.66 dBm**. A visible forwarded tone is not error-free operation.
+**Failed: three device-timestamped TX underflows retained in JSON**, no reported RX overflow, metadata-decode or cleanup error. The reference has no reported stream errors or timestamp gaps. After the 20 dB pad, numerical before/on/after peaks are **−101.16 / −59.16 / −101.66 dBm**. A visible forwarded tone is not error-free operation.
+
+A later accounting audit found **four underflows in the console logs**, with the fourth logged after `stopping`; its device timestamp was not retained, so its hardware occurrence cannot be assigned to active streaming or shutdown. A real off-board GNU Radio queue test reproduces post-stop messages missing from the JSON. The table lists the three retained timestamps; the original run remains failed.
 
 | Underflow | UHD device time (s) | Estimated seconds after flow start |
 |---|---:|---:|
