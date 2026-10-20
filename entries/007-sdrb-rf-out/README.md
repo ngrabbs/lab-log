@@ -294,17 +294,53 @@ Actual LCD marker: **438.100 MHz, −33.2 dBm**. The −40 dBm display reference
 ![tinySA LCD after file playback stopped](images/438mhz-dev4-file-tx-off.png)
 After stopping: **−107.2 dBm**. LCD and numerical results use adjacent sweeps; no fresh calibration.
 
+## Integrated dev.4 branch checks
+
+Same integrated image (`ed4b273`), J10/DC block/**20 dB / 2 W** pad and 9 V / 0.7 A setup; AmpPwr2 disconnected. Three six-second tones, amplitude **0.1**, TX gain **70 dB**, 2.304 MS/s / 8000-byte frames. LibreSDR stopped; no RX stream. A RAM flow supplies native RF_Out/filter arguments and retains event metadata; tone streaming is unchanged. tinySA: 3 kHz RBW, LO ±200 kHz / 201 points, LNA off, external correction zero; low-band internal attenuation 10 dB / Ultra off / −20 dBm display reference, high-band 5 dB / Ultra on / −40 dBm reference.
+
+| Branch / UHD channel | Tone | Before | On | After |
+|---|---:|---:|---:|---:|
+| TX2A low-pass / 0 | 438.100 MHz | −99.66 | **−30.16** | −103.16 |
+| TX1B high-pass / 1 | 2500.100 MHz | −105.56 | **−54.56** | −103.56 |
+| TX2B high-pass / 0 | 2500.100 MHz | −108.56 | **−57.56** | −106.56 |
+
+Numerical peaks within ±5 kHz, **dBm after the pad**. All three complete with no reported TX/cleanup errors. Together with the earlier integrated TX1A check, all four branches now have tone-detection evidence on this image. These are individual frequency/settings checks, not full filter or calibrated-power acceptance.
+
+![tinySA LCD during integrated dev.4 TX2A tone](images/438mhz-dev4-tx2a-on.png)
+Actual adjacent LCD: **438.100 MHz, −25.2 dBm**, about **5 dB above** the numerical scan. That difference is retained as a measurement limit; this check does not establish stable output power.
+
+![tinySA LCD during integrated dev.4 TX1B tone](images/2500mhz-dev4-tx1b-on.png)
+Actual LCD: **2500.100 MHz, −55.6 dBm**.
+
+![tinySA LCD during integrated dev.4 TX2B tone](images/2500mhz-dev4-tx2b-on.png)
+Actual LCD: **2500.100 MHz, −57.6 dBm**. LCD and numerical readings are adjacent sweeps; no fresh calibration.
+
+## One receive/save → forwarding replay
+
+Same J1/J10 wiring and integrated image. First, a 12-second RAM-first capture at **434 MHz**, RX gain **40 dB**, channel 1, 2.304 MS/s / 8000-byte frames. LibreSDR sends a **434.1 MHz** tone for four seconds, gain **40 dB**, amplitude **0.1**, 2 MS/s. After capture and save complete, a fresh reference supplies the same tone for one six-second **434.1 → 438.1 MHz** forwarding check, RX/TX gain **40/60 dB**, unity multiplier. The light RAM diagnostic retains event device timestamps/channel plus one pre-start clock read; no active counter scans or scheduled start.
+
+| Check | Result |
+|---|---|
+| Received RMS before/on/after | **−60.77 / −35.86 / −60.64 dBFS**; approximately +99 kHz offset in active windows, no clipping observed |
+| Post-stop save | **221,188,736 bytes**; SHA256 readback matches, complete captured-range timestamp coverage, no reported RX error |
+| Forwarding after 20 dB pad, before/on/after | **−103.63 / −59.13 / −106.12 dBm**; 6.001 seconds, no reported RX/TX or cleanup error |
+
+The intermittent underflow **did not recur**. No device TX event occurred, so hardware event-timestamp retention remains unexercised. No causal fix, image change or new forwarding acceptance is claimed; MR !6 stays draft. This was one bounded workflow replay, not a repeat-until-failure campaign.
+
+![tinySA LCD during forwarding after the RF receive/save replay](images/438mhz-dev4-rx-replay-on.png)
+Actual LCD: **438.100 MHz, −59.1 dBm**. Target metadata and all twelve before/on/after screenshots match their hashes. All **22 installed/boot identities** remain unchanged; diagnostic code removed, both transmitters stopped, SDRB powered idle/unclaimed with zero failed services. The saved IQ and raw records remain private.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
 |---|---|---|
 | U19, TX1A low-pass | Four original points, 438.1–1600.1 MHz; 438.1 MHz repeated on dev.4 | Original dev.3 FPGA + `0c8e7f7`; integrated dev.4 at 438.1 MHz |
-| U23, TX2A low-pass | 438.1 MHz; absent with original FPGA | tx-select.1 + `0c8e7f7` override |
-| U28, TX1B high-pass | 2000.1/2500.1 MHz with 40 dB pads; 3500.1/5800.1 MHz with 20 dB | r9; original FPGA at lower points, tx-select.1 at upper points |
-| U30, TX2B high-pass | 2500.1 MHz with 20 dB pad | tx-select.1 + r9 |
+| U23, TX2A low-pass | 438.1 MHz; absent with original FPGA | tx-select.1 + `0c8e7f7` override; repeated on integrated dev.4 |
+| U28, TX1B high-pass | 2000.1/2500.1 MHz with 40 dB pads; 3500.1/5800.1 MHz with 20 dB | r9; original FPGA at lower points, tx-select.1 at upper points; integrated dev.4 at 2500.1 MHz |
+| U30, TX2B high-pass | 2500.1 MHz with 20 dB pad | tx-select.1 + r9; repeated on integrated dev.4 |
 | U32/U13, common low-pass | Included in responding paths; individual response and stopband unqualified | Builds/settings above |
 
-All four TX filter branches now have tone-detection evidence in the recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
+All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
 After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains integrated dev.4; the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
