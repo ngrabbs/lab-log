@@ -60,7 +60,7 @@ After a cold boot, same J10 wiring and gain **70 dB**, amplitude **0.1**, eight-
 | 1 / TX1A, U19 | 1300.1 MHz | −100.7 dBm | **−64.8 dBm** | −105.7 dBm |
 | 1 / TX1A, U19 | 1600.1 MHz | −102.4 dBm | **−82.9 dBm** | −103.5 dBm |
 
-TX1 shows a tone at each point; its indicated output falls above 900 MHz. These are uncalibrated source-to-analyzer measurements, not isolated filter insertion loss. **TX2's expected tone was not detected**; no further TX2 frequency checks were run. No stream errors were reported. The later FPGA-selector check below addresses this missing tone.
+TX1 shows a tone at each point; its indicated output falls above 900 MHz. These are uncalibrated source-to-analyzer measurements, not isolated filter insertion loss. **TX2's expected tone was not detected**; no further TX2A frequency checks were run. No stream errors were reported. The later FPGA-selector check below addresses this missing tone.
 
 ![tinySA LCD with the TX1A 1600.1 MHz tone on](images/1600mhz-lowpass-on.png)
 Actual LCD capture, fixed marker **1600.100 MHz, −82.5 dBm**.
@@ -72,7 +72,7 @@ One initial 900 MHz capture attempt stopped on a malformed tinySA text value out
 
 ## TX-B high-pass path
 
-Same conducted setup, channel **1**, gain **70 dB**, amplitude **0.1** and eight-second tones. Temporary native MPM r9 and Python bindings built from `38ed43e2e5e1821fbd8011333648dc7a7185c972`; explicit `sdrb_tx_path=rf_out_b,sdrb_tx_filter=highpass`. TX1B selects U28; TX2B/U30 remains untested. Both banks also pass through common U32/U13 low-pass filters and the AmpPwr1 drivers.
+Same conducted setup, channel **1**, gain **70 dB**, amplitude **0.1** and eight-second tones. Temporary native MPM r9 and Python bindings built from `38ed43e2e5e1821fbd8011333648dc7a7185c972`; explicit `sdrb_tx_path=rf_out_b,sdrb_tx_filter=highpass`. TX1B selects U28; TX2B/U30 is checked later below. Both banks also pass through common U32/U13 low-pass filters and the AmpPwr1 drivers.
 
 The rebuilt component first reproduced the low-pass 438.1 MHz tone at **−52.8 dBm**, about 0.5 dB below the earlier reading. For high-pass checks, tinySA uses **5 dB internal attenuation**, LNA off and Ultra mode; the external pads remain 40 dB.
 
@@ -163,18 +163,34 @@ Actual LCD capture: fixed **5800.100 MHz** marker **−73.0 dBm**.
 ![tinySA LCD after the 5.8 GHz SDRB tone stopped](images/5800mhz-20db-off.png)
 After stopping: fixed marker **−94.5 dBm**. The higher harmonic-mode background remains visible. Table and LCD use adjacent sweeps; no fresh level calibration.
 
-## Coverage / next check
+## TX2B / U30 spot check
 
-| Filter | Current evidence through J10 |
-|---|---|
-| U19, TX1A low-pass | Tone at four selected frequencies, 438.1–1600.1 MHz |
-| U23, TX2A low-pass | 438.1 MHz tone demonstrated with tx-select.1 FPGA; absent with original FPGA |
-| U28, TX1B high-pass | Tone at 2000.1/2500.1 MHz with 40 dB pads and 3500.1/5800.1 MHz with 20 dB |
-| U30, TX2B high-pass | Not tested |
-| U32/U13, common low-pass | Included in the responding paths; individual response and stopband unqualified |
+Same J10 → DC block → **20 dB / 2 W pad** → tinySA setup, tx-select.1 FPGA and temporary r9 high-pass override. Select **UHD channel 0 / TX2B**, LO 2500 MHz, +100 kHz tone; gain 70 dB, amplitude 0.1, 2.304 MS/s, **12 seconds**. Analyzer: 5 dB internal attenuation, Ultra on, LNA off, 3 kHz RBW, LO ±200 kHz scan.
 
-Next: one bounded TX2B / U30 check at 2500.1 MHz with the existing 20 dB setup. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
+| Tone, measured after the 20 dB pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| 2500.100 MHz | −105.1 dBm | **−57.6 dBm** | −105.6 dBm |
 
-Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. LibreSDR transmission has stopped. After the 20 dB SDRB check, SDRB is powered and idle/unclaimed with zero failed services; the J10 measurement chain retains the single 20 dB pad. No image build for Ray is planned.
+**TX2B is detected**, with about 48 dB off/on contrast and no reported stream or cleanup errors. Channel/bank metadata read back and SHA256 verified; original software restored and diagnostic RAM removed.
+
+![tinySA LCD with the TX2B 2500.1 MHz tone](images/2500mhz-tx2b-20db-on.png)
+Actual LCD capture: fixed **2500.100 MHz** marker **−57.6 dBm**; the LO peak is also visible.
+
+![tinySA LCD after the TX2B tone stopped](images/2500mhz-tx2b-20db-off.png)
+After stopping: fixed marker **−106.6 dBm**. Numerical peaks and LCD readings use adjacent sweeps.
+
+## Coverage and limits
+
+| Filter | Recorded tone evidence through J10 | Configuration |
+|---|---|---|
+| U19, TX1A low-pass | Four points, 438.1–1600.1 MHz | Original dev.3 FPGA + `0c8e7f7` Path B override |
+| U23, TX2A low-pass | 438.1 MHz; absent with original FPGA | tx-select.1 + `0c8e7f7` override |
+| U28, TX1B high-pass | 2000.1/2500.1 MHz with 40 dB pads; 3500.1/5800.1 MHz with 20 dB | r9; original FPGA at lower points, tx-select.1 at upper points |
+| U30, TX2B high-pass | 2500.1 MHz with 20 dB pad | tx-select.1 + r9 |
+| U32/U13, common low-pass | Included in responding paths; individual response and stopband unqualified | Builds/settings above |
+
+All four TX filter branches now have tone-detection evidence in the recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
+
+Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. LibreSDR transmission has stopped. After testing, SDRB is powered and idle/unclaimed with zero failed services; the J10 measurement chain retains the single 20 dB pad. No image build for Ray is planned.
 
 [Back to Lab Log](../../README.md)
