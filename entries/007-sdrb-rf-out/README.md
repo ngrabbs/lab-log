@@ -364,7 +364,7 @@ Actual LCD: **438.100 MHz, −58.7 dBm**.
 ![tinySA LCD after the trace.1 forwarding check](images/438mhz-trace1-forward-off.png)
 After stopping: **−103.7 dBm**. Numerical readings and LCD are separate sweeps; the after capture was recovered separately. All three actual LCD/PNG pairs pass hash verification.
 
-The flow and trace-stop commands finish successfully; tracing is verified off before saving the raw trace to SDRB's SD card. The host's 35-second deadline expires during post-stop export. The trace ring overwrites **34,872 earlier events**; detailed coverage analysis is incomplete. Subsequent repeated m75q USB-hub disconnects interrupt offline analysis and prevent a final console check. Last verified state is powered idle/unclaimed, zero failed services, tracing/events off. Further RF checks stop here; MR !6 remains draft. Instrumentation changes the timing environment, and the raw trace stays private.
+The flow and trace-stop commands finish successfully; tracing is off before saving the trace to SD. A host deadline during post-stop export and subsequent USB-hub disconnects interrupt initial analysis. Recovery later copies the complete **5,233,467-byte** compressed trace to the host with matching SHA-256. Retained events span the full flow on both CPUs; **34,872 initialization events** were overwritten. All **9,752 recorded Linux transmit completions** return success, which does not prove FPGA delivery. No underflow exists to correlate, and instrumentation changes timing. Recovery confirms all **24 file identities**; the final check finds SDRB powered idle/unclaimed, zero failed services, tracing/events off. No additional RF run; MR !6 remains draft. Raw evidence stays private.
 
 ## Coverage and limits
 
