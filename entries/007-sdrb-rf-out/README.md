@@ -179,11 +179,27 @@ Actual LCD capture: fixed **2500.100 MHz** marker **−57.6 dBm**; the LO peak i
 ![tinySA LCD after the TX2B tone stopped](images/2500mhz-tx2b-20db-off.png)
 After stopping: fixed marker **−106.6 dBm**. Numerical peaks and LCD readings use adjacent sweeps.
 
+## Integrated dev.4 check
+
+Cold-booted **0.1.0-dev.4**, source `ed4b273`, with the selector-corrected FPGA and installed native MPM r9; boot/application/library hashes match the verified image. Same J10 → DC block → **20 dB / 2 W** → tinySA path, 9 V / 0.7 A main + AmpPwr1, AmpPwr2 disconnected. Channel **1 / TX1A**, default TX-A filter, gain **70 dB**, amplitude **0.1**, 2.304 MS/s, **12 seconds**. A RAM-only copy of the flow adds `sdrb_tx_path=rf_out_b`; installed application and MPM files are unchanged. tinySA: 10 dB internal attenuation, Ultra/LNA off, 3 kHz RBW, 437.8–438.2 MHz, external correction zero; no fresh calibration.
+
+| Tone, after the 20 dB pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| 438.100 MHz | −104.1 dBm | **−33.1 dBm** | −101.1 dBm |
+
+Tone detected and returned to background; no reported stream or cleanup errors. Target metadata read back and SHA256 verified; diagnostic code removed and installed hashes rechecked. This closes the TX1A tone-detection check on the new FPGA/image at this setting; RF receive/forwarding acceptance remains pending.
+
+![tinySA LCD with the dev.4 TX1A tone](images/438mhz-dev4-tx1a-on.png)
+Actual LCD, fixed marker **438.100 MHz, −33.1 dBm**.
+
+![tinySA LCD after the dev.4 TX1A tone stopped](images/438mhz-dev4-tx1a-off.png)
+After stopping, fixed marker **−105.6 dBm**. Table values use the numerical peak within ±5 kHz; LCD captures use adjacent sweeps.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
 |---|---|---|
-| U19, TX1A low-pass | Four points, 438.1–1600.1 MHz | Original dev.3 FPGA + `0c8e7f7` Path B override |
+| U19, TX1A low-pass | Four original points, 438.1–1600.1 MHz; 438.1 MHz repeated on dev.4 | Original dev.3 FPGA + `0c8e7f7`; integrated dev.4 at 438.1 MHz |
 | U23, TX2A low-pass | 438.1 MHz; absent with original FPGA | tx-select.1 + `0c8e7f7` override |
 | U28, TX1B high-pass | 2000.1/2500.1 MHz with 40 dB pads; 3500.1/5800.1 MHz with 20 dB | r9; original FPGA at lower points, tx-select.1 at upper points |
 | U30, TX2B high-pass | 2500.1 MHz with 20 dB pad | tx-select.1 + r9 |
@@ -191,6 +207,6 @@ After stopping: fixed marker **−106.6 dBm**. Numerical peaks and LCD readings 
 
 All four TX filter branches now have tone-detection evidence in the recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. LibreSDR transmission has stopped. After testing, SDRB is powered and idle/unclaimed with zero failed services; the J10 measurement chain retains the single 20 dB pad. No image build for Ray is planned.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains integrated dev.4; the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
