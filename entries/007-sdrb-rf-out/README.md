@@ -227,13 +227,31 @@ Same setup and six-second forwarding settings as above. A RAM-only prototype sch
 
 The failed control's notifications arrived 0.173, 0.392, 0.396 and 2.399 seconds into the active phase. These are callback receipt times, not exact FPGA event times. No reported RX overflow or cleanup error. An initial timed observation is inconclusive: its reference source ended before the active capture; the timed run above used a fresh reference verified active through measurement.
 
-Both the timed prototype and the later untimed control were clean, so **timed start has not established an improvement**. Forwarding acceptance remains open. Next proposed check: one receive/save → forwarding sequence with page-fault and scheduling counters at phase boundaries.
+Both the timed prototype and the later untimed control were clean, so **timed start has not established an improvement**. Forwarding acceptance remains open. The next check below adds page-fault and context-switch counters at phase boundaries.
 
 ![tinySA LCD during the timed-start forwarding prototype](images/438mhz-dev4-timed-on.png)
 Actual LCD during the prototype: **438.100 MHz, −58.8 dBm**. Tone detection alone does not establish a fix.
 
 ![tinySA LCD after the timed-start forwarding prototype stopped](images/438mhz-dev4-timed-off.png)
 After stopping: **−109.3 dBm**. LCD and numerical results use adjacent sweeps. Both transmitters stopped; diagnostic code removed, all 22 installed/boot identities unchanged, SDRB idle/unclaimed with zero failed services.
+
+## Receive/save → forwarding follow-up
+
+Same powered dev.4 session and RF wiring. A RAM-only flow adds process/thread counters at phase boundaries; streaming/start/buffer settings are unchanged. LibreSDR stays off for a nominal 12-second background RX capture, then supplies the tone for one nominal six-second forwarding run.
+
+| Check | Result |
+|---|---|
+| RX and post-stop save | 223,152,800 bytes saved; SHA256 readback matches, timestamp coverage complete, no reported overflow/gap |
+| Forwarding, 438.100 MHz after 20 dB pad | Before **−102.25**, on **−58.75**, after **−101.75 dBm**; no reported RX/TX or cleanup errors |
+| Active forwarding counters | **24 minor / 0 major faults**, 44,710 voluntary / 966 involuntary context switches between snapshots |
+
+The earlier underflow **did not reproduce**. These counters cannot identify its cause: no failure to correlate, no per-thread run-queue timing exposed by this kernel, and each active-boundary snapshot itself took about **47 ms** (RX: 51–55 ms). Durations are wall-clock requests with snapshot/stop overhead, not exact sample-count acquisitions. No maintained code or image change; acceptance stays open.
+
+![tinySA LCD during forwarding after receive/save](images/438mhz-dev4-after-save-on.png)
+Actual LCD: **438.100 MHz, −58.8 dBm**.
+
+![tinySA LCD after forwarding stopped following receive/save](images/438mhz-dev4-after-save-off.png)
+After stopping: **−103.3 dBm**. Numerical peaks and LCD use adjacent sweeps. Metadata/screen hashes verified, diagnostic RAM code removed and all 22 installed/boot identities unchanged. Both transmitters stopped; SDRB idle/unclaimed, zero failed services.
 
 ## Coverage and limits
 
