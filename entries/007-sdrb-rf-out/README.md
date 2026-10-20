@@ -60,7 +60,7 @@ After a cold boot, same J10 wiring and gain **70 dB**, amplitude **0.1**, eight-
 | 1 / TX1A, U19 | 1300.1 MHz | −100.7 dBm | **−64.8 dBm** | −105.7 dBm |
 | 1 / TX1A, U19 | 1600.1 MHz | −102.4 dBm | **−82.9 dBm** | −103.5 dBm |
 
-TX1 shows a tone at each point; its indicated output falls above 900 MHz. These are uncalibrated source-to-analyzer measurements, not isolated filter insertion loss. **TX2's expected tone was not detected**; no further TX2 frequency checks were run. Its digital/analog path remains unresolved despite no reported stream errors.
+TX1 shows a tone at each point; its indicated output falls above 900 MHz. These are uncalibrated source-to-analyzer measurements, not isolated filter insertion loss. **TX2's expected tone was not detected**; no further TX2 frequency checks were run. No stream errors were reported. The later FPGA-selector check below addresses this missing tone.
 
 ![tinySA LCD with the TX1A 1600.1 MHz tone on](images/1600mhz-lowpass-on.png)
 Actual LCD capture, fixed marker **1600.100 MHz, −82.5 dBm**.
@@ -93,18 +93,36 @@ After stopping, fixed marker **−113.7 dBm**. Numerical peaks and fixed LCD mar
 
 The initial 2000/2500 MHz checks used 10 dB internal attenuation and displayed “REDUCED LINEARITY.” Those records are retained; the table uses the repeated checks at 5 dB. The matching [tinySA firmware warning condition](https://github.com/erikkaashoek/tinySA/blob/4eb315d/plot.c#L1891) depends on frequency and configured attenuation.
 
+## TX2 selector correction
+
+The FPGA used MPM's TX-channel-select bit as a codec reset, and the SISO mux selected by nonzero sample data. Corrected RTL separates reset from selection and synchronizes the selector; the old faults reproduce and the corrected regression passes.
+
+Cold-booted **dev.3 + tx-select.1**, FPGA source `a1092059e0d566ae4efb54d0f6bca967df994e57`. Only BOOT.BIN changed, SHA256 `12258ce5e2d2df23681fd751782d198a3baa118cf2e57828bc3568713f9cadde`; Linux/rootfs unchanged, rollback backed up. Boot and software identities verified. Same J10 setup, RAM-only `0c8e7f7` Path B override, **channel 0 / TX2A**, gain 70 dB, amplitude 0.1, 2.304 MS/s, eight seconds. tinySA: 10 dB internal attenuation, Ultra/LNA off, 3 kHz RBW.
+
+| Tone | Before | Tone on | After |
+|---|---:|---:|---:|
+| 438.100 MHz | −107.2 dBm | **−49.7 dBm** | −102.7 dBm |
+
+The previously missing TX2 tone is now clearly detected through **U23 and J10**. No reported stream or cleanup errors; target metadata read back and SHA256 verified. This establishes one TX2A spot check, without qualifying its full filter response or the separate upper-band issue.
+
+![tinySA LCD with the corrected TX2A 438.1 MHz tone on](images/438mhz-tx2-selector-on.png)
+Actual LCD capture: fixed marker **438.100 MHz, −49.7 dBm**.
+
+![tinySA LCD after the corrected TX2A tone stopped](images/438mhz-tx2-selector-off.png)
+After stopping: **−103.7 dBm** at the fixed marker. Table values use the numerical peak within ±5 kHz; LCD captures use adjacent completed sweeps.
+
 ## Coverage / next check
 
 | Filter | Current evidence through J10 |
 |---|---|
 | U19, TX1A low-pass | Tone at four selected frequencies, 438.1–1600.1 MHz |
-| U23, TX2A low-pass | Attempted at 438.1 MHz; expected tone absent |
+| U23, TX2A low-pass | 438.1 MHz tone demonstrated with tx-select.1 FPGA; absent with original FPGA |
 | U28, TX1B high-pass | Tone at 2000.1/2500.1 MHz; absent at 3500.1/5800.1 MHz |
-| U30, TX2B high-pass | Not tested; TX2 baseline unresolved |
+| U30, TX2B high-pass | Not tested |
 | U32/U13, common low-pass | Included in the responding paths; individual response and stopband unqualified |
 
-Next: resolve TX2 selection and the missing upper-band tone before extending filter tests. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
+Next: investigate the missing TX1B upper-band tone before extending filter tests. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. SDRB is powered and idle, MPM active, no claim or failed service. No image build for Ray is planned.
+Original dev.3 Python and native libraries restored and hash-verified after testing; diagnostic RAM files removed. The test card retains the tx-select.1 FPGA overlay; the published dev.3 image is unchanged. SDRB is powered and idle, MPM active, no claim or failed service. No image build for Ray is planned.
 
 [Back to Lab Log](../../README.md)
