@@ -92,4 +92,21 @@ After stopping: fixed marker **−112.7 dBm**.
 
 This confirms a clear reference at the proposed in-passband frequency, at the end of the source lead. SDRB reception is still untested at 2.36 GHz; no calibrated source-power or receiver-gain claim. No additional RF run. Next coordinate the return to J1 for one short RX capture.
 
+## 5.75 GHz reference — October 21
+
+Before the proposed SDRB high-band J1 check: **LibreSDR TXRA → same DC block → 10 dB / 2 W → tinySA RF INPUT**. J10 analyzer lead removed; SDRB cleanly halted, then operator-confirmed off with power/backfeeds removed.
+
+One **14-second** tone, LO **5.75 GHz** +100 kHz, gain **40 dB**, amplitude **0.1**, **2 MS/s**; same UHD 4.6.0.0 and verified custom B210 FPGA. tinySA: **5 dB internal attenuation**, Ultra on, LNA off, **3 kHz RBW**, correction **0 dB**, **5749.8–5750.2 MHz / 201 points**. No fresh calibration.
+
+| After the external 10 dB pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| Strongest bin within ±25 kHz of nominal 5750.1 MHz | −87.38 dBm | **−66.88 dBm at 5750.090 MHz** | −85.88 dBm |
+
+**19.0 dB** minimum off/on contrast; frequency is 10 kHz below the nominal tone. No reported source RX/TX errors, timestamp gaps or stop errors. The finite source stopped normally after **14.009 seconds**; all three actual raw/PNG pairs verify.
+
+![Actual tinySA LCD during the 5.75 GHz reference](images/5750mhz-reference-active.png)
+The fixed **5750.100 MHz** LCD marker reads **−87.9 dBm**, off the visible peak near 5750.090 MHz; the table follows the numerical peak from a separate sweep. Actual [before LCD](images/5750mhz-reference-before.png) and [after LCD](images/5750mhz-reference-after.png) markers read **−86.4 / −84.4 dBm**.
+
+This establishes a detectable reference at the end of the proposed J1 input lead. It does not calibrate source power, receiver gain or filter loss. **No 5.75 GHz SDRB receive check yet.** SDRB stays off; next coordinate the cable return and captured boot for one finite RX check.
+
 [Back to Lab Log](../../README.md)

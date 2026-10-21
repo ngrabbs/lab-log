@@ -661,6 +661,10 @@ RAM helpers/waveform removed; saved metadata and waveform hashes verify. One **c
 
 Together with the preceding rc.3 RX/interrupted-save results, this completes the agreed bounded checks for the recorded RX1/J1 and TX1A/J10 profiles. **No rc.3 TX2/high-pass, SD-backed playback, forwarding, full filter response, calibrated power, other rates or endurance acceptance.** Initial flush warning and forwarding issue #2 remain open; original failures and rollback images are preserved. No new Ray package.
 
+## High-band reference preparation — October 21
+
+On unchanged rc.3, all **23 identities** and idle/unclaimed state pass; SDRB is cleanly halted before the operator removes power/backfeeds and moves the source lead. The isolated [5.75 GHz reference check](../004-libresdr-tx-power/README.md#575-ghz-reference--october-21) passes: **5750.090 MHz, −66.88 dBm after the same DC block/10 dB pad**, **19.0 dB** contrast, healthy finite source and three verified actual LCD/raw pairs. **No high-band SDRB RX result yet**; one eight-second J1/RX1 gain-40 check remains pending coordinated cable return and captured boot. Full filter response and calibrated gain remain unqualified.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -673,6 +677,6 @@ Together with the preceding rc.3 RX/interrupted-save results, this completes the
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now runs verified dev.4-rc.3; captured cold boot and the two bounded RX checks pass, with SDRB powered on and idle. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card contains verified dev.4-rc.3; its preceding bounded checks pass. SDRB is currently off after clean halt for the high-band reference/cable transition. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
