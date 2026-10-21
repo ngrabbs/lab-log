@@ -593,6 +593,19 @@ Post-stop analysis of the actual saved IQ; uncalibrated digital levels. Original
 
 Off-board follow-up: the file sink and timestamp monitor consume separate source branches, so shutdown can leave a saved prefix longer than the monitored prefix. A controlled monitor delay reproduces that validation failure with synthetic samples on the real ARM GNU Radio runtime. A private inline-monitor prototype passes **31 existing ARM regressions and five synthetic cases**, preserving nonconstant IQ bytes and rejecting real timestamp gaps and missing tags. It also covers a file sink stopped at a shorter prefix. This demonstrates the topology defect, without proving the exact bench scheduling sequence. **No installed change, RF repeat or capture-pass claim.** The maintained correction is now **0.1.0-dev.4-rc.2 / examples r10**, source `d969d407`, in [draft SDRB MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9). All **37 real-ARM regressions** pass, including six synthetic flow cases. The pinned rc.2 image now passes the full off-board build, **37 installed-image ARM tests**, runtime/content/filesystem checks and complete **4,563,406,848-byte disk-image readback**. The complete live rc.1 partition range is now backed up with verified decompression/SHA, preserving all **40 home files** and original failures. The rc.2 test card passes full **4,563,406,848-byte write/direct readback** and is safely ejected. Captured boot, throughput and exact-image RX acceptance remain pending; no new RF run.
 
+## Rc.2 affected-path check — October 21
+
+Same J1/J10 wiring and 9 V / 0.7 A power setup above. Cold boot of **dev.4-rc.2**, source `d969d407`, passes all **22 image identities**, unchanged nontracing kernel configuration, zero failed services and idle/unclaimed MPM. The first identity helper retained an old rc.1 kernel-name expectation; correcting it to the rc.2 manifest passes without changing the board.
+
+One **eight-second J1 RX1/channel 1** check at **2.36 GHz**, gain **40**, **2.304 MS/s / 8000-byte frames**, same LibreSDR zero/tone/zero reference. SDRB TX off. **Failed:** native exit 2 reports **19 RX overflows** and **5,155,504 missing samples inferred from timestamp gaps**. Timestamp coverage is complete; this does not establish continuity. No decode or cleanup error reported. The reference reports no stream errors.
+
+The retained **102,992,120-byte / 12,874,015-sample** IQ file passes full SHA-256 readback: `1cd61037885b63e964674366370e527120294496f44b07a920e3980cad39850d`. Original failed metadata and separate post-stop analysis are preserved. Sample-index time is compressed by the gaps, so no host-gate contrast acceptance is assigned.
+
+![Actual tinySA LCD during the failed rc.2 receive check](images/rc2-rx2360-j10-context.png)
+Actual J10 context screen: **438.100 MHz, −107.2 dBm**, with SDRB TX off. This is not the 2.36 GHz RX input measurement; raw/PNG hashes verify.
+
+**No repeat, interrupted-capture test or high-band test.** RAM helpers removed; all 22 final identities match, zero failed services, radio idle/unclaimed and both transmitters stopped. SDRB remains powered on. Rc.2 fails affected-path acceptance; [MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) stays draft. Next: review observer overhead and scheduling off-board before proposing another candidate. The overflow cause and forwarding underflows remain unresolved.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -605,6 +618,6 @@ Off-board follow-up: the file sink and timestamp monitor consume separate source
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains the verified dev.4-rc.2 candidate, awaiting boot/RX acceptance; the live rc.1 and preceding trace.4 images and bench data are backed up, and the published dev.3 image and original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains the verified dev.4-rc.2 candidate, with captured boot passing but RX acceptance failed on overflows; the live rc.1 and preceding trace.4 images and bench data are backed up, and the published dev.3 image and original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
