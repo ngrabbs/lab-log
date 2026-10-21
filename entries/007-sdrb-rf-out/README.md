@@ -686,6 +686,22 @@ The native capture itself completes **8.001 seconds**, with **18,433,060 saved/o
 
 **Stopped: no repeat or gain change.** Review the source/receiver level and measurement criterion off-board before proposing another RF check. This failed high-band criterion does not alter the preceding bounded rc.3 results or resolve forwarding issue #2.
 
+### Off-board gain and criterion review — October 21
+
+Existing data only; **no RF rerun, gain change or revised acceptance result**.
+
+| Measurement | 2.36 GHz | 5.75 GHz |
+|---|---:|---:|
+| Reference indicated after 10 dB | −56.66 dBm | −66.88 dBm |
+| Full-band median RMS rise | 13.52 dB | **0.61 dB** |
+| Seven-bin tone-region rise¹ | 40.47 dB | **18.21 dB** |
+
+¹ Three stored 4096-sample Hann FFTs at 1.0 / 3.5 / 6.5 seconds. About **3.94 kHz** around the active peak, selected after capture; descriptive snapshots, not full-duration narrowband qualification.
+
+The >10 dB total-power gate requires a tone about **nine times the full-band baseline**. The observed 0.61 dB rise corresponds to about **0.15 times** baseline under a stationary additive-baseline assumption. Baseline includes noise/spurs; a narrow tone can be visible while this gate fails.
+
+The [pinned RFIC code](https://github.com/EttusResearch/uhd/blob/308126a479ca19dfaebfe4784b375e608788d763/host/lib/usrp/common/ad9361_driver/ad9361_device.cpp) treats RX setting **40 as a gain-table index**; [frequency-dependent entries](https://github.com/EttusResearch/uhd/blob/308126a479ca19dfaebfe4784b375e608788d763/host/lib/usrp/common/ad9361_driver/ad9361_gain_tables.h) differ. It is not calibrated total RF gain. Static route/gain-write policy agrees; analog gain and filter loss remain unmeasured. **Original failure retained.** Define a prospective narrowband detection criterion separately from analog-performance requirements before further RF; extra gain may raise baseline with the tone.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
