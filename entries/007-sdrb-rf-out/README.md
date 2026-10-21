@@ -366,7 +366,7 @@ Actual LCD: **438.100 MHz, −58.7 dBm**.
 ![tinySA LCD after the trace.1 forwarding check](images/438mhz-trace1-forward-off.png)
 After stopping: **−103.7 dBm**. Numerical readings and LCD are separate sweeps; the after capture was recovered separately. All three actual LCD/PNG pairs pass hash verification.
 
-The flow and trace-stop commands finish successfully; tracing is off before saving the trace to SD. A host deadline during post-stop export and subsequent USB-hub disconnects interrupt initial analysis. Recovery later copies the complete **5,233,467-byte** compressed trace to the host with matching SHA-256. Retained events span the full flow on both CPUs; **34,872 initialization events** were overwritten. All **9,752 recorded Linux transmit completions** return success, which does not prove FPGA delivery. No underflow exists to correlate, and instrumentation changes timing. Recovery confirms all **24 file identities**; the final check finds SDRB powered idle/unclaimed, zero failed services, tracing/events off. No additional RF run; MR !6 remains draft. Raw evidence stays private.
+The flow and trace-stop commands finish successfully; tracing is off before saving the trace to SD. A host deadline during post-stop export and subsequent USB-hub disconnects interrupt initial analysis. Recovery later copies the complete **5,233,467-byte** compressed trace to the host with matching SHA-256. Retained events span the full flow on both CPUs; **34,872 initialization events** were overwritten. All **9,752 recorded Linux TX driver returns** are zero. A zero driver return does not establish DMA completion or FPGA delivery. No underflow exists to correlate, and instrumentation changes timing. Recovery confirms all **24 file identities**; the final check finds SDRB powered idle/unclaimed, zero failed services, tracing/events off. No additional RF run; MR !6 remains draft. Raw evidence stays private.
 
 ## Trace.1 receive/save → forwarding
 
@@ -396,7 +396,7 @@ Private **0.1.0-dev.4-trace.2**, source `b6cfe3452849f5df7ca2d86928ff969c6cfb26f
 | Stream result | **Failed: one timestamped TX underflow**; no reported RX overflow, decode or cleanup error; reference healthy |
 | Shutdown accounting | Queued burst acknowledgement retained as `post_stop_drain`; drain completed |
 
-The underflow maps to **2.2 ms after flow-start return** (1.6 ms clock-read bracket; continuity assumed). The trace spans the run on both CPUs with zero overruns/drops; its 9,579 Linux TX completions return success, which does not prove FPGA delivery. This startup event does not explain the earlier mid-run failures or establish a fix. All 24 identities and final idle state pass; raw trace is checksum-verified on SD, summaries/screens archived privately. No repeat; acceptance remains open.
+The underflow maps to **2.2 ms after flow-start return** (1.6 ms clock-read bracket; continuity assumed). The trace spans the run on both CPUs with zero overruns/drops; its 9,579 Linux TX driver returns are zero. A zero driver return does not establish DMA completion or FPGA delivery. This startup event does not explain the earlier mid-run failures or establish a fix. All 24 identities and final idle state pass; the complete raw trace is now copied and checksum-verified on the host and locally; summaries/screens are archived privately. No repeat; acceptance remains open.
 
 ![tinySA LCD during the trace.2 forwarding failure](images/438mhz-trace2-forward-failure-on.png)
 Actual LCD: **438.100 MHz, −58.6 dBm**.
