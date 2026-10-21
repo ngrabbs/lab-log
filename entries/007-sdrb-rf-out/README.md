@@ -571,7 +571,25 @@ The off-board review found a planning error: **software route thresholds are not
 
 Channel 1 maps to physical RX1; gain 40 passes unchanged to its native gain-index register, with the 1.3–4 GHz gain table selected and gains reapplied after tuning. Saved gain readback is 40. No route/gain mismatch was identified in this static review; the readback does not calibrate total RF gain. Actual fitted parts, switch state and filter loss remain unmeasured.
 
-The **4.33 dB criterion failure is retained**. Out-of-passband attenuation is a plausible explanation, not a proven cause. No additional RF run or image change. Next proposed check: one finite **2.36 GHz reference measurement** in the current LibreSDR → DC block → 10 dB → tinySA setup, then coordinate a J1 receive check if the reference is healthy. Cancel 3.5 GHz; any later high-band check should use an in-passband frequency such as **5.75 GHz**, after confirming its reference level. The subsequent [2.36 GHz reference check](../004-libresdr-tx-power/README.md#236-ghz-reference--october-21) measures **−56.66 dBm after the 10 dB pad**, 49.5 dB above background, with clean stream health and actual screens. SDRB stayed off; its 2.36 GHz receive check remains pending.
+The **4.33 dB criterion failure is retained**. Out-of-passband attenuation is a plausible explanation, not a proven cause. No additional RF run or image change. Next proposed check: one finite **2.36 GHz reference measurement** in the current LibreSDR → DC block → 10 dB → tinySA setup, then coordinate a J1 receive check if the reference is healthy. Cancel 3.5 GHz; any later high-band check should use an in-passband frequency such as **5.75 GHz**, after confirming its reference level. The subsequent [2.36 GHz reference check](../004-libresdr-tx-power/README.md#236-ghz-reference--october-21) measures **−56.66 dBm after the 10 dB pad**, 49.5 dB above background, with clean stream health and actual screens. SDRB stayed off for that reference measurement; the subsequent receive check is recorded below.
+
+
+## J1 at 2.36 GHz — October 21
+
+Restored **LibreSDR TXRA → DC block → 10 dB / 2 W → J1/Antenna_in**, with **J10 → DC block → 20 dB / 2 W → tinySA**. Main + AmpPwr1 **9 V / 0.7 A**, AmpPwr2 disconnected. Captured cold boot; all 22 identities match unchanged **dev.4-rc.1**, source `71574766`. One **eight-second** native RX1/channel 1 capture, LO **2.36 GHz**, gain 40, 2.304 MS/s / 8000-byte frames; SDRB TX off. LibreSDR: same verified source profile, 2.36 GHz LO +100 kHz, gain 40, amplitude 0.1, 2 MS/s, zero → tone → zero at about 2.01 / 5.01 seconds after the host stream marker.
+
+| Saved-IQ measurement | Before | Tone on | After |
+|---|---:|---:|---:|
+| Median RMS, dBFS | **−65.19** | **−51.30** | **−65.17** |
+
+A tone near **LO +96.19 kHz**, with **13.87 dB** RMS contrast and peak sample magnitude **0.00461**, clears the planned contrast threshold without observed clipping. **The check still fails:** native metadata reports “RX timestamp monitoring did not cover the saved capture.” The file contains **18,435,056 samples**, but the monitor covers **18,433,060**: a **1,996-sample count difference**. No reported RX overflow, inferred timestamp gap/overlap, decode or cleanup error; those counters do not establish continuity of the uncovered samples.
+
+![Saved IQ from the failed-validation 2.36 GHz J1 check](images/rc1-rx2360-iq.png)
+Post-stop analysis of the actual saved IQ; uncalibrated digital levels. Original failed metadata is retained unchanged. The **147,480,448-byte** file passes full SHA-256 readback: `19a75f603baa699d7c0e6dfff76f4e81aaf1bec6f62f87343a3d958ef50c7b24`. This is evidence of tone reception, **not a qualified capture pass**.
+
+[Actual tinySA LCD during this check](images/rc1-rx2360-j10-context.png): **438.100 MHz, −106.7 dBm**, on J10 during RX only. Context only, not a 2.36 GHz input measurement; raw/PNG hashes verify. Source stream health is clean and its finite run stopped. RAM helpers removed; all 22 final identities match, MPM idle/unclaimed, zero failed services and both transmitters stopped. SDRB remains powered on, wiring unchanged.
+
+**No repeat or high-band test.** Next review timestamp-monitor/file-sink shutdown accounting off-board against this retained failure. Cause, full RX filter response and calibrated receiver gain remain unresolved.
 
 ## Coverage and limits
 
