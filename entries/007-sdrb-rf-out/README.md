@@ -610,7 +610,7 @@ Following an accidental operator reboot, all **22 rc.2 identities**, idle/unclai
 
 Off-board review identifies the live Python observer callback/copy as a plausible bottleneck, with cause unproven. **Rc.3 / examples r11 / native observer r1**, source `be5e96e`, keeps the inline byte copy and timestamp checks in native code, including protected tag snapshots if stopping fails. The reviewed full image passes **38 installed-image ARM regressions**, native loopback, six synthetic health cases, eleven driver cases, 171 matching modules, unchanged nontracing kernel settings, source/boot/rootfs/filesystem checks and complete **4,563,406,848-byte disk-image readback**. The earlier intermediate build is retained separately. [Draft MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) remains open pending exact-image hardware acceptance.
 
-**No new RF run or throughput-pass claim.** Rc.2's failed IQ, original metadata, post-stop analysis and evidence archive pass full hash verification again before clean halt; all filesystems are unmounted. SDRB is now halted, awaiting operator power removal/test-card transfer and a verified live backup before writing rc.3. The original rollback card stays untouched.
+**No new RF run or throughput-pass claim.** After clean halt, the complete live rc.2 partition range passes backup/decompression SHA verification, preserving all **nine home files** and five critical failure-evidence files. The 64 GB test card now contains rc.3 and passes complete **4,563,406,848-byte write/direct readback**, SHA-256 `670820dedfe0b7271af51c514926596cb8fd4db3ffbe86b99d9bdb8168858056`. It is safely ejected, with J12 capture armed for its return and cold boot. **Rc.3 boot/RX acceptance remains pending**; the original rollback card is untouched.
 
 ## Coverage and limits
 
@@ -624,6 +624,6 @@ Off-board review identifies the live Python observer callback/copy as a plausibl
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains the verified dev.4-rc.2 candidate, with captured boot passing but RX acceptance failed on overflows; the live rc.1 and preceding trace.4 images and bench data are backed up, and the published dev.3 image and original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains verified dev.4-rc.3, safely ejected for captured boot/RX acceptance. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
