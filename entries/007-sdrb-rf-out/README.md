@@ -1,7 +1,7 @@
 # 007 SDRB RF_Out check
 
 **Status:** In progress  
-**Started / updated:** 2026-10-20
+**Started:** 2026-10-20 · **Updated:** 2026-10-21
 
 Check the signal at **J10/RF_Out** using driver-only Path B, with the final PA off.
 
@@ -422,6 +422,24 @@ Actual LCD: **438.100 MHz, −58.2 dBm**.
 ![tinySA LCD after trace.3 forwarding stopped](images/438mhz-trace3-forward-off.png)
 After stopping: **−105.2 dBm**. Numerical readings and LCD use separate sweeps.
 
+## Trace.4 forwarding check — October 21
+
+Private **0.1.0-dev.4-trace.4**, source `e807109da5278cbe339bf125465e624ab98d1c5e`, adds the TX-ring capacity and stop/wake correction. Same J1/J10 wiring, 20 dB output pad, reference, rate, gains and trace hooks as trace.3. Power-up preceded console capture; all **24 running-image identities** match, but early boot output was not captured.
+
+| Six-second check | Result |
+|---|---|
+| Before/on/after, after the 20 dB pad | **−103.81 / −58.31 / −103.81 dBm** |
+| Stream result | Completed; no reported underflow, RX overflow, decode or cleanup error; reference healthy |
+| Shutdown accounting | One benign burst acknowledgement retained after stop; drain completed |
+
+The trace spans the run on both CPUs with zero overruns/drops; SD save and checksum analysis pass. Final 24 identities match, zero failed services, both transmitters stopped and tracing off. **One clean run does not establish a causal fix for the earlier intermittent failures; acceptance remains open.**
+
+![tinySA LCD during trace.4 forwarding](images/438mhz-trace4-forward-on.png)
+Actual LCD: **438.100 MHz, −58.3 dBm**.
+
+![tinySA LCD after trace.4 forwarding stopped](images/438mhz-trace4-forward-off.png)
+After stopping: **−108.3 dBm**. Numerical readings and LCD use separate sweeps.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -434,6 +452,6 @@ After stopping: **−105.2 dBm**. Numerical readings and LCD use separate sweeps
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.3; the preceding live trace.2 image and bench data are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.4; the preceding live trace.3 image and bench data are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
