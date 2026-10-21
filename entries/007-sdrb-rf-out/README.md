@@ -591,6 +591,8 @@ Post-stop analysis of the actual saved IQ; uncalibrated digital levels. Original
 
 **No repeat or high-band test.** Next review timestamp-monitor/file-sink shutdown accounting off-board against this retained failure. Cause, full RX filter response and calibrated receiver gain remain unresolved.
 
+Off-board follow-up: the file sink and timestamp monitor consume separate source branches, so shutdown can leave a saved prefix longer than the monitored prefix. A controlled monitor delay reproduces that validation failure with synthetic samples on the real ARM GNU Radio runtime. A private inline-monitor prototype passes **31 existing ARM regressions and five synthetic cases**, preserving nonconstant IQ bytes and rejecting real timestamp gaps and missing tags. It also covers a file sink stopped at a shorter prefix. This demonstrates the topology defect, without proving the exact bench scheduling sequence. **No installed change, RF repeat or capture-pass claim.** Next promote the correction and regressions as a separately versioned maintained change; throughput and hardware acceptance remain pending.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
