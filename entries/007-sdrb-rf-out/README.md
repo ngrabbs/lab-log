@@ -440,6 +440,18 @@ Actual LCD: **438.100 MHz, −58.3 dBm**.
 ![tinySA LCD after trace.4 forwarding stopped](images/438mhz-trace4-forward-off.png)
 After stopping: **−108.3 dBm**. Numerical readings and LCD use separate sweeps.
 
+## Trace.4 restart and capture checks — October 21
+
+Same image and wiring; LibreSDR stopped. One captured **software reboot** reaches U-Boot/Linux/login in about **26 seconds**; all 24 identities match afterward, zero failed services and tracing off. The original power-on transcript remains unavailable. Boot warning patterns also appear in trace.3.
+
+| Check | Result |
+|---|---|
+| Default / explicit master clock | **18.432 / 16.384 MHz**, readbacks within 1 Hz; 2.304 MS/s RX/TX rate readback passes; no sample streams |
+| 12-second background RX and post-stop SD save | **221,204,704 bytes**, SHA-256 readback matches; complete timestamp coverage, no reported stream/cleanup error |
+| RX interrupted about two seconds after start | **36,886,080 bytes** saved; SHA-256 readback matches, complete timestamp coverage and clean interrupted status |
+
+Final 24 identities and idle/unclaimed state pass. These are background transport/storage checks, with no new transmission or RF-reception claim. Acceptance remains open.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
