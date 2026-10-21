@@ -10,7 +10,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
-| 007 | [SDRB RF_Out check](entries/007-sdrb-rf-out/README.md) | Rc.3 cold boot, eight-second J1 receive and interrupted-save checks pass; wider acceptance remains open. In progress. |
+| 007 | [SDRB RF_Out check](entries/007-sdrb-rf-out/README.md) | Rc.3 bounded RX, clock, J10 tone/file playback and restart checks pass; forwarding remains experimental. In progress. |
 | 004 | [LibreSDR TX power check](entries/004-libresdr-tx-power/README.md) | 434.1 MHz gain check; 2.0/2.36 GHz references after 10 dB; actual tinySA screens. In progress. |
 | 003 | [EMBER transceiver bring-up](entries/003-ember-transceiver-bringup/README.md) | 11.5-minute UHF demo passed: 185/185 packets, live dashboards and controlled overflow mitigation tested. RF/RX qualification remains open. In progress. |
 | 002 | [Gathering daylight fire and no-fire images](entries/002-kline-daylight-burn/README.md) | Leaves and small branches burned in two daylight setups. Example images, exposure settings, and JPEG brightness measurements; preliminary analysis kept separately. In progress. |

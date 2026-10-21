@@ -634,7 +634,32 @@ One subsequent **interrupted background RX** check, reference stopped: SIGINT ab
 
 One RFNOC startup warning, “One or more blocks timed out during flush!”, occurred **before** the eight-second stream marker and is retained. No such warning appears in the interruption log. Final checks again match all **23 identities**, zero failed services and idle/unclaimed MPM. RAM helpers removed; SDRB stays powered on and both transmitters are stopped. Raw IQ remains private on SD; metadata archives and screen hashes verify.
 
-These two bounded checks pass the affected RX acceptance gates for rc.3. They do **not** prove the rc.2 overflow cause or resolve forwarding underflows. Earlier failures remain above; no new TX, full filter-response, calibrated gain/power, rate or endurance qualification. [MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) is ready for maintainer review; merge and broader acceptance remain separate.
+These two bounded checks pass the affected RX acceptance gates for rc.3. They do **not** prove the rc.2 overflow cause or resolve forwarding underflows. Earlier failures remain above; no new TX, full filter-response, calibrated gain/power, rate or endurance qualification. [MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) subsequently merged as `d13e497`; the merged tree matches the reviewed branch exactly. Broader acceptance remains separate.
+
+## Rc.3 clock, J10 playback and restart — October 21
+
+Same **dev.4-rc.3** image (`be5e96e`), conducted wiring and **9 V / 0.7 A main + AmpPwr1** setup above; AmpPwr2 disconnected. All **23 identities** match before the checks. LibreSDR stays stopped.
+
+**Clock readbacks pass:** default initialization **18,431,999.955 Hz**, explicit **16,383,999.993 Hz**; subsequent RX/TX/master rate readbacks **2,303,999.994 Hz**, within the existing 1 Hz tolerance. No sample streams during these control checks.
+
+Two **six-second TX1A/channel 1** checks through **J10 → DC block → 20 dB / 2 W → tinySA**, driver-only low-pass path. LO **438 MHz**, tone **+100 kHz**, gain **70**, amplitude/multiplier **0.1**, **2.304 MS/s / 8000-byte frames**. File playback loops a **589,824-byte cf32_le** waveform in RAM; waveform SHA verifies before/after. tinySA: **10 dB internal attenuation**, LNA off, RBW **3 kHz**, correction **0 dB**, 201 points from 437.8–438.2 MHz. No fresh calibration.
+
+| Numeric scan, dBm after external 20 dB pad | Before | Active | After |
+|---|---:|---:|---:|
+| Tone | -102.69 | **-32.69** | -102.19 |
+| RAM-backed file playback | -104.69 | **-31.69** | -102.19 |
+
+**Both pass:** completed duration, detected tone, zero reported stream/decode/cleanup errors; one benign post-stop burst acknowledgement each. Numeric scans and LCDs are separate sweeps: both active LCD markers show **−33.2 dBm**. These readings do not establish calibrated output power.
+
+![Actual tinySA LCD during rc.3 J10 tone](images/rc3-tx1a438-active.png)
+Tone: [before](images/rc3-tx1a438-before.png) · [after](images/rc3-tx1a438-after.png).
+
+![Actual tinySA LCD during rc.3 RAM-backed file playback](images/rc3-filetx438-active.png)
+File playback: [before](images/rc3-filetx438-before.png) · [after](images/rc3-filetx438-after.png). All six actual raw/PNG pairs match their hashes.
+
+RAM helpers/waveform removed; saved metadata and waveform hashes verify. One **captured software restart** reaches login in about **26 seconds**, including U-Boot and the expected kernel. A host-only stale-path error was corrected before console access; it did not reboot the board. After the actual restart, all **23 identities**, unchanged nontracing configuration, zero failed services and idle/unclaimed MPM pass. Clock/TX metadata survive reboot with matching full SHA readback; the archived SD evidence also verifies on host and locally. **SDRB remains powered on and idle; both transmitters stopped.**
+
+Together with the preceding rc.3 RX/interrupted-save results, this completes the agreed bounded checks for the recorded RX1/J1 and TX1A/J10 profiles. **No rc.3 TX2/high-pass, SD-backed playback, forwarding, full filter response, calibrated power, other rates or endurance acceptance.** Initial flush warning and forwarding issue #2 remain open; original failures and rollback images are preserved. No new Ray package.
 
 ## Coverage and limits
 
