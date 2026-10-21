@@ -523,6 +523,26 @@ Actual LCD: **438.100 MHz, −58.7 dBm**.
 ![tinySA LCD after the boundary-recording check](images/rc1-boundary-forward-off.png)
 After stopping: **−108.2 dBm**. LCD and numerical values use adjacent sweeps. All three actual LCD/PNG pairs and the post-stop SD archive/readback pass SHA-256 checks. RAM diagnostic removed, both transmitters stopped; all **22 rc.1 identities** match, powered idle/unclaimed, zero failed services. Raw records and diagnostic binaries remain private.
 
+## SD-backed file playback — October 21
+
+Same nontracing **dev.4-rc.1** image/source above; J10 → DC block → **20 dB / 2 W** → tinySA, main + AmpPwr1 9 V / 0.7 A, AmpPwr2 disconnected. LibreSDR stopped; no RX stream. Native **file-source → ×0.1 → TX1A**, gain **70 dB**, LO 438 MHz, 2.304 MS/s / 8000-byte frames, one **six-second** run. Installed main/accounting and gr-uhd unchanged; RAM adapter supplies the J10 argument only.
+
+Input: **147,456,000 bytes / 18,432,000 cf32_le samples**, eight seconds of unit-amplitude +100 kHz tone on the SD ext4 filesystem. Full SHA-256 matches before/after: `c40fe734366f148daec7200d2d9bcd10d538a8d8ec57e70c9a1870304e006a78`. File-specific cache eviction leaves **0/36,000 pages resident before launch**, versus **27,184 afterward**; normal buffered reads/readahead apply. An initial mount-alias preflight stopped before RF; corrected using block-device identity, with the failure retained.
+
+| 438.1 MHz, dBm after 20 dB pad | Before | Playback on | After |
+|---|---:|---:|---:|
+| Numerical peak within ±5 kHz | −104.22 | **−32.72** | −103.72 |
+
+Completed in **6.001 seconds**, no reported TX/decode/cleanup error; one benign post-stop acknowledgement. tinySA: 10 dB internal attenuation, 3 kHz RBW, 437.8–438.2 MHz, LNA/Ultra off, external correction zero; no fresh calibration.
+
+![tinySA LCD during SD-backed playback](images/rc1-sd-filetx-on.png)
+Actual LCD: **438.100 MHz, −33.2 dBm**.
+
+![tinySA LCD after SD-backed playback](images/rc1-sd-filetx-off.png)
+After stopping: **−106.2 dBm**. LCD and numerical values use adjacent sweeps. All three actual LCD/PNG pairs and metadata readback hashes verify. RAM helpers removed; all **22 rc.1 identities** match, both transmitters stopped, powered idle/unclaimed, zero failed services. Input/evidence retained privately on SD and metadata/screens on the host.
+
+This demonstrates **one short SD-backed file playback**, not sustained storage performance, arbitrary files/rates or endurance. It does not resolve the forwarding underflows; issue #2 remains open.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
