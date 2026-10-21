@@ -571,7 +571,7 @@ The off-board review found a planning error: **software route thresholds are not
 
 Channel 1 maps to physical RX1; gain 40 passes unchanged to its native gain-index register, with the 1.3–4 GHz gain table selected and gains reapplied after tuning. Saved gain readback is 40. No route/gain mismatch was identified in this static review; the readback does not calibrate total RF gain. Actual fitted parts, switch state and filter loss remain unmeasured.
 
-The **4.33 dB criterion failure is retained**. Out-of-passband attenuation is a plausible explanation, not a proven cause. No additional RF run or image change. Next proposed check: one finite **2.36 GHz reference measurement** in the current LibreSDR → DC block → 10 dB → tinySA setup, then coordinate a J1 receive check if the reference is healthy. Cancel 3.5 GHz; any later high-band check should use an in-passband frequency such as **5.75 GHz**, after confirming its reference level.
+The **4.33 dB criterion failure is retained**. Out-of-passband attenuation is a plausible explanation, not a proven cause. No additional RF run or image change. Next proposed check: one finite **2.36 GHz reference measurement** in the current LibreSDR → DC block → 10 dB → tinySA setup, then coordinate a J1 receive check if the reference is healthy. Cancel 3.5 GHz; any later high-band check should use an in-passband frequency such as **5.75 GHz**, after confirming its reference level. The subsequent [2.36 GHz reference check](../004-libresdr-tx-power/README.md#236-ghz-reference--october-21) measures **−56.66 dBm after the 10 dB pad**, 49.5 dB above background, with clean stream health and actual screens. SDRB stayed off; its 2.36 GHz receive check remains pending.
 
 ## Coverage and limits
 

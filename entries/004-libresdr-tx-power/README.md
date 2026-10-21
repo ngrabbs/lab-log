@@ -72,6 +72,24 @@ Actual LCD. The fixed **2000.100 MHz** marker reads **−64.9 dBm**, off the obs
 ![tinySA LCD after the 2 GHz reference stopped](images/2000mhz-reference-off.png)
 After stopping: fixed marker **−115.4 dBm**.
 
-A clear reference reaches the end of the lead previously connected to J1. This indicated level does not calibrate SDRB gain or identify a filter fault. The earlier **4.33 dB RX power-contrast result remains below its planned criterion**, and 3.5 GHz remains untested. Next review native mid-band routing/gain expectations before changing attenuation or repeating RF.
+A clear reference reaches the end of the lead previously connected to J1. This indicated level does not calibrate SDRB gain or identify a filter fault. The earlier **4.33 dB RX power-contrast result remains below its planned criterion**, and 3.5 GHz remains untested. The subsequent [frequency-plan review](../007-sdrb-rf-out/README.md#rx-frequency-plan-correction--october-21) found that 2.0 GHz was outside the selected filter passband; it proposed 2.36 GHz instead.
+
+## 2.36 GHz reference — October 21
+
+Same **TXRA → DC block → 10 dB / 2 W → tinySA** setup; SDRB off. One **14-second** run, changing only LO to **2.36 GHz**: +100 kHz tone, gain 40 dB, amplitude 0.1, 2 MS/s, same UHD/FPGA. tinySA retained 5 dB internal attenuation, Ultra on, LNA off, 3 kHz RBW and zero external correction; span **2359.8–2360.2 MHz**, 201 points. No fresh calibration.
+
+| After the external 10 dB pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| Strongest bin within ±25 kHz of nominal 2360.1 MHz | −106.66 dBm | **−56.66 dBm at 2360.096 MHz** | −106.16 dBm |
+
+**49.5 dB** minimum off/on contrast. No reported stream errors, timestamp gaps or stop errors; the finite source stopped normally. All three raw/PNG capture pairs verify.
+
+![tinySA LCD during the 2.36 GHz reference](images/2360mhz-reference-on.png)
+Actual LCD, adjacent sweep: the fixed **2360.100 MHz** marker reads **−71.8 dBm**, off the peak near 2360.096 MHz. The numerical table follows the peak.
+
+![tinySA LCD after the 2.36 GHz reference stopped](images/2360mhz-reference-off.png)
+After stopping: fixed marker **−112.7 dBm**.
+
+This confirms a clear reference at the proposed in-passband frequency, at the end of the source lead. SDRB reception is still untested at 2.36 GHz; no calibrated source-power or receiver-gain claim. No additional RF run. Next coordinate the return to J1 for one short RX capture.
 
 [Back to Lab Log](../../README.md)
