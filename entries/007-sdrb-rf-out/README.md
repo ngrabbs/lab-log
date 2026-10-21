@@ -663,7 +663,28 @@ Together with the preceding rc.3 RX/interrupted-save results, this completes the
 
 ## High-band reference preparation — October 21
 
-On unchanged rc.3, all **23 identities** and idle/unclaimed state pass; SDRB is cleanly halted before the operator removes power/backfeeds and moves the source lead. The isolated [5.75 GHz reference check](../004-libresdr-tx-power/README.md#575-ghz-reference--october-21) passes: **5750.090 MHz, −66.88 dBm after the same DC block/10 dB pad**, **19.0 dB** contrast, healthy finite source and three verified actual LCD/raw pairs. **No high-band SDRB RX result yet**; one eight-second J1/RX1 gain-40 check remains pending coordinated cable return and captured boot. Full filter response and calibrated gain remain unqualified.
+On unchanged rc.3, all **23 identities** and idle/unclaimed state pass; SDRB is cleanly halted before the operator removes power/backfeeds and moves the source lead. The isolated [5.75 GHz reference check](../004-libresdr-tx-power/README.md#575-ghz-reference--october-21) passes: **5750.090 MHz, −66.88 dBm after the same DC block/10 dB pad**, **19.0 dB** contrast, healthy finite source and three verified actual LCD/raw pairs. The subsequent eight-second J1/RX1 gain-40 result below detects a spectral peak but fails its planned contrast criterion. Full filter response and calibrated gain remain unqualified.
+
+## J1 high-band at 5.75 GHz — October 21
+
+Restored **LibreSDR TXRA → same DC block → 10 dB / 2 W → J1/Antenna_in** and **J10 → DC block → 20 dB / 2 W → tinySA**. Main + AmpPwr1 **9 V / 0.7 A**, AmpPwr2 disconnected. Captured cold boot and all **23 identities** match unchanged **dev.4-rc.3 / examples r11 / native observer r1**, source `be5e96e`.
+
+One **eight-second RX1/channel 1** capture, LO **5.75 GHz**, gain **40**, **2.304 MS/s / 8000-byte frames**; SDRB TX off. LibreSDR: the verified 5.75 GHz +100 kHz reference profile above, gain 40, amplitude 0.1, 2 MS/s; zero → tone → zero at about **2.02 / 5.02 seconds** after the host stream marker. The selected high/A route uses the documented BFCN-5750+ path; this is an in-band spot, not a filter-response sweep.
+
+| Saved-IQ measurement | Before | Tone on | After |
+|---|---:|---:|---:|
+| Median RMS, dBFS | **−66.96** | **−66.35** | **−67.07** |
+
+**Failed planned RF criterion:** **0.61 dB** integrated RMS rise, below **>10 dB**. A narrow spectral peak near **LO +90 kHz** appears during the active window; all eight guarded active windows peak there. This is evidence of tone reception, **not a qualified high-band capture pass**. Maximum sample magnitude **0.00263**, no clipping observed. Source level, receiver gain/noise and path losses are not calibrated; the result does not identify a filter fault.
+
+![Actual saved IQ from the failed-contrast 5.75 GHz J1 check](images/rc3-rx5750-iq.png)
+Post-stop analysis: 0.1-second RMS windows and 4096-sample Hann FFTs. Digital levels are uncalibrated; host gate timing does not establish exact RF edges. The original contrast failure remains unchanged.
+
+The native capture itself completes **8.001 seconds**, with **18,433,060 saved/observed samples**, complete timestamp coverage and **zero reported overflow, inferred gap/overlap, decode or cleanup errors**. The **147,464,480-byte** IQ file passes full SD SHA-256 readback: `a8056d5f57f9b6fea184f40e11c523a4ed82f31b526f46e25735b08634ac303f`. Reference stream health is clean and its finite process stops. No initial flush warning appears in this run; the earlier warning remains unresolved.
+
+[Actual tinySA LCD during RX](images/rc3-rx5750-j10-context.png): **438.100 MHz, −110.1 dBm** on J10 with SDRB TX off. Context only, **not the 5.75 GHz input measurement**. Raw/PNG hashes and the archived metadata verify. RAM helpers removed; final **23 identities**, zero failed services and idle/unclaimed MPM pass. **SDRB stays powered on, wiring unchanged; both transmitters stopped.** Raw IQ remains private on SD.
+
+**Stopped: no repeat or gain change.** Review the source/receiver level and measurement criterion off-board before proposing another RF check. This failed high-band criterion does not alter the preceding bounded rc.3 results or resolve forwarding issue #2.
 
 ## Coverage and limits
 
@@ -677,6 +698,6 @@ On unchanged rc.3, all **23 identities** and idle/unclaimed state pass; SDRB is 
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card contains verified dev.4-rc.3; its preceding bounded checks pass. SDRB is currently off after clean halt for the high-band reference/cable transition. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card contains verified dev.4-rc.3; its preceding bounded checks pass. After the single high-band check, SDRB is powered idle with both transmitters stopped; its contrast-criterion failure is retained. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)

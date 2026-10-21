@@ -107,6 +107,6 @@ One **14-second** tone, LO **5.75 GHz** +100 kHz, gain **40 dB**, amplitude **0.
 ![Actual tinySA LCD during the 5.75 GHz reference](images/5750mhz-reference-active.png)
 The fixed **5750.100 MHz** LCD marker reads **−87.9 dBm**, off the visible peak near 5750.090 MHz; the table follows the numerical peak from a separate sweep. Actual [before LCD](images/5750mhz-reference-before.png) and [after LCD](images/5750mhz-reference-after.png) markers read **−86.4 / −84.4 dBm**.
 
-This establishes a detectable reference at the end of the proposed J1 input lead. It does not calibrate source power, receiver gain or filter loss. **No 5.75 GHz SDRB receive check yet.** SDRB stays off; next coordinate the cable return and captured boot for one finite RX check.
+This establishes a detectable reference at the end of the proposed J1 input lead. It does not calibrate source power, receiver gain or filter loss. The subsequent [SDRB J1 check](../007-sdrb-rf-out/README.md#j1-high-band-at-575-ghz--october-21) detects a spectral peak but fails its planned integrated-power contrast criterion; source/receiver gain and path loss remain uncalibrated.
 
 [Back to Lab Log](../../README.md)
