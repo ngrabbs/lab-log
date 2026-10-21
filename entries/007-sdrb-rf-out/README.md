@@ -503,7 +503,7 @@ Actual LCD: **438.100 MHz, −32.7 dBm**.
 ![tinySA LCD during rc.1 forwarding](images/rc1-forward-on.png)
 Actual LCD: **438.100 MHz, −58.7 dBm**. Its adjacent sweep is separate from the numerical table.
 
-These bounded checks pass on the exact **nontracing rc.1** image. A single clean forwarding run does not establish a causal fix for the retained intermittent underflows. Final acceptance remains open; full filter response, calibrated power, SD-backed playback, final PA/doubler and endurance remain unqualified.
+**Accepted scope:** rc.1 is a limited developer baseline for the bounded checks above. **Forwarding remains experimental**, with unresolved intermittent TX underflows tracked in [SDRB issue #2](https://gitlab.amsat.org/engineering/golf/sdrb/-/work_items/2). A single clean run does not establish a fix. Full filter response, calibrated power, SD-backed playback, final PA/doubler and endurance remain unqualified. The rc.1 image/source are unchanged; publication and a new Ray package remain deferred.
 
 ## Coverage and limits
 
