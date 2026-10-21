@@ -722,18 +722,37 @@ Actual LCD: **438.100 MHz, −108.1 dBm**, SDRB TX off. **J10 context only; not 
 
 One capture only; no repeat, gain change or new image. Four RAM helper directories removed after hash verification; final **23 identities**, zero failed services and idle/unclaimed state pass. **SDRB stays powered on; both transmitters stopped.** The original full-band criterion failure remains unchanged. This adds a single high-band tone-detection spot, not calibrated sensitivity/gain/filter loss, full filter response or forwarding qualification.
 
+## Rc.3 TX2A through J10 — October 21
+
+**Setup:** J10/RF_Out → DC block → **20 dB / 2 W** → tinySA. Main + AmpPwr1 **9 V / 0.7 A**, AmpPwr2 disconnected; LibreSDR TX stopped. Unchanged **dev.4-rc.3**, source `be5e96e`; all **23 identities** match before and after. Native shared Path B, **TX2A/channel 0**, low-pass bank, LO 438 MHz +100 kHz, gain 70, amplitude 0.1, **2.304 MS/s / 8000-byte frames**, one six-second tone. tinySA: internal attenuation **10 dB**, RBW **3 kHz**, LNA/Ultra off, external correction **0 dB**, 437.8–438.2 MHz scan.
+
+| Indicated level after 20 dB pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| Numerical scan near 438.1 MHz, dBm | −103.09 | **−30.09** | −104.59 |
+| Actual LCD marker at 438.100 MHz, dBm | −106.6 | **−30.1** | −110.1 |
+
+**Pass:** 73.00 dB numerical contrast; **6.001 s** completed with no reported stream/decode/cleanup errors. One benign burst acknowledgement was drained after stop. The three actual LCD captures are separate sweeps immediately after the numerical scans; these are indicated levels, not calibrated output power.
+
+![Actual tinySA LCD before the rc.3 TX2A tone](images/rc3-tx2a438-before.png)
+
+![Actual tinySA LCD during the rc.3 TX2A tone](images/rc3-tx2a438-active.png)
+
+![Actual tinySA LCD after the rc.3 TX2A tone](images/rc3-tx2a438-after.png)
+
+Metadata readback, raw/PNG hashes and the evidence archive verify. RAM adapter/metadata removed; final **23 identities**, zero failed services and idle/unclaimed state pass. SDRB stays powered on, both transmitters stopped. **One run; no repeats.** This adds one rc.3 TX2A/J10 spot; TX-B, full filter response, calibrated power and forwarding remain outside this check.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
 |---|---|---|
 | U19, TX1A low-pass | Four original points, 438.1–1600.1 MHz; 438.1 MHz repeated on dev.4 | Original dev.3 FPGA + `0c8e7f7`; integrated dev.4 at 438.1 MHz |
-| U23, TX2A low-pass | 438.1 MHz; absent with original FPGA | tx-select.1 + `0c8e7f7` override; repeated on integrated dev.4 |
+| U23, TX2A low-pass | 438.1 MHz; absent with original FPGA | tx-select.1 + `0c8e7f7` override; repeated on integrated dev.4 and rc.3 |
 | U28, TX1B high-pass | 2000.1/2500.1 MHz with 40 dB pads; 3500.1/5800.1 MHz with 20 dB | r9; original FPGA at lower points, tx-select.1 at upper points; integrated dev.4 at 2500.1 MHz |
 | U30, TX2B high-pass | 2500.1 MHz with 20 dB pad | tx-select.1 + r9; repeated on integrated dev.4 |
 | U32/U13, common low-pass | Included in responding paths; individual response and stopband unqualified | Builds/settings above |
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card contains verified dev.4-rc.3; its preceding bounded checks pass. The later single criterion-v1 high-band capture passes its predeclared fixed-band tone gate; the earlier full-band contrast failure is retained. SDRB is powered idle with both transmitters stopped. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card contains verified dev.4-rc.3; its preceding bounded checks pass. The later TX2A/J10 spot and single criterion-v1 high-band capture pass their respective gates; the earlier full-band contrast failure is retained. SDRB is powered idle with both transmitters stopped. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
