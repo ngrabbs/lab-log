@@ -562,7 +562,16 @@ The **147,464,480-byte / 18,433,060-sample** capture passes full SD hash/readbac
 
 [Actual tinySA LCD during the RX check](images/rc1-rx2g-j10-context.png): analyzer remained on **J10 at 438.1 MHz**, so this is context only, **not the RX input-level measurement**. Its raw/PNG hashes verify.
 
-The subsequent [isolated LibreSDR reference check](../004-libresdr-tx-power/README.md#20-ghz-reference--october-21) detects **2000.096 MHz at −54.88 dBm after the same 10 dB pad**, about 53 dB above the analyzer background. Source stream health and all three actual screenshot pairs pass. This confirms a reference at the end of the former J1 lead, without establishing expected SDRB gain or a filter fault. SDRB stays powered off; native mid-band routing/gain review is next.
+The subsequent [isolated LibreSDR reference check](../004-libresdr-tx-power/README.md#20-ghz-reference--october-21) detects **2000.096 MHz at −54.88 dBm after the same 10 dB pad**, about 53 dB above the analyzer background. Source stream health and all three actual screenshot pairs pass. This confirms a reference at the end of the former J1 lead, without establishing expected SDRB gain or a filter fault. SDRB stays powered off. The off-board review below corrects the test-frequency choice.
+
+
+### RX frequency-plan correction — October 21
+
+The off-board review found a planning error: **software route thresholds are not filter passbands**. The pinned native code agrees with the [maintained board mapping](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/71574766d0983f17ed80f9b77058420476d3e81e/docs/uhd/UHD-MPM-INTEGRATION.md#analog-port-mapping-for-the-native-ad9361-client): 2.0 GHz selects GPIO state 1 and balanced AD9361 input B, through U6/U7, BFCN-2360+. That part is specified for **2.25–2.47 GHz**, so this check was outside its passband. The proposed 3.5 GHz check would also be outside the selected BFCN-5750+ path's **5.65–5.85 GHz** passband. [Mini-Circuits mid-band specification](https://www.minicircuits.com/WebStore/dashboard.html?model=BFCN-2360%2B) · [Filter specifications](https://www.minicircuits.com/WebStore/RF-Filters.html?filterTypeNum=1&interface=SMT&technology=LTCC).
+
+Channel 1 maps to physical RX1; gain 40 passes unchanged to its native gain-index register, with the 1.3–4 GHz gain table selected and gains reapplied after tuning. Saved gain readback is 40. No route/gain mismatch was identified in this static review; the readback does not calibrate total RF gain. Actual fitted parts, switch state and filter loss remain unmeasured.
+
+The **4.33 dB criterion failure is retained**. Out-of-passband attenuation is a plausible explanation, not a proven cause. No additional RF run or image change. Next proposed check: one finite **2.36 GHz reference measurement** in the current LibreSDR → DC block → 10 dB → tinySA setup, then coordinate a J1 receive check if the reference is healthy. Cancel 3.5 GHz; any later high-band check should use an in-passband frequency such as **5.75 GHz**, after confirming its reference level.
 
 ## Coverage and limits
 
