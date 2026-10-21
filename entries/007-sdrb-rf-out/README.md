@@ -543,6 +543,25 @@ After stopping: **−106.2 dBm**. LCD and numerical values use adjacent sweeps. 
 
 This demonstrates **one short SD-backed file playback**, not sustained storage performance, arbitrary files/rates or endurance. It does not resolve the forwarding underflows; issue #2 remains open.
 
+## J1 mid-band RX check — October 21
+
+Unchanged **dev.4-rc.1**, image source `71574766`, native internal RX1/channel 1. Same **LibreSDR TXRA → DC block → 10 dB / 2 W → J1/Antenna_in** wiring. Main + AmpPwr1 9 V / 0.7 A; AmpPwr2 disconnected. One **eight-second** RX capture at **2.0 GHz**, gain **40 dB**, 2.304 MS/s / 8000-byte frames; SDRB TX off. Native policy selects the mid-band route at this frequency; this is not an isolated-filter measurement.
+
+LibreSDR: 2.0 GHz LO +100 kHz, gain 40 dB, amplitude 0.1, 2 MS/s. Zero samples → tone → zero samples, host controls at about **2.01 / 5.01 seconds** after the stream marker. The reference TX chain stays enabled; “off” means the tone samples are zero, with possible LO leakage.
+
+| Saved-IQ measurement | Before | Tone on | After |
+|---|---:|---:|---:|
+| Median RMS, dBFS | **−66.13** | **−61.79** | **−66.12** |
+
+A tone is visible at **LO +96.19 kHz**, but the **4.33 dB** integrated-power rise fails the planned **>10 dB** contrast criterion. **Stopped: 3.5 GHz was not run; no repeat.** This does not identify a filter fault: the source/input RF level is unmeasured. Next check that reference level before further SDRB RF.
+
+![Saved IQ from the 2 GHz J1 receive check](images/rc1-rx2g-iq.png)
+Actual saved-IQ analysis: 0.1-second RMS windows and 4096-sample Hann FFTs. Host gate timing is not exact RF-edge timing. Digital levels and frequency are uncalibrated.
+
+The **147,464,480-byte / 18,433,060-sample** capture passes full SD hash/readback and complete timestamp coverage, with no reported RX/decode/cleanup error; reference stream health is clean. Peak sample magnitude **0.00244**, no clipping observed. All 22 rc.1 identities match afterward; RAM helpers removed and both transmitters stopped. Raw IQ stays private on SD; verified metadata/analysis are archived on the host. SDRB was then cleanly halted, with all filesystems unmounted, for the proposed reference-level cable move.
+
+[Actual tinySA LCD during the RX check](images/rc1-rx2g-j10-context.png): analyzer remained on **J10 at 438.1 MHz**, so this is context only, **not the RX input-level measurement**. Its raw/PNG hashes verify.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
