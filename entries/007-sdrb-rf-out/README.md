@@ -452,6 +452,30 @@ Same image and wiring; LibreSDR stopped. One captured **software reboot** reache
 
 Final 24 identities and idle/unclaimed state pass. These are background transport/storage checks, with no new transmission or RF-reception claim. Acceptance remains open.
 
+## Trace.4 TX tone, file and branch checks — October 21
+
+Same trace.4 image (`e807109`), J10 → DC block → **20 dB / 2 W** pad → tinySA, 9 V / 0.7 A main + AmpPwr1, AmpPwr2 disconnected. LibreSDR stopped. Five **six-second** transmissions: 2.304 MS/s, 8000-byte frames, gain **70 dB**, multiplier **0.1**, +100 kHz tone. RAM adapters change only the native J10/filter device argument; installed main/error accounting is unchanged, tracing off.
+
+File playback repeats **73,728 cf32_le samples / 589,824 bytes** from RAM (unit-amplitude +100 kHz waveform before the 0.1 multiplier). tinySA: 3 kHz RBW, LO ±200 kHz / 201 points, LNA off, external correction zero. Low-pass: 10 dB internal attenuation, Ultra off; high-pass: 5 dB, Ultra on. No fresh calibration.
+
+| Check | Tone MHz | Before | On | After | Actual LCD |
+|---|---:|---:|---:|---:|---|
+| TX1A tone | 438.1 | -103.81 | **-32.81** | -104.31 | [on](images/trace4-tx1a438-on.png) / [off](images/trace4-tx1a438-off.png) |
+| TX1A RAM-file playback | 438.1 | -103.81 | **-32.81** | -104.81 | [on](images/trace4-filetx438-on.png) / [off](images/trace4-filetx438-off.png) |
+| TX2A tone | 438.1 | -101.31 | **-29.81** | -105.81 | [on](images/trace4-tx2a438-on.png) / [off](images/trace4-tx2a438-off.png) |
+| TX1B tone | 2500.1 | -108.72 | **-54.22** | -106.22 | [on](images/trace4-tx1b2500-on.png) / [off](images/trace4-tx1b2500-off.png) |
+| TX2B tone | 2500.1 | -108.22 | **-57.22** | -107.22 | [on](images/trace4-tx2b2500-on.png) / [off](images/trace4-tx2b2500-off.png) |
+
+Levels are **dBm after the 20 dB pad**. All five complete without reported TX, decode or cleanup errors; each retains one benign burst acknowledgement after stop. All fifteen actual LCD/PNG pairs and target metadata hashes verify; waveform SHA-256 is unchanged. Final 24 identities match, zero failed services, MPM idle/unclaimed and tracing off. RAM adapters/input removed; raw evidence remains private.
+
+![tinySA LCD during trace.4 RAM-file playback](images/trace4-filetx438-on.png)
+Actual LCD: **438.100 MHz, −32.8 dBm**.
+
+![tinySA LCD during trace.4 TX2B tone](images/trace4-tx2b2500-on.png)
+Actual LCD: **2500.100 MHz, −56.7 dBm**. Numerical scans and LCD use separate sweeps.
+
+These add tone-detection evidence for all four branches and RAM-file playback on **trace.4**. They do not establish full filter response, calibrated power, SD-backed playback or a causal fix for the earlier forwarding underflows; acceptance remains open.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
