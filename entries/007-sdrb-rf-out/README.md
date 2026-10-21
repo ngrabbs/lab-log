@@ -476,6 +476,35 @@ Actual LCD: **2500.100 MHz, −56.7 dBm**. Numerical scans and LCD use separate 
 
 These add tone-detection evidence for all four branches and RAM-file playback on **trace.4**. They do not establish full filter response, calibrated power, SD-backed playback or a causal fix for the earlier forwarding underflows; acceptance remains open.
 
+## Nontracing rc.1 checks — October 21
+
+**0.1.0-dev.4-rc.1**, source `71574766d0983f17ed80f9b77058420476d3e81e`, uses the maintained fixes with the original nontracing kernel settings and no diagnostic startup guard. Full card write/readback and a captured cold boot pass; all **22 installed/boot identities** match.
+
+Same conducted wiring: LibreSDR TXRA → DC block → **10 dB / 2 W** → J1/Antenna_in; J10/RF_Out → DC block → **20 dB / 2 W** → tinySA. Main + AmpPwr1 at 9 V / 0.7 A; AmpPwr2 disconnected. Same six-second tone/file settings and tinySA setup as the trace.4 TX section. RAM adapters change only the native J10/filter device argument; no trace hooks or streaming-policy changes.
+
+Default/explicit master-clock readbacks (**18.432 / 16.384 MHz**) are within 1 Hz; RX/TX rate readbacks pass. With LibreSDR stopped, the 12-second background RX saves **221,188,736 bytes**; interruption at about two seconds saves **36,886,080 bytes**. Both SD SHA-256 readbacks and full captured-range timestamp coverage pass, without reported stream or cleanup errors. This is background capture/save evidence; reference-tone reception is demonstrated separately by forwarding below.
+
+| Six-second check | Tone MHz | Before | On | After | Actual LCD |
+|---|---:|---:|---:|---:|---|
+| TX1A tone | 438.1 | -103.72 | **-32.72** | -105.22 | [on](images/rc1-tx1a438-on.png) / [off](images/rc1-tx1a438-off.png) |
+| TX1A RAM-file playback | 438.1 | -104.72 | **-32.72** | -102.72 | [on](images/rc1-filetx438-on.png) / [off](images/rc1-filetx438-off.png) |
+| TX2A tone | 438.1 | -105.22 | **-30.22** | -103.72 | [on](images/rc1-tx2a438-on.png) / [off](images/rc1-tx2a438-off.png) |
+| TX1B tone | 2500.1 | -108.12 | **-55.12** | -106.12 | [on](images/rc1-tx1b2500-on.png) / [off](images/rc1-tx1b2500-off.png) |
+| TX2B tone | 2500.1 | -104.62 | **-57.16** | -106.66 | [on](images/rc1-tx2b2500-on.png) / [off](images/rc1-tx2b2500-off.png) |
+| J1 → J10 forwarding | 438.1 | -103.22 | **-58.72** | -105.25 | [on](images/rc1-forward-on.png) / [off](images/rc1-forward-off.png) |
+
+Levels are **dBm after the 20 dB pad**, numerical peaks within ±5 kHz. All six RF checks complete without reported underflow, RX overflow, decode or cleanup error; each retains one benign post-stop burst acknowledgement. Forwarding uses **434.1 → 438.1 MHz**, RX/TX gain **40/60 dB**, unity multiplier, 2.304 MS/s and 8000-byte frames; LibreSDR gain 40 dB, amplitude 0.1 and 2 MS/s. The finite reference reports no stream errors or timestamp gaps.
+
+All **18 actual LCD/PNG pairs**, six target metadata records and the unchanged RAM waveform hash verify. RAM code/input removed; raw evidence stays private. A captured software reboot reaches login; the immediate identity probe finds MPM not yet active. Its journal records readiness at 24.57 seconds with zero restarts; the subsequent identity/idle check passes, with zero failed services. The early failed probe is retained. Prior boot warning patterns remain unresolved.
+
+![tinySA LCD during rc.1 RAM-file playback](images/rc1-filetx438-on.png)
+Actual LCD: **438.100 MHz, −32.7 dBm**.
+
+![tinySA LCD during rc.1 forwarding](images/rc1-forward-on.png)
+Actual LCD: **438.100 MHz, −58.7 dBm**. Its adjacent sweep is separate from the numerical table.
+
+These bounded checks pass on the exact **nontracing rc.1** image. A single clean forwarding run does not establish a causal fix for the retained intermittent underflows. Final acceptance remains open; full filter response, calibrated power, SD-backed playback, final PA/doubler and endurance remain unqualified.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -488,6 +517,6 @@ These add tone-detection evidence for all four branches and RAM-file playback on
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.4; the preceding live trace.3 image and bench data are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains nontracing dev.4-rc.1; the preceding live trace.4 image and bench data are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
