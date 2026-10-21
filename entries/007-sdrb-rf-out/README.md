@@ -404,6 +404,24 @@ Actual LCD: **438.100 MHz, −58.6 dBm**.
 ![tinySA LCD after trace.2 forwarding stopped](images/438mhz-trace2-forward-failure-off.png)
 After stopping: **−106.1 dBm**. Numerical readings and LCD use separate sweeps; all three actual LCD/PNG checksum pairs match.
 
+## Trace.3 forwarding check
+
+Private **0.1.0-dev.4-trace.3**, source `3b6989a339426f453efae8142497fdd8f8dea294`, adds the full-TX-ring driver correction. Same J1/J10 wiring, 20 dB output pad, reference, forwarding settings and trace hooks as trace.2 above.
+
+| Six-second check | Result |
+|---|---|
+| Before/on/after, after the 20 dB pad | **−105.66 / −58.66 / −101.66 dBm** |
+| Stream result | Completed; no reported underflow, RX overflow, decode or cleanup error; reference healthy |
+| Shutdown accounting | One benign burst acknowledgement retained after stop; drain completed |
+
+All 24 identities and final idle state pass. The trace spans the run on both CPUs with zero overruns/drops; raw trace is checksum-verified on the card. **One clean run does not establish a causal fix for the earlier intermittent failures; acceptance remains open.**
+
+![tinySA LCD during trace.3 forwarding](images/438mhz-trace3-forward-on.png)
+Actual LCD: **438.100 MHz, −58.2 dBm**.
+
+![tinySA LCD after trace.3 forwarding stopped](images/438mhz-trace3-forward-off.png)
+After stopping: **−105.2 dBm**. Numerical readings and LCD use separate sweeps.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -416,6 +434,6 @@ After stopping: **−106.1 dBm**. Numerical readings and LCD use separate sweeps
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.2; the preceding live trace.1 image and bench data are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains private dev.4-trace.3; the preceding live trace.2 image and bench data are backed up, and the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
