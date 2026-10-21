@@ -505,6 +505,24 @@ Actual LCD: **438.100 MHz, −58.7 dBm**. Its adjacent sweep is separate from th
 
 **Accepted scope:** rc.1 is a limited developer baseline for the bounded checks above. **Forwarding remains experimental**, with unresolved intermittent TX underflows tracked in [SDRB issue #2](https://gitlab.amsat.org/engineering/golf/sdrb/-/work_items/2). A single clean run does not establish a fix. Full filter response, calibrated power, SD-backed playback, final PA/doubler and endurance remain unqualified. The rc.1 image/source are unchanged; publication and a new Ray package remain deferred.
 
+## One boundary-recording check — October 21
+
+Same rc.1 image, J1/J10 wiring, reference and six-second forwarding settings above. A private GNU Radio **3.10.10.0 gr-uhd** library records RX recv and TX send/work boundaries in RAM; installed files, native main/event accounting and streaming policy are unchanged. One pre-start device-clock read; no kernel tracing or active file output. Diagnostic library SHA-256: `c56461d09367bad77f93ac4d1df5279763b8c489d386061f43634a8849e76069`. Off-board ARM compatibility, mock-stream and export checks pass; instrumentation changes timing.
+
+| Single 6.001-second check | Result |
+|---|---|
+| Before/on/after, dBm after 20 dB pad | **−103.72 / −58.72 / −104.22** at the 438.1 MHz window |
+| Stream health | No reported underflow, RX overflow, decode or cleanup error; reference healthy; one benign post-stop acknowledgement |
+| Boundary records | **10,326 RX / 3,390 TX**; no drops, clock errors or offset discontinuities; no RX timeout, zero return or partial TX send |
+
+**No failure recurred to correlate; issue #2 remains open and forwarding experimental.** No repeat was run. An initial loader-check mistake stopped before SDRB radio initialization; corrected off-board, with the failed preflight retained.
+
+![tinySA LCD during the boundary-recording check](images/rc1-boundary-forward-on.png)
+Actual LCD: **438.100 MHz, −58.7 dBm**.
+
+![tinySA LCD after the boundary-recording check](images/rc1-boundary-forward-off.png)
+After stopping: **−108.2 dBm**. LCD and numerical values use adjacent sweeps. All three actual LCD/PNG pairs and the post-stop SD archive/readback pass SHA-256 checks. RAM diagnostic removed, both transmitters stopped; all **22 rc.1 identities** match, powered idle/unclaimed, zero failed services. Raw records and diagnostic binaries remain private.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
