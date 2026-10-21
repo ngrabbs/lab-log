@@ -606,6 +606,8 @@ Actual J10 context screen: **438.100 MHz, −107.2 dBm**, with SDRB TX off. This
 
 **No repeat, interrupted-capture test or high-band test.** RAM helpers removed; all 22 final identities match, zero failed services, radio idle/unclaimed and both transmitters stopped. SDRB remains powered on. Rc.2 fails affected-path acceptance; [MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) stays draft. Next: review observer overhead and scheduling off-board before proposing another candidate. The overflow cause and forwarding underflows remain unresolved.
 
+Following an accidental operator reboot, all **22 rc.2 identities**, idle/unclaimed state and full failed-IQ hash readback still pass; the reboot itself was not captured. Off-board review identifies the live Python observer callback/copy as a plausible bottleneck, with cause unproven. A private **native inline observer** and its maintained factory each pass all **37 ARM regressions** plus native software loopback, preserving exact IQ/prefix bytes and real gap/missing-tag rejection. **Rc.3 / examples r11**, source `1a7b0049`, packages that observer in [draft MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9); the full image build is underway. No installed change, further RF test or throughput-pass claim.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
