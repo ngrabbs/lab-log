@@ -562,6 +562,8 @@ The **147,464,480-byte / 18,433,060-sample** capture passes full SD hash/readbac
 
 [Actual tinySA LCD during the RX check](images/rc1-rx2g-j10-context.png): analyzer remained on **J10 at 438.1 MHz**, so this is context only, **not the RX input-level measurement**. Its raw/PNG hashes verify.
 
+The subsequent [isolated LibreSDR reference check](../004-libresdr-tx-power/README.md#20-ghz-reference--october-21) detects **2000.096 MHz at −54.88 dBm after the same 10 dB pad**, about 53 dB above the analyzer background. Source stream health and all three actual screenshot pairs pass. This confirms a reference at the end of the former J1 lead, without establishing expected SDRB gain or a filter fault. SDRB stays powered off; native mid-band routing/gain review is next.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
