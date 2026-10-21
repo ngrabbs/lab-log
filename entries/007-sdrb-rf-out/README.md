@@ -702,6 +702,26 @@ The >10 dB total-power gate requires a tone about **nine times the full-band bas
 
 The [pinned RFIC code](https://github.com/EttusResearch/uhd/blob/308126a479ca19dfaebfe4784b375e608788d763/host/lib/usrp/common/ad9361_driver/ad9361_device.cpp) treats RX setting **40 as a gain-table index**; [frequency-dependent entries](https://github.com/EttusResearch/uhd/blob/308126a479ca19dfaebfe4784b375e608788d763/host/lib/usrp/common/ad9361_driver/ad9361_gain_tables.h) differ. It is not calibrated total RF gain. Static route/gain-write policy agrees; analog gain and filter loss remain unmeasured. **Original failure retained.** Define a prospective narrowband detection criterion separately from analog-performance requirements before further RF; extra gain may raise baseline with the tone.
 
+## J1 narrowband criterion v1 — October 21
+
+**Setup:** LibreSDR TXRA → DC block → **10 dB / 2 W** → J1/Antenna_in; J10 → DC block → **20 dB / 2 W** → tinySA. Main + AmpPwr1 **9 V / 0.7 A**, AmpPwr2 disconnected. Unchanged **rc.3 / examples r11 / native observer r1**, source `be5e96e`. One **eight-second RX1/channel 1** capture at **5.75 GHz**, gain-table index **40**, **2.304 MS/s / 8000-byte frames**; SDRB TX off. LibreSDR: LO 5.75 GHz +100 kHz, gain 40, amplitude 0.1, 2 MS/s, zero → tone → zero. The earlier same-session **−66.88 dBm after 10 dB** reference is reused with unchanged configuration/wiring; it is **not a fresh input-level measurement**.
+
+Criterion declared before this capture: **fixed +87.5–112.5 kHz band**, all complete 4096-sample Hann frames in the three phases, excluding 0.5 s around transitions and capture ends. Require **>10 dB** active median rise over the larger off median, ≥90% of active frames above baseline +6 dB, and ≥90% with the strongest +75–125 kHz peak inside the fixed band. Timed TX sample positions and the first RX timestamp place the edges at **2.119 / 5.119 s**, with a **±18.1 ms** clock-model bound; unchanged affine hardware clocks are assumed, not calibrated RF phase/delay.
+
+| Fixed-band result | Before | Tone on | After |
+|---|---:|---:|---:|
+| Median power, dBFS | −86.76 | **−74.68** | −86.65 |
+| Guarded FFT frames | 628 | 1124 | 1058 |
+
+**Pass: 11.97 dB median rise. All 1,124 active frames pass both persistence and frequency checks**, peaking at **LO +90.00 kHz**. Capture health also passes: **18,433,060 saved/observed samples**, complete coverage, zero reported overflow/gap/overlap/decode/cleanup errors and no clipping. Full **147,464,480-byte** SD readback and post-stop analysis match SHA `3a480abce77665019083494d6af1919fc7b39f9e4ef152afbd264cc0c7d514c9`.
+
+![New saved-IQ fixed-band power and excluded guards for criterion v1](images/rc3-rx5750-criterion-v1.png)
+
+![Actual tinySA LCD on J10 during the criterion-v1 RX capture](images/rc3-rx5750-v1-j10-context.png)
+Actual LCD: **438.100 MHz, −108.1 dBm**, SDRB TX off. **J10 context only; not the 5.75 GHz RX-input measurement.** Raw/PNG and archived metadata hashes verify.
+
+One capture only; no repeat, gain change or new image. Four RAM helper directories removed after hash verification; final **23 identities**, zero failed services and idle/unclaimed state pass. **SDRB stays powered on; both transmitters stopped.** The original full-band criterion failure remains unchanged. This adds a single high-band tone-detection spot, not calibrated sensitivity/gain/filter loss, full filter response or forwarding qualification.
+
 ## Coverage and limits
 
 | Filter | Recorded tone evidence through J10 | Configuration |
@@ -714,6 +734,6 @@ The [pinned RFIC code](https://github.com/EttusResearch/uhd/blob/308126a479ca19d
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card contains verified dev.4-rc.3; its preceding bounded checks pass. After the single high-band check, SDRB is powered idle with both transmitters stopped; its contrast-criterion failure is retained. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card contains verified dev.4-rc.3; its preceding bounded checks pass. The later single criterion-v1 high-band capture passes its predeclared fixed-band tone gate; the earlier full-band contrast failure is retained. SDRB is powered idle with both transmitters stopped. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
