@@ -604,13 +604,37 @@ The retained **102,992,120-byte / 12,874,015-sample** IQ file passes full SHA-25
 ![Actual tinySA LCD during the failed rc.2 receive check](images/rc2-rx2360-j10-context.png)
 Actual J10 context screen: **438.100 MHz, −107.2 dBm**, with SDRB TX off. This is not the 2.36 GHz RX input measurement; raw/PNG hashes verify.
 
-**No repeat, interrupted-capture test or high-band test.** RAM helpers removed; all 22 final identities match, zero failed services, radio idle/unclaimed and both transmitters stopped. SDRB remains powered on. Rc.2 fails affected-path acceptance; [MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) stays draft. Next: review observer overhead and scheduling off-board before proposing another candidate. The overflow cause and forwarding underflows remain unresolved.
+**No repeat, interrupted-capture test or high-band test.** RAM helpers removed; all 22 final identities match, zero failed services, radio idle/unclaimed and both transmitters stopped. SDRB remains powered on. Rc.2 fails affected-path acceptance; [MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) was held in draft at this checkpoint. Next: review observer overhead and scheduling off-board before proposing another candidate. The overflow cause and forwarding underflows remain unresolved.
 
 Following an accidental operator reboot, all **22 rc.2 identities**, idle/unclaimed state and full failed-IQ hash readback still pass; the reboot itself was not captured.
 
 Off-board review identifies the live Python observer callback/copy as a plausible bottleneck, with cause unproven. **Rc.3 / examples r11 / native observer r1**, source `be5e96e`, keeps the inline byte copy and timestamp checks in native code, including protected tag snapshots if stopping fails. The reviewed full image passes **38 installed-image ARM regressions**, native loopback, six synthetic health cases, eleven driver cases, 171 matching modules, unchanged nontracing kernel settings, source/boot/rootfs/filesystem checks and complete **4,563,406,848-byte disk-image readback**. The earlier intermediate build is retained separately. [Draft MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) remains open pending exact-image hardware acceptance.
 
 **No new RF run or throughput-pass claim.** After clean halt, the complete live rc.2 partition range passes backup/decompression SHA verification, preserving all **nine home files** and five critical failure-evidence files. The 64 GB test card now contains rc.3 and passes complete **4,563,406,848-byte write/direct readback**, SHA-256 `670820dedfe0b7271af51c514926596cb8fd4db3ffbe86b99d9bdb8168858056`. It is safely ejected, with J12 capture armed for its return and cold boot. **Rc.3 boot/RX acceptance remains pending**; the original rollback card is untouched.
+
+## Rc.3 affected-path checks — October 21
+
+Same conducted setup: **LibreSDR TXRA → DC block → 10 dB / 2 W → J1/Antenna_in**; **J10 → DC block → 20 dB / 2 W → tinySA**. Main + AmpPwr1 **9 V / 0.7 A**, AmpPwr2 disconnected. Captured cold boot of **dev.4-rc.3 / examples r11 / native observer r1**, source `be5e96e015921c2a5c438fbce5293489853ebb50`; all **23 installed identities** match, with unchanged nontracing kernel configuration and zero failed services.
+
+One **eight-second RX1/channel 1** capture: **2.36 GHz**, gain **40**, **2.304 MS/s / 8000-byte frames**, SDRB TX off. LibreSDR: LO 2.36 GHz +100 kHz, gain 40, amplitude 0.1, 2 MS/s; zero → tone → zero at about **2.02 / 5.02 seconds** after the host stream marker.
+
+| Saved-IQ measurement | Before | Tone on | After |
+|---|---:|---:|---:|
+| Median RMS, dBFS | **−65.12** | **−51.60** | **−65.12** |
+
+**Pass:** **13.52 dB** contrast, peak near **LO +95.62 kHz**, maximum sample magnitude **0.00450**, no clipping observed. All **18,433,060 saved samples** have timestamp coverage, with **zero reported overflows, inferred gaps/overlaps, decode or cleanup errors**. Reference stream health is clean. The **147,464,480-byte** IQ file passes full SD SHA-256 readback: `247007c9adac39eb68204f26d61b4f06f6843e781f347b7c77f5251f9ca23f19`.
+
+![Saved IQ from the passing rc.3 2.36 GHz J1 receive check](images/rc3-rx2360-iq.png)
+Actual saved-IQ analysis; 0.1-second RMS windows and 4096-sample Hann FFTs. Digital levels are uncalibrated; host controls do not establish exact RF-edge timing.
+
+![Actual tinySA LCD during the rc.3 receive check](images/rc3-rx2360-j10-context.png)
+**438.100 MHz, −107.2 dBm** on J10 during RX only. Context only, **not the 2.36 GHz RX input level**. Raw/PNG hashes verify.
+
+One subsequent **interrupted background RX** check, reference stopped: SIGINT about two seconds after streaming, measured **2.002 seconds**. **Pass:** native status `interrupted`, exit 0, complete saved-prefix timestamp coverage and no reported overflow/gap/overlap/decode/cleanup error. The **36,870,112-byte / 4,608,764-sample** file passes full SD readback: `3b73138c77e48a9ecd8048c8dd675d4132f4806fc84212c338951605b23b3e46`. [Actual J10 LCD refreshed after interruption](images/rc3-rx-interrupted-j10-after.png): **438.100 MHz, −101.7 dBm**, both transmitters stopped; post-stop context only.
+
+One RFNOC startup warning, “One or more blocks timed out during flush!”, occurred **before** the eight-second stream marker and is retained. No such warning appears in the interruption log. Final checks again match all **23 identities**, zero failed services and idle/unclaimed MPM. RAM helpers removed; SDRB stays powered on and both transmitters are stopped. Raw IQ remains private on SD; metadata archives and screen hashes verify.
+
+These two bounded checks pass the affected RX acceptance gates for rc.3. They do **not** prove the rc.2 overflow cause or resolve forwarding underflows. Earlier failures remain above; no new TX, full filter-response, calibrated gain/power, rate or endurance qualification. [MR !9](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/9) is ready for maintainer review; merge and broader acceptance remain separate.
 
 ## Coverage and limits
 
@@ -624,6 +648,6 @@ Off-board review identifies the live Python observer callback/copy as a plausibl
 
 All four TX filter branches now have tone-detection evidence on integrated dev.4 at the stated spot frequencies, as well as the earlier recorded configurations. This is not full passband/stopband, isolated insertion-loss, spectral-purity or calibrated-power qualification. No direct-pad comparison: its coax was removed. The onboard source's 6 GHz ceiling also prevents a complete common-filter stopband check.
 
-After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains verified dev.4-rc.3, safely ejected for captured boot/RX acceptance. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
+After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now runs verified dev.4-rc.3; captured cold boot and the two bounded RX checks pass, with SDRB powered on and idle. Live rc.2, rc.1 and preceding trace.4 images and original failures are backed up; published dev.3 and the original rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
