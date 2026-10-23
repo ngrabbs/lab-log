@@ -1,0 +1,18 @@
+{
+  "detector_trial_count": 3240,
+  "full_alignment": {
+    "all_aligned": 538,
+    "total": 570,
+    "noisy_aligned": 512,
+    "noisy_trials": 540,
+    "clean_wrong_starts": 4
+  },
+  "full_trial_count": 570,
+  "frozen_hashes_match": true,
+  "all_summary_counts_reconciled": true,
+  "all_full_iq_hashes_reproduced": true,
+  "paper_control_rows": 18,
+  "paper_measurable_rows_within_four_trial_standard_errors": 12,
+  "paper_tail_note": "12 dB controls have too few expected errors for a measured-tail validation; zero counts are not zero BER.",
+  "all_prior_result_hashes_unchanged": true
+}

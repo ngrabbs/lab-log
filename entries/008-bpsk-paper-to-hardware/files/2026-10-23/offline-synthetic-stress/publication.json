@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-23",
+  "offline_only": true,
+  "frozen_receiver_unchanged": true,
+  "detector_only_frames": 3240,
+  "full_receiver_frames": 570,
+  "source_truth": "Independently generated 304-bit payloads, RF sequence and complete transport frame; not native application validation.",
+  "detector_static8": {
+    "bits": 54720,
+    "sign_errors": 770,
+    "pair_errors": 306,
+    "sequence_errors": 88,
+    "oracle_errors": 46
+  },
+  "detector_residual010_8": {
+    "bits": 54720,
+    "sequence_errors": 3061,
+    "oracle_errors": 65,
+    "sequence_can_lose_to_pair_on_some_patterns": true
+  },
+  "full_noisy": {
+    "aligned": 512,
+    "trials": 540,
+    "misses": 9,
+    "wrong_starts": 19
+  },
+  "full_no_added_awgn": {
+    "aligned": 26,
+    "trials": 30,
+    "wrong_starts": 4
+  },
+  "validation": "Seven behavioral tests, all returned-decision metrics recounted, all full input IQ hashes regenerated, 12 measurable paper-control rows within four trial standard errors, frozen sources and earlier results preserved.",
+  "scope": "Synthetic matched-model rectangular-waveform/white-noise stress; no RF sensitivity claim and no receiver retuning.",
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 16726,
+      "sha256": "92b592e25bf1e3fe3c9f36743c52ffad8b842e82c218cdfcc8ff766c1632636e"
+    },
+    {
+      "path": "acquisition-failures.json",
+      "size_bytes": 8841,
+      "sha256": "3ab32a05e814e6543a5ad25cca82d79604faacbb56062ef256b42d7c3c6a6a7a"
+    },
+    {
+      "path": "analyze.py",
+      "size_bytes": 5026,
+      "sha256": "bbe933867eb2a429f05e2262169e6bb571e5f6f6e4bc6e63bf3ff58749bb5389"
+    },
+    {
+      "path": "audit.json",
+      "size_bytes": 591,
+      "sha256": "f115bd3c5857459e7a674596301d0ce2806b2e3cfddb2f03213896de95a2c8fd"
+    },
+    {
+      "path": "audit.py",
+      "size_bytes": 3149,
+      "sha256": "b64857a9f95ad1322d240415907823bdf38a6a00e20b054fdad4277ca58ed5c5"
+    },
+    {
+      "path": "config.json",
+      "size_bytes": 1558,
+      "sha256": "abac4e8b95a3c5949492b88842d4240f3cfd90d0d8c3dbab523aac3dd37da54f"
+    },
+    {
+      "path": "detector-paired.csv",
+      "size_bytes": 39515,
+      "sha256": "70234b2633015d2fbe96eae5da558ec3c1defb8c4b826970986822398567988f"
+    },
+    {
+      "path": "detector-summary.csv",
+      "size_bytes": 132320,
+      "sha256": "326a72d2df2ba6f4bb7491736ba2984a97cb3b1f532020f308007f895eaf2f77"
+    },
+    {
+      "path": "detector-trials.jsonl.gz",
+      "size_bytes": 696661,
+      "sha256": "f837a742379e6622f6b6e517a48a79ed0a2dd184b8a89d62dedabbc1b78f9df0"
+    },
+    {
+      "path": "detector-validation.json",
+      "size_bytes": 143,
+      "sha256": "f095d4672a0f9c9de4dfcf9fc2607386b6a3d40f27f0f270eafe6ef6ccbbd521"
+    },
+    {
+      "path": "frozen-hashes.json",
+      "size_bytes": 419,
+      "sha256": "1f083a0a320d854e6f40028bba14f08ef0421c78c227259c29140d2c738c0505"
+    },
+    {
+      "path": "full-paired.csv",
+      "size_bytes": 29796,
+      "sha256": "9ab7f57bb1740291962dc55085bc4494598275f43b2f77505623be2e101feebb"
+    },
+    {
+      "path": "full-summary.csv",
+      "size_bytes": 70546,
+      "sha256": "cb773a24f387ae06dd4dcb1d613b804069b5601fefde1ff5a0fa70b111acde36"
+    },
+    {
+      "path": "full-trials.jsonl.gz",
+      "size_bytes": 147130,
+      "sha256": "eb4e0702d2daaeb8cbb056d0aee5ad501d00b1d2620dfe02cbb50fb16f42f2a4"
+    },
+    {
+      "path": "full-validation.json",
+      "size_bytes": 142,
+      "sha256": "301a784f2765cba2fcee0a22039aa1fdc9d8922278b927c449bbdfd8d3f7ca56"
+    },
+    {
+      "path": "model_test.py",
+      "size_bytes": 5500,
+      "sha256": "edf164b7741754e66bc096774edd34345c7f2e77dfb0cb3a70df1baecf738aba"
+    },
+    {
+      "path": "oracle-theory.csv",
+      "size_bytes": 2247,
+      "sha256": "ed9d9c99e0b514a8b24c54f90275c6e3c9bf58f43735edf02d0dd68e0c8b43a0"
+    },
+    {
+      "path": "oracle_theory.py",
+      "size_bytes": 1344,
+      "sha256": "9e24416c8fd98369b8e49ed6e6ea201d669659f90c2cd68bac5127fe380fc606"
+    },
+    {
+      "path": "paper-control-counts.json",
+      "size_bytes": 6455,
+      "sha256": "bf99f78e1be16f28b385e6273918aba6f382ccf41c88691abbe48601c0e6156a"
+    },
+    {
+      "path": "paper-control.csv",
+      "size_bytes": 2115,
+      "sha256": "0177a18f59d646dee7bb39d1f38f183def34fead86266924daf65ade852cdee1"
+    },
+    {
+      "path": "paper-source.json",
+      "size_bytes": 833,
+      "sha256": "200d27cb7e51d77d04fe0964a79f0c871bd5ef455dee0dc80f833af5a481e24d"
+    },
+    {
+      "path": "paper_control.py",
+      "size_bytes": 1883,
+      "sha256": "bffb555989a265744f4da51957dae905e11165b010db9f10034bdb111c05c77a"
+    },
+    {
+      "path": "plot.py",
+      "size_bytes": 2578,
+      "sha256": "a27a341f19fe9100e7f530f7207eac5b20cb5f067c66d6f4cdd969dcedc72e60"
+    },
+    {
+      "path": "run.py",
+      "size_bytes": 2440,
+      "sha256": "07f92f6e2b8c29a171824f62aa5c7e9df96caf4d6cfc2377c7b7039d5817b517"
+    },
+    {
+      "path": "test_synthetic.py",
+      "size_bytes": 2048,
+      "sha256": "a03c6454e4e10d3f985a7431ebc216d70332bc34290322f2a216b936fcca0530"
+    },
+    {
+      "path": "tests.txt",
+      "size_bytes": 817,
+      "sha256": "54e6e17e4d536433911e20e6e1a92fb1344c26cef589196808dc2d69b0eda013"
+    }
+  ],
+  "figure": {
+    "path": "../../../images/synthetic-stress.svg",
+    "sha256": "969d76a207674367958e8287af6643da7c34197b2d630684fc7588a40f14cd4f",
+    "source": "plot.py",
+    "counts": [
+      "detector-summary.csv",
+      "full-summary.csv"
+    ],
+    "visually_checked": true
+  }
+}

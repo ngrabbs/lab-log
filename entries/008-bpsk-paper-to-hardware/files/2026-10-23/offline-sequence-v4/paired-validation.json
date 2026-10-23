@@ -1,0 +1,8 @@
+{
+  "paired_trial_count": 214,
+  "exact_input_iq_hashes_match": true,
+  "all_acquisition_outputs_identical": true,
+  "baseline_decision_bytes_reproduced_exactly": true,
+  "paired_ber_intervals": "95% normal approximation over paired trial BER differences, conditional on aligned trials and fixed RF waveforms; sparse tails are descriptive.",
+  "baseline_ledger_sha256": "089b654e4b8551ea721810a726f9194dff052cc3531ce1ac965b2f0f0b9ebcfa"
+}

@@ -1,0 +1,12 @@
+{
+  "source": "Course project python/comms.py::estimate_frequency_offset",
+  "source_sha256": "919ed74a31093bd705e468a51e4a0afb68d1135a39a14dd14ee6df4098a3f1f8",
+  "cases": 62,
+  "preamble_lengths": [
+    16,
+    64
+  ],
+  "samples_per_symbol": 8,
+  "maximum_absolute_normalized_frequency_difference": 0.0,
+  "passed": true
+}

@@ -1,0 +1,3569 @@
+[
+  {
+    "pattern": "zeros",
+    "profile": "static",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 39058,
+      "cfo_hz": 7026.834873603894,
+      "metric": 0.15524635584159974,
+      "differential_metric": 0.027779753464759745
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "static",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 25415,
+      "cfo_hz": -5569.74747125029,
+      "metric": 0.13293970689626333,
+      "differential_metric": 0.011237544854898786
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 3,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "static",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 71993,
+      "cfo_hz": 2107.0669601282293,
+      "metric": 0.13380961012397374,
+      "differential_metric": 0.01998572686332977
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 1,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "ramp5",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 116480,
+      "cfo_hz": -2847.301218410172,
+      "metric": 0.15063322450696487,
+      "differential_metric": 0.024919477620144924
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "ramp5",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 109458,
+      "cfo_hz": -7804.104825840235,
+      "metric": 0.1148675921651921,
+      "differential_metric": 0.010730951376490811
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 4,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 4,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 3,
+        "payload_exact": false,
+        "sync_errors": 3,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 3,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 3,
+        "missed_changes": 0,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 35991,
+      "cfo_hz": 2824.9893122180565,
+      "metric": 0.1397692854034098,
+      "differential_metric": 0.020024152276528692
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 7,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 7,
+        "missed_changes": 0,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 66819,
+      "cfo_hz": 5352.712543765402,
+      "metric": 0.13589805437128288,
+      "differential_metric": 0.016767679413101165
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 60019,
+      "cfo_hz": -6833.189561226631,
+      "metric": 0.13396983049636202,
+      "differential_metric": 0.015882898195165477
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 117299,
+      "cfo_hz": -3723.3010955902014,
+      "metric": 0.277725700704415,
+      "differential_metric": 0.0875791297481659
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "walk3",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 29803,
+      "cfo_hz": 1127.6706398199537,
+      "metric": 0.14297359115425562,
+      "differential_metric": 0.014183395583513392
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 2,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 1,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 90525,
+      "cfo_hz": 2955.8437678299865,
+      "metric": 0.12057160749441148,
+      "differential_metric": 0.017214973519596066
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 5,
+        "payload_exact": true,
+        "sync_errors": 1,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "ones",
+    "profile": "static",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 54748,
+      "cfo_hz": -6322.966812270554,
+      "metric": 0.12618717091632337,
+      "differential_metric": 0.01777059022706514
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 2,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 10,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 10,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 1,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 1,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "ones",
+    "profile": "ramp5",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 29623,
+      "cfo_hz": 1345.1535753534426,
+      "metric": 0.14949900714695233,
+      "differential_metric": 0.029128937544387057
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 2,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 9,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 9,
+        "preamble_errors": 4,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 2,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "ones",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 77738,
+      "cfo_hz": -7717.375401454289,
+      "metric": 0.11066539892462805,
+      "differential_metric": 0.014875034309047413
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "ones",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 93021,
+      "cfo_hz": -2941.5981129620886,
+      "metric": 0.1108210109995746,
+      "differential_metric": 0.013641992350764635
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 0,
+        "one_bits": 304,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 100352,
+      "cfo_hz": -5748.721570230993,
+      "metric": 0.13269298430143306,
+      "differential_metric": 0.02428714715844562
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 67408,
+      "cfo_hz": 878.5156410161886,
+      "metric": 0.13396217419352444,
+      "differential_metric": 0.017019725997086545
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 72546,
+      "cfo_hz": 7805.714181149663,
+      "metric": 0.13825267270924863,
+      "differential_metric": 0.02598519043190521
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 108658,
+      "cfo_hz": 1134.6255880400508,
+      "metric": 0.13304441714411017,
+      "differential_metric": 0.015496530843000058
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 74791,
+      "cfo_hz": 1284.4415240235912,
+      "metric": 0.14435270993396507,
+      "differential_metric": 0.018742291722685073
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 25489,
+      "cfo_hz": 5589.175402003573,
+      "metric": 0.14156995371814005,
+      "differential_metric": 0.016911112552850993
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 66003,
+      "cfo_hz": -1832.1495526988608,
+      "metric": 0.12108443781237085,
+      "differential_metric": 0.01712566622136978
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 49482,
+      "cfo_hz": 833.1295622435075,
+      "metric": 0.14319436012262682,
+      "differential_metric": 0.020012532430617503
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 103693,
+      "cfo_hz": -3750.5412378377086,
+      "metric": 0.273425812324721,
+      "differential_metric": 0.07606355367862264
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81001,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 64382,
+      "cfo_hz": -4383.766272961352,
+      "metric": 0.2803862335521672,
+      "differential_metric": 0.08845187557246241
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81002,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 98535,
+      "cfo_hz": -4381.044119399701,
+      "metric": 0.2965869233333259,
+      "differential_metric": 0.08937434474146108
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81002,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 112267,
+      "cfo_hz": -6105.225297655866,
+      "metric": 0.27350330984593746,
+      "differential_metric": 0.06837197628314277
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81002,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 63052,
+      "cfo_hz": 7914.9438276216815,
+      "metric": 0.29645552476446196,
+      "differential_metric": 0.0848225577823667
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81003,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 48421,
+      "cfo_hz": -7158.646547928434,
+      "metric": 0.2771086880894037,
+      "differential_metric": 0.07260585154087643
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81003,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 83839,
+      "cfo_hz": -6514.653573831348,
+      "metric": 0.2884927123289586,
+      "differential_metric": 0.08626014494865031
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "walk3",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 24810,
+      "cfo_hz": -7343.370979841967,
+      "metric": 0.13863513828756008,
+      "differential_metric": 0.02012239801213603
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 1,
+        "missed_changes": 1,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 3,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 3,
+        "preamble_errors": 4,
+        "payload_exact": false,
+        "sync_errors": 1,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 3,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 2,
+        "missed_changes": 1,
+        "preamble_errors": 3,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 42935,
+      "cfo_hz": -1719.6652521727385,
+      "metric": 0.1236331550769261,
+      "differential_metric": 0.015360977092727024
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 111939,
+      "cfo_hz": 152.22853351152435,
+      "metric": 0.12572845776390063,
+      "differential_metric": 0.018438768888635697
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 1,
+        "missed_changes": 1,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 7,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 7,
+        "preamble_errors": 4,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 6,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 4,
+        "missed_changes": 2,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "walk12",
+    "ebn0_db": 12,
+    "seed": 81002,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 119338,
+      "cfo_hz": -763.3875614700131,
+      "metric": 0.21272989906217163,
+      "differential_metric": 0.07885418216964517
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "runs32",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 81861,
+      "cfo_hz": 7875.391358229941,
+      "metric": 0.09920689885996939,
+      "differential_metric": 0.014624798165628634
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "runs32",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 118521,
+      "cfo_hz": -7414.629625656358,
+      "metric": 0.12685430759651306,
+      "differential_metric": 0.016030255348255487
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 6,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 6,
+        "preamble_errors": 5,
+        "payload_exact": false,
+        "sync_errors": 2,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 1,
+        "missed_changes": 0,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 2,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "runs32",
+    "profile": "walk12",
+    "ebn0_db": 12,
+    "seed": 81002,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 105941,
+      "cfo_hz": 2231.3608338490367,
+      "metric": 0.25702309032534093,
+      "differential_metric": 0.06361011568873019
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "sparse_ones",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 104034,
+      "cfo_hz": 6575.738602837957,
+      "metric": 0.1280715195142659,
+      "differential_metric": 0.013751652624880543
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 1,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 4,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 4,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "sparse_ones",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 104576,
+      "cfo_hz": 3933.280498800347,
+      "metric": 0.1486246197559521,
+      "differential_metric": 0.019781280250550058
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 1,
+        "preamble_errors": 6,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 4,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 4,
+        "missed_changes": 0,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "sparse_ones",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 113239,
+      "cfo_hz": 5718.111873768019,
+      "metric": 0.12868899793383798,
+      "differential_metric": 0.01362821872999262
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 1,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 3,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 3,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "sparse_ones",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 111105,
+      "cfo_hz": 1782.7924450269109,
+      "metric": 0.13313063114726784,
+      "differential_metric": 0.019335916651994817
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 1,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 1,
+        "missed_changes": 0,
+        "preamble_errors": 3,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 4,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 4,
+        "missed_changes": 0,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "sparse_ones",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 51876,
+      "cfo_hz": -4955.0774472969115,
+      "metric": 0.12163433020135098,
+      "differential_metric": 0.013425089677439288
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 4,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 4,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 5,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 4,
+        "payload_exact": false,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 300,
+        "one_bits": 4,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 4,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "random_iid",
+    "profile": "static",
+    "ebn0_db": 8,
+    "seed": 81001,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 67922,
+      "cfo_hz": -541.4161734746302,
+      "metric": 0.1413808321336425,
+      "differential_metric": 0.021902004854805694
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 155,
+        "one_bits": 149,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 2,
+        "outer_crc_pass": true,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 155,
+        "one_bits": 149,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 6,
+        "zero_bits": 155,
+        "one_bits": 149,
+        "false_changes": 0,
+        "missed_changes": 6,
+        "preamble_errors": 4,
+        "payload_exact": false,
+        "sync_errors": 3,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 4,
+        "zero_bits": 155,
+        "one_bits": 149,
+        "false_changes": 1,
+        "missed_changes": 3,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 2,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 155,
+        "one_bits": 149,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    }
+  },
+  {
+    "pattern": "random_iid",
+    "profile": "ramp100",
+    "ebn0_db": 8,
+    "seed": 81003,
+    "trial": 2,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 80900,
+      "cfo_hz": 6036.271009230503,
+      "metric": 0.13945630159777747,
+      "differential_metric": 0.017436064087915554
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 144,
+        "one_bits": 160,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 144,
+        "one_bits": 160,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "random_iid",
+    "profile": "ramp100",
+    "ebn0_db": 12,
+    "seed": 81003,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 36139,
+      "cfo_hz": -2409.3577853949064,
+      "metric": 0.2760669233086456,
+      "differential_metric": 0.07318631477252939
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 147,
+        "one_bits": 157,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 147,
+        "one_bits": 157,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "random_iid",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": true,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 115506,
+      "cfo_hz": 2667.5282961895914,
+      "metric": 0.08525206710786615,
+      "differential_metric": 0.014660851699568921
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 157,
+        "one_bits": 147,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 157,
+        "one_bits": 147,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 304,
+        "payload_errors": 7,
+        "zero_bits": 157,
+        "one_bits": 147,
+        "false_changes": 0,
+        "missed_changes": 7,
+        "preamble_errors": 4,
+        "payload_exact": false,
+        "sync_errors": 2,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 304,
+        "payload_errors": 2,
+        "zero_bits": 157,
+        "one_bits": 147,
+        "false_changes": 2,
+        "missed_changes": 0,
+        "preamble_errors": 1,
+        "payload_exact": false,
+        "sync_errors": 1,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 157,
+        "one_bits": 147,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 2,
+        "payload_exact": true,
+        "sync_errors": 2,
+        "outer_crc_pass": true,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "random_iid",
+    "profile": "walk12",
+    "ebn0_db": 8,
+    "seed": 81002,
+    "trial": 1,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 45367,
+      "cfo_hz": 480.808323622981,
+      "metric": 0.10655561578855124,
+      "differential_metric": 0.017838477129554955
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 156,
+        "one_bits": 148,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 156,
+        "one_bits": 148,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": false,
+        "packet_pass": false
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "zeros",
+    "profile": "ramp100",
+    "ebn0_db": "clean",
+    "seed": 82001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 96660,
+      "cfo_hz": -7335.062669281387,
+      "metric": 0.9955910595158406,
+      "differential_metric": 0.9999365001196359
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 304,
+        "one_bits": 0,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "alternating55",
+    "profile": "ramp100",
+    "ebn0_db": "clean",
+    "seed": 82001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 59037,
+      "cfo_hz": -4126.564889208828,
+      "metric": 0.9955910596721402,
+      "differential_metric": 0.9999365001196253
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 152,
+        "one_bits": 152,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "runs32",
+    "profile": "walk12",
+    "ebn0_db": "clean",
+    "seed": 82001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 110661,
+      "cfo_hz": 5751.112338304061,
+      "metric": 0.8784699199642474,
+      "differential_metric": 0.9579939130661413
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 160,
+        "one_bits": 144,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  },
+  {
+    "pattern": "random_iid",
+    "profile": "ramp100",
+    "ebn0_db": "clean",
+    "seed": 82001,
+    "trial": 0,
+    "aligned": true,
+    "baseline_aligned": false,
+    "acquisition": {
+      "detected": true,
+      "start_sample": 59140,
+      "cfo_hz": -146.88013842683517,
+      "metric": 0.9955910599356792,
+      "differential_metric": 0.999936500119157
+    },
+    "metrics": {
+      "tracked": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 161,
+        "one_bits": 143,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      },
+      "preamble_only": {
+        "scored_bits": 304,
+        "payload_errors": 0,
+        "zero_bits": 161,
+        "one_bits": 143,
+        "false_changes": 0,
+        "missed_changes": 0,
+        "preamble_errors": 0,
+        "payload_exact": true,
+        "sync_errors": 0,
+        "outer_crc_pass": true,
+        "packet_pass": true
+      }
+    },
+    "baseline_metrics": {
+      "sign": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "pair": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      },
+      "sequence": {
+        "scored_bits": 0,
+        "payload_errors": null,
+        "packet_pass": false
+      }
+    }
+  }
+]

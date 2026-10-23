@@ -1,0 +1,10 @@
+{
+  "frozen_selection_and_development_hashes_match": true,
+  "all_source_npz_hashes_unchanged": true,
+  "all_v1_published_file_hashes_unchanged": true,
+  "training_ledger_rows_recounted": 182,
+  "held_out_ledger_rows": 214,
+  "all_summary_counts_recounted": true,
+  "individual_trial_input_hashes_present": true,
+  "shared_diagnostic_sha256": "5017e45631fdcfc4325843663513b299fa5c316d31ed092d278a32008cecb52a"
+}

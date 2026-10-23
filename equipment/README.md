@@ -71,7 +71,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | RTL-SDR v4 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown. |
 | HackRF One | Recorded owned | Source-listed 1 MHz–6 GHz, half-duplex TX/RX, 8-bit. Board revision and measured performance unknown. |
 | LibreSDR | Recorded owned | Source-listed approximately 70 MHz–6 GHz, full-duplex TX/RX. [Entry 004](../entries/004-libresdr-tx-power/README.md) records a later power check; do not generalize it to all gains/frequencies. |
-| PlutoSDR | Recorded owned | Source-listed 325 MHz–3.8 GHz, full-duplex TX/RX. Any range extension/modification is unconfirmed. |
+| PlutoSDR | Recorded owned; RX checked 2026-10-23 | Unit identifies as Rev. C (Z7010/AD9363A), firmware v0.37. [Entry 008](../entries/008-bpsk-paper-to-hardware/README.md#october-23--pluto-independent-receiver-cross-check) records conducted 437 MHz heartbeat decoding and an independent phase comparison. Source-listed range remains 325 MHz–3.8 GHz; extension/modification is unconfirmed. |
 
 ## Antennas
 
@@ -162,3 +162,4 @@ Seeded from `planetary_network_testbed/docs/tool_inventory.md` and `bench/pad_ch
 Maintain this page as the shared Lab Log inventory. Update availability and exact model details when confirmed, citing the date or entry. Keep measurements with their setup and date, preserve original capture files, and distinguish source-listed ratings from measured limits. Historical entries should retain the equipment/settings actually used at the time. Device identifiers, credentials and private connection details do not belong here.
 
 [Back to Lab Log](../README.md)
+

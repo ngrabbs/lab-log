@@ -1,0 +1,529 @@
+{
+  "capture": {
+    "utc": "2026-10-23T15:55:05.860184+00:00",
+    "setup": "User reports transceiver ON; complete measured pad/DC-block chain attached to physical RXA.",
+    "purpose": "Bounded receiver-only burst capture; physical RXA-to-UHD-channel mapping unverified.",
+    "requested_rate_hz": 192000,
+    "requested_frequency_hz": 437000000,
+    "requested_gain_db": 0,
+    "requested_bandwidth_hz": 200000,
+    "requested_master_clock_hz": 30720000,
+    "requested_seconds": 120,
+    "fpga_sha256": "7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99",
+    "channels": [
+      {
+        "channel": 0,
+        "rate_hz": 192000.00014959596,
+        "frequency_hz": 437000000.00238395,
+        "gain_db": 0.0,
+        "antenna": "RX2",
+        "bandwidth_hz": 200000.0,
+        "rms_magnitude": 0.0013711340725421906,
+        "peak_magnitude": 0.02527402527630329,
+        "peak_component": 0.025086306035518646,
+        "components_ge_0p99": 0,
+        "nonfinite_samples": 0
+      },
+      {
+        "channel": 1,
+        "rate_hz": 192000.00014959596,
+        "frequency_hz": 437000000.00238395,
+        "gain_db": 0.0,
+        "antenna": "RX2",
+        "bandwidth_hz": 200000.0,
+        "rms_magnitude": 0.00011030900350306183,
+        "peak_magnitude": 0.0008245677454397082,
+        "peak_component": 0.0007934841560199857,
+        "components_ge_0p99": 0,
+        "nonfinite_samples": 0
+      }
+    ],
+    "errors": [],
+    "timestamp_gaps": [],
+    "files": [
+      {
+        "name": "raw-rx-channel-0-192k.npy",
+        "size_bytes": 184320128,
+        "sha256": "a4e37c945bc074b1b4f9b523b2f58b59cf85cc0aaa867a7e79a589fa75049231"
+      },
+      {
+        "name": "raw-rx-channel-1-192k.npy",
+        "size_bytes": 184320128,
+        "sha256": "60c64f3d8c7873d704531874d00ec0bd438d4fd4ed96cb71b69af5624d9c434b"
+      }
+    ],
+    "tx_commands": 0,
+    "forwarding": false,
+    "metadata_receive_calls": 2813,
+    "master_clock_hz": 30720000.023935355,
+    "clock_source": "internal",
+    "subdev_spec": "Subdevice Specification:\n    Channel 0: Daughterboard A, Subdevice A\n    Channel 1: Daughterboard A, Subdevice B\n",
+    "samples_per_channel": 23040000,
+    "stream_stopped": true
+  },
+  "analysis": {
+    "iq_rate_hz": 192000,
+    "channels": [
+      {
+        "channel": 0,
+        "median_idle_block_power": 9.47928047168034e-09,
+        "peak_block_power": 0.0003736807848326862,
+        "peak_to_median_db": 45.95725631713867,
+        "peak_block_time_s": 68.66,
+        "active_intervals_20db_over_median": [
+          {
+            "start_s": 68.28,
+            "stop_s": 68.97
+          }
+        ],
+        "decoded_packets": [
+          {
+            "sequence": 18,
+            "hex": "0901c00e001f0101000502010000000000000000f8c21adc059e261900060301000000004d75",
+            "decoded": {
+              "name": "HEARTBEAT",
+              "sequence": 14,
+              "header": {
+                "schema_version": 1,
+                "kind": 1,
+                "message_id": 5,
+                "source": 2,
+                "target": 1,
+                "transaction_epoch": 0,
+                "transaction_id": 0,
+                "source_boot_id": 4173470428,
+                "uptime_ms": 94250521,
+                "payload_length": 6
+              },
+              "payload": {
+                "mode": 3,
+                "configuration": 1,
+                "telemetry_period_ms": 0
+              }
+            },
+            "carrier_offset_hz": -7347.198486328125,
+            "window_start": 0,
+            "timing_sample": 0,
+            "decoder": "dbpsk",
+            "native_crc32_hex": "4104665e",
+            "matches_ihu_length_and_digest": true
+          }
+        ],
+        "excerpt_start_sample": 12798720,
+        "preamble_phase_measurement": {
+          "method": "Matched symbol averages, fixed decoder CFO removal, states assigned from reconstructed CRC-valid frame; first/last four preamble symbols omitted. Not per-symbol phase normalization.",
+          "symbols": 248,
+          "separation_deg": 121.04708971132904,
+          "mean_amplitude_ratio": 1.0946268443465028,
+          "within_state_phase_std_deg": [
+            21.17824478121589,
+            21.227091225884145
+          ],
+          "decoder_cfo_hz": -7347.198486328125,
+          "symbol_centers_real_imag": [
+            [
+              -0.5164151190892222,
+              -0.016366301794561056
+            ],
+            [
+              0.30688836654307644,
+              -0.4750621536922261
+            ]
+          ]
+        }
+      },
+      {
+        "channel": 1,
+        "median_idle_block_power": 1.099011370797598e-08,
+        "peak_block_power": 2.461265751207975e-07,
+        "peak_to_median_db": 13.50156307220459,
+        "peak_block_time_s": 68.8,
+        "active_intervals_20db_over_median": [],
+        "decoded_packets": [
+          {
+            "sequence": 18,
+            "hex": "0901c00e001f0101000502010000000000000000f8c21adc059e261900060301000000004d75",
+            "decoded": {
+              "name": "HEARTBEAT",
+              "sequence": 14,
+              "header": {
+                "schema_version": 1,
+                "kind": 1,
+                "message_id": 5,
+                "source": 2,
+                "target": 1,
+                "transaction_epoch": 0,
+                "transaction_id": 0,
+                "source_boot_id": 4173470428,
+                "uptime_ms": 94250521,
+                "payload_length": 6
+              },
+              "payload": {
+                "mode": 3,
+                "configuration": 1,
+                "telemetry_period_ms": 0
+              }
+            },
+            "carrier_offset_hz": -7347.175598144531,
+            "window_start": 0,
+            "timing_sample": 19,
+            "decoder": "dbpsk",
+            "native_crc32_hex": "4104665e",
+            "matches_ihu_length_and_digest": true
+          }
+        ],
+        "excerpt_start_sample": 12825600,
+        "preamble_phase_measurement": {
+          "method": "Matched symbol averages, fixed decoder CFO removal, states assigned from reconstructed CRC-valid frame; first/last four preamble symbols omitted. Not per-symbol phase normalization.",
+          "symbols": 248,
+          "separation_deg": 119.529087907804,
+          "mean_amplitude_ratio": 1.1049786220248679,
+          "within_state_phase_std_deg": [
+            21.506692771473798,
+            20.103553502381146
+          ],
+          "decoder_cfo_hz": -7347.175598144531,
+          "symbol_centers_real_imag": [
+            [
+              0.004750875948645505,
+              0.011915653954846023
+            ],
+            [
+              -0.01404363662090214,
+              -0.0019216123407131763
+            ]
+          ]
+        }
+      }
+    ],
+    "forwarded": false,
+    "expected_native_bytes": 38,
+    "expected_native_crc32_hex": "4104665e"
+  },
+  "refined_phase": {
+    "method": "After one fixed squared-carrier CFO correction, select timing using only 248 known preamble symbols. Each symbol uses central 8 of 40 samples; minimize normalized within-state complex variance. Packet alignment confirmed by CRC-valid frame. Conditional waveform measurement, not BER. No per-symbol phase rotation.",
+    "best": {
+      "timing_sample": 0,
+      "preamble_start_symbol_index": 1955,
+      "metric": 0.10362872095617512,
+      "separation_deg": 134.1559752925606,
+      "amplitude_ratio": 1.104688151300709,
+      "phase_std_deg": [
+        18.866961479316796,
+        19.046144400253482
+      ]
+    },
+    "candidates": [
+      {
+        "timing_sample": 0,
+        "preamble_start_symbol_index": 1955,
+        "metric": 0.10362872095617512,
+        "separation_deg": 134.1559752925606,
+        "amplitude_ratio": 1.104688151300709,
+        "phase_std_deg": [
+          18.866961479316796,
+          19.046144400253482
+        ]
+      },
+      {
+        "timing_sample": 18,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10678581643298045,
+        "separation_deg": 135.17644049238197,
+        "amplitude_ratio": 1.0274716997222046,
+        "phase_std_deg": [
+          19.108651538291756,
+          19.18385740162186
+        ]
+      },
+      {
+        "timing_sample": 19,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10663984325901946,
+        "separation_deg": 135.00059303559044,
+        "amplitude_ratio": 1.0347672729041595,
+        "phase_std_deg": [
+          19.11562609567711,
+          19.17970848085621
+        ]
+      },
+      {
+        "timing_sample": 20,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10635808593685608,
+        "separation_deg": 134.83579270113245,
+        "amplitude_ratio": 1.04346938932189,
+        "phase_std_deg": [
+          19.10483112890202,
+          19.16989696046913
+        ]
+      },
+      {
+        "timing_sample": 21,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10611355847324737,
+        "separation_deg": 134.7961516274288,
+        "amplitude_ratio": 1.0528743495055952,
+        "phase_std_deg": [
+          19.10234637264409,
+          19.16039264263883
+        ]
+      },
+      {
+        "timing_sample": 22,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10601511082643705,
+        "separation_deg": 135.0236570593029,
+        "amplitude_ratio": 1.0593674953593415,
+        "phase_std_deg": [
+          19.107076150305247,
+          19.16291751830816
+        ]
+      },
+      {
+        "timing_sample": 23,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10594357794000603,
+        "separation_deg": 135.3612129608417,
+        "amplitude_ratio": 1.0622309073708525,
+        "phase_std_deg": [
+          19.107176117876197,
+          19.166291388997028
+        ]
+      },
+      {
+        "timing_sample": 24,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.105848457435393,
+        "separation_deg": 135.4732772190852,
+        "amplitude_ratio": 1.0624977672793048,
+        "phase_std_deg": [
+          19.098902975113393,
+          19.162905265419447
+        ]
+      },
+      {
+        "timing_sample": 25,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10575320100133738,
+        "separation_deg": 135.3911626205329,
+        "amplitude_ratio": 1.0650361926585776,
+        "phase_std_deg": [
+          19.08421911349286,
+          19.166269529255164
+        ]
+      },
+      {
+        "timing_sample": 26,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10562978465804525,
+        "separation_deg": 135.32564313847675,
+        "amplitude_ratio": 1.0696764773925895,
+        "phase_std_deg": [
+          19.062290930505867,
+          19.172047211114933
+        ]
+      },
+      {
+        "timing_sample": 27,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10540234135990785,
+        "separation_deg": 135.32674412432826,
+        "amplitude_ratio": 1.0751518122584673,
+        "phase_std_deg": [
+          19.036844021618528,
+          19.163735486752326
+        ]
+      },
+      {
+        "timing_sample": 28,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10522235901453393,
+        "separation_deg": 135.40693010075682,
+        "amplitude_ratio": 1.0813093334574273,
+        "phase_std_deg": [
+          19.035932743678867,
+          19.14562647882373
+        ]
+      },
+      {
+        "timing_sample": 29,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10507621364952566,
+        "separation_deg": 135.58022455040432,
+        "amplitude_ratio": 1.0850774053440546,
+        "phase_std_deg": [
+          19.021354711515112,
+          19.14058772683947
+        ]
+      },
+      {
+        "timing_sample": 30,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10482969066301058,
+        "separation_deg": 135.62286602956115,
+        "amplitude_ratio": 1.0848550189663182,
+        "phase_std_deg": [
+          18.993017185903135,
+          19.125748325702485
+        ]
+      },
+      {
+        "timing_sample": 31,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10463212717749604,
+        "separation_deg": 135.42126003323958,
+        "amplitude_ratio": 1.084637332887799,
+        "phase_std_deg": [
+          18.97201687323496,
+          19.113455764901612
+        ]
+      },
+      {
+        "timing_sample": 32,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10450873569005519,
+        "separation_deg": 135.15059159615103,
+        "amplitude_ratio": 1.0870071026967882,
+        "phase_std_deg": [
+          18.947492790378323,
+          19.11459195006391
+        ]
+      },
+      {
+        "timing_sample": 33,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.1043207435444506,
+        "separation_deg": 134.9314388302981,
+        "amplitude_ratio": 1.0904019074449283,
+        "phase_std_deg": [
+          18.91892841916032,
+          19.10752562162437
+        ]
+      },
+      {
+        "timing_sample": 34,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.1041144290661154,
+        "separation_deg": 134.767047309535,
+        "amplitude_ratio": 1.0944934938886823,
+        "phase_std_deg": [
+          18.902525813667044,
+          19.088825092809262
+        ]
+      },
+      {
+        "timing_sample": 35,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10397700704023365,
+        "separation_deg": 134.7313155876928,
+        "amplitude_ratio": 1.098943673698845,
+        "phase_std_deg": [
+          18.88759162310785,
+          19.081712473444163
+        ]
+      },
+      {
+        "timing_sample": 36,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10389342132401937,
+        "separation_deg": 134.7328148456888,
+        "amplitude_ratio": 1.0999467703662327,
+        "phase_std_deg": [
+          18.871479354910036,
+          19.08331924792204
+        ]
+      },
+      {
+        "timing_sample": 37,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10380512377905211,
+        "separation_deg": 134.58922429534948,
+        "amplitude_ratio": 1.0986624310091362,
+        "phase_std_deg": [
+          18.87182558237098,
+          19.069567462694447
+        ]
+      },
+      {
+        "timing_sample": 38,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.1037827231293754,
+        "separation_deg": 134.3654973441779,
+        "amplitude_ratio": 1.0981808038330045,
+        "phase_std_deg": [
+          18.876258925663436,
+          19.06584537636437
+        ]
+      },
+      {
+        "timing_sample": 39,
+        "preamble_start_symbol_index": 1954,
+        "metric": 0.10376406932009975,
+        "separation_deg": 134.26493919992973,
+        "amplitude_ratio": 1.1008664664035877,
+        "phase_std_deg": [
+          18.869853091866695,
+          19.06631842559501
+        ]
+      }
+    ]
+  },
+  "preamble_frequency_refinement": {
+    "method": "One additional common linear phase slope fitted across the known preamble; two independent complex state centers remain unconstrained. Offline analysis only, not a live decoder change.",
+    "residual_cfo_hz": 0.756367747821534,
+    "refined_relative_cfo_hz": -7346.442118580303,
+    "separation_deg": 134.14390383986805,
+    "amplitude_ratio": 1.10547701577214,
+    "phase_std_deg": [
+      9.717479863162499,
+      9.82383154195973
+    ],
+    "symbol_count": 248
+  },
+  "original_local_inputs": [
+    {
+      "filename": "libresdr-ground-probe-01.json",
+      "sha256": "bbf359566baefc08570807a6a52f1e19a72b1f14ce1dfe6f82b7d16184fc30ce"
+    },
+    {
+      "filename": "ground-radio-service-pause-01.json",
+      "sha256": "4d07b952de35e71fd711a350beb38fbe6b0d57914f2e5155554f2720e7f5204a"
+    },
+    {
+      "filename": "rx-idle-dual-01-result.json",
+      "sha256": "7958bf5d2c92f7247f786a786438d9e8eed50345b8ad06e7db0bd5e2850418e5"
+    },
+    {
+      "filename": "rx-idle-dual-02-result.json",
+      "sha256": "e88d83ccbdeef2991e8766a40f06eec99eb2021dadc87d85679606e6d26ac2fa"
+    },
+    {
+      "filename": "rx-idle-dual-03-result.json",
+      "sha256": "03d82dfea23263333b18859d1649027cb02a2f7df8580d8e9a17c694274c78cd"
+    },
+    {
+      "filename": "rx-burst-dual-01-start.json",
+      "sha256": "71b0b1d119040736bfaeaa1bfc442f69c6148283eb74e2eaf71117319ad1558f"
+    },
+    {
+      "filename": "rx-burst-dual-01-ihu.json",
+      "sha256": "e7c5dbe2645d638cd6bb43603f4375324837cd294c90747a7ba8c15169a0183d"
+    },
+    {
+      "filename": "rx-burst-dual-01-analysis.json",
+      "sha256": "228afaad60fe304e0a5598e9caf1c8e49528a180b209ea98846fc8015fa75019"
+    },
+    {
+      "filename": "rx-burst-dual-01-plot-data.json",
+      "sha256": "d5da8eb25dadc2ebe18c6417ab52f45bb4af60123ba7c6a8358fe9a560f7a2a7"
+    },
+    {
+      "filename": "rx-burst-dual-01-post-status.json",
+      "sha256": "b2a962ab30ee3c674d1d014c191cbff5c63671e88956ece6f928c2e756739ff8"
+    }
+  ],
+  "ground_original_iq_note": "Two complete 120-second complex64 NPY originals remain on the ground station; their sizes and SHA-256 are recorded in capture.files. Public data are derived excerpts, not replacements.",
+  "service_state": "ember-fire-uplink.service remains temporarily stopped for this bench session; restore original active state when bench work ends.",
+  "counts_note": "One heartbeat request; copies decoded on two channels count as one RF event. No ground forwarding or application acknowledgment."
+}

@@ -1,0 +1,12 @@
+test_common_geometry_scale_does_not_change_detector (test_synthetic.SyntheticTests.test_common_geometry_scale_does_not_change_detector) ... ok
+test_erasure_not_correct_payload (test_synthetic.SyntheticTests.test_erasure_not_correct_payload) ... ok
+test_frozen_parameters (test_synthetic.SyntheticTests.test_frozen_parameters) ... ok
+test_integration_factor (test_synthetic.SyntheticTests.test_integration_factor) ... ok
+test_noise_projection_unit_energy (test_synthetic.SyntheticTests.test_noise_projection_unit_energy) ... ok
+test_noisy_case_reproducibility (test_synthetic.SyntheticTests.test_noisy_case_reproducibility) ... ok
+test_truth_frame_and_crc (test_synthetic.SyntheticTests.test_truth_frame_and_crc) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.068s
+
+OK

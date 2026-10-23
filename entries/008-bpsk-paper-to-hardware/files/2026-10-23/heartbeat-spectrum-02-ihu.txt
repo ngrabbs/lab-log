@@ -1,0 +1,13 @@
+FIRMWARE role=IHU_MCU version=0.15.0 git=701e96c00c8a9a207d29a746eee74c7108a2a1b3 dirty=0 boot=4173470428
+MODE configuration=GROUND_TEST mode=SAFE simulated=0 flight_routines=STUB reason=GROUND_TEST_DEFAULT
+OUTPUTS cli_debug=0 cli_telem=0 umb_debug=0 umb_telem=0 uhf_telem=1 lte_telem=0
+CAN_TARGET name=COMMS request=710 reply=711
+STATUS role=IHU_MCU fw=0.15.0 id=REDACTED_BOARD_ID boot=4173470428 peer=956053610 can_ready=1 mode=00 cnf=00,f0,86 bitrate=500000 tec=0 rec=0 eflg=00 tx_ok=37412 tx_fail=3 tx_timeout=0 rx=9489 rx_bad=0 rx_overflow=0 fragments_bad=0 fragments_timeout=0 matched=28 unknown=0 busy_drops=0 pending=0 uptime_ms=92720225 uhf_pending=0 uhf_mode=4 cycles=1 submitted=4
+SUBMITTED request=16 type=128 bytes=38
+UHF request=16 outcome=QUEUED status=0 bytes=38 digest=152a17f7 ground_ack=0 outstanding=1
+UHF request=16 outcome=RF_TX_COMPLETE status=0 bytes=38 digest=152a17f7 ground_ack=0 outstanding=0
+FIRMWARE role=IHU_MCU version=0.15.0 git=701e96c00c8a9a207d29a746eee74c7108a2a1b3 dirty=0 boot=4173470428
+MODE configuration=GROUND_TEST mode=SAFE simulated=0 flight_routines=STUB reason=GROUND_TEST_DEFAULT
+OUTPUTS cli_debug=0 cli_telem=0 umb_debug=0 umb_telem=0 uhf_telem=1 lte_telem=0
+CAN_TARGET name=COMMS request=710 reply=711
+STATUS role=IHU_MCU fw=0.15.0 id=REDACTED_BOARD_ID boot=4173470428 peer=956053610 can_ready=1 mode=00 cnf=00,f0,86 bitrate=500000 tec=0 rec=0 eflg=00 tx_ok=37431 tx_fail=3 tx_timeout=0 rx=9506 rx_bad=0 rx_overflow=0 fragments_bad=0 fragments_timeout=0 matched=30 unknown=0 busy_drops=0 pending=0 uptime_ms=92729569 uhf_pending=0 uhf_mode=4 cycles=1 submitted=4

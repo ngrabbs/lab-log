@@ -1,0 +1,15 @@
+test_bad_header_cannot_shorten_the_ber_window (test_diagnostic.DiagnosticTests.test_bad_header_cannot_shorten_the_ber_window) ... ok
+test_clean_frame (test_diagnostic.DiagnosticTests.test_clean_frame) ... ok
+test_failed_crc_does_not_discard_decisions (test_diagnostic.DiagnosticTests.test_failed_crc_does_not_discard_decisions) ... ok
+test_frozen_cli_rejects_nan_as_erasure (test_diagnostic.DiagnosticTests.test_frozen_cli_rejects_nan_as_erasure) ... ok
+test_invalid_and_missing_samples_are_erasures (test_diagnostic.DiagnosticTests.test_invalid_and_missing_samples_are_erasures) ... ok
+test_preamble_errors_are_retained_even_with_valid_body_crc (test_diagnostic.DiagnosticTests.test_preamble_errors_are_retained_even_with_valid_body_crc) ... ok
+test_sync_failure_is_separate_from_ber (test_diagnostic.DiagnosticTests.test_sync_failure_is_separate_from_ber) ... ok
+test_template_estimator_corrects_known_offset_without_payload_truth (test_diagnostic.DiagnosticTests.test_template_estimator_corrects_known_offset_without_payload_truth) ... ok
+test_truth_outside_training_cannot_choose_timing (test_diagnostic.DiagnosticTests.test_truth_outside_training_cannot_choose_timing) ... ok
+test_waveform_sufficient_statistics_and_noise_energy (test_diagnostic.DiagnosticTests.test_waveform_sufficient_statistics_and_noise_energy) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.273s
+
+OK

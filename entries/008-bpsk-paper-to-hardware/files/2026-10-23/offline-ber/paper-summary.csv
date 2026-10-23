@@ -1,0 +1,28 @@
+section,curve,ebn0_db,trials,scored_bits,bit_errors,ber,ci95_low,ci95_high,interval_method,trials_with_errors,sparse_tail,packet_failures,packet_success
+paper,paper_pn16_coherent_compensated,-4,18000,1152000,527528,0.45792361111111113,0.45591582684774384,0.4599313953744784,95% trial-block normal interval; sparse tails flagged,18000,False,18000,0.0
+paper,paper_pn64_coherent_compensated,-4,18000,1152000,255994,0.2222170138888889,0.22113709401989806,0.22329693375787973,95% trial-block normal interval; sparse tails flagged,18000,False,18000,0.0
+paper,paper_uncompensated,-4,18000,1152000,569542,0.4943940972222222,0.49357602836673065,0.4952121660777138,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,-2,18000,1152000,469754,0.40777256944444445,0.4050726421848073,0.4104724967040816,95% trial-block normal interval; sparse tails flagged,18000,False,18000,0.0
+paper,paper_pn64_coherent_compensated,-2,18000,1152000,178611,0.15504427083333333,0.1541910827689557,0.15589745889771095,95% trial-block normal interval; sparse tails flagged,18000,False,18000,0.0
+paper,paper_uncompensated,-2,18000,1152000,568617,0.49359114583333336,0.4928157337100305,0.4943665579566362,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,0,18000,1152000,387588,0.3364479166666667,0.333265737597498,0.33963009573583536,95% trial-block normal interval; sparse tails flagged,17982,False,17982,0.001
+paper,paper_pn64_coherent_compensated,0,18000,1152000,105954,0.09197395833333333,0.09135916411968505,0.09258875254698161,95% trial-block normal interval; sparse tails flagged,17947,False,17947,0.0029444444444444444
+paper,paper_uncompensated,0,18000,1152000,567658,0.49275868055555555,0.4920487392277168,0.4934686218833943,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,2,18000,1152000,290044,0.2517743055555556,0.24849857215540516,0.255050038955706,95% trial-block normal interval; sparse tails flagged,17664,False,17664,0.018666666666666668
+paper,paper_pn64_coherent_compensated,2,18000,1152000,50319,0.0436796875,0.04327919445530842,0.04408018054469158,95% trial-block normal interval; sparse tails flagged,16894,False,16894,0.06144444444444445
+paper,paper_uncompensated,2,18000,1152000,566517,0.4917682291666667,0.49113672115893703,0.49239973717439633,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,4,18000,1152000,194001,0.16840364583333334,0.16544018236294647,0.1713671093037202,95% trial-block normal interval; sparse tails flagged,15517,False,15517,0.13794444444444445
+paper,paper_pn64_coherent_compensated,4,18000,1152000,16710,0.014505208333333333,0.014280737699993641,0.014729678966673026,95% trial-block normal interval; sparse tails flagged,10802,False,10802,0.3998888888888889
+paper,paper_uncompensated,4,18000,1152000,566469,0.4917265625,0.4911696953254455,0.4922834296745545,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,6,18000,1152000,110315,0.0957595486111111,0.09342353733261775,0.09809555988960446,95% trial-block normal interval; sparse tails flagged,10506,False,10506,0.41633333333333333
+paper,paper_pn64_coherent_compensated,6,18000,1152000,3131,0.0027178819444444446,0.002621658547831784,0.002814105341057105,95% trial-block normal interval; sparse tails flagged,2841,False,2841,0.8421666666666666
+paper,paper_uncompensated,6,18000,1152000,565808,0.49115277777777777,0.49066098012859555,0.49164457542696,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,8,18000,1152000,52326,0.045421875,0.04384721416320623,0.04699653583679377,95% trial-block normal interval; sparse tails flagged,5839,False,5839,0.6756111111111112
+paper,paper_pn64_coherent_compensated,8,18000,1152000,226,0.00019618055555555556,0.00017076344305008674,0.0002215976680610244,95% trial-block normal interval; sparse tails flagged,226,False,226,0.9874444444444445
+paper,paper_uncompensated,8,18000,1152000,565446,0.4908385416666667,0.4903985243623034,0.49127855897102995,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,10,18000,1152000,20447,0.017749131944444444,0.016810151362140792,0.018688112526748096,95% trial-block normal interval; sparse tails flagged,2751,False,2751,0.8471666666666666
+paper,paper_pn64_coherent_compensated,10,18000,1152000,2,1.7361111111111112e-06,0.0,4.142171511139064e-06,95% trial-block normal interval; sparse tails flagged,2,True,2,0.9998888888888889
+paper,paper_uncompensated,10,18000,1152000,565905,0.49123697916666664,0.49081936968699896,0.4916545886463343,95% trial-block normal interval; sparse tails flagged,18000,False,,
+paper,paper_pn16_coherent_compensated,12,18000,1152000,5222,0.004532986111111111,0.004105884832393745,0.004960087389828477,95% trial-block normal interval; sparse tails flagged,917,False,917,0.9490555555555555
+paper,paper_pn64_coherent_compensated,12,18000,1152000,0,0.0,0.0,0.00016641572212028333,one-sided 95% independent-trial bound on BER <= P(any trial error),0,True,0,1.0
+paper,paper_uncompensated,12,18000,1152000,565313,0.4907230902777778,0.4903158676428203,0.49113031291273523,95% trial-block normal interval; sparse tails flagged,18000,False,,
