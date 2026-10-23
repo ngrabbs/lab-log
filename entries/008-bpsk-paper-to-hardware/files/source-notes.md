@@ -198,3 +198,24 @@ New acquisition overlaps 28 bits of the old preamble scorer, so a common disjoin
 remains independent; capture bodies remain replay references. The paper's ideal
 carrier reference, preamble compensation and dynamic tracking tradeoffs are kept
 separate. No live device, firmware, radio service or physical bench was accessed.
+
+## October 23 confidence-gated tracking
+
+The [v6 experiment](2026-10-23/offline-gated-v6/README.md) keeps v5.1 acquisition,
+geometry, initialization and sequence decisions frozen. A two-pilot drift score
+and minimum estimated drift rate gate continuous tracking. Eighteen candidate
+settings and a no-protected-trial-regression training rule are recorded before
+selection using libre01 and new synthetic streams only. The training winner
+rejects positive per-symbol confidence thresholds; the selected gate is frame-level.
+Source/model/dependency hashes and training evidence freeze before evaluation.
+
+All 214 capture inputs and 570 full synthetic IQ hashes reproduce; all 3,240
+known-timing stress cases rerun. Rerun continuous and preamble-only decisions
+match v5.1 exactly. Known-bit/CRC metrics are independently recounted, and packet
+recoveries/regressions are retained against every control. The unchanged 156-bit
+capture scorer excludes both pilot fields. The gate improves synthetic static/
+drift tradeoffs but does not fix the RF packet regression. Pilot-frequency
+confidence is distinguished from calibrated physical drift or confidence in loop
+benefit. All evaluation is reused retrospective evidence; no radio, firmware,
+service or hardware setting was accessed. The paper's ideal carrier reference
+and preamble compensation remain separate from these practical tracking decisions.

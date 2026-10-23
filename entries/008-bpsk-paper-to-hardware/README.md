@@ -1512,19 +1512,83 @@ is **not ready to replace v4 universally**.
 [Retained initial failure](files/2026-10-23/offline-tracking-v5-initial/README.md) ·
 [Audit](files/2026-10-23/offline-tracking-v5/audit.json)
 
+## October 23 — confidence-gated tracking (offline)
+
+The next revision asks whether the loop should run at all. It compares carrier
+estimates from the first 64 symbols and the preamble/sync boundary, then enables
+tracking only when their drift score and rate exceed training-selected limits.
+The gate and its eligibility rule were developed on **libre01 and fresh synthetic
+training cases only**. Source, settings, training and dependencies were frozen
+before the reused held-out replay. No live hardware or software was changed.
+
+Eighteen candidates tested drift scores 3/5/8, rate limits 0/20 Hz/s and symbol
+confidence cutoffs 0/2/4. The winner uses **score ≥3 and |rate| ≥20 Hz/s**, with
+no per-symbol rejection: stricter symbol cutoffs hurt training. It has 1,768
+training known-bit errors versus 1,810 preamble-only and 1,857 continuous, with
+no added known-bit errors on any protected static/libre01 training trial. The
+confidence score is an AWGN-style heuristic, not a calibrated probability. Its
+late pilot makes this an offline frame-buffered gate.
+
+| Test | Continuous v5.1 | Confidence-gated v6 |
+| --- | --- | --- |
+| Static known-timing payload errors, 8 dB | 104/54,720 | **88/54,720**, matching v4 |
+| 120 Hz residual offset errors, 8 dB | 129/54,720 | **115/54,720** |
+| 100 Hz/s full-receiver packets, 8 dB | 33/54 | **33/54**, gain preserved |
+| All noisy synthetic packets | 442/540 | **452/540** |
+| Noisy saved RF replay packets | 147/180 | **147/180**, RF regression remains |
+
+All 570 synthetic starts remain correct. At 8 dB the gate has seven packet
+recoveries and zero regressions against preamble-only correction, and 22 recoveries
+with zero regressions against v4 in the full synthetic suite. Against continuous
+tracking there are 11 recoveries and one regression. All 270 12 dB synthetic and
+30 no-added-AWGN packets pass. On identical 82,080 synthetic 8 dB payload bits,
+errors fall 176→152; on the subset also acquired by v4, errors are 158→150.
+Small 4 dB static/phase-walk losses and a known-timing packet regression remain
+in the detailed tables; this is not a universal dominance claim.
+
+The RF goal is **not solved**. Preamble-only and v4 both give 149/180 noisy packets,
+while the gate remains at 147/180. It loses two packets against preamble-only,
+both on libre02. Clean pilot estimates are near the selected cutoff (about −20.5,
+−14.3 and −18.2 Hz/s for libre02/pluto00/pluto20). An apparent drift difference
+does not establish that this noisy tracking loop will help; waveform bias or
+correlated phase error could contribute. The threshold was not moved to rescue
+these outcomes. Disjoint known-preamble errors improve from continuous 30 to
+26, but still exceed v4's 24 on the same 13,884 bits at 8 dB.
+
+![Confidence gating, drift gains and remaining RF regression](files/2026-10-23/offline-gated-v6/comparison.svg)
+
+This extends the paper comparison: preamble-only compensation handles constant
+carrier offset; tracking helps evolving carriers but adds estimation/decision
+noise. The gate avoids much of that noise in the synthetic static case. The RF
+result shows why an ideal phase-reference curve does not predict whether a
+confidence-gated practical loop improves packets. All evidence remains offline,
+retrospective and conditional; captured body bytes still lack independent TX
+truth. No new hardware BER or sensitivity is measured.
+
+Seven behavioral tests pass. All 3,810 stress cases and 214 capture inputs rerun,
+all 570 full IQ hashes reproduce, all continuous/preamble-only control decisions
+match v5.1 and the 16 frozen dependencies remain unchanged.
+
+[Method, training and paper comparison](files/2026-10-23/offline-gated-v6/README.md) ·
+[Freeze](files/2026-10-23/offline-gated-v6/selection.json) ·
+[Control comparisons](files/2026-10-23/offline-gated-v6/gate-vs-controls.json) ·
+[RF source breakdown](files/2026-10-23/offline-gated-v6/capture-by-source.csv) ·
+[RF regressions](files/2026-10-23/offline-gated-v6/capture-regressions.json) ·
+[Audit](files/2026-10-23/offline-gated-v6/audit.json)
+
 ## Current outcome and next session
 
-The paper-to-hardware comparison now separates learned waveform geometry, sequence
-decisions, acquisition and carrier tracking. Drift-aware acquisition recovers all
-current synthetic starts, and preamble frequency correction resolves much of the
-large-offset BER penalty. Continuous tracking improves the large ramp while
-adding errors elsewhere, including a small saved-RF packet regression. Keep both
-v4 and the new experimental revision frozen; this is not a live receiver upgrade.
-Ideal paper controls reproduce. Model-matched synthetic results and reused RF
-replays still do not establish hardware payload BER or analog sensitivity.
+The comparison now separates waveform geometry, sequence decisions, acquisition,
+carrier correction and whether to run tracking. Confidence gating keeps the current
+synthetic ramp benefit and restores the 8 dB static baseline while increasing
+synthetic packet success. It does not remove the saved-RF regression, and small
+low-SNR/phase-walk losses remain. Keep v4, v5.1 and v6 frozen; none of these offline
+experiments installs a live receiver. Ideal paper controls reproduce. Synthetic
+results and reused RF replays still do not establish hardware payload BER or
+analog sensitivity.
 
 Next: reserve **new RF captures with independently saved TX payload bytes** and
-matched pre-filter noise for prospective evaluation. If carrier-loop gating or a
+matched pre-filter noise for prospective evaluation. If pilot-bias modeling or a
 better state/phase estimator is investigated, use new training cases and preserve
 all current failed/regressed trials. Keep acquisition, shared-trial conditional
 BER and all-trial packet outcomes separate.
