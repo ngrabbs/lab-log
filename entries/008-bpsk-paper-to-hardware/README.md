@@ -11,8 +11,8 @@ station successfully. I want to find out how the working link relates to the
 model: where the predictions hold, where the receiver behaves differently, and
 what measurements would explain the difference.
 
-This entry combines the **test plan** with the first conducted spectrum checks
-below. The earlier [transceiver bring-up](../003-ember-transceiver-bringup/README.md)
+This entry combines the **test plan** with conducted spectrum checks and two
+IQ heartbeat captures below. The earlier [transceiver bring-up](../003-ember-transceiver-bringup/README.md)
 is the starting evidence. Proposed tests remain distinct from the dated results.
 
 ## What I want to learn
@@ -615,20 +615,135 @@ while this bench session continues and must be restored afterward.
 [Preamble symbol measurements](files/2026-10-23/iq-heartbeat-01-preamble.csv) ·
 [Plot reproduction script](files/2026-10-23/plot_iq_capture.py)
 
+## October 23 — repeat capture and phase comparison
+
+I repeated the conducted heartbeat with the same J9 → DC block →
+20/10/6/3/2/1 dB pad chain → physical RXA connection. Between IQ captures I
+switched off **only the 5 V supply**; the 3.3 V supply stayed on. Both rails
+were back on before the second capture. This was a partial power interruption,
+not a full board reboot: the COMMS boot ID remained unchanged. Receiver settings
+and the reviewed runtime images were unchanged, and no MCU firmware was modified.
+
+The assistant started another 120-second dual-channel IQ recording and enabled
+IHU console debug output for timestamped CAN logging. The first logger reported
+ready and then exited because its event writer passed the UTC field twice. The
+pre-transmit liveness check caught that failure, so **no heartbeat was sent with
+the failed logger**. Its files were retained. The corrected logger was started
+and checked again while IQ recording continued; I then authorized exactly one
+heartbeat. There were no automatic RF retries.
+
+The IHU submitted request **19**, 38 bytes, and reported QUEUED followed by
+RF_TX_COMPLETE with digest `74342ca7`. The normal DBPSK decoder recovered a
+HEARTBEAT with outer RF sequence 19 and native sequence 15 on both channels.
+The native CRC32 matched `74342ca7`; the outer CRC32 and native CRC16 both passed.
+As before, the second channel is a weaker copy of the same RF event. Independently
+saved full TX bytes are still unavailable, so the sender comparison remains a
+length/digest match. No packet was forwarded or acknowledged over RF.
+
+| Quantity | First IQ capture | Repeat IQ capture |
+| --- | --- | --- |
+| Completed RF attempts | 1 | 1 |
+| IHU request / native digest | 18 / `4104665e` | 19 / `74342ca7` |
+| Outer RF / native sequence | 18 / 14 | 19 / 15 |
+| Normal DBPSK decode | Passed on both channels | Passed on both channels |
+| Samples per channel | 23,040,000 | 23,040,000 |
+| UHD errors / detected gaps / I/Q components ≥0.99 | 0 / 0 / 0 | 0 / 0 / 0 |
+| Channel-0 burst interval, 10 ms power threshold | 68.28–68.97 s | 64.17–64.85 s |
+| Channel-0 peak block power / median idle power | 45.96 dB | 45.96 dB |
+| Normal decoder relative CFO, channel 0 | −7347.20 Hz | −7373.68 Hz |
+| Known-preamble common frequency refinement | +0.756 Hz | +4.646 Hz |
+| Refined relative CFO | −7346.44 Hz | −7369.03 Hz |
+| Phase separation after common refinement | **134.14°** | **134.73°** |
+| State-1 / state-0 mean amplitude ratio | 1.105 | 1.086 |
+| Within-state phase standard deviations | 9.72° / 9.82° | 10.75° / 10.73° |
+| IHU lifetime CAN TX-failure count | 3 → 4 | 4 → 4 |
+
+The repeat's peak 10 ms digital power on channel 0 differed by only **+0.011 dB**
+from the first capture. This is a relative receiver observation, not a calibrated
+TX power comparison. The refined relative CFO shifted by about **−22.59 Hz**;
+the two independent RF clocks were not calibrated, so this cannot be assigned
+to transmitter drift alone.
+
+### Is the phase separation still around 134 degrees?
+
+**Yes, within this method's timing sensitivity.** Reprocessing the first capture
+reproduced its published timing, variance metric, coarse phase separation,
+common frequency refinement and final **134.1439°** result to floating-point
+precision. Applying the same sequence of operations to the repeat yielded
+**134.7273°**, a difference of **+0.5834°**.
+
+![Measured preamble constellations and relative block power for both heartbeat captures](images/iq-heartbeat-repeat.svg)
+
+Both measurements use 248 known preamble symbols, omit four at each end, and
+average the central 8 of 40 samples per symbol. Timing is selected by normalized
+within-state complex variance among CRC-valid frame alignments, after the normal
+decoder's squared-IQ frequency estimate. One additional common linear phase slope
+is then fitted across the preamble. The two complex state centers remain
+independent; neither is forced to the ideal 180° alphabet. The plots use one
+global rotation/scale per capture solely to align state 0 for viewing.
+
+The repeat also shows a limitation of that ordering. Before the common frequency
+refinement, its residual phase rotation spreads the points almost around a full
+circle: the selected timing's raw state-center separation is 136.08°, with about
+96° within-state phase spread. It is not a stable steady-state constellation at
+that stage. Removing the fitted common +4.646 Hz slope produces the tighter clouds
+shown above. The normal differential decoder already accepted the packet before
+this offline refinement; the refinement was not needed to make its CRC pass.
+
+As a sensitivity check, applying the same single common frequency refinement at
+each CRC-valid timing gives separations of **134.14–135.62°** for the first capture
+and **133.62–135.35°** for the repeat. Those ranges are timing sensitivity, not
+confidence intervals. The sub-degree difference between the selected results is
+smaller than that variation, so the defensible observation is a repeatable
+**roughly 134–135°** phase alphabet. These are waveform estimates through this
+receiver/filter path, not calibrated phase measurements directly at J9.
+
+This repeats the largest departure from the paper's ideal antipodal transmitter.
+It does not yet quantify the BER or noise-margin cost. Two decoded heartbeats are
+a useful repeatability check, not the planned packet-success trial budget. Current
+clock drive, installed transceiver firmware identity, circuit-stage responsibility,
+and an independent receiver cross-check remain to be measured.
+
+### CAN logging result and retained files
+
+The corrected logger captured the heartbeat and more than two minutes afterward.
+IHU status snapshots kept `tx_fail=4`, `tx_timeout=0`, TEC=0, REC=0 and RX overflow=0;
+no new FRAME_TX_FAILED message or code-3 fault appeared. Thus the earlier CAN
+failure **did not recur in this repeat**; its cause is still unresolved. Ten-second
+status snapshots cannot exclude a short counter/register excursion between reads,
+although the continuous debug stream covered the interval. Logging restored
+`cli_debug=0` when it closed at 16:22:57.720 UTC. Neither the failure counters nor
+the fault history was cleared.
+
+Both new IQ originals remain unchanged on the ground station, 184,320,128 bytes
+each, with SHA-256 recorded below. The failed logger and the earlier local analysis
+draft were retained separately. The latter used a different variance normalization;
+correcting it to reproduce the first measurement did not change the selected timing
+or either final phase separation. Published derived files use the reproduced method.
+
+[Repeat settings, hashes, comparison and timing candidates](files/2026-10-23/iq-heartbeat-02-session.json) ·
+[Complete corrected IHU console log, hardware ID redacted](files/2026-10-23/iq-heartbeat-02-ihu.txt) ·
+[Repeat block-power data](files/2026-10-23/iq-heartbeat-02-power.csv) ·
+[Repeat preamble symbol measurements](files/2026-10-23/iq-heartbeat-02-preamble.csv) ·
+[Offline analysis script](files/2026-10-23/analyze_iq_repeat.py) ·
+[Comparison plot reproduction](files/2026-10-23/plot_iq_repeat.py)
+
 ## Current outcome and next session
 
-The conducted spectrum check and first IQ heartbeat capture succeeded. Physical
+The conducted spectrum check and both IQ heartbeat captures succeeded. Physical
 RXA is the strong channel-0 receive path with the current image and RX2 selection;
-normal differential decoding recovered the expected length/digest. The initial
-waveform estimate is non-antipodal, and a separate CAN transmit failure remains
-open. The investigation remains **In progress**.
+normal differential decoding recovered matching sender length/digests in both
+captures. The roughly 134–135° non-antipodal phase estimate repeated. The separate
+CAN failure occurred in the first IQ run and did not recur in the logged repeat.
+The investigation remains **In progress**.
 
-Next: preserve this configuration and investigate the CAN failure before expanding
-packet trials. Then repeat known-preamble timing/phase measurements across captures
-and record current clock drive and transmitter firmware identity. Keep the complete
-pad/DC-block chain in place and power the transceiver down before reconnecting
-instruments. Restore the ground station's paused fire-uplink service when the
-bench session ends.
+Next: record current clock drive and installed transmitter firmware identity, then
+cross-check the phase alphabet with another receiver before changing drive or
+expanding packet/noise trials. Keep the existing configuration as the baseline.
+The CAN cause remains open; retain continuous logging in later runs. Keep the
+complete pad/DC-block chain in place and power the transceiver down before
+reconnecting instruments. Restore the ground station's paused fire-uplink service
+when the bench session ends.
 
 Use the [session worksheet](files/session-template.md) and
 [measurement table](files/measurements.csv) for subsequent runs. Keep original

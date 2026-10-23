@@ -4,13 +4,15 @@ A running log of things I build, test, fix, and investigate. Written for future 
 
 I miss the old forum build threads: the problem, the pictures, the experiments, the wrong turns, and how someone finally got it working. That is the idea here. Each entry keeps an investigation together, even when it takes several days.
 
+**[Equipment on Hand](equipment/README.md)** — instruments, radios, tools, availability notes, and measured characterizations.
+
 ## Entries
 
 Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
-| 008 | [BPSK: from paper to hardware](entries/008-bpsk-paper-to-hardware/README.md) | Conducted spectrum and IQ heartbeat captured; normal decoding passed, with an initial non-antipodal phase estimate. In progress. |
+| 008 | [BPSK: from paper to hardware](entries/008-bpsk-paper-to-hardware/README.md) | Conducted spectrum and two IQ heartbeats captured; normal decoding passed and the roughly 134–135° phase estimate repeated. In progress. |
 | 007 | [SDRB RF_Out check](entries/007-sdrb-rf-out/README.md) | Four TX branches and dev.4 receive/forwarding checks; intermittent TX underflow remains open. In progress. |
 | 004 | [LibreSDR TX power check](entries/004-libresdr-tx-power/README.md) | Two-point 434.1 MHz check: −62.6/−42.5 dBm through the cable/DC block; off/on/off contrast verified. In progress. |
 | 003 | [EMBER transceiver bring-up](entries/003-ember-transceiver-bringup/README.md) | 11.5-minute UHF demo passed: 185/185 packets, live dashboards and controlled overflow mitigation tested. RF/RX qualification remains open. In progress. |
