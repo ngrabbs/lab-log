@@ -1,6 +1,8 @@
 # Sources reviewed for the October 23 plan
 
-This is a provenance record, not a record of installed firmware or new bench tests.
+The planning sources are identified below. The dated bench section in the entry
+and its linked session metadata separately record newly observed settings and
+measurements.
 No full paper, firmware binary, private host details or unrelated project files
 are republished with this plan.
 
@@ -82,3 +84,12 @@ the user on 2026-10-23. Proposed sweep values, budgets, tolerances to investigat
 additional diagnostic tooling are plans, not measured capabilities.
 
 [Investigation](../README.md)
+
+## October 23 conducted session
+
+The [session metadata](2026-10-23/session.json) identifies the original local
+measurement files by SHA-256, documents the exported derivatives, and records the
+observed IHU release/source identity. It does not establish the transceiver's
+installed firmware identity. All spectrum and VNA results in the dated entry are
+from those captures; no synthetic spectrum was substituted. Published IHU replies
+redact the hardware board ID, while original console data remains unchanged locally.

@@ -11,10 +11,9 @@ station successfully. I want to find out how the working link relates to the
 model: where the predictions hold, where the receiver behaves differently, and
 what measurements would explain the difference.
 
-This entry is the **test plan**, not a new set of bench results. The earlier
-[transceiver bring-up](../003-ember-transceiver-bringup/README.md) is the starting
-evidence. New measurements and failed attempts will be added here as the tests
-are performed.
+This entry combines the **test plan** with the first conducted spectrum checks
+below. The earlier [transceiver bring-up](../003-ember-transceiver-bringup/README.md)
+is the starting evidence. Proposed tests remain distinct from the dated results.
 
 ## What I want to learn
 
@@ -398,22 +397,126 @@ acquisition suggests estimator range; errors accumulating late in coherent
 packets suggest residual drift; changes with drive suggest modulation quality.
 These are hypotheses to test one at a time, not conclusions from packet success.
 
+## October 23 — first conducted spectrum check
+
+With the transceiver off, I removed the antenna from J9 and assembled the
+Nooelec 20/10/6/3/2/1 dB pads with one DC block at the 20 dB end. I calibrated
+the NanoVNA over 430–440 MHz and saved it to slot 0. The assistant read the USB
+console and collected the measurements. No calibration slot was overwritten.
+
+The instrument identified itself as NanoVNA-F V2, firmware 0.5.4, with 101 points.
+It reported open/short/load/thru calibration applied. The initial console read
+returned noise-like S21 while only an S11 display trace was enabled. Switching
+that trace to S21 produced the through results below; the first read was not
+accepted as a cable-loss result.
+
+| Connection / quantity | Recorded result |
+| --- | --- |
+| Cables joined by through adapter, three reads | S21 −0.071 to +0.099 dB over 430–440 MHz |
+| DC block plus all six pads, five reads, 435 MHz | Mean attenuation 41.355 dB |
+| Same assembly, 437 MHz | Mean attenuation 41.384 dB |
+| Same assembly, all five reads over 430–440 MHz | Attenuation 41.233–41.552 dB |
+
+The through check is consistent with the saved calibration, not an independent
+absolute-accuracy verification. These readings establish assembled-chain UHF
+loss, not the DC block's isolated loss or the pads' power handling. The historical
+May chain measurement was a different setup and is not subtracted to estimate
+DC-block loss. [Forward S21 data](files/2026-10-23/vna-s21.csv) retains every read.
+
+I moved the complete assembly to J9 and connected the 1 dB end directly to the
+TinySA RF port. The transceiver and IHU were powered, with LibreSDR disconnected.
+Additional adapter details and current supply readings were not separately
+recorded. TinySA identified firmware `tinySA4_v1.4-156-g4eb315d`, hardware
+V0.4.5.1.1. IHU identified version 0.15.0, clean source
+`701e96c00c8a9a207d29a746eee74c7108a2a1b3`; this does not identify the installed
+transceiver firmware. The IHU had no outstanding UHF requests, retained a previous
+faulted-run state, and reported three older faults. Those records were preserved.
+
+A receive-only survey used input mode, LNA off, zero external gain correction,
+100 kHz RBW and 430–440 MHz. The first idle survey used 30 dB internal attenuation.
+For the burst test, internal attenuation was reduced to 10 dB and a fresh baseline
+was taken at that setting. No TinySA level calibration or firmware change was made.
+
+### The failed recorder attempt
+
+One heartbeat request was sent, but the first recording script aborted when a
+scan yielded 100 parsed points rather than the expected 101. It failed before
+saving its in-memory spectrum and console replies. There is no usable burst
+spectrum or retained completion reply for that attempt; it is not counted as a
+successful captured measurement. The cause of the incomplete scan is unresolved.
+
+The recorder was changed to stream JSONL records immediately, retain incomplete
+sweeps without inventing missing points, and save errors and command-write events.
+A receive-only check completed 14/14 sweeps with no RF-producing commands.
+I then explicitly authorized one additional heartbeat. There were no automatic
+retries.
+
+### The saved heartbeat capture
+
+The corrected run wrote **one** `uhf heartbeat` command. The IHU reported:
+
+```text
+SUBMITTED request=16 type=128 bytes=38
+UHF request=16 outcome=QUEUED status=0 bytes=38 digest=152a17f7 ground_ack=0 outstanding=1
+UHF request=16 outcome=RF_TX_COMPLETE status=0 bytes=38 digest=152a17f7 ground_ack=0 outstanding=0
+```
+
+All **44/44 sweeps** had the complete 101-point grid. Four preceded the command;
+40 covered the subsequent eight-second window. Three sweeps sampled the strong
+437 MHz signal at approximately −29.41, −29.91 and −29.41 dBm at the TinySA
+input. Later sweeps returned to the idle level. IHU pending and UHF-pending
+counts ended at zero; matched replies increased from 28 to 30. CAN error
+registers and RX overflow stayed zero, while the pre-existing lifetime TX-failure
+count remained 3. Local RF completion is not a ground acknowledgment.
+
+![Measured spectrum and 437 MHz level during one conducted heartbeat](images/heartbeat-spectrum-02.svg)
+
+The upper plot is calculated from saved sweeps, not an instrument max-hold
+screenshot. Horizontal bars in the lower plot show sweep intervals; the individual
+437 MHz sample occurs somewhere within each interval. The 100 kHz frequency grid
+and RBW only locate the burst near 437 MHz. They do not resolve exact CFO,
+phase-state quality or occupied bandwidth.
+
+Using the strongest input reading and the measured external loss gives:
+
+```text
+estimated J9 level = −29.406 dBm + 41.384 dB = +11.978 dBm ≈ 15.8 mW
+```
+
+This is a **rough in-band level estimate**, not calibrated total modulated output
+power. It uses a swept detector sample, with TinySA absolute calibration accuracy
+and reconnection uncertainty unestablished. The instrument's displayed input
+level already accounts for its internal attenuator; the 10 dB internal setting
+is not added again. No packet was decoded by the TinySA and no BER/PER or ground
+delivery result is inferred.
+
+[All saved sweep levels](files/2026-10-23/heartbeat-spectrum-02.csv) ·
+[IHU replies, board hardware ID redacted](files/2026-10-23/heartbeat-spectrum-02-ihu.txt) ·
+[Settings, input hashes and derivation](files/2026-10-23/session.json) ·
+[Plot reproduction script](files/2026-10-23/plot_capture.py)
+
+Original captures remain unchanged in the local bench archive. Published CSVs
+are explicitly derived exports; the session file records their original input
+hashes. The failed first attempt is retained as an error record, not reconstructed
+as a successful capture.
+
 ## Current outcome and next session
 
-The plan and source comparison are complete; experimental work remains **In
-progress**. No new transmission, firmware change, calibration or BER measurement
-was performed while writing this entry.
+The first conducted burst is detected near the intended band, with local transmit
+completion and return to the idle spectrum documented. The investigation remains
+**In progress**: repeated packet accounting, precise frequency, waveform quality,
+receiver input compatibility and BER measurements remain open.
 
-First session: preserve the current working configuration, photograph the
-conducted setup, establish reference-plane levels, repeat T0 and capture T1 IQ.
-Then add offline raw-decision logging and run T2. This order provides useful
-results before implementing variable preambles, a new receiver or a noise source.
+Next: establish the LibreSDR input limit for the exact receive port and image,
+then move the measured chain to it while powered down and capture IQ. Use the
+current rough level estimate with uncertainty when selecting any additional
+attenuation. Keep the TinySA connected until that setup is decided. A measured
+≈−29 dBm TinySA input is not by itself authorization to assume every SDR port
+has the same limit.
 
 Use the [session worksheet](files/session-template.md) and
-[empty measurement table](files/measurements.csv). Keep large original IQ files
-in durable storage, record hashes and capture metadata, and link selected plots
-here beside the measurements they explain. Never replace original captures with
-noise-injected or corrected derivatives.
+[measurement table](files/measurements.csv) for subsequent runs. Keep original
+data unchanged and distinguish proposed tests from performed steps.
 
 [Sources and revisions](files/source-notes.md) ·
 [Related bring-up](../003-ember-transceiver-bringup/README.md) ·
