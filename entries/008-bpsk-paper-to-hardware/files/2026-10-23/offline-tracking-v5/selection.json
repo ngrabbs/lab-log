@@ -1,0 +1,34 @@
+{
+  "selected": true,
+  "frozen_utc": "2026-10-23T21:31:22.212626+00:00",
+  "python": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "numpy": "2.5.4",
+  "training_capture": "libre01 only",
+  "synthetic_training": "SeedSequence 934551, libre noise945000, development test seeds952001/952002 and trials912/913; none of the old stress realizations",
+  "selection": "alpha=.06 chosen from 0,.02,.04,.06,.1,.25,.5 by total training bit errors (111 vs118 alpha0). Initial broad sweep retained.",
+  "retrospective": true,
+  "dependencies": {
+    "receiver.py": "a6f970a8555b1c9f85f8ca61902146f8a9c00eef58443457ce678a580cfdf311",
+    "model.json": "1fb5cb0a6548e1c2e09a0a9d98128e8a11e2668bbb0889588367abc5021cc3a3",
+    "train.py": "c785b8f267f6141ff4699d19ca52ee3cca3490b94f553a0f0d12c7c81ceedd9f",
+    "test_receiver.py": "d030064aa89de31e5b5dc1d4ff5ee4234345e24d6c53f66f2e19f47fac1d0e94",
+    "run.py": "0a51193e87553820da1f76a48e34b7ea5cf461bf7e90846064674748af805733",
+    "stress.py": "99806434e2adcb42e2b0399a5da8a83198f7779f39ab17d13110c026d272a00c",
+    "training.json": "fcdb6170fd62b9a94ebfa5c86a8a81bb98e7c161b987a2fcb129922a1b1c5884",
+    "training-initial.json": "041410dea98af4d5afa78f81161c171c596923e36cfb1eb8195cb19c85de3c1d",
+    "../offline-sequence-v4/receiver.py": "dca4a86184ff0167512e05f6405d272211acb4d90f5245827cd2c11093652889",
+    "../offline-geometry-v3/receiver.py": "9a10cc2561fd476e33d85976dc63c9432a41722a0447c80a307d3bf963258249",
+    "../offline-start-v2/receiver.py": "88a7908d1de6b6ca44b652abe51a6f0bf0ab9228c8435bdff35a077e48afd33f",
+    "../offline-synthetic-stress/model_test.py": "edf164b7741754e66bc096774edd34345c7f2e77dfb0cb3a70df1baecf738aba",
+    "../offline-ber/diagnostic.py": "5017e45631fdcfc4325843663513b299fa5c316d31ed092d278a32008cecb52a",
+    "../offline-ber/libre01-48k.npz": "1aaafbadaceeee68229aae416328c9a384d7bb9602bf5d9d4c8759cfd3cfb2f5"
+  },
+  "frozen_receiver_model": {
+    "receiver.py": "a6f970a8555b1c9f85f8ca61902146f8a9c00eef58443457ce678a580cfdf311",
+    "model.json": "1fb5cb0a6548e1c2e09a0a9d98128e8a11e2668bbb0889588367abc5021cc3a3"
+  },
+  "acquisition_sha256": "88a7908d1de6b6ca44b652abe51a6f0bf0ab9228c8435bdff35a077e48afd33f",
+  "pair_detector_sha256": "9a10cc2561fd476e33d85976dc63c9432a41722a0447c80a307d3bf963258249",
+  "initial_frozen_utc": "2026-10-23T21:28:58.042827+00:00",
+  "revision": "v5.1: zero-energy numerical guard only; initial replay retained. Evaluation outcomes already known; sequential retrospective replay, no new holdout claim."
+}

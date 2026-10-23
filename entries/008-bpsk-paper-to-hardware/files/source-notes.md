@@ -176,3 +176,25 @@ experiment, keeping coherent state/direct-data and differentially decoded data
 metrics separate. The previous PN-preamble compensation reproduction is not
 rerun under all new drift profiles. Model-matched synthetic gains and failures
 are distinguished from new hardware BER or analog sensitivity measurements.
+
+## October 23 phase/frequency tracking and drift-aware acquisition
+
+The [tracking experiment](2026-10-23/offline-tracking-v5/README.md) develops only
+from libre01 and new synthetic seed streams. A differential boundary statistic
+avoids the old widely spaced constant-frequency acquisition fields, and a
+64-symbol initializer feeds a second-order decision-directed carrier loop before
+the unchanged sequence path. The initial broad and refined training sweeps,
+selection times, source/dependency hashes and every decision are retained.
+
+An initial held-out replay exposed FFT residue normalization at zero energy; the
+entire initial revision/result set is preserved. A new training-only burst
+reproduced the failure before a generic machine-epsilon guard fixed it. A separate
+freeze precedes the final replay, explicitly sequential retrospective validation;
+no signal threshold or loop setting was tuned to held-out outcomes. The same 214
+capture inputs and 570 full synthetic IQ hashes reproduce. All 3,240 detector cases
+also rerun. Count auditing retains misses, wrong starts and packet regressions.
+New acquisition overlaps 28 bits of the old preamble scorer, so a common disjoint
+156-bit subset is reported alongside legacy 184-bit counts. Synthetic payload truth
+remains independent; capture bodies remain replay references. The paper's ideal
+carrier reference, preamble compensation and dynamic tracking tradeoffs are kept
+separate. No live device, firmware, radio service or physical bench was accessed.

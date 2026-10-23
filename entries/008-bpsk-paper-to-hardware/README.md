@@ -1446,21 +1446,88 @@ BER. No parameter was adjusted to rescue a failed case.
 [Paper controls](files/2026-10-23/offline-synthetic-stress/paper-control.csv) ·
 [Frozen-hash and regeneration audit](files/2026-10-23/offline-synthetic-stress/audit.json)
 
+## October 23 — tracking and drift-aware acquisition (offline)
+
+A new receiver uses only **libre01 and separate synthetic training realizations**
+for development. It finds the preamble/sync boundary with a one-symbol-lag phase
+statistic, estimates carrier frequency from that short known field, initializes
+phase/frequency from the first 64 preamble symbols and then tracks them with a
+slow decision-directed loop. The learned 134.0815° geometry and three-symbol
+sequence path stay fixed. A preamble-only correction is retained as an ablation.
+Nothing was changed in the live hardware or receiver.
+
+The training-selected loop has alpha=.06 (111 training bit errors vs 118 for the
+preamble-only version). The initial frozen run exposed an empty-window numerical
+failure; its source and every result are retained. A new training-only zero-noise
+burst reproduced it. Masking numerically zero energies fixed the defect, and a
+separate revision was frozen before replaying everything again. This sequential
+repair and all reused captures/stress tests are **retrospective validation**.
+No loop parameter, candidate count or signal threshold was fitted to test outcomes.
+
+| Test | Frozen sequence v4 | New tracking receiver |
+| --- | --- | --- |
+| 120 Hz residual offset, known timing, 8 dB | 3,061/54,720 payload errors (5.594%) | **129/54,720 (0.2357%)** |
+| All synthetic starts | 512/540 noisy +26/30 no added AWGN | **540/540 +30/30** |
+| 100 Hz/s ramp, 8 dB packets | 19/54 | **33/54** |
+| All noisy synthetic packets | 419/540 | **442/540** |
+| Noisy saved RF replay packets | 149/180 | **147/180** |
+
+The ablation matters: **115/54,720** errors at 120 Hz means most of that gain comes
+from preamble frequency estimation. Preamble-only correction also gives 445/540
+noisy synthetic packets, slightly better overall than tracking. Tracking helps
+the large ramp but adds static/modest-drift errors: static 8 dB is 88→104 errors.
+On the same 76,912 synthetic 8 dB payload bits acquired by both receivers, errors
+increase 158→172. Better acquisition, rather than a universal conditional BER gain,
+explains much of the packet improvement. Ten synthetic 8 dB packet regressions
+and 22 recoveries are retained.
+
+All three clean held-out RF captures still pass; the 180 noisy starts now all
+align. At 8 dB there are six packet regressions and four recoveries; 12 dB remains
+90/90. Since new acquisition uses the last preamble symbols, a disjoint 156-bit
+preamble subset is also scored: **24→30 errors on the same 13,884 bits**. Body
+bytes still lack independent full TX truth. These are replay results with added
+post-filter noise, not new hardware payload BER or calibrated sensitivity.
+
+![Tracking and acquisition comparison](files/2026-10-23/offline-tracking-v5/comparison.svg)
+
+This ties directly to the paper: its phase-2 curve supplies a true symbol-center
+phase reference and isolates roughly 0.143 dB integration loss at nu=.10. Correcting
+residual frequency moves the practical receiver toward that assumption; estimating
+and tracking the carrier introduces additional errors absent from that ideal
+curve. The preamble-only ablation parallels the paper's finite-frame compensation,
+while the ramp and static regressions expose its drift/noise tradeoff. The paper's
+PN preamble and the hardware's 0x55/sync fields are different waveforms.
+
+Six behavioral tests pass; all 3,810 stress frames and 214 capture inputs are
+replayed, decision counts are independently recounted, every full synthetic IQ
+hash matches and frozen dependencies remain unchanged. This experiment supports
+the new acquisition and preamble correction, but the selected continuous tracker
+is **not ready to replace v4 universally**.
+
+[Method, paper comparison and reproduction](files/2026-10-23/offline-tracking-v5/README.md) ·
+[Freeze and hashes](files/2026-10-23/offline-tracking-v5/selection.json) ·
+[Capture comparison](files/2026-10-23/offline-tracking-v5/capture-comparison.csv) ·
+[Stress counts](files/2026-10-23/offline-tracking-v5/stress-summary.csv) ·
+[Paired trials](files/2026-10-23/offline-tracking-v5/paired-stress.json) ·
+[Retained initial failure](files/2026-10-23/offline-tracking-v5-initial/README.md) ·
+[Audit](files/2026-10-23/offline-tracking-v5/audit.json)
+
 ## Current outcome and next session
 
-The paper-to-hardware comparison now separates waveform geometry, bit detection,
-acquisition and phase tracking. The sequence receiver retains its benefit on
-varied independently known synthetic payloads with modest drift, but large residual
-frequency and drift-sensitive acquisition remain failure modes. Wrong starts even
-without added AWGN show that the previous static-capture success was not a general
-drift qualification. Ideal paper controls reproduce; matched-model synthetic
-results still do not establish hardware payload BER or analog sensitivity.
+The paper-to-hardware comparison now separates learned waveform geometry, sequence
+decisions, acquisition and carrier tracking. Drift-aware acquisition recovers all
+current synthetic starts, and preamble frequency correction resolves much of the
+large-offset BER penalty. Continuous tracking improves the large ramp while
+adding errors elsewhere, including a small saved-RF packet regression. Keep both
+v4 and the new experimental revision frozen; this is not a live receiver upgrade.
+Ideal paper controls reproduce. Model-matched synthetic results and reused RF
+replays still do not establish hardware payload BER or analog sensitivity.
 
-Next: keep this receiver frozen as a reference. Investigate phase/frequency
-tracking and drift-aware acquisition using separate training/synthetic cases,
-then reserve **new RF captures with independently saved TX payload bytes** and
-matched pre-filter noise for prospective evaluation. Preserve all current failed
-cases and keep acquisition, conditional BER and packet outcomes separate.
+Next: reserve **new RF captures with independently saved TX payload bytes** and
+matched pre-filter noise for prospective evaluation. If carrier-loop gating or a
+better state/phase estimator is investigated, use new training cases and preserve
+all current failed/regressed trials. Keep acquisition, shared-trial conditional
+BER and all-trial packet outcomes separate.
 Then validate a selected algorithm with bounded conducted RF trials. Record the
 installed transmitter firmware/clock drive before any modulation changes, and
 include time/temperature/reference information in frequency tests. BER under
