@@ -1243,20 +1243,83 @@ revision with **one retained miss**, not a completed live qualification.
 [All trial decisions](files/2026-10-23/offline-start-v2/trials.jsonl) ·
 [Hash/count audit](files/2026-10-23/offline-start-v2/audit.json)
 
+## 2026-10-23 — detector using the learned 135° geometry
+
+The earlier BER comparison used a sign-of-correlation bit detector, which places
+the change/no-change boundary at 90°. I tested a detector using the two complex
+states learned from **libre01 only**: 134.0815° separation with amplitude ratio
+1.06758. It compares each adjacent symbol pair with the four possible state pairs,
+fitting an unknown common phase/gain for that pair, and returns whether the states
+changed. This is a pairwise likelihood rule, not a full sequence decoder or a
+phase-only ablation.
+
+The **v2 acquisition code, model and threshold are unchanged**. V3 replaces only
+the bit decisions after acquisition; timing, CFO and expected body are never
+supplied to it. On training data at 8 dB, errors fall from 95/5,336 to 29/5,336;
+at 12 dB they fall from 6/5,520 to zero observed. Acquisition is identical, ten
+behavioral tests pass, and the source/model/dependency were frozen before the
+held-out rerun. Selection used training preamble BER, not CRC or body-reference
+errors. All work stayed offline.
+
+The held-out run repeats the same IQ and noise cases. **Every input IQ hash and
+acquisition output matches v2 exactly**: 179/180 noisy acquisitions, the same one
+miss, zero wrong starts. The paired detector result is:
+
+| Replay Eb/N0 | Shared known bits | V2 preamble errors | V3 preamble errors | V2 sync + CRC | V3 sync + CRC |
+| --- | --- | --- | --- | --- | --- |
+| 8 dB | 16,376 | 265 (**1.618%**) | 106 (**0.6473%**) | 2/90 | 6/90 |
+| 12 dB | 16,560 | 13 | **0 observed** | 76/90 | 90/90 |
+
+![Paired detector results and bit-class tradeoff at 8 dB](images/geometry-v3.svg)
+
+At 8 dB this is **60% fewer preamble errors** on identical acquired samples.
+The paired trial-block change is −0.971 percentage points (approximate 95%
+interval −1.180 to −0.762), conditional on these fixed recordings. All three clean
+held-out frames still pass with zero errors in 552 known bits. The 12 dB zero
+count and 90/90 frames are finite-budget observations, not proof of zero BER.
+
+The tradeoff matters: at 8 dB, changed-bit errors fall **254 → 29**, while false
+changes on unchanged bits increase **11 → 77** (8,188 bits per class). Total valid
+frames rise **78/180 → 96/180**, with 20 recoveries and **two regressions**. Both
+regressions are Pluto00 at 8 dB and introduce 0→1 body differences against the
+clean replay reference; one also has a sync error. They remain in the ledger.
+A balanced preamble result does not guarantee the same gain on zero-heavy payloads.
+
+This connects to the paper by showing that some of the earlier noise penalty
+belongs to the bit detector's assumptions. Accounting for the actual geometry
+improves BER without changing the transmitter or acquisition. It does not make
+the physical link equivalent to ideal coherent BPSK or establish a universal dB
+sensitivity gain. The result remains conditional known-preamble BER on reused
+recordings with post-filter replay noise; independent full TX-body truth is still
+unavailable. No detector was retuned against these held-out outcomes.
+
+All original captures and v1/v2 source/results retain their hashes. Every saved
+count, sync/CRC observation and baseline decision was checked independently.
+The live receiver remains unchanged.
+
+[Full method, training evidence and results](files/2026-10-23/offline-geometry-v3/README.md) ·
+[Frozen detector](files/2026-10-23/offline-geometry-v3/receiver.py) ·
+[Paired counts and BER intervals](files/2026-10-23/offline-geometry-v3/paired-summary.csv) ·
+[Bit-class counts](files/2026-10-23/offline-geometry-v3/bit-class-summary.csv) ·
+[Retained frame regressions](files/2026-10-23/offline-geometry-v3/frame-regressions.json) ·
+[All trial decisions](files/2026-10-23/offline-geometry-v3/trials.jsonl) ·
+[Pre-evaluation freeze](files/2026-10-23/offline-geometry-v3/selection.json)
+
 ## Current outcome and next session
 
-The spectrum/phase checks now tie to the paper through a controlled offline BER
-comparison. Ideal references reproduce theory. The roughly 135° recorded waveform
-has a significant penalty with the current differential detector, and noisy
-frequency acquisition can add a larger separate loss. The learned-preamble
-prototype now transfers to held-out recordings without supplied timing/CFO. A
-training-only score revision removes emitted wrong starts in the reused test budget,
-with one miss retained; limited capture diversity and noise-plane assumptions still
-prevent live qualification.
+The spectrum/phase checks now tie to the paper through controlled offline BER
+comparisons. Ideal references reproduce theory. The sign detector has a large
+penalty on the roughly 135° waveform; a detector using the learned geometry
+reduces 8 dB known-preamble errors by 60% on the same acquired samples, while
+increasing false changes and regressing two packets. A training-only acquisition
+revision retains one miss and no emitted wrong starts in this reused test budget.
+Limited capture diversity, payload truth and noise-plane assumptions still prevent
+live qualification.
 
-Next: broaden acquisition stress tests on training data, then evaluate the frozen
-receiver on **new captures with independently saved transmitted payloads** and
-matched pre-filter noise. Keep held-out truth and acquisition accounting separate.
+Next: test detector behavior on independently known varied payloads using training
+data, keeping the baseline and the two regressions visible. Reserve **new captures
+with independently saved transmitted payloads** for prospective evaluation of the
+frozen receiver, with matched pre-filter noise and separate acquisition accounting.
 Then validate a selected algorithm with bounded conducted RF trials. Record the
 installed transmitter firmware/clock drive before any modulation changes, and
 include time/temperature/reference information in frequency tests. BER under

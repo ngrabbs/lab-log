@@ -1,0 +1,40 @@
+{
+  "selected": true,
+  "selection_utc": "2026-10-23T19:39:37.793586+00:00",
+  "criterion": "Reduce training known-preamble errors at 8 dB and combined 8/12 dB with identical acquisition; retain clean frame and no training noise candidates.",
+  "training_iq": "libre01 only",
+  "training_noise_seeds": [
+    55001,
+    55002,
+    55003
+  ],
+  "noise_control_seed_start": 860000,
+  "training_noisy_trials": 60,
+  "detector_candidates_evaluated": 1,
+  "selected_detector": "Pairwise complex-scale GLRT over learned 00/01/10/11 templates; XOR of selected states.",
+  "v2_training_errors": [
+    95,
+    6
+  ],
+  "v3_training_errors": [
+    29,
+    0
+  ],
+  "not_selected_for": "Frame CRC success or noisy body-reference error counts.",
+  "acquisition_sha256": "88a7908d1de6b6ca44b652abe51a6f0bf0ab9228c8435bdff35a077e48afd33f",
+  "frozen_receiver_model": {
+    "model.json": "74d33e58c6a31d9d6423bf8e2487390993acb9397855c1856c51e291e81f8ba5",
+    "receiver.py": "9a10cc2561fd476e33d85976dc63c9432a41722a0447c80a307d3bf963258249"
+  },
+  "development_hashes": {
+    "train.py": "a01521d9fcd2597c6470f3fb31ea71f4021f3eae6f0423a5ed67180cf5810805",
+    "training-source.json": "62036927f3c2e77bec2d8e309e63260a03a86fe1e4b666a059f773828d0f27a4",
+    "training-trials.jsonl": "fcfaab3e3d9132f51afb85c5f1652d57195b2481a37da50fbeb30f8bb2acc119",
+    "training-summary.csv": "1a32164534126ba8432081badcd6132dcb4674714858c2b115fac803984ca782",
+    "test_receiver.py": "1dacf433720a585f661e834ad051c898650e310256c79f5ede9ab9b53f9b7f96",
+    "tests.txt": "c5ca65b0ea4c3e0980b0c8fff5b3a1508ce9ef4ac9aaa562bae5994efab0fee7",
+    "run.py": "41848c0eab9d5fc72b0fabebab6e6f63b903198a1fdef65a2805975fe6518c60"
+  },
+  "held_out_plan": "Same 180 noisy cases, 3 clean cases, 30 noise controls and one training check as v2; exact IQ hashes and acquisition outputs must match; no held-out retuning.",
+  "scope": "Retrospective reused RF recordings. Earlier held-out v2 outcomes were already known."
+}

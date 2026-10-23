@@ -137,3 +137,15 @@ The same held-out input-generation kernel and nuisance values are checked pairwi
 179/180 noisy starts acquire, with one miss retained and zero emitted wrong starts.
 No v2 receiver change was made after held-out inspection. This is reused retrospective
 RF evidence, with conditional known-preamble BER and post-filter replay noise.
+
+## October 23 learned-geometry detector comparison
+
+The [v3 detector experiment](2026-10-23/offline-geometry-v3/README.md) uses only
+libre01 for development and preserves the v2 acquisition source/model. A pairwise
+complex-gain likelihood rule uses its learned 134.0815° state separation and
+amplitude ratio. Detector/dependency and training hashes are frozen before the
+held-out rerun. All 214 IQ hashes and acquisition outputs match v2 exactly.
+The 8 dB known-preamble comparison is 265 → 106 errors on the same 16,376 bits;
+changed-bit gains and increased false transitions, plus two packet regressions,
+are retained. This is conditional BER on reused captures with post-filter noise,
+not independent payload truth, calibrated RF sensitivity or live receiver testing.
