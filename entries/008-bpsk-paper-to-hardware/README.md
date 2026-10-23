@@ -12,7 +12,7 @@ model: where the predictions hold, where the receiver behaves differently, and
 what measurements would explain the difference.
 
 This entry combines the **test plan** with conducted spectrum checks, two
-LibreSDR IQ heartbeat captures and a Pluto cross-check. The earlier
+LibreSDR IQ heartbeat captures, a Pluto cross-check and a Pluto gain check. The earlier
 [transceiver bring-up](../003-ember-transceiver-bringup/README.md) is the starting
 evidence. Proposed tests remain distinct from the dated results.
 
@@ -854,24 +854,126 @@ fire-uplink service remains paused while the bench session continues.
 [Offline Pluto analysis](files/2026-10-23/analyze_pluto_capture.py) ·
 [Three-capture plot reproduction](files/2026-10-23/plot_pluto_comparison.py)
 
+## October 23 — Pluto gain check at 20 dB
+
+The first Pluto burst used only 26 raw ADC-format counts at its largest I/Q
+component. The next question was whether the approximately 135° result would
+persist with more digital signal. I authorized the assistant to run this check
+through to results without asking for approval at each step. The RF wiring,
+DC block, all six pads and both powered transceiver rails stayed as reported.
+
+Only Pluto's **manual RX gain changed from 0 to 20 dB**, with readback confirmed.
+The receiver kept the same 437 MHz requested tune, 200 kHz bandwidth, 2.304 Msample/s
+PHY rate, 288 ksample/s stream and 193/129-tap offline filter comparisons. AGC
+remained off. Pluto's TX DDS sources remained disabled, its TX LO powered down
+and TX attenuation at −89.75 dB. No firmware or transmitter drive change was made.
+
+For this targeted check the assistant recorded **30 seconds** of IQ, rather
+than another 120-second idle-heavy record, and **45 seconds** of IHU debug logging.
+Both processes were verified active and IHU pending counts zero before issuing
+exactly **one heartbeat**. Request **21** reported QUEUED then RF_TX_COMPLETE,
+38 bytes, digest `971c7052`. No automatic retry or additional RF test was needed.
+
+### More ADC usage, same approximate phase alphabet
+
+The unchanged normal DBPSK decoder recovered outer RF sequence **21**, native
+HEARTBEAT sequence **17**, with valid outer CRC32 and native CRC16. Recovered
+length/digest matched the IHU report. Both offline filters accepted the identical
+packet. Full independent TX bytes were still unavailable; no packet forwarding
+or RF acknowledgment occurred.
+
+| Quantity | Pluto baseline, 0 dB gain | Pluto gain check, 20 dB gain |
+| --- | --- | --- |
+| Recording duration / samples | 120 s / 34,560,000 | 30 s / 8,640,000 |
+| IHU request / native digest | 20 / `13049149` | 21 / `971c7052` |
+| Normal decode and sender length/digest match | Passed | Passed |
+| Peak absolute raw I/Q component | 26 counts | **233 counts** |
+| Peak component / nominal full scale 2048 | 1.27% | **11.38%** |
+| Components meeting the ≥0.99-full-scale criterion | 0 | 0 |
+| Reported IIO read errors | 0 | 0 |
+| 10 ms blocks with exactly zero power | 76.98% | **0%** |
+| Primary 193-tap phase separation | 134.77° | **135.13°** |
+| 129-tap control phase separation | 134.75° | **135.09°** |
+| Refined state-amplitude ratio | 1.103 | 1.054 |
+| Refined within-state phase spreads | 7.89° / 7.96° | 10.78° / 10.80° |
+| Normal decoder relative CFO | −3241.47 Hz | −2563.41 Hz |
+| Additional common frequency refinement | +4.369 Hz | +5.985 Hz |
+| Refined relative CFO | −3237.10 Hz | −2557.42 Hz |
+| IHU lifetime CAN TX-failure counter | 4 → 4 | 4 → 4 |
+
+![Pluto preamble constellations at 0 and 20 dB gain, with raw ADC code usage](images/iq-pluto-gain-check.svg)
+
+The primary phase estimate changed by **+0.3625°**, from 134.7692° to
+135.1317°. The gain-check timing sensitivity is **134.18–135.47°**, larger than
+that change. The shorter-filter control gives 135.0874°, only 0.0443° below the
+primary result. The same known-preamble procedure and one common frequency
+refinement were used; the plot does not force the state centers antipodal or
+rotate individual symbols to target phases.
+
+The peak 10 ms digital block power rose by **19.43 dB**, broadly consistent with
+the requested 20 dB gain increase. This compares burst blocks, not full-record
+RMS: the shorter gain-check record has a different transmit duty fraction.
+It is a relative digital observation, not a calibrated receiver gain or RF power
+measurement. The new median idle block power is nonzero, but the quantized idle
+signal does not establish a calibrated noise density, SNR or Eb/N0.
+
+Increasing ADC usage did **not** restore 180° phase separation. This supports
+the conclusion that low digital amplitude alone was not responsible for the
+baseline's roughly 135° alphabet. The four IQ results are now **134.14°, 134.73°,
+134.77° and 135.13°**, through two receivers and two Pluto gains. Receiver and
+common-analysis effects still limit absolute accuracy; the responsible transmitter
+stage and the BER/noise-margin cost remain unmeasured. The larger phase spread
+in this one higher-gain preamble is not evidence that more gain worsens BER.
+
+The refined relative CFO changed by about **+679.68 Hz** between the sequential
+Pluto captures, while tune readback stayed the same. Temperature and independent
+clock accuracy were not controlled, so this cannot be assigned to gain or the
+transmitter alone. The normal receiver removed bulk CFO before decoding, and the
+known-preamble analysis removed one additional common slope. Future frequency
+work needs an explicit time/temperature/reference record.
+
+### Capture integrity and state left for the next test
+
+All **8,640,000** requested samples were saved without a reported read error.
+No raw component approached the stated near-full-scale criterion; this is not
+an independent analog-linearity check. As in the first Pluto recording, the IIO
+path has no per-sample timestamps and no independently collected FPGA overflow
+counter, so gap-free continuity is not proven. The original NPY is **34,560,128
+bytes**; its SHA-256 was recomputed before analysis and it remains unchanged.
+
+The continuous IHU log records one heartbeat command and no new fault. TX-failure
+count stayed 4, timeouts stayed 0 and TEC/REC and RX overflow were 0 at the saved
+status snapshots. Debug output returned to its prior off setting when logging
+closed at **16:54:50.511 UTC**. Pluto is left at **20 dB manual RX gain**, with
+its TX path muted; RF wiring and transceiver power were not changed. The ground
+fire-uplink service remains paused during this ongoing bench session.
+
+[Gain setting, capture, hashes, phase candidates and comparison](files/2026-10-23/iq-pluto-gain20-01-session.json) ·
+[IHU console, hardware ID redacted](files/2026-10-23/iq-pluto-gain20-01-ihu.txt) ·
+[Five-second burst power excerpt](files/2026-10-23/iq-pluto-gain20-01-power.csv) ·
+[193-tap preamble measurements](files/2026-10-23/iq-pluto-gain20-01-preamble-193tap.csv) ·
+[129-tap control measurements](files/2026-10-23/iq-pluto-gain20-01-preamble-129tap.csv) ·
+[Offline gain-check analysis](files/2026-10-23/analyze_pluto_gain_check.py) ·
+[Gain-check plot reproduction](files/2026-10-23/plot_pluto_gain_check.py)
+
 ## Current outcome and next session
 
-The conducted spectrum check, two LibreSDR IQ heartbeats and independent Pluto
-heartbeat all succeeded. Normal decoding recovered matching sender length/digests
-in all three RF events. The roughly 134–135° non-antipodal phase estimate appears
-through both receivers. This strengthens the waveform observation, while receiver
-filtering, Pluto quantization and common analysis still limit its accuracy.
-The separate CAN failure occurred in the first IQ run and has not recurred in
-the two logged repeats. The investigation remains **In progress**.
+The conducted spectrum check and **four IQ heartbeat captures** succeeded.
+Normal decoding recovered matching sender length/digests in all four RF events.
+The roughly **135° non-antipodal phase estimate** persists through LibreSDR,
+Pluto and a 20 dB Pluto gain increase. The gain check improves digital signal
+usage without explaining away the phase result. These remain waveform pilots,
+not BER/PER qualification or calibrated phase measurements. The separate CAN
+failure occurred in the first IQ run and has not recurred in the three logged
+repeats. The investigation remains **In progress**.
 
-Next: record current clock drive and installed transmitter firmware identity.
-A separately recorded Pluto gain check should increase ADC code usage while
-retaining ample headroom, before treating it as a phase reference. Then isolate
-modulation timing and circuit stages before changing clock drive or expanding
-packet/noise trials. Preserve these captures as the baseline and keep continuous
-CAN logging. Keep the complete pad/DC-block chain in place and power the
-transceiver down before reconnecting instruments. Restore the ground station's
-paused fire-uplink service when the bench session ends.
+Next: record current clock drive and installed transmitter firmware identity,
+then isolate modulation timing and circuit stages before changing transmitter
+settings or expanding packet/noise trials. Preserve these captures as the baseline,
+record temperature/time for frequency comparisons and keep continuous CAN logging.
+Keep the complete pad/DC-block chain in place and power the transceiver down
+before reconnecting instruments. Restore the ground station's paused fire-uplink
+service when the bench session ends.
 
 Use the [session worksheet](files/session-template.md) and
 [measurement table](files/measurements.csv) for subsequent runs. Keep original
