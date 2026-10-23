@@ -1,6 +1,7 @@
 # Equipment on Hand
 
-**Updated:** 2026-10-23  
+**Updated:** 2026-10-23
+
 **Inventory status:** Seeded from older testbed records; reconciliation in progress.
 
 This is the reference for equipment available for experiments in Lab Log. Check here before asking what gear I have or proposing a purchase. It covers instruments, radios, antennas, supplies, fabrication tools and software; detailed measurements live in the linked characterization pages.

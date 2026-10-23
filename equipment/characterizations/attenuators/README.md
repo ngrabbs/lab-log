@@ -1,6 +1,7 @@
 # Attenuator characterization
 
-**Measured:** 2026-05-17  
+**Measured:** 2026-05-17
+
 **Imported and checked:** 2026-10-23
 
 Original testbed captures cover six Nooelec fixed pads, four PCB attenuator/through boards, and two Nooelec chains. The recorded range is 1 MHz to approximately 1 GHz, with 404 samples per Touchstone file and a 50 Ω reference. There are no 2.4 GHz measurements in these captures.
