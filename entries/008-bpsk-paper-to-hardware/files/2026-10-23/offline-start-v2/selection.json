@@ -1,0 +1,32 @@
+{
+  "selected": true,
+  "selection_utc": "2026-10-23T19:06:01.708767+00:00",
+  "criterion": "Improve training start acquisition, acquire all 60 noisy cases and clean frame, and emit no candidate in 30 noise-only windows.",
+  "training_iq": "libre01 only",
+  "training_noisy_trials": 60,
+  "v1_aligned": 54,
+  "v2_aligned": 60,
+  "training_seeds": [
+    44001,
+    44002,
+    44003
+  ],
+  "training_noise_control_seed_start": 850000,
+  "no_held_out_iq_used_in_training": true,
+  "not_selected_for": "CRC/frame success or scored BER; training frame counts are mixed.",
+  "frozen_receiver_model": {
+    "model.json": "74d33e58c6a31d9d6423bf8e2487390993acb9397855c1856c51e291e81f8ba5",
+    "receiver.py": "88a7908d1de6b6ca44b652abe51a6f0bf0ab9228c8435bdff35a077e48afd33f"
+  },
+  "development_hashes": {
+    "train.py": "8c0fb2f80e0d5f3d898896117c2009cb91f0a781b25fcad3dfda31f1b909d55f",
+    "training-source.json": "62036927f3c2e77bec2d8e309e63260a03a86fe1e4b666a059f773828d0f27a4",
+    "training-trials.jsonl": "fa2ef5ce7f05964757e0f084ddb3ad5535e7d1e4ba5618963c2f236abef0ef39",
+    "training-summary.csv": "6a189265ce5633d49271c184bea4c3420b10ada25dea4c74877427c43669416f",
+    "test_receiver.py": "5adb5da7280e481624931be1e855fbdd5af10635397bc2e58a17d8b01e8f0cdf",
+    "tests.txt": "defb2c100c7069a0dbc1f3ebdc017ac5fe54d512f4de8939628c9af9a3543008",
+    "run.py": "61db55737a08e65f02268f685a806858c3511501217d4de7430bbb8e12ebb236"
+  },
+  "held_out_plan": "Same 180 paired noisy cases, 3 clean cases and 30 noise controls as v1; no receiver retuning after inspection.",
+  "tested_capture_history": "Retrospective reused captures; prior v1 outcomes were known before this work."
+}

@@ -126,3 +126,14 @@ a retrospective capture holdout on the same four-second excerpts, not new RF
 measurements. All 214 final trials, including negative controls and failed
 candidates, retain a ledger; model/source hashes and numerical-repair history
 are recorded in [publication.json](2026-10-23/offline-blind/publication.json).
+
+## October 23 training-only start-selection revision
+
+The [v2 acquisition experiment](2026-10-23/offline-start-v2/README.md) preserves all
+v1 source/results and learns no new geometry. Development compares both versions
+on libre01 only with separate training noise seeds. A pre-evaluation selection
+record freezes the revised receiver/model, training ledger and harness hashes.
+The same held-out input-generation kernel and nuisance values are checked pairwise;
+179/180 noisy starts acquire, with one miss retained and zero emitted wrong starts.
+No v2 receiver change was made after held-out inspection. This is reused retrospective
+RF evidence, with conditional known-preamble BER and post-filter replay noise.

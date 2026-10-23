@@ -1187,19 +1187,76 @@ and frequency ambiguities, so this remains an offline diagnostic prototype.
 [Uncertainty intervals](files/2026-10-23/offline-blind/intervals.csv) ·
 [Validation](files/2026-10-23/offline-blind/validation.json)
 
+## 2026-10-23 — training-only revision to frame-start selection
+
+The first unassisted receiver still selected the wrong frame start in 14/180 noisy
+held-out trials. I revised its score using **libre01 only** for development. The
+old score combined preamble and sync correlation phasors across a long gap; residual
+CFO can rotate them against one another. The new score fits phase/amplitude
+separately in the early preamble and unique sync, then requires both fields to
+support the same candidate. This also changes normalization/weighting, so the
+comparison tests the combined revision rather than isolating one cause.
+
+On 60 noisy training replays, correct starts improve from 54/60 to 60/60, with
+zero candidates in 30 training noise-only windows. Training packet counts are
+mixed (8 dB: 2/30 → 1/30; 12 dB: 27/30 → 28/30). I selected the revision for start
+acquisition, keeping the learned geometry, 0.04 threshold, coarse search and bit
+detector fixed. Six behavioral tests pass. The source/model and development
+results were hashed before running the held-out set, and those hashes still match.
+
+The frozen revision then ran on the **same** 180 noisy held-out cases, with identical
+IQ sources, noise seeds, nuisance transforms and scoring rules. This remains a
+retrospective test on reused recordings, not new RF data. All work remained offline.
+
+| Replay Eb/N0 | V1 correct start | V2 correct start | V1 sync + CRC | V2 sync + CRC |
+| --- | --- | --- | --- | --- |
+| 8 dB | 84/90 | **89/90** | 2/90 | 2/90 |
+| 12 dB | 82/90 | **90/90** | 69/90 | **76/90** |
+| Total | 166/180 | **179/180** | 71/180 | **78/180** |
+
+![Paired acquisition and packet counts for the frozen revision](images/frame-start-v2.svg)
+
+Thirteen previous wrong starts now acquire correctly, and the remaining one is
+rejected below the unchanged threshold. V2 emits **zero wrong-start candidates**;
+no previously correct start or valid frame regresses in this paired budget. The
+one miss is libre02 at 8 dB, seed 73193, trial 2 (score 0.030579 < 0.04). It stays
+in the acquisition denominator and supplies no aligned BER bits. The revision
+was not retuned after seeing it. All three clean held-out frames still pass,
+with zero errors in 552 known preamble bits. Noise-only controls remain 0/30;
+that budget still permits a 9.50% one-sided upper bound per four-second window.
+
+This improves frame-start selection without removing the waveform/detector noise
+penalty identified in the paper comparison. Correctly acquired 8 dB preamble BER
+remains 1.36–1.87%, and 8 dB packet success does not improve. BER is conditional on
+acquisition of known data; noise remains injected after receive filtering, and
+body truth remains a clean-decode reference. The test does not establish unknown
+payload BER, continuous-stream reliability or RF sensitivity.
+
+Every saved decision/count was independently recounted. Original IQ and all
+published v1 decoder/result files retain their hashes. The result is a useful frozen offline
+revision with **one retained miss**, not a completed live qualification.
+
+[Method, training evidence and full results](files/2026-10-23/offline-start-v2/README.md) ·
+[Frozen receiver](files/2026-10-23/offline-start-v2/receiver.py) ·
+[Pre-evaluation selection record](files/2026-10-23/offline-start-v2/selection.json) ·
+[Paired counts](files/2026-10-23/offline-start-v2/paired-summary.csv) ·
+[All trial decisions](files/2026-10-23/offline-start-v2/trials.jsonl) ·
+[Hash/count audit](files/2026-10-23/offline-start-v2/audit.json)
+
 ## Current outcome and next session
 
 The spectrum/phase checks now tie to the paper through a controlled offline BER
 comparison. Ideal references reproduce theory. The roughly 135° recorded waveform
 has a significant penalty with the current differential detector, and noisy
 frequency acquisition can add a larger separate loss. The learned-preamble
-prototype now transfers to held-out recordings without supplied
-timing/CFO, but wrong frame starts and noise-plane assumptions still prevent live
-qualification.
+prototype now transfers to held-out recordings without supplied timing/CFO. A
+training-only score revision removes emitted wrong starts in the reused test budget,
+with one miss retained; limited capture diversity and noise-plane assumptions still
+prevent live qualification.
 
-Next: resolve acquisition ambiguities using training data, then test the frozen
-receiver offline on **new independent known payloads** and
-matched pre-filter noise, keeping held-out truth and acquisition accounting.
+Next: broaden acquisition stress tests on training data, then evaluate the frozen
+receiver on **new captures with independently saved transmitted payloads** and
+matched pre-filter noise. Keep held-out truth and acquisition accounting separate.
 Then validate a selected algorithm with bounded conducted RF trials. Record the
 installed transmitter firmware/clock drive before any modulation changes, and
 include time/temperature/reference information in frequency tests. BER under

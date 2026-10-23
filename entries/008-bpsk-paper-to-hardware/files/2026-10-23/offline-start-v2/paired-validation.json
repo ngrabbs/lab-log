@@ -1,0 +1,10 @@
+{
+  "noisy_input_generation_kernel_byte_identical": true,
+  "paired_trial_keys_match": true,
+  "all_recorded_nuisance_and_truth_values_match": true,
+  "baseline_ledger_sha256": "75b2068d283462fa3ca6f0d9c29aa77a6eedb58e2e43d750a8076bb47402b3ce",
+  "baseline_receiver_sha256": "763615cf57bf9fe4f8bf5b352f8379409f58349258737ad18eaa68ac55333774",
+  "model_identical_to_baseline": true,
+  "noise_generation": "Identical source inputs, RNG streams, draws and transformations; v2 additionally logs exact input IQ hashes.",
+  "total_noisy_trials": 180
+}
