@@ -1,0 +1,10 @@
+test_api_has_no_truth_inputs (test_receiver.ReceiverTests.test_api_has_no_truth_inputs) ... ok
+test_failed_crc_retains_decisions (test_receiver.ReceiverTests.test_failed_crc_retains_decisions) ... ok
+test_invalid_input_erasure (test_receiver.ReceiverTests.test_invalid_input_erasure) ... ok
+test_unknown_delay_frequency_gain_phase (test_receiver.ReceiverTests.test_unknown_delay_frequency_gain_phase) ... ok
+test_zero_input_is_rejected (test_receiver.ReceiverTests.test_zero_input_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.481s
+
+OK

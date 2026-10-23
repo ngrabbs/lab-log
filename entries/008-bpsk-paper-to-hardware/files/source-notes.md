@@ -115,3 +115,14 @@ original course-project file, full IQ capture or operational modem was edited.
 The diagnostic's independent hardware BER truth is the fixed preamble; native
 payloads remain clean-decode replay references because independent full TX
 bytes were not retained.
+
+## October 23 capture-holdout acquisition test
+
+The [offline acquisition experiment](2026-10-23/offline-blind/README.md) freezes
+state geometry from libre01 and tests libre02/pluto00/pluto20 without passing
+the receiver their timing, CFO or expected body. Existing reference metadata is
+used only by the evaluation harness to generate noise and score outputs. This is
+a retrospective capture holdout on the same four-second excerpts, not new RF
+measurements. All 214 final trials, including negative controls and failed
+candidates, retain a ledger; model/source hashes and numerical-repair history
+are recorded in [publication.json](2026-10-23/offline-blind/publication.json).

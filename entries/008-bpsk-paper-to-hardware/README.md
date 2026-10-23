@@ -1131,16 +1131,74 @@ hardware bursts or unknown payloads. Pluto timestamp continuity remains unverifi
 [Input/source manifest](files/2026-10-23/offline-ber/manifest.json) ·
 [Published-file provenance and validation](files/2026-10-23/offline-ber/publication.json)
 
+## 2026-10-23 — held-out captures without timing or CFO supplied
+
+I froze the learned waveform model from **libre01 only**, then searched the complete
+four-second libre02, pluto00 and pluto20 excerpts. The receiver receives only IQ
+and that fixed model: no capture-specific start, CFO or expected body. It searches
+±12 kHz and integer sample timing, uses the unique sync word to resolve the repeating
+0x55 preamble, and returns failed decisions without CRC gating. These are recordings
+already examined in this investigation, so this is a retrospective capture holdout,
+not prospective testing on new RF data. All work remained offline.
+
+All three clean held-out captures acquire, decode and pass CRC, with zero errors
+in **552 known preamble bits** and estimated CFO within **0.34 Hz** of the earlier
+clean reference. The template therefore transfers between these recordings after
+allowing unknown phase and amplitude; it no longer needs each test capture's clean
+state means.
+
+I also ran 30 trials per capture at each of 8 and 12 dB normalized replay Eb/N0,
+randomizing delay, added CFO (±1.5 kHz), phase and gain without telling the receiver.
+The 180 noisy trials keep acquisition and BER accounting separate:
+
+| Capture | 8 dB correct start | 8 dB conditional preamble BER | 8 dB sync + CRC | 12 dB correct start | 12 dB sync + CRC |
+| --- | --- | --- | --- | --- | --- |
+| LibreSDR 02 | 26/30 | 88/4,784 = **1.84%** | 0/30 | 28/30 | 22/30 |
+| Pluto, 0 dB gain | 30/30 | 88/5,520 = **1.59%** | 2/30 | 29/30 | 24/30 |
+| Pluto, 20 dB gain | 28/30 | 71/5,152 = **1.38%** | 0/30 | 25/30 | 23/30 |
+
+There are **14 wrong-start candidates** across the noisy trials and no
+below-threshold misses. Wrong starts are thousands of samples away; they are
+retained as acquisition failures and do not silently enter aligned BER. All
+14 fail sync/CRC. The non-monotonic Pluto20 start counts and small trial budget
+mean this is not a measured acquisition curve. Noise-only controls return no
+candidate in 30 four-second windows, but their one-sided 95% upper bound is still
+9.50% per window. This does not establish an operational false-alarm rate.
+
+This connects directly to the paper: a preamble can estimate frequency across
+captures without supplied CFO, but synchronization reliability remains separate
+from the roughly 135° waveform/differential-detector penalty. Correctly acquired
+8 dB trials still show percent-level BER. BER here is conditional on acquisition
+of a known preamble; the initial periodic search may observe that region, so it
+is not independent unknown-payload BER. Body comparisons remain clean-decode replay
+comparisons, not independently recorded transmitted truth. Noise was added after
+receive filtering; it is not calibrated analog sensitivity.
+
+Five behavioral tests and independent recounts of every returned decision pass.
+An initial numerical failure with zero-energy windows was fixed and the entire
+budget rerun with the same template, threshold and seeds. No receiver parameters
+were tuned to held-out errors. The bounded local search still has frame-boundary
+and frequency ambiguities, so this remains an offline diagnostic prototype.
+
+[Full method, limits and results](files/2026-10-23/offline-blind/README.md) ·
+[Unassisted receiver](files/2026-10-23/offline-blind/receiver.py) ·
+[All trial decisions and failures](files/2026-10-23/offline-blind/trials.jsonl) ·
+[Counts](files/2026-10-23/offline-blind/summary.csv) ·
+[Uncertainty intervals](files/2026-10-23/offline-blind/intervals.csv) ·
+[Validation](files/2026-10-23/offline-blind/validation.json)
+
 ## Current outcome and next session
 
 The spectrum/phase checks now tie to the paper through a controlled offline BER
 comparison. Ideal references reproduce theory. The roughly 135° recorded waveform
 has a significant penalty with the current differential detector, and noisy
-frequency acquisition can add a larger separate loss. A learned-preamble offline
-prototype demonstrates a useful direction, while its oracle assistance and
-noise-plane assumptions still need removal before live qualification.
+frequency acquisition can add a larger separate loss. The learned-preamble
+prototype now transfers to held-out recordings without supplied
+timing/CFO, but wrong frame starts and noise-plane assumptions still prevent live
+qualification.
 
-Next: test receiver changes offline on **new independent known payloads** and
+Next: resolve acquisition ambiguities using training data, then test the frozen
+receiver offline on **new independent known payloads** and
 matched pre-filter noise, keeping held-out truth and acquisition accounting.
 Then validate a selected algorithm with bounded conducted RF trials. Record the
 installed transmitter firmware/clock drive before any modulation changes, and
