@@ -500,19 +500,135 @@ are explicitly derived exports; the session file records their original input
 hashes. The failed first attempt is retained as an error record, not reconstructed
 as a successful capture.
 
+## October 23 — LibreSDR IQ capture and first phase estimate
+
+The LibreSDR did not enumerate on the controller host. Restarting only the USB
+controller with no enumerated devices brought back a hub but not the radio; the
+other controller, carrying the mounted backup drive and consoles, was not reset.
+The cause of that USB failure was not established. Moving to the ground station
+allowed enumeration. UHD initially lacked its image-directory setting; using the
+existing image files restored discovery. The FPGA SHA-256 matched the installed
+capture helper's expected value. The hardware probe passed register loopback and
+reported USB3 operation, firmware 8.0 and FPGA 16.0.
+
+I connected the existing measured assembly to the radio's physical **RXA** port,
+leaving the transceiver off initially. Reported connector labels are TXRA, RXA,
+RXB and TXRB. The ground station's idle `ember-fire-uplink.service` was temporarily
+stopped so it could not compete for or transmit through the radio during the
+bench work. Its prior active state was recorded for restoration after the session;
+unit configuration and enablement were unchanged.
+
+Two receiver-preparation attempts failed before any stream started: a Python
+getter needed an explicit motherboard argument, then UHD rejected a 49.152 MHz
+master clock for simultaneous dual RX. These distinct error reports and empty
+arrays are retained, not presented as noise measurements. With the getter corrected
+and a 30.72 MHz clock, the five-second idle baseline completed at nominal
+192 ksample/s on both channels, gain 0 dB, RX2 selection, AGC disabled and 200 kHz
+analog bandwidth. No UHD errors or timestamp gaps were detected.
+
+After I powered on the transceiver, the assistant started a bounded two-minute
+dual-channel recording and, with explicit authorization, sent exactly one
+heartbeat request through the IHU. The receiver itself used no TX API and
+forwarded nothing. A fresh CAN HELLO confirmed the peer before the request.
+
+| Observation | Result |
+| --- | --- |
+| Recorded IQ | 120 seconds, 23,040,000 complex samples per channel |
+| Receiver settings | 437 MHz requested, nominal 192 ksample/s, gain 0 dB, RX2 selected on channels 0/1 |
+| Clock / bandwidth readback | About 30.72 MHz master clock; 200 kHz analog bandwidth |
+| Stream integrity | No reported UHD errors or detected timestamp gaps; no nonfinite samples |
+| Near-full-scale check | Zero I/Q components at or above the explicit 0.99 criterion |
+| IHU request | Request 18, 38 bytes, QUEUED then RF_TX_COMPLETE, digest `4104665e`, ground_ack=0 |
+| Strong receive path | Physical RXA → UHD channel 0 with this FPGA and RX2 selection |
+| Burst interval | Approximately 68.28–68.97 seconds into the capture using a 10 ms block-power threshold |
+| Normal decoder | One HEARTBEAT recovered on channel 0, outer RF sequence 18, native sequence 14 |
+| Source comparison | Recovered native length 38 and CRC32 `4104665e` match the IHU report |
+| Channel 1 | A much weaker copy of the same frame also decoded; this is not another transmission |
+
+The decoder's normal `dbpsk` path was used, with no phase-diagnostic fallback.
+It validated the outer frame CRC32 and the native packet CRC16. The IHU console
+retained the transmitted length and digest, not the full transmitted byte string:
+this establishes a matching length/digest, rather than an independently saved
+byte-for-byte TX/RX comparison. Nothing was forwarded to Yamcs, and no RF ground
+acknowledgment was transmitted.
+
+Both channels saw the same burst, but channel 0's peak 10 ms block power was about
+32 dB above channel 1's. The unconnected second input's recovery may reflect
+coupling/leakage; the mechanism is unmeasured. Do not count these copies as two
+packets or infer isolation from a calibrated two-port measurement.
+
+### Frequency and phase observations
+
+The normal ground decoder estimated **−7347.20 Hz** relative to the requested
+437 MHz receiver center on channel 0. That is an uncalibrated relative CFO estimate,
+not a precise absolute TX-frequency measurement or evidence of Doppler on this
+stationary bench. Its raw normalized offset is approximately **−6.12** at
+1200 symbols/s, well outside the paper's residual-offset sweep of 0–0.5. The
+working receiver removes bulk CFO before integrating symbols, so the raw offset
+must not be inserted into the paper's post-correction BER curve.
+
+![IQ power on both channels and the measured preamble phase states](images/iq-heartbeat-01.svg)
+
+The phase estimate uses 248 known preamble symbols, omitting four at each end.
+After the normal decoder's single carrier correction, timing candidates were
+compared using within-state variance on the known preamble. Each candidate used
+the central 8 of 40 samples per symbol. The best candidate gave **134.16°** between
+the two complex state centers. Fitting one additional common linear phase slope
+across the preamble changed that to **134.14°**, with a state-amplitude ratio of
+about **1.105**. The fitted additional slope was about +0.76 Hz; it is an offline
+training-based refinement, not a change to the operational receiver or a verified
+frequency standard.
+
+The plotted points use that one common frequency refinement and one global
+rotation/scale. The two state centers remain independent and are not forced
+antipodal. Within-state phase standard deviations after refinement were about
+9.7° and 9.8°; these describe this preamble, not independent-trial uncertainty.
+An earlier full-symbol average at the first CRC-valid timing produced about
+121°, illustrating how integration-window placement and transition mixing can
+bias a phase-state estimate. This is why neither number is treated as a direct,
+calibrated RF phase measurement at J9.
+
+The approximately 134° steady-symbol estimate is consistent with the earlier
+non-antipodal observations in entry 003. It explains why successful differential
+decoding is not sufficient evidence of ideal 180° BPSK. Current drive strength and
+the responsible circuit stage were not measured in this session; a cause is not
+assigned. No BER is inferred from one CRC-valid heartbeat.
+
+### CAN observation retained separately
+
+The IHU's lifetime TX-failure count increased **3 → 4** during this run. TEC
+was 7 immediately afterward and returned to zero on a later read-only status
+check; REC, EFLG and RX overflow were zero. The later fault report retained a new
+code-3 record at uptime 94,251,323 ms. The requested RF packet nevertheless
+received a local RF_TX_COMPLETE reply and was decoded from IQ. Cause and
+repeatability of the CAN failure remain unresolved. No counter was cleared and
+no automatic RF retry was issued.
+
+The finite receiver stream stopped after its full sample budget. The original
+two NPY files remain on the ground station, **184,320,128 bytes each**, with
+SHA-256 hashes in the session metadata. The fire-uplink service remains paused
+while this bench session continues and must be restored afterward.
+
+[Capture settings, hashes and analysis](files/2026-10-23/iq-heartbeat-01-session.json) ·
+[IHU replies and later fault status, hardware ID redacted](files/2026-10-23/iq-heartbeat-01-ihu.txt) ·
+[Burst block-power data](files/2026-10-23/iq-heartbeat-01-power.csv) ·
+[Preamble symbol measurements](files/2026-10-23/iq-heartbeat-01-preamble.csv) ·
+[Plot reproduction script](files/2026-10-23/plot_iq_capture.py)
+
 ## Current outcome and next session
 
-The first conducted burst is detected near the intended band, with local transmit
-completion and return to the idle spectrum documented. The investigation remains
-**In progress**: repeated packet accounting, precise frequency, waveform quality,
-receiver input compatibility and BER measurements remain open.
+The conducted spectrum check and first IQ heartbeat capture succeeded. Physical
+RXA is the strong channel-0 receive path with the current image and RX2 selection;
+normal differential decoding recovered the expected length/digest. The initial
+waveform estimate is non-antipodal, and a separate CAN transmit failure remains
+open. The investigation remains **In progress**.
 
-Next: establish the LibreSDR input limit for the exact receive port and image,
-then move the measured chain to it while powered down and capture IQ. Use the
-current rough level estimate with uncertainty when selecting any additional
-attenuation. Keep the TinySA connected until that setup is decided. A measured
-≈−29 dBm TinySA input is not by itself authorization to assume every SDR port
-has the same limit.
+Next: preserve this configuration and investigate the CAN failure before expanding
+packet trials. Then repeat known-preamble timing/phase measurements across captures
+and record current clock drive and transmitter firmware identity. Keep the complete
+pad/DC-block chain in place and power the transceiver down before reconnecting
+instruments. Restore the ground station's paused fire-uplink service when the
+bench session ends.
 
 Use the [session worksheet](files/session-template.md) and
 [measurement table](files/measurements.csv) for subsequent runs. Keep original
