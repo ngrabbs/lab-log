@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-23",
+  "python": "3.15.0",
+  "numpy": "2.5.4",
+  "receiver_frozen": true,
+  "patterns": [
+    "zeros",
+    "ones",
+    "alternating55",
+    "runs32",
+    "sparse_ones",
+    "random_iid"
+  ],
+  "payload_bits": 304,
+  "frame_symbols": 808,
+  "sps": 40,
+  "symbol_rate_hz": 1200,
+  "detector_stage": {
+    "trials": 3240,
+    "profiles": [
+      "static",
+      "residual002",
+      "residual010",
+      "ramp100",
+      "walk3",
+      "walk12"
+    ],
+    "ebn0_db": [
+      4,
+      8,
+      12
+    ],
+    "seeds": [
+      79001,
+      79002,
+      79003
+    ],
+    "trials_per_seed": 10,
+    "provided_timing": true,
+    "provided_phase_to_frozen_detector": false
+  },
+  "full_stage": {
+    "trials": 570,
+    "noisy_trials": 540,
+    "no_added_awgn_trials": 30,
+    "profiles": [
+      "static",
+      "ramp5",
+      "ramp100",
+      "walk3",
+      "walk12"
+    ],
+    "ebn0_db": [
+      8,
+      12
+    ],
+    "seeds": [
+      81001,
+      81002,
+      81003
+    ],
+    "trials_per_seed": 3,
+    "clean_seed": 82001,
+    "initial_cfo_hz": [
+      -8000,
+      8000
+    ],
+    "true_start_range": [
+      24000,
+      120000
+    ],
+    "timing_or_cfo_supplied": false
+  },
+  "noise": "Reference mean of learned-state energies normalized to 1, complex N0=10**(-EbN0_dB/10); actual payload energy saved per trial. Rectangular pulse model, no RF filtering.",
+  "source_of_configuration": "Fixed budgets encoded in run.py/model_test.py before execution; this file records them for publication. No stress-result-driven receiver selection."
+}

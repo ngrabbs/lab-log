@@ -1369,22 +1369,98 @@ operational receiver changed, and all earlier source/results retain their hashes
 [Retained regression](files/2026-10-23/offline-sequence-v4/frame-regressions.json) ·
 [All decisions](files/2026-10-23/offline-sequence-v4/trials.jsonl)
 
+## 2026-10-23 — frozen synthetic payload and phase-drift stress
+
+I kept the selected sequence receiver **frozen** and tested independently generated
+38-byte transport payloads: zeros, ones, alternating bits, 32-bit runs, sparse ones
+and random data. The original model geometry, threshold, window and acquisition
+code retain their hashes. There are no forced known bits or payload priors in
+decoding. These are synthetic rectangular-waveform/AWGN cases, not new hardware
+measurements; all work stayed offline.
+
+The detector-isolation layer supplies true symbol timing but no phase/drift answer:
+**3,240 frames** across six patterns, six phase profiles and 4/8/12 dB. Primary BER
+scores all **304 independently known payload bits**, rather than only the old
+preamble or a clean-decode body reference. At 8 dB with no residual drift:
+
+| Detector | Known payload errors / bits | BER |
+| --- | --- | --- |
+| Sign | 770/54,720 | 1.407% |
+| Pair | 306/54,720 | 0.5592% |
+| Frozen sequence | **88/54,720** | **0.1608%** |
+| True-channel geometry oracle | 46/54,720 | 0.0841% |
+
+The sequence rule beats the pair rule on every static payload pattern here, but
+is not best on every metric: for zeros the sign rule has 5 errors versus sequence
+8 (9,120 bits), and sparse ones tie. The oracle is given the actual synthetic
+channel, so it is a diagnostic reference rather than a practical receiver.
+
+Under residual **nu=0.10 = 120 Hz**, sequence BER rises to **5.594%**. It loses to
+the pair rule on alternating and random payloads at 8 dB, and these losses persist
+in some 12 dB cells. The known-timing sequence result is much better under smaller
+stresses: 0.1901% at residual nu=0.02, 0.1992% for a 100 Hz/s ramp, and
+0.1827%/0.3289% for 3°/12° RMS-per-symbol Wiener phase walks. These are fixed-model
+stress points, not a measured RF drift specification.
+
+A separate **570-case full-receiver run** supplies no true timing/CFO, including
+540 noisy cases and 30 with no added AWGN. All methods share acquisition:
+
+| Profile | 8 dB correct starts | 8 dB sequence packets / all | 12 dB correct starts |
+| --- | --- | --- | --- |
+| Constant unknown CFO | 53/54 | 39/54 | 54/54 |
+| ±5 Hz/s ramp | 54/54 | 38/54 | 54/54 |
+| ±100 Hz/s ramp | **43/54** | **19/54** | **45/54** |
+| 3° phase walk | 54/54 | 40/54 | 54/54 |
+| 12° phase walk | 49/54 | 24/54 | 52/54 |
+
+![Frozen synthetic detector and acquisition stress](images/synthetic-stress.svg)
+
+Across noisy profiles, 512/540 starts align: **nine misses and 19 wrong starts**
+remain in all-trial packet accounting. Four additional wrong starts occur among
+the 30 no-added-AWGN cases (three ramp100, one walk12). Zero payload errors at
+12 dB among aligned frames do not erase those acquisition failures. The nine
+trials per individual pattern/profile/point are a pilot, not a threshold curve.
+
+The paper connection is precise: its phase-2 frequency-offset model applies a
+**true symbol-center phase reference** and isolates sinc integration loss. New
+Ns=8 controls reproduce its coherent theory; at 8 dB the coherent state/direct-data
+control is 52/250,000 (0.0208%). XOR-decoded data from those state decisions is
+104/250,000 (0.0416%), and ideal DBPSK is 235/250,000 (0.0940%). These targets
+must not be silently interchanged. The paper's nu=0.10 integration loss alone is
+about 0.143 dB; the frozen detector's uncorrected nu=0.10 stress is a different
+phase-tracking problem. The existing PN-preamble compensation reproduction remains
+separate; it was not rerun under every new drift profile.
+
+All decisions, generated payload bytes, nuisance values and failures are retained.
+Seven behavioral tests pass, every payload/count is recounted, and all 570 full IQ
+hashes reproduce. Earlier RF results and frozen code remain unchanged. The result
+supports the sequence detector on varied synthetic payloads while exposing
+remaining residual-frequency and acquisition limits. It does not establish native
+application acceptance, analog sensitivity, fading performance or hardware payload
+BER. No parameter was adjusted to rescue a failed case.
+
+[Full method, pattern tables and paper comparison](files/2026-10-23/offline-synthetic-stress/README.md) ·
+[Detector counts](files/2026-10-23/offline-synthetic-stress/detector-summary.csv) ·
+[Full-receiver counts](files/2026-10-23/offline-synthetic-stress/full-summary.csv) ·
+[Acquisition failures](files/2026-10-23/offline-synthetic-stress/acquisition-failures.json) ·
+[Paper controls](files/2026-10-23/offline-synthetic-stress/paper-control.csv) ·
+[Frozen-hash and regeneration audit](files/2026-10-23/offline-synthetic-stress/audit.json)
+
 ## Current outcome and next session
 
-The spectrum/phase checks now tie to the paper through controlled offline BER
-comparisons. Ideal references reproduce theory. At 8 dB on shared acquired known
-bits, sign/pair/sequence detectors give 265/106/32 errors respectively. The sequence
-detector reduces the pair detector's false changes 77 → 16 and yields 149/180 valid
-frames, with one retained regression. Acquisition remains 179/180 with one miss.
-This demonstrates detector assumptions and memory as important parts of the
-paper-to-hardware comparison. Limited waveform diversity, payload truth and
-noise-plane assumptions still prevent live qualification.
+The paper-to-hardware comparison now separates waveform geometry, bit detection,
+acquisition and phase tracking. The sequence receiver retains its benefit on
+varied independently known synthetic payloads with modest drift, but large residual
+frequency and drift-sensitive acquisition remain failure modes. Wrong starts even
+without added AWGN show that the previous static-capture success was not a general
+drift qualification. Ideal paper controls reproduce; matched-model synthetic
+results still do not establish hardware payload BER or analog sensitivity.
 
-Next: keep the selected sequence receiver frozen as a candidate. Use training or
-synthetic data for independently known varied payloads, phase drift/fading and
-stream-boundary tests. Reserve **new RF captures with independently saved TX
-payload bytes** and matched pre-filter noise for prospective evaluation. Keep
-acquisition, conditional BER and packet failures separate.
+Next: keep this receiver frozen as a reference. Investigate phase/frequency
+tracking and drift-aware acquisition using separate training/synthetic cases,
+then reserve **new RF captures with independently saved TX payload bytes** and
+matched pre-filter noise for prospective evaluation. Preserve all current failed
+cases and keep acquisition, conditional BER and packet outcomes separate.
 Then validate a selected algorithm with bounded conducted RF trials. Record the
 installed transmitter firmware/clock drive before any modulation changes, and
 include time/temperature/reference information in frequency tests. BER under

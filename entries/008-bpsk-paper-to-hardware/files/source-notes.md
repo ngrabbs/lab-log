@@ -162,3 +162,17 @@ held-out evaluation. Exact IQ hashes and acquisition outputs match v3. At 8 dB,
 Frame success is 96/180 → 149/180, with one new regression retained. Both earlier
 v3 regressions pass. This remains retrospective conditional known-preamble replay,
 with post-filter noise, full-frame traceback and no independent full TX-body truth.
+
+## October 23 frozen synthetic payload and drift stress
+
+The [synthetic stress experiment](2026-10-23/offline-synthetic-stress/README.md)
+keeps all v4 source/model/dependency hashes fixed. It generates independently known
+304-bit payloads in six patterns, 3,240 assisted-timing detector frames and 570
+full-receiver cases. The full receiver receives no true timing/CFO. Generated
+payload hex, sequences, decisions, nuisance values and failures are retained;
+all full IQ hashes regenerate. The reviewed MATLAB driver hash is rechecked.
+New ideal Ns=8 controls implement its true symbol-center reference integration
+experiment, keeping coherent state/direct-data and differentially decoded data
+metrics separate. The previous PN-preamble compensation reproduction is not
+rerun under all new drift profiles. Model-matched synthetic gains and failures
+are distinguished from new hardware BER or analog sensitivity measurements.
