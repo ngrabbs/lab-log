@@ -1,0 +1,359 @@
+{
+  "theory_checks": [
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": -4.0,
+      "theory": 0.186113817483389,
+      "measured": 0.18564673913043478,
+      "expected_errors": 205469.65450166145,
+      "observed_errors": 204954,
+      "cluster_z": 1.2514094143165015
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": -2.0,
+      "theory": 0.13064448852282923,
+      "measured": 0.1308695652173913,
+      "expected_errors": 144231.51532920348,
+      "observed_errors": 144480,
+      "cluster_z": 0.6991427505678569
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": 0.0,
+      "theory": 0.07864960352514258,
+      "measured": 0.07858242753623189,
+      "expected_errors": 86829.16229175741,
+      "observed_errors": 86755,
+      "cluster_z": 0.26311718261866146
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": 2.0,
+      "theory": 0.03750612835892598,
+      "measured": 0.03776449275362319,
+      "expected_errors": 41406.76570825428,
+      "observed_errors": 41692,
+      "cluster_z": 1.4182701164139817
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": 4.0,
+      "theory": 0.012500818040737556,
+      "measured": 0.012722826086956521,
+      "expected_errors": 13800.903116974261,
+      "observed_errors": 14046,
+      "cluster_z": 2.0551664467982174
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": 6.0,
+      "theory": 0.002388290780932807,
+      "measured": 0.002443840579710145,
+      "expected_errors": 2636.673022149819,
+      "observed_errors": 2698,
+      "cluster_z": 1.181716701900777
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": 8.0,
+      "theory": 0.00019090777407599317,
+      "measured": 0.0001947463768115942,
+      "expected_errors": 210.76218257989646,
+      "observed_errors": 215,
+      "cluster_z": 0.28879404596248975
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": 10.0,
+      "theory": 3.872108215522037e-06,
+      "measured": 4.528985507246377e-06,
+      "expected_errors": 4.274807469936329,
+      "observed_errors": 5,
+      "cluster_z": 0.3244241362403859
+    },
+    {
+      "curve": "ideal_coherent_random_phase",
+      "ebn0_db": 12.0,
+      "theory": 9.006010350628749e-09,
+      "measured": 0.0,
+      "expected_errors": 0.009942635427094138,
+      "observed_errors": 0,
+      "cluster_z": null
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": -4.0,
+      "theory": 0.33579502456390037,
+      "measured": 0.3360625,
+      "expected_errors": 370717.707118546,
+      "observed_errors": 371013,
+      "cluster_z": 0.5251252284190779
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": -2.0,
+      "theory": 0.2660410855852929,
+      "measured": 0.26684873188405794,
+      "expected_errors": 293709.3584861633,
+      "observed_errors": 294601,
+      "cluster_z": 1.6153626322635701
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": 0.0,
+      "theory": 0.18393972058572117,
+      "measured": 0.18355525362318842,
+      "expected_errors": 203069.45152663617,
+      "observed_errors": 202645,
+      "cluster_z": 0.8686244374902667
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": 2.0,
+      "theory": 0.1024848421276144,
+      "measured": 0.10233242753623188,
+      "expected_errors": 113143.26570888629,
+      "observed_errors": 112975,
+      "cluster_z": 0.43405967911098053
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": 4.0,
+      "theory": 0.04055753839216114,
+      "measured": 0.04048822463768116,
+      "expected_errors": 44775.5223849459,
+      "observed_errors": 44699,
+      "cluster_z": 0.30075295255588336
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": 6.0,
+      "theory": 0.00933281228075946,
+      "measured": 0.009531702898550725,
+      "expected_errors": 10303.424757958444,
+      "observed_errors": 10523,
+      "cluster_z": 1.7854636181167698
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": 8.0,
+      "theory": 0.0009094044480786029,
+      "measured": 0.0009067028985507246,
+      "expected_errors": 1003.9825106787777,
+      "observed_errors": 1001,
+      "cluster_z": 0.08171348400740679
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": 10.0,
+      "theory": 2.2699964881242427e-05,
+      "measured": 2.355072463768116e-05,
+      "expected_errors": 25.06076122889164,
+      "observed_errors": 26,
+      "cluster_z": 0.15677226145626488
+    },
+    {
+      "curve": "ideal_dbpsk_random_data",
+      "ebn0_db": 12.0,
+      "theory": 6.544347099567535e-08,
+      "measured": 0.0,
+      "expected_errors": 0.07224959197922559,
+      "observed_errors": 0,
+      "cluster_z": null
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": -4.0,
+      "theory": 0.33579502456390037,
+      "measured": 0.3363695652173913,
+      "expected_errors": 370717.707118546,
+      "observed_errors": 371352,
+      "cluster_z": 1.124701672299304
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": -2.0,
+      "theory": 0.2660410855852929,
+      "measured": 0.26687952898550726,
+      "expected_errors": 293709.3584861633,
+      "observed_errors": 294635,
+      "cluster_z": 1.7117384519790708
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": 0.0,
+      "theory": 0.18393972058572117,
+      "measured": 0.1838088768115942,
+      "expected_errors": 203069.45152663617,
+      "observed_errors": 202925,
+      "cluster_z": 0.3006127949504978
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": 2.0,
+      "theory": 0.1024848421276144,
+      "measured": 0.10240398550724637,
+      "expected_errors": 113143.26570888629,
+      "observed_errors": 113054,
+      "cluster_z": 0.23057083485010627
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": 4.0,
+      "theory": 0.04055753839216114,
+      "measured": 0.04071467391304348,
+      "expected_errors": 44775.5223849459,
+      "observed_errors": 44949,
+      "cluster_z": 0.6903951385986338
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": 6.0,
+      "theory": 0.00933281228075946,
+      "measured": 0.009515398550724637,
+      "expected_errors": 10303.424757958444,
+      "observed_errors": 10505,
+      "cluster_z": 1.662850508649069
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": 8.0,
+      "theory": 0.0009094044480786029,
+      "measured": 0.0009356884057971015,
+      "expected_errors": 1003.9825106787777,
+      "observed_errors": 1033,
+      "cluster_z": 0.7664388971294563
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": 10.0,
+      "theory": 2.2699964881242427e-05,
+      "measured": 1.8115942028985507e-05,
+      "expected_errors": 25.06076122889164,
+      "observed_errors": 20,
+      "cluster_z": 1.034375102322327
+    },
+    {
+      "curve": "ideal180_known55_dbpsk_data",
+      "ebn0_db": 12.0,
+      "theory": 6.544347099567535e-08,
+      "measured": 0.0,
+      "expected_errors": 0.07224959197922559,
+      "observed_errors": 0,
+      "cluster_z": null
+    }
+  ],
+  "coarse_loglinear_thresholds_ber_1e_minus3_db": {
+    "pluto20_frozen_dbpsk_data": 11.731723527253294,
+    "libre02_frozen_dbpsk_data": 11.795009260708277,
+    "ideal180_known55_dbpsk_data": 7.942680682814195,
+    "ideal_coherent_random_phase": 6.706483962763407,
+    "libre02_frozen_coherent_phase": 8.514691654596122,
+    "ideal_dbpsk_random_data": 7.9167372668373615,
+    "pluto00_frozen_coherent_phase": 8.038090876867344,
+    "libre01_frozen_coherent_phase": 8.44062862859352,
+    "pluto00_frozen_dbpsk_data": 11.731199698083932,
+    "libre01_frozen_dbpsk_data": 11.81391700321514,
+    "pluto20_frozen_coherent_phase": 8.460243576813468,
+    "ideal135_known55_coherent_phase": 7.397152841846889,
+    "ideal135_known55_dbpsk_data": 11.489194860044421
+  },
+  "ideal_dbpsk_theory_threshold_db": 7.934137466447398,
+  "ideal_coherent_theory_threshold_db": 6.789522612404166,
+  "coarse_excess_vs_ideal_dbpsk_db": {
+    "pluto20_frozen_dbpsk_data": 3.7975860608058962,
+    "libre02_frozen_dbpsk_data": 3.860871794260879,
+    "pluto00_frozen_dbpsk_data": 3.7970622316365343,
+    "libre01_frozen_dbpsk_data": 3.8797795367677423
+  },
+  "largest_original_noise_fraction_of_12db_target": 5.377337478002755e-06,
+  "method": "Thresholds interpolate log BER on a 2 dB grid, not calibrated RF sensitivity or precise crossing measurements. Trial-block intervals are conditional on each fixed capture. Theory checks with <100 expected/observed errors do not validate the tail.",
+  "raw_and_summary_hashes": [
+    {
+      "filename": "cfo-check.csv",
+      "size_bytes": 1162,
+      "sha256": "44aad7887d52c99dac4e67d5a88a1245d37adefd66c3cb0d4c8f86c349cabfb8"
+    },
+    {
+      "filename": "clean-symbols.csv",
+      "size_bytes": 237588,
+      "sha256": "76e21245758c67511d5afafc2c308766bfd844cb7a43b7c59ec82a6fc48ce305"
+    },
+    {
+      "filename": "diagnostic-trials.jsonl.gz",
+      "size_bytes": 509601,
+      "sha256": "17161ac1cd82ff0eebc47f01535ba33f528e4d66036963e12230088cecbfaaed"
+    },
+    {
+      "filename": "fast-error-counts.npz",
+      "size_bytes": 494413,
+      "sha256": "d9c6e9e555234ca3b9315305ee4dc63ef096035e49a50646f76b6e5d88979339"
+    },
+    {
+      "filename": "fast-error-masks.npz",
+      "size_bytes": 6372655,
+      "sha256": "0bc9bbd23e0b8fcb74a8bab8b4066f493e6897bb62ef8fe70da4a17e4b7afbd4"
+    },
+    {
+      "filename": "fast-seeds.csv",
+      "size_bytes": 64993,
+      "sha256": "e188a2655106e3d99f16d84af8b70cfd0cea3c47fb269eb0a075039a24a4f0c0"
+    },
+    {
+      "filename": "fast-summary.csv",
+      "size_bytes": 21203,
+      "sha256": "1ccbf3063311bae3735f9506f905499a27cc74c7ce6941253831dfbacc251fac"
+    },
+    {
+      "filename": "paper-error-counts.npz",
+      "size_bytes": 183116,
+      "sha256": "48b1f6c5e5c9e334bf4f3cb0f9bd3d4b7c833cc76850e09d4cae7d8e136c26d2"
+    },
+    {
+      "filename": "paper-seeds.csv",
+      "size_bytes": 14938,
+      "sha256": "ffed25c5eb6be9c17fb1f2a752163c1303729888e66c32622afd34ea964cf8fc"
+    },
+    {
+      "filename": "paper-summary.csv",
+      "size_bytes": 5411,
+      "sha256": "dd1fe854643716b4bab8f228a35412599e86c8ffa9d5e23c2eae2780db1dcf0a"
+    },
+    {
+      "filename": "scheduled-seeds.csv",
+      "size_bytes": 8853,
+      "sha256": "d59ae7b12e637ab59fc5176ac3cb41be5c92f1b9becdc5ae289e4fc86467ba7a"
+    },
+    {
+      "filename": "scheduled-summary.csv",
+      "size_bytes": 4777,
+      "sha256": "aa92ea51078fbe24b512198822db179107a0c6787ff24ba5aaa78c7c3295c3eb"
+    },
+    {
+      "filename": "sync-frame-intervals.csv",
+      "size_bytes": 11757,
+      "sha256": "05027fbfe0bf6bf47c96d781d7ff2b482432cb7e62360c6c1cc08bb4f39b44f3"
+    },
+    {
+      "filename": "template-diagnostic-trials.jsonl.gz",
+      "size_bytes": 352785,
+      "sha256": "fe0e0933acf98e1191b5f34da26691d6531023c504ab9107fe1f9f735710d719"
+    },
+    {
+      "filename": "template-seeds.csv",
+      "size_bytes": 8893,
+      "sha256": "f8c453b2ab40543d7f6ca944fc4735ba59c593955fff02cab0f9ab67ff49bd40"
+    },
+    {
+      "filename": "template-summary.csv",
+      "size_bytes": 4924,
+      "sha256": "a9ae7c5d37b6b3737b0913d3853e22f45c753b2eae466cc9320dd8afbf8c8e20"
+    },
+    {
+      "filename": "transition-ber.csv",
+      "size_bytes": 8528,
+      "sha256": "7d52a826cba8e730319828576ce3238d6036911effb7d55806a466b123a44b2b"
+    }
+  ]
+}

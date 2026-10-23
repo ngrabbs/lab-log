@@ -13,7 +13,8 @@ The plan's paper statements were checked against `overleaf/main.tex` and the
 implementation in `matlab_submission/main.m`, `estimate_frequency_offset.m` and
 its README. The MATLAB driver was inspected, not executed. An existing CSV in
 the top-level `data/` directory was also inspected, but is not assumed to be output
-from the exact reviewed MATLAB version; no new simulation result is claimed.
+from the exact reviewed MATLAB version. At that planning stage, no new simulation
+result was claimed; the later offline comparison below records new runs.
 
 SHA-256 identities:
 
@@ -93,3 +94,24 @@ observed IHU release/source identity. It does not establish the transceiver's
 installed firmware identity. All spectrum and VNA results in the dated entry are
 from those captures; no synthetic spectrum was substituted. Published IHU replies
 redact the hardware board ID, while original console data remains unchanged locally.
+
+## October 23 offline BER comparison
+
+The final-submission `matlab_20260727.zip` contains a `main.m` byte-identical to
+the reviewed MATLAB driver (SHA-256 `10a505c6135a493d87d2960340860cffd8bee35981fd23a6388ccc4725f88fc3`).
+The new [offline experiment](2026-10-23/offline-ber/README.md) reimplements its
+AWGN/coherent compensation and isolated CFO-loss algorithms in Python, with
+Ns=8, Nb=64, normalized CFO=0.10 and Np=16/64 where applicable. MATLAB itself
+was not invoked. Fixed budgets and independent NumPy random streams differ from
+its original adaptive stopping and MATLAB RNG; these are new results, not
+bit-identical copies of the submitted figures.
+
+The [input manifest](2026-10-23/offline-ber/manifest.json) hashes the reviewed
+TeX, MATLAB driver/estimator, submitted archive, Python port and four derived
+48 ksample/s IQ excerpts. A vector estimator was checked against the actual
+scalar function extracted from the supplied Python source, not a second
+rewritten reference; all 62 noisy signed-offset cases matched exactly. No
+original course-project file, full IQ capture or operational modem was edited.
+The diagnostic's independent hardware BER truth is the fixed preamble; native
+payloads remain clean-decode replay references because independent full TX
+bytes were not retained.

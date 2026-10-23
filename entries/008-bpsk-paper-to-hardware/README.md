@@ -12,7 +12,8 @@ model: where the predictions hold, where the receiver behaves differently, and
 what measurements would explain the difference.
 
 This entry combines the **test plan** with conducted spectrum checks, two
-LibreSDR IQ heartbeat captures, a Pluto cross-check and a Pluto gain check. The earlier
+LibreSDR IQ heartbeat captures, a Pluto cross-check, a Pluto gain check and an
+offline BER comparison with the paper. The earlier
 [transceiver bring-up](../003-ember-transceiver-bringup/README.md) is the starting
 evidence. Proposed tests remain distinct from the dated results.
 
@@ -149,8 +150,8 @@ Save original IQ, TX bytes, TX attempt outcomes and receiver logs before analysi
 The normal decoder only returns CRC-valid packets, so **its output cannot measure
 raw BER**. An offline diagnostic must retain decisions from a predetermined bit
 window even when sync, header or CRC fails. This diagnostic does not forward data
-or weaken normal packet acceptance. Its implementation is a prerequisite for BER
-runs; it is not supplied by this documentation change.
+or weaken normal packet acceptance. The [offline diagnostic and replay results](files/2026-10-23/offline-ber/README.md)
+now implement that distinction; the normal live decoder remains unchanged.
 
 For controlled BER, use known test bits and an independent burst-time/window
 manifest. Freeze timing/alignment rules on a clean baseline before the noise
@@ -956,24 +957,199 @@ fire-uplink service remains paused during this ongoing bench session.
 [Offline gain-check analysis](files/2026-10-23/analyze_pluto_gain_check.py) ·
 [Gain-check plot reproduction](files/2026-10-23/plot_pluto_gain_check.py)
 
+## October 23 — offline BER comparison with the paper
+
+The phase checks established a baseline. The next step was to measure what the
+roughly 135° waveform does in noise, while keeping that question separate from
+frequency acquisition and the paper's ideal coherent receiver. This experiment
+used **only saved IQ and generated signals**. No heartbeat, firmware update,
+receiver configuration change or live decoder modification was performed.
+
+The MATLAB `main.m` in the submitted archive matches the reviewed source exactly.
+I reproduced the paper's AWGN references, preamble compensation and within-symbol
+CFO-loss model in Python, with **Ns=8, normalized CFO=0.10, 64 data bits and
+16/64-symbol pseudorandom preambles** where applicable. Independent NumPy RNG
+streams and fixed budgets replace the MATLAB sequence/adaptive stopping; these
+are new algorithm/equation reproductions, not copies of its old result CSVs.
+Rayleigh fading and the full packet-length sweep remain future work.
+
+### A diagnostic that does not throw away the errors
+
+The normal receiver's CRC-valid output cannot be used as a BER denominator.
+The new [offline diagnostic](files/2026-10-23/offline-ber/diagnostic.py) instead
+returns decisions, error positions, timing, CFO, sync and CRC observations even
+when sync/header/CRC fails. Tests deliberately corrupt preamble, sync and body
+symbols to verify that failures survive. Incomplete or nonfinite IQ is an erasure,
+not an invented correct bit.
+
+For the hardware waveforms, the independently known truth is the **32-byte `55`
+preamble**. Logical symbols 4–63 train the timing metric/state means, while bits
+**68–251** provide **184 held-out scored bits**. Clean schedule/common CFO are
+frozen from the earlier recordings for the first comparison. No noisy payload
+error count, header or CRC selects alignment. The prior clean CFO calibration
+used the known preamble, so this first mode is explicitly an oracle-conditioned
+bound, not blind acquisition.
+
+Native payload bytes reconstructed from a clean CRC-valid decode remain only a
+**replay body reference**. They are not upgraded into independent saved TX bytes.
+Body disagreement and scheduled frame CRC observations are retained separately
+from the known-preamble BER.
+
+### Noise calibration and budgets
+
+The four derived excerpts are at **48 ksample/s**. Their observed preamble energy
+per symbol, minus idle sample power, is normalized to one. New circular complex
+white noise is inserted at this already filtered digital replay plane, **before
+rectangular symbol integration**, with total complex variance `N0` and `N0/2`
+per real dimension. Existing capture noise remains; only the additional variance
+needed for the target is added. The largest original-noise correction is just
+**5.38e-6 of the strongest target's noise variance**.
+
+The frozen sweep uses mathematically equivalent matched-filter sufficient
+statistics for the new white noise; a sample-domain test checks that projection.
+The noisy synchronization pilot operates on the full sample-domain excerpts.
+Neither experiment models noise before the original physical receive filters or
+calibrates analog sensitivity, noise figure, RF Eb/N0 or range.
+
+All sweeps use **−4 through 12 dB in 2 dB steps** and three independent RNG streams.
+The frozen waveform curves score **6,000 × 184 = 1,104,000 bits per point**. The
+paper compensation curves score **18,000 × 64 = 1,152,000 data bits per point**.
+The synchronization pilot uses a smaller **150 trials / 27,600 known bits per
+point**, labelled as a pilot. Those are new noise realizations of four fixed
+recordings, not millions of new RF transmissions or independent hardware states.
+
+### Waveform and detector cost
+
+![Ideal and captured-waveform BER, with differential data decisions and coherent phase-state bounds kept separate](images/offline-waveform-ber.svg)
+
+At the normalized replay **8 dB** point:
+
+| Case | Errors / 1,104,000 scored bits | BER |
+| --- | --- | --- |
+| Ideal coherent BPSK, direct/phase bits | 215 | 0.00019475 |
+| Ideal DBPSK, random data bits | 1,001 | 0.00090670 |
+| Idealized 135° rectangular waveform, DBPSK | 17,635 | 0.01597373 |
+| LibreSDR 1 capture, frozen DBPSK | 19,563 | 0.01772011 |
+| LibreSDR 2 capture, frozen DBPSK | 19,472 | 0.01763768 |
+| Pluto 0 dB capture, frozen DBPSK | 18,523 | 0.01677808 |
+| Pluto 20 dB capture, frozen DBPSK | 18,997 | 0.01720743 |
+
+The ideal cases agree with theory: at reliable-count points the largest relative
+mismatch is **2.9%**, at most **2.06 trial-block standard errors**. The coherent
+panel scores phase-state bits, not differentially decoded native data. Its
+nearest-center receiver is a separate bound, not the deployed receiver.
+
+Coarse log-BER interpolation on the 2 dB grid places captured-waveform DBPSK BER
+`1e-3` at about **11.7–11.8 dB**, versus ideal DBPSK theory **7.93 dB**. That is
+roughly **3.8–3.9 dB extra for this preamble and current detector**. The paper's
+ideal coherent reference reaches that BER at **6.79 dB**. These are normalized
+replay comparisons, not calibrated input-power/sensitivity claims.
+
+The 135° model accounts for much of the extra loss, but **3.8 dB is not a universal
+or irreducible cost of a 135° transmitter**. It describes this waveform interacting
+with the adjacent-symbol real-product detector. The ideal two-state coherent
+distance factor is `sin²(135°/2) ≈ 0.854`, about 0.69 dB, in that different receiver
+model. Amplitude variation, residual phase behavior, filtering and detector choice
+still matter; changing the receiver could change the result.
+
+The bit classes explain why clean heartbeats had looked so good. At 8 dB, the
+Pluto 20 dB replay has **592/552,000 errors on no-phase-change bits (0.107%)**, but
+**18,405/552,000 on phase-change bits (3.334%)**. The 135° model has the same
+asymmetry. The alternating preamble and a mostly zero-valued heartbeat body do
+not have interchangeable BER, and adjacent differential errors can be correlated.
+Do not predict heartbeat delivery by inserting this preamble BER into an IID
+`(1-Pb)^Nb` formula.
+
+### The paper's frequency-estimation result still matters
+
+![Paper-model compensation and isolated within-symbol CFO-loss reproduction](images/offline-paper-model.svg)
+
+In the paper-model reproduction at 8 dB, the 16-symbol known preamble gives
+**52,326/1,152,000 errors (BER 0.04542)**, versus **226/1,152,000 (0.0001962)** for
+64 symbols. That supports its frequency-estimation result under the paper's
+ideal waveform assumptions. The finite 64-bit uncompensated case stays near
+0.49 BER; the common 0.5 statement is a long-packet approximation here. The
+Ns=8 integration-loss check also agrees with the discrete sinc expression,
+including about 3.87 dB power loss at normalized residual offset 0.5 versus the
+continuous approximation's 3.92 dB.
+
+The real receiver estimates bulk CFO by squaring IQ, rather than stripping a
+known pseudorandom preamble. The hardware's 256 transmitted preamble bits do not
+make those estimators equivalent. Its raw kilohertz offset is removed before
+symbol integration; it must not be substituted into the paper's residual-offset
+curve as though it remained uncorrected.
+
+### Noisy synchronization, with failed decisions retained
+
+![Scheduled synchronization pilot with squared-IQ and a learned known-preamble CFO prototype](images/offline-synchronization.svg)
+
+The pilot supplies the scheduled burst location, re-estimates CFO on each noisy
+trial, and selects timing only from known training bits. It preserves the normal
+squared-IQ frequency estimator but replaces CRC-based timing acceptance so all
+BER decisions survive. Thus it is not a measurement of blind discovery or an
+exact clone of the live CRC-search policy.
+
+For Pluto 20 dB at 8 dB replay Eb/N0:
+
+| Diagnostic case | Known preamble BER | Exact scheduled sync | Scheduled sync + body CRC32 |
+| --- | --- | --- | --- |
+| Squared-IQ CFO + training-only timing | 5,345 / 27,600 = **0.19366** | 46 / 150 | 3 / 150 |
+| Learned 64-symbol hardware-template CFO | 491 / 27,600 = **0.01779** | 88 / 150 | 6 / 150 |
+
+The second method adapts the paper's ML periodogram to clean learned hardware
+state means. It also uses a shorter, scheduled 64-symbol observation. Prior clean
+template/timing assistance and the changed observation window mean this is an
+**offline prototype**, not a demonstrated blind/live replacement or an ablation
+isolating each source of improvement. Under the same injected noise it approaches
+the frozen waveform result of **0.01721**, separating a synchronization penalty
+from the waveform/detector penalty. The small 3/150 and 6/150 frame counts do not
+establish a reliable packet-success improvement; Wilson intervals are saved.
+White noise was inserted after the original receive filters, so absolute pilot
+acquisition thresholds need a pre-filter noise test before deployment conclusions.
+
+### Reproducibility and limits
+
+Ten behavioral tests pass, including CRC/sync failure retention, truth-window
+isolation, invalid-IQ erasures and noise projection. All four clean captures pass
+all three diagnostic CLI modes. The vectorized paper frequency estimator matches
+the supplied scalar implementation exactly on 62 noisy signed-offset cases.
+The frozen and paper count/interval CSVs were reproduced byte-for-byte with the
+final estimator implementation. The plots are calculated from saved counts.
+
+BER intervals use independent injected-noise **trial blocks**, allowing dependence
+among adjacent bits; they are conditional on each fixed waveform. Sparse tails
+are flagged, zero-error logarithmic points are omitted, and zero counts retain
+conservative trial-based bounds in the CSVs. Sync/frame fractions include Wilson
+intervals. These are not confidence intervals across temperatures, independent
+hardware bursts or unknown payloads. Pluto timestamp continuity remains unverified.
+
+[Methods, exact budgets, results and reproduction commands](files/2026-10-23/offline-ber/README.md) ·
+[Diagnostic decoder](files/2026-10-23/offline-ber/diagnostic.py) ·
+[Frozen waveform BER counts](files/2026-10-23/offline-ber/fast-summary.csv) ·
+[Paper reproduction counts](files/2026-10-23/offline-ber/paper-summary.csv) ·
+[Bit-class error counts](files/2026-10-23/offline-ber/transition-ber.csv) ·
+[Input/source manifest](files/2026-10-23/offline-ber/manifest.json) ·
+[Published-file provenance and validation](files/2026-10-23/offline-ber/publication.json)
+
 ## Current outcome and next session
 
-The conducted spectrum check and **four IQ heartbeat captures** succeeded.
-Normal decoding recovered matching sender length/digests in all four RF events.
-The roughly **135° non-antipodal phase estimate** persists through LibreSDR,
-Pluto and a 20 dB Pluto gain increase. The gain check improves digital signal
-usage without explaining away the phase result. These remain waveform pilots,
-not BER/PER qualification or calibrated phase measurements. The separate CAN
-failure occurred in the first IQ run and has not recurred in the three logged
-repeats. The investigation remains **In progress**.
+The spectrum/phase checks now tie to the paper through a controlled offline BER
+comparison. Ideal references reproduce theory. The roughly 135° recorded waveform
+has a significant penalty with the current differential detector, and noisy
+frequency acquisition can add a larger separate loss. A learned-preamble offline
+prototype demonstrates a useful direction, while its oracle assistance and
+noise-plane assumptions still need removal before live qualification.
 
-Next: record current clock drive and installed transmitter firmware identity,
-then isolate modulation timing and circuit stages before changing transmitter
-settings or expanding packet/noise trials. Preserve these captures as the baseline,
-record temperature/time for frequency comparisons and keep continuous CAN logging.
-Keep the complete pad/DC-block chain in place and power the transceiver down
-before reconnecting instruments. Restore the ground station's paused fire-uplink
-service when the bench session ends.
+Next: test receiver changes offline on **new independent known payloads** and
+matched pre-filter noise, keeping held-out truth and acquisition accounting.
+Then validate a selected algorithm with bounded conducted RF trials. Record the
+installed transmitter firmware/clock drive before any modulation changes, and
+include time/temperature/reference information in frequency tests. BER under
+fading/drifting CFO and calibrated analog sensitivity remain open. Keep original
+captures and the existing hardware configuration as the baseline. The separate
+CAN failure has not recurred in the three logged repeats; cause remains unresolved.
+The investigation remains **In progress**. Restore the ground station's paused
+fire-uplink service when the bench session ends.
 
 Use the [session worksheet](files/session-template.md) and
 [measurement table](files/measurements.csv) for subsequent runs. Keep original

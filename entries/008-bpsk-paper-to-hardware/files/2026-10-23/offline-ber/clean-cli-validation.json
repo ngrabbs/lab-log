@@ -1,0 +1,74 @@
+[
+  {
+    "capture": "libre01",
+    "mode": "frozen",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "libre01",
+    "mode": "square",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "libre01",
+    "mode": "template",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "libre02",
+    "mode": "frozen",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "libre02",
+    "mode": "square",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "libre02",
+    "mode": "template",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "pluto00",
+    "mode": "frozen",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "pluto00",
+    "mode": "square",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "pluto00",
+    "mode": "template",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "pluto20",
+    "mode": "frozen",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "pluto20",
+    "mode": "square",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  },
+  {
+    "capture": "pluto20",
+    "mode": "template",
+    "known_bit_errors": 0,
+    "outer_crc32_pass": true
+  }
+]

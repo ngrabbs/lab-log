@@ -1,0 +1,249 @@
+{
+  "experiment": "Offline saved-capture AWGN comparison with ECE-4813 paper; no new RF",
+  "validation": {
+    "behavioral_tests_passed": 10,
+    "clean_capture_cli_checks_passed": 12,
+    "scalar_paper_estimator_cases": 62,
+    "scalar_estimator_max_difference": 0.0,
+    "csv_count_reproduction": "fast-summary, fast-seeds, paper-summary, paper-seeds byte-identical in independent final-code rerun",
+    "pilot_ledger_trials_verified": {
+      "scheduled": 2700,
+      "template": 2700
+    },
+    "per_trial_error_count_arrays_reconcile_with_seed_csvs": true,
+    "input_npz_arrays": "Four finite 192000-sample complex arrays at nominal 48k",
+    "plots": "All three figures rendered and visually inspected; Wilson intervals shown for pilot fractions.",
+    "public_text_parse_and_redaction": true,
+    "cfo_pulse_reproduction": "CFO Monte Carlo table reproduced byte-for-byte using an explicit finite rotating-pulse sum independent of the theoretical amplitude expression."
+  },
+  "public_files": [
+    {
+      "filename": "README.md",
+      "size_bytes": 12596,
+      "sha256": "467609cec82705e536120e35e3b7d7207f756ee8f8a6c6330af97da92dd312b6"
+    },
+    {
+      "filename": "analysis.json",
+      "size_bytes": 11556,
+      "sha256": "864924ee07870113303f2ce72eb481883694cbae97e789471480d413921e719d"
+    },
+    {
+      "filename": "analyze_results.py",
+      "size_bytes": 5201,
+      "sha256": "54b2c19d0a9d2452d1534330a05216ac8e141f2cba33ae11114803edcc83cc0c"
+    },
+    {
+      "filename": "cfo-check.csv",
+      "size_bytes": 1162,
+      "sha256": "44aad7887d52c99dac4e67d5a88a1245d37adefd66c3cb0d4c8f86c349cabfb8"
+    },
+    {
+      "filename": "clean-cli-validation.json",
+      "size_bytes": 1367,
+      "sha256": "7680c58c080056f0b23315523832a035657098e48a5f4a577156669f46861807"
+    },
+    {
+      "filename": "clean-symbols.csv",
+      "size_bytes": 237588,
+      "sha256": "76e21245758c67511d5afafc2c308766bfd844cb7a43b7c59ec82a6fc48ce305"
+    },
+    {
+      "filename": "config.json",
+      "size_bytes": 3782,
+      "sha256": "6db6ac00f8c9793ca817e0a2136a4dc0771a28ab2a1fa49a10d602d494dbd697"
+    },
+    {
+      "filename": "diagnostic.py",
+      "size_bytes": 11240,
+      "sha256": "5017e45631fdcfc4325843663513b299fa5c316d31ed092d278a32008cecb52a"
+    },
+    {
+      "filename": "experiments.py",
+      "size_bytes": 14492,
+      "sha256": "7e78076feb0fa937930fdb032c5563a6d43755bc1625fe9fd8ea1443710a05a5"
+    },
+    {
+      "filename": "fast-error-counts.npz",
+      "size_bytes": 494413,
+      "sha256": "d9c6e9e555234ca3b9315305ee4dc63ef096035e49a50646f76b6e5d88979339"
+    },
+    {
+      "filename": "fast-seeds.csv",
+      "size_bytes": 64993,
+      "sha256": "e188a2655106e3d99f16d84af8b70cfd0cea3c47fb269eb0a075039a24a4f0c0"
+    },
+    {
+      "filename": "fast-summary.csv",
+      "size_bytes": 21203,
+      "sha256": "1ccbf3063311bae3735f9506f905499a27cc74c7ce6941253831dfbacc251fac"
+    },
+    {
+      "filename": "frozen-references.json",
+      "size_bytes": 3756,
+      "sha256": "7e67f3de922c6c6373c38c4a11221b5dddc581885affd28713ca739a73000349"
+    },
+    {
+      "filename": "libre01-48k.npz",
+      "size_bytes": 1421170,
+      "sha256": "1aaafbadaceeee68229aae416328c9a384d7bb9602bf5d9d4c8759cfd3cfb2f5"
+    },
+    {
+      "filename": "libre02-48k.npz",
+      "size_bytes": 1421356,
+      "sha256": "3c0602d7cef247ed3ae430a6de9f93fd7631fabda86d964ef856df7ec2f721a2"
+    },
+    {
+      "filename": "manifest.json",
+      "size_bytes": 6144,
+      "sha256": "ea2da08306c6f6c2a4f5e8d8341b97944cfa2b37f1ebd1dddf7faa874dbbabd1"
+    },
+    {
+      "filename": "paper-error-counts.npz",
+      "size_bytes": 183116,
+      "sha256": "48b1f6c5e5c9e334bf4f3cb0f9bd3d4b7c833cc76850e09d4cae7d8e136c26d2"
+    },
+    {
+      "filename": "paper-estimator-validation.json",
+      "size_bytes": 326,
+      "sha256": "2807d8d6f75e10b74a905f452b20e8189cfe7226c2b8f2b5f5643aa8619bfba3"
+    },
+    {
+      "filename": "paper-seeds.csv",
+      "size_bytes": 14938,
+      "sha256": "ffed25c5eb6be9c17fb1f2a752163c1303729888e66c32622afd34ea964cf8fc"
+    },
+    {
+      "filename": "paper-summary.csv",
+      "size_bytes": 5411,
+      "sha256": "dd1fe854643716b4bab8f228a35412599e86c8ffa9d5e23c2eae2780db1dcf0a"
+    },
+    {
+      "filename": "plot_results.py",
+      "size_bytes": 8161,
+      "sha256": "b23565be52b93ba65da91c93bb0b303ced049245a1ee73888d755bf3bb49044c"
+    },
+    {
+      "filename": "pluto00-48k.npz",
+      "size_bytes": 255742,
+      "sha256": "a5c57ac6817f2cc743616a3808cfbb2840b1f44a3d1befda941d54f24472473f"
+    },
+    {
+      "filename": "pluto20-48k.npz",
+      "size_bytes": 573034,
+      "sha256": "f0513dc37c5f44eccb1fa8c3c6d7c1bd1e7750d23270efe5e8adc8e46ebb25bb"
+    },
+    {
+      "filename": "reproduction-validation.json",
+      "size_bytes": 897,
+      "sha256": "788c249aa525b561c62d8b82c356b9c55c436b7025500ea154f176025c3a9e3c"
+    },
+    {
+      "filename": "scheduled-diagnostic-trials.jsonl.gz",
+      "size_bytes": 509601,
+      "sha256": "17161ac1cd82ff0eebc47f01535ba33f528e4d66036963e12230088cecbfaaed"
+    },
+    {
+      "filename": "scheduled-seeds.csv",
+      "size_bytes": 8853,
+      "sha256": "d59ae7b12e637ab59fc5176ac3cb41be5c92f1b9becdc5ae289e4fc86467ba7a"
+    },
+    {
+      "filename": "scheduled-summary.csv",
+      "size_bytes": 4777,
+      "sha256": "aa92ea51078fbe24b512198822db179107a0c6787ff24ba5aaa78c7c3295c3eb"
+    },
+    {
+      "filename": "sync-frame-intervals.csv",
+      "size_bytes": 11757,
+      "sha256": "05027fbfe0bf6bf47c96d781d7ff2b482432cb7e62360c6c1cc08bb4f39b44f3"
+    },
+    {
+      "filename": "template-diagnostic-trials.jsonl.gz",
+      "size_bytes": 352785,
+      "sha256": "fe0e0933acf98e1191b5f34da26691d6531023c504ab9107fe1f9f735710d719"
+    },
+    {
+      "filename": "template-seeds.csv",
+      "size_bytes": 8893,
+      "sha256": "f8c453b2ab40543d7f6ca944fc4735ba59c593955fff02cab0f9ab67ff49bd40"
+    },
+    {
+      "filename": "template-summary.csv",
+      "size_bytes": 4924,
+      "sha256": "a9ae7c5d37b6b3737b0913d3853e22f45c753b2eae466cc9320dd8afbf8c8e20"
+    },
+    {
+      "filename": "test_diagnostic.py",
+      "size_bytes": 5017,
+      "sha256": "000570346acd477c3f9e1df13521826fb8cac0469269268140083dd4deccc7d2"
+    },
+    {
+      "filename": "tests.txt",
+      "size_bytes": 1427,
+      "sha256": "d25138dafac8499553c318bb46e7a4f30bf4dab63643bbe629476b0e2f680c43"
+    },
+    {
+      "filename": "transition-ber.csv",
+      "size_bytes": 8528,
+      "sha256": "7d52a826cba8e730319828576ce3238d6036911effb7d55806a466b123a44b2b"
+    }
+  ],
+  "public_binary_files": [
+    {
+      "name": "libre01-48k.npz",
+      "size_bytes": 1421170,
+      "sha256": "1aaafbadaceeee68229aae416328c9a384d7bb9602bf5d9d4c8759cfd3cfb2f5"
+    },
+    {
+      "name": "libre02-48k.npz",
+      "size_bytes": 1421356,
+      "sha256": "3c0602d7cef247ed3ae430a6de9f93fd7631fabda86d964ef856df7ec2f721a2"
+    },
+    {
+      "name": "pluto00-48k.npz",
+      "size_bytes": 255742,
+      "sha256": "a5c57ac6817f2cc743616a3808cfbb2840b1f44a3d1befda941d54f24472473f"
+    },
+    {
+      "name": "pluto20-48k.npz",
+      "size_bytes": 573034,
+      "sha256": "f0513dc37c5f44eccb1fa8c3c6d7c1bd1e7750d23270efe5e8adc8e46ebb25bb"
+    },
+    {
+      "name": "fast-error-counts.npz",
+      "size_bytes": 494413,
+      "sha256": "d9c6e9e555234ca3b9315305ee4dc63ef096035e49a50646f76b6e5d88979339"
+    },
+    {
+      "name": "paper-error-counts.npz",
+      "size_bytes": 183116,
+      "sha256": "48b1f6c5e5c9e334bf4f3cb0f9bd3d4b7c833cc76850e09d4cae7d8e136c26d2"
+    },
+    {
+      "name": "scheduled-diagnostic-trials.jsonl.gz",
+      "size_bytes": 509601,
+      "sha256": "17161ac1cd82ff0eebc47f01535ba33f528e4d66036963e12230088cecbfaaed"
+    },
+    {
+      "name": "template-diagnostic-trials.jsonl.gz",
+      "size_bytes": 352785,
+      "sha256": "fe0e0933acf98e1191b5f34da26691d6531023c504ab9107fe1f9f735710d719"
+    }
+  ],
+  "raw_fast_error_masks": {
+    "filename": "fast-error-masks.npz",
+    "archive": "Original bench offline-run-01 archive; regenerated by experiments.py",
+    "size_bytes": 6372655,
+    "sha256": "0bc9bbd23e0b8fcb74a8bab8b4066f493e6897bb62ef8fe70da4a17e4b7afbd4"
+  },
+  "budgets": {
+    "frozen_bits_per_point": 1104000,
+    "paper_data_bits_per_point": 1152000,
+    "pilot_bits_per_point": 27600,
+    "noise_seeds": 3,
+    "underlying_hardware_bursts": 4
+  },
+  "scope": "Known held-out preamble BER; payload only clean-decode replay reference. Fixed waveform conditional noise-trial statistics, not analog sensitivity, live packet qualification or blind acquisition. Template prototype uses clean learned state means and scheduled timing; estimator and observation window both change.",
+  "originals": "Course project, full IQ and live modem unchanged. Public NPZs are exact derived 4-second excerpt arrays, not replacements for original full-rate captures.",
+  "reproduction": "See README.md. NumPy for simulation/diagnostic/tests; Matplotlib for plots. Use new output directory. Compressed results may have different container timestamps on rerun while numerical CSVs/counts remain reproducible."
+}
