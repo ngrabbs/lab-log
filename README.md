@@ -4,6 +4,8 @@ A running log of things I build, test, fix, and investigate. Written for future 
 
 I miss the old forum build threads: the problem, the pictures, the experiments, the wrong turns, and how someone finally got it working. That is the idea here. Each entry keeps an investigation together, even when it takes several days.
 
+**[Equipment on Hand](equipment/README.md)** — instruments, radios, tools, availability notes, and measured characterizations.
+
 ## Entries
 
 Newest entries first. Ongoing investigations are updated on their own page.
