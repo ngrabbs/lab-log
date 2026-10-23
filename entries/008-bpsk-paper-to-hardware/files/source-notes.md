@@ -149,3 +149,16 @@ The 8 dB known-preamble comparison is 265 → 106 errors on the same 16,376 bits
 changed-bit gains and increased false transitions, plus two packet regressions,
 are retained. This is conditional BER on reused captures with post-filter noise,
 not independent payload truth, calibrated RF sensitivity or live receiver testing.
+
+## October 23 sequence detector comparison
+
+The [v4 sequence experiment](2026-10-23/offline-sequence-v4/README.md) selects a
+three-symbol/four-state Viterbi detector from 3/5/7-symbol candidates using only
+libre01, with fresh training noise. It maximizes a sum of overlapping local GLRT
+scores without forced known bits, transition penalties or payload priors. The
+selection record freezes all relevant sources/model/development evidence before
+held-out evaluation. Exact IQ hashes and acquisition outputs match v3. At 8 dB,
+106 → 32 preamble errors and 77 → 16 false changes are measured on the same bits.
+Frame success is 96/180 → 149/180, with one new regression retained. Both earlier
+v3 regressions pass. This remains retrospective conditional known-preamble replay,
+with post-filter noise, full-frame traceback and no independent full TX-body truth.

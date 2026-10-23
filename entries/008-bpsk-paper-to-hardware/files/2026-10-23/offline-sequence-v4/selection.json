@@ -1,0 +1,55 @@
+{
+  "selected": true,
+  "selection_utc": "2026-10-23T19:57:11.924543+00:00",
+  "criterion": "At both points no more training preamble errors than v3; fewer 8 dB false changes; identical acquisition; retain clean frame and zero training-noise candidates. Among eligible windows minimize total false changes, then total errors, then window length.",
+  "training_iq": "libre01 only",
+  "training_noise_seeds": [
+    66001,
+    66002,
+    66003
+  ],
+  "noise_control_seed_start": 870000,
+  "training_noisy_trials": 60,
+  "candidate_windows": [
+    3,
+    5,
+    7
+  ],
+  "selected_window": 3,
+  "eligible_rank_tuples": [
+    [
+      3,
+      6,
+      3
+    ],
+    [
+      3,
+      6,
+      5
+    ],
+    [
+      4,
+      8,
+      7
+    ]
+  ],
+  "selected_detector": "Viterbi maximization of summed overlapping-window complex-scale GLRT scores. No transition penalty, known-bit constraints or payload prior.",
+  "not_selected_for": "CRC/frame success or body-reference errors; only clean frame required.",
+  "acquisition_sha256": "88a7908d1de6b6ca44b652abe51a6f0bf0ab9228c8435bdff35a077e48afd33f",
+  "pair_detector_sha256": "9a10cc2561fd476e33d85976dc63c9432a41722a0447c80a307d3bf963258249",
+  "frozen_receiver_model": {
+    "model.json": "2b4cd263a650dcfc40366657d6308a330af75771af6d426eb67233bfc5d10423",
+    "receiver.py": "dca4a86184ff0167512e05f6405d272211acb4d90f5245827cd2c11093652889"
+  },
+  "development_hashes": {
+    "train.py": "6c6a3e94511c77147a4a873c21f0c3440d848ba3fb762342a985c5c6a95a69d4",
+    "training-source.json": "62036927f3c2e77bec2d8e309e63260a03a86fe1e4b666a059f773828d0f27a4",
+    "training-trials.jsonl": "43e2d1682e027c5d42eccb4fcc9c8b174f5b90c949c3c4347e36417a2cd49ad3",
+    "training-summary.csv": "3eb3c6b79d45950d934430ae12693831424eac12f98d4c1494933a3c2ef125a1",
+    "test_receiver.py": "ee873eba8d3c7d143599883cda9b7deaef3e63950895d1d0f133da0d59a153ce",
+    "tests.txt": "69ea948e5d791fb39b4e4cfb1c2b02ba4c1a028ba9a73c17c77e26b41aef704e",
+    "run.py": "0a51193e87553820da1f76a48e34b7ea5cf461bf7e90846064674748af805733"
+  },
+  "held_out_plan": "Only selected window evaluated on same 180 noisy cases, 3 clean cases, 30 controls and one training clean check; no held-out retuning.",
+  "scope": "Retrospective reused RF recordings. Prior v3 results were known. Train/evaluate sequence decisions without body truth or forced preamble/sync bits."
+}

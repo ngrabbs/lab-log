@@ -1305,21 +1305,86 @@ The live receiver remains unchanged.
 [All trial decisions](files/2026-10-23/offline-geometry-v3/trials.jsonl) ·
 [Pre-evaluation freeze](files/2026-10-23/offline-geometry-v3/selection.json)
 
+## 2026-10-23 — sequence detector to reduce false transitions
+
+The pair detector reduced average preamble BER but increased false changes. I
+tried a sequence detector using **libre01 only** for development, with the v2
+acquisition and learned geometry fixed. It makes overlapping symbol windows
+agree on one binary phase-state path through a Viterbi trellis. Each window fits
+its own unknown phase/gain. There is no transition penalty, payload prior or
+forced preamble/sync/body bit. The objective sums overlapping local likelihood
+scores, so it is a composite model rather than exact whole-frame AWGN ML.
+
+Training compares windows of 3, 5 and 7 symbols on the same fresh training-noise
+cases. The 3- and 5-symbol versions tie; selection chooses **3 symbols / four trellis
+states**. At 8 dB, training errors fall 24 → 6 on 5,336 shared bits and false
+changes 17 → 3. Fourteen tests pass, including exhaustive sequence/objective checks.
+The selected model, code dependencies and development evidence were frozen before
+held-out evaluation; only this selected window was run on held-out IQ. No receiver
+or parameter was changed after inspecting the result. Everything remained offline.
+
+All 214 input IQ hashes, acquisition outputs and baseline pair decisions match
+v3 exactly. The paired held-out comparison is:
+
+| Replay Eb/N0 | Shared known bits | V3 pair errors | V4 sequence errors | V3 sync + CRC | V4 sync + CRC |
+| --- | --- | --- | --- | --- | --- |
+| 8 dB | 16,376 | 106 (**0.6473%**) | 32 (**0.1954%**) | 6/90 | **59/90** |
+| 12 dB | 16,560 | 0 observed | 0 observed | 90/90 | 90/90 |
+
+![Sequence versus pair detector at 8 dB](images/sequence-v4.svg)
+
+At 8 dB, false transitions fall **77 → 16** on 8,188 known zero bits; missed
+transitions also fall **29 → 16** on 8,188 known one bits. That is **79.2% fewer
+false changes and 69.8% fewer total errors** than v3, retaining and improving its
+average BER gain in this budget. Every held-out recording improves in average
+8 dB preamble BER. V4's 16 false changes remain above the original sign detector's
+11, so this is not an improvement on every individual baseline metric.
+
+The paired trial-block BER change is −0.452 percentage points (approximate 95%
+interval −0.578 to −0.325), conditional on these fixed recordings. No zero-width
+normal interval is reported at 12 dB when both observed error counts are zero;
+finite zero counts do not prove zero or equal true BER.
+
+Overall valid frames rise **96/180 → 149/180**, with **54 recoveries and one new
+regression**. Both earlier v3 packet regressions now pass. The new regression is
+Pluto20, 8 dB, seed 73191, trial 0: sync passes, but adjacent body-reference bits
+490/491 change 00 → 11 and CRC fails. This case remains in the ledger. Body
+comparisons still use clean-decode references, not independently retained TX bytes.
+State errors can generate correlated adjacent bit errors, so BER does not imply
+packet success through an IID-bit formula.
+
+Acquisition remains **179/180**, with the same one miss and zero emitted wrong
+starts. All three clean captures still pass with zero errors in 552 known bits.
+Noise controls remain 0/30. This is retrospective reuse of the same RF recordings,
+with known-preamble scoring and post-filter replay noise, not unknown-payload BER,
+continuous-stream reliability or calibrated RF sensitivity. The full-frame trellis
+uses future context; live integration and latency are untested. No hardware or
+operational receiver changed, and all earlier source/results retain their hashes.
+
+[Method, all training candidates and results](files/2026-10-23/offline-sequence-v4/README.md) ·
+[Frozen sequence detector](files/2026-10-23/offline-sequence-v4/receiver.py) ·
+[Pre-evaluation selection](files/2026-10-23/offline-sequence-v4/selection.json) ·
+[Paired counts and intervals](files/2026-10-23/offline-sequence-v4/paired-summary.csv) ·
+[Bit-class counts](files/2026-10-23/offline-sequence-v4/bit-class-summary.csv) ·
+[Retained regression](files/2026-10-23/offline-sequence-v4/frame-regressions.json) ·
+[All decisions](files/2026-10-23/offline-sequence-v4/trials.jsonl)
+
 ## Current outcome and next session
 
 The spectrum/phase checks now tie to the paper through controlled offline BER
-comparisons. Ideal references reproduce theory. The sign detector has a large
-penalty on the roughly 135° waveform; a detector using the learned geometry
-reduces 8 dB known-preamble errors by 60% on the same acquired samples, while
-increasing false changes and regressing two packets. A training-only acquisition
-revision retains one miss and no emitted wrong starts in this reused test budget.
-Limited capture diversity, payload truth and noise-plane assumptions still prevent
-live qualification.
+comparisons. Ideal references reproduce theory. At 8 dB on shared acquired known
+bits, sign/pair/sequence detectors give 265/106/32 errors respectively. The sequence
+detector reduces the pair detector's false changes 77 → 16 and yields 149/180 valid
+frames, with one retained regression. Acquisition remains 179/180 with one miss.
+This demonstrates detector assumptions and memory as important parts of the
+paper-to-hardware comparison. Limited waveform diversity, payload truth and
+noise-plane assumptions still prevent live qualification.
 
-Next: test detector behavior on independently known varied payloads using training
-data, keeping the baseline and the two regressions visible. Reserve **new captures
-with independently saved transmitted payloads** for prospective evaluation of the
-frozen receiver, with matched pre-filter noise and separate acquisition accounting.
+Next: keep the selected sequence receiver frozen as a candidate. Use training or
+synthetic data for independently known varied payloads, phase drift/fading and
+stream-boundary tests. Reserve **new RF captures with independently saved TX
+payload bytes** and matched pre-filter noise for prospective evaluation. Keep
+acquisition, conditional BER and packet failures separate.
 Then validate a selected algorithm with bounded conducted RF trials. Record the
 installed transmitter firmware/clock drive before any modulation changes, and
 include time/temperature/reference information in frequency tests. BER under

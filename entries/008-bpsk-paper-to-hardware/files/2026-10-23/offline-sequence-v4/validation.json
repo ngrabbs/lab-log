@@ -1,0 +1,12 @@
+{
+  "total_trials": 214,
+  "held_out_clean": 3,
+  "noisy_held_out": 180,
+  "training_clean": 1,
+  "noise_only_windows": 30,
+  "noise_false_candidates": 0,
+  "false_candidate_one_sided95_upper": 0.09503385285530419,
+  "all_detected_decisions_recounted": true,
+  "all_metrics_in_unit_interval": true,
+  "model_and_receiver_hashes_unchanged": true
+}
