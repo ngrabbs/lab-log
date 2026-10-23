@@ -60,8 +60,25 @@ conditions; they have not been independently remeasured here.
 - [MathWorks: analytical BER expressions](https://www.mathworks.com/help/comm/ug/analytical-expressions-used-in-berawgn-function-and-bit-error-rate-analysis-app.html): distinguishes coherent BPSK, coherently detected differential encoding, and two-symbol DPSK detection.
 - [MathWorks: AWGN channel conventions](https://www.mathworks.com/help/comm/ug/awgn-channel.html): distinguishes per-sample SNR, Es/N0 and Eb/N0, including the complex-sample oversampling relation.
 
-Equipment inventory and the present successful-packet report were supplied by the
-user on 2026-10-23. Proposed sweep values, budgets, tolerances to investigate and
+## Equipment reference added on October 23
+
+Reviewed the [shared inventory](../../../equipment/README.md) and
+[attenuator characterization](../../../equipment/characterizations/attenuators/README.md)
+at lab-log commit
+[`3d86e5384536a5a2fa6e4add99244a89908b8bdd`](https://github.com/ngrabbs/lab-log/commit/3d86e5384536a5a2fa6e4add99244a89908b8bdd).
+Checked the original `nooelec_20_and_10dB_20260517.s2p` and
+`nooelec_all_pads_41dB_20260517.s2p` files: their complex S21 samples at
+434808900 Hz give 29.5558 and 41.1330 dB attenuation respectively. These
+independently recalculated historical samples support the rounded values in the
+plan; no new VNA acquisition, uncertainty assessment or power test was performed.
+The inventory distinguishes recorded ownership from unconfirmed orders and
+access, and is the reference for equipment planning. Its scope model is
+DS1202Z-E; the earlier conversation used the shortened DS1202-Z name.
+The RF generator's identity/access and Analog Discovery generation remain
+unconfirmed, so neither is required for the first session.
+
+The present successful-packet report and initial equipment list were supplied by
+the user on 2026-10-23. Proposed sweep values, budgets, tolerances to investigate and
 additional diagnostic tooling are plans, not measured capabilities.
 
 [Investigation](../README.md)

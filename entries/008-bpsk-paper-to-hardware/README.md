@@ -66,17 +66,48 @@ again at the start rather than assuming the older board-RX limitation still hold
 
 ## Equipment and connections
 
-Available, as reported on October 23: LibreSDR using B210/B205-compatible firmware,
-Pluto, HackRF, RTL-SDR, DS1202-Z scope, TinySA Ultra and assorted attenuators.
-There is no confirmed dedicated signal/noise generator. Start with LibreSDR as
-the main IQ receiver. Pluto is a candidate independent BPSK source for board RX;
-confirm its installed waveform tooling before the session. The other SDRs are
-optional cross-checks, not prerequisites or interchangeable calibrated receivers.
+The shared [equipment inventory](../../equipment/README.md) is the reference for
+this investigation. Use LibreSDR with the installed B210/B205-compatible image as
+the main IQ receiver and Pluto as the candidate independent BPSK source for
+board RX. HackRF and RTL-SDR are optional cross-checks. Record exact installed
+images and verify Pluto waveform tooling before the session.
+
+The inventory also lists a NanoVNA-F V2, Rigol DS1202Z-E scope, Analog Discovery,
+Nooelec 1/2/3/6/10/20 dB pads, PCB attenuator boards, BECEN DC blocks, DMMs and
+bench supplies. The Analog Discovery generation is unconfirmed; use it as an
+optional logic/baseband capture tool only after identifying its inputs and limits.
+Use the DMMs for board-rail checks and the current-limited supply for powering the
+existing configuration. No additional amplifier is needed for the initial tests.
+
+A standalone RF signal generator was reported available in an earlier entry,
+but its model, UHF coverage, output accuracy and current availability are
+unconfirmed. It is an optional tone source after those details are established,
+not a prerequisite. No dedicated calibrated noise source is established by the
+inventory; retain offline noise injection and the SDR-generated waveform route.
+
+The [May 17 attenuator characterization](../../equipment/characterizations/attenuators/README.md)
+includes original Touchstone files. At the saved 434.8089 MHz sample, the nominal
+20+10 dB chain has 29.56 dB loss, and the all-six chain has 41.13 dB loss
+(nominally 42 dB despite its historical “41dB” filename). These are historical
+low-power VNA measurements near the band, not current 437 MHz calibration or
+proof of power handling. Pad identity, cables, reference planes and uncertainty
+must be established for the actual assembly.
+
+Use the NanoVNA with a fresh through/response calibration appropriate to the
+measurement, preferably a full two-port calibration where supported, to measure
+S21 of each intended pad/cable/DC-block chain at the actual TX/RX frequencies.
+Save the new calibration description and Touchstone data separately from the
+May files. Verify DC-block passband rather than assuming it from the inventory's
+upper-frequency rating. With all active sources disconnected, the VNA can also
+characterize suitable passive filter/antenna paths; document bias isolation and
+do not connect it to a live transmitter. The historical files' zero-filled S12
+and S22 are unavailable measurements, and their unresolved S11 excursions are
+not a certified match specification.
 
 Use three arrangements in order:
 
 ```text
-A. Board TX → rated fixed attenuation → step attenuation → LibreSDR RX
+A. Board TX → rated fixed attenuation → selectable fixed pads → LibreSDR RX
    Swap the receiver for TinySA at the same reference plane for level checks.
 
 B. Known SDR waveform → calibrated attenuation → board antenna/RX port
@@ -93,7 +124,9 @@ requirements and selected reference plane. Choose total loss so the maximum
 possible input stays below the lowest applicable input limit with margin. Verify
 the level through the initial fixed pad before connecting the SDR. Do not infer
 RF power from an SDR gain number or the amplifier's advertised capability.
-Keep unused RF ports terminated appropriately. Save a connection photo and diagram
+Use a suitable 50 Ω UHF termination for ports that require it. The inventory's
+Pacific Antenna dummy load is listed for DC–50 MHz; do not assume it is a
+437 MHz load. Save a connection photo and diagram
 with actual pad values before enabling a finite burst.
 
 Use the scope for GP16 bit timing, accessible baseband and supply behavior. Use
@@ -245,7 +278,10 @@ seed and all filtering. Do not use an `awgn` SNR argument as if it were Eb/N0.
 Offline injection tests the captured waveform and software receiver. It does not
 measure analog sensitivity or noise added ahead of the board LNA. Follow it with
 conducted attenuation sweeps in both directions where available: proposed 3 dB
-steps to locate the knee, then 1 dB near it, checking gain and clipping each time.
+steps to locate the knee, then about 1 dB near it, checking gain and clipping each
+time. Use measured combinations of the available fixed pads; a calibrated step
+attenuator is not assumed. Stop TX before changing connections, record the actual
+total chain loss for each point, and recheck the baseline after reconnecting.
 Without a calibrated input noise density, plot PER versus input power/loss and
 leave the Eb/N0 axis unclaimed. An SDR can later generate a known signal plus
 noise before the board input; characterize its DAC/RF distortion and output level

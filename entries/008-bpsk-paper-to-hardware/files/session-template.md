@@ -15,11 +15,14 @@ Mark every result as measured, derived, assumed or simulated.
 
 ## RF and sampling setup
 
+- Equipment inventory revision / selected physical instrument and pad identities:
 - Connection photo / diagram / reference plane:
 - Actual source and receiver, firmware/FPGA image, ports and clock sources:
 - Requested and measured frequencies, measured CFO and uncertainty:
 - Source power measurement, detector/RBW/VBW, calibration and uncertainty:
-- Fixed/variable pads, measured loss at test frequency, ratings, cables/DC blocks:
+- Fixed-pad combinations, measured total loss at test frequency, ratings, cables/DC blocks:
+- Fresh VNA calibration method/date/reference planes and saved S21 file:
+- Historical pad data used only as a reference / current loss and uncertainty:
 - Receiver input limit, worst-case calculated input, selected margin:
 - Gain/AGC, filter settings and equivalent noise bandwidth:
 - Actual sample rate/readback, format/endianness, timestamp origin:
