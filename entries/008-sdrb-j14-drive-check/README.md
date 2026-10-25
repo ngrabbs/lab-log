@@ -485,4 +485,31 @@ Active. [Numeric scan](files/j10-sweep-gain60-active.txt).
 
 After. [Numeric scan](files/j10-sweep-gain60-after.txt).
 
+## TX channel and bank source audit — October 25, 2026
+
+This was a read-only audit of the rc.3 image's recorded source commit `be5e96e015921c2a5c438fbce5293489853ebb50`, the UHD recipe's pinned upstream commit `308126a479ca19dfaebfe4784b375e608788d763`, the exported schematic netlist and live PCB pad assignments. No RFIC initialization, tone, register write, schematic/PCB edit or component rework was performed. Installed `sdrb.py`, `sdrb_radio.py` and `sdrb_rpc.py` hashes matched the reviewed source. The radio remained unclaimed.
+
+**No inconsistent TX channel or bank selection was identified in the reviewed source.** The intended mapping for our existing test is:
+
+| Layer | Selection or connection found |
+| --- | --- |
+| GNU Radio/UHD | Channel 1 |
+| SDRB host adaptation | Frontend swap enabled; channel 1 maps to physical TX1 |
+| Streaming topology | TX1 enabled, TX2 disabled; SISO_TX0 |
+| FPGA sample selection | Dboard control bit 1 clear selects the physical-TX1 input; the top-level wiring feeds RFNoC port 1 samples into that input |
+| Bank request | `sdrb_tx_filter=highpass` constructs the native manager with its TX-B option |
+| Native tuner | Requests register 0x004 bit 6 set at 5.184 GHz, selecting TX1B/TX2B bank B |
+| Board route from TX1B | U25 M9/M10 → C131/C130 → T9 → U28 → U24 port 1/sum → C23 → U32 → C154 → U37 |
+| Remaining J10 route | U37 → C158 → U45 → C209 → U13 → U12 Path B → U1 Path B → J10 |
+
+The frontend helper, gain control and streaming topology agree on physical TX1. The pinned FPGA contains both the top-level channel swap and an explicit SISO channel selector; those agree with channel 1 / physical TX1 rather than requiring another channel change. The release source uses the same shared TX LO for both physical transmitters, so the native tune call naming TX1 does not itself select which sample stream is enabled.
+
+**The legacy antenna label is misleading:** `TX1A_Direct1` remains the advertised string even when the separate claim-scoped high-pass option requests bank B. It is not an RF bank readback. [Analog Devices confirms that register 0x004 bit 6 selects B when set and A when clear](https://ez.analog.com/rf/wide-band-rf-transceivers/design-support/f/q-a/535515/ad9361-configuration-question/388745). The expected register bit here is a source-derived setting; it was not sampled during an active stream.
+
+The input chain includes **U28 HFCN-2275+**, **U24 EP2K1+**, and **U32 LFCN-5850+** before either driver. Live PCB queries for T9, U28, U24, U32 and U37 agreed with the exported net assignments. The high-pass filter is specified across 2450–7000 MHz, and the combiner across 2000–26500 MHz, so 5.184 GHz is within those listed bands. [HFCN-2275+ datasheet](https://www.minicircuits.com/pdfs/HFCN-2275%2B.pdf), [EP2K1+ product specifications](https://www.minicircuits.com/WebStore/dashboard.html?model=EP2K1%2B). This is a design-connectivity check; actual population, solder quality and insertion loss remain unverified.
+
+This audit does not prove the active RFIC registers or compiled C++ execution matched every expected setting, and it does not rule out leakage, an assembly problem or excess analog loss. No raw SPI access was attempted alongside MPM. Switch-control voltage checks already completed earlier were not repeated.
+
+The next proposed non-rework check is a J10 frequency-response comparison within the high-band passband, retaining gain 60 and amplitude 0.1: for example nominal tones near **3.0, 4.0, 5.18405 and 5.8 GHz**, with analyzer scans recentered at each frequency and before/during/after records. No frequency sweep or higher TX setting was run as part of this audit.
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
