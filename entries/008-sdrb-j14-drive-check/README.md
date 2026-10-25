@@ -607,4 +607,99 @@ Active. [Numeric scan](files/j10-freq-5800000000-active.txt).
 
 After. [Numeric scan](files/j10-freq-5800000000-after.txt).
 
+## LibreSDR matching frequency sweep — October 25, 2026
+
+The owner connected LibreSDR and moved the same measurement chain to **LibreSDR TXRA → DC block → coax → tinySA RF input**, with no external pad. SDRB was independently observed unclaimed before testing and remained disconnected from this RF chain. Its amplifier supply state was not remeasured or independently reconfirmed during this comparison.
+
+LibreSDR used **UHD channel 0 / TX-RX, gain 40, amplitude 0.1**, 1 MS/s, a +50 kHz complex tone offset and a two-second host send-loop limit. Each requested LO was nominal tone frequency minus 50 kHz. The verified custom LibreSDR FPGA image was explicitly selected; the first initialization reloaded it after USB reconnection. No stock FPGA substitution was made. Eight dry configuration checks and three invalid-source-argument rejection checks passed without RF before the sweep.
+
+The analyzer retained the SDRB sweep settings: Ultra on, LNA off, **10 dB internal attenuation**, 10 kHz RBW, zero external correction and a 101-point 1 MHz span recentered for each nominal frequency. The shorter serial timeout and batched display commands from the prior acquisition correction were retained; the capture gate remained 1.8 seconds.
+
+| Nominal frequency (GHz) | Libre before (dBm) | Libre active peak (dBm) | Libre after (dBm) | Libre contrast (dB) | Earlier SDRB active window peak (dBm) |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 3.000000 | -99.06 | **-50.09** | -94.06 | +43.97 | -57.12 |
+| 4.000000 | -98.59 | **-53.44** | -98.59 | +45.16 | -70.00 |
+| 5.184050 | -91.06 | **-53.41** | -90.56 | +37.16 | -69.44 |
+| 5.800000 | -80.56 | **-60.56** | -81.56 | +20.00 | -65.09* |
+
+Peaks are within ±10 kHz of nominal. LibreSDR's strongest active numeric bin was one 10 kHz grid step below nominal at each frequency. Independent oscillator/analyzer frequency calibration was not performed. The separate LCD markers at nominal read approximately **−50.1, −55.1, −56.9 and −65.6 dBm**, respectively; they are different frequency/sweep observations from the numeric peak values. Additional spectral components are visible, so this is not a spectral-purity qualification.
+
+*The SDRB 5.8 GHz number remains a broad-rise target-window peak, not reliable isolated tone power. Do not treat that row as a calibrated source-power comparison.* The radios used different gain settings (LibreSDR 40, SDRB 60), and their own frequency responses and output calibrations are unqualified.
+
+### What the comparison establishes
+
+- LibreSDR's indicated target level dropped **3.34 dB from 3 to 4 GHz**, whereas SDRB's dropped **12.88 dB**. The difference in these relative changes is **9.53 dB**. This suggests an additional frequency dependence specific to the SDRB source/path compared with LibreSDR, but does not isolate its RFIC, amplifiers, filters or assembly, or yield calibrated board loss.
+- LibreSDR's 4 and 5.184050 GHz levels were essentially equal. At 5.184050 GHz, the new −53.41 dBm reference is within 0.44 dB of its earlier −52.97 dBm result.
+- **At 5.8 GHz, LibreSDR produced a resolved target tone without SDRB's broad active rise.** Outside ±50 kHz of nominal, LibreSDR scan medians were **−81.03 dBm before, −81.05 dBm active and −81.30 dBm after**. SDRB's earlier medians were −81.06 / −71.56 / −81.59 dBm. This demonstrates that the same receiver chain can resolve a nearby stronger tone without that broad rise; it focuses the next investigation on behavior associated with the SDRB test. It still does not rule out source-dependent analyzer responses or establish SDRB noise power.
+
+All four LibreSDR source runs returned normally with no reported TX error events or cleanup errors, retaining only one burst acknowledgement per run. Actual gain readback was 40.0 and LO readback was within 10 Hz of each request. The host send loop lasted approximately **2.01025–2.01028 seconds** and queued **2,080,000 samples per run**, or 2.08 seconds at the nominal rate. These software counts/times are not independently measured RF burst durations. Gain was returned to zero during cleanup and no source process remained running.
+
+All numeric scans and actual LCD freezes passed their active-window checks; freezes occurred approximately **1.542, 1.672, 1.597 and 1.661 seconds** after the received start marker. There was no screenshot timing exception, RF retry, power increase or change to SDRB software in this sweep. BACKUP-A remained mounted. RF is stopped.
+
+[Complete CSV and side-by-side values](files/libresdr-frequency-sweep.csv). Below are 12 unmodified device captures; numeric and LCD scans are distinct observations. Each measurement record includes source results, original status, numeric scans, capture timing/hashes and a separately labeled derived median summary. Original RGB565 payloads and console logs are archived privately.
+
+### LibreSDR frequency sweep, 3.000000 GHz
+
+[Measurement and review](files/libre-freq-3000000000.json).
+
+![LibreSDR 3.000000 GHz, before](images/libre-freq-3000000000-before.png)
+
+Before. [Numeric scan](files/libre-freq-3000000000-before.txt).
+
+![LibreSDR 3.000000 GHz, active](images/libre-freq-3000000000-active.png)
+
+Active. [Numeric scan](files/libre-freq-3000000000-active.txt).
+
+![LibreSDR 3.000000 GHz, after](images/libre-freq-3000000000-after.png)
+
+After. [Numeric scan](files/libre-freq-3000000000-after.txt).
+
+### LibreSDR frequency sweep, 4.000000 GHz
+
+[Measurement and review](files/libre-freq-4000000000.json).
+
+![LibreSDR 4.000000 GHz, before](images/libre-freq-4000000000-before.png)
+
+Before. [Numeric scan](files/libre-freq-4000000000-before.txt).
+
+![LibreSDR 4.000000 GHz, active](images/libre-freq-4000000000-active.png)
+
+Active. [Numeric scan](files/libre-freq-4000000000-active.txt).
+
+![LibreSDR 4.000000 GHz, after](images/libre-freq-4000000000-after.png)
+
+After. [Numeric scan](files/libre-freq-4000000000-after.txt).
+
+### LibreSDR frequency sweep, 5.184050 GHz
+
+[Measurement and review](files/libre-freq-5184050000.json).
+
+![LibreSDR 5.184050 GHz, before](images/libre-freq-5184050000-before.png)
+
+Before. [Numeric scan](files/libre-freq-5184050000-before.txt).
+
+![LibreSDR 5.184050 GHz, active](images/libre-freq-5184050000-active.png)
+
+Active. [Numeric scan](files/libre-freq-5184050000-active.txt).
+
+![LibreSDR 5.184050 GHz, after](images/libre-freq-5184050000-after.png)
+
+After. [Numeric scan](files/libre-freq-5184050000-after.txt).
+
+### LibreSDR frequency sweep, 5.800000 GHz
+
+[Measurement and review](files/libre-freq-5800000000.json).
+
+![LibreSDR 5.800000 GHz, before](images/libre-freq-5800000000-before.png)
+
+Before. [Numeric scan](files/libre-freq-5800000000-before.txt).
+
+![LibreSDR 5.800000 GHz, active](images/libre-freq-5800000000-active.png)
+
+Active. [Numeric scan](files/libre-freq-5800000000-active.txt).
+
+![LibreSDR 5.800000 GHz, after](images/libre-freq-5800000000-after.png)
+
+After. [Numeric scan](files/libre-freq-5800000000-after.txt).
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
