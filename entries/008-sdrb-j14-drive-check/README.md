@@ -331,4 +331,19 @@ After. [Numeric scan](files/j10-att10-after.txt) · [LCD metadata](files/j10-att
 
 [Run record](files/j10-att10-measurement.json).
 
+## Driver DC bias check — October 25, 2026
+
+With RF idle, AmpPwr1 powered and AmpPwr2 off, the owner reported these manual meter readings on schematic page 3, “Transmit Amplifier and Switching.” The black probe was directed to AmpPwr1 negative / board ground; the red probe points were the component-side right pads of the two bias chokes.
+
+| Measurement | Owner-reported value | Meaning |
+| --- | ---: | --- |
+| Bench supply voltage display | 9 V | Supply setting/display, not the measured board-terminal voltage |
+| Bench supply current display | 0.572 A | Combined main SDRB board + AmpPwr1 load |
+| L30 pad 2, U45 RF-output/DC-bias net | **8.637 V DC** | Voltage present on the second driver's bias feed |
+| L23 pad 2, U37 RF-output/DC-bias net | **8.637 V DC** | Voltage present on the first driver's bias feed |
+
+Both bias feeds have DC voltage close to the nominal 9 V supply. The difference from the supply display is 0.363 V; its location has not been isolated by measurements at the connector and intervening components. The combined 0.572 A reading does not establish either driver's individual current. These readings do not prove transistor operation, RF gain or correct solder contact at each IC pin. No additional RF run or power increase was performed for this check.
+
+The next RF diagnosis is to establish gain through the driver chain and locate the large loss responsible for the weak J10 fundamental. Switch-control checks are already complete.
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
