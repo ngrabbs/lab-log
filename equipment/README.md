@@ -1,6 +1,6 @@
 # Equipment on Hand
 
-**Updated:** 2026-10-23
+**Updated:** 2026-10-25
 
 **Inventory status:** Seeded from older testbed records; reconciliation in progress.
 
@@ -12,6 +12,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 
 - [Attenuator characterization and original files](characterizations/attenuators/README.md)
 - [Items to confirm](#items-to-confirm)
+- [Othermill V2, tooling and stock](#othermill-v2-tooling-and-stock)
 - [Software](#software)
 - [Source and maintenance](#source-and-maintenance)
 
@@ -119,9 +120,31 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
+| Other Machine Co. Othermill V2 | Owned; successful wax test reported 2026-10-15; model reconfirmed 2026-10-25 | Desktop CNC mill, bought used on eBay. Mac connection, homing, PCB-bracket location and tool touch-off completed in the October 15 session; firmware reported as 101.14. See [tooling, stock and test record](#othermill-v2-tooling-and-stock). |
 | Pinecil soldering iron | Recorded owned | Primary iron in source notes; version unknown. |
 | KSGER SMD hot-air rework station | Recorded owned | Hot-air rework; exact model and settings/calibration unknown. |
 | T-962 reflow oven | Recorded owned | Assembly oven; modifications and measured temperature profile unknown. |
+
+### Othermill V2, tooling and stock
+
+The 2026-10-15 conversation **“Find information about Othermill”** records the setup, owner-reported tooling and a successful wax pocket. The model label was reported as Othermill V2. These are dated inventory notes, not a new physical inspection on this page's update date.
+
+| Tool or accessory | Recorded availability and details |
+| --- | --- |
+| 1/16-inch flat end mill | Installed and used for the wax test; later confirmed by the owner as solid carbide. Owner subsequently measured approximately 5 mm from the tip to where the narrow section widens. Flute count and exact part number were not physically verified; do not treat the software profile as a tool measurement. |
+| 1/32-inch and 1/64-inch flat end mills | Owner-reported available; quantity, shank sizes, material and condition unrecorded. |
+| Flat cutter reported as “1/18” inch | Preserve the original report pending label/diameter confirmation; do not silently substitute 1/8 inch. |
+| 1/8-inch and 1/16-inch ball end mills | Owner-reported available; quantity, shank sizes, material and condition unrecorded. |
+| Unidentified ball end mill | Owner measured shank at 3.13 mm and estimated cutter diameter at about 1.5 mm. Exact size/identity and whether distinct from the labeled ball cutters remain unconfirmed. |
+| Engraving bits | Owner-reported assortment; angles, tip diameters and quantities unrecorded. |
+| PCB-style alignment bracket | Installed; owner reported successful bracket-location routine. Earlier references to an L-bracket in the session were corrected to PCB bracket. |
+| Double-sided machining tape | Available and used for wax workholding; owner reported 0.05 mm tape thickness for this setup. |
+
+**Stock reported on hand:** assorted copper-clad PCB blanks; purple machinable wax from a chocolate-mold kit (material confirmed by the owner); multiple linoleum blocks; white plastic thought to be Delrin but unconfirmed; a red plastic block and additional purple blocks of unconfirmed material. Color alone does not identify those other plastics. The wax block used for the test measured **77.50 × 76.44 × 12.30 mm**.
+
+**Wax test, 2026-10-15:** the owner reported “the job was successful, I ran it” and supplied a photo. The configured target was a **10 × 10 mm pocket, 0.30 mm deep**, placed 20 mm from the front and left stock edges, with a 0.05 mm tape Z offset and through-cutting disabled. The saved Bantam project confirms stock dimensions, offsets and configured engraving depth; finished pocket dimensions were not measured in the record.
+
+The saved project records Bantam Tools **2.5.34**, a custom “Wax test - 1/16 flat” tool profile and generated cutting/plunge feeds of **950 / 40 mm/min**. The session's tool setting was 12,000 RPM, but the saved G-code requests **16,500 RPM**. This discrepancy was still unresolved at the end of the conversation; neither value is a measured spindle speed or a validated reusable cutting recipe. The successful wax cut establishes basic operation in that setup; nitinol machining was discussed but no completed nitinol cut was documented.
 
 ## Connectors and cables
 
@@ -140,8 +163,11 @@ The older inventory records Direwolf, SDR++, inspectrum, srsRAN, GNU Radio, pand
 
 SigDigger, WSJT-X, fldigi, Gpredict, hamlib/rotctld, the tinySA desktop app, Wireshark/LTE dissector support, and SatDump/goestools were suggestions with installation unconfirmed. Do not count those as installed.
 
+Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax test on 2026-10-15; the saved project also records that version. Current installation/version has not been rechecked. See the [Othermill record](#othermill-v2-tooling-and-stock) for the unresolved spindle-setting discrepancy.
+
 ## Items to confirm
 
+- [ ] Othermill tooling: verify the cutter reported as “1/18” inch, unidentified ball cutter, exact tool/shank sizes and condition; resolve the 12,000 RPM preset versus 16,500 RPM generated-code discrepancy before reusing the wax setup.
 - [ ] Mini-Circuits BW-S30W5+ and Surecom SW-102: did the older orders arrive, and are the items available?
 - [ ] Thingy:91X: owned, still wanted, or waiting for bring-up?
 - [ ] Xiegu X6100: current loan/access status.
@@ -157,7 +183,7 @@ SigDigger, WSJT-X, fldigi, Gpredict, hamlib/rotctld, the tinySA desktop app, Wir
 
 ## Source and maintenance
 
-Seeded from `planetary_network_testbed/docs/tool_inventory.md` and `bench/pad_characterizations/`. The attenuation session is dated 2026-05-17; the older inventory has no single last-verified date. October [antenna](../entries/001-ember-antenna/README.md), [LibreSDR](../entries/004-libresdr-tx-power/README.md), and [SDRB RF](../entries/007-sdrb-rf-out/README.md) entries supply the explicitly linked updates. This is a starting inventory, not an exhaustive catalog of everything owned.
+Seeded from `planetary_network_testbed/docs/tool_inventory.md` and `bench/pad_characterizations/`. The attenuation session is dated 2026-05-17; the older inventory has no single last-verified date. October [antenna](../entries/001-ember-antenna/README.md), [LibreSDR](../entries/004-libresdr-tx-power/README.md), and [SDRB RF](../entries/007-sdrb-rf-out/README.md) entries supply the explicitly linked updates. The Othermill update was reconciled on 2026-10-25 from the October 15 conversation “Find information about Othermill” and its saved project, `wax-first-test.btm.btp`; the owner reconfirmed the V2 model in the update request. This is a starting inventory, not an exhaustive catalog of everything owned.
 
 Maintain this page as the shared Lab Log inventory. Update availability and exact model details when confirmed, citing the date or entry. Keep measurements with their setup and date, preserve original capture files, and distinguish source-listed ratings from measured limits. Historical entries should retain the equipment/settings actually used at the time. Device identifiers, credentials and private connection details do not belong here.
 
