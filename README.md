@@ -12,6 +12,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
+| 008 | [BPSK: from paper to hardware](entries/008-bpsk-paper-to-hardware/README.md) | BPSK theory/hardware comparison: confidence-gated tracking preserves synthetic drift gains and restores the static baseline; the saved-RF regression remains. In progress. |
 | 007 | [SDRB RF_Out check](entries/007-sdrb-rf-out/README.md) | Four TX branches and dev.4 receive/forwarding checks; intermittent TX underflow remains open. In progress. |
 | 004 | [LibreSDR TX power check](entries/004-libresdr-tx-power/README.md) | Two-point 434.1 MHz check: −62.6/−42.5 dBm through the cable/DC block; off/on/off contrast verified. In progress. |
 | 003 | [EMBER transceiver bring-up](entries/003-ember-transceiver-bringup/README.md) | 11.5-minute UHF demo passed: 185/185 packets, live dashboards and controlled overflow mitigation tested. RF/RX qualification remains open. In progress. |
@@ -21,3 +22,4 @@ Newest entries first. Ongoing investigations are updated on their own page.
 ## Writing an entry
 
 Start with the [entry template](templates/entry.md). The [writing guidelines](AGENTS.md) keep the notes useful and grounded in what actually happened.
+

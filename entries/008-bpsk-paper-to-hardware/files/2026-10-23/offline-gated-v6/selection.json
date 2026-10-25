@@ -1,0 +1,36 @@
+{
+  "selected": true,
+  "frozen_utc": "2026-10-23T22:38:58.818068+00:00",
+  "python": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "numpy": "2.5.4",
+  "training_capture": "libre01 only",
+  "synthetic_training": "Fresh seed1063301, libre noise1070000, development1080001. No old stress realizations used.",
+  "selection": "Minimize training known-bit errors with no trial regression vs preamble-only on protected static/libre01 training. Selected drift score3, minrate20Hz/s, decisiongap0. Alpha.06 inherited.",
+  "retrospective": true,
+  "dependencies": {
+    "receiver.py": "56f0e7155c093e51296012b3b8f603576821dd96d8f3e840b7ba0a22523accd8",
+    "model.json": "948dc61c081c734801866529fb007f110c9c60e132e576cc2b9f95030055fc6e",
+    "train.py": "08ccca83f1ba09be3773953497709bc2e3a8bc5a2ff358e0ccb7ac770776d100",
+    "protocol.json": "1fd22a051ab7c385bf7ae49e3c0720e79acf7a31f410e16169ad79411a0e01c1",
+    "test_receiver.py": "bbc2be7e3dac318049c6272b595f3d4605aadbb0175a7791f538f6868c772b53",
+    "run.py": "5bf4c164d74cd953282e9417cc796fd69cceb3def0055a405bc5995fcc29cc79",
+    "stress.py": "5aaf69d1823ba881135047fab9ae4e0af8d7841007ab5248ac83b26efd9cb0c6",
+    "training.json": "f6bd1efc67e6007400913138bf829973da0252b1074ffe88c6c2a1a68b321a9a",
+    "../offline-tracking-v5/receiver.py": "a6f970a8555b1c9f85f8ca61902146f8a9c00eef58443457ce678a580cfdf311",
+    "../offline-sequence-v4/receiver.py": "dca4a86184ff0167512e05f6405d272211acb4d90f5245827cd2c11093652889",
+    "../offline-geometry-v3/receiver.py": "9a10cc2561fd476e33d85976dc63c9432a41722a0447c80a307d3bf963258249",
+    "../offline-start-v2/receiver.py": "88a7908d1de6b6ca44b652abe51a6f0bf0ab9228c8435bdff35a077e48afd33f",
+    "../offline-synthetic-stress/model_test.py": "edf164b7741754e66bc096774edd34345c7f2e77dfb0cb3a70df1baecf738aba",
+    "../offline-ber/diagnostic.py": "5017e45631fdcfc4325843663513b299fa5c316d31ed092d278a32008cecb52a",
+    "../offline-ber/libre01-48k.npz": "1aaafbadaceeee68229aae416328c9a384d7bb9602bf5d9d4c8759cfd3cfb2f5",
+    "../offline-sequence-v4/training-source.json": "62036927f3c2e77bec2d8e309e63260a03a86fe1e4b666a059f773828d0f27a4"
+  },
+  "frozen_receiver_model": {
+    "receiver.py": "56f0e7155c093e51296012b3b8f603576821dd96d8f3e840b7ba0a22523accd8",
+    "model.json": "948dc61c081c734801866529fb007f110c9c60e132e576cc2b9f95030055fc6e"
+  },
+  "acquisition_sha256": "88a7908d1de6b6ca44b652abe51a6f0bf0ab9228c8435bdff35a077e48afd33f",
+  "pair_detector_sha256": "9a10cc2561fd476e33d85976dc63c9432a41722a0447c80a307d3bf963258249",
+  "gate_is_noncausal": true,
+  "retrospective_limits": "All held-out inputs have been examined in earlier tasks. Freeze before this replay; no tuning from this replay."
+}

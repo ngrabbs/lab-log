@@ -1,0 +1,68 @@
+{
+  "date_local": "2026-10-23",
+  "timezone": "America/Chicago",
+  "setup": "J9 -> one DC block -> Nooelec 20/10/6/3/2/1 dB pads -> TinySA RF; board powered; LibreSDR disconnected. Additional adapter details not separately reported.",
+  "spectrum_settings": {
+    "firmware": "tinySA4_v1.4-156-g4eb315d",
+    "hardware": "V0.4.5.1.1",
+    "sweep_start_hz": 430000000,
+    "sweep_stop_hz": 440000000,
+    "points": 101,
+    "rbw_khz": 100,
+    "internal_attenuation_db": 10,
+    "external_gain_db": 0,
+    "lna": "off command issued",
+    "mode": "input command issued",
+    "trigger": "auto command issued",
+    "calibration_accuracy": "Not independently established; no new TinySA level calibration."
+  },
+  "captured_sweeps": 44,
+  "heartbeat_command_writes": 1,
+  "peak_input_dbm": -29.40625,
+  "peak_sample_frequency_hz": 437000000.0,
+  "external_loss_437mhz_db": 41.38448569064339,
+  "derived_j9_level_dbm": 11.978235690643388,
+  "derived_j9_level_mw": 15.76970499635808,
+  "limitations": [
+    "Sequential 100 kHz RBW / 100 kHz grid survey, not precise carrier frequency or integrated modulated power.",
+    "No RF packet decoding or ground acknowledgment.",
+    "VNA through recheck establishes consistency, not independent absolute calibration accuracy."
+  ],
+  "provenance": [
+    {
+      "original_local_filename": "through-check-01.json",
+      "sha256": "7982a34fa29805c502002f980d66ec70438bd246388da0ee80b66cf449aadcfe",
+      "note": "Original unchanged in local bench archive."
+    },
+    {
+      "original_local_filename": "attenuator-dc-block-01.json",
+      "sha256": "93491bb1f5af5443aa49fe6456bf50ded4262fcfddf763f65e22adf2e73d1659",
+      "note": "Original unchanged in local bench archive."
+    },
+    {
+      "original_local_filename": "tinysa-idle-01.json",
+      "sha256": "b268ea0cbbfd4d2aae4a9d6faa9ce249fdbd329f51172156bca177a8d717ef65",
+      "note": "Original unchanged in local bench archive."
+    },
+    {
+      "original_local_filename": "heartbeat-spectrum-01-error.txt",
+      "sha256": "439172abc3aeda1617f65b232fb61ab05ec3149ce8ee21291926b9b30cda8123",
+      "note": "Original unchanged in local bench archive."
+    },
+    {
+      "original_local_filename": "spectrum-recorder-receive-only-01.jsonl",
+      "sha256": "11d0585c07c4aa57a9b27a5bc00bc26525f934b781c7626e98c25ff10ea13e8c",
+      "note": "Original unchanged in local bench archive."
+    },
+    {
+      "original_local_filename": "heartbeat-spectrum-02.jsonl",
+      "sha256": "c74d2eb43cc1d832fefc995d787cea88d08f347f76fe54712ec418b7fdf19595",
+      "note": "Original unchanged in local bench archive."
+    }
+  ],
+  "published_derivatives": {
+    "heartbeat-spectrum-02.csv": "Measured input levels and sweep timing extracted from original JSONL. Third, uninterpreted TinySA output field remains only in original.",
+    "heartbeat-spectrum-02-ihu.txt": "Console chunks concatenated in reception order; hardware board ID redacted.",
+    "vna-s21.csv": "All three through reads and five assembled-chain reads; complex forward S21 only."
+  }
+}

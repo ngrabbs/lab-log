@@ -1,0 +1,25 @@
+{
+  "training_seed": 1063301,
+  "libre01_noise_seed_base": 1070000,
+  "development_seeds": [
+    1080001,
+    1080002
+  ],
+  "candidate_drift_scores": [
+    3,
+    5,
+    8
+  ],
+  "candidate_min_drift_hz_s": [
+    0,
+    20
+  ],
+  "candidate_decision_gaps": [
+    0,
+    2,
+    4
+  ],
+  "alpha": 0.06,
+  "criterion": "Require no trial-level known-bit error regression against preamble-only in static synthetic or libre01 training; among eligible gates minimize all training known-bit errors. Ties prefer larger drift score, larger minimum drift, larger decision gap. If no gate qualifies, retain preamble-only as the selected fallback.",
+  "limits": "Only libre01 and fresh synthetic training cases. Reused held-out captures and stress cases excluded until selection/dependency freeze. No CRC/payload truth enters the receiver. Offline only."
+}

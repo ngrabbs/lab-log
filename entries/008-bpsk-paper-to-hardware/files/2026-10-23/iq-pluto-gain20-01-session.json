@@ -1,0 +1,1364 @@
+{
+  "capture": {
+    "utc": "2026-10-23T16:54:04.730991+00:00",
+    "purpose": "Pluto independent-receiver heartbeat capture; user confirms both rails ON and complete measured DC-block/pad chain attached to Pluto RX.",
+    "requested_seconds": 30,
+    "errors": [],
+    "tx_buffer_created": false,
+    "forwarding": false,
+    "heartbeat_commands": 0,
+    "continuity_note": "No per-sample timestamps available in this IIO stream. Successful refills cannot establish gap-free continuity.",
+    "sample_format": "Little-endian signed int16 interleaved I/Q, 12 significant bits, shift 0; normalize by 2048.",
+    "context": {
+      "description": "Linux (none) 5.10.0-98725-g3eae70065be9 #3 SMP PREEMPT Wed Mar 1 09:24:29 CET 2023 armv7l",
+      "attrs": {
+        "hw_model": "Analog Devices PlutoSDR Rev.C (Z7010-AD9363A)",
+        "hw_model_variant": "1",
+        "fw_version": "v0.37",
+        "ad9361-phy,xo_correction": "40000103",
+        "ad9361-phy,model": "ad9363a",
+        "local,kernel": "5.10.0-98725-g3eae70065be9",
+        "usb,idVendor": "0456",
+        "usb,idProduct": "b673",
+        "usb,release": "2.0",
+        "usb,vendor": "Analog Devices Inc.",
+        "usb,product": "PlutoSDR (ADALM-PLUTO)",
+        "usb,libusb": "1.0.28.11946"
+      }
+    },
+    "settings": {
+      "rx_lo_hz": 436999998,
+      "phy_rate_hz": 2304000,
+      "stream_rate_hz": 288000,
+      "bandwidth_hz": 200000,
+      "gain_mode": "manual",
+      "gain_db": 20.0,
+      "rf_port": "A_BALANCED",
+      "tx_lo_powerdown": "1",
+      "tx_gain_db": -89.75,
+      "dds_raw": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "stream_start_utc": "2026-10-23T16:54:04.752920+00:00",
+    "capture_wall_seconds": 30.043865357991308,
+    "stream_stopped_utc": "2026-10-23T16:54:34.797251+00:00",
+    "samples": 8640000,
+    "peak_abs_component": 233,
+    "components_ge_0p99_full_scale": 0,
+    "rms_iq_magnitude_normalized": 0.013046844168935605,
+    "raw_file": {
+      "name": "raw-iq-int16.npy",
+      "size_bytes": 34560128,
+      "sha256": "a6353c12455b9ce4f10fe45386a16c079655c7f24240a07739bff329dd3acaf9"
+    },
+    "finished_utc": "2026-10-23T16:54:35.242510+00:00"
+  },
+  "analysis": {
+    "raw_hash_verified": true,
+    "iq_rate_hz": 288000,
+    "excerpt_start_sample": 766080,
+    "peak_block_time_s": 4.66,
+    "peak_block_power": 0.008486247559388479,
+    "median_idle_block_power": 1.986821492513021e-09,
+    "peak_to_median_db": 66.30556847436287,
+    "active_intervals_20db_below_peak": [
+      {
+        "start_s": 4.4,
+        "stop_s": 5.08
+      }
+    ],
+    "burst_threshold_note": "Peak-relative threshold only; Peak-relative burst display threshold, independent of the noise median. Digital power ratios are not calibrated SNR or Eb/N0.",
+    "zero_power_block_fraction": 0.0,
+    "nonzero_sample_fraction": 0.03151261574074074,
+    "filters": [
+      {
+        "filter_taps": 193,
+        "filter_cutoff_hz": 18000,
+        "decimation": 6,
+        "decoded_packets": [
+          {
+            "sequence": 21,
+            "hex": "0901c011001f0101000502010000000000000000f8c21adc05d3250100060301000000000a35",
+            "decoded": {
+              "name": "HEARTBEAT",
+              "sequence": 17,
+              "header": {
+                "schema_version": 1,
+                "kind": 1,
+                "message_id": 5,
+                "source": 2,
+                "target": 1,
+                "transaction_epoch": 0,
+                "transaction_id": 0,
+                "source_boot_id": 4173470428,
+                "uptime_ms": 97723649,
+                "payload_length": 6
+              },
+              "payload": {
+                "mode": 3,
+                "configuration": 1,
+                "telemetry_period_ms": 0
+              }
+            },
+            "carrier_offset_hz": -2563.4078979492188,
+            "window_start": 0,
+            "timing_sample": 9,
+            "decoder": "dbpsk",
+            "native_crc32_hex": "971c7052",
+            "matches_ihu_length_and_digest": true
+          }
+        ],
+        "phase": {
+          "method": "Same known-preamble method as capture 01: 193-tap 18 kHz lowpass and 6:1 decimation from Pluto 288 ksample/s; all subsequent steps identical; normal squared-IQ CFO; search 40 symbol timings among CRC-valid alignments, minimize normalized within-state complex variance on central 8/40 samples of 248 preamble symbols; omit four symbols at each end. One additional common linear phase slope, independent state centers; no per-symbol rotation.",
+          "best": {
+            "timing_sample": 12,
+            "preamble_start_symbol_index": 2093,
+            "separation_deg": 134.95838273689887,
+            "amplitude_ratio": 1.0548082888747323,
+            "phase_std_deg": [
+              91.56277714367377,
+              91.62190078888894
+            ],
+            "metric": 0.9561235846000067
+          },
+          "candidates": [
+            {
+              "timing_sample": 9,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.83915101634662,
+              "amplitude_ratio": 1.0422449032771601,
+              "phase_std_deg": [
+                91.58773106324819,
+                91.61402049127125
+              ],
+              "metric": 0.956234696440164,
+              "after_common_refinement": {
+                "separation_deg": 134.9722760886553,
+                "amplitude_ratio": 1.0376319792955155,
+                "phase_std_deg": [
+                  10.75234579933604,
+                  10.79880896740796
+                ],
+                "metric": 0.036184479143591755
+              },
+              "residual_cfo_hz": 5.984337573143012
+            },
+            {
+              "timing_sample": 10,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.76549549625244,
+              "amplitude_ratio": 1.0455042238005365,
+              "phase_std_deg": [
+                91.58560333294639,
+                91.61707379477423
+              ],
+              "metric": 0.9562225203328105,
+              "after_common_refinement": {
+                "separation_deg": 134.9511616010471,
+                "amplitude_ratio": 1.0421445772762286,
+                "phase_std_deg": [
+                  10.740343925169443,
+                  10.795729432683252
+                ],
+                "metric": 0.03599865497074448
+              },
+              "residual_cfo_hz": 5.98476510855662
+            },
+            {
+              "timing_sample": 11,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.85759151917034,
+              "amplitude_ratio": 1.0502865980239287,
+              "phase_std_deg": [
+                91.57058585818503,
+                91.62011293808403
+              ],
+              "metric": 0.9561846904986551,
+              "after_common_refinement": {
+                "separation_deg": 135.03289733728857,
+                "amplitude_ratio": 1.0479814553583116,
+                "phase_std_deg": [
+                  10.760044011718227,
+                  10.796148957815179
+                ],
+                "metric": 0.03587639853082022
+              },
+              "residual_cfo_hz": 5.984641594427662
+            },
+            {
+              "timing_sample": 12,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.95838273689887,
+              "amplitude_ratio": 1.0548082888747323,
+              "phase_std_deg": [
+                91.56277714367377,
+                91.62190078888894
+              ],
+              "metric": 0.9561235846000067,
+              "after_common_refinement": {
+                "separation_deg": 135.13173498521837,
+                "amplitude_ratio": 1.053529617516693,
+                "phase_std_deg": [
+                  10.77923367251635,
+                  10.801313717088552
+                ],
+                "metric": 0.03579446831603986
+              },
+              "residual_cfo_hz": 5.984611200776819
+            },
+            {
+              "timing_sample": 13,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.9504445337759,
+              "amplitude_ratio": 1.0588747198462618,
+              "phase_std_deg": [
+                91.56564189109073,
+                91.62292487105286
+              ],
+              "metric": 0.9561333229932656,
+              "after_common_refinement": {
+                "separation_deg": 135.17938132843494,
+                "amplitude_ratio": 1.0576648489583311,
+                "phase_std_deg": [
+                  10.763076123030144,
+                  10.80082064507199
+                ],
+                "metric": 0.03563668173313343
+              },
+              "residual_cfo_hz": 5.984366862378179
+            },
+            {
+              "timing_sample": 14,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.10039119751372,
+              "amplitude_ratio": 1.062820565128591,
+              "phase_std_deg": [
+                91.5647877080283,
+                91.61853713411281
+              ],
+              "metric": 0.9561682871715801,
+              "after_common_refinement": {
+                "separation_deg": 135.299576306313,
+                "amplitude_ratio": 1.061265102469593,
+                "phase_std_deg": [
+                  10.768438471957273,
+                  10.802575622918946
+                ],
+                "metric": 0.035549631076366314
+              },
+              "residual_cfo_hz": 5.984046362203858
+            },
+            {
+              "timing_sample": 15,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.27126035921796,
+              "amplitude_ratio": 1.0659824056483838,
+              "phase_std_deg": [
+                91.55972596964804,
+                91.61241793848077
+              ],
+              "metric": 0.9561636533941233,
+              "after_common_refinement": {
+                "separation_deg": 135.375972668895,
+                "amplitude_ratio": 1.0649474777809766,
+                "phase_std_deg": [
+                  10.785035078853397,
+                  10.804558976453821
+                ],
+                "metric": 0.03551615290104118
+              },
+              "residual_cfo_hz": 5.983393571927571
+            },
+            {
+              "timing_sample": 16,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.36142944156526,
+              "amplitude_ratio": 1.0690616104607031,
+              "phase_std_deg": [
+                91.56072458471297,
+                91.60604078745827
+              ],
+              "metric": 0.9561509203701659,
+              "after_common_refinement": {
+                "separation_deg": 135.42994818296683,
+                "amplitude_ratio": 1.0683255126369025,
+                "phase_std_deg": [
+                  10.78741803941237,
+                  10.803907065864694
+                ],
+                "metric": 0.035452162062991316
+              },
+              "residual_cfo_hz": 5.98286054622987
+            },
+            {
+              "timing_sample": 17,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.45364463065226,
+              "amplitude_ratio": 1.0726924605738581,
+              "phase_std_deg": [
+                91.57468769539085,
+                91.60630654178799
+              ],
+              "metric": 0.9561923361145354,
+              "after_common_refinement": {
+                "separation_deg": 135.46712258448204,
+                "amplitude_ratio": 1.0713065775305641,
+                "phase_std_deg": [
+                  10.796848652799397,
+                  10.804488366326424
+                ],
+                "metric": 0.035427835138960063
+              },
+              "residual_cfo_hz": 5.982082601351007
+            },
+            {
+              "timing_sample": 18,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.51824644348957,
+              "amplitude_ratio": 1.0771468428785769,
+              "phase_std_deg": [
+                91.59311159497032,
+                91.61185282378146
+              ],
+              "metric": 0.9562367518131051,
+              "after_common_refinement": {
+                "separation_deg": 135.45491485531753,
+                "amplitude_ratio": 1.0743825718593218,
+                "phase_std_deg": [
+                  10.808869006437865,
+                  10.80867763666285
+                ],
+                "metric": 0.03542713667576835
+              },
+              "residual_cfo_hz": 5.9808306852458575
+            },
+            {
+              "timing_sample": 19,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.4716161873651,
+              "amplitude_ratio": 1.0811904192730197,
+              "phase_std_deg": [
+                91.6083177040246,
+                91.62128686812702
+              ],
+              "metric": 0.956279410152931,
+              "after_common_refinement": {
+                "separation_deg": 135.37326587094256,
+                "amplitude_ratio": 1.0769978319498503,
+                "phase_std_deg": [
+                  10.80049003126664,
+                  10.810544262060162
+                ],
+                "metric": 0.03537018063358639
+              },
+              "residual_cfo_hz": 5.979763716932164
+            },
+            {
+              "timing_sample": 20,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.3397733753843,
+              "amplitude_ratio": 1.0839794288505853,
+              "phase_std_deg": [
+                91.61372409172544,
+                91.63218845780663
+              ],
+              "metric": 0.9563304085212142,
+              "after_common_refinement": {
+                "separation_deg": 135.24773182938512,
+                "amplitude_ratio": 1.079751256204957,
+                "phase_std_deg": [
+                  10.791816752671819,
+                  10.808663786245575
+                ],
+                "metric": 0.03530799688681095
+              },
+              "residual_cfo_hz": 5.978847014303433
+            },
+            {
+              "timing_sample": 21,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.21554383328728,
+              "amplitude_ratio": 1.087318228781343,
+              "phase_std_deg": [
+                91.62395950781327,
+                91.63478105784942
+              ],
+              "metric": 0.9563611640296541,
+              "after_common_refinement": {
+                "separation_deg": 135.10864846791398,
+                "amplitude_ratio": 1.0829314593664903,
+                "phase_std_deg": [
+                  10.793983000376702,
+                  10.81249597210445
+                ],
+                "metric": 0.03530253149664622
+              },
+              "residual_cfo_hz": 5.977680606930301
+            },
+            {
+              "timing_sample": 22,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.10752667917367,
+              "amplitude_ratio": 1.0914898660647385,
+              "phase_std_deg": [
+                91.631761139361,
+                91.6335944600418
+              ],
+              "metric": 0.9563991205955488,
+              "after_common_refinement": {
+                "separation_deg": 134.95583592158786,
+                "amplitude_ratio": 1.0859492787088931,
+                "phase_std_deg": [
+                  10.785156853521658,
+                  10.815056329381557
+                ],
+                "metric": 0.03526223791173048
+              },
+              "residual_cfo_hz": 5.976681267244491
+            },
+            {
+              "timing_sample": 23,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.92084880291878,
+              "amplitude_ratio": 1.095798982879173,
+              "phase_std_deg": [
+                91.63899247746643,
+                91.63387700925166
+              ],
+              "metric": 0.9564525080708872,
+              "after_common_refinement": {
+                "separation_deg": 134.78800218128296,
+                "amplitude_ratio": 1.088847606299569,
+                "phase_std_deg": [
+                  10.764504322765596,
+                  10.811001703366454
+                ],
+                "metric": 0.035164382870471224
+              },
+              "residual_cfo_hz": 5.97587409035484
+            },
+            {
+              "timing_sample": 24,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.69916035474992,
+              "amplitude_ratio": 1.0997991861169742,
+              "phase_std_deg": [
+                91.65526558793631,
+                91.63215223285646
+              ],
+              "metric": 0.9564919199441554,
+              "after_common_refinement": {
+                "separation_deg": 134.62982913608764,
+                "amplitude_ratio": 1.09195210646925,
+                "phase_std_deg": [
+                  10.74385233137038,
+                  10.804867170886535
+                ],
+                "metric": 0.035060380599515696
+              },
+              "residual_cfo_hz": 5.975186400176332
+            },
+            {
+              "timing_sample": 25,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.50957032073282,
+              "amplitude_ratio": 1.102746623868879,
+              "phase_std_deg": [
+                91.65150765637216,
+                91.6288599543204
+              ],
+              "metric": 0.9564863355628973,
+              "after_common_refinement": {
+                "separation_deg": 134.48335927827148,
+                "amplitude_ratio": 1.0949331569407492,
+                "phase_std_deg": [
+                  10.73611699230094,
+                  10.802942098686529
+                ],
+                "metric": 0.03500632616497248
+              },
+              "residual_cfo_hz": 5.975118214579998
+            },
+            {
+              "timing_sample": 26,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.39742091255002,
+              "amplitude_ratio": 1.1052749960473638,
+              "phase_std_deg": [
+                91.64675116330001,
+                91.62775714318533
+              ],
+              "metric": 0.9564872597895382,
+              "after_common_refinement": {
+                "separation_deg": 134.37669316317164,
+                "amplitude_ratio": 1.0979904702386494,
+                "phase_std_deg": [
+                  10.741689271857831,
+                  10.79797656664514
+                ],
+                "metric": 0.03498594019657309
+              },
+              "residual_cfo_hz": 5.975313718126336
+            },
+            {
+              "timing_sample": 27,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.30150078299457,
+              "amplitude_ratio": 1.1076941297744203,
+              "phase_std_deg": [
+                91.66140896626915,
+                91.6298947436353
+              ],
+              "metric": 0.9565308790048284,
+              "after_common_refinement": {
+                "separation_deg": 134.2882092299251,
+                "amplitude_ratio": 1.1006021860575872,
+                "phase_std_deg": [
+                  10.734385417066022,
+                  10.7853500774697
+                ],
+                "metric": 0.03489675326526
+              },
+              "residual_cfo_hz": 5.9753879782895085
+            },
+            {
+              "timing_sample": 28,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.2626272894069,
+              "amplitude_ratio": 1.1096385388449184,
+              "phase_std_deg": [
+                91.66636140209425,
+                91.63215752107655
+              ],
+              "metric": 0.956524810064075,
+              "after_common_refinement": {
+                "separation_deg": 134.2374391222271,
+                "amplitude_ratio": 1.1027142652946655,
+                "phase_std_deg": [
+                  10.725395677000362,
+                  10.783414446557458
+                ],
+                "metric": 0.03483854575919077
+              },
+              "residual_cfo_hz": 5.975772685471195
+            },
+            {
+              "timing_sample": 29,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.26063881196828,
+              "amplitude_ratio": 1.1089046169015917,
+              "phase_std_deg": [
+                91.65016209083647,
+                91.63956729013681
+              ],
+              "metric": 0.95646448274616,
+              "after_common_refinement": {
+                "separation_deg": 134.23926885298445,
+                "amplitude_ratio": 1.1039812513160476,
+                "phase_std_deg": [
+                  10.737791933610554,
+                  10.788373483460903
+                ],
+                "metric": 0.03487480173307708
+              },
+              "residual_cfo_hz": 5.976038170634764
+            },
+            {
+              "timing_sample": 30,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.14216584213713,
+              "amplitude_ratio": 1.109127051150539,
+              "phase_std_deg": [
+                91.6417513135881,
+                91.64898788594162
+              ],
+              "metric": 0.956446826870504,
+              "after_common_refinement": {
+                "separation_deg": 134.17547999853727,
+                "amplitude_ratio": 1.1060352031226695,
+                "phase_std_deg": [
+                  10.741976542617982,
+                  10.788902324581443
+                ],
+                "metric": 0.03487342252539304
+              },
+              "residual_cfo_hz": 5.976000634733527
+            },
+            {
+              "timing_sample": 31,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.1150665304912,
+              "amplitude_ratio": 1.1089089189518366,
+              "phase_std_deg": [
+                91.63826802894035,
+                91.62204653259207
+              ],
+              "metric": 0.9564531349474665,
+              "after_common_refinement": {
+                "separation_deg": 134.17668798151425,
+                "amplitude_ratio": 1.106065057567207,
+                "phase_std_deg": [
+                  10.737973140720323,
+                  10.791708549091323
+                ],
+                "metric": 0.034853782971515826
+              },
+              "residual_cfo_hz": 5.976221822833902
+            }
+          ],
+          "refinement": {
+            "residual_cfo_hz": 5.984611200776819,
+            "refined_relative_cfo_hz": -2557.423286748442,
+            "separation_deg": 135.13173498521837,
+            "amplitude_ratio": 1.053529617516693,
+            "phase_std_deg": [
+              10.77923367251635,
+              10.801313717088552
+            ],
+            "metric": 0.03579446831603986
+          }
+        }
+      },
+      {
+        "filter_taps": 129,
+        "filter_cutoff_hz": 18000,
+        "decimation": 6,
+        "decoded_packets": [
+          {
+            "sequence": 21,
+            "hex": "0901c011001f0101000502010000000000000000f8c21adc05d3250100060301000000000a35",
+            "decoded": {
+              "name": "HEARTBEAT",
+              "sequence": 17,
+              "header": {
+                "schema_version": 1,
+                "kind": 1,
+                "message_id": 5,
+                "source": 2,
+                "target": 1,
+                "transaction_epoch": 0,
+                "transaction_id": 0,
+                "source_boot_id": 4173470428,
+                "uptime_ms": 97723649,
+                "payload_length": 6
+              },
+              "payload": {
+                "mode": 3,
+                "configuration": 1,
+                "telemetry_period_ms": 0
+              }
+            },
+            "carrier_offset_hz": -2563.4078979492188,
+            "window_start": 0,
+            "timing_sample": 9,
+            "decoder": "dbpsk",
+            "native_crc32_hex": "971c7052",
+            "matches_ihu_length_and_digest": true
+          }
+        ],
+        "phase": {
+          "method": "Same known-preamble method as capture 01: 129-tap 18 kHz lowpass and 6:1 decimation from Pluto 288 ksample/s; all subsequent steps identical; normal squared-IQ CFO; search 40 symbol timings among CRC-valid alignments, minimize normalized within-state complex variance on central 8/40 samples of 248 preamble symbols; omit four symbols at each end. One additional common linear phase slope, independent state centers; no per-symbol rotation.",
+          "best": {
+            "timing_sample": 12,
+            "preamble_start_symbol_index": 2093,
+            "separation_deg": 134.91663232359392,
+            "amplitude_ratio": 1.0545012591654264,
+            "phase_std_deg": [
+              91.56260872527403,
+              91.62187629399808
+            ],
+            "metric": 0.9561245331529161
+          },
+          "candidates": [
+            {
+              "timing_sample": 9,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.797953131615,
+              "amplitude_ratio": 1.0418098714714144,
+              "phase_std_deg": [
+                91.58748337797273,
+                91.6139312106423
+              ],
+              "metric": 0.9562372763810432,
+              "after_common_refinement": {
+                "separation_deg": 134.92781918492528,
+                "amplitude_ratio": 1.0371806369218601,
+                "phase_std_deg": [
+                  10.750095010977647,
+                  10.799882454779322
+                ],
+                "metric": 0.03620262011673894
+              },
+              "residual_cfo_hz": 5.984357484744155
+            },
+            {
+              "timing_sample": 10,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.73927566549878,
+              "amplitude_ratio": 1.0456735002269117,
+              "phase_std_deg": [
+                91.58589366550905,
+                91.61750401214795
+              ],
+              "metric": 0.9562242783819915,
+              "after_common_refinement": {
+                "separation_deg": 134.92262967420976,
+                "amplitude_ratio": 1.0422734066455734,
+                "phase_std_deg": [
+                  10.739944888995858,
+                  10.794600514971025
+                ],
+                "metric": 0.035995721834263146
+              },
+              "residual_cfo_hz": 5.984704002827871
+            },
+            {
+              "timing_sample": 11,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.82255697924236,
+              "amplitude_ratio": 1.0502034699958176,
+              "phase_std_deg": [
+                91.56997659942428,
+                91.61973322425682
+              ],
+              "metric": 0.9561845662951665,
+              "after_common_refinement": {
+                "separation_deg": 134.99479902619748,
+                "amplitude_ratio": 1.0479042628728432,
+                "phase_std_deg": [
+                  10.75835173778496,
+                  10.79600053598714
+                ],
+                "metric": 0.0358799282587228
+              },
+              "residual_cfo_hz": 5.984734775058363
+            },
+            {
+              "timing_sample": 12,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.91663232359392,
+              "amplitude_ratio": 1.0545012591654264,
+              "phase_std_deg": [
+                91.56260872527403,
+                91.62187629399808
+              ],
+              "metric": 0.9561245331529161,
+              "after_common_refinement": {
+                "separation_deg": 135.08744146535454,
+                "amplitude_ratio": 1.0531659516617786,
+                "phase_std_deg": [
+                  10.775970371594076,
+                  10.801914242606315
+                ],
+                "metric": 0.03580237492018713
+              },
+              "residual_cfo_hz": 5.984599308551554
+            },
+            {
+              "timing_sample": 13,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.94234379150703,
+              "amplitude_ratio": 1.0586443721284657,
+              "phase_std_deg": [
+                91.56571116273105,
+                91.62287064633206
+              ],
+              "metric": 0.956134204208383,
+              "after_common_refinement": {
+                "separation_deg": 135.16925720551748,
+                "amplitude_ratio": 1.0574111658179133,
+                "phase_std_deg": [
+                  10.7616497327092,
+                  10.801198906477621
+                ],
+                "metric": 0.03564111463657326
+              },
+              "residual_cfo_hz": 5.98436085629763
+            },
+            {
+              "timing_sample": 14,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.07517850426618,
+              "amplitude_ratio": 1.0626844396498487,
+              "phase_std_deg": [
+                91.56436322823802,
+                91.6186493433579
+              ],
+              "metric": 0.9561699637386863,
+              "after_common_refinement": {
+                "separation_deg": 135.27303844529547,
+                "amplitude_ratio": 1.0611022062562614,
+                "phase_std_deg": [
+                  10.766042133183177,
+                  10.802728020249484
+                ],
+                "metric": 0.03554979623072378
+              },
+              "residual_cfo_hz": 5.984051381004764
+            },
+            {
+              "timing_sample": 15,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.25544457051808,
+              "amplitude_ratio": 1.0657530104969217,
+              "phase_std_deg": [
+                91.55960636485577,
+                91.61205362453052
+              ],
+              "metric": 0.9561629736831008,
+              "after_common_refinement": {
+                "separation_deg": 135.35857966826322,
+                "amplitude_ratio": 1.0646721772770225,
+                "phase_std_deg": [
+                  10.782238605806379,
+                  10.805083373523328
+                ],
+                "metric": 0.03551666984953033
+              },
+              "residual_cfo_hz": 5.983416869617058
+            },
+            {
+              "timing_sample": 16,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.35385192210515,
+              "amplitude_ratio": 1.0687468669832847,
+              "phase_std_deg": [
+                91.56076766527573,
+                91.60618407805855
+              ],
+              "metric": 0.9561529640291456,
+              "after_common_refinement": {
+                "separation_deg": 135.4231363302454,
+                "amplitude_ratio": 1.067991279796876,
+                "phase_std_deg": [
+                  10.784866987219917,
+                  10.80441646088186
+                ],
+                "metric": 0.0354530198759207
+              },
+              "residual_cfo_hz": 5.982837473553566
+            },
+            {
+              "timing_sample": 17,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.44537337510306,
+              "amplitude_ratio": 1.0726365448317199,
+              "phase_std_deg": [
+                91.57444283825913,
+                91.60628041936505
+              ],
+              "metric": 0.9561920500098262,
+              "after_common_refinement": {
+                "separation_deg": 135.45763830683185,
+                "amplitude_ratio": 1.0712328587340554,
+                "phase_std_deg": [
+                  10.795945742079423,
+                  10.804572165467103
+                ],
+                "metric": 0.03542734508558112
+              },
+              "residual_cfo_hz": 5.982079998079314
+            },
+            {
+              "timing_sample": 18,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.51065333267434,
+              "amplitude_ratio": 1.077003326035094,
+              "phase_std_deg": [
+                91.59305068887181,
+                91.6117277477183
+              ],
+              "metric": 0.9562374600521824,
+              "after_common_refinement": {
+                "separation_deg": 135.44734263739923,
+                "amplitude_ratio": 1.074207749688306,
+                "phase_std_deg": [
+                  10.80704191601437,
+                  10.809093832763187
+                ],
+                "metric": 0.035426196635445224
+              },
+              "residual_cfo_hz": 5.980840906808621
+            },
+            {
+              "timing_sample": 19,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.4672919356359,
+              "amplitude_ratio": 1.081090559898201,
+              "phase_std_deg": [
+                91.60846507618685,
+                91.62140056342712
+              ],
+              "metric": 0.9562799364162191,
+              "after_common_refinement": {
+                "separation_deg": 135.37013333190015,
+                "amplitude_ratio": 1.0768883524842632,
+                "phase_std_deg": [
+                  10.799350385537743,
+                  10.81054737975479
+                ],
+                "metric": 0.035368625829205885
+              },
+              "residual_cfo_hz": 5.979750477788165
+            },
+            {
+              "timing_sample": 20,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.34035982516912,
+              "amplitude_ratio": 1.0839392978230682,
+              "phase_std_deg": [
+                91.61360102991895,
+                91.63212470244184
+              ],
+              "metric": 0.9563295534590414,
+              "after_common_refinement": {
+                "separation_deg": 135.2481519203012,
+                "amplitude_ratio": 1.07972892501746,
+                "phase_std_deg": [
+                  10.792007592188748,
+                  10.80869327179373
+                ],
+                "metric": 0.035309050936094974
+              },
+              "residual_cfo_hz": 5.978851203251216
+            },
+            {
+              "timing_sample": 21,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.214903996466,
+              "amplitude_ratio": 1.0873161221123875,
+              "phase_std_deg": [
+                91.62388322144308,
+                91.6347480942564
+              ],
+              "metric": 0.9563609539161533,
+              "after_common_refinement": {
+                "separation_deg": 135.10835701903682,
+                "amplitude_ratio": 1.0829070125548677,
+                "phase_std_deg": [
+                  10.793992019751636,
+                  10.812652818915833
+                ],
+                "metric": 0.03530332976787185
+              },
+              "residual_cfo_hz": 5.977680866243364
+            },
+            {
+              "timing_sample": 22,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 135.10329704400826,
+              "amplitude_ratio": 1.091576533240957,
+              "phase_std_deg": [
+                91.63182553509914,
+                91.6336684615327
+              ],
+              "metric": 0.9564006580893443,
+              "after_common_refinement": {
+                "separation_deg": 134.95349264410353,
+                "amplitude_ratio": 1.0860338383612922,
+                "phase_std_deg": [
+                  10.784094357530881,
+                  10.81537131837333
+                ],
+                "metric": 0.03526215426545478
+              },
+              "residual_cfo_hz": 5.976678686896811
+            },
+            {
+              "timing_sample": 23,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.9150875044907,
+              "amplitude_ratio": 1.095864210786362,
+              "phase_std_deg": [
+                91.63864274207835,
+                91.63376630967564
+              ],
+              "metric": 0.9564508327622424,
+              "after_common_refinement": {
+                "separation_deg": 134.78307228718546,
+                "amplitude_ratio": 1.0889334872132472,
+                "phase_std_deg": [
+                  10.764479904736264,
+                  10.811360216547495
+                ],
+                "metric": 0.035167022033420654
+              },
+              "residual_cfo_hz": 5.9758946245368865
+            },
+            {
+              "timing_sample": 24,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.69207888473863,
+              "amplitude_ratio": 1.0999113822271624,
+              "phase_std_deg": [
+                91.65521612698657,
+                91.63213134438662
+              ],
+              "metric": 0.9564917428782311,
+              "after_common_refinement": {
+                "separation_deg": 134.62327711339637,
+                "amplitude_ratio": 1.0920445370759095,
+                "phase_std_deg": [
+                  10.743691159161814,
+                  10.805510114454629
+                ],
+                "metric": 0.03506330870148219
+              },
+              "residual_cfo_hz": 5.975179546294922
+            },
+            {
+              "timing_sample": 25,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.50608427672964,
+              "amplitude_ratio": 1.1030577488926783,
+              "phase_std_deg": [
+                91.651176569304,
+                91.62882506150981
+              ],
+              "metric": 0.9564872701364519,
+              "after_common_refinement": {
+                "separation_deg": 134.48141461715713,
+                "amplitude_ratio": 1.0952313856196951,
+                "phase_std_deg": [
+                  10.73505964811101,
+                  10.80382806267289
+                ],
+                "metric": 0.035010149362662224
+              },
+              "residual_cfo_hz": 5.975125719538087
+            },
+            {
+              "timing_sample": 26,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.3766332793857,
+              "amplitude_ratio": 1.1054550892262107,
+              "phase_std_deg": [
+                91.64656341128133,
+                91.6276589450856
+              ],
+              "metric": 0.9564878691751031,
+              "after_common_refinement": {
+                "separation_deg": 134.35777142351682,
+                "amplitude_ratio": 1.098184826576995,
+                "phase_std_deg": [
+                  10.741553754682714,
+                  10.798546668035655
+                ],
+                "metric": 0.03498808002713003
+              },
+              "residual_cfo_hz": 5.975332729985017
+            },
+            {
+              "timing_sample": 27,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.2865352156209,
+              "amplitude_ratio": 1.107914308488643,
+              "phase_std_deg": [
+                91.66130803388454,
+                91.62967671187053
+              ],
+              "metric": 0.9565284174499106,
+              "after_common_refinement": {
+                "separation_deg": 134.27326756482677,
+                "amplitude_ratio": 1.1007959056295005,
+                "phase_std_deg": [
+                  10.73430236826281,
+                  10.78611975157116
+                ],
+                "metric": 0.03489976939391458
+              },
+              "residual_cfo_hz": 5.975394951271545
+            },
+            {
+              "timing_sample": 28,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.24697084647613,
+              "amplitude_ratio": 1.1098938041914437,
+              "phase_std_deg": [
+                91.66608445745796,
+                91.6321180673665
+              ],
+              "metric": 0.9565265856302613,
+              "after_common_refinement": {
+                "separation_deg": 134.22459560526858,
+                "amplitude_ratio": 1.1029643746069486,
+                "phase_std_deg": [
+                  10.725331344750815,
+                  10.78416243745484
+                ],
+                "metric": 0.03484218023548785
+              },
+              "residual_cfo_hz": 5.975758381684935
+            },
+            {
+              "timing_sample": 29,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.21625886838825,
+              "amplitude_ratio": 1.109386405204574,
+              "phase_std_deg": [
+                91.65004764945911,
+                91.63920696080856
+              ],
+              "metric": 0.9564656799714911,
+              "after_common_refinement": {
+                "separation_deg": 134.1974822902826,
+                "amplitude_ratio": 1.1044433626728696,
+                "phase_std_deg": [
+                  10.73738294027603,
+                  10.788974354789856
+                ],
+                "metric": 0.03487408157274276
+              },
+              "residual_cfo_hz": 5.976049705792743
+            },
+            {
+              "timing_sample": 30,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.1147101164378,
+              "amplitude_ratio": 1.109059860736072,
+              "phase_std_deg": [
+                91.64161203703416,
+                91.64857182183361
+              ],
+              "metric": 0.9564424573305085,
+              "after_common_refinement": {
+                "separation_deg": 134.14829939519214,
+                "amplitude_ratio": 1.105982184240601,
+                "phase_std_deg": [
+                  10.74233243636185,
+                  10.788984890934774
+                ],
+                "metric": 0.03487177760741697
+              },
+              "residual_cfo_hz": 5.976051066366515
+            },
+            {
+              "timing_sample": 31,
+              "preamble_start_symbol_index": 2093,
+              "separation_deg": 134.07996219671483,
+              "amplitude_ratio": 1.1091640904889892,
+              "phase_std_deg": [
+                91.63853825558455,
+                91.65155068422143
+              ],
+              "metric": 0.9564549572718573,
+              "after_common_refinement": {
+                "separation_deg": 134.14534300499872,
+                "amplitude_ratio": 1.106271028435015,
+                "phase_std_deg": [
+                  10.738090458414684,
+                  10.79227663906138
+                ],
+                "metric": 0.03485520921825378
+              },
+              "residual_cfo_hz": 5.976134946381668
+            }
+          ],
+          "refinement": {
+            "residual_cfo_hz": 5.984599308551554,
+            "refined_relative_cfo_hz": -2557.4232986406673,
+            "separation_deg": 135.08744146535454,
+            "amplitude_ratio": 1.0531659516617786,
+            "phase_std_deg": [
+              10.775970371594076,
+              10.801914242606315
+            ],
+            "metric": 0.03580237492018713
+          }
+        }
+      }
+    ],
+    "expected_native_bytes": 38,
+    "expected_native_crc32_hex": "971c7052",
+    "forwarded": false
+  },
+  "comparison": {
+    "baseline_gain_db": 0,
+    "new_gain_db": 20,
+    "baseline_separation_deg": 134.76918635337205,
+    "new_separation_deg": 135.13173498521837,
+    "phase_change_deg": 0.36254863184632313,
+    "baseline_peak_abs_component": 26,
+    "new_peak_abs_component": 233,
+    "new_peak_fraction_full_scale": 0.11376953125,
+    "peak_block_digital_power_change_db": 19.430453505021646,
+    "refined_relative_cfo_change_hz": 679.6778793023464,
+    "timing_sensitivity_range_deg": [
+      134.17547999853727,
+      135.46712258448204
+    ],
+    "filter_control_separation_deg": 135.08744146535454
+  },
+  "gain_setting": {
+    "utc": "2026-10-23T16:53:23.512078+00:00",
+    "before": "0.000000 dB",
+    "requested_gain_db": 20,
+    "readback": "20.000000 dB",
+    "gain_mode": "manual",
+    "tx_lo_powerdown": "1"
+  },
+  "ihu": {
+    "commands": [
+      {
+        "utc": "2026-10-23T16:54:01.031874+00:00",
+        "command": "outputs"
+      },
+      {
+        "utc": "2026-10-23T16:54:01.871206+00:00",
+        "command": "output cli_debug on"
+      },
+      {
+        "utc": "2026-10-23T16:54:02.413074+00:00",
+        "command": "status"
+      },
+      {
+        "utc": "2026-10-23T16:54:03.043652+00:00",
+        "command": "faults"
+      },
+      {
+        "utc": "2026-10-23T16:54:03.469278+00:00",
+        "command": "outputs"
+      },
+      {
+        "utc": "2026-10-23T16:54:09.055749+00:00",
+        "command": "uhf heartbeat"
+      },
+      {
+        "utc": "2026-10-23T16:54:13.993000+00:00",
+        "command": "status"
+      },
+      {
+        "utc": "2026-10-23T16:54:24.003136+00:00",
+        "command": "status"
+      },
+      {
+        "utc": "2026-10-23T16:54:34.052392+00:00",
+        "command": "status"
+      },
+      {
+        "utc": "2026-10-23T16:54:44.142547+00:00",
+        "command": "status"
+      },
+      {
+        "utc": "2026-10-23T16:54:48.999429+00:00",
+        "command": "status"
+      },
+      {
+        "utc": "2026-10-23T16:54:49.528461+00:00",
+        "command": "faults"
+      },
+      {
+        "utc": "2026-10-23T16:54:49.977069+00:00",
+        "command": "output cli_debug off"
+      }
+    ],
+    "status_snapshots": [
+      {
+        "tec": 0,
+        "rec": 0,
+        "tx_fail": 4,
+        "tx_timeout": 0,
+        "rx_overflow": 0,
+        "pending": 0,
+        "uhf_pending": 0
+      },
+      {
+        "tec": 0,
+        "rec": 0,
+        "tx_fail": 4,
+        "tx_timeout": 0,
+        "rx_overflow": 0,
+        "pending": 0,
+        "uhf_pending": 0
+      },
+      {
+        "tec": 0,
+        "rec": 0,
+        "tx_fail": 4,
+        "tx_timeout": 0,
+        "rx_overflow": 0,
+        "pending": 0,
+        "uhf_pending": 0
+      },
+      {
+        "tec": 0,
+        "rec": 0,
+        "tx_fail": 4,
+        "tx_timeout": 0,
+        "rx_overflow": 0,
+        "pending": 0,
+        "uhf_pending": 0
+      },
+      {
+        "tec": 0,
+        "rec": 0,
+        "tx_fail": 4,
+        "tx_timeout": 0,
+        "rx_overflow": 0,
+        "pending": 0,
+        "uhf_pending": 0
+      },
+      {
+        "tec": 0,
+        "rec": 0,
+        "tx_fail": 4,
+        "tx_timeout": 0,
+        "rx_overflow": 0,
+        "pending": 0,
+        "uhf_pending": 0
+      }
+    ],
+    "completed": {
+      "utc": "2026-10-23T16:54:50.511200+00:00",
+      "state": "closed"
+    },
+    "heartbeat_request": 21,
+    "native_bytes": 38,
+    "native_digest": "971c7052",
+    "cli_debug_restored": 0,
+    "new_can_tx_failures": 0,
+    "ground_ack": 0
+  },
+  "decoder_source_sha256": {
+    "modem.py": "3bfa5f44c352f385f573cde98f9a46579281aa5db9aa3934bced3175fa0f7245",
+    "codec.py": "c5564d56df643da8de9c1178e0761e54ba9e80a19338b085352854af01540b0d"
+  },
+  "design": "Single 30-second gain-check capture and one heartbeat, with 45-second IHU log. Previous Pluto baseline was 120 seconds. Only receiver manual gain changed from 0 to 20 dB; user reports power and RF wiring unchanged. Firmware, tune, bandwidth, rates and filtering unchanged. Sequential captures, not a controlled temperature/frequency experiment.",
+  "interpretation": "Higher digital amplitude leaves the measured phase alphabet near 135 degrees; low receiver code excursion alone does not explain the earlier non-antipodal result. One common frequency refinement and shared preamble analysis remain; not a calibrated phase standard or BER/noise-margin measurement.",
+  "limits": "Both streams use 12-bit-format int16 I/Q; no near-full-scale components, but that is not independent analog-linearity proof. Nonzero digital idle median permits a block-power ratio, not calibrated C/N, SNR or Eb/N0. IIO lacks per-sample timestamps and no independent overflow counter was collected. Native sender comparison is length/digest only; independent full TX bytes unavailable.",
+  "original_iq": "Original 34,560,128-byte NPY retained unchanged on ground station, hash verified before analysis; derived burst, filtered basebands and analysis stored separately.",
+  "current_state": "Pluto left at 20 dB manual RX gain, TX DDS disabled, TX LO powered down and TX attenuation -89.75 dB. IHU debug restored. Ground fire-uplink service remains paused during the ongoing bench session.",
+  "public_power_csv_window": {
+    "start_s": 2,
+    "stop_s": 7,
+    "blocks": 500,
+    "block_seconds": 0.01
+  },
+  "inputs": [
+    {
+      "filename": "pluto-gain20-01-result.json",
+      "sha256": "223a41e972afd45c8940e29d242ddb39471ca511a8c77aa2b73f4a1c812e72d9"
+    },
+    {
+      "filename": "pluto-gain20-01-ihu-final.json",
+      "sha256": "2f4ebc7c5a4f1f611b4a896980292d007a57b2f037b37954dcfe4be5293e6e22"
+    },
+    {
+      "filename": "pluto-gain20-analysis-01.json",
+      "sha256": "f7109db79185281179d9ec879b1a10766e4cd4bbacf0c10efcb039ba9a8db97e"
+    },
+    {
+      "filename": "pluto-gain20-01-setting.json",
+      "sha256": "441f8cb202e9f1af2580499328defc20014326c321d9eb66298bce5c3b5ffef0"
+    },
+    {
+      "filename": "analyze_pluto_gain20_remote.py",
+      "sha256": "ffc5502ab1c03cde87b1f038003bca8025e1e175283329977f8fd2c9a66757c5"
+    }
+  ],
+  "reproduction_validation": "Published command-line script executed against original archive; both complete decoder and phase-analysis filter objects reproduced exactly."
+}

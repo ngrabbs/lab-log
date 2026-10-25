@@ -1,0 +1,42 @@
+{
+  "v4_regressions_vs_v3": [
+    {
+      "capture": "pluto20",
+      "ebn0_db": 8,
+      "seed": 73191,
+      "trial": 0,
+      "new_sync_errors": 0,
+      "new_body_reference_error_positions": [
+        490,
+        491
+      ],
+      "reference_bits_at_errors": [
+        0,
+        0
+      ],
+      "new_decisions_at_errors": [
+        1,
+        1
+      ],
+      "native_tx_truth_available": false
+    }
+  ],
+  "previous_v3_regression_checks": [
+    {
+      "capture": "pluto00",
+      "ebn0_db": 8,
+      "seed": 73192,
+      "trial": 0,
+      "v4_frame_pass": true,
+      "v4_sync_errors": 0
+    },
+    {
+      "capture": "pluto00",
+      "ebn0_db": 8,
+      "seed": 73192,
+      "trial": 2,
+      "v4_frame_pass": true,
+      "v4_sync_errors": 0
+    }
+  ]
+}

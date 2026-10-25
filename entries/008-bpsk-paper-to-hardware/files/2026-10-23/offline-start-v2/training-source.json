@@ -1,0 +1,14 @@
+{
+  "name": "libre01",
+  "filename": "libre01-48k.npz",
+  "source_metadata": "../iq-heartbeat-01-session.json",
+  "source_npy_sha256": "6f1da65c71fdddd10539dfdd23792e3c0ae4097f7e2037985726a8cfbd8c3236",
+  "npz_sha256": "1aaafbadaceeee68229aae416328c9a384d7bb9602bf5d9d4c8759cfd3cfb2f5",
+  "original_full_iq_sha256": "a4e37c945bc074b1b4f9b523b2f58b59cf85cc0aaa867a7e79a589fa75049231",
+  "complex_samples": 192000,
+  "preamble_start_symbol": 1955,
+  "timing_sample": 0,
+  "refined_cfo_hz": -7346.442118580303,
+  "native_hex": "0901c00e001f0101000502010000000000000000f8c21adc059e261900060301000000004d75",
+  "rf_sequence": 18
+}

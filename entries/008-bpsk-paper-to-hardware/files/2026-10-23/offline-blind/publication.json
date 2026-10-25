@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-23",
+  "offline_only": true,
+  "python": "3.15.0",
+  "numpy": "2.5.4",
+  "input_manifest": "../offline-ber/manifest.json",
+  "all_four_input_hashes_unchanged": true,
+  "shared_diagnostic_sha256": "5017e45631fdcfc4325843663513b299fa5c316d31ed092d278a32008cecb52a",
+  "final_trial_count": 214,
+  "held_out_noisy_wrong_starts": 14,
+  "all_summary_counts_recomputed": true,
+  "initial_run": {
+    "status": "superseded in full after synthetic zero/near-zero energy tests failed",
+    "receiver_v0_sha256": "5ebe63b01ae1405477a38e6e682433f70e6f420b7cae5a039e25d3d113673e7d",
+    "ledger_v0_sha256": "0dd3ef8fedda5b48f635f59168ac518da41889c9519dfa2a2ef7bdcfcefe0aee",
+    "model_unchanged": true,
+    "noise_seeds_unchanged": true,
+    "note": "Initial run detected source modification at its final hash assertion; its ledger is preserved locally as a superseded derived result."
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 9914,
+      "sha256": "f2b18be81695f44ca08f6354c7a3b5a3e2f96cd318d6ed5767e8839170523f8c"
+    },
+    {
+      "path": "analyze.py",
+      "size_bytes": 2878,
+      "sha256": "11b3fed6c27fc5356403fd9544073820a2c1825b47dfe6b15e534cdd70888a30"
+    },
+    {
+      "path": "decode.py",
+      "size_bytes": 732,
+      "sha256": "9f733deea07106be87bd3e594b5170486ae72277f20b6c274dd4ef0384cf29ee"
+    },
+    {
+      "path": "intervals.csv",
+      "size_bytes": 1375,
+      "sha256": "ff75850deab245c1732f98bbe44e90cadd79bdee0dbf6d7a8835a4f54cbf6a71"
+    },
+    {
+      "path": "lock.json",
+      "size_bytes": 172,
+      "sha256": "910d34e00082a756302ec7824d22a500d292165503b3efb8b2dbcd05c8373495"
+    },
+    {
+      "path": "model.json",
+      "size_bytes": 853,
+      "sha256": "74d33e58c6a31d9d6423bf8e2487390993acb9397855c1856c51e291e81f8ba5"
+    },
+    {
+      "path": "prepare.py",
+      "size_bytes": 1218,
+      "sha256": "8d02e6c6ec61b47c9543d9c631c849edea087d3efb57c914f8a550ed0fb4e96c"
+    },
+    {
+      "path": "receiver.py",
+      "size_bytes": 3647,
+      "sha256": "763615cf57bf9fe4f8bf5b352f8379409f58349258737ad18eaa68ac55333774"
+    },
+    {
+      "path": "run.py",
+      "size_bytes": 5970,
+      "sha256": "ceec05f1a978c5dd40e5daec1f3d6164d3214f6f2cd0c8fea03683abecd37fd5"
+    },
+    {
+      "path": "summary.csv",
+      "size_bytes": 791,
+      "sha256": "a16595b8961e6aa9d72cb9c6a1d7d87e35fe59725ccda06d0bfe8e984d6566cb"
+    },
+    {
+      "path": "test_receiver.py",
+      "size_bytes": 2063,
+      "sha256": "482e4276d0a08af0d91fa37bff8b9258305c8c0443533fefe58d294e08ee2713"
+    },
+    {
+      "path": "tests.txt",
+      "size_bytes": 599,
+      "sha256": "22f5b7c60116c773100d5241dc4687220596244963c9f17f2521ae835a0e0f27"
+    },
+    {
+      "path": "trials.jsonl",
+      "size_bytes": 188055,
+      "sha256": "75b2068d283462fa3ca6f0d9c29aa77a6eedb58e2e43d750a8076bb47402b3ce"
+    },
+    {
+      "path": "validation.json",
+      "size_bytes": 347,
+      "sha256": "3cdcb39dac4c834871b1e67fe8b9b76ea79195317a36ba5819af2583c829622f"
+    }
+  ]
+}

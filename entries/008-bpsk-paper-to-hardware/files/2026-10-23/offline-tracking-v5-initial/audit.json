@@ -1,0 +1,11 @@
+{
+  "stress_rows": {
+    "detector": 3240,
+    "full": 570
+  },
+  "counts_reconstructed": true,
+  "capture_inputs_identical": 214,
+  "negative_detections": 0,
+  "training_clean_packet": true,
+  "frozen_dependencies_unchanged": 14
+}

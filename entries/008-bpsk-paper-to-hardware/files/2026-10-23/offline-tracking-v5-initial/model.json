@@ -1,0 +1,44 @@
+{
+  "training_capture": "libre01",
+  "training_npz_sha256": "1aaafbadaceeee68229aae416328c9a384d7bb9602bf5d9d4c8759cfd3cfb2f5",
+  "centers": [
+    [
+      1.0,
+      3.147724568519185e-17
+    ],
+    [
+      -0.742694171911428,
+      0.7668957405027947
+    ]
+  ],
+  "threshold": 0.04,
+  "rate_hz": 48000,
+  "sps": 40,
+  "cfo_search_hz": [
+    -12000,
+    12000
+  ],
+  "acquisition_symbols": "224..287 differential boundary correlation, coherent local refinement",
+  "score_symbols": "68..251",
+  "threshold_rationale": "Fixed normalized correlation threshold, checked on training only.",
+  "test_captures": [
+    "libre02",
+    "pluto00",
+    "pluto20"
+  ],
+  "noise_seeds": [
+    73191,
+    73192,
+    73193
+  ],
+  "trials_per_seed": 10,
+  "ebn0_db": [
+    8,
+    12
+  ],
+  "limits": "Retrospective capture holdout: recordings were examined in prior work, not prospective unseen RF data.",
+  "sequence_window": 3,
+  "tracking_symbols": "0..63 initialization; decision directed thereafter",
+  "tracking_alpha": 0.06,
+  "acquisition_candidates": 8
+}

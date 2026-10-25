@@ -1,0 +1,138 @@
+{
+  "libre01": {
+    "start_sample": 78190,
+    "nominal_start_sample": 78200,
+    "selected_offset_samples": -10,
+    "cfo_hz": -7346.442118580303,
+    "training_variance_metric": 0.019900110023922623,
+    "energy_before_normalization": 0.0133392105534864,
+    "normalized_observed_symbol_energy": 1.000012179009409,
+    "existing_matched_filter_noise_variance": 2.974115428590431e-07,
+    "centers": [
+      [
+        0.5631268866973751,
+        0.7647938726333918
+      ],
+      [
+        -1.0047482200819526,
+        -0.1361483411475741
+      ]
+    ],
+    "integrated_center_separation_deg": 134.0815194606979,
+    "known_preamble_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "coherent_phase_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "original_frame_crc_pass": true
+  },
+  "libre02": {
+    "start_sample": 84056,
+    "nominal_start_sample": 84057,
+    "selected_offset_samples": -1,
+    "cfo_hz": -7369.034004762733,
+    "training_variance_metric": 0.02049264635297433,
+    "energy_before_normalization": 0.013351764059229613,
+    "normalized_observed_symbol_energy": 1.0000122996236556,
+    "existing_matched_filter_noise_variance": 3.3928705754944384e-07,
+    "centers": [
+      [
+        0.5187008643145273,
+        0.7978627814166276
+      ],
+      [
+        -0.9988599498562644,
+        -0.19101914841759632
+      ]
+    ],
+    "integrated_center_separation_deg": 133.8547798988591,
+    "known_preamble_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "coherent_phase_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "original_frame_crc_pass": true
+  },
+  "pluto00": {
+    "start_sample": 83871,
+    "nominal_start_sample": 83879,
+    "selected_offset_samples": -8,
+    "cfo_hz": -3237.1011660507884,
+    "training_variance_metric": 0.01286471056783434,
+    "energy_before_normalization": 0.0034687915122689522,
+    "normalized_observed_symbol_energy": 1.0000000543296483,
+    "existing_matched_filter_noise_variance": 2.0213180149561985e-09,
+    "centers": [
+      [
+        -0.499697537836381,
+        -0.8167711335297317
+      ],
+      [
+        0.9975749548869949,
+        0.23062635711547688
+      ]
+    ],
+    "integrated_center_separation_deg": 134.47548020646903,
+    "known_preamble_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "coherent_phase_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "original_frame_crc_pass": true
+  },
+  "pluto20": {
+    "start_sample": 83740,
+    "nominal_start_sample": 83732,
+    "selected_offset_samples": 8,
+    "cfo_hz": -2557.423286748442,
+    "training_variance_metric": 0.01683371603633798,
+    "energy_before_normalization": 0.30300612523136805,
+    "normalized_observed_symbol_energy": 1.0000000437634604,
+    "existing_matched_filter_noise_variance": 1.5520709027709048e-09,
+    "centers": [
+      [
+        -0.9281473221657337,
+        0.22135295828945906
+      ],
+      [
+        0.5223959566605366,
+        -0.876481583094677
+      ]
+    ],
+    "integrated_center_separation_deg": 134.20941420173483,
+    "known_preamble_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "coherent_phase_baseline": {
+      "scorable": true,
+      "scored_bits": 184,
+      "bit_errors": 0,
+      "error_positions": []
+    },
+    "original_frame_crc_pass": true
+  }
+}

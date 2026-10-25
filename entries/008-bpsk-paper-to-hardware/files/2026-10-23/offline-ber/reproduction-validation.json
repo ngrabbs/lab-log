@@ -1,0 +1,28 @@
+[
+  {
+    "filename": "fast-summary.csv",
+    "sha256": "1ccbf3063311bae3735f9506f905499a27cc74c7ce6941253831dfbacc251fac",
+    "byte_identical": true
+  },
+  {
+    "filename": "fast-seeds.csv",
+    "sha256": "e188a2655106e3d99f16d84af8b70cfd0cea3c47fb269eb0a075039a24a4f0c0",
+    "byte_identical": true
+  },
+  {
+    "filename": "paper-summary.csv",
+    "sha256": "dd1fe854643716b4bab8f228a35412599e86c8ffa9d5e23c2eae2780db1dcf0a",
+    "byte_identical": true
+  },
+  {
+    "filename": "paper-seeds.csv",
+    "sha256": "ffed25c5eb6be9c17fb1f2a752163c1303729888e66c32622afd34ea964cf8fc",
+    "byte_identical": true
+  },
+  {
+    "filename": "cfo-check.csv",
+    "sha256": "44aad7887d52c99dac4e67d5a88a1245d37adefd66c3cb0d4c8f86c349cabfb8",
+    "byte_identical": true,
+    "note": "Independent explicit Ns=8 rotating-pulse sum used for simulated amplitude; analytical expression only for theory."
+  }
+]

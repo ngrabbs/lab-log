@@ -1,0 +1,25 @@
+{
+  "stress_rows": {
+    "detector": 3240,
+    "full": 570
+  },
+  "counts_reconstructed": true,
+  "v5_comparator_decisions_identical": {
+    "detector": 3240,
+    "full": 570
+  },
+  "acquisition_matches_v5": {
+    "detector": "timing-assisted layer",
+    "full": 570
+  },
+  "capture_inputs_identical": 214,
+  "negative_detections": 0,
+  "training_clean_packet": true,
+  "frozen_dependencies_unchanged": 16,
+  "behavioral_tests_passed": 7,
+  "synthetic_full_iq_hashes_verified_during_replay": 570,
+  "paper_matlab_sha256": "10a505c6135a493d87d2960340860cffd8bee35981fd23a6388ccc4725f88fc3",
+  "freeze_utc": "2026-10-23T22:38:58.818068+00:00",
+  "no_post_replay_receiver_changes": true,
+  "replay_status": "Retrospective; reused held-out inputs; only libre01/fresh synthetic training selected gate; no live access"
+}

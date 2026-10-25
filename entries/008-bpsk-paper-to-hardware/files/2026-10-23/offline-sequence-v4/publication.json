@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-23",
+  "offline_only": true,
+  "python": "3.15.0",
+  "numpy": "2.5.4",
+  "training_iq": "libre01 only",
+  "selection_record": "selection.json",
+  "training_candidate_windows": [
+    3,
+    5,
+    7
+  ],
+  "selected_window": 3,
+  "trellis_states": 4,
+  "held_out_windows_tested": [
+    3
+  ],
+  "acquisition_and_previous_detectors_unchanged": true,
+  "original_iq_and_v1_v2_v3_results_unchanged": true,
+  "all_214_iq_hashes_and_acquisition_outputs_match": true,
+  "training_trial_observations": 91,
+  "training_ledger_rows": 364,
+  "held_out_noisy_trials": 180,
+  "held_out_acquired": 179,
+  "held_out_misses": 1,
+  "held_out_wrong_starts": 0,
+  "ebn0_8": {
+    "scored_bits": 16376,
+    "v3_errors": 106,
+    "v4_errors": 32,
+    "v3_false_changes": 77,
+    "v4_false_changes": 16,
+    "unchanged_class_bits": 8188,
+    "v3_missed_changes": 29,
+    "v4_missed_changes": 16,
+    "changed_class_bits": 8188,
+    "v3_frames": 6,
+    "v4_frames": 59,
+    "trials": 90
+  },
+  "ebn0_12": {
+    "scored_bits": 16560,
+    "v3_observed_errors": 0,
+    "v4_observed_errors": 0,
+    "v3_frames": 90,
+    "v4_frames": 90,
+    "trials": 90
+  },
+  "total_frames": {
+    "v3": 96,
+    "v4": 149,
+    "recovered": 54,
+    "regressed": 1,
+    "trials": 180
+  },
+  "scope": "Retrospective paired post-filter replay, known-preamble BER conditional on unchanged acquisition. Composite local-window sequence objective and full-frame traceback, no forced bits or transition penalties. Independent full TX-body truth unavailable; no live receiver changes.",
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 12241,
+      "sha256": "41f056a5b553d207f6a6fd089bd22e9f4c88b826571d3fd5c33f012f29a61cd6"
+    },
+    {
+      "path": "analyze.py",
+      "size_bytes": 2888,
+      "sha256": "19e11041501e77bb528eccf14d9afc1254ad4e737d092eae39fcda83960cc04a"
+    },
+    {
+      "path": "audit.json",
+      "size_bytes": 418,
+      "sha256": "19c0897874bebe8eb9da28dc666f3b19eaae1087ead8aa4f6de421b58a248df3"
+    },
+    {
+      "path": "audit.py",
+      "size_bytes": 4990,
+      "sha256": "2a6f7c5e434d446a2bdef3f1c8c79e7f93996114e7cc31629eaa1f375c082993"
+    },
+    {
+      "path": "bit-class-summary.csv",
+      "size_bytes": 1379,
+      "sha256": "d1b18bd4467a0b20df7d6abc1c0a7e423fd5faab1a05bd58ef72e643fb44600f"
+    },
+    {
+      "path": "compare.py",
+      "size_bytes": 4716,
+      "sha256": "194b9af072c512c0864cc3c1e7c8edbfbd33f89b90da887b859a5bd4a5355e3d"
+    },
+    {
+      "path": "decode.py",
+      "size_bytes": 732,
+      "sha256": "9f733deea07106be87bd3e594b5170486ae72277f20b6c274dd4ef0384cf29ee"
+    },
+    {
+      "path": "frame-regressions.json",
+      "size_bytes": 766,
+      "sha256": "948e2e2dbeda79998cb964ada10d3bfb40ecfe7821d5eba6f711b1623a3dc23f"
+    },
+    {
+      "path": "intervals.csv",
+      "size_bytes": 1247,
+      "sha256": "00a09192ff875ea0fcff4bb9b378488e3b7cd75b903b7e97721df234dfd4ba19"
+    },
+    {
+      "path": "lock.json",
+      "size_bytes": 172,
+      "sha256": "705a0771ef79954ca09c06125d6f55d30f040ff7f04ea2fd14c5fbced2a53434"
+    },
+    {
+      "path": "model.json",
+      "size_bytes": 877,
+      "sha256": "2b4cd263a650dcfc40366657d6308a330af75771af6d426eb67233bfc5d10423"
+    },
+    {
+      "path": "paired-summary.csv",
+      "size_bytes": 2614,
+      "sha256": "64fec6be9a1b4137ddf5c6220b7cf43b654985a84c8409319f2b0f29a751d2fb"
+    },
+    {
+      "path": "paired-validation.json",
+      "size_bytes": 439,
+      "sha256": "e974efd0f96e463d49bc9a8da4052c1e1925cb2b84dd9bcdf39e0a269183aee5"
+    },
+    {
+      "path": "plot.py",
+      "size_bytes": 1696,
+      "sha256": "e6229e435a6421b9b557bd8b9bff7b8705189a7d58df1d48254a2ba466d05c8f"
+    },
+    {
+      "path": "receiver.py",
+      "size_bytes": 3414,
+      "sha256": "dca4a86184ff0167512e05f6405d272211acb4d90f5245827cd2c11093652889"
+    },
+    {
+      "path": "run.py",
+      "size_bytes": 6736,
+      "sha256": "0a51193e87553820da1f76a48e34b7ea5cf461bf7e90846064674748af805733"
+    },
+    {
+      "path": "select.py",
+      "size_bytes": 3655,
+      "sha256": "49eecefa171b65700cc095affc163d4d5c6f5f45e088023c3183b99f18ad2268"
+    },
+    {
+      "path": "selection.json",
+      "size_bytes": 2374,
+      "sha256": "7e376d4d662e2353abf302089a712bca40b78bc16a9f82921e97b39555352580"
+    },
+    {
+      "path": "summary.csv",
+      "size_bytes": 748,
+      "sha256": "dabd8027340ec5ec72c29636a693d57382b4a7060da5658b391dc7052510baf2"
+    },
+    {
+      "path": "test_receiver.py",
+      "size_bytes": 5746,
+      "sha256": "ee873eba8d3c7d143599883cda9b7deaef3e63950895d1d0f133da0d59a153ce"
+    },
+    {
+      "path": "tests-development.txt",
+      "size_bytes": 1667,
+      "sha256": "13b21fc64ee122d23d3e4f72b2802f3ce6153ed19b0c98a5d9ee5b1490ed7688"
+    },
+    {
+      "path": "tests.txt",
+      "size_bytes": 1667,
+      "sha256": "69ea948e5d791fb39b4e4cfb1c2b02ba4c1a028ba9a73c17c77e26b41aef704e"
+    },
+    {
+      "path": "train.py",
+      "size_bytes": 4128,
+      "sha256": "6c6a3e94511c77147a4a873c21f0c3440d848ba3fb762342a985c5c6a95a69d4"
+    },
+    {
+      "path": "training-source.json",
+      "size_bytes": 626,
+      "sha256": "62036927f3c2e77bec2d8e309e63260a03a86fe1e4b666a059f773828d0f27a4"
+    },
+    {
+      "path": "training-summary.csv",
+      "size_bytes": 560,
+      "sha256": "3eb3c6b79d45950d934430ae12693831424eac12f98d4c1494933a3c2ef125a1"
+    },
+    {
+      "path": "training-trials.jsonl",
+      "size_bytes": 140376,
+      "sha256": "43e2d1682e027c5d42eccb4fcc9c8b174f5b90c949c3c4347e36417a2cd49ad3"
+    },
+    {
+      "path": "trials.jsonl",
+      "size_bytes": 316194,
+      "sha256": "e654edfa16234b3d6db258b1ee94ecc035651b5c6b8d8e1ae69a8625c0a395a2"
+    },
+    {
+      "path": "validation.json",
+      "size_bytes": 347,
+      "sha256": "3cdcb39dac4c834871b1e67fe8b9b76ea79195317a36ba5819af2583c829622f"
+    }
+  ],
+  "figure": {
+    "path": "../../../images/sequence-v4.svg",
+    "sha256": "21dc6e9812fd7052d6ef7836f426c4797aa0c5a93d079a559ca9bfd56c0898c4",
+    "source": "plot.py",
+    "counts": [
+      "paired-summary.csv",
+      "bit-class-summary.csv"
+    ],
+    "visually_checked": true
+  }
+}

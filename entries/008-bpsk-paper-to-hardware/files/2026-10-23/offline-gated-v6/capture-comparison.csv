@@ -1,0 +1,4 @@
+ebn0_db,trials,old_aligned,new_aligned,old_packets,new_packets,old_bits156,new_bits156,old_errors156,new_errors156,old_bits184,new_bits184,old_errors184,new_errors184,shared_bits156,shared_old_errors156,shared_new_errors156,packet_regressions,packet_recoveries,continuous_packets,preamble_only_packets,continuous_errors156,preamble_only_errors156,gate_enabled,regressions_vs_continuous,recoveries_vs_continuous,regressions_vs_preamble_only,recoveries_vs_preamble_only
+clean,3,3,3,3,3,468,468,0,0,552,552,0,0,468,0,0,0,0,3,3,0,0,1,0,0,0,0
+8,90,89,90,59,57,13884,14040,24,26,16376,16560,32,34,13884,24,26,4,2,57,59,30,22,27,2,2,2,0
+12,90,90,90,90,90,14040,14040,0,0,16560,16560,0,0,14040,0,0,0,0,90,90,0,0,27,0,0,0,0

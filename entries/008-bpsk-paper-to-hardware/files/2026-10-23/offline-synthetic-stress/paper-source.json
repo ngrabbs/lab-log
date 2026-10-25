@@ -1,0 +1,15 @@
+{
+  "source": "matlab_submission/main.m",
+  "sha256": "10a505c6135a493d87d2960340860cffd8bee35981fd23a6388ccc4725f88fc3",
+  "ns": 8,
+  "eb": 1,
+  "source_functions": [
+    "ber_awgn_theory",
+    "ber_cfo_theory",
+    "simulate_ber_cfo"
+  ],
+  "phase2": "Deterministic true symbol-center phase reference isolates rectangular-integration loss.",
+  "phase3": "Constant nu=0.10, Nb=64, PN preamble Np=16/64; ML CFO estimate and one preamble phase estimate. Previously reproduced; not rerun here.",
+  "new_control": "Ns=8, nu=0/0.10, Eb/N0=4/8/12, 250 independent 1000-bit trials/point; independent NumPy RNG, no MATLAB run.",
+  "differences": "Frozen learned geometry, 304-bit patterned payloads, phase ramps/Wiener phase, oracle symbol channel only as a separate reference. Not a test of the paper estimator under every new profile."
+}
