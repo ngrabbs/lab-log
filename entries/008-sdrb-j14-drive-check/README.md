@@ -209,4 +209,44 @@ The next useful diagnostic is to check the fundamental through the driver-only P
 
 After the six runs, the original installed module was restored and its hash verified. MPM reported the radio unclaimed and no failed services were listed. AmpPwr1 was last reported on at 9 V; AmpPwr2 remained off. The investigation remains **In progress**.
 
+## Datasheet and route review — October 25, 2026
+
+This is a read-only review and a proposed diagnostic sequence. No additional RF run, KiCad edit or component replacement was performed.
+
+The live KiCad PCB pad queries show U12 pin 3 and IC3 pin 5 on `Xmit Path C`, and IC3 pin 11 and J14 center pad 1 on the same output net. Routed segments are present between those endpoints. This supports the intended connection, but does not verify solder joints, RF impedance, or continuity on the assembled board.
+
+`TX-B → U37/U45 drivers → U13 → U12 → IC3 → J14`
+
+Path B instead leaves U12 through J2 and passes through U1 to J10. Path C's doubled output bypasses U1; the 10 GHz signal does not pass through either 6 GHz RF switch.
+
+The [Skyworks truth table](https://www.skyworksinc.com/-/media/SkyWorks/Documents/Products/2201-2300/SKY13588_460LF_203512D.pdf) requires:
+
+| State | U12 V1, pin 4 | U12 V2, pin 5 | Selected branch |
+| --- | --- | --- | --- |
+| Shutdown | low | low | None |
+| Path B | high | low | J2, toward J10 |
+| Path C | high | high | J3, toward IC3 |
+
+The reviewed FPGA uses low-or-release outputs with external 1.8 V pull-ups. Measure **R92 pad 1 for V1 and R91 pad 1 for V2**, not the resistors' supply-side pad 2. Expect approximately 1.8/1.8 V during a held Path C selection, approximately 1.8/0 V during Path B, and near 0/0 V in shutdown. Verify U12's 3.3 V supply and the 1.8 V pull-up rail too.
+
+The temporary module requested state 3 for Path C. That is command/software evidence, not physical voltage evidence. The reviewed FPGA source ties the processor GPIO input feedback low; a GPIO readback alone cannot establish the voltage at the switch. No R91/R92 voltage measurements have been recorded. The temporary module was removed after testing, so the restored idle state should not be mistaken for an active Path C selection.
+
+[CY2-283+ datasheet](https://www.minicircuits.com/pdfs/CY2-283%2B.pdf) limits: input 3.5–14 GHz; output 7–28 GHz; drive +12 to +18 dBm; absolute maximum RF input +21 dBm. The recent lower-frequency test was outside specification; 5.184050 → 10.368100 GHz is in band. +12/+18/+21 dBm correspond to approximately 16/63/126 mW, leaving only 3 dB from the upper drive point to the damage limit.
+
+IC3 has no DC supply/enable pin. AmpPwr1 supplies its preceding drivers; excessive RF from those drivers is the relevant overdrive mechanism. An attenuator after J14 protects a receiver, not IC3's input. Gain settings and supply voltage alone do not establish RF power at IC3.
+
+Entry 007's historical 5.8001 GHz measurement was −71.5 dBm after a nominal 20 dB pad, or roughly −51.5 dBm before that pad if its nominal loss is added. This is uncalibrated and from a different frequency/configuration, not an IC3 input measurement. It illustrates why detecting RF_Out does not establish adequate doubler drive. Recheck the current setup at the actual intended fundamental before extrapolating earlier levels.
+
+One pin-assignment detail needs manufacturer clarification: the datasheet labels pads 1, 2, 3, 7, 8 and 9 “no connections,” while the live layout assigns them to ground. This may be harmless if genuinely internally unconnected. It is not a demonstrated fault or a reason to rework the board without further evidence.
+
+Proposed order, with each step recorded before proceeding:
+
+1. **Verify selection electrically.** Use a deliberate low-drive route-hold diagnostic so a meter can read R92/R91 during B and C selection. Start with the driver supply off. Confirm the control states, supply rails and software mapping without relying on a two-second LCD or GPIO readback.
+2. **Check assembly with power off.** Verify same-net continuity U12 pin 3 to IC3 pin 5, and IC3 pin 11 to J14 center; inspect the actual connector launch and ground/paddle joints. Resistance from an RF port to ground alone is not a conclusive failure test.
+3. **Measure current fundamental drive.** Reproduce Path B/J10 detection at 5.184050 GHz on the current image, record actual AmpPwr1 voltage/current and gain/amplitude, and establish a measured level versus control setting. J10 is a first surrogate; its extra switch and launch losses mean it is not exactly IC3 input power.
+4. **Establish a bounded in-band IC3 input.** Use suitable 50 ohm RF access and measured loss/uncertainty to establish the power reaching IC3 pin 5. Start at the lower specified drive point, +12 dBm, rather than blindly increasing software gain or using +21 dBm as a target. Typical conversion loss is around 13 dB, so an output near −1 dBm would be an order-of-magnitude expectation under the manufacturer's matched test conditions, not a board guarantee.
+5. **Validate the 10 GHz receive path and test doubling.** Confirm the DEMI's LO/receive configuration and sensitivity with an independent reference where available. Verify the output connector, cable and DC block are suitable at 10.368 GHz; the previously inventoried 6 GHz-rated block does not establish 10 GHz performance. Restore appropriate receiver protection for a potentially much stronger in-band doubled output. With verified Path C selection and measured drive, look for on/off contrast at 144.100 MHz if the DEMI LO is 10.224 GHz. A second planned tone offset +10 kHz higher should move the doubled RF and the uninverted IF by +20 kHz; choose scan resolution that can resolve that shift.
+
+There is presently **no evidence sufficient to declare IC3 damaged**. A useful failure diagnosis requires known in-band input power at IC3, verified switching and assembly, and a working output measurement chain. Grossly missing conversion under those conditions makes the IC or its assembly suspect; an independent component test or known-good substitution can then distinguish them.
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
