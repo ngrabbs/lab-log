@@ -375,4 +375,42 @@ Tone active. [Numeric scan](files/j10-drivers-off-active.txt).
 
 After. [Numeric scan](files/j10-drivers-off-after.txt).
 
+## LibreSDR reference measurement — October 25, 2026
+
+To check the receiver/cable chain independently of SDRB, I moved the connection to:
+
+`LibreSDR TXRA → DC block → coax → tinySA RF input`
+
+No external pad was installed. LibreSDR initialized with its verified custom FPGA image (SHA-256 `7f0e329b4724e0d919a06b9924aaa3c77305b6f25038deebd6171657ac7c8a99`) and UHD 4.6.0.0. Both register loopback tests passed. It operated over USB 2. Channel 0 with antenna `TX/RX` used the prior TXA mapping recorded in entry 004; detection on the connected port supports that mapping for this run. SDRB was disconnected from the RF measurement chain.
+
+Source settings: LO **5.184000 GHz**, complex tone **+50 kHz**, sample rate **1 MS/s**, TX gain **40**, digital amplitude **0.1**. Readback was LO 5,183,999,999.999993 Hz, rate 1,000,000 samples/s and gain 40.0. tinySA retained Ultra on, LNA off, **10 dB internal attenuation**, 10 kHz RBW, zero external correction and the same 101-point 5.183550–5.184550 GHz scan.
+
+| Stage | Peak within ±10 kHz of nominal tone (dBm) | Indicated peak frequency |
+| --- | ---: | ---: |
+| Before | −88.13 | 5.184040 GHz |
+| Tone on | **−52.97** | **5.184040 GHz** |
+| After | −90.47 | 5.184040 GHz |
+
+The tone produced **35.16 dB** contrast against the larger before/after window peak and disappeared after transmission. The separate LCD sweep's marker at the nominal 5.184050 GHz read approximately **−57.0 dBm**. The strongest numeric bin was 10 kHz below nominal, one scan increment; neither oscillator nor analyzer frequency calibration was independently established. The LCD marker and numeric peak are different frequency/sweep observations.
+
+The source send loop completed in **2.010266 seconds** and queued **2,080,000 samples** (2.08 seconds at the nominal sample rate). Those are software timing/sample counts, not independent RF burst-duration measurements. No TX error events or cleanup errors were reported; the only asynchronous event was a burst acknowledgement. TX gain was returned to zero and the process exited normally.
+
+**Timing-guard exception retained:** the measurement controller stopped the sequence because the active LCD freeze occurred **1.816333 seconds** after the received stream-start marker, exceeding its conservative **1.8-second** acceptance threshold. The active numeric scan completed about 0.713 seconds after that marker and is valid for the source window. The actual screen shows the tone, and its freeze precedes the source's reported send-loop duration, but the original guard-failure status is preserved in the derived record rather than silently rewritten as a clean automated run. No retry or further gain step followed.
+
+This establishes that the current tinySA/DC-block/coax chain can detect a substantially stronger signal near 5.184 GHz than the earlier SDRB J10 result. It does not calibrate LibreSDR power, determine cable loss, or establish the gain of either SDRB driver. The two radios used different TX gain settings; their indicated output difference is not a gain comparison. The remaining weak SDRB output is an upstream diagnosis, with absolute power calibration still open.
+
+[CSV](files/libresdr-reference-gain40.csv) · [Measurement and timing review](files/libresdr-reference-gain40.json). PNGs below are unmodified device captures; original RGB565 payloads and complete controller logs are archived privately.
+
+![LibreSDR reference, before](images/libresdr-reference-gain40-before.png)
+
+Before. [Numeric scan](files/libresdr-reference-gain40-before.txt).
+
+![LibreSDR reference, tone on](images/libresdr-reference-gain40-active.png)
+
+Tone observation; timing-guard exception described above. [Numeric scan](files/libresdr-reference-gain40-active.txt).
+
+![LibreSDR reference, after](images/libresdr-reference-gain40-after.png)
+
+After. [Numeric scan](files/libresdr-reference-gain40-after.txt).
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
