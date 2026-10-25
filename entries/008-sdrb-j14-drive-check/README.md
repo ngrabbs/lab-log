@@ -512,4 +512,99 @@ This audit does not prove the active RFIC registers or compiled C++ execution ma
 
 The next proposed non-rework check is a J10 frequency-response comparison within the high-band passband, retaining gain 60 and amplitude 0.1: for example nominal tones near **3.0, 4.0, 5.18405 and 5.8 GHz**, with analyzer scans recentered at each frequency and before/during/after records. No frequency sweep or higher TX setting was run as part of this audit.
 
+## J10 frequency sweep — October 25, 2026
+
+Following the source audit, I measured four nominal frequencies using **the same J10 → DC block → coax → tinySA chain**, with no external pad. AmpPwr1 remained powered under the prior 9 V setup, AmpPwr2 off. No new current/bias reading was taken during this sweep.
+
+Source settings stayed at **gain 60, amplitude 0.1, two seconds**, Path B/high-pass, UHD channel 1, 2.304 MS/s and 8,000-byte frames. Each LO was nominal tone frequency minus 50 kHz; the complex tone offset stayed +50 kHz. Only these four LO values were permitted by the RAM-only launcher. The analyzer scan and marker were recentered for each frequency, retaining a 1 MHz span, 101 points, 10 kHz RBW, Ultra on, LNA off, **10 dB internal attenuation** and zero external correction.
+
+| Nominal tone (GHz) | Before (dBm) | Tone-on window peak (dBm) | After (dBm) | Contrast (dB) | Interpretation |
+| ---: | ---: | ---: | ---: | ---: | --- |
+| 3.000000 | -98.62 | **-57.12** | -95.16 | +38.03 | Isolated tone |
+| 4.000000 | -98.16 | **-70.00** | -99.66 | +28.16 | Isolated tone |
+| 5.184050 | -88.94 | **-69.44** | -91.09 | +19.50 | Isolated tone |
+| 5.800000 | -77.59 | **-65.09** | -81.59 | +12.50 | Broad spectral rise; isolated tone not established |
+
+Values are numeric peaks within ±10 kHz of nominal. **3 GHz was 12.31 dB higher than 5.184050 GHz**, while 4 GHz and 5.184050 GHz differed by only 0.56 dB. This is the indicated response of the complete source/board/cable/DC-block/analyzer chain, not calibrated board insertion loss. Frequency response of the RFIC, board components, cables and analyzer has not been separated. The result is not a simple monotonic roll-off.
+
+**Do not interpret the 5.8 GHz window peak as clean tone power.** Its active scan had a broad level rise, and the largest full-span bin was 5.800490 GHz at −64.56 dBm, slightly above the target bin. Excluding ±50 kHz around the target, the median scan level rose from **−81.06 dBm before to −71.56 dBm active**, returning to −81.59 dBm after. The separate active LCD also lacked the clearly isolated line seen at the other frequencies. Source noise, spurs or analyzer behavior remain possibilities; the present data does not distinguish them. This point needs a separate measurement check before power conclusions.
+
+All four sources completed without reported stream/decode/cleanup errors; each retained one benign post-stop burst acknowledgement. Source-reported durations were approximately 2.0007–2.0014 seconds. Requested gain 60 matched readback in every run, and LO readbacks were within 10 Hz of request. Numeric scans completed within their active windows. No tone was retried and no gain/amplitude increase occurred.
+
+### Capture-timing exception and acquisition correction
+
+The 3 GHz capture passed the original 1.8-second LCD-freeze gate. At 4 GHz the source completed normally and the numeric scan was inside its active window, but the screen froze **1.824218 seconds** after the received start marker, causing the controller to stop the sequence. The 4 GHz original failure status remains in its measurement record. Its actual LCD shows the tone; the source reported 2.001329 seconds. These host timing observations are not independent RF timing calibration.
+
+RF was paused while addressing acquisition overhead. Reducing serial read timeout from 100 ms to 20 ms gave an analyzer-only scan/freeze time of 1.604316 seconds, which narrowly failed an additional conservative 1.6-second preparation assertion. No RF was started in that preparation check. Queueing the same resume/wait/pause commands together and checking all three returned prompts then completed an analyzer-only check in **1.610519 seconds**, below its 1.7-second preparation threshold. [Initial analyzer-only record](files/j10-frequency-timing-initial.json) · [Batched-command timing record](files/j10-frequency-timing-batched.json).
+
+The actual RF capture gate stayed **1.8 seconds**, and source timing/settings were unchanged. With the revised acquisition, the remaining 5.184050 and 5.8 GHz LCD freezes occurred at **1.625843 and 1.674699 seconds** and passed. No 4 GHz RF retry was needed to retain its valid numeric result and explicitly qualified screenshot.
+
+The frequency allowlist/adapter/parser checks passed **13 tests on host and SDRB** before RF. Final checks showed the radio unclaimed, no failed services, and unchanged boot/module/application hashes. BACKUP-A remained mounted. RF is stopped; AmpPwr1 was left powered and AmpPwr2 off. No soldering, switch-control retest or doubler run occurred.
+
+[Complete CSV](files/j10-frequency-sweep.csv). Every record retains original controller status, source result, scans and capture hashes, with derived interpretation separated. Below are 12 unmodified instrument LCD captures; numeric and LCD sweeps are distinct observations. Original RGB565 payloads and private console logs remain archived.
+
+### J10 frequency sweep, 3.000000 GHz
+
+[Measurement and review](files/j10-freq-3000000000.json).
+
+![J10 3.000000 GHz, before](images/j10-freq-3000000000-before.png)
+
+Before. [Numeric scan](files/j10-freq-3000000000-before.txt).
+
+![J10 3.000000 GHz, active](images/j10-freq-3000000000-active.png)
+
+Active. [Numeric scan](files/j10-freq-3000000000-active.txt).
+
+![J10 3.000000 GHz, after](images/j10-freq-3000000000-after.png)
+
+After. [Numeric scan](files/j10-freq-3000000000-after.txt).
+
+### J10 frequency sweep, 4.000000 GHz
+
+[Measurement and review](files/j10-freq-4000000000.json).
+
+![J10 4.000000 GHz, before](images/j10-freq-4000000000-before.png)
+
+Before. [Numeric scan](files/j10-freq-4000000000-before.txt).
+
+![J10 4.000000 GHz, active](images/j10-freq-4000000000-active.png)
+
+Active. [Numeric scan](files/j10-freq-4000000000-active.txt).
+
+![J10 4.000000 GHz, after](images/j10-freq-4000000000-after.png)
+
+After. [Numeric scan](files/j10-freq-4000000000-after.txt).
+
+### J10 frequency sweep, 5.184050 GHz
+
+[Measurement and review](files/j10-freq-5184050000.json).
+
+![J10 5.184050 GHz, before](images/j10-freq-5184050000-before.png)
+
+Before. [Numeric scan](files/j10-freq-5184050000-before.txt).
+
+![J10 5.184050 GHz, active](images/j10-freq-5184050000-active.png)
+
+Active. [Numeric scan](files/j10-freq-5184050000-active.txt).
+
+![J10 5.184050 GHz, after](images/j10-freq-5184050000-after.png)
+
+After. [Numeric scan](files/j10-freq-5184050000-after.txt).
+
+### J10 frequency sweep, 5.800000 GHz
+
+[Measurement and review](files/j10-freq-5800000000.json).
+
+![J10 5.800000 GHz, before](images/j10-freq-5800000000-before.png)
+
+Before. [Numeric scan](files/j10-freq-5800000000-before.txt).
+
+![J10 5.800000 GHz, active](images/j10-freq-5800000000-active.png)
+
+Active. [Numeric scan](files/j10-freq-5800000000-active.txt).
+
+![J10 5.800000 GHz, after](images/j10-freq-5800000000-after.png)
+
+After. [Numeric scan](files/j10-freq-5800000000-after.txt).
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)

@@ -1,0 +1,13 @@
+{
+  "kind": "actual-LCD-capture",
+  "dimensions": [
+    480,
+    320
+  ],
+  "wire_format": "RGB565-big-endian",
+  "raw_sha256": "19d00e2079aeef1521d481cb59f11bb951147c2b9d53a760a7ba9ab12d8da59e",
+  "png_sha256": "505ffe881703eb0986efaa6bb1ac714ceabfe21bd96b0d4f206d155d78a533b1",
+  "capture_seconds": 0.5428163977339864,
+  "scan_to_freeze_seconds": 1.6043157977983356,
+  "RF": "not initialized or transmitted"
+}

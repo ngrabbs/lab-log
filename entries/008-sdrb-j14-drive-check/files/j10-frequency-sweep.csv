@@ -1,0 +1,5 @@
+nominal_tone_hz,requested_lo_hz,before_dBm,active_dBm,after_dBm,contrast_dB,source_duration_s,LCD_freeze_offset_s,original_controller_status,interpretation
+3000000000,2999950000,-98.625,-57.125,-95.15625,38.03125,2.000729352999997,1.6243025716394186,one-finite-tone-completed,Isolated on/off tone observed
+4000000000,3999950000,-98.15625,-70.0,-99.65625,28.15625,2.0013291620000473,1.8242183309048414,stopped-on-first-error,Isolated on/off tone observed
+5184050000,5184000000,-88.9375,-69.4375,-91.09375,19.5,2.0007149779999054,1.625842671841383,one-finite-tone-completed,Isolated on/off tone observed
+5800000000,5799950000,-77.59375,-65.09375,-81.59375,12.5,2.0009832860000643,1.6746990736573935,one-finite-tone-completed,Broad active spectral rise; not a clean isolated tone-power measurement
