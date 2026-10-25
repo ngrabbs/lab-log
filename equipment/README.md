@@ -26,6 +26,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | Pacific Antenna Dummy Load v2 (kit) | Recorded owned | DC-50 MHz; V_RMS / V_PK detector pins; ~15 W max; HF only |
 | Nooelec SMA Attenuator Kit (6-piece) | Recorded owned | 1 / 2 / 3 / 6 / 10 / 20 dB. Source-listed rating: 2 W each, DC–6 GHz; rating not reverified. [Measured pads and chains](characterizations/attenuators/README.md) cover only about 1 MHz–1 GHz. |
 | Generic DC-4 GHz SMA fixed attenuator board | Recorded owned | May files include PCB 0 / 10 / 20 / 30 dB captures. Exact product and mapping of physical boards to these files need confirmation. [Characterization](characterizations/attenuators/README.md). |
+| 30 dB SMA attenuator, owner-reported 18 GHz rating | Owner confirmed available October 24–25 | Exact model is not confirmed; do not equate it with the older BW-S30W5+ order below. Used in prior conducted setup, removed for [entry 008](../entries/008-sdrb-j14-drive-check/README.md). No 5/10 GHz attenuation calibration recorded. |
 | BECEN SMA DC-block (x2) | Recorded owned | Source lists 50 Ω, 2 W, upper frequency 6 GHz. Lower cutoff and exact model unknown; the source phrase “DC to 6 GHz” is not a usable DC-block passband specification. |
 | Crystek 2400 MHz SMA low-pass filter (x2) | Recorded owned | Source describes filters for the 2.4 GHz PA. Exact part, insertion loss and stopband measurements unknown; no measured harmonic-suppression claim imported. |
 | KKnoon 150 W 20 A programmable electronic load | Recorded owned | Constant current / voltage / resistance / power, USB logging, TFT display. Drives battery discharge characterization, supply regulation tests, solar IV curves |
@@ -68,6 +69,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
+| SDRB (AMSAT prototype) | In current bench use, October 25 | Native TX gain controls and exploratory J14 doubler measurements in [entry 008](../entries/008-sdrb-j14-drive-check/README.md); software gain is not calibrated output dBm. |
 | RTL-SDR v3 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown; source noise-floor comparison not independently established. |
 | RTL-SDR v4 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown. |
 | HackRF One | Recorded owned | Source-listed 1 MHz–6 GHz, half-duplex TX/RX, 8-bit. Board revision and measured performance unknown. |

@@ -1,0 +1,34 @@
+{
+  "utc": "2026-10-25T11:39:31.740319+00:00",
+  "path": "J14 / X2_RF_Out -> DC block -> tinySA input; DEMI bypassed",
+  "external_attenuation_db": 0,
+  "amp_supplies": {
+    "AmpPwr1": "OFF per owner",
+    "AmpPwr2": "OFF per owner"
+  },
+  "configuration": {
+    "tx_path": "x2_c",
+    "bank": "highpass",
+    "channel": 1,
+    "lo_hz": 2592000000,
+    "tone_offset_hz": 25000,
+    "expected_doubled_hz": 5184050000,
+    "gain": 0,
+    "nominal_native_tx_attenuation_db": 89.75,
+    "amplitude": 0.1,
+    "amplitude_db_relative_to_one": -20,
+    "seconds": 2
+  },
+  "tinysa": {
+    "ultra": "on",
+    "attenuation_db": 31,
+    "lna": "off",
+    "rbw_khz": 10,
+    "external_gain_correction_db": 0
+  },
+  "scope": "Exploratory below-spec doubler band; software gain is not output dBm. Both amp supplies OFF. One tone per step, no retries.",
+  "scans": [],
+  "screens": [],
+  "status": "stopped-on-first-error",
+  "error": "ValueError('Unexpected analyzer frequency grid')"
+}

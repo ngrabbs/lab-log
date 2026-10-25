@@ -1,0 +1,16 @@
+{
+  "kind": "actual-LCD-capture",
+  "dimensions": [
+    480,
+    320
+  ],
+  "wire_format": "RGB565-big-endian",
+  "raw_sha256": "a46e13f7346ae9faa68e82ba6ab8c46c0d1164cbe7ccf181e745968da7228bb8",
+  "png_sha256": "d9b7919b6b0598ad52a728017b2bca010706828b2d6fde7e11389cfcf262cb33",
+  "capture_seconds": 0.5903569413349032,
+  "stage": "active",
+  "lcd_sweep_start_monotonic": 5434782.836287614,
+  "lcd_frozen_monotonic": 5434783.940193984,
+  "source_active_at_freeze": true,
+  "scope": "Actual frozen LCD sweep, separate from numeric scan; capture transfer can finish after source stops."
+}

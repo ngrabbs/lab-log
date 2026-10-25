@@ -1,0 +1,33 @@
+{
+  "revision": "x2-c-bench-20261025-r6",
+  "base_image": "0.1.0-dev.4-rc.3",
+  "base_source_commit": "be5e96e015921c2a5c438fbce5293489853ebb50",
+  "original_module_sha256": "42484b2c5ab640d970fcb8d90039d963b43b6ef28ba49ae5b81eb09aa9cc8c9e",
+  "temporary_module_sha256": "416812866f8198feff150c58eef6ba3731271d1d74f68b9ca1b8a11c5e5c66a7",
+  "configuration": {
+    "tx_path": "x2_c",
+    "tx_filter": "highpass",
+    "tx_lo_hz": 2592000000,
+    "tone_offset_hz": 25000,
+    "doubled_tone_hz": 5184050000,
+    "tx_gain": 0,
+    "amplitude": 0.1,
+    "seconds": 2,
+    "sample_rate": 2304000,
+    "channel": 1
+  },
+  "state": "prepared; not installed; no RF",
+  "limits": "No external pad per owner. Initial batch both amp supplies OFF. TinySA internal31dB/LNAoff. Stop escalation at measured peak >= -10dBm or source error. Output dBm uncalibrated.",
+  "lo_guard_tolerance_hz": 10.0,
+  "test_scope": "Exploratory J14 direct-to-tinySA lower-band check. CY2-283+ below specified 3.5GHz input/7GHz output; nondetection inconclusive.",
+  "allowed_gain_steps": [
+    0,
+    30,
+    60
+  ],
+  "original_demo_sha256": "573472d8f5c11aa1b4830cd0b84e722990e33ed2c0a967848ea002ac70e9f448",
+  "tests": {
+    "native_module_host_and_ARM": 58,
+    "analyzer_parser_host_and_measurement_host": 4
+  }
+}

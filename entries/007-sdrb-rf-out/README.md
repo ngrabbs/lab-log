@@ -230,3 +230,8 @@ All four TX filter branches now have tone-detection evidence in the recorded con
 After the earlier component checks, original dev.3 software was restored and diagnostic RAM removed. The test card now contains integrated dev.4; the published dev.3 image and rollback card are unchanged. The J10 chain retains the single 20 dB pad. Raw results stay outside Git; Ray packaging remains deferred.
 
 [Back to Lab Log](../../README.md)
+
+
+## J14 doubler follow-up — October 25, 2026
+
+The [J14 drive-check entry](../008-sdrb-j14-drive-check/README.md) records the corrected Jx1/J14 connection, a direct-to-tinySA experiment with no external pad, and gain 0/30/60 measurements with the driver supply off and on at 9 V. It includes actual LCD captures and numeric scans. No distinct 5.184050 GHz tone was detected; this exploratory frequency is below the doubler's specified output band. It does not extend the qualified scope of the checks above.

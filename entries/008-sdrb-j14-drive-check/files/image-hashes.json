@@ -1,0 +1,74 @@
+[
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-0-before.png",
+    "sha256": "a9004c686df2dd84b518374863c9e59d3fb2818c80b5f77295b36acbc7187e5d"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-0-active.png",
+    "sha256": "584f5d1d095b6e06427a60468137a8aa9b393c3cc522f20ed6f994179bf09a79"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-0-after.png",
+    "sha256": "c7b7add4dd6f7e2594dbeba0eb021617a274920e7d8c75261fd43275643a6aed"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-30-before.png",
+    "sha256": "b8d4825b9e401890d1e4602a3f9290c90d91846c9c4650c929cc0caf40fffe02"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-30-active.png",
+    "sha256": "05261fc919d9b0bf2c670a3eb5b9ecd07a078b9b5be4c8d75debd672d62535ab"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-30-after.png",
+    "sha256": "5b04158c95d7030afb6e4baa675eb9ce85d999d37791452889616f1c12eeb71a"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-60-before.png",
+    "sha256": "daba866921cc3cc174e90a2ada88f54532cfce7d4078d9605268718fa186a2ec"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-60-active.png",
+    "sha256": "9ae25fc042432b77dfd2256f27a02853a5970089f00d4336c8c81a22f9553806"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/amps-off-gain-60-after.png",
+    "sha256": "993fc94cfcd58e80ce5603bed6f09ad8d6b60812f86e4fdf45786d2c63a5f7ae"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-0-before.png",
+    "sha256": "6fd8a6c1b4b14402c3b67e0f020dfee18cab9195698a37b5f6ab3b36f125314f"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-0-active.png",
+    "sha256": "ca98c76b6321187d03ba9e2bb038be7782e1d27e8113a27e619f71d016b70779"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-0-after.png",
+    "sha256": "934cb5b3a1b8e8276201c460c15045737edca0bbb6dd379402d6657c78468fa0"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-30-before.png",
+    "sha256": "312e6b93e2bbf6f27792be537ea3aa0f775f51a54682b5e8687fbb346f506bf8"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-30-active.png",
+    "sha256": "adadc6c3ef8c0131ecfaa67fd4e1f09fa12880d57909ef37059d23368090ac81"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-30-after.png",
+    "sha256": "7b5be40af1eba40b3aa87c28c863520fa4862fdcaca8638c681a253127506e7b"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-60-before.png",
+    "sha256": "03b49a369d13660c9dc3de8060809894d2241e8b63a1573cb1bab8dc506faf8f"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-60-active.png",
+    "sha256": "d9b7919b6b0598ad52a728017b2bca010706828b2d6fde7e11389cfcf262cb33"
+  },
+  {
+    "path": "entries/008-sdrb-j14-drive-check/images/drivers-on-gain-60-after.png",
+    "sha256": "bc76081c53b8d056fbbdbdb9b1fdeb8e978a8f6f74864a077dc4cbfc8b83db43"
+  }
+]
