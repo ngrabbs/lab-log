@@ -413,4 +413,76 @@ Tone observation; timing-guard exception described above. [Numeric scan](files/l
 
 After. [Numeric scan](files/libresdr-reference-gain40-after.txt).
 
+## J10 gain sweep after reboot — October 25, 2026
+
+After an accidental SDRB reboot and USB reconnection, SDRB was found at its U-Boot prompt. Running its configured normal boot started Linux. The boot log reported that the FAT boot volume had not been cleanly unmounted; no filesystem repair or persistent software change was performed here. The boot image, installed radio module and demo application subsequently matched their earlier hashes. MPM was active and the radio unclaimed.
+
+The owner restored **J10 → DC block → coax → tinySA** and confirmed AmpPwr1 powered after preparation. AmpPwr2 remained off. No new supply current or driver bias voltage was measured during this sweep; the earlier manual readings remain separate observations.
+
+All runs used Path B/high-pass, UHD channel 1, LO **5.184000 GHz**, +50 kHz complex tone, amplitude **0.1**, 2.304 MS/s, 8,000-byte frames and a requested two seconds. Gain settings were run in ascending order, inspecting completion and received levels before advancing. Only **40, 50 and 60** were allowed by the temporary launcher; no higher setting was tried. tinySA retained Ultra on, LNA off, **10 dB internal attenuation**, 10 kHz RBW, zero external correction and 101 points over 5.183550–5.184550 GHz. No external pad was installed.
+
+| TX gain requested/read back | Before (dBm) | Tone on (dBm) | After (dBm) | Contrast (dB) | Detection | Duration (s) |
+| --- | ---: | ---: | ---: | ---: | --- | ---: |
+| 40 / 40 | -91.12 | **-88.62** | -91.62 | +2.50 | Not clear | 2.000711 |
+| 50 / 50 | -91.62 | **-79.62** | -90.47 | +10.84 | Candidate | 2.000774 |
+| 60 / 60 | -91.97 | **-69.47** | -91.97 | +22.50 | Candidate | 2.001061 |
+
+Levels are peaks within ±10 kHz of 5.184050 GHz. Gain 40 is too close to the noise floor for a reliable isolated tone-power reading. The gain-50 and gain-60 active peaks were at **5.184050 GHz**. Raising commanded gain by 10 dB from 50 to 60 raised the indicated tone by **10.15625 dB**. This supports correct relative TX gain response over that step; it does not measure either driver's individual gain or establish a calibrated output power. The gain-60 result is within 0.25 dB of the earlier −69.22 dBm reading despite the reboot and cable reconnection.
+
+All three source runs completed without reported stream, decode or cleanup errors; each retained one benign post-stop burst acknowledgement. Numeric scans and actual active LCD freezes were verified within their source windows. The separate active LCD marker readings were approximately −79.1 dBm at gain 50 and −70.6 dBm at gain 60. The display continues to show REDUCED LINEARITY; cable/DC-block loss and absolute calibration remain unqualified. Do not add internal analyzer attenuation to the indicated levels.
+
+The RAM-only launcher retained the installed demo's original timing and error accounting. Its 12 adapter/parser tests passed on host and SDRB. A staging test initially lacked its parser fixture; including the unchanged original fixture resolved that preparation error before any RF run. Final boot/module/application hashes were unchanged, no failed services were listed and the radio returned unclaimed. No GPIO switching check was repeated. AmpPwr1 was left powered; AmpPwr2 remained off, and transmission stopped.
+
+The gain control responds, but the weak absolute fundamental and actual power at the doubler input remain unresolved. This sweep neither qualifies the 10 GHz output nor establishes that the doubler is damaged.
+
+[CSV](files/j10-gain-sweep.csv). Numeric and LCD sweeps are separate observations. PNGs below are unmodified instrument captures; original RGB565 payloads are archived privately, with capture hashes in each measurement record.
+
+### J10 sweep, gain 40
+
+[Measurement record](files/j10-sweep-gain40.json).
+
+![J10 gain 40, before](images/j10-sweep-gain40-before.png)
+
+Before. [Numeric scan](files/j10-sweep-gain40-before.txt).
+
+![J10 gain 40, active](images/j10-sweep-gain40-active.png)
+
+Active. [Numeric scan](files/j10-sweep-gain40-active.txt).
+
+![J10 gain 40, after](images/j10-sweep-gain40-after.png)
+
+After. [Numeric scan](files/j10-sweep-gain40-after.txt).
+
+### J10 sweep, gain 50
+
+[Measurement record](files/j10-sweep-gain50.json).
+
+![J10 gain 50, before](images/j10-sweep-gain50-before.png)
+
+Before. [Numeric scan](files/j10-sweep-gain50-before.txt).
+
+![J10 gain 50, active](images/j10-sweep-gain50-active.png)
+
+Active. [Numeric scan](files/j10-sweep-gain50-active.txt).
+
+![J10 gain 50, after](images/j10-sweep-gain50-after.png)
+
+After. [Numeric scan](files/j10-sweep-gain50-after.txt).
+
+### J10 sweep, gain 60
+
+[Measurement record](files/j10-sweep-gain60.json).
+
+![J10 gain 60, before](images/j10-sweep-gain60-before.png)
+
+Before. [Numeric scan](files/j10-sweep-gain60-before.txt).
+
+![J10 gain 60, active](images/j10-sweep-gain60-active.png)
+
+Active. [Numeric scan](files/j10-sweep-gain60-active.txt).
+
+![J10 gain 60, after](images/j10-sweep-gain60-after.png)
+
+After. [Numeric scan](files/j10-sweep-gain60-after.txt).
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
