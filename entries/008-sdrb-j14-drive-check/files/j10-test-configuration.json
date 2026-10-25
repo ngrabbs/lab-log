@@ -1,0 +1,17 @@
+{
+  "revision": "j10-fundamental-20261025-r1",
+  "original_module_sha256": "42484b2c5ab640d970fcb8d90039d963b43b6ef28ba49ae5b81eb09aa9cc8c9e",
+  "configuration": {
+    "tx_path": "rf_out_b",
+    "tx_filter": "highpass",
+    "lo_hz": 5184000000,
+    "tone_offset_hz": 50000,
+    "fundamental_hz": 5184050000,
+    "gain": 60,
+    "amplitude": 0.1,
+    "seconds": 2
+  },
+  "scope": "No installed software/FPGA override. J10 fundamental measurement; no calibrated IC3 input-power claim.",
+  "installed_demo_sha256": "573472d8f5c11aa1b4830cd0b84e722990e33ed2c0a967848ea002ac70e9f448",
+  "verification": "12 adapter/parser tests pass host and SDRB ARM; installed source and BOOT identity guards pass; no installed override."
+}

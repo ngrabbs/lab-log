@@ -6,6 +6,8 @@
 
 I wanted to take the DEMI transverter out of the measurement chain and check whether I could see a signal directly from SDRB's J14 output. I tried three TX gain settings with both amplifier supplies off, then repeated them with the driver supply on at 9 V. **None of the six steps produced a distinct tone near 5.184050 GHz.** All six two-second streams completed without reported stream or cleanup errors.
 
+A subsequent **J10 fundamental measurement detected 5.184050 GHz at about −69.2 dBm with 20.3 dB contrast**, using 10 dB analyzer attenuation and the same gain 60/amplitude 0.1. See the J10 follow-up below.
+
 These are exploratory measurements below the doubler's specified frequency range. The readings near the noise floor are not calibrated SDRB output-power measurements.
 
 This is a separate part of the [SDRB RF_Out investigation](../007-sdrb-rf-out/README.md).
@@ -243,7 +245,7 @@ Proposed order, with each step recorded before proceeding:
 
 1. **Verify selection electrically (subsequently completed below).** Use a deliberate low-drive route-hold diagnostic so a meter can read R92/R91 during B and C selection. Start with the driver supply off. Confirm the control states, supply rails and software mapping without relying on a two-second LCD or GPIO readback.
 2. **Check assembly with power off.** Verify same-net continuity U12 pin 3 to IC3 pin 5, and IC3 pin 11 to J14 center; inspect the actual connector launch and ground/paddle joints. Resistance from an RF port to ground alone is not a conclusive failure test.
-3. **Measure current fundamental drive.** Reproduce Path B/J10 detection at 5.184050 GHz on the current image, record actual AmpPwr1 voltage/current and gain/amplitude, and establish a measured level versus control setting. J10 is a first surrogate; its extra switch and launch losses mean it is not exactly IC3 input power.
+3. **Measure current fundamental drive (single-setting J10 check subsequently completed below).** Reproduce Path B/J10 detection at 5.184050 GHz on the current image, record actual AmpPwr1 voltage/current and gain/amplitude, and establish a measured level versus control setting. J10 is a first surrogate; its extra switch and launch losses mean it is not exactly IC3 input power.
 4. **Establish a bounded in-band IC3 input.** Use suitable 50 ohm RF access and measured loss/uncertainty to establish the power reaching IC3 pin 5. Start at the lower specified drive point, +12 dBm, rather than blindly increasing software gain or using +21 dBm as a target. Typical conversion loss is around 13 dB, so an output near −1 dBm would be an order-of-magnitude expectation under the manufacturer's matched test conditions, not a board guarantee.
 5. **Validate the 10 GHz receive path and test doubling.** Confirm the DEMI's LO/receive configuration and sensitivity with an independent reference where available. Verify the output connector, cable and DC block are suitable at 10.368 GHz; the previously inventoried 6 GHz-rated block does not establish 10 GHz performance. Restore appropriate receiver protection for a potentially much stronger in-band doubled output. With verified Path C selection and measured drive, look for on/off contrast at 144.100 MHz if the DEMI LO is 10.224 GHz. A second planned tone offset +10 kHz higher should move the doubled RF and the uninverted IF by +20 kHz; choose scan resolution that can resolve that shift.
 
@@ -265,5 +267,68 @@ The owner also confirmed that all switching circuits had already been tested and
 The next focus is the actual fundamental RF drive and in-band doubling. This check closes the outstanding Path C control-voltage question without changing the earlier RF measurements.
 
 The diagnostic hold was released after measurement. Cleanup returned the controls to their inactive state and restarted MPM without errors; the radio was unclaimed and no failed services were listed. No new RF tone was sent.
+
+## J10 fundamental measurement — October 25, 2026
+
+With the switching checks complete, I moved the cable to **J10/RF_Out** to measure the fundamental before attempting further doubler tests:
+
+`J10 → DC block → tinySA input`
+
+No external pad was installed. AmpPwr1 remained at 9 V and AmpPwr2 stayed off, as owner-confirmed. This used driver-only **Path B / high-pass**, not J14 and not the separate final PA.
+
+Both runs used requested LO **5.184000 GHz**, complex tone **+50 kHz**, expected fundamental **5.184050 GHz**, TX gain **60**, digital amplitude **0.1**, channel 1, 2.304 MS/s, 8,000-byte frames and a two-second duration. The reported gain was 60.0 and reported LO was 5,183,999,996.185296 Hz in both runs. The LO value is software readback, not independent RF frequency calibration.
+
+The first run retained 31 dB analyzer attenuation. It did not give a clear target-window detection. All peaks were below −25 dBm, so I reduced **only the analyzer attenuation to 10 dB** and repeated the same source settings. No TX gain or amplitude increase occurred.
+
+The analyzer remained in Ultra mode with LNA off, 10 kHz RBW, zero external correction and a 5.183550–5.184550 GHz / 101-point scan. Numeric values are peaks within ±10 kHz of the nominal tone; contrast is `on − max(before, after)`.
+
+| Analyzer internal attenuation | Before (dBm) | Tone on (dBm) | After (dBm) | Rise (dB) | Duration (s) | Detection |
+| ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 31 dB | -71.03 | **-67.69** | -71.53 | +3.34 | 2.001208 | Not clear |
+| 10 dB | -90.56 | **-69.22** | -89.56 | +20.34 | 2.000740 | Clear |
+
+**The 10 dB setting clearly detected the fundamental:** the strongest active numeric bin was **5.184050 GHz at −69.22 dBm**, with **20.34 dB** off/on/off contrast. The fixed LCD marker on its separate active sweep read approximately **−70.1 dBm**. The 31 dB run's fixed LCD marker read approximately −72.5 dBm; its noise-window numeric peak is not a reliable isolated signal-power measurement.
+
+These are indicated levels at the analyzer input. **Do not add the internal 10 or 31 dB attenuation to them.** There is no external pad correction; cable/DC-block losses and absolute calibration remain unqualified. The display still shows REDUCED LINEARITY. Improving analyzer sensitivity established detection without increasing source power.
+
+Both streams completed with no reported stream, decode or cleanup errors. Each retained one benign post-stop burst acknowledgement. The numeric scans and actual active LCD freezes were verified inside the source windows; the LCD freezes occurred about 1.72 seconds after the received start markers. Each PNG is an unmodified device pixel capture; the numeric and LCD sweeps are separate observations.
+
+The installed rc.3 native Path B/high-pass support was used. A RAM-only adapter changed the installed demo's device arguments and supplied fixed source parameters; it preserved the original demo's timing and error accounting. Twelve adapter/parser tests passed on host and SDRB ARM. No installed module, application or FPGA replacement was needed, and final hashes remained unchanged. The radio returned unclaimed with no failed services.
+
+This confirms a detectable fundamental through the current J10 path at the intended frequency. It does **not** measure IC3 pin 5 directly: the J10 path includes an extra switch/launch, and the cable/DC-block loss is uncorrected. The indicated J10 level at this setting is very low relative to the doubler's specified drive. Actual driver bias/current, RF level progression through the chain, and a bounded IC3 input-power measurement are the next focus. No higher TX setting or 10 GHz run was performed here.
+
+[CSV](files/j10-fundamental.csv) · [JSON summary](files/j10-fundamental.json) · [Fixed configuration](files/j10-test-configuration.json)
+
+### J10, analyzer attenuation 31 dB
+
+![J10 at 5.184050 GHz, 31 dB analyzer attenuation, before](images/j10-att31-before.png)
+
+Before. [Numeric scan](files/j10-att31-before.txt) · [LCD metadata](files/j10-att31-before-screen.json)
+
+![J10 at 5.184050 GHz, 31 dB analyzer attenuation, active](images/j10-att31-active.png)
+
+Tone on, frozen during the source window. [Numeric scan](files/j10-att31-active.txt) · [LCD metadata](files/j10-att31-active-screen.json)
+
+![J10 at 5.184050 GHz, 31 dB analyzer attenuation, after](images/j10-att31-after.png)
+
+After. [Numeric scan](files/j10-att31-after.txt) · [LCD metadata](files/j10-att31-after-screen.json)
+
+[Run record](files/j10-att31-measurement.json).
+
+### J10, analyzer attenuation 10 dB
+
+![J10 at 5.184050 GHz, 10 dB analyzer attenuation, before](images/j10-att10-before.png)
+
+Before. [Numeric scan](files/j10-att10-before.txt) · [LCD metadata](files/j10-att10-before-screen.json)
+
+![J10 at 5.184050 GHz, 10 dB analyzer attenuation, active](images/j10-att10-active.png)
+
+Tone on, frozen during the source window. [Numeric scan](files/j10-att10-active.txt) · [LCD metadata](files/j10-att10-active-screen.json)
+
+![J10 at 5.184050 GHz, 10 dB analyzer attenuation, after](images/j10-att10-after.png)
+
+After. [Numeric scan](files/j10-att10-after.txt) · [LCD metadata](files/j10-att10-after-screen.json)
+
+[Run record](files/j10-att10-measurement.json).
 
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
