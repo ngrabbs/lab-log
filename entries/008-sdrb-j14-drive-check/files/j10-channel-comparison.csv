@@ -1,0 +1,5 @@
+actual_connector,UHD_channel,intended_physical_TX,before_dBm,active_window_peak_dBm,after_dBm,contrast_dB,detection_candidate,duration_s
+J14,1,TX1B,-88.90625,-89.90625,-89.40625,-1.0,False,2.0011872800000674
+J14,0,TX2B,-87.5625,-92.0625,-91.90625,-4.5,False,2.0014252579999265
+J10,1,TX1B,-92.40625,-70.90625,-90.5625,19.65625,True,2.000697559999935
+J10,0,TX2B,-91.40625,-88.5625,-90.40625,1.84375,False,2.0007687319998695

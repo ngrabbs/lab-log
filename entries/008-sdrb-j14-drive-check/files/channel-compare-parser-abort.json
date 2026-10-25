@@ -1,0 +1,38 @@
+{
+  "original_metadata_scrubbed": {
+    "utc": "2026-10-25T16:28:24.148749+00:00",
+    "path": "J10 / RF_Out -> DC block -> tinySA input; DEMI bypassed",
+    "external_attenuation_db": 0,
+    "amp_supplies": {
+      "AmpPwr1": "ON at 9V per owner",
+      "AmpPwr2": "OFF per owner"
+    },
+    "configuration": {
+      "tx_path": "rf_out_b",
+      "bank": "highpass",
+      "channel": 1,
+      "physical_tx": "TX1B",
+      "lo_hz": 5184000000,
+      "tone_offset_hz": 50000,
+      "expected_fundamental_hz": 5184050000,
+      "gain": 60,
+      "nominal_native_tx_attenuation_db": 29.75,
+      "amplitude": 0.1,
+      "amplitude_db_relative_to_one": -20,
+      "seconds": 2
+    },
+    "tinysa": {
+      "ultra": "on",
+      "attenuation_db": 10,
+      "lna": "off",
+      "rbw_khz": 10,
+      "external_gain_correction_db": 0
+    },
+    "scope": "Direct driver-only Path B fundamental; J10 level is not exact IC3 input power. Supply state per amp_supplies. One tone per step, no retries.",
+    "scans": [],
+    "screens": [],
+    "status": "stopped-on-first-error",
+    "error": "TypeError('parse_scan() takes 1 positional argument but 4 were given')"
+  },
+  "correction": "Aborted before source start; actual RF cable was on J14 per subsequent owner correction."
+}

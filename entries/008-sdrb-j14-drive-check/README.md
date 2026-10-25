@@ -702,4 +702,101 @@ Active. [Numeric scan](files/libre-freq-5800000000-active.txt).
 
 After. [Numeric scan](files/libre-freq-5800000000-after.txt).
 
+## Two-channel comparison and connector correction — October 25, 2026
+
+The proposed test compared UHD channel **1 (intended TX1B)** with **0 (intended TX2B)** through J10 at the same frequency and drive. The source audit maps both B branches through separate baluns/high-pass filters to U24 and then the shared drivers/output path. Physical transmitter/bank registers were not sampled during these runs, so those physical names remain source-derived mappings rather than independent hardware readbacks.
+
+### Initial connection was J14, not J10
+
+After the owner reported moving the cable back and confirmed AmpPwr1 at 9 V/AmpPwr2 off, the first analyzer acquisition stopped **before RF** because the controller passed four arguments to an older one-argument scan parser. The compatible parameterized parser was supplied, the controller/parser call signature was checked, and a saved 101-point baseline fixture parsed successfully. The original aborted record and baseline are preserved: [Record](files/channel-compare-parser-abort.json) · [Scan](files/channel-compare-parser-abort-before.txt). The 13 adapter/parser unit checks had passed, but had not caught this cross-file integration mismatch.
+
+Two subsequent source runs completed cleanly without distinct tones. **The owner then identified that the cable had actually been on J14**, and moved it to J10. These first two runs' controller metadata incorrectly says J10; the published wrapper explicitly preserves and corrects that metadata. They are J14 observations at a 5.184050 GHz analyzer center, not evidence of failed J10 transmission. At this fundamental the intended doubled output would be **10.368100 GHz**, outside this direct tinySA measurement. These J14 observations do not establish doubler performance or damage.
+
+The owner reported **9 V / 0.573 A** on the bench supply when correcting the connection; that output had previously been identified as powering the main SDRB board plus AmpPwr1. It does not resolve individual driver currents.
+
+### Corrected J10 results
+
+After the owner moved the cable to **J10 → DC block → coax → tinySA**, both channel runs were repeated with unchanged drive. AmpPwr1 remained at the confirmed 9 V setup and AmpPwr2 off. No external pad was installed.
+
+Both runs used LO **5.184000 GHz**, complex offset **+50 kHz**, TX gain **60**, amplitude **0.1**, 2.304 MS/s, 8,000-byte frames and a requested two seconds. tinySA retained Ultra on, LNA off, **10 dB internal attenuation**, zero external correction, 10 kHz RBW and the 101-point 5.183550–5.184550 GHz scan. Each result was inspected before advancing; the source parameters were not increased.
+
+| Actual connector | UHD channel / intended branch | Before (dBm) | Tone-on window peak (dBm) | After (dBm) | Contrast (dB) | Distinct tone |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| J10 | 1 / TX1B | -92.41 | **-70.91** | -90.56 | +19.66 | Yes |
+| J10 | 0 / TX2B | -91.41 | **-88.56** | -90.41 | +1.84 | No |
+
+The expected **TX1B reference returned on J10**, with its active peak at 5.184050 GHz and 19.66 dB contrast. The alternate channel did not produce a distinct target tone; its −88.56 dBm value is a noise-window peak, not measured TX2B tone power. The separate LCD markers read approximately −70.1 dBm for channel 1 and −91.9 dBm for channel 0. Do not derive a calibrated branch-gain difference by subtracting a noise-window value from a detected tone.
+
+This is a channel-dependent result worth investigating. It does **not** prove T8/U30, the TX2B RFIC output or the shared drivers are faulty. Channel-specific digital sample selection, RFIC enable/gain/bank settings and the analog branch remain possible causes. The TX1B output itself is still weak compared with the separate LibreSDR reference, so a shared-path issue has not been excluded.
+
+All four actual source runs (two J14-connected, two corrected J10-connected) completed with no reported stream/decode/cleanup errors and one benign post-stop burst acknowledgement each. Requested gain/channel matched UHD readback, and active numeric/LCD timing checks passed. Source readback is not physical RFIC register evidence. Corrected J10 source durations were approximately 2.001 seconds each. No schematic/PCB changes, component removals, higher-power trial or new switch-voltage test occurred.
+
+The source identity checks passed, installed boot/module/application hashes remained unchanged, MPM returned the radio unclaimed, and no failed services were listed. BACKUP-A remained mounted. RF is stopped; the last confirmed AmpPwr1 supply setting is 9 V and AmpPwr2 off.
+
+[CSV including both actual connectors](files/j10-channel-comparison.csv). Numeric scans and LCD captures are distinct sweeps. The following 12 PNGs are unmodified instrument captures; original RGB565 payloads and private console logs remain archived. Each JSON record includes capture hashes and the explicit connector correction.
+
+### J14, UHD channel 1 — initial connector mistake
+
+[Measurement and wiring review](files/j14-channel-compare-ch1.json).
+
+![J14 channel 1, before](images/j14-channel-compare-ch1-before.png)
+
+Before. [Numeric scan](files/j14-channel-compare-ch1-before.txt).
+
+![J14 channel 1, active](images/j14-channel-compare-ch1-active.png)
+
+Active. [Numeric scan](files/j14-channel-compare-ch1-active.txt).
+
+![J14 channel 1, after](images/j14-channel-compare-ch1-after.png)
+
+After. [Numeric scan](files/j14-channel-compare-ch1-after.txt).
+
+### J14, UHD channel 0 — initial connector mistake
+
+[Measurement and wiring review](files/j14-channel-compare-ch0.json).
+
+![J14 channel 0, before](images/j14-channel-compare-ch0-before.png)
+
+Before. [Numeric scan](files/j14-channel-compare-ch0-before.txt).
+
+![J14 channel 0, active](images/j14-channel-compare-ch0-active.png)
+
+Active. [Numeric scan](files/j14-channel-compare-ch0-active.txt).
+
+![J14 channel 0, after](images/j14-channel-compare-ch0-after.png)
+
+After. [Numeric scan](files/j14-channel-compare-ch0-after.txt).
+
+### J10, UHD channel 1 — corrected connection
+
+[Measurement and wiring review](files/j10-channel-compare-ch1.json).
+
+![J10 channel 1, before](images/j10-channel-compare-ch1-before.png)
+
+Before. [Numeric scan](files/j10-channel-compare-ch1-before.txt).
+
+![J10 channel 1, active](images/j10-channel-compare-ch1-active.png)
+
+Active. [Numeric scan](files/j10-channel-compare-ch1-active.txt).
+
+![J10 channel 1, after](images/j10-channel-compare-ch1-after.png)
+
+After. [Numeric scan](files/j10-channel-compare-ch1-after.txt).
+
+### J10, UHD channel 0 — corrected connection
+
+[Measurement and wiring review](files/j10-channel-compare-ch0.json).
+
+![J10 channel 0, before](images/j10-channel-compare-ch0-before.png)
+
+Before. [Numeric scan](files/j10-channel-compare-ch0-before.txt).
+
+![J10 channel 0, active](images/j10-channel-compare-ch0-active.png)
+
+Active. [Numeric scan](files/j10-channel-compare-ch0-active.txt).
+
+![J10 channel 0, after](images/j10-channel-compare-ch0-after.png)
+
+After. [Numeric scan](files/j10-channel-compare-ch0-after.txt).
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
