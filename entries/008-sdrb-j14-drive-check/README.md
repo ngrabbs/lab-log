@@ -346,4 +346,33 @@ Both bias feeds have DC voltage close to the nominal 9 V supply. The difference 
 
 The next RF diagnosis is to establish gain through the driver chain and locate the large loss responsible for the weak J10 fundamental. Switch-control checks are already complete.
 
+## Driver-off comparison — October 25, 2026
+
+Disconnecting only AmpPwr1 reduced the owner-reported bench reading from **9 V / 0.572 A** to **9.00 V / 0.356 A**, while the main SDRB board remained powered. The difference is **0.216 A (216 mA)** for the AmpPwr1 branch, assuming the other load remained unchanged. This does not resolve the current through each driver individually. AmpPwr2 stayed off.
+
+I then ran one two-second tone with AmpPwr1 off, retaining J10 → DC block → tinySA, no external pad, Path B/high-pass, channel 1, LO 5.184000 GHz, +50 kHz tone offset, TX gain 60 and amplitude 0.1. Analyzer settings matched the earlier 10 dB internal-attenuation run, including LNA off and 10 kHz RBW. No power escalation or retry occurred.
+
+| AmpPwr1 | Before (dBm) | Tone on (dBm) | After (dBm) | Off/on/off contrast | Distinct tone |
+| --- | ---: | ---: | ---: | ---: | --- |
+| On, earlier reference | −90.56 | **−69.22** | −89.56 | +20.34 dB | Yes |
+| Off, new measurement | −93.50 | **−90.50** | −90.00 | −0.50 dB | No |
+
+Values are target-window peaks within ±10 kHz of 5.184050 GHz. The off-driver readings are noise-window peaks, not measured tone power; subtracting them from the powered result does not establish calibrated amplifier gain. The powered and unpowered runs show that enabling the driver branch improves RF transmission through the current path. The absolute J10 level remains weak, and neither individual amplifier gain nor IC3 input power has been established.
+
+The source completed in **2.000751 seconds**, with reported gain 60, no stream/decode/cleanup errors, and one benign post-stop burst acknowledgement. Both the active numeric scan and actual LCD freeze were verified inside the transmitting window. The separate active LCD sweep's marker read approximately −95.7 dBm. The radio returned unclaimed with no failed services. AmpPwr1 was left off; no subsequent tone was sent.
+
+[Measurement record](files/j10-drivers-off-measurement.json). These are unmodified instrument captures; numeric and LCD measurements are separate sweeps.
+
+![Driver off, before tone](images/j10-drivers-off-before.png)
+
+Before. [Numeric scan](files/j10-drivers-off-before.txt).
+
+![Driver off, during tone](images/j10-drivers-off-active.png)
+
+Tone active. [Numeric scan](files/j10-drivers-off-active.txt).
+
+![Driver off, after tone](images/j10-drivers-off-after.png)
+
+After. [Numeric scan](files/j10-drivers-off-after.txt).
+
 [Back to SDRB RF_Out](../007-sdrb-rf-out/README.md) · [Equipment reference](../../equipment/README.md) · [Lab Log](../../README.md)
