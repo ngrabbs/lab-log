@@ -59,7 +59,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | --- | --- | --- |
 | Baofeng UV-5R | Recorded owned (x2); one used 2026-10-28 | Two recorded owned. 2 m / 70 cm handhelds; source reports about 1 W low / 5 W high, not a current calibrated power measurement. [Digirig Lite cable test](#digirig-lite--uv-5r-cable-selection-and-test): use the black cable tested below. |
 | Digirig Lite | Owner confirmed available and tested 2026-10-28 | USB audio/PTT interface with a headphone-style radio-cable socket. Receive audio and a transmitted tone demonstrated with a UV-5R; [cable selection and test details](#digirig-lite--uv-5r-cable-selection-and-test). |
-| Quansheng handheld, model unspecified | Owner confirmed available and used 2026-10-28 | Tuned to the same frequency as the UV-5R to listen during the Digirig tone test. Exact model not recorded. |
+| Quansheng handheld, model unspecified | Owner confirmed available and used 2026-10-28 | Used to receive the UV-5R tone, then keyed successfully through the same black Digirig cable when the cable was moved to the Quansheng. Exact model not recorded; reception of the Quansheng's transmitted tone on the Baofeng was not explicitly confirmed. |
 | Xiegu X6100 | Shared; current access unconfirmed | Source says loaned to Cubesat@MSU and retrievable. Current access needs confirmation before a test depends on it. |
 | Icom IC-7200 | Recorded owned | HF transceiver; source-listed approximately 100 W. Present configuration and measured output unconfirmed. |
 | Icom IC-9700 | Recorded owned | 2 m / 70 cm / 23 cm all-mode; model confirmed in source. Cross-band operation noted; present station configuration unconfirmed. |
@@ -73,9 +73,11 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 
 **Tested:** 2026-10-28. Source: owner observations and Linux audio/PTT checks in the bench-test conversation recorded on that date.
 
-**For this Digirig Lite and UV-5R, use the black radio cable.** The owner identified two cables by their green and black coloring at the Digirig-facing headphone-style connector. The green cable did not key the UV-5R during the test. After swapping to the black cable, the owner heard the transmitted test tone on a second radio. These colors identify the cables tested here; exact cable part numbers and pinouts were not recorded.
+**For this Digirig Lite with either the UV-5R or the tested Quansheng, use the black radio cable.** The owner identified two cables by their green and black coloring at the Digirig-facing headphone-style connector. The green cable did not key the UV-5R during the test. After swapping to the black cable, the owner heard the transmitted test tone on a second radio. These colors identify the cables tested here; exact cable part numbers and pinouts were not recorded.
 
-Connection: computer USB → Digirig Lite → black radio cable plugged into the Digirig's headphone-style socket → UV-5R.
+Connection: computer USB → Digirig Lite → black radio cable plugged into the Digirig's headphone-style socket → UV-5R or tested Quansheng.
+
+**Quansheng follow-up:** the owner left the Digirig connected by USB and moved the same black cable from the UV-5R to the Quansheng. The same three-second tone/PTT sequence was run, and the owner confirmed the Quansheng keyed up. The owner identified one working black cable on hand and wants a second for testing; no additional cable has been ordered in this record. Hearing the Quansheng's transmitted tone on the Baofeng was not explicitly confirmed.
 
 The UV-5R was powered on and set to what the owner described as the 70 cm calling channel; the exact frequency was not recorded. The owner identified the load connected to the UV-5R during the successful black-cable test as the **Pacific Antenna Dummy Load 2.1**. A Quansheng handheld was tuned to the same frequency to listen. This identifies the previously unspecified load; it does not establish attenuation, RF output power, or a characterized RF path. The owner then replaced it with an **unmarked black barrel-style device**, described as an attenuator, while retaining the working black audio/PTT cable. The owner confirmed it has one RF connector and is intended to replace the antenna, then reported hearing the repeated three-second tone clearly on the Quansheng. That establishes that the tone test also worked with this device attached. Its construction is consistent with a terminating load rather than a two-port attenuator, but its identity, impedance/match, power rating, frequency coverage, and attenuation/isolation have not been measured or verified.
 
@@ -84,9 +86,9 @@ The UV-5R was powered on and set to what the owner described as the 70 cm callin
 - **Linux setup:** the interface appeared as C-Media USB audio, USB ID `0d8c:0012`. ALSA device `plughw:CARD=Device,DEV=0` worked for recording and playback. Automatic gain control was disabled; microphone playback monitoring was already muted. A udev rule granted the `audio` group read/write access to the matching HID device for PTT. The HID path during this test was `/dev/hidraw0`; device numbering may change.
 - **Starting settings recorded:** ALSA speaker playback 46% (−20 dB), microphone capture 57% (+8 dB), 48 kHz / 16-bit audio, and a generated tone at approximately 10% of digital full-scale peak. The radio volume was increased during the session, but no repeatable knob position was recorded. These are test settings, not calibrated modulation levels.
 
-**Established:** receive audio in the initial configuration, and PTT plus transmitted audio with the black cable. Audio-level optimization, deviation, RF power, and digital packet decoding remain unverified.
+**Established:** receive audio in the initial configuration, PTT plus transmitted audio from the UV-5R with the black cable, and PTT keying of the tested Quansheng using that same cable. Audio-level optimization, deviation, RF power, and digital packet decoding remain unverified.
 
-Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-lite-setup-manual/), which specifies the black-molded Digirig-facing audio/PTT plug and GPIO3 PTT. The manufacturer's guidance supports the cable choice; this session did not establish the green cable's intended radio or function.
+Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-lite-setup-manual/), which specifies the black-molded Digirig-facing audio/PTT plug and GPIO3 PTT. The manufacturer's guidance supports the cable choice. The [Baofeng HT Digirig Cable Set](https://digirig.net/product/baofeng-cables/) (SKU BFENGMOBILE) lists a black K1 audio/PTT cable and a green K1 programming cable for the serial socket of a suitably configured Digirig Mobile. This explains the observed color distinction if these are the cables from that set; the owner's exact cable part numbers have not been physically verified. The Lite has no serial port, so the green programming cable is not the audio/PTT cable for this test. A second black K1 audio/PTT cable is wanted; the product page offers the set, so availability of that cable alone needs checking.
 
 ## SDRs
 
@@ -175,8 +177,8 @@ The saved project records Bantam Tools **2.5.34**, a custom “Wax test - 1/16 f
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
-| Black Digirig-facing radio cable | Owner confirmed available; transmitted tone demonstrated 2026-10-28 | Use with the tested Digirig Lite / UV-5R combination. Exact part number and pinout unrecorded. [Test record](#digirig-lite--uv-5r-cable-selection-and-test). |
-| Green Digirig-facing radio cable | Owner confirmed available; did not key UV-5R in 2026-10-28 test | Do not select for the tested Digirig Lite / UV-5R setup. Intended application and cause of failure unconfirmed; not established to be defective. [Test record](#digirig-lite--uv-5r-cable-selection-and-test). |
+| Black Digirig-facing radio cable | One working cable owner confirmed 2026-10-28; second wanted, not ordered | UV-5R transmitted tone demonstrated; tested Quansheng keyed successfully using the same cable. Use the black audio/PTT cable with either tested radio. Exact part number and pinout unrecorded. [Test record](#digirig-lite--uv-5r-cable-selection-and-test). |
+| Green Digirig-facing radio cable | Owner confirmed available; did not key UV-5R in 2026-10-28 test | Do not select for the tested Digirig Lite / UV-5R setup. Manufacturer's Baofeng cable set uses green for serial programming on Digirig Mobile, which would explain the result if this is that cable. Exact identity unverified; not established to be defective. [Test record](#digirig-lite--uv-5r-cable-selection-and-test). |
 | SMA male-male jumpers | Recorded owned (~10) | Approximately 10 in source. Calibration-grade status unknown; no specific jumper certified by this inventory. |
 | Adapters (SMA / BNC / N / PL-259 / RP-SMA) | Recorded owned (assorted) | Assorted conversions; exact types, quantities and RF limits unknown. |
 | LMR-400 coax | Recorded owned (many feet) | Source records many feet; installed lengths and measured loss unknown. |
