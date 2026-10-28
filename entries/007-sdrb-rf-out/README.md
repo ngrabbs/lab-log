@@ -252,4 +252,16 @@ The [J14 drive-check entry](../008-sdrb-j14-drive-check/README.md) records the c
 
 The first identity check stopped because its harness expected rc.3's old kernel suffix. The running **6.6.40-xilinx-g7220e40a5fc8** matches the rc.4 build; kernel configuration, tracked source-tree identity and NI driver bytes match rc.3. The failed record is retained; correcting that expectation completes the check without a reboot or RF repeat.
 
-**Boot and software checks pass; RF acceptance is pending.** Dry runs do not establish physical filter switching, mixed-channel RF operation, forwarding stability or calibrated power. The board stays powered idle with no stream running; an attenuation/power budget is needed before radio initialization. Raw build, backup and console evidence remain outside Git. Candidate source review: [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13).
+**Boot and software checks pass.** At this checkpoint RF acceptance was pending; the subsequent attempt below failed. Dry runs do not establish physical filter switching, mixed-channel RF operation, forwarding stability or calibrated power. The board stays powered idle with no stream running; an attenuation/power budget is needed before radio initialization. Raw build, backup and console evidence remain outside Git. Candidate source review: [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13).
+
+## Rc.4 J10 initialization failure — October 28, 2026
+
+**Setup:** same rc.4/source `ac1b437` and 9 V / 1.5 A supply; AmpPwr1 at 9 V, AmpPwr2 disconnected. With power removed, J10/RF_Out was moved to DC block → **30 dB / 2 W pad → tinySA**. RX lead remained LibreSDR TXRA → DC block → J1; LibreSDR was not initialized.
+
+**Result:** one requested six-second TX1A/channel 1, lowpass tone (438 MHz LO + 100 kHz, gain 60, amplitude 0.1, 2.304 MS/s) stopped during initialization with exit 2: `sensor_value_t` has no `.value` property. The routing acknowledgement could not be read; the CLI did not reach the gain-setting or stream-start stage. RFIC initialization/calibration did occur, so this does not establish absence of RF emission. No active-tone level or filter result was obtained; no retry. Final 23 image identities match, MPM is unclaimed and zero services failed.
+
+![tinySA baseline before the failed rc.4 initialization](images/rc4-20261028-before.png)
+
+*Actual tinySA LCD before the attempt: 438.100 MHz marker −112.0 dBm, external 30 dB pad, internal 10 dB attenuation, 3 kHz RBW, LNA/Ultra off. This is a baseline screen, not a tone measurement; no active or after screen was captured.*
+
+**RF acceptance is blocked.** Next: correct the GNU Radio sensor binding, add a regression using a real sensor object, then build and verify a matched replacement before one bounded RF retry. Logs/metadata remain outside Git; [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) stays draft.
