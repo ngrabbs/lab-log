@@ -349,3 +349,39 @@ Same rc.5/source `d4bfe82`, main + AmpPwr1 at9 V /1.5 A limit, AmpPwr2 disconnec
 | ![Actual tinySA LCD before BW pad check](images/rc5-bw30-before.png) | ![Actual tinySA LCD during BW pad check](images/rc5-bw30-active.png) | ![Actual tinySA LCD after BW pad check](images/rc5-bw30-after.png) |
 
 *Actual LCD captures, separate sweeps from numerical scans. Active marker: **438.100 MHz, −53.1 dBm**. Three raw/PNG pairs and metadata hashes verify. RAM metadata removed; final 25 identities, idle/unclaimed state and zero failed services pass. SDRB remains powered idle; no additional RF run.*
+
+## Rc.5 limited TX CLI qualification — October 28
+
+**Image:** unchanged **0.1.0-dev.4-rc.5**, source `d4bfe82`; captured boot and 25 installed identities verified. **Setup:** J10/RF_Out → DC block → sole **BW-S30W5+ 30 dB / 5 W** → tinySA, main + AmpPwr1 at **9 V / 1.5 A limit**, AmpPwr2 disconnected. Common CLI settings: `--tx-path rf_out_b`, rate **2.304 MS/s**, 8000-byte frames, automatic/default master clock (`0`), gain **60**, amplitude **0.1**, about **six seconds** each. The preceding TX1A/BW30 spot is reused on this exact image/setup; the five remaining checks were frozen before RF and each ran once.
+
+TinySA: RBW **3 kHz**, LNA off, correction zero, LO ±200 kHz/201 points. Lowpass: internal **10 dB**, Ultra off; highpass: internal **5 dB**, Ultra on. No fresh calibration. Numerical peaks use ±5 kHz around the nominal tone.
+
+| CLI check / branch | Tone MHz | Before / on / after dBm at tinySA | Contrast dB | Stream seconds | Result |
+|---|---:|---|---:|---:|---|
+| Tone TX1A / U19 (existing BW30 spot) | 438.100 | -102.12 / -53.12 / -106.12 | 49.00 | 6.000729 | Pass |
+| Tone TX2A / U23 | 438.100 | -104.62 / -50.12 / -105.62 | 54.50 | 6.000719 | Pass |
+| Tone TX1B / U28 | 2500.100 | -105.03 / -75.03 / -106.53 | 30.00 | 6.000739 | Pass |
+| Tone TX2B / U30 | 2500.100 | -107.03 / -78.03 / -106.03 | 28.00 | 6.001095 | Pass |
+| TX1A SIGINT / Ctrl-C signal | 438.100 | -102.59 / -53.09 / -104.59 | 49.50 | 6.003790 | Pass |
+| TX1A RAM file playback / restart | 438.100 | -103.59 / -53.12 / -105.12 | 50.47 | 6.000903 | Pass |
+
+All six profiles pass the predeclared **≥10 dB** detection gate and return to background. All source commands exit **0** without reported stream/decode/cleanup errors; each retains one benign post-stop burst acknowledgement. The open-ended `--seconds 0` tone is stopped by **SIGINT six seconds after stream start**, and the following separate `file-tx` application starts/stops cleanly. This tests application stop/restart, not an OS reboot matrix.
+
+The RAM file contains **73,728 complex float32 little-endian samples / 589,824 bytes**, a unit-amplitude +100 kHz tone at 2.304 MS/s; CLI multiplier **0.1**. Full serial readback before playback and the post-playback hash match SHA-256 `6fedfac84b29a04af01df66e45d3c6db98bbaec9d6fb4cacce8ee6adbfa87a1f`. Three real CLI rejection checks also pass without opening hardware: highpass without J10, malformed file length and an existing metadata path; the sentinel file is unchanged.
+
+**Five new metadata records and all 15 actual LCD/raw pairs verify.** Active captures satisfy the source-running timing guard. Final 25 identities, idle/unclaimed state and zero failed services pass; verified RAM input/metadata/test fixtures are removed. No source warning was observed in these five cases; earlier initial-flush warnings remain unresolved.
+
+<details>
+<summary>Actual tinySA captures for the five new checks</summary>
+
+| Check | Before | During stream | After |
+|---|---|---|---|
+| Tone TX2A / U23 | ![Actual rc5q-tx2a438 before LCD](images/rc5-txqual-tx2a438-before.png) | ![Actual rc5q-tx2a438 active LCD](images/rc5-txqual-tx2a438-active.png) | ![Actual rc5q-tx2a438 after LCD](images/rc5-txqual-tx2a438-after.png) |
+| Tone TX1B / U28 | ![Actual rc5q-tx1b2500 before LCD](images/rc5-txqual-tx1b2500-before.png) | ![Actual rc5q-tx1b2500 active LCD](images/rc5-txqual-tx1b2500-active.png) | ![Actual rc5q-tx1b2500 after LCD](images/rc5-txqual-tx1b2500-after.png) |
+| Tone TX2B / U30 | ![Actual rc5q-tx2b2500 before LCD](images/rc5-txqual-tx2b2500-before.png) | ![Actual rc5q-tx2b2500 active LCD](images/rc5-txqual-tx2b2500-active.png) | ![Actual rc5q-tx2b2500 after LCD](images/rc5-txqual-tx2b2500-after.png) |
+| TX1A SIGINT / Ctrl-C signal | ![Actual rc5q-tx1a-interrupt before LCD](images/rc5-txqual-tx1a-interrupt-before.png) | ![Actual rc5q-tx1a-interrupt active LCD](images/rc5-txqual-tx1a-interrupt-active.png) | ![Actual rc5q-tx1a-interrupt after LCD](images/rc5-txqual-tx1a-interrupt-after.png) |
+| TX1A RAM file playback / restart | ![Actual rc5q-tx1a-file-restart before LCD](images/rc5-txqual-tx1a-file-restart-before.png) | ![Actual rc5q-tx1a-file-restart active LCD](images/rc5-txqual-tx1a-file-restart-active.png) | ![Actual rc5q-tx1a-file-restart after LCD](images/rc5-txqual-tx1a-file-restart-after.png) |
+
+</details>
+
+**Qualified scope:** this exact image's on-board TX CLI, four TX branches through driver-only J10 at the listed frequencies/settings, RAM-file playback and SIGINT/application restart. These short spots do not qualify full filter response, calibrated power, SD-backed playback, other rates/clocks, physical direct pads, RX overrides/mixed channels/2R2T, final PA/doubler or stable forwarding. Ray-specific GUI/Windows automation is separate. Earlier failures and operator corrections remain retained; no gain/frequency sweep or repeat campaign was run. Raw records remain outside Git. The handover uses the unchanged, fully read-back SD image.
