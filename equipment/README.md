@@ -1,6 +1,6 @@
 # Equipment on Hand
 
-**Updated:** 2026-10-25
+**Updated:** 2026-10-28
 
 **Inventory status:** Seeded from older testbed records; reconciliation in progress.
 
@@ -30,7 +30,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | BECEN SMA DC-block (x2) | Recorded owned | Source lists 50 Ω, 2 W, upper frequency 6 GHz. Lower cutoff and exact model unknown; the source phrase “DC to 6 GHz” is not a usable DC-block passband specification. |
 | Crystek 2400 MHz SMA low-pass filter (x2) | Recorded owned | Source describes filters for the 2.4 GHz PA. Exact part, insertion loss and stopband measurements unknown; no measured harmonic-suppression claim imported. |
 | KKnoon 150 W 20 A programmable electronic load | Recorded owned | Constant current / voltage / resistance / power, USB logging, TFT display. Drives battery discharge characterization, supply regulation tests, solar IV curves |
-| Mini-Circuits BW-S30W5+ | Unconfirmed (ordered) | Older status: ordered. Arrival/current availability unconfirmed. Source-listed 30 dB, 5 W, DC–18 GHz; no matching characterization capture found. |
+| Mini-Circuits BW-S30W5+ | Owner confirmed available October 28 | Owner reports fitting this pad for the SDRB test; supersedes the older ordered-only status. Nominal owner-reported 30 dB, 5 W, DC–18 GHz. One [438.1 MHz in-circuit comparison](../entries/007-sdrb-rf-out/README.md#bw-s30w5-pad-check--october-28) shows a 30.0 dB input-level change on insertion. No full-range or power-handling characterization. |
 | Surecom SW-102 | Unconfirmed (ordered) | Older status: ordered. Arrival/current availability unconfirmed. Source-listed 125–525 MHz directional power/SWR meter. |
 | RC battery wattmeter (150 A) | Recorded owned | DC only -- used for supply V / I on battery lead |
 | ANENG AN8008 | Recorded owned | primary DMM |
@@ -170,7 +170,7 @@ Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax 
 ## Items to confirm
 
 - [ ] Othermill tooling: verify the cutter reported as “1/18” inch, unidentified ball cutter, exact tool/shank sizes and condition; resolve the 12,000 RPM preset versus 16,500 RPM generated-code discrepancy before reusing the wax setup.
-- [ ] Mini-Circuits BW-S30W5+ and Surecom SW-102: did the older orders arrive, and are the items available?
+- [ ] Surecom SW-102: did the older order arrive, and is it available? BW-S30W5+ availability was confirmed by the owner on October 28.
 - [ ] Thingy:91X: owned, still wanted, or waiting for bring-up?
 - [ ] Xiegu X6100: current loan/access status.
 - [ ] Amplifiers/LNAs: confirm availability and exact module identities; no measured gain, linearity or noise figure imported.

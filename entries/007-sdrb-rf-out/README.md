@@ -316,7 +316,7 @@ One additional six-second run was explicitly requested, with the same rc.5, conf
 
 ### Requested repeat: clear J10 tone — October 28
 
-Same rc.5/source `d4bfe82`, confirmed AmpPwr1 connection, TX1A/channel 1/gain60/amplitude0.1 and **J10 → DC block → 30 dB / 2 W → tinySA** setup. The first analyzer preflight rejected a malformed `caloutput off` line and aborted **before any RF stream**. A blank-line console resynchronization was added; all subsequent commands were accepted and only **one** RF run followed. No image, frequency, gain or filter change.
+Same rc.5/source `d4bfe82`, confirmed AmpPwr1 connection and TX1A/channel 1/gain60/amplitude0.1. **Attenuation correction:** the owner subsequently confirmed the 30 dB pad had been removed for this passing run. Its actual path was **J10 → DC block → tinySA, no external pad**; the original 30 dB acquisition-time assumption is superseded. Raw readings are unchanged. The first analyzer preflight rejected a malformed `caloutput off` line and aborted **before any RF stream**. A blank-line console resynchronization was added; all subsequent commands were accepted and only **one** RF run followed. No image, frequency, gain or filter change.
 
 | 438.1 MHz target window, at tinySA | Before | Tone on | After |
 |---|---:|---:|---:|
@@ -331,3 +331,21 @@ Same rc.5/source `d4bfe82`, confirmed AmpPwr1 connection, TX1A/channel 1/gain60/
 *Actual LCD captures, separate sweeps from the numeric scans. Active fixed marker: **438.100 MHz, −23.1 dBm**. Internal attenuation 10 dB, RBW 3 kHz, LNA/Ultra off; external correction zero, no fresh calibration. All three raw/PNG pairs and metadata verify. RAM metadata removed; final 25 identities, idle/unclaimed state and zero failed services pass. SDRB remains powered idle; no additional RF run.*
 
 **Operator follow-up:** the owner reports tinySA appeared hung and that the only action they took before the passing run was to **reboot tinySA**. This is consistent with analyzer recovery. The host also resynchronized the console during preflight; the SDRB image and stream settings were unchanged. The earlier failures remain retained without assigning a proven SDRB RF fault.
+
+### BW-S30W5 pad check — October 28
+
+The owner reinserted a **BW-S30W5+**, nominal **30 dB / 5 W / DC–18 GHz**, as the **sole external pad**: **J10/RF_Out → DC block → BW-S30W5+ → tinySA**. The owner clarified it had been removed for a few preceding tests; the successful −23.125 dBm baseline above was **unattenuated**. Exact pad state during earlier failed repeats remains unconfirmed.
+
+Same rc.5/source `d4bfe82`, main + AmpPwr1 at9 V /1.5 A limit, AmpPwr2 disconnected, channel1/TX1A lowpass, LO438 MHz +100 kHz, gain60, amplitude0.1, 2.304 MS/s /8000-byte frames, one six-second tone. Analyzer settings unchanged: internal10 dB, RBW3 kHz, LNA/Ultra off, correction0 dB.
+
+| Level at tinySA | Before | Tone on | After |
+|---|---:|---:|---:|
+| With BW-S30W5+ inserted | −102.125 dBm | **−53.125 dBm at438.100 MHz** | −106.125 dBm |
+
+**Pass: 49.0 dB contrast**, returning to background. The active reading drops **30.0 dB** from the immediately preceding no-pad reading of **−23.125 dBm**, matching the pad's nominal attenuation at this one frequency. This is an uncalibrated in-circuit comparison; it does not establish DC–18 GHz performance, 5 W handling or calibrated SDRB output power. Stream **6.000729 s**, targetexit0, no reported stream/decode/cleanup errors, one post-stop burst acknowledgement.
+
+| Before | During requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before BW pad check](images/rc5-bw30-before.png) | ![Actual tinySA LCD during BW pad check](images/rc5-bw30-active.png) | ![Actual tinySA LCD after BW pad check](images/rc5-bw30-after.png) |
+
+*Actual LCD captures, separate sweeps from numerical scans. Active marker: **438.100 MHz, −53.1 dBm**. Three raw/PNG pairs and metadata hashes verify. RAM metadata removed; final 25 identities, idle/unclaimed state and zero failed services pass. SDRB remains powered idle; no additional RF run.*
