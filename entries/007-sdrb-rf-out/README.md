@@ -1,7 +1,7 @@
 # 007 SDRB RF_Out check
 
 **Status:** In progress  
-**Started / updated:** 2026-10-20
+**Started / updated:** 2026-10-20 / 2026-10-28
 
 Check the signal at **J10/RF_Out** using driver-only Path B, with the final PA off.
 
@@ -235,3 +235,157 @@ After the earlier component checks, original dev.3 software was restored and dia
 ## J14 doubler follow-up — October 25, 2026
 
 The [J14 drive-check entry](../008-sdrb-j14-drive-check/README.md) records the corrected Jx1/J14 connection, a direct-to-tinySA experiment with no external pad, and gain 0/30/60 measurements with the driver supply off and on at 9 V. It includes actual LCD captures and numeric scans. No distinct 5.184050 GHz tone was detected; this exploratory frequency is below the doubler's specified output band. It does not extend the qualified scope of the checks above.
+
+
+## Rc.4 boot and software checks — October 28, 2026
+
+**Setup:** new **0.1.0-dev.4-rc.4** image, source `ac1b437`, on the existing 64 GB test card; J12 console captured before power-up. Supply **9 V / 1.5 A limit**, AmpPwr1 at 9 V, AmpPwr2 disconnected. LibreSDR TXRA → DC block → J1/Antenna_in; J10/RF_Out → DC block → LibreSDR RXA. **No attenuators fitted; neither radio was claimed or initialized.**
+
+| Check | Result |
+|---|---|
+| Rollback backup | All 63,864,569,856 card bytes backed up; full decompression/checksum match |
+| New image/card | Build and offline image checks pass; all 4,563,406,848 bytes written and verified by direct readback |
+| Captured boot / J12 | U-Boot and Linux captured; configured automatic root login observed, UID 0 verified |
+| Installed identity / final state | All **23 hashes** match; zero failed services; MPM active and unclaimed |
+| Software DSP | **64 complex samples**, maximum absolute error **4.64 × 10⁻⁷**; UHD blocks/native observer import |
+| CLI dry runs | All **12** RX-policy/TX-route/bank combinations pass, including separate RX/TX channel arguments; hardware access disabled |
+
+The first identity check stopped because its harness expected rc.3's old kernel suffix. The running **6.6.40-xilinx-g7220e40a5fc8** matches the rc.4 build; kernel configuration, tracked source-tree identity and NI driver bytes match rc.3. The failed record is retained; correcting that expectation completes the check without a reboot or RF repeat.
+
+**Boot and software checks pass.** At this checkpoint RF acceptance was pending; the subsequent attempt below failed. Dry runs do not establish physical filter switching, mixed-channel RF operation, forwarding stability or calibrated power. The board stays powered idle with no stream running; an attenuation/power budget is needed before radio initialization. Raw build, backup and console evidence remain outside Git. Candidate source review: [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13).
+
+## Rc.4 J10 initialization failure — October 28, 2026
+
+**Setup:** same rc.4/source `ac1b437` and 9 V / 1.5 A supply; AmpPwr1 at 9 V, AmpPwr2 disconnected. With power removed, J10/RF_Out was moved to DC block → **30 dB / 2 W pad → tinySA**. RX lead remained LibreSDR TXRA → DC block → J1; LibreSDR was not initialized.
+
+**Result:** one requested six-second TX1A/channel 1, lowpass tone (438 MHz LO + 100 kHz, gain 60, amplitude 0.1, 2.304 MS/s) stopped during initialization with exit 2: `sensor_value_t` has no `.value` property. The routing acknowledgement could not be read; the CLI did not reach the gain-setting or stream-start stage. RFIC initialization/calibration did occur, so this does not establish absence of RF emission. No active-tone level or filter result was obtained; no retry. Final 23 image identities match, MPM is unclaimed and zero services failed.
+
+![tinySA baseline before the failed rc.4 initialization](images/rc4-20261028-before.png)
+
+*Actual tinySA LCD before the attempt: 438.100 MHz marker −112.0 dBm, external 30 dB pad, internal 10 dB attenuation, 3 kHz RBW, LNA/Ultra off. This is a baseline screen, not a tone measurement; no active or after screen was captured.*
+
+**RF acceptance is blocked.** Next: correct the GNU Radio sensor binding, add a regression using a real sensor object, then build and verify a matched replacement before one bounded RF retry. Logs/metadata remain outside Git; [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) stays draft.
+
+**Off-board follow-up:** replacement **0.1.0-dev.4-rc.5**, source `d4bfe82`, exposes the sensor value read-only. All **6 real sensor-object +22 routing tests** pass under installed ARM/QEMU, along with the full build and image readback; the same real-sensor check reproduces the rc.4 failure as a negative control. The returned card’s rc.4 partitions/MBR and every overwritten byte are backed up with full decompression/checksum verification; rc.5 card write and all 4,563,406,848 bytes of direct readback also pass. Boot and RF validation were pending at that checkpoint; the failed rc.4 measurement above is unchanged.
+
+## Rc.5 board and J10 check — October 28, 2026
+
+*Later operator correction: AmpPwr1 may not have been connected during this first rc.5 check; its connection for that run is unconfirmed. The explicitly requested repeat below uses a confirmed connection. Earlier raw records are retained.*
+
+**Setup:** **0.1.0-dev.4-rc.5**, source `d4bfe82`; same J10 → DC block → **30 dB / 2 W → tinySA** path. Main + AmpPwr1: **9 V / 1.5 A limit**; AmpPwr2 disconnected. TX1A/channel 1, LO 438 MHz +100 kHz, gain **60**, amplitude **0.1**, **2.304 MS/s**, 8000-byte frames, one **six-second** tone. tinySA: 10 dB internal attenuation, 3 kHz RBW, LNA/Ultra off, 437.8–438.2 MHz/201 points, external correction zero. LibreSDR was not opened.
+
+| Check | Result |
+|---|---|
+| Captured boot / image | U-Boot, Linux and automatic root console captured; **25 identities** match before/after |
+| Installed software | **6 real sensor tests**, 64-sample DSP and **12** hardware-free routing combinations pass |
+| Installed CLI stream | Routing acknowledgement passes; **6.000972 s**, target exit **0**, requested gain/rate readbacks pass; no reported stream/decode/cleanup errors, one post-stop burst acknowledgement |
+| Frozen RF detection gate | **Failed:** 0 dB returned contrast against the predeclared ≥10 dB gate; **all 201 values identical** before/on/after |
+| Passive analyzer check | Explicit `trace 1 freeze off` did **not** restore freshness: two subsequent background scans still returned the same 201 values; no additional RF source started |
+
+These data do **not** establish output power, filter rejection or a physical SDRB RF fault. The numerical target-window peak returned −101.6562 dBm in all three scans; the fixed LCD marker reads −103.2 dBm. Treat these as retained analyzer outputs with **unverified freshness**, not valid tone measurements. Unfreezing the trace alone did not solve the problem. No RF repeat, gain increase or filter sweep.
+
+| Before | During the requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before rc.5 tone](images/rc5-20261028-before.png) | ![Actual tinySA LCD during rc.5 tone](images/rc5-20261028-active.png) | ![Actual tinySA LCD after rc.5 tone](images/rc5-20261028-after.png) |
+
+*Actual 480 × 320 LCD captures, with original RGB565/PNG hashes verified. The capture timing does not establish measurement freshness.*
+
+SDRB remains powered idle/unclaimed with zero failed services; verified metadata was exported and removed from RAM. **Next: verify tinySA with a known reference while SDRB is idle before another bounded RF check.** [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) stays draft; RF acceptance is unresolved. Raw records stay outside Git.
+
+## Rc.5 repeat with AmpPwr1 confirmed — October 28, 2026
+
+The owner confirmed **AmpPwr1 is now connected** and requested one repeat. Same rc.5/source `d4bfe82`, **9 V / 1.5 A limit**, AmpPwr2 disconnected, **J10 → DC block → 30 dB / 2 W → tinySA**. No gain, frequency, filter or analyzer-setting change: TX1A/channel 1, **438.1 MHz**, gain **60**, amplitude **0.1**, **2.304 MS/s**, 8000-byte frames, **six seconds**.
+
+**Result:** the CLI passes routing acknowledgement and completes **6.000735 s**, target exit **0**, without reported stream/decode/cleanup errors; one post-stop burst acknowledgement. The numerical target-window peak is **−110.1249 dBm before/on/after**: all **201 bins again match exactly**, giving **0 dB** against the unchanged ≥10 dB detection gate. The LCD marker reads **−111.6 dBm**. Measurement freshness remains unverified; these readings do not establish output power, filter rejection or a physical SDRB fault.
+
+| Before | During the requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-before.png) | ![Actual tinySA LCD during AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-active.png) | ![Actual tinySA LCD after AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-after.png) |
+
+*Actual LCD captures; all three RGB565/PNG pairs and exported metadata verify by checksum. Only this one additional RF run was performed. Final 25 identities and idle/unclaimed state pass, no failed services; verified metadata removed from RAM. SDRB remains powered idle. RF acceptance is unresolved; next remains a tinySA known-reference check.*
+
+### One further requested repeat — October 28
+
+One additional six-second run was explicitly requested, with the same rc.5, confirmed AmpPwr1 connection, RF path and settings above. The CLI completes **6.000978 s**, target exit **0**, no reported stream/decode/cleanup errors and one post-stop burst acknowledgement. Again all **201 numerical bins match before/on/after**, returning **0 dB** contrast (target-window peak **−101.625 dBm** in each scan). RF remains inconclusive; no further run. Metadata and three actual LCD pairs verify; RAM metadata removed, final 25 identities/idle-unclaimed/zero failed services pass.
+
+| Before | During requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before third rc.5 run](images/rc5-repeat03-before.png) | ![Actual tinySA LCD during third rc.5 run](images/rc5-repeat03-active.png) | ![Actual tinySA LCD after third rc.5 run](images/rc5-repeat03-after.png) |
+
+*Actual LCD captures; the active 438.100 MHz marker reads −103.1 dBm. Measurement freshness remains unverified.*
+
+### Requested repeat: clear J10 tone — October 28
+
+Same rc.5/source `d4bfe82`, confirmed AmpPwr1 connection and TX1A/channel 1/gain60/amplitude0.1. **Attenuation correction:** the owner subsequently confirmed the 30 dB pad had been removed for this passing run. Its actual path was **J10 → DC block → tinySA, no external pad**; the original 30 dB acquisition-time assumption is superseded. Raw readings are unchanged. The first analyzer preflight rejected a malformed `caloutput off` line and aborted **before any RF stream**. A blank-line console resynchronization was added; all subsequent commands were accepted and only **one** RF run followed. No image, frequency, gain or filter change.
+
+| 438.1 MHz target window, at tinySA | Before | Tone on | After |
+|---|---:|---:|---:|
+| Returned level | −102.125 dBm | **−23.125 dBm at 438.100 MHz** | −103.125 dBm |
+
+**Pass: 79.0 dB contrast** against the unchanged ≥10 dB gate, with a return to background. Stream **6.000723 s**, target exit **0**, no reported stream/decode/cleanup errors and one post-stop burst acknowledgement. This establishes one J10 lowpass tone-detection spot on rc.5; it does not establish calibrated output power or full filter/forwarding acceptance. The prior identical-data failures and power uncertainty remain retained; the resynchronization's causal role is unproven.
+
+| Before | During requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before passing rc.5 J10 run](images/rc5-repeat04-before.png) | ![Actual tinySA LCD during passing rc.5 J10 run](images/rc5-repeat04-active.png) | ![Actual tinySA LCD after passing rc.5 J10 run](images/rc5-repeat04-after.png) |
+
+*Actual LCD captures, separate sweeps from the numeric scans. Active fixed marker: **438.100 MHz, −23.1 dBm**. Internal attenuation 10 dB, RBW 3 kHz, LNA/Ultra off; external correction zero, no fresh calibration. All three raw/PNG pairs and metadata verify. RAM metadata removed; final 25 identities, idle/unclaimed state and zero failed services pass. SDRB remains powered idle; no additional RF run.*
+
+**Operator follow-up:** the owner reports tinySA appeared hung and that the only action they took before the passing run was to **reboot tinySA**. This is consistent with analyzer recovery. The host also resynchronized the console during preflight; the SDRB image and stream settings were unchanged. The earlier failures remain retained without assigning a proven SDRB RF fault.
+
+### BW-S30W5 pad check — October 28
+
+The owner reinserted a **BW-S30W5+**, nominal **30 dB / 5 W / DC–18 GHz**, as the **sole external pad**: **J10/RF_Out → DC block → BW-S30W5+ → tinySA**. The owner clarified it had been removed for a few preceding tests; the successful −23.125 dBm baseline above was **unattenuated**. Exact pad state during earlier failed repeats remains unconfirmed.
+
+Same rc.5/source `d4bfe82`, main + AmpPwr1 at9 V /1.5 A limit, AmpPwr2 disconnected, channel1/TX1A lowpass, LO438 MHz +100 kHz, gain60, amplitude0.1, 2.304 MS/s /8000-byte frames, one six-second tone. Analyzer settings unchanged: internal10 dB, RBW3 kHz, LNA/Ultra off, correction0 dB.
+
+| Level at tinySA | Before | Tone on | After |
+|---|---:|---:|---:|
+| With BW-S30W5+ inserted | −102.125 dBm | **−53.125 dBm at438.100 MHz** | −106.125 dBm |
+
+**Pass: 49.0 dB contrast**, returning to background. The active reading drops **30.0 dB** from the immediately preceding no-pad reading of **−23.125 dBm**, matching the pad's nominal attenuation at this one frequency. This is an uncalibrated in-circuit comparison; it does not establish DC–18 GHz performance, 5 W handling or calibrated SDRB output power. Stream **6.000729 s**, targetexit0, no reported stream/decode/cleanup errors, one post-stop burst acknowledgement.
+
+| Before | During requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before BW pad check](images/rc5-bw30-before.png) | ![Actual tinySA LCD during BW pad check](images/rc5-bw30-active.png) | ![Actual tinySA LCD after BW pad check](images/rc5-bw30-after.png) |
+
+*Actual LCD captures, separate sweeps from numerical scans. Active marker: **438.100 MHz, −53.1 dBm**. Three raw/PNG pairs and metadata hashes verify. RAM metadata removed; final 25 identities, idle/unclaimed state and zero failed services pass. SDRB remains powered idle; no additional RF run.*
+
+## Rc.5 limited TX CLI qualification — October 28
+
+**Image:** unchanged **0.1.0-dev.4-rc.5**, source `d4bfe82`; captured boot and 25 installed identities verified. **Setup:** J10/RF_Out → DC block → sole **BW-S30W5+ 30 dB / 5 W** → tinySA, main + AmpPwr1 at **9 V / 1.5 A limit**, AmpPwr2 disconnected. Common CLI settings: `--tx-path rf_out_b`, rate **2.304 MS/s**, 8000-byte frames, automatic/default master clock (`0`), gain **60**, amplitude **0.1**, about **six seconds** each. The preceding TX1A/BW30 spot is reused on this exact image/setup; the five remaining checks were frozen before RF and each ran once.
+
+TinySA: RBW **3 kHz**, LNA off, correction zero, LO ±200 kHz/201 points. Lowpass: internal **10 dB**, Ultra off; highpass: internal **5 dB**, Ultra on. No fresh calibration. Numerical peaks use ±5 kHz around the nominal tone.
+
+| CLI check / branch | Tone MHz | Before / on / after dBm at tinySA | Contrast dB | Stream seconds | Result |
+|---|---:|---|---:|---:|---|
+| Tone TX1A / U19 (existing BW30 spot) | 438.100 | -102.12 / -53.12 / -106.12 | 49.00 | 6.000729 | Pass |
+| Tone TX2A / U23 | 438.100 | -104.62 / -50.12 / -105.62 | 54.50 | 6.000719 | Pass |
+| Tone TX1B / U28 | 2500.100 | -105.03 / -75.03 / -106.53 | 30.00 | 6.000739 | Pass |
+| Tone TX2B / U30 | 2500.100 | -107.03 / -78.03 / -106.03 | 28.00 | 6.001095 | Pass |
+| TX1A SIGINT / Ctrl-C signal | 438.100 | -102.59 / -53.09 / -104.59 | 49.50 | 6.003790 | Pass |
+| TX1A RAM file playback / restart | 438.100 | -103.59 / -53.12 / -105.12 | 50.47 | 6.000903 | Pass |
+
+All six profiles pass the predeclared **≥10 dB** detection gate and return to background. All source commands exit **0** without reported stream/decode/cleanup errors; each retains one benign post-stop burst acknowledgement. The open-ended `--seconds 0` tone is stopped by **SIGINT six seconds after stream start**, and the following separate `file-tx` application starts/stops cleanly. This tests application stop/restart, not an OS reboot matrix.
+
+The RAM file contains **73,728 complex float32 little-endian samples / 589,824 bytes**, a unit-amplitude +100 kHz tone at 2.304 MS/s; CLI multiplier **0.1**. Full serial readback before playback and the post-playback hash match SHA-256 `6fedfac84b29a04af01df66e45d3c6db98bbaec9d6fb4cacce8ee6adbfa87a1f`. Three real CLI rejection checks also pass without opening hardware: highpass without J10, malformed file length and an existing metadata path; the sentinel file is unchanged.
+
+**Five new metadata records and all 15 actual LCD/raw pairs verify.** Active captures satisfy the source-running timing guard. Final 25 identities, idle/unclaimed state and zero failed services pass; verified RAM input/metadata/test fixtures are removed. No source warning was observed in these five cases; earlier initial-flush warnings remain unresolved.
+
+<details>
+<summary>Actual tinySA captures for the five new checks</summary>
+
+| Check | Before | During stream | After |
+|---|---|---|---|
+| Tone TX2A / U23 | ![Actual rc5q-tx2a438 before LCD](images/rc5-txqual-tx2a438-before.png) | ![Actual rc5q-tx2a438 active LCD](images/rc5-txqual-tx2a438-active.png) | ![Actual rc5q-tx2a438 after LCD](images/rc5-txqual-tx2a438-after.png) |
+| Tone TX1B / U28 | ![Actual rc5q-tx1b2500 before LCD](images/rc5-txqual-tx1b2500-before.png) | ![Actual rc5q-tx1b2500 active LCD](images/rc5-txqual-tx1b2500-active.png) | ![Actual rc5q-tx1b2500 after LCD](images/rc5-txqual-tx1b2500-after.png) |
+| Tone TX2B / U30 | ![Actual rc5q-tx2b2500 before LCD](images/rc5-txqual-tx2b2500-before.png) | ![Actual rc5q-tx2b2500 active LCD](images/rc5-txqual-tx2b2500-active.png) | ![Actual rc5q-tx2b2500 after LCD](images/rc5-txqual-tx2b2500-after.png) |
+| TX1A SIGINT / Ctrl-C signal | ![Actual rc5q-tx1a-interrupt before LCD](images/rc5-txqual-tx1a-interrupt-before.png) | ![Actual rc5q-tx1a-interrupt active LCD](images/rc5-txqual-tx1a-interrupt-active.png) | ![Actual rc5q-tx1a-interrupt after LCD](images/rc5-txqual-tx1a-interrupt-after.png) |
+| TX1A RAM file playback / restart | ![Actual rc5q-tx1a-file-restart before LCD](images/rc5-txqual-tx1a-file-restart-before.png) | ![Actual rc5q-tx1a-file-restart active LCD](images/rc5-txqual-tx1a-file-restart-active.png) | ![Actual rc5q-tx1a-file-restart after LCD](images/rc5-txqual-tx1a-file-restart-after.png) |
+
+</details>
+
+**Qualified scope:** this exact image's on-board TX CLI, four TX branches through driver-only J10 at the listed frequencies/settings, RAM-file playback and SIGINT/application restart. These short spots do not qualify full filter response, calibrated power, SD-backed playback, other rates/clocks, physical direct pads, RX overrides/mixed channels/2R2T, final PA/doubler or stable forwarding. Ray-specific GUI/Windows automation is separate. Earlier failures and operator corrections remain retained; no gain/frequency sweep or repeat campaign was run. Raw records remain outside Git. The handover uses the unchanged, fully read-back SD image.
+
+### Rc.5 SD handover
+
+The [unchanged burnable SD-image ZIP](https://gitlab.amsat.org/engineering/golf/sdrb/-/raw/748d9447f6241222eb7dd91e5bdb482ddac33ed1/releases/0.1.0-dev.4-rc.5/SDRB-0.1.0-dev.4-rc.5-TX-20261028.zip?inline=false) contains START-HERE.md, the exact source/image manifest, checksums and a 25-file board identity checker. Extract the ZIP and write the .img.gz to a spare SD card of at least 8 GB; follow the included setup and on-board TX commands. GitLab project login is required. The downloaded 106,719,254-byte ZIP matches SHA-256 `a96ff419877c371f93396d6e946df2c3ca639cfd1e8121043f9d4170e754003f`. [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) is ready for review; this is the limited TX scope above. No RX, full-filter or stable-forwarding acceptance is added.
