@@ -1,8 +1,7 @@
 # 007 SDRB RF_Out check
 
 **Status:** In progress  
-**Started:** 2026-10-20  
-**Updated:** 2026-10-28
+**Started / updated:** 2026-10-20 / 2026-10-28
 
 Check the signal at **J10/RF_Out** using driver-only Path B, with the final PA off.
 
