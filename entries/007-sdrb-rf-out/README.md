@@ -313,3 +313,21 @@ One additional six-second run was explicitly requested, with the same rc.5, conf
 | ![Actual tinySA LCD before third rc.5 run](images/rc5-repeat03-before.png) | ![Actual tinySA LCD during third rc.5 run](images/rc5-repeat03-active.png) | ![Actual tinySA LCD after third rc.5 run](images/rc5-repeat03-after.png) |
 
 *Actual LCD captures; the active 438.100 MHz marker reads −103.1 dBm. Measurement freshness remains unverified.*
+
+### Requested repeat: clear J10 tone — October 28
+
+Same rc.5/source `d4bfe82`, confirmed AmpPwr1 connection, TX1A/channel 1/gain60/amplitude0.1 and **J10 → DC block → 30 dB / 2 W → tinySA** setup. The first analyzer preflight rejected a malformed `caloutput off` line and aborted **before any RF stream**. A blank-line console resynchronization was added; all subsequent commands were accepted and only **one** RF run followed. No image, frequency, gain or filter change.
+
+| 438.1 MHz target window, at tinySA | Before | Tone on | After |
+|---|---:|---:|---:|
+| Returned level | −102.125 dBm | **−23.125 dBm at 438.100 MHz** | −103.125 dBm |
+
+**Pass: 79.0 dB contrast** against the unchanged ≥10 dB gate, with a return to background. Stream **6.000723 s**, target exit **0**, no reported stream/decode/cleanup errors and one post-stop burst acknowledgement. This establishes one J10 lowpass tone-detection spot on rc.5; it does not establish calibrated output power or full filter/forwarding acceptance. The prior identical-data failures and power uncertainty remain retained; the resynchronization's causal role is unproven.
+
+| Before | During requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before passing rc.5 J10 run](images/rc5-repeat04-before.png) | ![Actual tinySA LCD during passing rc.5 J10 run](images/rc5-repeat04-active.png) | ![Actual tinySA LCD after passing rc.5 J10 run](images/rc5-repeat04-after.png) |
+
+*Actual LCD captures, separate sweeps from the numeric scans. Active fixed marker: **438.100 MHz, −23.1 dBm**. Internal attenuation 10 dB, RBW 3 kHz, LNA/Ultra off; external correction zero, no fresh calibration. All three raw/PNG pairs and metadata verify. RAM metadata removed; final 25 identities, idle/unclaimed state and zero failed services pass. SDRB remains powered idle; no additional RF run.*
+
+**Operator follow-up:** the owner reports tinySA appeared hung and that the only action they took before the passing run was to **reboot tinySA**. This is consistent with analyzer recovery. The host also resynchronized the console during preflight; the SDRB image and stream settings were unchanged. The earlier failures remain retained without assigning a proven SDRB RF fault.
