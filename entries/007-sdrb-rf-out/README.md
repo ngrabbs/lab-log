@@ -1,7 +1,8 @@
 # 007 SDRB RF_Out check
 
 **Status:** In progress  
-**Started / updated:** 2026-10-20
+**Started:** 2026-10-20  
+**Updated:** 2026-10-28
 
 Check the signal at **J10/RF_Out** using driver-only Path B, with the final PA off.
 
@@ -235,3 +236,21 @@ After the earlier component checks, original dev.3 software was restored and dia
 ## J14 doubler follow-up — October 25, 2026
 
 The [J14 drive-check entry](../008-sdrb-j14-drive-check/README.md) records the corrected Jx1/J14 connection, a direct-to-tinySA experiment with no external pad, and gain 0/30/60 measurements with the driver supply off and on at 9 V. It includes actual LCD captures and numeric scans. No distinct 5.184050 GHz tone was detected; this exploratory frequency is below the doubler's specified output band. It does not extend the qualified scope of the checks above.
+
+
+## Rc.4 boot and software checks — October 28, 2026
+
+**Setup:** new **0.1.0-dev.4-rc.4** image, source `ac1b437`, on the existing 64 GB test card; J12 console captured before power-up. Supply **9 V / 1.5 A limit**, AmpPwr1 at 9 V, AmpPwr2 disconnected. LibreSDR TXRA → DC block → J1/Antenna_in; J10/RF_Out → DC block → LibreSDR RXA. **No attenuators fitted; neither radio was claimed or initialized.**
+
+| Check | Result |
+|---|---|
+| Rollback backup | All 63,864,569,856 card bytes backed up; full decompression/checksum match |
+| New image/card | Build and offline image checks pass; all 4,563,406,848 bytes written and verified by direct readback |
+| Captured boot / J12 | U-Boot and Linux captured; configured automatic root login observed, UID 0 verified |
+| Installed identity / final state | All **23 hashes** match; zero failed services; MPM active and unclaimed |
+| Software DSP | **64 complex samples**, maximum absolute error **4.64 × 10⁻⁷**; UHD blocks/native observer import |
+| CLI dry runs | All **12** RX-policy/TX-route/bank combinations pass, including separate RX/TX channel arguments; hardware access disabled |
+
+The first identity check stopped because its harness expected rc.3's old kernel suffix. The running **6.6.40-xilinx-g7220e40a5fc8** matches the rc.4 build; kernel configuration, tracked source-tree identity and NI driver bytes match rc.3. The failed record is retained; correcting that expectation completes the check without a reboot or RF repeat.
+
+**Boot and software checks pass; RF acceptance is pending.** Dry runs do not establish physical filter switching, mixed-channel RF operation, forwarding stability or calibrated power. The board stays powered idle with no stream running; an attenuation/power budget is needed before radio initialization. Raw build, backup and console evidence remain outside Git. Candidate source review: [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13).
