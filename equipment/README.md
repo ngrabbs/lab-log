@@ -1,6 +1,6 @@
 # Equipment on Hand
 
-**Updated:** 2026-10-25
+**Updated:** 2026-10-28
 
 **Inventory status:** Seeded from older testbed records; reconciliation in progress.
 
@@ -11,6 +11,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 ## Quick links
 
 - [Attenuator characterization and original files](characterizations/attenuators/README.md)
+- [Digirig Lite / UV-5R cable selection and test](#digirig-lite--uv-5r-cable-selection-and-test)
 - [Items to confirm](#items-to-confirm)
 - [Othermill V2, tooling and stock](#othermill-v2-tooling-and-stock)
 - [Software](#software)
@@ -55,7 +56,9 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
-| Baofeng UV-5R | Recorded owned (x2) | Two recorded owned. 2 m / 70 cm handhelds; source reports about 1 W low / 5 W high, not a current calibrated power measurement. |
+| Baofeng UV-5R | Recorded owned (x2); one used 2026-10-28 | Two recorded owned. 2 m / 70 cm handhelds; source reports about 1 W low / 5 W high, not a current calibrated power measurement. [Digirig Lite cable test](#digirig-lite--uv-5r-cable-selection-and-test): use the black cable tested below. |
+| Digirig Lite | Owner confirmed available and tested 2026-10-28 | USB audio/PTT interface with a headphone-style radio-cable socket. Receive audio and a transmitted tone demonstrated with a UV-5R; [cable selection and test details](#digirig-lite--uv-5r-cable-selection-and-test). |
+| Quansheng handheld, model unspecified | Owner confirmed available and used 2026-10-28 | Tuned to the same frequency as the UV-5R to listen during the Digirig tone test. Exact model not recorded. |
 | Xiegu X6100 | Shared; current access unconfirmed | Source says loaned to Cubesat@MSU and retrievable. Current access needs confirmation before a test depends on it. |
 | Icom IC-7200 | Recorded owned | HF transceiver; source-listed approximately 100 W. Present configuration and measured output unconfirmed. |
 | Icom IC-9700 | Recorded owned | 2 m / 70 cm / 23 cm all-mode; model confirmed in source. Cross-band operation noted; present station configuration unconfirmed. |
@@ -64,6 +67,25 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | Lilygo T-SIM G7600 (LTE modem) | Recorded owned | Historical end-to-end link with LibreSDR, srsRAN and programmable SIM documented. Current firmware, configuration and repeatability unconfirmed. |
 | Walter v1.6 (QuickSpot) | Recorded owned | ESP32-S3 + Sequans Monarch 2 GM02SP; source records LTE-M/NB-IoT/GNSS bring-up and firmware UE8.2.1.0. Current firmware/access unknown. Device identifier omitted. |
 | Nordic Thingy:91X | Unconfirmed (wanted-bringup) | Source status “wanted-bringup” is ambiguous: possession and bring-up completion both need confirmation. Do not count as ready equipment. |
+
+### Digirig Lite / UV-5R cable selection and test
+
+**Tested:** 2026-10-28. Source: owner observations and Linux audio/PTT checks in the bench-test conversation recorded on that date.
+
+**For this Digirig Lite and UV-5R, use the black radio cable.** The owner identified two cables by their green and black coloring at the Digirig-facing headphone-style connector. The green cable did not key the UV-5R during the test. After swapping to the black cable, the owner heard the transmitted test tone on a second radio. These colors identify the cables tested here; exact cable part numbers and pinouts were not recorded.
+
+Connection: computer USB → Digirig Lite → black radio cable plugged into the Digirig's headphone-style socket → UV-5R.
+
+The UV-5R was powered on and set to what the owner described as the 70 cm calling channel; the exact frequency was not recorded. The owner reported a dummy load connected to the UV-5R and a Quansheng handheld tuned to the same frequency. An attenuator was also changed during troubleshooting, but its identity and position were not established. Do not infer attenuation, RF output power, or a characterized RF path from this test.
+
+- **Receive check:** holding MONI for about five seconds and releasing it for about five seconds produced corresponding repeated rises and falls in recorded audio. The observed RMS level changed from approximately −85 to −60 dBFS. This demonstrated receive audio reaching the computer in the initial cable configuration; that cable's color was not established at the time. Receive levels remained low, and receive audio was not separately rechecked after the final cable swap.
+- **Transmit check:** software asserted the Digirig's C-Media GPIO3 PTT and played a three-second, 1 kHz tone on the left output channel. With the green cable the owner did not observe the UV-5R key up. With the black cable the owner reported hearing the tone on the Quansheng. Software wrote PTT-release commands after each test, including a separate delayed backup release.
+- **Linux setup:** the interface appeared as C-Media USB audio, USB ID `0d8c:0012`. ALSA device `plughw:CARD=Device,DEV=0` worked for recording and playback. Automatic gain control was disabled; microphone playback monitoring was already muted. A udev rule granted the `audio` group read/write access to the matching HID device for PTT. The HID path during this test was `/dev/hidraw0`; device numbering may change.
+- **Starting settings recorded:** ALSA speaker playback 46% (−20 dB), microphone capture 57% (+8 dB), 48 kHz / 16-bit audio, and a generated tone at approximately 10% of digital full-scale peak. The radio volume was increased during the session, but no repeatable knob position was recorded. These are test settings, not calibrated modulation levels.
+
+**Established:** receive audio in the initial configuration, and PTT plus transmitted audio with the black cable. Audio-level optimization, deviation, RF power, and digital packet decoding remain unverified.
+
+Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-lite-setup-manual/), which specifies the black-molded Digirig-facing audio/PTT plug and GPIO3 PTT. The manufacturer's guidance supports the cable choice; this session did not establish the green cable's intended radio or function.
 
 ## SDRs
 
@@ -152,6 +174,8 @@ The saved project records Bantam Tools **2.5.34**, a custom “Wax test - 1/16 f
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
+| Black Digirig-facing radio cable | Owner confirmed available; transmitted tone demonstrated 2026-10-28 | Use with the tested Digirig Lite / UV-5R combination. Exact part number and pinout unrecorded. [Test record](#digirig-lite--uv-5r-cable-selection-and-test). |
+| Green Digirig-facing radio cable | Owner confirmed available; did not key UV-5R in 2026-10-28 test | Do not select for the tested Digirig Lite / UV-5R setup. Intended application and cause of failure unconfirmed; not established to be defective. [Test record](#digirig-lite--uv-5r-cable-selection-and-test). |
 | SMA male-male jumpers | Recorded owned (~10) | Approximately 10 in source. Calibration-grade status unknown; no specific jumper certified by this inventory. |
 | Adapters (SMA / BNC / N / PL-259 / RP-SMA) | Recorded owned (assorted) | Assorted conversions; exact types, quantities and RF limits unknown. |
 | LMR-400 coax | Recorded owned (many feet) | Source records many feet; installed lengths and measured loss unknown. |
@@ -185,7 +209,7 @@ Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax 
 
 ## Source and maintenance
 
-Seeded from `planetary_network_testbed/docs/tool_inventory.md` and `bench/pad_characterizations/`. The attenuation session is dated 2026-05-17; the older inventory has no single last-verified date. October [antenna](../entries/001-ember-antenna/README.md), [LibreSDR](../entries/004-libresdr-tx-power/README.md), and [SDRB RF](../entries/007-sdrb-rf-out/README.md) entries supply the explicitly linked updates. The Othermill update was reconciled on 2026-10-25 from the October 15 conversation “Find information about Othermill” and its saved project, `wax-first-test.btm.btp`; the owner reconfirmed the V2 model in the update request. This is a starting inventory, not an exhaustive catalog of everything owned.
+Seeded from `planetary_network_testbed/docs/tool_inventory.md` and `bench/pad_characterizations/`. The attenuation session is dated 2026-05-17; the older inventory has no single last-verified date. October [antenna](../entries/001-ember-antenna/README.md), [LibreSDR](../entries/004-libresdr-tx-power/README.md), and [SDRB RF](../entries/007-sdrb-rf-out/README.md) entries supply the explicitly linked updates. The Othermill update was reconciled on 2026-10-25 from the October 15 conversation “Find information about Othermill” and its saved project, `wax-first-test.btm.btp`; the owner reconfirmed the V2 model in the update request. The Digirig Lite, cable-selection and Quansheng notes were added on 2026-10-28 from the owner's bench-test conversation and live Linux audio/PTT checks. This is a starting inventory, not an exhaustive catalog of everything owned.
 
 Maintain this page as the shared Lab Log inventory. Update availability and exact model details when confirmed, citing the date or entry. Keep measurements with their setup and date, preserve original capture files, and distinguish source-listed ratings from measured limits. Historical entries should retain the equipment/settings actually used at the time. Device identifiers, credentials and private connection details do not belong here.
 
