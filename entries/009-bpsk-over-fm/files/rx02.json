@@ -1,0 +1,191 @@
+{
+  "iq_file": "rx02.iq",
+  "iq_format": "interleaved unsigned 8-bit I,Q",
+  "sample_rate": 240000,
+  "center_hz": 446050000,
+  "target_hz": 446000000,
+  "duration_s": 24.0,
+  "adc_rail_fraction": 0.0,
+  "rf_channel_bandwidth_hz": 20000,
+  "packets": [
+    {
+      "sequence": 1,
+      "payload": "EMBER > outpost1: BPSK/FM test 2026-10-28",
+      "payload_bytes": 41,
+      "crc32": "0cb8c656",
+      "crc_ok": true,
+      "sync_bit_errors": 0,
+      "sync_time_s": 1.8523333333333334,
+      "timing_offset_samples_6k": 14,
+      "differential_coherence": 0.9999257139078243
+    },
+    {
+      "sequence": 2,
+      "payload": "EMBER > outpost1: BPSK/FM test 2026-10-28",
+      "payload_bytes": 41,
+      "crc32": "72c08ef0",
+      "crc_ok": true,
+      "sync_bit_errors": 0,
+      "sync_time_s": 7.0125,
+      "timing_offset_samples_6k": 15,
+      "differential_coherence": 0.9999273581461816
+    },
+    {
+      "sequence": 3,
+      "payload": "EMBER > outpost1: BPSK/FM test 2026-10-28",
+      "payload_bytes": 41,
+      "crc32": "58e8b692",
+      "crc_ok": true,
+      "sync_bit_errors": 0,
+      "sync_time_s": 12.172833333333333,
+      "timing_offset_samples_6k": 17,
+      "differential_coherence": 0.9999234718674763
+    }
+  ],
+  "seconds": [
+    {
+      "second": 0,
+      "channel_power_dbfs": -17.963735512607588,
+      "fm_mean_hz": 138.15602773372916,
+      "fm_rms_hz": 5371.740260523212
+    },
+    {
+      "second": 1,
+      "channel_power_dbfs": -15.913883054631693,
+      "fm_mean_hz": 355.9616180385621,
+      "fm_rms_hz": 1579.5449334678624
+    },
+    {
+      "second": 2,
+      "channel_power_dbfs": -13.641100079070995,
+      "fm_mean_hz": 359.46508271696354,
+      "fm_rms_hz": 1786.1768083568602
+    },
+    {
+      "second": 3,
+      "channel_power_dbfs": -14.848603961148928,
+      "fm_mean_hz": 360.68343558740935,
+      "fm_rms_hz": 1780.4092114790799
+    },
+    {
+      "second": 4,
+      "channel_power_dbfs": -15.79045119973009,
+      "fm_mean_hz": 359.8123384609959,
+      "fm_rms_hz": 1782.027590657435
+    },
+    {
+      "second": 5,
+      "channel_power_dbfs": -15.674951450693959,
+      "fm_mean_hz": 360.34993247092996,
+      "fm_rms_hz": 1784.592377685749
+    },
+    {
+      "second": 6,
+      "channel_power_dbfs": -15.71051860563206,
+      "fm_mean_hz": 359.9700000784203,
+      "fm_rms_hz": 1592.2511948141816
+    },
+    {
+      "second": 7,
+      "channel_power_dbfs": -15.696526076936534,
+      "fm_mean_hz": 360.5622008159244,
+      "fm_rms_hz": 1785.6337791703513
+    },
+    {
+      "second": 8,
+      "channel_power_dbfs": -15.816855767698666,
+      "fm_mean_hz": 359.96871399466056,
+      "fm_rms_hz": 1781.5466833716514
+    },
+    {
+      "second": 9,
+      "channel_power_dbfs": -15.956492994809091,
+      "fm_mean_hz": 361.2132114182752,
+      "fm_rms_hz": 1783.743552755191
+    },
+    {
+      "second": 10,
+      "channel_power_dbfs": -15.890636933338033,
+      "fm_mean_hz": 360.489707457526,
+      "fm_rms_hz": 1784.6948813931178
+    },
+    {
+      "second": 11,
+      "channel_power_dbfs": -15.820796215154234,
+      "fm_mean_hz": 361.2465293716544,
+      "fm_rms_hz": 1593.871312899614
+    },
+    {
+      "second": 12,
+      "channel_power_dbfs": -15.903063233156958,
+      "fm_mean_hz": 361.7717986759994,
+      "fm_rms_hz": 1784.9896642806689
+    },
+    {
+      "second": 13,
+      "channel_power_dbfs": -15.929290251554608,
+      "fm_mean_hz": 362.08654773049506,
+      "fm_rms_hz": 1782.1645221636732
+    },
+    {
+      "second": 14,
+      "channel_power_dbfs": -15.918876528481913,
+      "fm_mean_hz": 362.3540659947136,
+      "fm_rms_hz": 1784.6406049184457
+    },
+    {
+      "second": 15,
+      "channel_power_dbfs": -15.844048218595418,
+      "fm_mean_hz": 362.56190056941193,
+      "fm_rms_hz": 1784.6787050984842
+    },
+    {
+      "second": 16,
+      "channel_power_dbfs": -15.883744331361898,
+      "fm_mean_hz": 362.195853349714,
+      "fm_rms_hz": 1251.8048213692255
+    },
+    {
+      "second": 17,
+      "channel_power_dbfs": -21.888000918132718,
+      "fm_mean_hz": 3.9319084149651875,
+      "fm_rms_hz": 7019.673201236614
+    },
+    {
+      "second": 18,
+      "channel_power_dbfs": -56.38387754740713,
+      "fm_mean_hz": -95.8897081031491,
+      "fm_rms_hz": 8115.157898829117
+    },
+    {
+      "second": 19,
+      "channel_power_dbfs": -56.38349147216378,
+      "fm_mean_hz": -117.61363985242068,
+      "fm_rms_hz": 8072.858871125112
+    },
+    {
+      "second": 20,
+      "channel_power_dbfs": -56.30950976095782,
+      "fm_mean_hz": -84.80166940277212,
+      "fm_rms_hz": 8018.474063847346
+    },
+    {
+      "second": 21,
+      "channel_power_dbfs": -56.34701684546754,
+      "fm_mean_hz": -118.48153087178986,
+      "fm_rms_hz": 8103.293444650982
+    },
+    {
+      "second": 22,
+      "channel_power_dbfs": -56.43375834440888,
+      "fm_mean_hz": -104.59152006267745,
+      "fm_rms_hz": 8072.232699428961
+    },
+    {
+      "second": 23,
+      "channel_power_dbfs": -56.4256083495643,
+      "fm_mean_hz": -107.90896471610766,
+      "fm_rms_hz": 8095.248762190121
+    }
+  ]
+}

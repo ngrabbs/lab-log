@@ -12,6 +12,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
+| 009 | [BPSK audio over FM to outpost1](entries/009-bpsk-over-fm/README.md) | UV-K5/Digirig to RTL-SDR: 6/6 CRC-valid packets in a barrel-load coupling test; raw IQ, code, commands and measured comparisons. In progress. |
 | 008 | [SDRB J14 doubler drive check](entries/008-sdrb-j14-drive-check/README.md) | J14 gain checks and a detected 5.184 GHz J10 fundamental; actual tinySA screens and results tables. In progress. |
 | 007 | [SDRB RF_Out check](entries/007-sdrb-rf-out/README.md) | Four TX branches and dev.4 receive/forwarding checks; intermittent TX underflow remains open. In progress. |
 | 004 | [LibreSDR TX power check](entries/004-libresdr-tx-power/README.md) | Two-point 434.1 MHz check: −62.6/−42.5 dBm through the cable/DC block; off/on/off contrast verified. In progress. |

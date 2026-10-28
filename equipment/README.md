@@ -59,7 +59,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | --- | --- | --- |
 | Baofeng UV-5R | Recorded owned (x2); one used 2026-10-28 | Two recorded owned. 2 m / 70 cm handhelds; source reports about 1 W low / 5 W high, not a current calibrated power measurement. [Digirig Lite cable test](#digirig-lite--uv-5r-cable-selection-and-test): use the black cable tested below. |
 | Digirig Lite | Owner confirmed available and tested 2026-10-28 | USB audio/PTT interface with a headphone-style radio-cable socket. Receive audio and a transmitted tone demonstrated with a UV-5R; [cable selection and test details](#digirig-lite--uv-5r-cable-selection-and-test). |
-| Quansheng handheld, model unspecified | Owner confirmed available and used 2026-10-28 | Used to receive the UV-5R tone, then keyed successfully through the same black Digirig cable when the cable was moved to the Quansheng. Exact model not recorded; reception of the Quansheng's transmitted tone on the Baofeng was not explicitly confirmed. |
+| Quansheng UV-K5, iJV custom firmware | Owner confirmed model and firmware family; data transfer demonstrated 2026-10-28 | Low power selected; firmware version, measured RF watts and wide/narrow setting unrecorded. Same black Digirig cable keys the UV-5R and this radio. [Entry 009](../entries/009-bpsk-over-fm/README.md): 6/6 CRC-valid BPSK-over-FM packets received by an RTL-SDR at 446.000 MHz with the barrel load fitted. |
 | Xiegu X6100 | Shared; current access unconfirmed | Source says loaned to Cubesat@MSU and retrievable. Current access needs confirmation before a test depends on it. |
 | Icom IC-7200 | Recorded owned | HF transceiver; source-listed approximately 100 W. Present configuration and measured output unconfirmed. |
 | Icom IC-9700 | Recorded owned | 2 m / 70 cm / 23 cm all-mode; model confirmed in source. Cross-band operation noted; present station configuration unconfirmed. |
@@ -95,6 +95,7 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
 | SDRB (AMSAT prototype) | In current bench use, October 25 | Native TX gain controls and exploratory J14 doubler measurements in [entry 008](../entries/008-sdrb-j14-drive-check/README.md); software gain is not calibrated output dBm. |
+| RTL-SDR attached to outpost1, marketed model unconfirmed | Detected and used 2026-10-28 | USB RTL2838; librtlsdr identifies R820T tuner. It may be one of the previously inventoried v3/v4 units; no additional unit count is inferred. LibreSDR-supplied receive antenna, owner reports 70 cm suitability; exact antenna unknown. [Entry 009](../entries/009-bpsk-over-fm/README.md) records successful 446 MHz packet reception. |
 | RTL-SDR v3 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown; source noise-floor comparison not independently established. |
 | RTL-SDR v4 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown. |
 | HackRF One | Recorded owned | Source-listed 1 MHz–6 GHz, half-duplex TX/RX, 8-bit. Board revision and measured performance unknown. |
@@ -113,6 +114,7 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 | 80 m HF wire antenna | Recorded owned | Source records an HF wire antenna. Installation, tuning and present condition unconfirmed. |
 | J-pole (VHF / UHF) | Recorded owned | omni, omnidirectional 2 m / 70 cm |
 | 2.4 GHz WiFi Yagi | Recorded owned | for ISM-band and S-band work |
+| Telescoping 144/440 HT antenna, owner-described “MJF” | Owner confirmed available 2026-10-28 | Initially fitted to the UV-K5; replaced by the barrel load before both [entry 009](../entries/009-bpsk-over-fm/README.md) data bursts. Brand spelling and exact model not verified. |
 | UV-5R-style extendable HT antennas | Recorded owned (several) | Several recorded owned. Exact models, count and performance unknown. |
 | UHF / VHF mag-mount | Recorded owned | Previously used for balloon tracking; model and measured response unknown. |
 | Small SMA "ducky" antennas | Recorded owned (assortment) | Assortment, approximately 1.5–2 inches; exact bands/models unknown. |
@@ -140,6 +142,7 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
+| outpost1 mobile testing Pi (formerly Houston) | Owner confirmed mobile setup and fresh installation 2026-10-28 | Raspberry Pi 4 Model B Rev 1.4, approximately 2 GB RAM, 64 GB microSD, keyboard and screen in a ruggedized Pelican case. Owner describes it as portable for mobile testing. Fresh 64-bit Raspberry Pi OS Lite / Debian 13 Trixie, no desktop environment; SSH account ngrabbs. RTL-SDR reception demonstrated in [entry 009](../entries/009-bpsk-over-fm/README.md). Screen/keyboard and case models, battery provision and field endurance unrecorded. |
 | ThinkPad X1 Carbon | Recorded owned | Source records Ubuntu/Windows dual boot and srsRAN use. Generation, CPU, RAM and present software versions unknown; source lists no discrete GPU. |
 | iPad | Recorded owned | PDF reading and annotation; generation/model unknown. |
 
@@ -211,6 +214,8 @@ Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax 
 - [ ] Update old Centisat prototype/build states and software installations as those items are next used.
 
 ## Source and maintenance
+
+The 2026-10-28 BPSK transfer session added the owner-confirmed outpost1 mobile Pi/case/keyboard/screen, UV-K5/iJV details and the current RTL-SDR setup; software observations and transfer captures are in [entry 009](../entries/009-bpsk-over-fm/README.md).
 
 Seeded from `planetary_network_testbed/docs/tool_inventory.md` and `bench/pad_characterizations/`. The attenuation session is dated 2026-05-17; the older inventory has no single last-verified date. October [antenna](../entries/001-ember-antenna/README.md), [LibreSDR](../entries/004-libresdr-tx-power/README.md), and [SDRB RF](../entries/007-sdrb-rf-out/README.md) entries supply the explicitly linked updates. The Othermill update was reconciled on 2026-10-25 from the October 15 conversation “Find information about Othermill” and its saved project, `wax-first-test.btm.btp`; the owner reconfirmed the V2 model in the update request. The Digirig Lite, cable-selection and Quansheng notes were added on 2026-10-28 from the owner's bench-test conversation and live Linux audio/PTT checks. This is a starting inventory, not an exhaustive catalog of everything owned.
 

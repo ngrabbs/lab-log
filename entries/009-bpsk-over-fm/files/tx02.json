@@ -1,0 +1,37 @@
+{
+  "message": "EMBER > outpost1: BPSK/FM test 2026-10-28",
+  "baud": 100,
+  "audio_carrier_hz": 1500,
+  "sample_rate": 48000,
+  "digital_peak": 0.03,
+  "duration_s": 16.18,
+  "packets": [
+    {
+      "sequence": 1,
+      "payload": "EMBER > outpost1: BPSK/FM test 2026-10-28",
+      "payload_bytes": 41,
+      "frame_bits": 496,
+      "waveform_start_s": 0.5,
+      "waveform_duration_s": 4.96,
+      "crc32": "0cb8c656"
+    },
+    {
+      "sequence": 2,
+      "payload": "EMBER > outpost1: BPSK/FM test 2026-10-28",
+      "payload_bytes": 41,
+      "frame_bits": 496,
+      "waveform_start_s": 5.66,
+      "waveform_duration_s": 4.96,
+      "crc32": "72c08ef0"
+    },
+    {
+      "sequence": 3,
+      "payload": "EMBER > outpost1: BPSK/FM test 2026-10-28",
+      "payload_bytes": 41,
+      "frame_bits": 496,
+      "waveform_start_s": 10.82,
+      "waveform_duration_s": 4.96,
+      "crc32": "58e8b692"
+    }
+  ]
+}
