@@ -303,3 +303,13 @@ The owner confirmed **AmpPwr1 is now connected** and requested one repeat. Same 
 | ![Actual tinySA LCD before AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-before.png) | ![Actual tinySA LCD during AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-active.png) | ![Actual tinySA LCD after AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-after.png) |
 
 *Actual LCD captures; all three RGB565/PNG pairs and exported metadata verify by checksum. Only this one additional RF run was performed. Final 25 identities and idle/unclaimed state pass, no failed services; verified metadata removed from RAM. SDRB remains powered idle. RF acceptance is unresolved; next remains a tinySA known-reference check.*
+
+### One further requested repeat — October 28
+
+One additional six-second run was explicitly requested, with the same rc.5, confirmed AmpPwr1 connection, RF path and settings above. The CLI completes **6.000978 s**, target exit **0**, no reported stream/decode/cleanup errors and one post-stop burst acknowledgement. Again all **201 numerical bins match before/on/after**, returning **0 dB** contrast (target-window peak **−101.625 dBm** in each scan). RF remains inconclusive; no further run. Metadata and three actual LCD pairs verify; RAM metadata removed, final 25 identities/idle-unclaimed/zero failed services pass.
+
+| Before | During requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before third rc.5 run](images/rc5-repeat03-before.png) | ![Actual tinySA LCD during third rc.5 run](images/rc5-repeat03-active.png) | ![Actual tinySA LCD after third rc.5 run](images/rc5-repeat03-after.png) |
+
+*Actual LCD captures; the active 438.100 MHz marker reads −103.1 dBm. Measurement freshness remains unverified.*
