@@ -265,3 +265,5 @@ The first identity check stopped because its harness expected rc.3's old kernel 
 *Actual tinySA LCD before the attempt: 438.100 MHz marker −112.0 dBm, external 30 dB pad, internal 10 dB attenuation, 3 kHz RBW, LNA/Ultra off. This is a baseline screen, not a tone measurement; no active or after screen was captured.*
 
 **RF acceptance is blocked.** Next: correct the GNU Radio sensor binding, add a regression using a real sensor object, then build and verify a matched replacement before one bounded RF retry. Logs/metadata remain outside Git; [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) stays draft.
+
+**Off-board follow-up:** replacement **0.1.0-dev.4-rc.5**, source `d4bfe82`, exposes the sensor value read-only. All **6 real sensor-object +22 routing tests** pass under installed ARM/QEMU, along with the full build and image readback; the same real-sensor check reproduces the rc.4 failure as a negative control. Card, boot and RF validation of rc.5 remain pending; the failed rc.4 measurement above is unchanged.
