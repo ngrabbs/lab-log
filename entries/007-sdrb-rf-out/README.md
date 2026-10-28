@@ -266,4 +266,26 @@ The first identity check stopped because its harness expected rc.3's old kernel 
 
 **RF acceptance is blocked.** Next: correct the GNU Radio sensor binding, add a regression using a real sensor object, then build and verify a matched replacement before one bounded RF retry. Logs/metadata remain outside Git; [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) stays draft.
 
-**Off-board follow-up:** replacement **0.1.0-dev.4-rc.5**, source `d4bfe82`, exposes the sensor value read-only. All **6 real sensor-object +22 routing tests** pass under installed ARM/QEMU, along with the full build and image readback; the same real-sensor check reproduces the rc.4 failure as a negative control. The returned card’s rc.4 partitions/MBR and every overwritten byte are backed up with full decompression/checksum verification; rc.5 card write and all 4,563,406,848 bytes of direct readback also pass. Boot and RF validation remain pending; the failed rc.4 measurement above is unchanged.
+**Off-board follow-up:** replacement **0.1.0-dev.4-rc.5**, source `d4bfe82`, exposes the sensor value read-only. All **6 real sensor-object +22 routing tests** pass under installed ARM/QEMU, along with the full build and image readback; the same real-sensor check reproduces the rc.4 failure as a negative control. The returned card’s rc.4 partitions/MBR and every overwritten byte are backed up with full decompression/checksum verification; rc.5 card write and all 4,563,406,848 bytes of direct readback also pass. Boot and RF validation were pending at that checkpoint; the failed rc.4 measurement above is unchanged.
+
+## Rc.5 board and J10 check — October 28, 2026
+
+**Setup:** **0.1.0-dev.4-rc.5**, source `d4bfe82`; same J10 → DC block → **30 dB / 2 W → tinySA** path. Main + AmpPwr1: **9 V / 1.5 A limit**; AmpPwr2 disconnected. TX1A/channel 1, LO 438 MHz +100 kHz, gain **60**, amplitude **0.1**, **2.304 MS/s**, 8000-byte frames, one **six-second** tone. tinySA: 10 dB internal attenuation, 3 kHz RBW, LNA/Ultra off, 437.8–438.2 MHz/201 points, external correction zero. LibreSDR was not opened.
+
+| Check | Result |
+|---|---|
+| Captured boot / image | U-Boot, Linux and automatic root console captured; **25 identities** match before/after |
+| Installed software | **6 real sensor tests**, 64-sample DSP and **12** hardware-free routing combinations pass |
+| Installed CLI stream | Routing acknowledgement passes; **6.000972 s**, target exit **0**, requested gain/rate readbacks pass; no reported stream/decode/cleanup errors, one post-stop burst acknowledgement |
+| Frozen RF detection gate | **Failed:** 0 dB returned contrast against the predeclared ≥10 dB gate; **all 201 values identical** before/on/after |
+| Passive analyzer check | Explicit `trace 1 freeze off` did **not** restore freshness: two subsequent background scans still returned the same 201 values; no additional RF source started |
+
+These data do **not** establish output power, filter rejection or a physical SDRB RF fault. The numerical target-window peak returned −101.6562 dBm in all three scans; the fixed LCD marker reads −103.2 dBm. Treat these as retained analyzer outputs with **unverified freshness**, not valid tone measurements. Unfreezing the trace alone did not solve the problem. No RF repeat, gain increase or filter sweep.
+
+| Before | During the requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before rc.5 tone](images/rc5-20261028-before.png) | ![Actual tinySA LCD during rc.5 tone](images/rc5-20261028-active.png) | ![Actual tinySA LCD after rc.5 tone](images/rc5-20261028-after.png) |
+
+*Actual 480 × 320 LCD captures, with original RGB565/PNG hashes verified. The capture timing does not establish measurement freshness.*
+
+SDRB remains powered idle/unclaimed with zero failed services; verified metadata was exported and removed from RAM. **Next: verify tinySA with a known reference while SDRB is idle before another bounded RF check.** [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) stays draft; RF acceptance is unresolved. Raw records stay outside Git.
