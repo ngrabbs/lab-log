@@ -6,7 +6,7 @@
 
 **Updated:** 2026-10-28
 
-I wanted to send an actual message from ember-ground through a Digirig Lite and handheld radio, then recover it with the RTL-SDR in my mobile Pi, outpost1. The first two bursts worked: **six of six packets decoded with valid CRCs and the exact transmitted text**. This was a nearby coupling test with a barrel load on the transmitter, not an antenna range test.
+I wanted to send an actual message from ember-ground through a Digirig Lite and handheld radio, then recover it with the RTL-SDR in my mobile Pi, outpost1. The first two bursts worked: **six of six packets decoded with valid CRCs and the exact transmitted text**. This was a nearby coupling test with a barrel load on the transmitter, not an antenna range test. A follow-up using the outdoor SatNOGS station recovered another **3/3 packets**, making **9/9 across three bursts**; that receiver was roughly 60+ feet away through the house, still with the barrel load on the transmitter.
 
 ## The question and signal path
 
@@ -163,14 +163,14 @@ The optional [run_trial.sh](files/run_trial.sh) automates copying, capture readi
 
 ```sh
 TX_HOST=ngrabbs@YOUR_EMBER_HOST RX_HOST=ngrabbs@YOUR_OUTPOST_HOST \
-  bash entries/009-bpsk-over-fm/files/run_trial.sh 03 0.03
+  bash entries/009-bpsk-over-fm/files/run_trial.sh 04 0.03
 ```
 
 Check the selected radio, frequency, RF connection and clear channel before running any transmit command. These scripts do not set the radio's frequency or power. A future antenna test should be separate from this barrel-load test.
 
 ## Captures and results
 
-Both captures contain **5,760,000 complex samples / 11,520,000 bytes / 24.0 seconds**. The original files are [rx01.iq](files/rx01.iq) and [rx02.iq](files/rx02.iq); derived FM audio is [rx01.wav](files/rx01.wav) and [rx02.wav](files/rx02.wav). The WAV files use a fixed conversion of ±12 kHz discriminator output to digital full scale; their amplitude is not received RF power.
+The first two captures each contain **5,760,000 complex samples / 11,520,000 bytes / 24.0 seconds**. The original files are [rx01.iq](files/rx01.iq) and [rx02.iq](files/rx02.iq); derived FM audio is [rx01.wav](files/rx01.wav) and [rx02.wav](files/rx02.wav). The WAV files use a fixed conversion of ±12 kHz discriminator output to digital full scale; their amplitude is not received RF power.
 
 | Result | Run 1: peak 0.10 | Run 2: peak 0.03 |
 | --- | ---: | ---: |
@@ -189,9 +189,9 @@ Both captures contain **5,760,000 complex samples / 11,520,000 bytes / 24.0 seco
 
 The message is repeated three times: **41 distinct text bytes per burst**, or 123 aggregate payload bytes. Each packet has a distinct sequence field and CRC. For sequences 1, 2 and 3, both runs recovered CRC values `0cb8c656`, `72c08ef0` and `58e8b692`.
 
-![Measured channel power and FM discriminator variation for the two captures](images/capture-comparison.png)
+![Measured channel power and FM discriminator variation for three captures at two receivers](images/capture-comparison.png)
 
-The bursts start at different times within their captures. Carrier-off FM discriminator noise is high, so the lower plot is meaningful as a modulation comparison only during the carrier-on intervals. Lowering digital drive by **10.46 dB** reduced the recovered frequency variation while preserving all three packets. The response was not a calibrated linear gain measurement; the lower amplitude is the better starting setting for subsequent tests, not a proven optimum.
+The plot now includes the SatNOGS follow-up below. Levels from the two different receivers are not cross-calibrated. The bursts start at different times within their captures. Carrier-off FM discriminator noise is high, so the lower plot is meaningful as a modulation comparison only during the carrier-on intervals. Lowering digital drive by **10.46 dB** reduced the recovered frequency variation while preserving all three packets. The response was not a calibrated linear gain measurement; the lower amplitude is the better starting setting for subsequent tests, not a proven optimum.
 
 ### What the dB and frequency numbers mean
 
@@ -203,7 +203,7 @@ The +359/+361 Hz values come from mean FM discriminator output in the selected c
 
 The radio remained on the owner-reported Low setting. No RF wattmeter was used, and no calibrated antenna factor, path loss or load isolation is available. Consequently this entry makes **no numerical claim for transmitter watts, EIRP, received dBm or link budget**. Six successful packets are a short functional demonstration, not a long-run packet-error-rate or BER characterization.
 
-The published receiver logs omit the USB serial field; their unredacted originals remain outside the repository. IQ captures are unchanged. The rtl-sdr logs print an initial `[R82XX] PLL not locked!` message, then report the requested frequency, sample rate and gain and deliver the complete captures. This startup warning is preserved in the logs. Successful decoding establishes reception in this setup, not frequency calibration. The logs do not report sample-loss errors, but that does not independently prove loss-free USB delivery.
+The published receiver logs omit the USB serial field; their unredacted originals remain outside the repository. IQ captures are unchanged. The first two rtl-sdr logs print an initial `[R82XX] PLL not locked!` message, then report the requested frequency, sample rate and gain and deliver the complete captures. This startup warning is preserved in the logs. Successful decoding establishes reception in this setup, not frequency calibration. The logs do not report sample-loss errors, but that does not independently prove loss-free USB delivery.
 
 ## Reanalyzing the saved evidence
 
@@ -215,9 +215,84 @@ sha256sum -c SHA256SUMS
 python3 modem.py selftest
 python3 modem.py decode rx01.iq --json replay01.json
 python3 modem.py decode rx02.iq --json replay02.json
+python3 modem.py decode rx03.iq --json replay03.json
 ```
 
-The originally recorded outputs remain [rx01.json](files/rx01.json) and [rx02.json](files/rx02.json). To regenerate derived summaries and the plot, install Matplotlib as well and run `python3 analyze.py`. This updates only `summary.json`, `summary.csv`, `SHA256SUMS` and the comparison PNG; it does not change the original captures or original decoder JSON.
+The originally recorded outputs remain [rx01.json](files/rx01.json), [rx02.json](files/rx02.json) and [rx03.json](files/rx03.json). To regenerate derived summaries and the plot, install Matplotlib as well and run `python3 analyze.py`. This updates only `summary.json`, `summary.csv`, `SHA256SUMS` and the comparison PNG; it does not change the original captures or original decoder JSON.
+
+## Follow-up: outdoor SatNOGS station, still with the barrel load
+
+The next receiver was the existing SatNOGS station, with a **VHF/UHF J-pole at the back of the house on the side of the tower**. The owner estimated **60 feet or more** from the Quansheng, with the house in between. The Quansheng stayed at **446.000 MHz, Low power, barrel load fitted**, and used the same black Digirig cable and peak-0.03 WAV from run 2. The text still says “outpost1” because the same waveform was intentionally reused; the actual receiver for run 3 was the SatNOGS station.
+
+This dongle identifies as an **RTL-SDR Blog V4 with a Rafael Micro R828D tuner**, different from outpost1's R820T. Its Linux host runs Debian 12 Bookworm. Host rtl-sdr/SciPy were not installed, but its existing `librespace/satnogs-client:2.1.2` container already supplied Python 3.11.2, NumPy 1.24.2, SciPy 1.10.1, and rtl-sdr/librtlsdr0 `2.0.2-2~bpo12+1satnogs1`.
+
+The client was idle: no observation worker was running and the USB device was not held open. I briefly paused the SatNOGS client, ran a separate temporary container from the same existing image, then unpaused the client as soon as capture finished. A one-minute systemd timer provided a backup unpause in case the shell exited unexpectedly. Decoding then ran in another temporary container without access to the USB device. No host packages were installed for this follow-up.
+
+After copying `modem.py` to the same work directory on the station, the station-side capture commands were:
+
+```sh
+sudo bash <<'SH'
+set -euo pipefail
+cd /home/ngrabbs/work/bpsk-fm-test
+test ! -e rx03.iq
+cleanup() {
+  docker unpause satnogs_satnogs-client
+  systemctl stop satnogs-bpsk-resume03.timer || true
+}
+docker pause satnogs_satnogs-client
+trap cleanup EXIT
+systemd-run --unit=satnogs-bpsk-resume03 --on-active=60s \
+  /usr/bin/docker unpause satnogs_satnogs-client
+date -u +%FT%TZ > rx03-start.txt
+docker run --rm --name bpsk-capture03 --network none \
+  --device /dev/bus/usb/001/003 \
+  -v /home/ngrabbs/work/bpsk-fm-test:/work -w /work \
+  --entrypoint /usr/bin/rtl_sdr librespace/satnogs-client:2.1.2 \
+  -f 446050000 -s 240000 -g 0.9 -n 5760000 rx03.iq \
+  > rx03-rtl.log 2>&1
+SH
+```
+
+The USB path above was the path observed during this test; check `lsusb` and current device use before repeating. Do not pause an active observation. In the ember-ground session, while this capture was running:
+
+```sh
+cd /home/ngrabbs/work/bpsk-fm-test
+python3 -u transmit.py tx02.wav > tx03.log 2>&1
+```
+
+Then, on the station:
+
+```sh
+sudo docker run --rm --network none \
+  -v /home/ngrabbs/work/bpsk-fm-test:/work -w /work \
+  --entrypoint /usr/bin/python3 librespace/satnogs-client:2.1.2 \
+  modem.py decode rx03.iq --json rx03.json
+sudo docker inspect --format 'running={{.State.Running}} paused={{.State.Paused}}' \
+  satnogs_satnogs-client
+# Verified after capture: running=true paused=false
+```
+
+### SatNOGS result
+
+**All three packets decoded**, with the same exact 41-byte message, sequences 1–3 and expected CRCs. There were zero payload-byte mismatches and zero sync-bit errors in the accepted packets. Host-measured PTT was **16.586 seconds**, with **59.33 bit/s** aggregate payload throughput including the repeated copies.
+
+| Run 3 measurement | Result |
+| --- | ---: |
+| Valid / sent packets | **3 / 3** |
+| Capture | 24.0 s / 5,760,000 complex samples / 11,520,000 bytes |
+| Median carrier-on channel power | −31.93 dBFS |
+| Carrier-off final second | −56.36 dBFS |
+| On/off channel-power contrast | **24.43 dB** |
+| Estimated signal-to-off-noise ratio under the earlier assumptions | 24.42 dB |
+| Combined transmitter/receiver frequency offset | +1,812 Hz |
+| Median FM discriminator frequency variation, RMS | 1.793 kHz |
+| ADC rail fraction | 0 |
+
+The same measurement definitions and limitations apply. The R828D and R820T receivers, antennas and paths differ, so subtracting their dBFS numbers would not be a calibrated path-loss measurement. The offset is a combined estimate, not an error assigned to either radio. The receiver-only contrast is not a calibrated SNR or sensitivity figure.
+
+This establishes reception at the outdoor J-pole across the reported house path, **with the barrel load on the transmitter**. It is not yet a comparison using the telescoping transmit antenna, a measured distance test, or an RF-power measurement. The successful result should not be used to infer a characterized load isolation or link budget.
+
+Evidence: [original IQ](files/rx03.iq), [derived audio](files/rx03.wav), [decoder result](files/rx03.json), [receiver log with serial omitted](files/rx03-rtl.log), [PTT log](files/tx03.log), [transmit manifest](files/tx03.json). The manifest is copied from run 2 because exactly that waveform was played again. The updated summary and comparison plot include all three runs. The original receiver JSON remains unchanged, and a second offline replay independently recovered all three packets.
 
 ## Next steps
 

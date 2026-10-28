@@ -9,7 +9,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 rows=[]
-for run, txname in [('01','tx'),('02','tx02')]:
+for run, txname in [('01','tx'),('02','tx02'),('03','tx03')]:
     rx=json.loads((HERE/f'rx{run}.json').read_text())
     tx=json.loads((HERE/f'{txname}.json').read_text())
     log=(HERE/f'tx{run}.log').read_text().splitlines()
@@ -53,13 +53,15 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 fig,axes=plt.subplots(2,1,figsize=(10,7),sharex=True,layout='constrained')
-for run,label in [('01','Run 1: peak 0.10'),('02','Run 2: peak 0.03')]:
+for run,label in [('01','Run 1: outpost1, peak 0.10'),
+                  ('02','Run 2: outpost1, peak 0.03'),
+                  ('03','Run 3: SatNOGS, peak 0.03')]:
     r=json.loads((HERE/f'rx{run}.json').read_text())
     axes[0].plot([b['second']+.5 for b in r['seconds']],
                  [b['channel_power_dbfs'] for b in r['seconds']],'.-',label=label)
     axes[1].plot([b['second']+.5 for b in r['seconds']],
                  [b['fm_rms_hz']/1000 for b in r['seconds']],'.-',label=label)
-axes[0].set(ylabel='Channel power (dBFS)',title='446 MHz BPSK audio over FM: two captured bursts\n20 kHz RF channel; fixed RTL tuner gain 0.9 dB')
+axes[0].set(ylabel='Channel power (dBFS)',title='446 MHz BPSK audio over FM: three captures, two receivers\n20 kHz RF channel; requested tuner gain 0.9 dB; levels are not cross-calibrated')
 axes[1].set(ylabel='FM discriminator RMS (kHz)',xlabel='Seconds from each capture start',
             title='Idle FM discriminator noise is high; use the carrier-on intervals for comparison')
 for ax in axes:
@@ -70,7 +72,8 @@ plt.close(fig)
 
 # Hash original IQ, derived audio, manifests and machine-readable results.
 names=['rx01.iq','rx02.iq','rx01.wav','rx02.wav','rx01.json','rx02.json',
-       'tx.json','tx02.json','tx01.log','tx02.log','rx01-rtl.log','rx02-rtl.log']
+       'tx.json','tx02.json','tx01.log','tx02.log','rx01-rtl.log','rx02-rtl.log',
+       'rx03.iq','rx03.wav','rx03.json','tx03.json','tx03.log','rx03-rtl.log']
 with (HERE/'SHA256SUMS').open('w') as out:
     for name in names:
         out.write(hashlib.sha256((HERE/name).read_bytes()).hexdigest()+'  '+name+'\n')

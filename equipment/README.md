@@ -97,7 +97,7 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 | SDRB (AMSAT prototype) | In current bench use, October 25 | Native TX gain controls and exploratory J14 doubler measurements in [entry 008](../entries/008-sdrb-j14-drive-check/README.md); software gain is not calibrated output dBm. |
 | RTL-SDR attached to outpost1, marketed model unconfirmed | Detected and used 2026-10-28 | USB RTL2838; librtlsdr identifies R820T tuner. It may be one of the previously inventoried v3/v4 units; no additional unit count is inferred. LibreSDR-supplied receive antenna, owner reports 70 cm suitability; exact antenna unknown. [Entry 009](../entries/009-bpsk-over-fm/README.md) records successful 446 MHz packet reception. |
 | RTL-SDR v3 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown; source noise-floor comparison not independently established. |
-| RTL-SDR v4 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown. |
+| RTL-SDR Blog V4 at SatNOGS station | Recorded owned; identity and reception checked 2026-10-28 | USB identifies Blog V4; librtlsdr identifies R828D tuner. Outdoor VHF/UHF J-pole on the side of the tower at the back of the house. [Entry 009](../entries/009-bpsk-over-fm/README.md#follow-up-outdoor-satnogs-station-still-with-the-barrel-load): 3/3 CRC-valid packets at 446 MHz, with the transmitting UV-K5 on Low and a barrel load, roughly 60+ feet away through the house. Frequency/power calibration unverified. |
 | HackRF One | Recorded owned | Source-listed 1 MHz–6 GHz, half-duplex TX/RX, 8-bit. Board revision and measured performance unknown. |
 | LibreSDR | Recorded owned | Source-listed approximately 70 MHz–6 GHz, full-duplex TX/RX. [Entry 004](../entries/004-libresdr-tx-power/README.md) records a later power check; do not generalize it to all gains/frequencies. |
 | PlutoSDR | Recorded owned | Source-listed 325 MHz–3.8 GHz, full-duplex TX/RX. Any range extension/modification is unconfirmed. |
@@ -112,7 +112,7 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 | CSN Technologies S.A.T. tracker | Recorded owned | Source describes standalone G-5500 control. Current configuration unconfirmed. |
 | Backfire helix (BBQ-grill conversion) | Recorded owned | Source reports reflector with swappable 2.1 GHz and 1.7 GHz feeds and feed LNA. Beam, gain and completed receive-chain performance not characterized here. |
 | 80 m HF wire antenna | Recorded owned | Source records an HF wire antenna. Installation, tuning and present condition unconfirmed. |
-| J-pole (VHF / UHF) | Recorded owned | omni, omnidirectional 2 m / 70 cm |
+| J-pole (VHF / UHF) | Recorded owned; SatNOGS use owner confirmed 2026-10-28 | Owner reports mounted at the back of the house on the side of the tower, feeding the SatNOGS RTL-SDR. Model and feedline details unrecorded. [446 MHz receive test](../entries/009-bpsk-over-fm/README.md#follow-up-outdoor-satnogs-station-still-with-the-barrel-load). |
 | 2.4 GHz WiFi Yagi | Recorded owned | for ISM-band and S-band work |
 | Telescoping 144/440 HT antenna, owner-described “MJF” | Owner confirmed available 2026-10-28 | Initially fitted to the UV-K5; replaced by the barrel load before both [entry 009](../entries/009-bpsk-over-fm/README.md) data bursts. Brand spelling and exact model not verified. |
 | UV-5R-style extendable HT antennas | Recorded owned (several) | Several recorded owned. Exact models, count and performance unknown. |
@@ -142,6 +142,7 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
+| SatNOGS station host | Access and working service verified 2026-10-28 | Linux ARM64 / Debian 12 Bookworm; existing librespace/satnogs-client:2.1.2 container. RTL-SDR Blog V4 and outdoor J-pole reception demonstrated in [entry 009](../entries/009-bpsk-over-fm/README.md#follow-up-outdoor-satnogs-station-still-with-the-barrel-load). Client briefly paused for the test and verified running/unpaused afterward; exact Pi model and RAM not checked. |
 | outpost1 mobile testing Pi (formerly Houston) | Owner confirmed mobile setup and fresh installation 2026-10-28 | Raspberry Pi 4 Model B Rev 1.4, approximately 2 GB RAM, 64 GB microSD, keyboard and screen in a ruggedized Pelican case. Owner describes it as portable for mobile testing. Fresh 64-bit Raspberry Pi OS Lite / Debian 13 Trixie, no desktop environment; SSH account ngrabbs. RTL-SDR reception demonstrated in [entry 009](../entries/009-bpsk-over-fm/README.md). Screen/keyboard and case models, battery provision and field endurance unrecorded. |
 | ThinkPad X1 Carbon | Recorded owned | Source records Ubuntu/Windows dual boot and srsRAN use. Generation, CPU, RAM and present software versions unknown; source lists no discrete GPU. |
 | iPad | Recorded owned | PDF reading and annotation; generation/model unknown. |

@@ -4,7 +4,7 @@
 set -euo pipefail
 : "${TX_HOST:?Set TX_HOST to user@transmitter-host}"
 : "${RX_HOST:?Set RX_HOST to user@receiver-host}"
-run=${1:-03}
+run=${1:-04}
 amplitude=${2:-0.03}
 [[ $run =~ ^[0-9][0-9]$ ]] || exit 2
 [[ $amplitude =~ ^0\.[0-9]+$ ]] || exit 2

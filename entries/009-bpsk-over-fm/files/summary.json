@@ -64,5 +64,38 @@
       14,
       15
     ]
+  },
+  {
+    "run": "03",
+    "digital_peak": 0.03,
+    "drive_dbfs_peak": -30.45757490560675,
+    "packets_sent": 3,
+    "packets_crc_ok": 3,
+    "payload_bytes_recovered": 123,
+    "payload_byte_mismatches": 0,
+    "sync_bit_errors": 0,
+    "ptt_s": 16.585761547088623,
+    "payload_bps_including_repeated_messages": 59.32799631818692,
+    "channel_on_dbfs": -31.931122026265868,
+    "channel_off_dbfs": -56.36396128611834,
+    "channel_on_off_contrast_db": 24.432839259852468,
+    "estimated_signal_to_off_noise_db": 24.417161498924767,
+    "combined_tx_rx_frequency_offset_hz": 1812.0540989759497,
+    "discriminator_frequency_rms_hz": 1792.670844045982,
+    "adc_rail_fraction": 0.0,
+    "payload_window_seconds": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+    ]
   }
 ]
