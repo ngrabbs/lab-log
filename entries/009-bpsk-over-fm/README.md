@@ -294,6 +294,27 @@ This establishes reception at the outdoor J-pole across the reported house path,
 
 Evidence: [original IQ](files/rx03.iq), [derived audio](files/rx03.wav), [decoder result](files/rx03.json), [receiver log with serial omitted](files/rx03-rtl.log), [PTT log](files/tx03.log), [transmit manifest](files/tx03.json). The manifest is copied from run 2 because exactly that waveform was played again. The updated summary and comparison plot include all three runs. The original receiver JSON remains unchanged, and a second offline replay independently recovered all three packets.
 
+## Watching the signal in a terminal
+
+A screenshot supplied by the owner showed a custom UHD/USRP text display (`uhd_audio_bars.py`) and a scrolling ASCII waterfall. `RFNOC::GRAPH` in that screenshot is a UHD diagnostic tag, not the display program's name. For the RTL-SDR station, [live_waterfall.py](files/live_waterfall.py) provides a comparable terminal waterfall using the existing container, NumPy and Python curses. The script displays a 40 kHz span centered on 446.000 MHz, using 8,192-point Hann-window FFTs and four-frame averaging at 240 ksample/s. The fixed color scale is −95 to −40 dBFS per FFT bin, uncalibrated. It is a receiver display, not a message decoder or a calibrated RF instrument.
+
+[waterfall.sh](files/waterfall.sh) checks whether the USB device is in use, pauses the idle SatNOGS client, starts the live receiver and restores the client on exit. Both files are installed in the station's existing `/home/ngrabbs/work/bpsk-fm-test` directory. A four-second live startup/exit test passed, and the client was verified running and unpaused afterward. No additional transmission was made for that startup test.
+
+From one workstation terminal:
+
+```sh
+ssh -t ngrabbs@YOUR_SATNOGS_HOST '~/work/bpsk-fm-test/waterfall.sh'
+```
+
+Then from a second terminal, trigger the already prepared lower-drive burst on ember-ground:
+
+```sh
+ssh ngrabbs@YOUR_EMBER_HOST \
+  'cd ~/work/bpsk-fm-test && python3 transmit.py tx02.wav'
+```
+
+Watch near 446.000 MHz for the roughly 16.6-second FM burst. The earlier receiver offset estimate suggests it may appear around 446.002 MHz on this receiver. Press **q** or **Ctrl-C** in the waterfall to quit and resume SatNOGS. The script uses the USB path observed in this session; update it if the dongle moves. It refuses to start if the dongle is already open, and should not be used to interrupt a scheduled observation.
+
 ## Next steps
 
 - Restore the telescoping transmit antenna, increase separation, and record actual antenna models, distance, radio bandwidth and iJV firmware version. Treat that as a new test configuration.
