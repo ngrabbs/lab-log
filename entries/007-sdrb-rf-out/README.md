@@ -385,3 +385,7 @@ The RAM file contains **73,728 complex float32 little-endian samples / 589,824 b
 </details>
 
 **Qualified scope:** this exact image's on-board TX CLI, four TX branches through driver-only J10 at the listed frequencies/settings, RAM-file playback and SIGINT/application restart. These short spots do not qualify full filter response, calibrated power, SD-backed playback, other rates/clocks, physical direct pads, RX overrides/mixed channels/2R2T, final PA/doubler or stable forwarding. Ray-specific GUI/Windows automation is separate. Earlier failures and operator corrections remain retained; no gain/frequency sweep or repeat campaign was run. Raw records remain outside Git. The handover uses the unchanged, fully read-back SD image.
+
+### Rc.5 SD handover
+
+The [unchanged burnable SD-image ZIP](https://gitlab.amsat.org/engineering/golf/sdrb/-/raw/748d9447f6241222eb7dd91e5bdb482ddac33ed1/releases/0.1.0-dev.4-rc.5/SDRB-0.1.0-dev.4-rc.5-TX-20261028.zip?inline=false) contains START-HERE.md, the exact source/image manifest, checksums and a 25-file board identity checker. Extract the ZIP and write the .img.gz to a spare SD card of at least 8 GB; follow the included setup and on-board TX commands. GitLab project login is required. The downloaded 106,719,254-byte ZIP matches SHA-256 `a96ff419877c371f93396d6e946df2c3ca639cfd1e8121043f9d4170e754003f`. [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) is ready for review; this is the limited TX scope above. No RX, full-filter or stable-forwarding acceptance is added.
