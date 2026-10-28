@@ -270,6 +270,8 @@ The first identity check stopped because its harness expected rc.3's old kernel 
 
 ## Rc.5 board and J10 check — October 28, 2026
 
+*Later operator correction: AmpPwr1 may not have been connected during this first rc.5 check; its connection for that run is unconfirmed. The explicitly requested repeat below uses a confirmed connection. Earlier raw records are retained.*
+
 **Setup:** **0.1.0-dev.4-rc.5**, source `d4bfe82`; same J10 → DC block → **30 dB / 2 W → tinySA** path. Main + AmpPwr1: **9 V / 1.5 A limit**; AmpPwr2 disconnected. TX1A/channel 1, LO 438 MHz +100 kHz, gain **60**, amplitude **0.1**, **2.304 MS/s**, 8000-byte frames, one **six-second** tone. tinySA: 10 dB internal attenuation, 3 kHz RBW, LNA/Ultra off, 437.8–438.2 MHz/201 points, external correction zero. LibreSDR was not opened.
 
 | Check | Result |
@@ -289,3 +291,15 @@ These data do **not** establish output power, filter rejection or a physical SDR
 *Actual 480 × 320 LCD captures, with original RGB565/PNG hashes verified. The capture timing does not establish measurement freshness.*
 
 SDRB remains powered idle/unclaimed with zero failed services; verified metadata was exported and removed from RAM. **Next: verify tinySA with a known reference while SDRB is idle before another bounded RF check.** [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) stays draft; RF acceptance is unresolved. Raw records stay outside Git.
+
+## Rc.5 repeat with AmpPwr1 confirmed — October 28, 2026
+
+The owner confirmed **AmpPwr1 is now connected** and requested one repeat. Same rc.5/source `d4bfe82`, **9 V / 1.5 A limit**, AmpPwr2 disconnected, **J10 → DC block → 30 dB / 2 W → tinySA**. No gain, frequency, filter or analyzer-setting change: TX1A/channel 1, **438.1 MHz**, gain **60**, amplitude **0.1**, **2.304 MS/s**, 8000-byte frames, **six seconds**.
+
+**Result:** the CLI passes routing acknowledgement and completes **6.000735 s**, target exit **0**, without reported stream/decode/cleanup errors; one post-stop burst acknowledgement. The numerical target-window peak is **−110.1249 dBm before/on/after**: all **201 bins again match exactly**, giving **0 dB** against the unchanged ≥10 dB detection gate. The LCD marker reads **−111.6 dBm**. Measurement freshness remains unverified; these readings do not establish output power, filter rejection or a physical SDRB fault.
+
+| Before | During the requested stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-before.png) | ![Actual tinySA LCD during AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-active.png) | ![Actual tinySA LCD after AmpPwr1-confirmed repeat](images/rc5-amp1-confirmed-after.png) |
+
+*Actual LCD captures; all three RGB565/PNG pairs and exported metadata verify by checksum. Only this one additional RF run was performed. Final 25 identities and idle/unclaimed state pass, no failed services; verified metadata removed from RAM. SDRB remains powered idle. RF acceptance is unresolved; next remains a tinySA known-reference check.*
