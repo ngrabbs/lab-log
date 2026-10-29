@@ -1,0 +1,11 @@
+[Unit]
+Description=Send the KI5YNG ground-test beacon every two minutes when armed
+
+[Timer]
+OnActiveSec=120s
+OnUnitActiveSec=120s
+AccuracySec=1s
+Unit=ember-beacon.service
+
+[Install]
+WantedBy=timers.target

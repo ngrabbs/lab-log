@@ -1,0 +1,16 @@
+[Unit]
+Description=KI5YNG EMBER-format 1200-baud BPSK-over-FM ground-test beacon
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/home/ngrabbs/work/ember-beacon/ARMED
+
+[Service]
+Type=oneshot
+User=ngrabbs
+Group=ngrabbs
+WorkingDirectory=/home/ngrabbs/work/ember-beacon
+ExecStart=/usr/bin/python3 /home/ngrabbs/work/ember-beacon/beacon.py
+ExecStopPost=/usr/bin/python3 /home/ngrabbs/work/ember-beacon/radio.py release
+TimeoutStartSec=60
+TimeoutStopSec=5
+UMask=0077

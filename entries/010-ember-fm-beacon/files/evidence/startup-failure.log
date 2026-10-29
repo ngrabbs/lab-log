@@ -1,0 +1,11 @@
+Starting ember-beacon.service - KI5YNG EMBER-format 1200-baud BPSK-over-FM ground-test beacon...
+Traceback (most recent call last):
+  File "/home/ngrabbs/work/ember-beacon/beacon.py", line 77, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/ngrabbs/work/ember-beacon/beacon.py", line 66, in main
+    raise RuntimeError('Receiver did not become ready; no transmission started')
+RuntimeError: Receiver did not become ready; no transmission started
+ember-beacon.service: Main process exited, code=exited, status=1/FAILURE
+ember-beacon.service: Failed with result 'exit-code'.
+Failed to start ember-beacon.service - KI5YNG EMBER-format 1200-baud BPSK-over-FM ground-test beacon.

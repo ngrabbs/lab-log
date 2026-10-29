@@ -315,6 +315,10 @@ ssh ngrabbs@YOUR_EMBER_HOST \
 
 Watch near 446.000 MHz for the roughly 16.6-second FM burst. The earlier receiver offset estimate suggests it may appear around 446.002 MHz on this receiver. Press **q** or **Ctrl-C** in the waterfall to quit and resume SatNOGS. The script uses the USB path observed in this session; update it if the dongle moves. It refuses to start if the dongle is already open, and should not be used to interrupt a scheduled observation.
 
+## Follow-up on October 29
+
+[Entry 010](../010-ember-fm-beacon/README.md) moves the Digirig to outpost1 and the Baofeng, sends 1,200-baud EMBER-format ground-test heartbeats over FM, appends CW KI5YNG identification, and adds a two-minute timer with short SatNOGS receiver reservations. It remains distinct from native RF BPSK.
+
 ## Next steps
 
 - Restore the telescoping transmit antenna, increase separation, and record actual antenna models, distance, radio bandwidth and iJV firmware version. Treat that as a new test configuration.

@@ -1,0 +1,7 @@
+{
+  "callsign": "KI5YNG",
+  "frequency_hz": 446000000,
+  "mode": "EMBER-v3-DBPSK1200-audio-over-FM",
+  "amplitude": 0.03,
+  "receiver": "ngrabbs@YOUR_SATNOGS_HOST"
+}

@@ -1,6 +1,6 @@
 # Equipment on Hand
 
-**Updated:** 2026-10-28
+**Updated:** 2026-10-29
 
 **Inventory status:** Seeded from older testbed records; reconciliation in progress.
 
@@ -215,6 +215,8 @@ Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax 
 - [ ] Update old Centisat prototype/build states and software installations as those items are next used.
 
 ## Source and maintenance
+
+The 2026-10-29 [two-minute beacon setup](../entries/010-ember-fm-beacon/README.md) moved the Digirig Lite and working black cable to outpost1/Baofeng. Two indoor 1200-baud native-format HEARTBEAT captures and received CW KI5YNG identification passed. The owner then moved outpost1 outdoors; its changed network address was verified, but its Digirig was not enumerated during the continuation check, so the timer was stopped pending reconnection. This is BPSK audio over FM with ground-test source emulation, not native RF BPSK or spacecraft measurements.
 
 The 2026-10-28 BPSK transfer session added the owner-confirmed outpost1 mobile Pi/case/keyboard/screen, UV-K5/iJV details and the current RTL-SDR setup; software observations and transfer captures are in [entry 009](../entries/009-bpsk-over-fm/README.md).
 

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+config.json
+receiver_key*
+known_hosts
+ARMED
+state.json
+*.lock
+current.wav
+beacons.jsonl
+results.jsonl
+proofs/

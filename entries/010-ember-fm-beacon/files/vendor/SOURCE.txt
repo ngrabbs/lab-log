@@ -1,0 +1,4 @@
+Unmodified files from https://github.com/ngrabbs/ember
+Commit: 06680f3d256bc71e107fe5be377b929e5bf25033
+Paths preserve the original ground/bpsk and ground/ember layout.
+No new license is assigned.
