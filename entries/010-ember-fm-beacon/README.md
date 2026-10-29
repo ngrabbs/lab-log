@@ -20,7 +20,7 @@ outpost1 → native-format ground-test HEARTBEAT → EMBER v3 frame
 → native CRC/schema checks → exact byte comparison with the transmit record
 ```
 
-No Pico or IHU is attached to outpost1 for this test. The transmitter **emulates source=COMMS, target=GROUND** so it can exercise the native telemetry codec. The packet is a `HEARTBEAT` with `COMMISSIONING`, `GROUND_TEST`, and `telemetry_period_ms=120000`. Uptime comes from outpost1's `/proc/uptime`, and the nonzero 32-bit source boot identity is derived from its Linux boot UUID. These are **Pi-generated bench packets, not spacecraft measurements**. Every TX/RX record is marked `bench_source_emulated=true`. There is no Yamcs forwarding or command dispatch.
+No Pico or IHU is attached to outpost1 for this test. The transmitter **emulates source=COMMS, target=GROUND** so it can exercise the native telemetry codec. The packet is a `HEARTBEAT` with `COMMISSIONING`, `GROUND_TEST`, and `telemetry_period_ms=120000`. Uptime comes from outpost1's `/proc/uptime`, and the nonzero 32-bit source boot identity is derived from its Linux boot UUID. These are **Pi-generated bench packets, not spacecraft measurements**. Four RF transmissions were decoded during setup, including two consecutive outdoor timer beacons after the USB reconnection. Every TX/RX record is marked `bench_source_emulated=true`. There is no Yamcs forwarding or command dispatch.
 
 The callsign is appended **audibly in CW at 800 Hz / 20 WPM** after each packet. The native HEARTBEAT has no callsign string field. Receiver JSON's `callsign` is configuration metadata, not an independently decoded CW result.
 
@@ -163,7 +163,7 @@ The retry, outer sequence **2**, decoded the complete native HEARTBEAT byte-for-
 
 A separate negative test held the receiver's file lock for ten seconds and manually started the service. Sequence **3** logged `status=skipped`, reason `beacon receiver already busy`, and no PTT timestamps. That sequence was consumed but was not transmitted, so the gap is not an over-the-air packet loss. The lock was then released, and the two-minute timer enabled.
 
-The following result table and original snapshots record the subsequent automatic attempts. Successful byte comparisons establish this packet-format-over-FM link, not native RF BPSK compatibility, continuous weak-signal performance or a measured transmitter power.
+The following table records the initial attempts; the outdoor section below records the later automatic attempts. Successful byte comparisons establish this packet-format-over-FM link, not native RF BPSK compatibility, continuous weak-signal performance or a measured transmitter power.
 
 | Attempt | Outcome | Native frame / ID | Measured PTT | Channel on/off contrast |
 | --- | --- | --- | ---: | ---: |
@@ -184,7 +184,22 @@ After sequence 4, the station could no longer reach outpost1 at its old address.
 
 The rebooted Pi no longer enumerated the Digirig USB/audio device, and a boot-time attempt failed rather than transmit. A local HID/permission preflight was added so a missing Digirig is rejected before reserving the shared SDR. SatNOGS was verified running and unpaused. The subsequent outdoor hookup and timer checks are recorded below when completed; indoor results above should not be treated as an outdoor range test.
 
-At the outdoor continuation check, the host was reachable and its SSH identity matched, but `lsusb` and `/proc/asound/cards` did not list the Digirig. Only keyboard HID devices were present. The timer was stopped during this maintenance check. The owner was asked to reseat the USB connection. **No outdoor transmission or two-consecutive-period timing result is claimed yet.** The timer definition is installed and enabled across boot, but was inactive at this check; the first indoor automatic beacon above is the observed timer result. Reconnection and a new live check are needed before restarting it.
+At the first outdoor continuation check, the host was reachable and its SSH identity matched, but `lsusb` and `/proc/asound/cards` did not list the Digirig. Only keyboard HID devices were present. The timer was stopped during maintenance. After the owner reseated USB connections and rebooted, the Digirig enumerated as `0d8c:0012`, bound to `snd-usb-audio` and `usbhid`, and exposed writable `/dev/hidraw2`.
+
+No USB blocking rule was found: both root buses had `authorized_default=1`, USBGuard was inactive, and our udev rule only grants the `audio` group access to the matching HID device. The green LED established power, not USB enumeration. The exact original connection fault was not isolated; it should not be attributed to a blocking rule on this evidence.
+
+The already-enabled timer resumed after reboot. **Two consecutive outdoor automatic beacons, sequences 6 and 7, decoded successfully**, each with an exact transmitted-native-byte match and both CRCs valid. Their PTT starts were **120.646 seconds apart** against the 120-second timer setting. Scheduling, SSH/capture readiness and audio setup contribute jitter; this is one measured interval, not a long-duration timing qualification.
+
+| Outdoor beacon | PTT start, UTC | PTT duration | Result | On/off channel contrast |
+| --- | --- | ---: | --- | ---: |
+| 6 | 2026-10-29 13:49:38.723 | 5.478 s | Exact 38-byte HEARTBEAT; native CRC16 + outer CRC32 valid | 34.62 dB |
+| 7 | 2026-10-29 13:51:39.370 | 5.478 s | Exact 38-byte HEARTBEAT; native CRC16 + outer CRC32 valid | 34.59 dB |
+
+The reboot changed the Pi-derived source boot identity, and its uptime advanced between these packets. This is expected for the emulated ground-test source, not evidence of an EMBER hardware reboot. New outdoor distance/orientation was not measured, and the path should not be equated with the earlier indoor arrangement. The Baofeng frequency/Low/barrel-load setup was retained by owner confirmation.
+
+Sequence 6 filled the third retained proof slot; independent replay and CW timing recovered **KI5YNG** from that IQ. Sequence 7 is preserved in the TX/RX JSON snapshots but its routine IQ was not retained, as configured. Across this work there are **four decoded RF transmissions** (2, 4, 6, 7), a deliberate skipped attempt (3), and startup/missing-interface failures that did not constitute RF packet losses.
+
+**State at completion:** the two-minute timer is enabled and active on outpost1; the last service attempt succeeded; SatNOGS was verified `running=true paused=false` after each outdoor capture. The service remains armed for recurring transmissions. Logs and stop/disarm commands above are the operating controls. A future DHCP source-address change requires updating the dedicated capture key restriction after verifying the host identity.
 
 ## Evidence and replay
 
@@ -203,7 +218,7 @@ The output must contain the same native hex and sequence as that capture's origi
 
 - Replace source emulation with a packet source from actual EMBER hardware if spacecraft telemetry is the intended test.
 - Test native RF DBPSK separately, using the actual EMBER transmitter or a suitable SDR transmitter and the FM discriminator bypassed.
-- Extend CW identification verification beyond the two strong captures checked offline; the live telemetry receiver does not decode CW.
+- Extend CW identification verification beyond the three proof captures checked offline; the live telemetry receiver does not decode CW.
 - Characterize RF power, deviation, load match/isolation and antenna-path performance before making a link-budget claim.
 - Review observation scheduling if the short reservations become disruptive; one RTL-SDR cannot serve overlapping observations and the beacon simultaneously.
 

@@ -1,0 +1,13 @@
+{
+  "sequences": [
+    6,
+    7
+  ],
+  "ptt_start_interval_s": 120.64641404151917,
+  "requested_interval_s": 120,
+  "transmit_ptt_s": [
+    5.4776294231414795,
+    5.477970361709595
+  ],
+  "note": "Two consecutive outdoor timer beacons, exact native-byte matches; not long-duration qualification."
+}

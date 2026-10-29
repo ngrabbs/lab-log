@@ -216,7 +216,7 @@ Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax 
 
 ## Source and maintenance
 
-The 2026-10-29 [two-minute beacon setup](../entries/010-ember-fm-beacon/README.md) moved the Digirig Lite and working black cable to outpost1/Baofeng. Two indoor 1200-baud native-format HEARTBEAT captures and received CW KI5YNG identification passed. The owner then moved outpost1 outdoors; its changed network address was verified, but its Digirig was not enumerated during the continuation check, so the timer was stopped pending reconnection. This is BPSK audio over FM with ground-test source emulation, not native RF BPSK or spacecraft measurements.
+The 2026-10-29 [two-minute beacon setup](../entries/010-ember-fm-beacon/README.md) moved the Digirig Lite and working black cable to outpost1/Baofeng. Two indoor 1200-baud native-format HEARTBEAT captures and received CW KI5YNG identification passed. The owner then moved outpost1 outdoors. After a USB reconnection/reboot, the Digirig was enumerated again and two consecutive outdoor beacons decoded with exact native-byte matches, 120.65 seconds between PTT starts. The timer is enabled and active, reserving short receiver windows and resuming SatNOGS between them. This is BPSK audio over FM with ground-test source emulation, not native RF BPSK or spacecraft measurements.
 
 The 2026-10-28 BPSK transfer session added the owner-confirmed outpost1 mobile Pi/case/keyboard/screen, UV-K5/iJV details and the current RTL-SDR setup; software observations and transfer captures are in [entry 009](../entries/009-bpsk-over-fm/README.md).
 

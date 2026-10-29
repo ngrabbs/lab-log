@@ -12,7 +12,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
-| 010 | [Two-minute EMBER-format FM beacon](entries/010-ember-fm-beacon/README.md) | Outpost1/Baofeng to SatNOGS: native 1200-baud packet framing, CW KI5YNG, short shared-receiver captures and timer setup. In progress. |
+| 010 | [Two-minute EMBER-format FM beacon](entries/010-ember-fm-beacon/README.md) | Outpost1/Baofeng to SatNOGS: four native-format 1200-baud packets decoded; CW KI5YNG and outdoor two-minute timing verified. In progress. |
 | 009 | [BPSK audio over FM to outpost1](entries/009-bpsk-over-fm/README.md) | UV-K5/Digirig to RTL-SDR: 9/9 CRC-valid packets across outpost1 and an outdoor SatNOGS J-pole; barrel load, raw IQ, code and measured comparisons. In progress. |
 | 008 | [SDRB J14 doubler drive check](entries/008-sdrb-j14-drive-check/README.md) | J14 gain checks and a detected 5.184 GHz J10 fundamental; actual tinySA screens and results tables. In progress. |
 | 007 | [SDRB RF_Out check](entries/007-sdrb-rf-out/README.md) | Four TX branches; rc.5 limited TX CLI qualification: four J10 branches, RAM playback and SIGINT/restart pass; earlier failures retained. Intermittent forwarding underflow remains open. In progress. |
