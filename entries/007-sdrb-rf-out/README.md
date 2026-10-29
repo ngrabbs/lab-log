@@ -1,7 +1,7 @@
 # 007 SDRB RF_Out check
 
 **Status:** In progress  
-**Started / updated:** 2026-10-20 / 2026-10-28
+**Started / updated:** 2026-10-20 / 2026-10-29
 
 Check the signal at **J10/RF_Out** using driver-only Path B, with the final PA off.
 
@@ -389,3 +389,99 @@ The RAM file contains **73,728 complex float32 little-endian samples / 589,824 b
 ### Rc.5 SD handover
 
 The [unchanged burnable SD-image ZIP](https://gitlab.amsat.org/engineering/golf/sdrb/-/raw/748d9447f6241222eb7dd91e5bdb482ddac33ed1/releases/0.1.0-dev.4-rc.5/SDRB-0.1.0-dev.4-rc.5-TX-20261028.zip?inline=false) contains START-HERE.md, the exact source/image manifest, checksums and a 25-file board identity checker. Extract the ZIP and write the .img.gz to a spare SD card of at least 8 GB; follow the included setup and on-board TX commands. GitLab project login is required. The downloaded 106,719,254-byte ZIP matches SHA-256 `a96ff419877c371f93396d6e946df2c3ca639cfd1e8121043f9d4170e754003f`. [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) is ready for review; this is the limited TX scope above. No RX, full-filter or stable-forwarding acceptance is added.
+
+## Rc.6 boot and one J10 check — October 29
+
+**Setup:** matched **0.1.0-dev.4-rc.6**, image source `afa936c76e0eb695851bc9ff2803343f6d03885b`, after verified rc.5 partition/MBR backup and full image write/readback. Main + AmpPwr1 at **9 V / 1.5 A limit**, AmpPwr2 disconnected; J12 console captured before power-up.
+
+**Boot/software:** U-Boot/Linux and automatic root console pass; all **26 identities** match before/after. Read-only FPGA register reports **6.2**; PA-request GPIO is unowned/input. Six real sensor tests, 64-sample DSP and **46 dry configurations** pass: six RX selections, twelve TX filter/output selections and28 joint policies. These checks open no radio handle or GPIO request. The first standalone UIO helper lacked logger initialization and stopped before mapping; corrected helper passes without changing the image.
+
+**RF setup:** J10/RF_Out → DC block → sole **BW-S30W5+ 30 dB / 5 W** → tinySA. Channel1/TX1A, lowpass, `rf_out_b` (Channel-B), LO438 MHz +100 kHz, gain60, amplitude0.1, 2.304 MS/s, 8000-byte frames, master clock0; one six-second tone. TinySA: internal10 dB, RBW3 kHz, LNA/Ultra off, correction0 dB, 437.8–438.2 MHz/201 points; no fresh calibration. Initial analyzer preflight found no USB device and stopped before radio initialization. The owner turned tinySA on/reconnected USB; only the following RF stream ran.
+
+| 438.1 MHz target window, after the external pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| Level at tinySA | −104.34 dBm | **−53.34 dBm at438.100 MHz** | −104.34 dBm |
+
+**Pass: 51.0 dB contrast**, returning to background. Stream **6.000838 s**, targetexit0; no reported stream/decode/cleanup errors, one benign post-stop burst acknowledgement. The active level is0.22 dB below the rc.5 BW30 spot; this is an uncalibrated comparison. Metadata and all three raw/PNG pairs verify. Verified RAM metadata removed; final26 identities, zero failed services and idle/unclaimed MPM pass. All eight reset/route/PA GPIO lines are released/input. SDRB remains powered idle.
+
+| Before | During stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before rc6 J10 tone](images/rc6-20261029-before.png) | ![Actual tinySA LCD during rc6 J10 tone](images/rc6-20261029-active.png) | ![Actual tinySA LCD after rc6 J10 tone](images/rc6-20261029-after.png) |
+
+*Actual LCD captures, separate sweeps from the numerical scans. Active marker: **438.100 MHz, −53.3 dBm**.*
+
+This adds one TX1A/Channel-B spot on rc.6. Physical RX overrides, other rc.6 TX branches, Channel-A PA and Channel-C doubler, full filter response/calibrated power and stable forwarding remain unqualified. The [CLI/Python/GNU Radio routing matrix](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/3c1b5ab/docs/uhd/ROUTING-MATRIX.md) documents software selections; [MR !14](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/14) remains a candidate review. Raw logs and private card backups stay outside Git.
+
+## Rc.6 remaining Channel-B filters — October 29
+
+**Setup:** same rc.6 image, power and J10 → DC block → sole BW-S30W5+ 30 dB pad → tinySA as above. AmpPwr2 remains disconnected. Each case ran once for six seconds: gain 60, amplitude 0.1, 2.304 MS/s, 8000-byte frames, master clock 0, +100 kHz tone. Analyzer: RBW 3 kHz, LNA off, external correction 0 dB, LO±200 kHz/201 points; internal 10 dB/Ultra off at 438 MHz, internal 5 dB/Ultra on at 2500 MHz. No fresh calibration.
+
+| Selection → Channel-B/J10 | Tone | Before | Tone on | After | Contrast |
+|---|---:|---:|---:|---:|---:|
+| TX2A / U23 | 438.100 MHz | -102.75 dBm | **-50.25 dBm** | -104.25 dBm | **52.5 dB** |
+| TX1B / U28 | 2500.100 MHz | -107.66 dBm | **-75.66 dBm** | -106.66 dBm | **31.0 dB** |
+| TX2B / U30 | 2500.100 MHz | -107.16 dBm | **-76.66 dBm** | -106.66 dBm | **30.0 dB** |
+
+**All three pass** the frozen ≥10 dB contrast/±5 kHz detection gate, returning to background. Target exits 0; streams 6.0007 s, with no reported stream/decode/cleanup errors. Each reports one benign post-stop burst acknowledgement. These complete four Channel-B filter-selection spots on rc.6, including TX1A above; they do not measure filter bandwidth/rejection or calibrated output power. Three source metadata files and nine actual LCD/raw pairs verify. Final 26 image identities, zero failed services, idle/unclaimed MPM and all eight reset/route/PA lines released/input pass; verified RAM metadata removed.
+
+### Exact on-board commands for Ray
+
+These are the executable SDRB commands used, inside a host-issued 45-second watchdog. Use a fresh metadata filename on repeat. `--tx-channel` selects the physical chain (**1=TX1, 0=TX2**); `--tx-filter lowpass/highpass` selects its **A/B filter**; `--tx-path rf_out_b` independently selects **Channel-B/J10**. Filter B and output Channel-B are different controls.
+
+**TX1A / U19 → Channel-B/J10:**
+
+```sh
+python3 /usr/share/sdrb/gnuradio/sdrb_uhd_demo.py tone \
+  --tx-channel 1 --tx-filter lowpass --tx-path rf_out_b \
+  --tx-freq 438000000 --tone-offset 100000 \
+  --rate 2304000 --frame-size 8000 --master-clock 0 \
+  --tx-gain 60 --amplitude .1 --seconds 6 \
+  --metadata /dev/shm/rc6-tx1a-b438-02.json
+```
+
+**TX2A / U23 → Channel-B/J10:**
+
+```sh
+python3 /usr/share/sdrb/gnuradio/sdrb_uhd_demo.py tone \
+  --tx-channel 0 --tx-filter lowpass --tx-path rf_out_b \
+  --tx-freq 438000000 --tone-offset 100000 \
+  --rate 2304000 --frame-size 8000 --master-clock 0 \
+  --tx-gain 60 --amplitude .1 --seconds 6 \
+  --metadata /dev/shm/rc6-tx2a-b438-01.json
+```
+
+**TX1B / U28 → Channel-B/J10:**
+
+```sh
+python3 /usr/share/sdrb/gnuradio/sdrb_uhd_demo.py tone \
+  --tx-channel 1 --tx-filter highpass --tx-path rf_out_b \
+  --tx-freq 2500000000 --tone-offset 100000 \
+  --rate 2304000 --frame-size 8000 --master-clock 0 \
+  --tx-gain 60 --amplitude .1 --seconds 6 \
+  --metadata /dev/shm/rc6-tx1b-b2500-01.json
+```
+
+**TX2B / U30 → Channel-B/J10:**
+
+```sh
+python3 /usr/share/sdrb/gnuradio/sdrb_uhd_demo.py tone \
+  --tx-channel 0 --tx-filter highpass --tx-path rf_out_b \
+  --tx-freq 2500000000 --tone-offset 100000 \
+  --rate 2304000 --frame-size 8000 --master-clock 0 \
+  --tx-gain 60 --amplitude .1 --seconds 6 \
+  --metadata /dev/shm/rc6-tx2b-b2500-01.json
+```
+
+No private code variable or RAM routing adapter was used. The CLI constructs UHD device arguments `sdrb_tx_filter=lowpass|highpass,sdrb_tx_path=rf_out_b` and `uhd.stream_args(..., channels=[0|1])`; master clock 0 omits `master_clock_rate` so UHD chooses. See [the maintained Python/GNU Radio matrix](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/afa936c76e0eb695851bc9ff2803343f6d03885b/docs/uhd/ROUTING-MATRIX.md#python--gnu-radio) and [the actual CLI flow construction](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/afa936c76e0eb695851bc9ff2803343f6d03885b/software/petalinux/meta-user/recipes-apps/sdrb-gnuradio-examples/files/sdrb_uhd_demo.py#L367).
+
+### Actual tinySA captures
+
+Numeric scans and LCD traces are separate sweeps. Active captures were frozen while the source was running; the PNGs are decoded instrument pixels.
+
+| Selection | Before | Tone on | After |
+|---|---|---|---|
+| TX2A / U23 | ![Actual tinySA TX2A / U23 before LCD](images/rc6-tx2a-b438-01-before.png) | ![Actual tinySA TX2A / U23 active LCD](images/rc6-tx2a-b438-01-active.png) | ![Actual tinySA TX2A / U23 after LCD](images/rc6-tx2a-b438-01-after.png) |
+| TX1B / U28 | ![Actual tinySA TX1B / U28 before LCD](images/rc6-tx1b-b2500-01-before.png) | ![Actual tinySA TX1B / U28 active LCD](images/rc6-tx1b-b2500-01-active.png) | ![Actual tinySA TX1B / U28 after LCD](images/rc6-tx1b-b2500-01-after.png) |
+| TX2B / U30 | ![Actual tinySA TX2B / U30 before LCD](images/rc6-tx2b-b2500-01-before.png) | ![Actual tinySA TX2B / U30 active LCD](images/rc6-tx2b-b2500-01-active.png) | ![Actual tinySA TX2B / U30 after LCD](images/rc6-tx2b-b2500-01-after.png) |
+
+The TX2B LCD marker reads −77.7 dBm; its separate numerical scan reads −76.66 dBm. Use the numerical scans for the table. **Remaining:** Channel-A PA needs its supply/measurement setup; Channel-C/J14 needs a suitable frequency/drive and measurement chain. RX overrides, full filter response and stable forwarding remain unqualified. Raw records/backups stay outside Git.
