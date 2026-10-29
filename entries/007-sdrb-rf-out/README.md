@@ -1,7 +1,7 @@
 # 007 SDRB RF_Out check
 
 **Status:** In progress  
-**Started / updated:** 2026-10-20 / 2026-10-28
+**Started / updated:** 2026-10-20 / 2026-10-29
 
 Check the signal at **J10/RF_Out** using driver-only Path B, with the final PA off.
 
@@ -389,3 +389,25 @@ The RAM file contains **73,728 complex float32 little-endian samples / 589,824 b
 ### Rc.5 SD handover
 
 The [unchanged burnable SD-image ZIP](https://gitlab.amsat.org/engineering/golf/sdrb/-/raw/748d9447f6241222eb7dd91e5bdb482ddac33ed1/releases/0.1.0-dev.4-rc.5/SDRB-0.1.0-dev.4-rc.5-TX-20261028.zip?inline=false) contains START-HERE.md, the exact source/image manifest, checksums and a 25-file board identity checker. Extract the ZIP and write the .img.gz to a spare SD card of at least 8 GB; follow the included setup and on-board TX commands. GitLab project login is required. The downloaded 106,719,254-byte ZIP matches SHA-256 `a96ff419877c371f93396d6e946df2c3ca639cfd1e8121043f9d4170e754003f`. [MR !13](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/13) is ready for review; this is the limited TX scope above. No RX, full-filter or stable-forwarding acceptance is added.
+
+## Rc.6 boot and one J10 check — October 29
+
+**Setup:** matched **0.1.0-dev.4-rc.6**, image source `afa936c76e0eb695851bc9ff2803343f6d03885b`, after verified rc.5 partition/MBR backup and full image write/readback. Main + AmpPwr1 at **9 V / 1.5 A limit**, AmpPwr2 disconnected; J12 console captured before power-up.
+
+**Boot/software:** U-Boot/Linux and automatic root console pass; all **26 identities** match before/after. Read-only FPGA register reports **6.2**; PA-request GPIO is unowned/input. Six real sensor tests, 64-sample DSP and **46 dry configurations** pass: six RX selections, twelve TX filter/output selections and28 joint policies. These checks open no radio handle or GPIO request. The first standalone UIO helper lacked logger initialization and stopped before mapping; corrected helper passes without changing the image.
+
+**RF setup:** J10/RF_Out → DC block → sole **BW-S30W5+ 30 dB / 5 W** → tinySA. Channel1/TX1A, lowpass, `rf_out_b` (Channel-B), LO438 MHz +100 kHz, gain60, amplitude0.1, 2.304 MS/s, 8000-byte frames, master clock0; one six-second tone. TinySA: internal10 dB, RBW3 kHz, LNA/Ultra off, correction0 dB, 437.8–438.2 MHz/201 points; no fresh calibration. Initial analyzer preflight found no USB device and stopped before radio initialization. The owner turned tinySA on/reconnected USB; only the following RF stream ran.
+
+| 438.1 MHz target window, after the external pad | Before | Tone on | After |
+|---|---:|---:|---:|
+| Level at tinySA | −104.34 dBm | **−53.34 dBm at438.100 MHz** | −104.34 dBm |
+
+**Pass: 51.0 dB contrast**, returning to background. Stream **6.000838 s**, targetexit0; no reported stream/decode/cleanup errors, one benign post-stop burst acknowledgement. The active level is0.22 dB below the rc.5 BW30 spot; this is an uncalibrated comparison. Metadata and all three raw/PNG pairs verify. Verified RAM metadata removed; final26 identities, zero failed services and idle/unclaimed MPM pass. All eight reset/route/PA GPIO lines are released/input. SDRB remains powered idle.
+
+| Before | During stream | After |
+|---|---|---|
+| ![Actual tinySA LCD before rc6 J10 tone](images/rc6-20261029-before.png) | ![Actual tinySA LCD during rc6 J10 tone](images/rc6-20261029-active.png) | ![Actual tinySA LCD after rc6 J10 tone](images/rc6-20261029-after.png) |
+
+*Actual LCD captures, separate sweeps from the numerical scans. Active marker: **438.100 MHz, −53.3 dBm**.*
+
+This adds one TX1A/Channel-B spot on rc.6. Physical RX overrides, other rc.6 TX branches, Channel-A PA and Channel-C doubler, full filter response/calibrated power and stable forwarding remain unqualified. The [CLI/Python/GNU Radio routing matrix](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/3c1b5ab/docs/uhd/ROUTING-MATRIX.md) documents software selections; [MR !14](https://gitlab.amsat.org/engineering/golf/sdrb/-/merge_requests/14) remains a candidate review. Raw logs and private card backups stay outside Git.
