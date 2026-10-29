@@ -472,7 +472,7 @@ python3 /usr/share/sdrb/gnuradio/sdrb_uhd_demo.py tone \
   --metadata /dev/shm/rc6-tx2b-b2500-01.json
 ```
 
-No private code variable or RAM routing adapter was used. The CLI constructs UHD device arguments `sdrb_tx_filter=lowpass|highpass,sdrb_tx_path=rf_out_b` and `uhd.stream_args(..., channels=[0|1])`; master clock 0 omits `master_clock_rate` so UHD chooses. See [the maintained Python/GNU Radio matrix](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/afa936c76e0eb695851bc9ff2803343f6d03885b/docs/uhd/ROUTING-MATRIX.md#pythongnu-radio) and [the actual CLI flow construction](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/afa936c76e0eb695851bc9ff2803343f6d03885b/software/petalinux/meta-user/recipes-apps/sdrb-gnuradio-examples/files/sdrb_uhd_demo.py#L367).
+No private code variable or RAM routing adapter was used. The CLI constructs UHD device arguments `sdrb_tx_filter=lowpass|highpass,sdrb_tx_path=rf_out_b` and `uhd.stream_args(..., channels=[0|1])`; master clock 0 omits `master_clock_rate` so UHD chooses. See [the maintained Python/GNU Radio matrix](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/afa936c76e0eb695851bc9ff2803343f6d03885b/docs/uhd/ROUTING-MATRIX.md#python--gnu-radio) and [the actual CLI flow construction](https://gitlab.amsat.org/engineering/golf/sdrb/-/blob/afa936c76e0eb695851bc9ff2803343f6d03885b/software/petalinux/meta-user/recipes-apps/sdrb-gnuradio-examples/files/sdrb_uhd_demo.py#L367).
 
 ### Actual tinySA captures
 
