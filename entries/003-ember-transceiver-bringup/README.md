@@ -2082,5 +2082,6 @@ was stopped after the rehearsal, so displays will subsequently age normally.
 [New injection](files/storage-stall-after-injection.json).
 Raw IQ, the injection script and full polling records remain in local artifacts.
 
+[Power consumption and RF output test plan](../011-transceiver-power/README.md) ·
 [Related antenna investigation](../001-ember-antenna/README.md) ·
 [Back to Lab Log](../../README.md)
