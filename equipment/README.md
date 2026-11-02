@@ -36,6 +36,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | Surecom SW-102 | Unconfirmed (ordered) | Older status: ordered. Arrival/current availability unconfirmed. Source-listed 125–525 MHz directional power/SWR meter. |
 | Nordic Power Profiler Kit II (NRF-PPK2) | Owner confirmed owned 2026-11-02 | USB current profiler for embedded boards, including sleep current and activity bursts. Nordic specifies 100 kS/s sampling, current measurement up to 1 A, and 0.8–5.0 V DUT operation in Source Meter or externally powered Ampere Meter mode; 8 digital inputs for event correlation. [Nordic user guide](https://docs.nordicsemi.com/r/bundle/ug_ppk2/page/ug/ppk/ppk_user_guide_intro.html) and [supply/mode limits](https://docs.nordicsemi.com/r/bundle/ug_ppk2/page/ug/ppk/ppk_power_supply.html). These are manufacturer specifications; this unit has not been characterized here. Power Profiler app installation, firmware and calibration status unconfirmed. |
 | RC battery wattmeter (150 A) | Recorded owned | DC only -- used for supply V / I on battery lead |
+| GODIYMODULES voltage reference and resistor-check module (ASIN B0DM8L151J) | Owner confirmed owned 2026-11-02 | [Seller listing](https://www.amazon.com/dp/B0DM8L151J) advertises nominal voltage outputs of 1.24 / 2.5 / 5 / 7.5 / 10 V and resistors of 10 Ω / 100 Ω / 1 kΩ / 10 kΩ / 100 kΩ, for multimeter checks. Values are listing claims, not measurements of this unit. Actual values, tolerance, stability, output loading limits, power requirements and calibration/traceability are unconfirmed; no characterization recorded. |
 | ANENG AN8008 | Recorded owned | primary DMM |
 | Uni-T DT-9205B+ | Recorded owned | second DMM, higher current range |
 | Rigol DS1202Z-E | Recorded owned | 2-channel oscilloscope, 200 MHz BW, 1 GSa/s |
@@ -216,6 +217,8 @@ Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax 
 - [ ] Update old Centisat prototype/build states and software installations as those items are next used.
 
 ## Source and maintenance
+
+The owner confirmed ownership of the GODIYMODULES reference module on 2026-11-02 via the linked Amazon listing, ASIN B0DM8L151J. Nominal voltage and resistance values were taken from that listing; no unit measurements or calibration certificate were supplied.
 
 The owner confirmed ownership of the Nordic NRF-PPK2 on 2026-11-02, supplying the [DigiKey product listing](https://www.digikey.com/en/products/detail/nordic-semiconductor-asa/NRF-PPK2/13557476). Capabilities were checked against the linked Nordic documentation; no connection, functional test or unit characterization was performed for this inventory update.
 
