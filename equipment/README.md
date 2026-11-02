@@ -1,6 +1,6 @@
 # Equipment on Hand
 
-**Updated:** 2026-10-29
+**Updated:** 2026-11-02
 
 **Inventory status:** Seeded from older testbed records; reconciliation in progress.
 
@@ -34,6 +34,7 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 | KKnoon 150 W 20 A programmable electronic load | Recorded owned | Constant current / voltage / resistance / power, USB logging, TFT display. Drives battery discharge characterization, supply regulation tests, solar IV curves |
 | Mini-Circuits BW-S30W5+ | Owner confirmed available October 28 | Owner reports fitting this pad for the SDRB test; supersedes the older ordered-only status. Nominal owner-reported 30 dB, 5 W, DC–18 GHz. One [438.1 MHz in-circuit comparison](../entries/007-sdrb-rf-out/README.md#bw-s30w5-pad-check--october-28) shows a 30.0 dB input-level change on insertion. No full-range or power-handling characterization. |
 | Surecom SW-102 | Unconfirmed (ordered) | Older status: ordered. Arrival/current availability unconfirmed. Source-listed 125–525 MHz directional power/SWR meter. |
+| Nordic Power Profiler Kit II (NRF-PPK2) | Owner confirmed owned 2026-11-02 | USB current profiler for embedded boards, including sleep current and activity bursts. Nordic specifies 100 kS/s sampling, current measurement up to 1 A, and 0.8–5.0 V DUT operation in Source Meter or externally powered Ampere Meter mode; 8 digital inputs for event correlation. [Nordic user guide](https://docs.nordicsemi.com/r/bundle/ug_ppk2/page/ug/ppk/ppk_user_guide_intro.html) and [supply/mode limits](https://docs.nordicsemi.com/r/bundle/ug_ppk2/page/ug/ppk/ppk_power_supply.html). These are manufacturer specifications; this unit has not been characterized here. Power Profiler app installation, firmware and calibration status unconfirmed. |
 | RC battery wattmeter (150 A) | Recorded owned | DC only -- used for supply V / I on battery lead |
 | ANENG AN8008 | Recorded owned | primary DMM |
 | Uni-T DT-9205B+ | Recorded owned | second DMM, higher current range |
@@ -215,6 +216,8 @@ Bantam Tools **2.5.34** was opened and used on the Mac for the Othermill V2 wax 
 - [ ] Update old Centisat prototype/build states and software installations as those items are next used.
 
 ## Source and maintenance
+
+The owner confirmed ownership of the Nordic NRF-PPK2 on 2026-11-02, supplying the [DigiKey product listing](https://www.digikey.com/en/products/detail/nordic-semiconductor-asa/NRF-PPK2/13557476). Capabilities were checked against the linked Nordic documentation; no connection, functional test or unit characterization was performed for this inventory update.
 
 The 2026-10-29 [two-minute beacon setup](../entries/010-ember-fm-beacon/README.md) moved the Digirig Lite and working black cable to outpost1/Baofeng. Two indoor 1200-baud native-format HEARTBEAT captures and received CW KI5YNG identification passed. The owner then moved outpost1 outdoors. After a USB reconnection/reboot, the Digirig was enumerated again and two consecutive outdoor beacons decoded with exact native-byte matches, 120.65 seconds between PTT starts. The timer is enabled and active, reserving short receiver windows and resuming SatNOGS between them. This is BPSK audio over FM with ground-test source emulation, not native RF BPSK or spacecraft measurements.
 
