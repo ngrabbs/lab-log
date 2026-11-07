@@ -1,0 +1,148 @@
+{
+  "jacob_commit": "ff715830f2d165a7268e2b975b10b34fd8093993",
+  "physical_port_to_jacob_camera_id": {
+    "2": "0",
+    "1": "1",
+    "0": "2"
+  },
+  "boxes": {
+    "test2": {
+      "registered": {
+        "source": [
+          435,
+          438,
+          830,
+          655
+        ],
+        "background": [
+          865,
+          438,
+          1130,
+          655
+        ]
+      },
+      "independent": [
+        {
+          "camera_id": "0",
+          "wavelength_nm": 770,
+          "source": [
+            435,
+            438,
+            830,
+            655
+          ],
+          "background": [
+            865,
+            438,
+            1130,
+            655
+          ],
+          "source_containment_note": "Fixed broad aperture. Full physical containment is unverified."
+        },
+        {
+          "camera_id": "1",
+          "wavelength_nm": 750,
+          "source": [
+            503,
+            580,
+            898,
+            797
+          ],
+          "background": [
+            939,
+            580,
+            1204,
+            797
+          ],
+          "source_containment_note": "Fixed broad aperture. Full physical containment is unverified."
+        },
+        {
+          "camera_id": "2",
+          "wavelength_nm": 780,
+          "source": [
+            396,
+            498,
+            791,
+            715
+          ],
+          "background": [
+            825,
+            500,
+            1090,
+            717
+          ],
+          "source_containment_note": "Fixed broad aperture. Full physical containment is unverified."
+        }
+      ]
+    },
+    "controls": {
+      "registered": {
+        "source": [
+          550,
+          515,
+          755,
+          685
+        ],
+        "background": [
+          790,
+          515,
+          995,
+          685
+        ]
+      },
+      "independent": [
+        {
+          "camera_id": "0",
+          "wavelength_nm": 770,
+          "source": [
+            550,
+            515,
+            755,
+            685
+          ],
+          "background": [
+            790,
+            515,
+            995,
+            685
+          ],
+          "source_containment_note": "Fixed broad aperture. Full physical containment is unverified."
+        },
+        {
+          "camera_id": "1",
+          "wavelength_nm": 750,
+          "source": [
+            620,
+            666,
+            825,
+            836
+          ],
+          "background": [
+            865,
+            668,
+            1070,
+            838
+          ],
+          "source_containment_note": "Fixed broad aperture. Full physical containment is unverified."
+        },
+        {
+          "camera_id": "2",
+          "wavelength_nm": 780,
+          "source": [
+            517,
+            576,
+            722,
+            746
+          ],
+          "background": [
+            761,
+            577,
+            966,
+            747
+          ],
+          "source_containment_note": "Fixed broad aperture. Full physical containment is unverified."
+        }
+      ]
+    }
+  }
+}

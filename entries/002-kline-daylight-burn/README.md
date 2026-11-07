@@ -108,3 +108,5 @@ A triplet is one image from each of the three cameras. The folders below contain
 | [Building set A](files/captures/185113/) | Fire present | 50 µs | 15 | Original JPEGs and [manifest](files/bracket_20261014_185113.csv) |
 
 The full day's captures are held outside this repository in `payload_raw/` alongside the payload repository. See the [capture notes](files/captures/README.md) for timestamps and processing details, and [koenig_wildfire](https://github.com/ngrabbs/koenig_wildfire) for the payload code and analysis tools.
+
+The [November Pi benchmark](../012-pi-fire-benchmark/README.md) compares the detector and phase-registration fallback on a later set of three-camera captures.

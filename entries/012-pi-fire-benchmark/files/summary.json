@@ -1,0 +1,671 @@
+{
+  "egse_source_sha256": "d952f1d5b89be2dcdcb18db960bdcfc15854b8eea50f765879424cc5a3ceb5c8",
+  "egse": {
+    "numpy": "2.2.4",
+    "opencv": "4.10.0",
+    "python": "3.13.5",
+    "machine": "aarch64"
+  },
+  "jacob": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "opencv": "5.0.0",
+    "opencv_build_sha256": "4460ffe25568d7f496997f0593f568f4d91ee4740c97f057b2986c237e8a386c"
+  },
+  "hardware": {
+    "start": {
+      "model": "Raspberry Pi 4 Model B Rev 1.4",
+      "machine": "aarch64",
+      "kernel": "6.12.75+rpt-rpi-v8",
+      "affinity": [
+        2
+      ],
+      "governor": "ondemand",
+      "temp": "temp=51.1'C",
+      "throttle": "throttled=0x0",
+      "load": [
+        0.31201171875,
+        0.171875,
+        0.16259765625
+      ]
+    },
+    "end": {
+      "model": "Raspberry Pi 4 Model B Rev 1.4",
+      "machine": "aarch64",
+      "kernel": "6.12.75+rpt-rpi-v8",
+      "affinity": [
+        2
+      ],
+      "governor": "ondemand",
+      "temp": "temp=62.3'C",
+      "throttle": "throttled=0x0",
+      "load": [
+        1.0,
+        0.93115234375,
+        0.6201171875
+      ]
+    }
+  },
+  "methods": {
+    "EGSE ORB": {
+      "outcomes": {
+        "FIRE": 73,
+        "NO_FIRE": 23,
+        "UNKNOWN": 8
+      },
+      "total": {
+        "n": 104,
+        "median_ms": 3348.20458,
+        "p95_ms": 3397.8316934499994,
+        "max_ms": 3406.8305
+      },
+      "measurement": {
+        "n": 96,
+        "median_ms": 93.76999999999975,
+        "p95_ms": 134.74850000000015,
+        "max_ms": 143.90599999999995
+      }
+    },
+    "EGSE phase fallback": {
+      "outcomes": {
+        "FIRE": 81,
+        "NO_FIRE": 23
+      },
+      "total": {
+        "n": 104,
+        "median_ms": 3354.5349335,
+        "p95_ms": 4268.7934158,
+        "max_ms": 5734.401034
+      },
+      "measurement": {
+        "n": 104,
+        "median_ms": 96.90100000000007,
+        "p95_ms": 133.85350000000017,
+        "max_ms": 143.90599999999995
+      }
+    },
+    "Jacob P": {
+      "outcomes": {
+        "NUMERIC": 97,
+        "UNAVAILABLE": 7
+      },
+      "total": {
+        "n": 104,
+        "median_ms": 2113.6416315,
+        "p95_ms": 2152.501435,
+        "max_ms": 2168.140618
+      },
+      "measurement": {
+        "n": 97,
+        "median_ms": 292.183975,
+        "p95_ms": 295.8610088,
+        "max_ms": 298.279451
+      }
+    },
+    "Jacob I registered": {
+      "outcomes": {
+        "NUMERIC": 97,
+        "UNAVAILABLE": 7
+      },
+      "total": {
+        "n": 104,
+        "median_ms": 1834.4205769999999,
+        "p95_ms": 1868.4255655499999,
+        "max_ms": 1884.0796779999998
+      },
+      "measurement": {
+        "n": 97,
+        "median_ms": 11.473853,
+        "p95_ms": 11.565870599999998,
+        "max_ms": 11.651101
+      }
+    },
+    "Jacob I independent": {
+      "outcomes": {
+        "NUMERIC": 104
+      },
+      "total": {
+        "n": 104,
+        "median_ms": 376.8386415,
+        "p95_ms": 403.49390895,
+        "max_ms": 410.763987
+      },
+      "measurement": {
+        "n": 104,
+        "median_ms": 156.13238200012347,
+        "p95_ms": 156.96400429974346,
+        "max_ms": 157.32443500019144
+      }
+    },
+    "Jacob whole frame": {
+      "outcomes": {
+        "NUMERIC": 104
+      },
+      "total": {
+        "n": 104,
+        "median_ms": 305.65227200000004,
+        "p95_ms": 333.09313125,
+        "max_ms": 338.189004
+      },
+      "measurement": {
+        "n": 104,
+        "median_ms": 89.27648050030257,
+        "p95_ms": 90.41754999980185,
+        "max_ms": 91.20724299918948
+      }
+    }
+  },
+  "controls": {
+    "EGSE ORB": [
+      {
+        "dataset": "controls",
+        "capture": "20261107_183323_638",
+        "method": "EGSE ORB",
+        "result": "UNKNOWN",
+        "reason": "REGISTRATION_LOW_CONTRAST",
+        "total_ms": 439.849283,
+        "total_type": "measured",
+        "measurement_ms": null,
+        "preparation_ms": null,
+        "phase_status": null,
+        "phase_roundtrip_ms": null,
+        "egse_retry_ms": null,
+        "valid_fraction": null,
+        "overlap_fraction": null,
+        "regions": null,
+        "largest_region_px": null
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183556_555",
+        "method": "EGSE ORB",
+        "result": "NO_FIRE",
+        "reason": "NO_QUALIFYING_REGION",
+        "total_ms": 3412.968178,
+        "total_type": "measured",
+        "measurement_ms": 76.48100000000022,
+        "preparation_ms": 3330.154,
+        "phase_status": null,
+        "phase_roundtrip_ms": null,
+        "egse_retry_ms": null,
+        "valid_fraction": 0.37149148793300946,
+        "overlap_fraction": 0.7128974602046056,
+        "regions": 0,
+        "largest_region_px": null
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183734_013",
+        "method": "EGSE ORB",
+        "result": "UNKNOWN",
+        "reason": "REGISTRATION_TOO_FEW_MATCHES",
+        "total_ms": 1307.62047,
+        "total_type": "measured",
+        "measurement_ms": null,
+        "preparation_ms": null,
+        "phase_status": null,
+        "phase_roundtrip_ms": null,
+        "egse_retry_ms": null,
+        "valid_fraction": null,
+        "overlap_fraction": null,
+        "regions": null,
+        "largest_region_px": null
+      }
+    ],
+    "EGSE phase fallback": [
+      {
+        "dataset": "controls",
+        "capture": "20261107_183323_638",
+        "method": "EGSE phase fallback",
+        "result": "UNKNOWN",
+        "reason": "REGISTRATION_LOW_CONTRAST",
+        "total_ms": 753.46763,
+        "total_type": "measured",
+        "measurement_ms": null,
+        "preparation_ms": null,
+        "phase_status": "REJECTED",
+        "phase_roundtrip_ms": 313.584291,
+        "egse_retry_ms": null,
+        "valid_fraction": null,
+        "overlap_fraction": null,
+        "regions": null,
+        "largest_region_px": null
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183556_555",
+        "method": "EGSE phase fallback",
+        "result": "NO_FIRE",
+        "reason": "NO_QUALIFYING_REGION",
+        "total_ms": 3412.968178,
+        "total_type": "measured",
+        "measurement_ms": 76.48100000000022,
+        "preparation_ms": 3330.154,
+        "phase_status": null,
+        "phase_roundtrip_ms": null,
+        "egse_retry_ms": null,
+        "valid_fraction": 0.37149148793300946,
+        "overlap_fraction": 0.7128974602046056,
+        "regions": 0,
+        "largest_region_px": null
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183734_013",
+        "method": "EGSE phase fallback",
+        "result": "UNKNOWN",
+        "reason": "REGISTRATION_TOO_FEW_MATCHES",
+        "total_ms": 2507.99537,
+        "total_type": "measured",
+        "measurement_ms": null,
+        "preparation_ms": null,
+        "phase_status": "REJECTED",
+        "phase_roundtrip_ms": 1200.334086,
+        "egse_retry_ms": null,
+        "valid_fraction": null,
+        "overlap_fraction": null,
+        "regions": null,
+        "largest_region_px": null
+      }
+    ],
+    "Jacob P": [
+      {
+        "dataset": "controls",
+        "capture": "20261107_183323_638",
+        "method": "Jacob P",
+        "result": "UNAVAILABLE",
+        "reason": "DIM_OR_FLAT_MATCHING_IMAGE",
+        "total_ms": 343.447993,
+        "total_type": "combined_minus_other_kernel",
+        "measurement_ms": null,
+        "registration_ms": 149.91167600055633,
+        "input_ms": 168.6985989999812,
+        "combined_registered_ms": 343.447993,
+        "phase_status": "REJECTED",
+        "valid_fraction": null,
+        "p_median": null,
+        "p_p99": null,
+        "p_mean": null,
+        "i_ratio": null,
+        "i_excess": null,
+        "i_continuum": null
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183556_555",
+        "method": "Jacob P",
+        "result": "NUMERIC",
+        "reason": "NUMERICAL_ONLY",
+        "total_ms": 2238.552412,
+        "total_type": "combined_minus_other_kernel",
+        "measurement_ms": 316.984153,
+        "registration_ms": 1551.0825530000147,
+        "input_ms": 283.59410900065996,
+        "combined_registered_ms": 2248.474233,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "valid_fraction": 0.30627323044602456,
+        "p_median": -0.12733106315135956,
+        "p_p99": 1.251617193222046,
+        "p_mean": -0.06493930536504461,
+        "i_ratio": null,
+        "i_excess": null,
+        "i_continuum": null
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183734_013",
+        "method": "Jacob P",
+        "result": "UNAVAILABLE",
+        "reason": "CALIBRATION_NOT_APPLIED_COMPATIBILITY_UNVERIFIED|GEOMETRY_REJECTED:PHASE_NCC_OR_OVERLAP",
+        "total_ms": 1231.902376,
+        "total_type": "combined_minus_other_kernel",
+        "measurement_ms": null,
+        "registration_ms": 944.2671859997063,
+        "input_ms": 262.1803070005626,
+        "combined_registered_ms": 1231.902376,
+        "phase_status": "REJECTED",
+        "valid_fraction": null,
+        "p_median": null,
+        "p_p99": null,
+        "p_mean": null,
+        "i_ratio": null,
+        "i_excess": null,
+        "i_continuum": null
+      }
+    ],
+    "Jacob I registered": [
+      {
+        "dataset": "controls",
+        "capture": "20261107_183323_638",
+        "method": "Jacob I registered",
+        "result": "UNAVAILABLE",
+        "reason": "DIM_OR_FLAT_MATCHING_IMAGE",
+        "total_ms": 343.447993,
+        "total_type": "combined_minus_other_kernel",
+        "measurement_ms": null,
+        "registration_ms": 149.91167600055633,
+        "input_ms": 168.6985989999812,
+        "combined_registered_ms": 343.447993,
+        "phase_status": "REJECTED",
+        "valid_fraction": null,
+        "p_median": null,
+        "p_p99": null,
+        "p_mean": null,
+        "i_ratio": null,
+        "i_excess": null,
+        "i_continuum": null
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183556_555",
+        "method": "Jacob I registered",
+        "result": "NUMERIC",
+        "reason": "DENOM_UNRESOLVED",
+        "total_ms": 1931.49008,
+        "total_type": "combined_minus_other_kernel",
+        "measurement_ms": 9.921821,
+        "registration_ms": 1551.0825530000147,
+        "input_ms": 283.59410900065996,
+        "combined_registered_ms": 2248.474233,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "valid_fraction": null,
+        "p_median": null,
+        "p_p99": null,
+        "p_mean": null,
+        "i_ratio": -0.14706107818206102,
+        "i_excess": -18112.39453125,
+        "i_continuum": 123162.39453125
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183734_013",
+        "method": "Jacob I registered",
+        "result": "UNAVAILABLE",
+        "reason": "CALIBRATION_NOT_APPLIED_COMPATIBILITY_UNVERIFIED|GEOMETRY_REJECTED:PHASE_NCC_OR_OVERLAP",
+        "total_ms": 1231.902376,
+        "total_type": "combined_minus_other_kernel",
+        "measurement_ms": null,
+        "registration_ms": 944.2671859997063,
+        "input_ms": 262.1803070005626,
+        "combined_registered_ms": 1231.902376,
+        "phase_status": "REJECTED",
+        "valid_fraction": null,
+        "p_median": null,
+        "p_p99": null,
+        "p_mean": null,
+        "i_ratio": null,
+        "i_excess": null,
+        "i_continuum": null
+      }
+    ],
+    "Jacob I independent": [
+      {
+        "dataset": "controls",
+        "capture": "20261107_183323_638",
+        "method": "Jacob I independent",
+        "result": "UNAVAILABLE",
+        "reason": "DENOM_NONPOSITIVE",
+        "total_ms": 323.504964,
+        "total_type": "measured",
+        "measurement_ms": 154.69692100032262,
+        "input_ms": 168.66735899930063,
+        "i_ratio": null,
+        "i_excess": 0.0,
+        "i_continuum": 0.0,
+        "signal_770": 0.0,
+        "signal_750": 0.0,
+        "signal_780": 0.0
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183556_555",
+        "method": "Jacob I independent",
+        "result": "NUMERIC",
+        "reason": "DENOM_UNCERTAINTY_UNRESOLVED",
+        "total_ms": 445.86873,
+        "total_type": "measured",
+        "measurement_ms": 154.59551500043744,
+        "input_ms": 291.1091050000323,
+        "i_ratio": -0.08947237647276367,
+        "i_excess": -10322.666666666672,
+        "i_continuum": 115372.66666666667,
+        "signal_770": 105050.0,
+        "signal_750": 93252.0,
+        "signal_780": 126433.0
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183734_013",
+        "method": "Jacob I independent",
+        "result": "NUMERIC",
+        "reason": "DENOM_UNCERTAINTY_UNRESOLVED",
+        "total_ms": 416.9011,
+        "total_type": "measured",
+        "measurement_ms": 154.7524780007734,
+        "input_ms": 261.99612300024455,
+        "i_ratio": -0.22500837804503065,
+        "i_excess": -21709.33333333333,
+        "i_continuum": 96482.33333333333,
+        "signal_770": 74773.0,
+        "signal_750": 56121.0,
+        "signal_780": 116663.0
+      }
+    ],
+    "Jacob whole frame": [
+      {
+        "dataset": "controls",
+        "capture": "20261107_183323_638",
+        "method": "Jacob whole frame",
+        "result": "NUMERIC",
+        "reason": "DENOM_UNCERTAINTY_UNRESOLVED",
+        "total_ms": 244.864878,
+        "total_type": "measured",
+        "measurement_ms": 89.2125530008343,
+        "input_ms": 155.52188099991326,
+        "i_ratio": 0.4150943396226414,
+        "i_excess": 7.333333333333332,
+        "i_continuum": 17.666666666666668,
+        "signal_770": 25.0,
+        "signal_750": 23.0,
+        "signal_780": 15.0
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183556_555",
+        "method": "Jacob whole frame",
+        "result": "NUMERIC",
+        "reason": "DENOM_UNCERTAINTY_UNRESOLVED",
+        "total_ms": 371.758537,
+        "total_type": "measured",
+        "measurement_ms": 88.94716500071809,
+        "input_ms": 282.6700190007614,
+        "i_ratio": -0.10169710993195565,
+        "i_excess": -1318147.666666666,
+        "i_continuum": 12961505.666666666,
+        "signal_770": 11643358.0,
+        "signal_750": 13459633.0,
+        "signal_780": 12712442.0
+      },
+      {
+        "dataset": "controls",
+        "capture": "20261107_183734_013",
+        "method": "Jacob whole frame",
+        "result": "NUMERIC",
+        "reason": "DENOM_UNCERTAINTY_UNRESOLVED",
+        "total_ms": 338.091273,
+        "total_type": "measured",
+        "measurement_ms": 89.103442999658,
+        "input_ms": 248.85557200013864,
+        "i_ratio": -0.19532626276368512,
+        "i_excess": -3127939.666666666,
+        "i_continuum": 16013922.666666666,
+        "signal_770": 12885983.0,
+        "signal_750": 17657530.0,
+        "signal_780": 15192119.0
+      }
+    ]
+  },
+  "fallback_cases": {
+    "outcomes": {
+      "FIRE": 8
+    },
+    "total": {
+      "n": 8,
+      "median_ms": 4968.057377499999,
+      "p95_ms": 5717.54280765,
+      "max_ms": 5734.401034
+    },
+    "phase_roundtrip": {
+      "n": 8,
+      "median_ms": 1756.0902959999999,
+      "p95_ms": 1768.698437,
+      "max_ms": 1769.216941
+    },
+    "cases": [
+      {
+        "dataset": "test2",
+        "capture": "20261107_193753_744",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 5660.595808,
+        "total_type": "measured",
+        "measurement_ms": 122.971,
+        "preparation_ms": 797.435,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1729.991613,
+        "egse_retry_ms": 920.406,
+        "valid_fraction": 0.00667634395860489,
+        "overlap_fraction": 0.7819074139905992,
+        "regions": 9,
+        "largest_region_px": 136
+      },
+      {
+        "dataset": "test2",
+        "capture": "20261107_193843_351",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 5686.234673,
+        "total_type": "measured",
+        "measurement_ms": 116.85199999999998,
+        "preparation_ms": 796.057,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1734.560098,
+        "egse_retry_ms": 912.909,
+        "valid_fraction": 0.009308962357309318,
+        "overlap_fraction": 0.7801279772484891,
+        "regions": 8,
+        "largest_region_px": 191
+      },
+      {
+        "dataset": "test2",
+        "capture": "20261107_193900_009",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 4275.518947,
+        "total_type": "measured",
+        "measurement_ms": 125.38200000000006,
+        "preparation_ms": 776.313,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1767.735501,
+        "egse_retry_ms": 901.695,
+        "valid_fraction": 0.007492988900738634,
+        "overlap_fraction": 0.7487735513686455,
+        "regions": 10,
+        "largest_region_px": 256
+      },
+      {
+        "dataset": "test2",
+        "capture": "20261107_193936_188",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 4269.699987,
+        "total_type": "measured",
+        "measurement_ms": 120.67199999999991,
+        "preparation_ms": 776.907,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1759.626604,
+        "egse_retry_ms": 897.579,
+        "valid_fraction": 0.008207923529644112,
+        "overlap_fraction": 0.7798416084054193,
+        "regions": 9,
+        "largest_region_px": 350
+      },
+      {
+        "dataset": "test2",
+        "capture": "20261107_194035_390",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 5678.862578,
+        "total_type": "measured",
+        "measurement_ms": 117.69900000000007,
+        "preparation_ms": 794.626,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1752.553988,
+        "egse_retry_ms": 912.325,
+        "valid_fraction": 0.019215349369988546,
+        "overlap_fraction": 0.7793814432989691,
+        "regions": 8,
+        "largest_region_px": 584
+      },
+      {
+        "dataset": "test2",
+        "capture": "20261107_194044_572",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 5734.401034,
+        "total_type": "measured",
+        "measurement_ms": 112.60500000000002,
+        "preparation_ms": 796.442,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1769.216941,
+        "egse_retry_ms": 909.047,
+        "valid_fraction": 0.011257257968953667,
+        "overlap_fraction": 0.7761138760516649,
+        "regions": 7,
+        "largest_region_px": 441
+      },
+      {
+        "dataset": "test2",
+        "capture": "20261107_194050_646",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 4263.656179,
+        "total_type": "measured",
+        "measurement_ms": 105.399,
+        "preparation_ms": 776.952,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1764.830577,
+        "egse_retry_ms": 882.351,
+        "valid_fraction": 0.009690129162223012,
+        "overlap_fraction": 0.7850604337006755,
+        "regions": 6,
+        "largest_region_px": 38
+      },
+      {
+        "dataset": "test2",
+        "capture": "20261107_194103_414",
+        "method": "EGSE phase fallback",
+        "result": "FIRE",
+        "reason": "SPECTRAL_REGION",
+        "total_ms": 4257.040143,
+        "total_type": "measured",
+        "measurement_ms": 110.332,
+        "preparation_ms": 777.577,
+        "phase_status": "ACCEPTED_ENGINEERING_ONLY",
+        "phase_roundtrip_ms": 1747.842901,
+        "egse_retry_ms": 887.909,
+        "valid_fraction": 0.010808942607733935,
+        "overlap_fraction": 0.7790960619346684,
+        "regions": 7,
+        "largest_region_px": 269
+      }
+    ]
+  }
+}
