@@ -12,6 +12,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
+| 012 | [Timing the EMBER fire detector on the Raspberry Pi 4](entries/012-pi-fire-benchmark/README.md) | Per-triplet results and runtimes for EGSE, phase fallback, and Jacob’s JPEG methods. In progress. |
 | 011 | [EMBER transceiver power consumption and RF output](entries/011-transceiver-power/README.md) | Planned PPK2 current/packet-energy measurements and conducted RF output checks. No measurements yet. In progress. |
 | 010 | [Two-minute EMBER-format FM beacon](entries/010-ember-fm-beacon/README.md) | Outpost1/Baofeng to SatNOGS: four native-format 1200-baud packets decoded; CW KI5YNG and outdoor two-minute timing verified. In progress. |
 | 009 | [BPSK audio over FM to outpost1](entries/009-bpsk-over-fm/README.md) | UV-K5/Digirig to RTL-SDR: 9/9 CRC-valid packets across outpost1 and an outdoor SatNOGS J-pole; barrel load, raw IQ, code and measured comparisons. In progress. |
