@@ -8,6 +8,8 @@
 
 Eight November Test 2 triplets with visible flame failed feature alignment in the payload's fire detector, EMBER Guarded Spectral Excess (EGSE). A replay with phase registration recovered those eight. This run measures what the fallback costs on the payload Pi and compares it with Jacob's pixelwise and integrated-brightness methods. The earlier [daylight capture log](../002-kline-daylight-burn/README.md) describes how the three-camera experiment started.
 
+**[Open the interactive triplet review](https://ngrabbs.github.io/lab-log/entries/012-pi-fire-benchmark/triplet-review/)** to browse all 107 triplets with their EGSE decisions, scores, and timings. For an offline review, open the [local HTML copy](triplet-review/index.html) from a checkout.
+
 ## Images and setup
 
 The input was 104 corrected Test 2 triplets and three controls from the same test day. The controls were an outdoor scene with no fire, a flat-field capture, and a capture with the lenses covered. Each band was a 1456 × 1088 JPEG from an IMX296 camera. The corrected physical assignment is cam1 = 750 nm, cam2 = 770 nm, and cam0 = 780 nm. The November files were renamed to match the physical filters, and the corresponding EGSE gain maps were swapped. This correction applies to these files and this rig.
