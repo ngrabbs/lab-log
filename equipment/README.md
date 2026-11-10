@@ -8,6 +8,8 @@ This is the reference for equipment available for experiments in Lab Log. Check 
 
 **Recorded owned** means the testbed inventory listed it as owned, not that it was inspected again on the update date. Use that as the planning baseline; ask about current availability only when the task depends on it. **Unconfirmed** marks ambiguous, ordered, shared or unspecified availability. Listed ranges and power ratings below come from the source notes and have not been reverified as manufacturer specifications. Measured performance is identified by a dated record.
 
+For build parts rather than instruments, see [components and parts](../components/README.md) and [toroid stock](../components/toroids.md).
+
 ## Quick links
 
 - [Attenuator characterization and original files](characterizations/attenuators/README.md)

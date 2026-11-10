@@ -6,6 +6,8 @@ I miss the old forum build threads: the problem, the pictures, the experiments, 
 
 **[Equipment on Hand](equipment/README.md)** — instruments, radios, tools, availability notes, and measured characterizations.
 
+**[Components and parts](components/README.md)** — recorded stock, orders awaiting receipt confirmation, and [toroid stock](components/toroids.md).
+
 ## Entries
 
 Newest entries first. Ongoing investigations are updated on their own page.

@@ -11,9 +11,10 @@ This repository is a personal lab log for the author and readers who may repeat 
 - Give a substantial subproblem its own entry only when it is useful independently. Link it from the parent investigation and link back.
 - Use relative links so entries and images work on GitHub and in a local checkout. Embed images beside the relevant step with descriptive alt text and captions.
 
-## Equipment reference
+## Equipment and component references
 
 - Read `equipment/README.md` before asking what equipment is on hand or proposing new purchases. Follow links to relevant characterization records when selecting a test setup.
+- Read `components/README.md` for build parts and recorded orders, and `components/toroids.md` for core stock. Do not treat an unconfirmed order as stock or an unknown quantity as one. The owner keeps technical toroid guidance separately; inventory markings are not verified material identification.
 - Use recorded ownership as the planning baseline. Ask only for missing task-relevant details or current access when an experiment depends on it; do not ask the user to repeat the full inventory.
 - Distinguish recorded ownership, recent documented use, shared access, ordered items, and unconfirmed availability. An old order is not evidence of arrival; an update date is not a new physical inventory check.
 - Keep source-listed ratings separate from measured results. Respect frequency coverage, sample spacing, calibration context and unresolved inconsistencies. Missing or zero-filled parameters are not measured performance.
