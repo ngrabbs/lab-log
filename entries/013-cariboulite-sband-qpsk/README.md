@@ -152,3 +152,29 @@ The immediate old-driver controls received 108/256 and 181/256 frames. The live-
 Correcting the ring index removed the large periodic error spike and improved packet delivery at both rates. Residual loss remains even within this conducted setup. These runs quantify the callback fix and leave the remaining link or decoder errors unresolved. HiF RX streamed at 1.998 MS/s after reboot in a separate SoapySDR rate check. The Pi's FPGA service remained active and the radio was idle after testing.
 
 The [matched summary](files/dma-boundary-fix/before-after.csv), [individual runs](files/dma-boundary-fix/run-summary.csv), [per-frame outcomes](files/dma-boundary-fix/frame-outcomes.csv), [folded bit counts](files/dma-boundary-fix/phase-by-run.csv) and [capture hashes](files/dma-boundary-fix/capture-manifest.json) cover the before, after, and control runs. The [six-waveform schedule](files/dma-boundary-fix/schedule.tsv) specifies the byte-matched inputs. The [analysis script](files/dma-boundary-fix/compare_dma_fix.py) joins the archived waveforms' decoded results to the new runs and writes the tabular data. Nine new raw IQ captures were preserved as SigMF pairs on the Mac.
+
+## Residual packet loss in the receiver
+
+After the DMA fix, the original receiver's remaining failures came from its carrier-leakage correction. The captured QPSK had a strong carrier term at the modulation center, about −5.8 dBc at 250 ksym/s and −5.6 dBc at 500 ksym/s relative to the fitted QPSK term. The original decoder estimated residual frequency from the 128-symbol sync pilot and extrapolated the leakage phasor through the data field. A small error in that estimate let the subtraction drift away from the actual leakage, so the constellation was displaced late in the frame.
+
+I checked the six patched-driver captures, including all the failed frames. With the original receiver, every one of the **15,188** bit errors at 250 ksym/s and **4,443** at 500 ksym/s was in the second half of the data field. More than half at each rate occurred in its final tenth. In frames that failed, the median pilot frequency error relative to a full-frame fit was 22.3 Hz and 41.6 Hz, respectively. The median end-of-frame error in the modeled leakage was about 56% and 53% of the wanted symbol amplitude. This full-frame fit used the known data after demodulation for diagnosis.
+
+![Original decoder bit errors versus frame position and packet loss before and after leakage tracking](images/residual-qpsk-loss.png)
+
+I developed the receiver change on the first patched-driver capture at each rate. The decoder subtracts a local mean of the complex samples, using a centered 385-symbol Hann window, with the sync pilot contribution removed from that mean. It then applies the existing fourth-power phase tracker and checks the CRC. The receiver gets the known sync pilot. The expected science bytes and frame order are used only to score the decoded output. I fixed the receiver settings before evaluating the other four captures. A separate ablation that updated only the leakage estimate in the original equalizer recovered the same frames. Setting the pilot frequency correction to zero increased loss at both rates.
+
+| Rate | Original receiver | Tracked leakage | Held-back frames recovered | Packet-train payload goodput with tracking |
+| --- | ---: | ---: | ---: | ---: |
+| 250 ksym/s | 680/768 (11.5% loss) | 768/768 (0 observed loss) | 512/512 | 450.7 kbps |
+| 500 ksym/s | 730/768 (4.9% loss) | 768/768 (0 observed loss) | 512/512 | 901.4 kbps |
+
+The corrected decoder recovered **1,536/1,536 frames** with zero observed data-field bit errors across the six captures. Including RF startup and padding, mean payload goodput was 340.4 and 551.9 kbps. The same decoder still lost 130/256 and 66/256 frames in the old-driver controls at the two rates. That control separates the receiver's leakage correction from the earlier DMA corruption. The measurements establish the decoder failure on this bench link. They leave the physical source of the carrier term and performance on longer or weaker links open.
+
+The comparison replayed the same captured IQ, with the original 30 dB pad and receive gains of 32 dB LNA and 24 dB VGA already baked into the recordings. No additional transmission was required. The [run table](files/residual-loss/replay-by-run.csv) links each result to its capture hash. The [receiver comparisons](files/residual-loss/replay-by-rate.csv), [per-frame measurements](files/residual-loss/frame-ablation.csv), [bit errors by frame decile](files/residual-loss/bit-errors-by-decile.csv), and [data-aided leakage fits](files/residual-loss/data-aided-leakage-fit.csv) retain the evidence.
+
+To reproduce the replay, use the [symbol extractor](files/residual-loss/iq_residual.py) and [receiver replay](files/residual-loss/replay_receivers.py), with the existing waveform code on the module path. This example uses the first 250 ksym/s capture. The [schedule](files/residual-loss/schedule.tsv) gives the seeds for the other captures.
+
+```sh
+PYTHONPATH=../shuffle-followup python3 iq_residual.py extract 250000 /path/to/receive.sigmf-data symbols.npz
+PYTHONPATH=../shuffle-followup python3 replay_receivers.py symbols.npz 225201 225301 replay
+```

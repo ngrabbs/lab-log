@@ -1,0 +1,8 @@
+patched	r1-250-shuffled-fresh	250000	225201	225301
+patched	r1-500-shuffled-fresh	500000	225201	225301
+patched	r2-250-shuffled-fresh	250000	225202	225302
+patched	r2-500-shuffled-fresh	500000	225202	225302
+patched	r3-250-shuffled-fresh	250000	225203	225303
+patched	r3-500-shuffled-fresh	500000	225203	225303
+old-control	r1-250-shuffled-fresh	250000	225201	225301
+old-control	r1-500-shuffled-fresh	500000	225201	225301
