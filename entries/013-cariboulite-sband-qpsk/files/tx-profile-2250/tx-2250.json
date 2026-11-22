@@ -1,0 +1,7 @@
+{
+  "frequency_hz": 2250000000,
+  "sample_rate_hz": 2000000,
+  "channel": 1,
+  "rf24_calibration": "fresh",
+  "iq_bias_counts": [128, -4280]
+}

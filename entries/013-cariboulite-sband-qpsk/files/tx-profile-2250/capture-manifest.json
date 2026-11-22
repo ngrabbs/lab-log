@@ -1,0 +1,90 @@
+[
+  {
+    "run": "r1-250-profile",
+    "sha256": "52e494610f6bc7572eb530f37f7cbec18420e85a5b1d541844ca75b7d67d21f5",
+    "size_bytes": 120000000,
+    "capture_command_start_utc": "2026-11-22T22:32:25.056126156Z",
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-250-profile post-reboot 2250 MHz TX profile. Pad 30 dB and LNA/VGA 32/24 dB. Capture command UTC 2026-11-22T22:32:25.056126156Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-500-profile",
+    "sha256": "03d2df54c6eccaf6584700eb2cb5b7922556714169a45c8f47f61e1aaaeeada4",
+    "size_bytes": 120000000,
+    "capture_command_start_utc": "2026-11-22T22:32:34.180600898Z",
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-500-profile post-reboot 2250 MHz TX profile. Pad 30 dB and LNA/VGA 32/24 dB. Capture command UTC 2026-11-22T22:32:34.180600898Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-250-profile",
+    "sha256": "4dbfcc54b0c2c14fa7a144888856d19849908e303d7150d209ab1e341065685c",
+    "size_bytes": 120000000,
+    "capture_command_start_utc": "2026-11-22T22:32:43.290604790Z",
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-250-profile post-reboot 2250 MHz TX profile. Pad 30 dB and LNA/VGA 32/24 dB. Capture command UTC 2026-11-22T22:32:43.290604790Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-500-profile",
+    "sha256": "98bd3b03e6d602c5bde5226094b5c9565203cb7e7f6fdc99e46e01b8a23135a7",
+    "size_bytes": 120000000,
+    "capture_command_start_utc": "2026-11-22T22:32:52.536957374Z",
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-500-profile post-reboot 2250 MHz TX profile. Pad 30 dB and LNA/VGA 32/24 dB. Capture command UTC 2026-11-22T22:32:52.536957374Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  }
+]

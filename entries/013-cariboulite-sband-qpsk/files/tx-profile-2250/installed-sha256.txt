@@ -1,0 +1,3 @@
+aa8557c44c371c52f9b768a39aea052512aba330719c99a798ced3381ef2ce3b  etc/cariboulite/tx-2250.json
+d30503a7cac0e90c5bcc94d1d9009cedd4bbf49a84abe197e662f0352da1dc9c  usr/local/bin/cariboulite-tx-2250
+490893fc533cfede4ea70af5a28a1bf97fc32b0da3f5da822de7e5a0e7235c01  opt/cariboulite-fixed/tx-test-rf24

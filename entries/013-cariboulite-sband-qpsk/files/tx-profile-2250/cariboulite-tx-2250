@@ -1,0 +1,80 @@
+#!/usr/bin/python3
+"""Transmit a signed IQ16 file using the named CaribouLite 2250 MHz bench profile."""
+import argparse
+import fcntl
+import json
+from pathlib import Path
+import stat
+import subprocess
+import tempfile
+
+import numpy as np
+
+PROFILE = Path('/etc/cariboulite/tx-2250.json')
+TRANSMITTER = '/opt/cariboulite-fixed/tx-test-rf24'
+MTU = 131072
+SAMPLE_BYTES = 4
+
+
+def prepare_iq(source, target, bias):
+    # The source is uncorrected I/Q. Add the profile bias once and preserve
+    # the existing DMA-aligned padding when present.
+    size = source.stat()
+    if not stat.S_ISREG(size.st_mode) or not size.st_size or size.st_size % SAMPLE_BYTES:
+        raise ValueError('input must be a nonempty regular file of complete IQ16 pairs')
+    total = 0
+    with source.open('rb') as inp, target.open('wb') as out:
+        while block := inp.read(MTU * SAMPLE_BYTES):
+            samples = np.frombuffer(block,dtype='<i2').reshape(-1,2)
+            shifted = samples.astype(np.int32) + bias
+            if shifted.min() < -32768 or shifted.max() > 32767:
+                raise ValueError('profile bias would clip the input')
+            out.write(shifted.astype('<i2').tobytes())
+            total += len(samples)
+        if total * SAMPLE_BYTES != size.st_size:
+            raise ValueError('input size changed during preprocessing')
+        padding = (-total) % MTU
+        if padding:
+            out.write(bias.astype('<i2').tobytes() * padding)
+    return total, padding
+
+
+def main():
+    cli = argparse.ArgumentParser(description=__doc__)
+    cli.add_argument('input',nargs='?',type=Path,help='uncorrected interleaved little-endian I/Q16 at 2 MS/s')
+    cli.add_argument('--show-profile',action='store_true',help='print the saved profile without transmitting')
+    args=cli.parse_args()
+    if args.show_profile == (args.input is not None):
+        cli.error('choose exactly one input file or --show-profile')
+    try:
+        profile=json.loads(PROFILE.read_text())
+        freq, rate, channel = (profile[k] for k in ('frequency_hz','sample_rate_hz','channel'))
+        if (freq,rate,channel,profile['rf24_calibration']) != (2250000000,2000000,1,'fresh'):
+            raise ValueError('expected the 2250 MHz HiF profile with fresh RF24 calibration')
+        i,q=profile['iq_bias_counts']
+        if any(type(v) is not int or not -32768 <= v <= 32767 for v in (i,q)):
+            raise ValueError('expected two signed IQ16 bias counts')
+        if args.show_profile:
+            print(json.dumps(profile,indent=2))
+            return 0
+        bias=np.array([i,q],dtype=np.int32)
+        with tempfile.TemporaryDirectory(prefix='cariboulite-tx-2250-') as tmp:
+            target=Path(tmp)/'corrected.cs16'
+            count,padding=prepare_iq(args.input,target,bias)
+            with open('/run/lock/cariboulite-tx-2250.lock','a') as lock:
+                fcntl.flock(lock,fcntl.LOCK_EX | fcntl.LOCK_NB)
+                subprocess.run(['systemctl','is-active','--quiet','cariboulite-fpga.service'],check=True)
+                if subprocess.run(['fuser','-s','/dev/smi']).returncode != 1:
+                    raise ValueError('CaribouLite SMI is busy or unavailable')
+                print(f'TX_PROFILE 2250 MHz fresh RF24 bias_i={i} bias_q={q} input_samples={count} pad_samples={padding}',flush=True)
+                command=['env','-u','CARIBOU_RF24_TUNED_MEDIAN','-u','CARIBOU_SYNC_ONLY',
+                         'CARIBOU_RF24_AUTO_TX_CAL=1','CARIBOU_SOFT_RESET=1',
+                         'CARIBOU_TEST_DRAIN=1','CARIBOU_TEST_SMI_WRITE_STROBE=12',
+                         TRANSMITTER,'-c',str(channel),'-f',str(freq),'-r',str(rate),str(target)]
+                return subprocess.run(command).returncode
+    except (OSError, ValueError, KeyError, subprocess.CalledProcessError) as error:
+        cli.exit(2,f'{cli.prog}: {error}\n')
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

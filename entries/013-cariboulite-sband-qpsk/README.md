@@ -209,3 +209,27 @@ The earlier wide coarse-frequency search chose other in-band peaks in the two su
 The bias is a bench calibration for this board, frequency, power and RF24 calibration state. Stability across temperatures, gain settings and boards remains unmeasured. The bench transmitter was invoked explicitly for these runs. The normal Pi launcher still uses its existing calibration and the DMA-fixed module, and TX was idle at the end.
 
 The [probe results](files/carrier-leakage/probe-results.csv), [tuned-median result](files/carrier-leakage/median-results.csv), [bias grid](files/carrier-leakage/bias-grid.csv), [independent bias validation](files/carrier-leakage/bias-validation.csv), [QPSK summary](files/carrier-leakage/qpsk-results.csv), and [per-frame fits](files/carrier-leakage/qpsk-carrier-fits.csv) retain the measurements. The [waveform builder](files/carrier-leakage/make_probe.py), [bias sweep script](files/carrier-leakage/bias_probe.py), [bias application script](files/carrier-leakage/apply_bias.py), and [waveform hashes](files/carrier-leakage/waveform-metadata.txt) record how to reproduce the inputs. All 13 captures were saved on the Mac with SigMF sidecars and checked against the [capture manifest](files/carrier-leakage/capture-manifest.json).
+
+## Saved 2250 MHz TX profile and reboot check
+
+The Pi now has an explicit `cariboulite-tx-2250` command for HiF. It reads `/etc/cariboulite/tx-2250.json` and invokes the RF24-calibration build at `/opt/cariboulite-fixed/tx-test-rf24`. The profile fixes the frequency at 2250 MHz, applies I +128 and Q −4280 to the signed IQ16 samples, and lets the modem run fresh RF24 calibration at each TX start. The launcher checks for input clipping, pads a partial DMA block, and requires the FPGA service and an idle SMI interface. Transmitting requires invoking the profile with an input file.
+
+```sh
+cariboulite-tx-2250 --show-profile
+cariboulite-tx-2250 uncorrected-waveform.cs16
+```
+
+Input is interleaved little-endian signed 16-bit I/Q at 2 MS/s, prior to applying any sample bias. The profile is the bench calibration for this board at minimum TX power. For the RF24 helper, use the [bench source patch](files/carrier-leakage/rf24-auto-calibration.patch) on the [DMA-fixed revision](https://github.com/ngrabbs/cariboulite/commit/8d0b9504593f6d00d3e400b622501830e4085ba0). The [launcher](files/tx-profile-2250/cariboulite-tx-2250), [profile JSON](files/tx-profile-2250/tx-2250.json), and [Pi-installed SHA-256s](files/tx-profile-2250/installed-sha256.txt) identify the installed files.
+
+After reboot, I verified a new boot ID, the same installed profile and helper hashes, the active FPGA service and SMI source version `8BE3FF80584317A366FD47D`. Both first-set waveforms passed a byte-for-byte check against the previously tested corrected IQ files. An input that would clip was rejected before TX.
+
+The post-reboot RF check used the same 30 dB conducted pad, minimum TX PA, and HackRF 32 dB LNA and 24 dB VGA. RF amp and port bias stayed off. I replayed two fresh shuffled 256-frame waveforms at each symbol rate and seeded acquisition with the prior independently measured +22.1 kHz coarse offset. This preserves the acquisition setup used in the previous low-leakage comparison.
+
+| Rate | Valid frames by burst | Median carrier by burst | Packet-train payload goodput |
+| --- | ---: | ---: | ---: |
+| 250 ksym/s | 256/256, 256/256 | −39.54, −41.59 dBc | 450.7 kbps |
+| 500 ksym/s | 256/256, 256/256 | −44.97, −34.79 dBc | 901.4 kbps |
+
+Fresh calibration returned I=63, Q=1 on three bursts and I=63, Q=2 on the second 500 ksym/s burst. The Q=2 burst had the highest residual carrier, at −34.79 dBc, and still decoded all 256 frames. All four bursts had 256 detected preambles and zero partial TX writes or receive ADC clipping. The receiver recovered **1,024/1,024** frames with 0 observed data-field bit errors. The carrier figures are the median per-frame leakage terms relative to fitted QPSK amplitude, using the same estimator as the prior bench run. TX was idle after the check.
+
+The [run results](files/tx-profile-2250/profile-runs.csv), [per-frame measurements](files/tx-profile-2250/profile-frame-fits.csv), [run plan](files/tx-profile-2250/plan.tsv), and [capture hashes](files/tx-profile-2250/capture-manifest.json) record the verification. The four raw captures and SigMF sidecars are archived on the Mac.
