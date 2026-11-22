@@ -233,3 +233,31 @@ The post-reboot RF check used the same 30 dB conducted pad, minimum TX PA, and H
 Fresh calibration returned I=63, Q=1 on three bursts and I=63, Q=2 on the second 500 ksym/s burst. The Q=2 burst had the highest residual carrier, at −34.79 dBc, and still decoded all 256 frames. All four bursts had 256 detected preambles and zero partial TX writes or receive ADC clipping. The receiver recovered **1,024/1,024** frames with 0 observed data-field bit errors. The carrier figures are the median per-frame leakage terms relative to fitted QPSK amplitude, using the same estimator as the prior bench run. TX was idle after the check.
 
 The [run results](files/tx-profile-2250/profile-runs.csv), [per-frame measurements](files/tx-profile-2250/profile-frame-fits.csv), [run plan](files/tx-profile-2250/plan.tsv), and [capture hashes](files/tx-profile-2250/capture-manifest.json) record the verification. The four raw captures and SigMF sidecars are archived on the Mac.
+
+## Conducted QPSK rate limit
+
+The saved 2 MS/s profile delivered **2.659 Mbps of payload** at **1.475 Msym/s** for 15.773 s. The receiver recovered all **10,240/10,240** frames, totaling 5 MiB of payload. That is within 0.44% of the nominal baud-rate ceiling imposed by a 2 MS/s complex sample stream and this 0.35-rolloff QPSK waveform. The corresponding payload ceiling for this frame format is about 2.671 Mbps.
+
+I kept the nominal 2250 MHz TX, 30 dB conducted pad, minimum PA code, fresh RF24 calibration and I/Q bias of +128/−4280. HackRF gain stayed at 32 dB LNA and 24 dB VGA, with RF amp and port bias off. I moved the HackRF center to 2249.850 MHz to keep the wider signal inside the same 2.5 MHz receive filter. The receiver recorded 8 MS/s signed 8-bit IQ. I reran the 500 ksym/s control at this new receive center before using it for the sweep.
+
+![Measured QPSK goodput and held-out pilot EVM as the rate approaches the 2 MS/s profile ceiling](images/qpsk-rate-sweep.png)
+
+Ten short 256-frame bursts covered 0.500 through 1.475 Msym/s. All 2,560 frames passed CRC and matched the expected bytes with carrier tracking alone, and with a seven-tap equalizer trained on the sync pilot. The last 24 pilot symbols were excluded from equalizer training and used for the EVM estimate. At 1.475 Msym/s the nominal pulse-shaped bandwidth is 1.991 MHz, and the waveform kept the same 512-byte payload, frame overhead, and 0.35 RRC rolloff as the earlier tests. The long run accepted all 32,374,784 IQ samples with zero short writes. All 10,240 pilots arrived at regular intervals, consistent with the roughly 10 ppm relative clock offset seen in the shorter 2 MS/s runs. The long test used file-fed IQ and offline decoding.
+
+### 4 MS/s TX sample-clock trials
+
+CaribouLabs lists a 4 MS/s converter rate. I tested that sample clock with the same RF settings and calibration, using a separate bench invocation of the RF24 helper. Register readback showed `TXDFE=0x61` and `FPGA_GAP=0`, compared with `0x82` and gap 1 in the saved 2 MS/s profile. [CaribouLite specifications](https://github.com/cariboulabs/cariboulite#specifications) · [AT86RF215 datasheet, TX digital front end](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42415-WIRELESS-AT86RF215_Datasheet.pdf)
+
+| TX sample rate | SMI write strobe | QPSK rate | Valid frames with pilot equalizer |
+| --- | ---: | ---: | ---: |
+| 4 MS/s | 12 | 500 ksym/s | 0/256 |
+| 4 MS/s | 12 | 1,450 ksym/s | 0/256 |
+| 4 MS/s | 5 | 500 ksym/s | 25/256 |
+| 4 MS/s | 5 | 1,450 ksym/s | 0/256 |
+| 4 MS/s | 6 | 500 ksym/s | 0/256 |
+
+At strobe 12, the 6.29-million-sample write took 2.60 s, well beyond the complete file's nominal 1.57 s at 4 MS/s. At strobe 5 the write timing was consistent with the nominal 4 MS/s pacing, and all pilots appeared. Their intervals were irregular and typically too short by about 9.4 TX sample intervals at 500 ksym/s and 4.0 at 1.45 Msym/s. The 500 ksym/s control with the saved profile had regular pilot timing and recovered every frame. The comparison implicates sample continuity in the faster Pi-to-modem path. The captures leave the exact source of the slips within the SMI, FPGA and modem interface unresolved. All write calls accepted their full IQ sample counts, which verifies host acceptance.
+
+The demonstrated limit is **2.66 Mbps of QPSK payload with the current 2 MS/s profile**. The sample rate and pulse-shaped bandwidth set the ceiling for this waveform. The tested 4 MS/s settings showed timing or continuity problems, including on the narrower 500 ksym/s control. Longer continuous operation, real-time waveform generation, other modulations and a spacecraft link budget remain outside this measurement. TX was idle at the end.
+
+The [rate results](files/rate-limit/rate-results.csv), [pilot timing](files/rate-limit/pilot-timing.csv), [frame diagnostics](files/rate-limit/frame-diagnostics.csv), and [capture and waveform manifest](files/rate-limit/capture-manifest.json) document all sixteen captures. Raw IQ and SigMF sidecars were checked and archived on the Mac. The [waveform generator](files/rate-limit/generate_limit_wave.py) and [decoder](files/rate-limit/decode_limit_wave.py) use the [prior waveform module](files/shuffle-followup/qpsk_bench_shuffled.py) on the Python module path.

@@ -1,0 +1,801 @@
+{
+  "rate-500000": {
+    "capture_sha256": "130133824cc4d555ba3947c506de9ba1c208c30f27d05fc8ce67aaadc0f7f797",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-500000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:42:14.078000291Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "symbol_rate": 500000,
+      "tx_rate": 2000000,
+      "samples_per_symbol": 4,
+      "frames": 256,
+      "symbols_per_frame": 2272,
+      "payload_bytes": 512,
+      "sequence_bytes": 4,
+      "crc_bytes": 4,
+      "tone_symbols": 64,
+      "pilot_symbols": 128,
+      "rolloff": 0.35,
+      "rrc_span_symbols": 12,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "sequence_at_position": [
+        198,
+        194,
+        239,
+        44,
+        132,
+        229,
+        55,
+        240,
+        177,
+        139,
+        183,
+        77,
+        102,
+        51,
+        176,
+        216,
+        52,
+        142,
+        190,
+        181,
+        122,
+        54,
+        108,
+        57,
+        241,
+        39,
+        143,
+        232,
+        90,
+        24,
+        243,
+        34,
+        35,
+        109,
+        105,
+        255,
+        64,
+        210,
+        235,
+        202,
+        184,
+        82,
+        212,
+        75,
+        148,
+        120,
+        195,
+        19,
+        33,
+        250,
+        223,
+        144,
+        10,
+        163,
+        126,
+        127,
+        73,
+        236,
+        164,
+        76,
+        16,
+        214,
+        99,
+        49,
+        172,
+        175,
+        155,
+        7,
+        17,
+        225,
+        247,
+        56,
+        36,
+        166,
+        119,
+        5,
+        160,
+        20,
+        67,
+        230,
+        213,
+        249,
+        101,
+        193,
+        91,
+        111,
+        1,
+        26,
+        31,
+        189,
+        107,
+        219,
+        153,
+        116,
+        89,
+        149,
+        80,
+        245,
+        0,
+        113,
+        179,
+        147,
+        211,
+        151,
+        205,
+        217,
+        222,
+        252,
+        233,
+        192,
+        191,
+        118,
+        98,
+        224,
+        50,
+        215,
+        62,
+        65,
+        196,
+        96,
+        86,
+        6,
+        220,
+        114,
+        158,
+        25,
+        70,
+        248,
+        71,
+        4,
+        178,
+        208,
+        11,
+        112,
+        130,
+        53,
+        135,
+        38,
+        121,
+        251,
+        140,
+        79,
+        167,
+        157,
+        145,
+        141,
+        125,
+        185,
+        123,
+        204,
+        45,
+        2,
+        40,
+        63,
+        103,
+        134,
+        14,
+        156,
+        43,
+        133,
+        168,
+        60,
+        42,
+        174,
+        200,
+        94,
+        154,
+        59,
+        115,
+        87,
+        161,
+        182,
+        100,
+        110,
+        159,
+        218,
+        206,
+        199,
+        209,
+        97,
+        226,
+        197,
+        173,
+        9,
+        227,
+        228,
+        23,
+        8,
+        13,
+        41,
+        15,
+        171,
+        78,
+        93,
+        30,
+        88,
+        66,
+        46,
+        32,
+        138,
+        137,
+        152,
+        221,
+        28,
+        129,
+        234,
+        68,
+        131,
+        48,
+        69,
+        186,
+        242,
+        106,
+        22,
+        18,
+        37,
+        136,
+        95,
+        61,
+        84,
+        12,
+        188,
+        27,
+        170,
+        244,
+        150,
+        187,
+        104,
+        47,
+        128,
+        180,
+        3,
+        85,
+        238,
+        21,
+        117,
+        246,
+        201,
+        162,
+        92,
+        83,
+        231,
+        237,
+        58,
+        146,
+        74,
+        81,
+        165,
+        207,
+        253,
+        29,
+        203,
+        72,
+        254,
+        169,
+        124
+      ],
+      "pilot_seed": 225001,
+      "packet_train_s": 1.163264,
+      "file_samples": 3145728,
+      "file_duration_s": 1.572864,
+      "lead_and_tail_samples_each": 400000,
+      "peak_envelope_counts": 18889.591796875,
+      "rms_envelope_counts": 12000,
+      "scheduled_payload_bps": 901408.4507042253,
+      "baud": 500000,
+      "tx_sample_rate": 2000000
+    }
+  },
+  "rate-625000": {
+    "capture_sha256": "71a900197397b8b48a6ac18b04f4cf988ae6fe8dcd989f937bbefecfd8362bde",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-625000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:42:58.741257171Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 625000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 843750.0,
+      "rf_packet_train_seconds": 0.9306112,
+      "iq_file_samples": 2752512,
+      "sha256": "7a0d36c8ed5e184754b1b54df277a997a30c13ef59ff4d6242f15f716f6c36e6"
+    }
+  },
+  "rate-750000": {
+    "capture_sha256": "ecaaed4975503d4a00cc163e9efa26950d9857d1e72634588ae87b8082a7ce99",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-750000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:42:40.803948037Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 750000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1012500.0000000001,
+      "rf_packet_train_seconds": 0.7755093333333334,
+      "iq_file_samples": 2359296,
+      "sha256": "69c40b991e68329117d6fedf32a23db4b9e145fd8333f0858d8983613ae077cc"
+    }
+  },
+  "rate-875000": {
+    "capture_sha256": "415356158d2bf1872c2f4ed39ec5368d33dc9e2d56f6fb26b2bebffeca102779",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-875000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:43:19.109549037Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 875000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1181250.0,
+      "rf_packet_train_seconds": 0.6647222857142857,
+      "iq_file_samples": 2228224,
+      "sha256": "e1ece493e6cd0aab23f60c3d45417f554aa6955ff86374544e75f3200e56036e"
+    }
+  },
+  "rate-1000000": {
+    "capture_sha256": "bcfc67c6979afa1ddc7007c3c9f20f7d036a9eff5f53e5621b72540bf2553430",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-1000000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:42:22.840570877Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1000000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1350000.0,
+      "rf_packet_train_seconds": 0.581632,
+      "iq_file_samples": 1966080,
+      "sha256": "0ec77f7715115a2ac7bb81e590f63e980142d511b254123ef7ee38889a11a41e"
+    }
+  },
+  "rate-1125000": {
+    "capture_sha256": "595621f0335c1b22aa2cccac41dda58c49fa680e8b1e8cb94c4c2a49c24b0df0",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-1125000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:43:30.452023509Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1125000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1518750.0,
+      "rf_packet_train_seconds": 0.5170062222222223,
+      "iq_file_samples": 1835008,
+      "sha256": "5a1ac9684fc2f1e3b28f89a74cb52de0412385114d238175c82ddf05e5c36291"
+    }
+  },
+  "rate-1250000": {
+    "capture_sha256": "0fd2a3f74051b2064984930e2b175375532592f806117221128cf96eb1f7c186",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-1250000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:42:49.744116476Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1250000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1687500.0,
+      "rf_packet_train_seconds": 0.4653056,
+      "iq_file_samples": 1835008,
+      "sha256": "9373e14355130f67d1d387d151b175cd4780cf4bd10a50dc7f0d05a18df0db88"
+    }
+  },
+  "rate-1350000": {
+    "capture_sha256": "530e2e1e588d9e06a847320a755d2c51f3c5c72a6e88f520689caf96397718b8",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-1350000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:43:08.881942606Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1350000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1822500.0000000002,
+      "rf_packet_train_seconds": 0.4308385185185185,
+      "iq_file_samples": 1703936,
+      "sha256": "d0bb3947e0c80685769ac617c2e4523f4907e0937a34b12e264a5f65d2e7fe89"
+    }
+  },
+  "rate-1450000": {
+    "capture_sha256": "6a88caf119a5502dd3daf778886bb29c15573e968362ef8b9c02ee2e2a662e5b",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-1450000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:42:31.752845477Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1450000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1957500.0000000002,
+      "rf_packet_train_seconds": 0.4011255172413793,
+      "iq_file_samples": 1703936,
+      "sha256": "59b3557f36fad4ea5db2b41d62cef2df32e71650ca7477cbaefcdfe943230b80"
+    }
+  },
+  "rate-1475000": {
+    "capture_sha256": "0bc8c6ae72d090a4c1b5745781b88874d1cece59ea72d2faca1fb0d6acceebdf",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "rate-1475000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:44:59.222043727Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1475000,
+      "tx_sample_rate": 2000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1991250.0000000002,
+      "rf_packet_train_seconds": 0.3943267796610169,
+      "iq_file_samples": 1703936,
+      "sha256": "6950e1591dacd5fc422d1d7d395ece6980c645c7feb20142e0835e57189237a1"
+    }
+  },
+  "long-1475000": {
+    "capture_sha256": "988e6852e364768fc30bc087166ee8eb4adb2a0fbea944768ee6c519e5447ccf",
+    "capture_bytes": 400000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "long-1475000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:45:26.256676901Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1475000,
+      "tx_sample_rate": 2000000,
+      "frames": 10240,
+      "payload_seed": 225212,
+      "order_seed": 225312,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1991250.0000000002,
+      "rf_packet_train_seconds": 15.773071186440678,
+      "iq_file_samples": 32374784,
+      "sha256": "44a7c594f3695fd5dbdcaac7728526652332adec7529ccef57097248124bc2f9"
+    }
+  },
+  "at4-500000": {
+    "capture_sha256": "9439ef2aa8d2a87f54ba49d4d5e681b14c17e973e68fc92a270110af58df6f76",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "at4-500000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:45:08.216077815Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 500000,
+      "tx_sample_rate": 4000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 675000.0,
+      "rf_packet_train_seconds": 1.163264,
+      "iq_file_samples": 6291456,
+      "sha256": "d773076b533d826f65c2ee27d2bb8108fea6b5ee686e8374e8d7835e8835f89f"
+    }
+  },
+  "at4-s5-500000": {
+    "capture_sha256": "115f8cccc6b626b3130b4bb320bfe7e136e51b358b4f827aecf8d8bb03dd0027",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "at4-s5-500000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:46:05.788070170Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 500000,
+      "tx_sample_rate": 4000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 675000.0,
+      "rf_packet_train_seconds": 1.163264,
+      "iq_file_samples": 6291456,
+      "sha256": "d773076b533d826f65c2ee27d2bb8108fea6b5ee686e8374e8d7835e8835f89f"
+    }
+  },
+  "at4-s6-500000": {
+    "capture_sha256": "15e31072843dca344f9e4de890d1de1d6657747a29a0724a8d7f4cf36de76c36",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "at4-s6-500000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:46:23.617482408Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 500000,
+      "tx_sample_rate": 4000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 675000.0,
+      "rf_packet_train_seconds": 1.163264,
+      "iq_file_samples": 6291456,
+      "sha256": "d773076b533d826f65c2ee27d2bb8108fea6b5ee686e8374e8d7835e8835f89f"
+    }
+  },
+  "at4-1450000": {
+    "capture_sha256": "7f5ae0be691358c594867d69e2190d00896b4131be703b8984c100da9a723147",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "at4-1450000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:45:17.190540278Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1450000,
+      "tx_sample_rate": 4000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1957500.0000000002,
+      "rf_packet_train_seconds": 0.4011255172413793,
+      "iq_file_samples": 3276800,
+      "sha256": "a92271c3a30655097aa8d8d6cb487f76272b6f0c89670b137ef471b4e3825679"
+    }
+  },
+  "at4-s5-1450000": {
+    "capture_sha256": "4f68a07b13e174ded04759f9686211a0000c6aeb0ec0ab5f9a160dbed9cf2b8c",
+    "capture_bytes": 120000000,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "at4-s5-1450000, nominal 2250 MHz conducted QPSK. 30 dB pad, minimum TX PA, LNA/VGA 32/24 dB, RF amp and bias off. Capture command UTC 2026-11-22T22:46:14.784598837Z. Sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249850000
+        }
+      ],
+      "annotations": []
+    },
+    "tx_waveform": {
+      "baud": 1450000,
+      "tx_sample_rate": 4000000,
+      "frames": 256,
+      "payload_seed": 225201,
+      "order_seed": 225301,
+      "payload_bits_per_frame": 4096,
+      "rrc_rolloff": 0.35,
+      "nominal_bandwidth_hz": 1957500.0000000002,
+      "rf_packet_train_seconds": 0.4011255172413793,
+      "iq_file_samples": 3276800,
+      "sha256": "a92271c3a30655097aa8d8d6cb487f76272b6f0c89670b137ef471b4e3825679"
+    }
+  }
+}
