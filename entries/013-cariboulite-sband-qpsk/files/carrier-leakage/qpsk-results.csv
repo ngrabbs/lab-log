@@ -1,0 +1,5 @@
+run,symbol_rate,tx_sample_bias,rf24_calibration,median_carrier_relative_dbc,p10_carrier_relative_dbc,p90_carrier_relative_dbc,baseline_decode_valid,tracking_decode_valid,tracking_data_field_bit_errors,adc_component_clip_fraction,detected_frames
+qpsk-250000-fresh,250000,fresh,TX_CAL mode=fresh I=63 Q=1 startup_I=39 startup_Q=35,-9.185998248909597,-9.239890118274026,-9.143885399690612,256,256,0,0.0,256
+qpsk-250000-biased,250000,biased,TX_CAL mode=fresh I=63 Q=1 startup_I=39 startup_Q=35,-44.10868533674582,-46.15820688371011,-42.383199328721815,256,256,0,0.0,256
+qpsk-500000-fresh,500000,fresh,TX_CAL mode=fresh I=63 Q=1 startup_I=37 startup_Q=35,-8.926465178787867,-9.048070679515233,-8.834227259478125,255,256,0,0.0,256
+qpsk-500000-biased,500000,biased,TX_CAL mode=fresh I=63 Q=1 startup_I=37 startup_Q=35,-43.44563095747757,-45.76153901048674,-41.44635624075081,256,256,0,0.0,256

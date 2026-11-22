@@ -1,0 +1,7 @@
+{"bias_i": 128, "bias_q": -4280, "samples": 5505024, "min_iq": [-13322, -17730], "max_iq": [13578, 9170]}
+{"bias_i": 128, "bias_q": -4280, "samples": 3145728, "min_iq": [-13322, -17730], "max_iq": [13578, 9170]}
+2957c667ce3412158b92952473fc50436ff6ae7667423b30448451724526b0c1  carrier-probe.cs16
+bc5f186f7986f879da61050aebe8c11aa9f5b7dfdad2a89e2b9669e4dfffcdb2  bias-grid.cs16
+283e8def3da5b849bd979929f0595e0b87d92640de734930e3ae5f19a938d1a8  bias-validation.cs16
+6111f590c923c1e8f948987b304ebbfdf6e5bcc8dae646d3cc734784769b8fdc  corrected-250000.cs16
+1c548ed802bf77be8f43fe87460b13ad56ca07623598ba299551e8bb318e47ef  corrected-500000.cs16

@@ -14,11 +14,11 @@ import qpsk_bench_shuffled as q
 N = q.PILOT_LEN + q.FRAME_BYTES * 4
 
 
-def extract_run(rate, path):
+def extract_run(rate, path, carrier_hint_hz=None):
     z, clip = q.extract(path)
     offset, stop, _, _, noise = q.active_window(z)
     z = z[offset:stop]
-    cfo = q.carrier(z)
+    cfo = q.carrier(z) if carrier_hint_hz is None else carrier_hint_hz
     z *= np.exp(-2j*np.pi*cfo/q.TX_FS*np.arange(len(z))).astype(np.complex64)
     sps = q.TX_FS // rate
     z = signal.fftconvolve(z, q.rrc(sps), mode='same')
@@ -112,6 +112,7 @@ if __name__=='__main__':
     ext.add_argument('rate',type=int)
     ext.add_argument('iq',type=Path)
     ext.add_argument('symbols',type=Path)
+    ext.add_argument('--carrier-hint-hz', type=float, help='coarse carrier offset after the nominal 500 kHz RX translation')
     study=sub.add_parser('baseline')
     study.add_argument('symbols',type=Path)
     study.add_argument('payload_seed',type=int)
@@ -119,6 +120,6 @@ if __name__=='__main__':
     study.add_argument('out',type=Path)
     args=p.parse_args()
     if args.action=='extract':
-        np.savez(args.symbols, **extract_run(args.rate,args.iq))
+        np.savez(args.symbols, **extract_run(args.rate,args.iq,args.carrier_hint_hz))
     else:
         investigate(args.symbols,args.payload_seed,args.order_seed,args.out)

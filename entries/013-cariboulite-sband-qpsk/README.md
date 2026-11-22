@@ -178,3 +178,34 @@ To reproduce the replay, use the [symbol extractor](files/residual-loss/iq_resid
 PYTHONPATH=../shuffle-followup python3 iq_residual.py extract 250000 /path/to/receive.sigmf-data symbols.npz
 PYTHONPATH=../shuffle-followup python3 replay_receivers.py symbols.npz 225201 225301 replay
 ```
+
+## Carrier leakage source and suppression
+
+The leakage is generated in the CaribouLite's **AT86RF215 RF24 transmit path**. On the 2250 MHz path, the board translates the RF24 modem's nominal 2495 MHz output through the RFFC5072. With the modem tuned directly near 2494.9 MHz, the same carrier line appeared with the external mixer bypassed. The exact analog node inside the modem remains unmeasured. [CaribouLite frequency-conversion code](https://github.com/ngrabbs/cariboulite/blob/8d0b9504593f6d00d3e400b622501830e4085ba0/software/libcariboulite/src/cariboulite_radio.c) · [AT86RF215 datasheet, §6.8 and erratum 15.2.1](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42415-WIRELESS-AT86RF215_Datasheet.pdf)
+
+I kept the original 30 dB pad, minimum TX PA, 2 MS/s TX IQ, and HackRF LNA/VGA at 32/24 dB. The receiver took 7.5 s of 8 MS/s signed 8-bit IQ per capture through its 2.5 MHz baseband filter, with RF amp and antenna power off. The diagnostic waveform alternated zero IQ and two 12,000-count complex tones at +200 and −200 kHz, each segment lasting 262.144 ms. The wanted tones moved to opposite sides of the carrier. The unwanted line stayed at the carrier during both tones and during the zero-IQ interval. In the nominal 2250 MHz case the mixer inverted the digital tone direction.
+
+Retuning the HackRF from 2249.500 to 2250.600 MHz moved the leakage from +521.9 to −578.0 kHz in the captured baseband. The inferred RF frequency stayed near 2250.022 MHz on the HackRF's uncalibrated frequency reference. During the zero-IQ interval, the carrier was about −22.5 dBFS with the original calibration at 2250 MHz. The idle baseline at that frequency was −84.8 dBFS in the same line estimator. These controls separate the carrier line from the test waveform and the HackRF's center spur. The direct RF24 bypass control used nominal TX 2494.900 MHz and RX 2494.400 MHz.
+
+### RF24 calibration and transmit I/Q bias
+
+The existing standalone transmitter collects five RF24 calibration readings at startup and reapplies their median after subsequent state changes. That median was commonly I=39, Q=35 in this session. The [bench-only calibration patch](files/carrier-leakage/rf24-auto-calibration.patch) compared it with a fresh automatic calibration after tuning and setting minimum PA. It also tested the chip vendor's median approach at the tuned frequency and power. Fresh and tuned-median calibration gave I=62 or 63, Q=1 here. Fresh calibration reduced the residual carrier by about 3 dB at both the mixed output and the direct RF24 output. At the 2250 MHz mixed output, the tuned median matched the two fresh trials to within 0.1 dB when comparing carrier to the first wanted tone.
+
+With fresh calibration, I sent a +200 kHz tone and swept I and Q sample offsets independently over −6000, 0 and +6000 counts, repeating the zero-bias measurement at the end. I fitted a quadratic to carrier power normalized by tone power. The minimum rounded to **I +128, Q −4280** in signed IQ16 input counts. These are waveform offsets applied before the driver's right shift. The RF24 calibration registers retain their automatic values. A separate capture alternated the fitted correction with zero bias twice. The carrier changed from **−9.15 and −9.18 dBc** to **−34.88 and −35.54 dBc**, a 26 dB improvement, while the wanted tone moved only 0.04 dB in each pair. Line power uses the median of five-bin sums around the peak in 65,536-point Hann FFT blocks.
+
+![Measured 200 kHz test tone and TX carrier before and after applying the digital I/Q correction](images/carrier-leakage-suppression.png)
+
+### QPSK validation
+
+I replayed one matched 256-frame waveform at each rate with fresh calibration, first at zero sample bias and then with the fitted bias. The median carrier term below comes from a data-aided fit relative to the wanted QPSK term. The paired tone results above measure the narrow RF line relative to a tone, so the QPSK figures use a different reference.
+
+| Rate | Fresh RF24 calibration | Fresh calibration + I/Q bias | Additional suppression | Biased frames recovered |
+| --- | ---: | ---: | ---: | ---: |
+| 250 ksym/s | −9.19 dBc | −44.11 dBc | 34.92 dB | 256/256 |
+| 500 ksym/s | −8.93 dBc | −43.45 dBc | 34.52 dB | 256/256 |
+
+The earlier wide coarse-frequency search chose other in-band peaks in the two suppressed captures. For a matched decode I seeded all four QPSK runs with the same +22.1 kHz coarse offset, rounded from the independently measured tone probe. The frame pilot and existing tracker then recovered all frames with zero observed data-field bit errors in the biased captures. Carrier suppression affects acquisition when a receiver relies on the carrier line as a frequency reference.
+
+The bias is a bench calibration for this board, frequency, power and RF24 calibration state. Stability across temperatures, gain settings and boards remains unmeasured. The bench transmitter was invoked explicitly for these runs. The normal Pi launcher still uses its existing calibration and the DMA-fixed module, and TX was idle at the end.
+
+The [probe results](files/carrier-leakage/probe-results.csv), [tuned-median result](files/carrier-leakage/median-results.csv), [bias grid](files/carrier-leakage/bias-grid.csv), [independent bias validation](files/carrier-leakage/bias-validation.csv), [QPSK summary](files/carrier-leakage/qpsk-results.csv), and [per-frame fits](files/carrier-leakage/qpsk-carrier-fits.csv) retain the measurements. The [waveform builder](files/carrier-leakage/make_probe.py), [bias sweep script](files/carrier-leakage/bias_probe.py), [bias application script](files/carrier-leakage/apply_bias.py), and [waveform hashes](files/carrier-leakage/waveform-metadata.txt) record how to reproduce the inputs. All 13 captures were saved on the Mac with SigMF sidecars and checked against the [capture manifest](files/carrier-leakage/capture-manifest.json).

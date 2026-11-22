@@ -1,0 +1,7 @@
+run	mode	tx_hz	rx_hz
+mix-cached-a	cached	2250000000	2249500000
+mix-fresh-a	fresh	2250000000	2249500000
+mix-cached-retune	cached	2250000000	2250600000
+mix-fresh-b	fresh	2250000000	2249500000
+direct-cached	cached	2494900000	2494400000
+direct-fresh	fresh	2494900000	2494400000

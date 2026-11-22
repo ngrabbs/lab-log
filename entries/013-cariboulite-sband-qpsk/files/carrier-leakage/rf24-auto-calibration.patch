@@ -1,0 +1,56 @@
+--- a/software/tx_test/tx_test.c
++++ b/software/tx_test/tx_test.c
+@@ -47,6 +47,9 @@
+
+ /* defined in cariboulite_radio.c but not exposed in the public headers */
+ void cariboulite_radio_debug(cariboulite_radio_state_st* radio);
++/* Defined in at86rf215.c and used here for the bench calibration. */
++int at86rf215_calibrate_device(at86rf215_st* dev, at86rf215_rf_channel_en ch,
++                              int* i_val, int* q_val);
+
+ // Program state structure
+ typedef struct
+@@ -419,6 +422,18 @@
+     if (state.test_pattern == 1)
+         cariboulite_radio_set_cw_outputs(state.radio, false, true);
+     cariboulite_radio_set_tx_power(state.radio, -12);
++    const bool fresh_rf24_cal = getenv("CARIBOU_RF24_AUTO_TX_CAL") != NULL;
++    const bool median_rf24_cal = getenv("CARIBOU_RF24_TUNED_MEDIAN") != NULL;
++    const int startup_i = state.radio->sys->modem.cal.hi_ch_i;
++    const int startup_q = state.radio->sys->modem.cal.hi_ch_q;
++    if ((fresh_rf24_cal || median_rf24_cal) && state.tx_channel != cariboulite_channel_hif)
++    {
++        ZF_LOGE("RF24 calibration experiment requires HiF");
++        release_system();
++        return 1;
++    }
++    if (fresh_rf24_cal)
++        state.radio->sys->modem.override_cal = false;
+     cariboulite_radio_sync_information(state.radio);
+     if (state.rate < 3900000)
+     {
+@@ -428,10 +443,24 @@
+     {
+         cariboulite_radio_set_tx_samp_cutoff(state.radio, cariboulite_radio_rx_sample_rate_4000khz, cariboulite_radio_rx_f_cut_0_75_half_fs);
+     }
++    if (median_rf24_cal)
++    {
++        at86rf215_calibrate_device(&state.radio->sys->modem,
++                                   at86rf215_rf_channel_2400mhz, NULL, NULL);
++    }
+     if (cariboulite_radio_activate_channel(state.radio, cariboulite_channel_dir_tx, true)) {
+         release_system();
+         return 1;
+     }
++    if (state.tx_channel == cariboulite_channel_hif)
++    {
++        int cal_i, cal_q;
++        at86rf215_radio_get_tx_iq_calibration(&state.radio->sys->modem,
++                                             at86rf215_rf_channel_2400mhz, &cal_i, &cal_q);
++        printf("TX_CAL mode=%s I=%d Q=%d startup_I=%d startup_Q=%d\n",
++               median_rf24_cal ? "median" : (fresh_rf24_cal ? "fresh" : "cached"),
++               cal_i, cal_q, startup_i, startup_q);
++    }
+     // Open the input file for reading (only the default mode streams input)
+     if (state.test_pattern == 0)
+     {

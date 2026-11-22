@@ -1,0 +1,379 @@
+[
+  {
+    "run": "mix-cached-a",
+    "sha256": "1dc409c555d1f965b381450cf5e3be9adcaa7910adcd8572663c093e1c57b724",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T21:56:25.695741843Z",
+    "tx_iq_samples_accepted": 2621440,
+    "auto_calibration_mode": "cached",
+    "rf24_i": 39,
+    "rf24_q": 35,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "mix-cached-a. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T21:56:25.695741843Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "mix-cached-retune",
+    "sha256": "f3b202c28b422acc3eeb4232b5975e26f048d486e99c76c6d43e61a7d97e2321",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T21:56:43.638766759Z",
+    "tx_iq_samples_accepted": 2621440,
+    "auto_calibration_mode": "cached",
+    "rf24_i": 37,
+    "rf24_q": 35,
+    "startup_i": 37,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "mix-cached-retune. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T21:56:43.638766759Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2250600000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "mix-fresh-a",
+    "sha256": "fdb55f967dd76499d90bcdc7bbd3559b91b83ed5fc71da52cfda80ac84844534",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T21:56:34.713768988Z",
+    "tx_iq_samples_accepted": 2621440,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 63,
+    "rf24_q": 1,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "mix-fresh-a. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T21:56:34.713768988Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "mix-fresh-b",
+    "sha256": "bddd24bde96881337f2c8a6b71585a4f05c00336ec3bc019271f2d64bb796612",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T21:56:52.542141174Z",
+    "tx_iq_samples_accepted": 2621440,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 62,
+    "rf24_q": 1,
+    "startup_i": 37,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "mix-fresh-b. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T21:56:52.542141174Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "mix-median-a",
+    "sha256": "7fdda00d560e15ed50ccd2c543dfbce26fc369984c2b48c6bce4e35716e33e8f",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T22:00:09.856869795Z",
+    "tx_iq_samples_accepted": 2621440,
+    "auto_calibration_mode": "median",
+    "rf24_i": 63,
+    "rf24_q": 1,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "mix-median-a. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T22:00:09.856869795Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "direct-cached",
+    "sha256": "c49fc51a9ad3530e274140d91e506c24b23d795119f27f45e24297f9ba42439c",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2494900000,
+    "capture_command_start_utc": "2026-11-22T21:57:01.342058625Z",
+    "tx_iq_samples_accepted": 2621440,
+    "auto_calibration_mode": "cached",
+    "rf24_i": 39,
+    "rf24_q": 35,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "direct-cached. Conducted HiF nominal 2494900000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T21:57:01.342058625Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2494400000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "direct-fresh",
+    "sha256": "f2143deff77be5eeb9ba19d3e62e80c9dd81f266965ca1ce8ae9e33946012bd4",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2494900000,
+    "capture_command_start_utc": "2026-11-22T21:57:10.369374212Z",
+    "tx_iq_samples_accepted": 2621440,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 62,
+    "rf24_q": 1,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "direct-fresh. Conducted HiF nominal 2494900000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T21:57:10.369374212Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2494400000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "bias-fresh-check",
+    "sha256": "84a7360b2386c766c3abef1cc414263b262727449d1f8aa2efdb59a272c09cb8",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T22:00:18.770225320Z",
+    "tx_iq_samples_accepted": 1572864,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 62,
+    "rf24_q": 1,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "bias-fresh-check. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T22:00:18.770225320Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "bias-fresh-grid",
+    "sha256": "fd6f0add681e8d30f06ac0819ce18eb1e1c22c11141f618c83f42d2eeb735ee0",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T21:59:05.370170532Z",
+    "tx_iq_samples_accepted": 3145728,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 63,
+    "rf24_q": 1,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "bias-fresh-grid. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T21:59:05.370170532Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "qpsk-250000-biased",
+    "sha256": "5f152962fb92dc9080c2970cf3dc4f44a388db7c4f17243fd892902cb7685e88",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T22:00:36.728568499Z",
+    "tx_iq_samples_accepted": 5505024,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 63,
+    "rf24_q": 1,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "qpsk-250000-biased. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T22:00:36.728568499Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "qpsk-250000-fresh",
+    "sha256": "7f7a994c03e55e53c9e928466624c5b853d318eb518fd6c5f6ba938b4fca82a5",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T22:00:27.681741690Z",
+    "tx_iq_samples_accepted": 5505024,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 63,
+    "rf24_q": 1,
+    "startup_i": 39,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "qpsk-250000-fresh. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T22:00:27.681741690Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "qpsk-500000-biased",
+    "sha256": "675a7bede1283cfd52a1b2d7259b02d1fef9d9590a81a2fbefd92d502a9e82a4",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T22:00:54.660835444Z",
+    "tx_iq_samples_accepted": 3145728,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 63,
+    "rf24_q": 1,
+    "startup_i": 37,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "qpsk-500000-biased. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T22:00:54.660835444Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "qpsk-500000-fresh",
+    "sha256": "59f8cd2b450d9b1304f320ccb1f5f56fe9dc777c57706e9b66e9679024c4c8de",
+    "bytes": 120000000,
+    "tx_frequency_hz": 2250000000,
+    "capture_command_start_utc": "2026-11-22T22:00:45.753171154Z",
+    "tx_iq_samples_accepted": 3145728,
+    "auto_calibration_mode": "fresh",
+    "rf24_i": 63,
+    "rf24_q": 1,
+    "startup_i": 37,
+    "startup_q": 35,
+    "sigmf": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "qpsk-500000-fresh. Conducted HiF nominal 2250000000 Hz, 30 dB pad, TX minimum PA. HackRF LNA/VGA 32/24 dB, 2.5 MHz BB, RF amp and bias off. Host capture command UTC 2026-11-22T22:00:45.753171154Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  }
+]
