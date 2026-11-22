@@ -1,0 +1,236 @@
+[
+  {
+    "run": "v250-1",
+    "purpose": "validation",
+    "symbol_rate": 250000,
+    "capture_cmd_start_utc": "2026-11-22T21:12:04.358496648Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "bcbf372c963392a9b4feb6629ce104402e370127afb3b0e21d218e3eb39a4902",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "v250-1 conducted CaribouLite 2250 MHz QPSK, 250000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:12:04.358496648Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "v500-1",
+    "purpose": "validation",
+    "symbol_rate": 500000,
+    "capture_cmd_start_utc": "2026-11-22T21:12:22.142253821Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "f54fd923782bc67f4305572bb4b9d0a5ed92ca2340f5955e595483b03f05ed41",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "v500-1 conducted CaribouLite 2250 MHz QPSK, 500000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:12:22.142253821Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "v250-2",
+    "purpose": "validation",
+    "symbol_rate": 250000,
+    "capture_cmd_start_utc": "2026-11-22T21:12:39.355289597Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "d72ba450e42072e5939295fd032f25996d6584943e747cceeb29f24275a143d0",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "v250-2 conducted CaribouLite 2250 MHz QPSK, 250000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:12:39.355289597Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "v500-2",
+    "purpose": "validation",
+    "symbol_rate": 500000,
+    "capture_cmd_start_utc": "2026-11-22T21:12:57.056970337Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "ebb294f0d87d72416190ce3e3b27c9d1910122496160e2c36fbff49abe9711ce",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "v500-2 conducted CaribouLite 2250 MHz QPSK, 500000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:12:57.056970337Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "v250-3",
+    "purpose": "validation",
+    "symbol_rate": 250000,
+    "capture_cmd_start_utc": "2026-11-22T21:13:13.934656633Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "7c9fa85aa0121d909563a1ec1fd28b617c6037e15c3bb4bd694ad882b38749be",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "v250-3 conducted CaribouLite 2250 MHz QPSK, 250000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:13:13.934656633Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "v500-3",
+    "purpose": "validation",
+    "symbol_rate": 500000,
+    "capture_cmd_start_utc": "2026-11-22T21:13:31.791196116Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "a37ee667b68ef662db5a511171866a03db0cc52d6cc514ba761e147cabd461ae",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "v500-3 conducted CaribouLite 2250 MHz QPSK, 500000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:13:31.791196116Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r250000-a",
+    "purpose": "exploratory",
+    "symbol_rate": 250000,
+    "capture_cmd_start_utc": "2026-11-22T21:08:07.821953737Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "9c68e042f1399d4ed0d253bcf99bc076b17ca4b0aeafe8879e0c319f19b9fc02",
+    "rx_lna_db": 16,
+    "rx_vga_db": 16,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r250000-a conducted CaribouLite 2250 MHz QPSK, 250000 sym/s. HackRF LNA 16 dB, VGA 16 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:08:07.821953737Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r250000-b",
+    "purpose": "exploratory",
+    "symbol_rate": 250000,
+    "capture_cmd_start_utc": "2026-11-22T21:08:39.068538494Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "44474625c8820718bd8e43ad7f156fa006ef3459fb2100dca5cec24e4b068311",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r250000-b conducted CaribouLite 2250 MHz QPSK, 250000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:08:39.068538494Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r500000-a",
+    "purpose": "exploratory",
+    "symbol_rate": 500000,
+    "capture_cmd_start_utc": "2026-11-22T21:09:49.079999190Z",
+    "rx_capture_bytes": 120000000,
+    "rx_sha256": "8da343fde7517184f689aac6094e71cf9649017cd69723c6ffbc8e3e536895c6",
+    "rx_lna_db": 32,
+    "rx_vga_db": 24,
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r500000-a conducted CaribouLite 2250 MHz QPSK, 500000 sym/s. HackRF LNA 32 dB, VGA 24 dB, RF amp and port power off. 2.5 MHz BB filter. Host capture command start UTC 2026-11-22T21:09:49.079999190Z; sample-zero time is uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  }
+]

@@ -1,0 +1,35 @@
+[v250-1]
+TX channel: 1, frequency: 2250000000.0 Hz, rate: 2000000, gain: 0, samples: unlimited, source: qpsk-250000.cs16
+TIMING_CONFIG TXDFE=0x82 FPGA_GAP=1
+TIMING_WRITE requested=5505024 accepted=5505024 partial=0 elapsed=2.491169 s
+RF_STATE TX=38/42 IQ_SYNC=38/42 at minimum PAC
+
+[v500-1]
+TX channel: 1, frequency: 2250000000.0 Hz, rate: 2000000, gain: 0, samples: unlimited, source: qpsk-500000.cs16
+TIMING_CONFIG TXDFE=0x82 FPGA_GAP=1
+TIMING_WRITE requested=3145728 accepted=3145728 partial=0 elapsed=1.311475 s
+RF_STATE TX=20/24 IQ_SYNC=20/24 at minimum PAC
+
+[v250-2]
+TX channel: 1, frequency: 2250000000.0 Hz, rate: 2000000, gain: 0, samples: unlimited, source: qpsk-250000.cs16
+TIMING_CONFIG TXDFE=0x82 FPGA_GAP=1
+TIMING_WRITE requested=5505024 accepted=5505024 partial=0 elapsed=2.491171 s
+RF_STATE TX=38/42 IQ_SYNC=38/42 at minimum PAC
+
+[v500-2]
+TX channel: 1, frequency: 2250000000.0 Hz, rate: 2000000, gain: 0, samples: unlimited, source: qpsk-500000.cs16
+TIMING_CONFIG TXDFE=0x82 FPGA_GAP=1
+TIMING_WRITE requested=3145728 accepted=3145728 partial=0 elapsed=1.311524 s
+RF_STATE TX=20/24 IQ_SYNC=20/24 at minimum PAC
+
+[v250-3]
+TX channel: 1, frequency: 2250000000.0 Hz, rate: 2000000, gain: 0, samples: unlimited, source: qpsk-250000.cs16
+TIMING_CONFIG TXDFE=0x82 FPGA_GAP=1
+TIMING_WRITE requested=5505024 accepted=5505024 partial=0 elapsed=2.491199 s
+RF_STATE TX=38/42 IQ_SYNC=38/42 at minimum PAC
+
+[v500-3]
+TX channel: 1, frequency: 2250000000.0 Hz, rate: 2000000, gain: 0, samples: unlimited, source: qpsk-500000.cs16
+TIMING_CONFIG TXDFE=0x82 FPGA_GAP=1
+TIMING_WRITE requested=3145728 accepted=3145728 partial=0 elapsed=1.311514 s
+RF_STATE TX=20/24 IQ_SYNC=20/24 at minimum PAC

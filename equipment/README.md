@@ -98,11 +98,12 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
+| CaribouLite 6G on a Raspberry Pi Zero 2 W | Conducted HiF TX verified 2026-11-22 | HiF and S1G SMA ports. [Entry 013](../entries/013-cariboulite-sband-qpsk/README.md) documents 2250 MHz QPSK in a conducted path to a HackRF One. Absolute S-band TX power unmeasured. |
 | SDRB (AMSAT prototype) | In current bench use, October 25 | Native TX gain controls and exploratory J14 doubler measurements in [entry 008](../entries/008-sdrb-j14-drive-check/README.md); software gain is not calibrated output dBm. |
 | RTL-SDR attached to outpost1, marketed model unconfirmed | Detected and used 2026-10-28 | USB RTL2838; librtlsdr identifies R820T tuner. It may be one of the previously inventoried v3/v4 units; no additional unit count is inferred. LibreSDR-supplied receive antenna, owner reports 70 cm suitability; exact antenna unknown. [Entry 009](../entries/009-bpsk-over-fm/README.md) records successful 446 MHz packet reception. |
 | RTL-SDR v3 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown; source noise-floor comparison not independently established. |
 | RTL-SDR Blog V4 at SatNOGS station | Recorded owned; identity and reception checked 2026-10-28 | USB identifies Blog V4; librtlsdr identifies R828D tuner. Outdoor VHF/UHF J-pole on the side of the tower at the back of the house. [Entry 009](../entries/009-bpsk-over-fm/README.md#follow-up-outdoor-satnogs-station-still-with-the-barrel-load): 3/3 CRC-valid packets at 446 MHz, with the transmitting UV-K5 on Low and a barrel load, roughly 60+ feet away through the house. Frequency/power calibration unverified. |
-| HackRF One | Recorded owned | Source-listed 1 MHz–6 GHz, half-duplex TX/RX, 8-bit. Board revision and measured performance unknown. |
+| HackRF One | Recorded owned | Source-listed 1 MHz–6 GHz, half-duplex TX/RX, 8-bit. Board revision and measured performance unknown. [Entry 013](../entries/013-cariboulite-sband-qpsk/README.md) used a HackRF One for conducted 2250 MHz IQ capture at 8 MS/s on 2026-11-22. |
 | LibreSDR | Recorded owned | Source-listed approximately 70 MHz–6 GHz, full-duplex TX/RX. [Entry 004](../entries/004-libresdr-tx-power/README.md) records a later power check; do not generalize it to all gains/frequencies. |
 | PlutoSDR | Recorded owned | Source-listed 325 MHz–3.8 GHz, full-duplex TX/RX. Any range extension/modification is unconfirmed. |
 
