@@ -122,3 +122,33 @@ python3 qpsk_bench_shuffled.py generate 250000 wave.cs16 --payload-seed 225201 -
 python3 qpsk_bench_shuffled.py decode 250000 receive.sigmf-data --out decoded \
   --payload-seed 225201 --order-seed 225301 --diagnose-dma
 ```
+
+## TX DMA boundary fix
+
+The TX completion callback advanced its software index before it copied the next chunk from the FIFO. When period 0 completed, for example, the callback wrote to period 1 while the cyclic DMA engine was already reading period 1. That allowed old or zeroed samples at the start of the period to reach the radio before the queued samples were copied over them. The driver now refills period 0 after it completes, then advances the index. The new samples have the rest of the four-period ring's rotation before DMA reads them. The patch changes only the TX callback. [CaribouLite driver fix](https://github.com/ngrabbs/cariboulite/commit/8d0b9504593f6d00d3e400b622501830e4085ba0) · [Raspberry Pi cyclic DMA implementation](https://github.com/raspberrypi/linux/blob/rpi-6.18.y/drivers/dma/bcm2835-dma.c)
+
+I replayed the exact six fresh, shuffled waveforms from the earlier test, with the 30 dB pad, minimum TX PA, HackRF LNA 32 dB and VGA 24 dB, frequencies, sample rates and decoder held fixed. The main comparison uses three bursts per rate on each driver. I also captured one new old-driver control at each rate immediately before the swap, followed by a live-loaded 250 ksym/s smoke test. The six measured patched bursts came after a reboot. The FPGA boot service verified the patched module source version `8BE3FF80584317A366FD47D`. The old driver reported `5658A45097B9795A4F8D5E3`. The FPGA bitstream and TX executable were the same.
+
+### Matched results
+
+Three bursts per rate on each driver. Goodput counts CRC-valid, byte-verified science payload and uses the scheduled packet train as its time base.
+
+| Rate | Old driver | Patched driver after reboot | Packet loss before → after | Packet-train goodput before → after | Whole-burst goodput before → after |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 250 ksym/s | 339/768 | 680/768 | 55.9% → 11.5% | 198.9 → 399.1 kbps | 147.9 → 301.4 kbps |
+| 500 ksym/s | 537/768 | 730/768 | 30.1% → 4.9% | 630.3 → 856.8 kbps | 376.0 → 524.6 kbps |
+
+The immediate old-driver controls received 108/256 and 181/256 frames. The live-loaded patch received 227/256 at 250 ksym/s in the smoke test. These runs are excluded from the three-burst averages. All six post-reboot bursts yielded 256 preambles, zero ADC clipping and zero partial transmitter writes.
+
+### Bit errors at the boundary
+
+![Data-field bit errors within the TX DMA period before and after the callback fix](images/dma-boundary-before-after.png)
+
+| Rate | BER in first 128 µs, before → after | BER in rest of period, before → after | Loss for frames overlapping first 128 µs, before → after |
+| --- | ---: | ---: | ---: |
+| 250 ksym/s | 6.799% → 0.445% | 0.354% → 0.476% | 391/396 → 55/396 |
+| 500 ksym/s | 6.883% → 0.020% | 0.167% → 0.140% | 196/201 → 9/201 |
+
+Correcting the ring index removed the large periodic error spike and improved packet delivery at both rates. Residual loss remains even within this conducted setup. These runs quantify the callback fix and leave the remaining link or decoder errors unresolved. HiF RX streamed at 1.998 MS/s after reboot in a separate SoapySDR rate check. The Pi's FPGA service remained active and the radio was idle after testing.
+
+The [matched summary](files/dma-boundary-fix/before-after.csv), [individual runs](files/dma-boundary-fix/run-summary.csv), [per-frame outcomes](files/dma-boundary-fix/frame-outcomes.csv), [folded bit counts](files/dma-boundary-fix/phase-by-run.csv) and [capture hashes](files/dma-boundary-fix/capture-manifest.json) cover the before, after, and control runs. The [six-waveform schedule](files/dma-boundary-fix/schedule.tsv) specifies the byte-matched inputs. The [analysis script](files/dma-boundary-fix/compare_dma_fix.py) joins the archived waveforms' decoded results to the new runs and writes the tabular data. Nine new raw IQ captures were preserved as SigMF pairs on the Mac.

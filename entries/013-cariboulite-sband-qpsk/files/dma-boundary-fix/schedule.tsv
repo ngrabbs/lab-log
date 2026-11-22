@@ -1,0 +1,7 @@
+run	symbol_rate	repeat	condition	payload_seed	order_seed	waveform
+r1-250-shuffled-fresh	250000	1	shuffled-fresh	225201	225301	qpsk-250000-225201-225301
+r1-500-shuffled-fresh	500000	1	shuffled-fresh	225201	225301	qpsk-500000-225201-225301
+r2-250-shuffled-fresh	250000	2	shuffled-fresh	225202	225302	qpsk-250000-225202-225302
+r2-500-shuffled-fresh	500000	2	shuffled-fresh	225202	225302	qpsk-500000-225202-225302
+r3-250-shuffled-fresh	250000	3	shuffled-fresh	225203	225303	qpsk-250000-225203-225303
+r3-500-shuffled-fresh	500000	3	shuffled-fresh	225203	225303	qpsk-500000-225203-225303
