@@ -1,0 +1,674 @@
+[
+  {
+    "run": "r1-250-shuffled-fresh",
+    "symbol_rate": "250000",
+    "repeat": "1",
+    "condition": "shuffled-fresh",
+    "payload_seed": "225201",
+    "order_seed": "225301",
+    "waveform": "qpsk-250000-225201-225301",
+    "capture_cmd_start_utc": "2026-11-22T21:21:31.279420501Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "322164055b6859a943be936cdf5c5e8a97b201813e32b9495d319246cae5b88f",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-250-shuffled-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:21:31.279420501Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-500-ordered-fresh",
+    "symbol_rate": "500000",
+    "repeat": "1",
+    "condition": "ordered-fresh",
+    "payload_seed": "225201",
+    "order_seed": "-",
+    "waveform": "qpsk-500000-225201--",
+    "capture_cmd_start_utc": "2026-11-22T21:22:16.816080108Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "bd671ad23e2325370cc0f8243c9e0e1227c118c2150e77d889ad191de8196da1",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-500-ordered-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:22:16.816080108Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-500-shuffled-original",
+    "symbol_rate": "500000",
+    "repeat": "1",
+    "condition": "shuffled-original",
+    "payload_seed": "225002",
+    "order_seed": "225301",
+    "waveform": "qpsk-500000-225002-225301",
+    "capture_cmd_start_utc": "2026-11-22T21:22:26.210513980Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "f9191f0792068b3b6a02f97cb98b2ea0d6cf6fac129f9177a9591abe75568628",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-500-shuffled-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:22:26.210513980Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-250-shuffled-original",
+    "symbol_rate": "250000",
+    "repeat": "1",
+    "condition": "shuffled-original",
+    "payload_seed": "225002",
+    "order_seed": "225301",
+    "waveform": "qpsk-250000-225002-225301",
+    "capture_cmd_start_utc": "2026-11-22T21:22:35.268366749Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "01611e9f2bae674ec136b4d2069f01464531ea7f8066c49c69537048a882a492",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-250-shuffled-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:22:35.268366749Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-250-ordered-fresh",
+    "symbol_rate": "250000",
+    "repeat": "1",
+    "condition": "ordered-fresh",
+    "payload_seed": "225201",
+    "order_seed": "-",
+    "waveform": "qpsk-250000-225201--",
+    "capture_cmd_start_utc": "2026-11-22T21:22:44.182241426Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "729ec3eccf5a608c2ad3be24150f913168ea99bfca88a48488cbb35f6258686d",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-250-ordered-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:22:44.182241426Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-500-ordered-original",
+    "symbol_rate": "500000",
+    "repeat": "1",
+    "condition": "ordered-original",
+    "payload_seed": "225002",
+    "order_seed": "-",
+    "waveform": "qpsk-500000-225002--",
+    "capture_cmd_start_utc": "2026-11-22T21:22:53.486606002Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "4c1828ddbd7d81682171f95958a707754318458352162063678831d73ab39aae",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-500-ordered-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:22:53.486606002Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-500-shuffled-fresh",
+    "symbol_rate": "500000",
+    "repeat": "1",
+    "condition": "shuffled-fresh",
+    "payload_seed": "225201",
+    "order_seed": "225301",
+    "waveform": "qpsk-500000-225201-225301",
+    "capture_cmd_start_utc": "2026-11-22T21:23:02.531804501Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "73cec837e5ea8296e9e2fed855fd34fbb5eb1f27ae3b66fa495fa1ce4bb7921e",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-500-shuffled-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:23:02.531804501Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r1-250-ordered-original",
+    "symbol_rate": "250000",
+    "repeat": "1",
+    "condition": "ordered-original",
+    "payload_seed": "225002",
+    "order_seed": "-",
+    "waveform": "qpsk-250000-225002--",
+    "capture_cmd_start_utc": "2026-11-22T21:23:11.569615798Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "b9115214b56434a697d2af7b24535bc8020f2085f38390668e419a5ff37dcd45",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r1-250-ordered-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:23:11.569615798Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-250-ordered-original",
+    "symbol_rate": "250000",
+    "repeat": "2",
+    "condition": "ordered-original",
+    "payload_seed": "225002",
+    "order_seed": "-",
+    "waveform": "qpsk-250000-225002--",
+    "capture_cmd_start_utc": "2026-11-22T21:23:20.884144814Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "4561d94987d4fa7431101d2b368b06ca26faddf8fcb4022457f41649626b241c",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-250-ordered-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:23:20.884144814Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-500-shuffled-original",
+    "symbol_rate": "500000",
+    "repeat": "2",
+    "condition": "shuffled-original",
+    "payload_seed": "225002",
+    "order_seed": "225302",
+    "waveform": "qpsk-500000-225002-225302",
+    "capture_cmd_start_utc": "2026-11-22T21:23:29.855063014Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "cd6a2881b0bab668367836aaea0d95d302a7559163b1fc5761c4d06408792141",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-500-shuffled-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:23:29.855063014Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-500-shuffled-fresh",
+    "symbol_rate": "500000",
+    "repeat": "2",
+    "condition": "shuffled-fresh",
+    "payload_seed": "225202",
+    "order_seed": "225302",
+    "waveform": "qpsk-500000-225202-225302",
+    "capture_cmd_start_utc": "2026-11-22T21:23:38.816733667Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "7f1ef02770baf7958fc047545e48084b9a62498748fd23f2e166f4767f86b42b",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-500-shuffled-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:23:38.816733667Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-250-shuffled-fresh",
+    "symbol_rate": "250000",
+    "repeat": "2",
+    "condition": "shuffled-fresh",
+    "payload_seed": "225202",
+    "order_seed": "225302",
+    "waveform": "qpsk-250000-225202-225302",
+    "capture_cmd_start_utc": "2026-11-22T21:23:47.986199273Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "257a91ea878c41f5d854c0f8f90cdadb03190c4659502d4c5cd84d9043132a80",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-250-shuffled-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:23:47.986199273Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-250-ordered-fresh",
+    "symbol_rate": "250000",
+    "repeat": "2",
+    "condition": "ordered-fresh",
+    "payload_seed": "225202",
+    "order_seed": "-",
+    "waveform": "qpsk-250000-225202--",
+    "capture_cmd_start_utc": "2026-11-22T21:23:56.971307049Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "a807217589fb829ae91b49957f863aae147fca392232a17940564569671a2c5c",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-250-ordered-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:23:56.971307049Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-500-ordered-fresh",
+    "symbol_rate": "500000",
+    "repeat": "2",
+    "condition": "ordered-fresh",
+    "payload_seed": "225202",
+    "order_seed": "-",
+    "waveform": "qpsk-500000-225202--",
+    "capture_cmd_start_utc": "2026-11-22T21:24:05.976525416Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "b182b3b3bd5196f67a0d669bfb418ee58f1e60514d00319956492e39f1973aed",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-500-ordered-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:24:05.976525416Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-500-ordered-original",
+    "symbol_rate": "500000",
+    "repeat": "2",
+    "condition": "ordered-original",
+    "payload_seed": "225002",
+    "order_seed": "-",
+    "waveform": "qpsk-500000-225002--",
+    "capture_cmd_start_utc": "2026-11-22T21:24:15.017794206Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "9058ca266220eab8672d45751a875f25cf0758a25c649a5a60adf2b4d909b6ed",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-500-ordered-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:24:15.017794206Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r2-250-shuffled-original",
+    "symbol_rate": "250000",
+    "repeat": "2",
+    "condition": "shuffled-original",
+    "payload_seed": "225002",
+    "order_seed": "225302",
+    "waveform": "qpsk-250000-225002-225302",
+    "capture_cmd_start_utc": "2026-11-22T21:24:25.150888342Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "bcfff219f479f09de0242a7091ef379304256c78a1af1a91d63b4f70c7776879",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r2-250-shuffled-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:24:25.150888342Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-500-shuffled-fresh",
+    "symbol_rate": "500000",
+    "repeat": "3",
+    "condition": "shuffled-fresh",
+    "payload_seed": "225203",
+    "order_seed": "225303",
+    "waveform": "qpsk-500000-225203-225303",
+    "capture_cmd_start_utc": "2026-11-22T21:24:35.636640056Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "0ea843798c66ba54aa932857ca9c417111fbe60fe9d0bd245779a8bea6d7060a",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-500-shuffled-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:24:35.636640056Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-250-shuffled-original",
+    "symbol_rate": "250000",
+    "repeat": "3",
+    "condition": "shuffled-original",
+    "payload_seed": "225002",
+    "order_seed": "225303",
+    "waveform": "qpsk-250000-225002-225303",
+    "capture_cmd_start_utc": "2026-11-22T21:24:45.689486326Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "c79cf7782fa927fae8028656b92176304f7f09b86b3572f53266ca4c5d9e8392",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-250-shuffled-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:24:45.689486326Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-250-shuffled-fresh",
+    "symbol_rate": "250000",
+    "repeat": "3",
+    "condition": "shuffled-fresh",
+    "payload_seed": "225203",
+    "order_seed": "225303",
+    "waveform": "qpsk-250000-225203-225303",
+    "capture_cmd_start_utc": "2026-11-22T21:24:54.993139071Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "9d3f8686597cc84b67bf88bcb382f93515d006256102418fd4d506b394d5611c",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-250-shuffled-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:24:54.993139071Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-500-ordered-original",
+    "symbol_rate": "500000",
+    "repeat": "3",
+    "condition": "ordered-original",
+    "payload_seed": "225002",
+    "order_seed": "-",
+    "waveform": "qpsk-500000-225002--",
+    "capture_cmd_start_utc": "2026-11-22T21:25:04.044860669Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "553dc1fc71813969f25ccf445d19ee60ab3e155dc1279d970f76515b7ee01ed5",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-500-ordered-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:25:04.044860669Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-250-ordered-fresh",
+    "symbol_rate": "250000",
+    "repeat": "3",
+    "condition": "ordered-fresh",
+    "payload_seed": "225203",
+    "order_seed": "-",
+    "waveform": "qpsk-250000-225203--",
+    "capture_cmd_start_utc": "2026-11-22T21:25:14.078935049Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "b99c25020b9d73ecb920caa0428fe2d3aef50deda0ef3c7408c691e0db7a80a7",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-250-ordered-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:25:14.078935049Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-500-ordered-fresh",
+    "symbol_rate": "500000",
+    "repeat": "3",
+    "condition": "ordered-fresh",
+    "payload_seed": "225203",
+    "order_seed": "-",
+    "waveform": "qpsk-500000-225203--",
+    "capture_cmd_start_utc": "2026-11-22T21:25:23.149850104Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "c76b8105f5482521e3f734be9ccaf9c1a8b17ff388326cb0fbc3dfe28962bd57",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-500-ordered-fresh at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:25:23.149850104Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-250-ordered-original",
+    "symbol_rate": "250000",
+    "repeat": "3",
+    "condition": "ordered-original",
+    "payload_seed": "225002",
+    "order_seed": "-",
+    "waveform": "qpsk-250000-225002--",
+    "capture_cmd_start_utc": "2026-11-22T21:25:33.305575793Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "17654b37bac8ed95d262dcd2e6e9d4a065a45f892c23f4bbef869a4f52ce55d6",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-250-ordered-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:25:33.305575793Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  },
+  {
+    "run": "r3-500-shuffled-original",
+    "symbol_rate": "500000",
+    "repeat": "3",
+    "condition": "shuffled-original",
+    "payload_seed": "225002",
+    "order_seed": "225303",
+    "waveform": "qpsk-500000-225002-225303",
+    "capture_cmd_start_utc": "2026-11-22T21:25:43.446319377Z",
+    "capture_bytes": 120000000,
+    "receive_sha256": "9c0b8d0e40fbbaf856f43bbe670bbe31ca39e31c4351c502f5ca92a051140ebc",
+    "sigmf_metadata": {
+      "global": {
+        "core:datatype": "ci8",
+        "core:sample_rate": 8000000,
+        "core:version": "1.2.0",
+        "core:hw": "HackRF One",
+        "core:description": "r3-500-shuffled-original at 2250 MHz through 30 dB pad. HackRF LNA/VGA 32/24 dB, port bias and RF amp off. 2.5 MHz baseband filter. Capture command start UTC 2026-11-22T21:25:43.446319377Z, sample-zero time uncalibrated."
+      },
+      "captures": [
+        {
+          "core:sample_start": 0,
+          "core:frequency": 2249500000
+        }
+      ],
+      "annotations": []
+    }
+  }
+]
