@@ -261,3 +261,25 @@ At strobe 12, the 6.29-million-sample write took 2.60 s, well beyond the complet
 The demonstrated limit is **2.66 Mbps of QPSK payload with the current 2 MS/s profile**. The sample rate and pulse-shaped bandwidth set the ceiling for this waveform. The tested 4 MS/s settings showed timing or continuity problems, including on the narrower 500 ksym/s control. Longer continuous operation, real-time waveform generation, other modulations and a spacecraft link budget remain outside this measurement. TX was idle at the end.
 
 The [rate results](files/rate-limit/rate-results.csv), [pilot timing](files/rate-limit/pilot-timing.csv), [frame diagnostics](files/rate-limit/frame-diagnostics.csv), and [capture and waveform manifest](files/rate-limit/capture-manifest.json) document all sixteen captures. Raw IQ and SigMF sidecars were checked and archived on the Mac. The [waveform generator](files/rate-limit/generate_limit_wave.py) and [decoder](files/rate-limit/decode_limit_wave.py) use the [prior waveform module](files/shuffle-followup/qpsk_bench_shuffled.py) on the Python module path.
+
+## 2.66 Mbps TX power and energy
+
+On November 22, 2026, the Raspberry Pi Zero 2 W and CaribouLite delivered **2.659 Mbps of verified payload** in a conducted 2250 MHz QPSK burst at 1.475 Msym/s. Offline decoding of the HackRF capture verified **10,240 of 10,240 frames** against their CRCs and expected payloads. That is **5 MiB, or 41.94 Mbit**, in a 15.773 s packet train. The saved 2 MS/s TX profile ran at minimum PA through the same 30 dB pad, with HackRF LNA/VGA at 32/24 dB. IQ was file-fed on TX and decoded offline on RX.
+
+| Measurement | Result |
+| --- | ---: |
+| TX write time | 15.92 s |
+| Mean current and power during TX write | 512 mA, 2.41 W |
+| Total energy during TX write | **38.3 J, 0.91 µJ per delivered bit** |
+| TX write energy above the pre-run idle baseline | 20.1 J, 0.48 µJ per delivered bit |
+| Whole invocation, including setup and teardown | **52.9 J, 1.26 µJ per delivered bit** |
+
+The NANKADF fed the Pi through the PPK2 in Ampere Meter mode. Scope CH1 monitored the supply side of the PPK2 and CH2 monitored the Pi side. Pi input voltage averaged **4.87 V before the invocation** and **4.70 V during the TX write**, with a **4.46 V minimum sample**. The Pi answered **250 of 250 pings**, including 63 during the write, and kept the same boot ID. CH1 intermittently read below CH2 during the write, so the capture leaves the voltage loss in the supply path unresolved.
+
+![Both 5 V scope channels, PPK2 current, and calculated power with the active TX write shaded](images/tx-power-and-rails.png)
+
+Energy is the integral of CH2 voltage times PPK2 current at the Pi and radio. The scope captured both channels at 10 kSa/s per channel, and the PPK2 sampled at a nominal 100 kSa/s. Electrical and TX timing were aligned using host timestamps. The extra-energy estimate subtracts the measured pre-run idle power of 1.15 W over the write interval. The energy-versus-payload graph pairs the power trace and verified receiver frame counts by relative burst progress. Its endpoint uses the measured transfer totals.
+
+![CaribouLite at 2.66 Mbps, delivering 41.94 Mbit for 38.3 J during TX](images/cariboulite-266mbps-energy.png)
+
+[Measurement summary](files/tx-energy/tx-energy-summary.json) · [Plot data](files/tx-energy/tx-energy-trace.csv) · [Energy and payload curve](files/tx-energy/energy-vs-payload.csv)
