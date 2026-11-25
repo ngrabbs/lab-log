@@ -1,0 +1,5 @@
+/mb-dtn-20261125T171026Z-fifo-hub networks=mb-dtn-20261125T171026Z-fifo-up  published={}
+/mb-dtn-20261125T171026Z-fifo-relay networks=mb-dtn-20261125T171026Z-fifo-down mb-dtn-20261125T171026Z-fifo-up  published={}
+/mb-dtn-20261125T171026Z-fifo-earth networks=mb-dtn-20261125T171026Z-fifo-down  published={}
+mb-dtn-20261125T171026Z-fifo-up internal=true
+mb-dtn-20261125T171026Z-fifo-down internal=true

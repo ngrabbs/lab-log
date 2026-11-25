@@ -1,0 +1,12 @@
+successfully registered the modem
+error: couldn't connect the modem: 'GDBus.Error:org.freedesktop.ModemManager1.Error.MobileEquipment.Unknown: Call failed: internal error: interface-in-use-config-match'
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
+ totalBundlesSentAndAcked 0
+ totalBundlesReceived 2
+ totalBundlesSentAndAcked 0
+ totalBundlesReceived 2
+ totalBundlesSentAndAcked 2
+ totalBundlesReceived 0
+ totalBundlesSentAndAcked 2
+ totalBundlesReceived 0

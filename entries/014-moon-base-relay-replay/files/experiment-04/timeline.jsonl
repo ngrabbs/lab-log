@@ -1,0 +1,53 @@
+{"event": "uplink_closed", "utc": "2026-11-25T14:20:52.114931+00:00", "monotonic_s": 1712074.919927335, "earth_session": ["11483236"]}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:20:52.215501+00:00", "monotonic_s": 1712075.020504213, "id": "gated-001"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:20:52.215608+00:00", "monotonic_s": 1712075.020613086, "contact": false}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:20:52.300685+00:00", "monotonic_s": 1712075.10568806, "id": "gated-002"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:20:52.300791+00:00", "monotonic_s": 1712075.105795992, "contact": false}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:20:52.386909+00:00", "monotonic_s": 1712075.19191214, "id": "gated-003"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:20:52.387032+00:00", "monotonic_s": 1712075.192036543, "contact": false}
+{"event": "durable_queue_verified", "utc": "2026-11-25T14:20:52.468951+00:00", "monotonic_s": 1712075.273953837, "rows": [["gated-001", "queued", 0], ["gated-002", "queued", 0], ["gated-003", "queued", 0]]}
+{"event": "stale_relay_route_removed", "utc": "2026-11-25T14:21:01.225949+00:00", "monotonic_s": 1712084.030952381}
+{"event": "outage_verified", "utc": "2026-11-25T14:21:22.221719+00:00", "monotonic_s": 1712105.02672222, "earth_files": 0, "earth_session": ["11483236"]}
+{"event": "uplink_restored", "utc": "2026-11-25T14:21:22.274799+00:00", "monotonic_s": 1712105.079802136, "closed_seconds": 30.159873670898378}
+{"event": "fresh_hub_session", "utc": "2026-11-25T14:21:26.164772+00:00", "monotonic_s": 1712108.969775264, "count": 2}
+{"event": "hub_injected", "utc": "2026-11-25T14:21:26.441063+00:00", "monotonic_s": 1712109.246066569, "id": "gated-001"}
+{"event": "earth_commit", "utc": "2026-11-25T14:21:26.591952+00:00", "monotonic_s": 1712109.396956324, "id": "gated-001", "sha256": "065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:21:26.711203+00:00", "monotonic_s": 1712109.516206718, "id": "gated-001", "sha256": "065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:21:26.810469+00:00", "monotonic_s": 1712109.615472269, "id": "gated-001"}
+{"event": "hub_injected", "utc": "2026-11-25T14:21:27.083083+00:00", "monotonic_s": 1712109.888087023, "id": "gated-002"}
+{"event": "earth_commit", "utc": "2026-11-25T14:21:27.219989+00:00", "monotonic_s": 1712110.024992638, "id": "gated-002", "sha256": "e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:21:27.331708+00:00", "monotonic_s": 1712110.136711855, "id": "gated-002", "sha256": "e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:21:27.426217+00:00", "monotonic_s": 1712110.231220981, "id": "gated-002"}
+{"event": "hub_injected", "utc": "2026-11-25T14:21:27.688715+00:00", "monotonic_s": 1712110.49371807, "id": "gated-003"}
+{"event": "earth_commit", "utc": "2026-11-25T14:21:27.833259+00:00", "monotonic_s": 1712110.638262375, "id": "gated-003", "sha256": "a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:21:27.952792+00:00", "monotonic_s": 1712110.757796415, "id": "gated-003", "sha256": "a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:21:28.046429+00:00", "monotonic_s": 1712110.851431951, "id": "gated-003"}
+{"event": "gated_drain", "utc": "2026-11-25T14:21:28.096567+00:00", "monotonic_s": 1712110.901571073, "first_commit_s": 4.317154188174754, "last_commit_s": 5.558460239088163, "last_receipt_s": 5.677994278958067, "native_failures": 0}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:21:28.184816+00:00", "monotonic_s": 1712110.98981927, "id": "gated-lost"}
+{"event": "hub_injected", "utc": "2026-11-25T14:21:28.452933+00:00", "monotonic_s": 1712111.257936504, "id": "gated-lost"}
+{"event": "earth_commit", "utc": "2026-11-25T14:21:28.607883+00:00", "monotonic_s": 1712111.41288612, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181", "receipt_suppressed": true}
+{"event": "uplink_closed", "utc": "2026-11-25T14:21:28.829737+00:00", "monotonic_s": 1712111.634740579, "earth_session": ["11483236"]}
+{"event": "application_retry_queued", "utc": "2026-11-25T14:21:33.934561+00:00", "monotonic_s": 1712116.739563837, "id": "gated-lost"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:21:33.934681+00:00", "monotonic_s": 1712116.739686099, "contact": false}
+{"event": "stale_relay_route_removed", "utc": "2026-11-25T14:21:44.105886+00:00", "monotonic_s": 1712126.910890011}
+{"event": "outage_verified", "utc": "2026-11-25T14:21:44.216995+00:00", "monotonic_s": 1712127.021998236, "earth_files": 4, "earth_session": ["11483236"]}
+{"event": "uplink_restored", "utc": "2026-11-25T14:21:44.282147+00:00", "monotonic_s": 1712127.087150341, "closed_seconds": 15.45240889210254}
+{"event": "fresh_hub_session", "utc": "2026-11-25T14:21:44.678841+00:00", "monotonic_s": 1712127.483844879, "count": 3}
+{"event": "hub_injected", "utc": "2026-11-25T14:21:44.927420+00:00", "monotonic_s": 1712127.732423433, "id": "gated-lost"}
+{"event": "earth_duplicate", "utc": "2026-11-25T14:21:45.064952+00:00", "monotonic_s": 1712127.869955894, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:21:45.176600+00:00", "monotonic_s": 1712127.98160393, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:21:45.272948+00:00", "monotonic_s": 1712128.077951527, "id": "gated-lost"}
+{"event": "gated_lost_receipt", "utc": "2026-11-25T14:21:45.326358+00:00", "monotonic_s": 1712128.131361412, "id": "gated-lost", "final_receipt_s": 0.8944535891059786, "native_failures": 0, "attempts": 2}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:21:45.417147+00:00", "monotonic_s": 1712128.222150286, "id": "gated-inflight"}
+{"event": "hub_egress_delayed", "utc": "2026-11-25T14:21:45.502915+00:00", "monotonic_s": 1712128.307918228, "milliseconds": 2200}
+{"event": "hub_injected", "utc": "2026-11-25T14:21:45.766378+00:00", "monotonic_s": 1712128.571381292, "id": "gated-inflight"}
+{"event": "native_transfer_in_progress", "utc": "2026-11-25T14:21:45.821106+00:00", "monotonic_s": 1712128.626109426, "id": "gated-inflight"}
+{"event": "uplink_closed", "utc": "2026-11-25T14:21:46.038355+00:00", "monotonic_s": 1712128.843358234, "earth_session": ["11483236"]}
+{"event": "stale_relay_route_removed", "utc": "2026-11-25T14:22:02.631486+00:00", "monotonic_s": 1712145.436489251}
+{"event": "outage_verified", "utc": "2026-11-25T14:22:02.745989+00:00", "monotonic_s": 1712145.550991662, "earth_files": 5, "earth_session": ["11483236"]}
+{"event": "uplink_restored", "utc": "2026-11-25T14:22:02.797815+00:00", "monotonic_s": 1712145.602818422, "closed_seconds": 16.75945924804546}
+{"event": "fresh_hub_session", "utc": "2026-11-25T14:22:06.296299+00:00", "monotonic_s": 1712149.101302247, "count": 4}
+{"event": "earth_commit", "utc": "2026-11-25T14:22:06.440534+00:00", "monotonic_s": 1712149.245536838, "id": "gated-inflight", "sha256": "43757e5a782942d5bb3b8934010c87b6416092c2c5ab3f241dafb8914ca00d95", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:22:06.560081+00:00", "monotonic_s": 1712149.365084621, "id": "gated-inflight", "sha256": "43757e5a782942d5bb3b8934010c87b6416092c2c5ab3f241dafb8914ca00d95"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:22:06.649993+00:00", "monotonic_s": 1712149.454996256, "id": "gated-inflight"}
+{"event": "inflight_recovered", "utc": "2026-11-25T14:22:06.809897+00:00", "monotonic_s": 1712149.614900175, "id": "gated-inflight", "native_failures": 65946, "final_receipt_s": 3.7622661988716573, "hub_queue": [["gated-001", "acked", 1], ["gated-002", "acked", 1], ["gated-003", "acked", 1], ["gated-lost", "acked", 2], ["gated-inflight", "acked", 1]]}

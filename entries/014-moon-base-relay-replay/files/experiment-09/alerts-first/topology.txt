@@ -1,0 +1,5 @@
+/mb-dtn-20261125T171026Z-alerts-first-hub networks=mb-dtn-20261125T171026Z-alerts-first-up  published={}
+/mb-dtn-20261125T171026Z-alerts-first-relay networks=mb-dtn-20261125T171026Z-alerts-first-down mb-dtn-20261125T171026Z-alerts-first-up  published={}
+/mb-dtn-20261125T171026Z-alerts-first-earth networks=mb-dtn-20261125T171026Z-alerts-first-down  published={}
+mb-dtn-20261125T171026Z-alerts-first-up internal=true
+mb-dtn-20261125T171026Z-alerts-first-down internal=true

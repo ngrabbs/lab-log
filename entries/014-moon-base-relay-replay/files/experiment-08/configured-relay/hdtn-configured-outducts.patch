@@ -1,0 +1,28 @@
+--- a/module/ingress/src/receive.cpp
++++ b/module/ingress/src/receive.cpp
+@@ -1686,11 +1686,10 @@
+         boost::mutex::scoped_lock lock(m_availableDestOpportunisticNodeIdToTcpclInductMapMutex);
+         m_availableDestOpportunisticNodeIdToTcpclInductMap[remoteNodeId] = tcpclInductPtr;
+     }
+-    else if (TcpclV4Induct * tcpclV4InductPtr = dynamic_cast<TcpclV4Induct*>(thisInductPtr)) {
+-        LOG_INFO(subprocess) << "New opportunistic link detected on TcpclV4 induct for ipn:" << remoteNodeId << ".*";
+-        SendOpportunisticLinkMessages(remoteNodeId, true);
+-        boost::mutex::scoped_lock lock(m_availableDestOpportunisticNodeIdToTcpclInductMapMutex);
+-        m_availableDestOpportunisticNodeIdToTcpclInductMap[remoteNodeId] = tcpclV4InductPtr;
++    else if (dynamic_cast<TcpclV4Induct*>(thisInductPtr)) {
++        // Bench variant: keep this induct receive-only. The configured
++        // TCPCLv4 outducts handle egress and storage fallback.
++        LOG_INFO(subprocess) << "Configured outducts only for TCPCLv4 peer ipn:" << remoteNodeId << ".*";
+     }
+     else if (dynamic_cast<StcpInduct*>(thisInductPtr)) {
+ 
+@@ -1706,6 +1705,9 @@
+     }
+ }
+ void Ingress::Impl::OnDeletedOpportunisticLinkCallback(const uint64_t remoteNodeId, Induct* thisInductPtr, void* sinkPtrAboutToBeDeleted) {
++    if (dynamic_cast<TcpclV4Induct*>(thisInductPtr)) {
++        return; // No opportunistic link was registered for this induct.
++    }
+     if (dynamic_cast<StcpInduct*>(thisInductPtr)) {
+ 
+     }

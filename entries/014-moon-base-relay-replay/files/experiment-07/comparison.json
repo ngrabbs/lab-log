@@ -1,0 +1,98 @@
+[
+  {
+    "window": 16,
+    "peak_outstanding": 16,
+    "loaded_seconds": 90,
+    "loaded_earth_records": 302,
+    "loaded_payload_kib_s": 4.455555555555556,
+    "loaded_submissions": 314,
+    "loaded_receipts": 299,
+    "oldest_unconfirmed_s": 4.5189141009468585,
+    "fully_matched_credits": 300,
+    "cutoff_credits": 300,
+    "single_record_s": 2.6361647048033774,
+    "loaded_median_receipt_s": 4.4320051081012934,
+    "single_stages_s": {
+      "relay_rx": 0.052659770950150175,
+      "relay_tx": 1.2504070000000027,
+      "earth_commit": 0.017434730954647648,
+      "earth_receipt_submitted": 0.0001580030657351017,
+      "relay_receipt_rx": 1.2524312659796166,
+      "relay_receipt_tx": 0.050159999999998206,
+      "hub_receipt": 0.012913933853226922
+    },
+    "loaded_median_stages_s": {
+      "relay_rx": 0.0523873671403976,
+      "relay_tx": 3.0155209999999926,
+      "earth_commit": 0.011785317867364142,
+      "earth_receipt_submitted": 0.000130373053252697,
+      "relay_receipt_rx": 1.2523237200436625,
+      "relay_receipt_tx": 0.1412820000000039,
+      "hub_receipt": 0.009257329914333923
+    }
+  },
+  {
+    "window": 48,
+    "peak_outstanding": 48,
+    "loaded_seconds": 90,
+    "loaded_earth_records": 151,
+    "loaded_payload_kib_s": 2.227777777777778,
+    "loaded_submissions": 175,
+    "loaded_receipts": 127,
+    "oldest_unconfirmed_s": 30.873086116975173,
+    "fully_matched_credits": 128,
+    "cutoff_credits": 128,
+    "single_record_s": 2.6361546549014747,
+    "loaded_median_receipt_s": 27.343735753092915,
+    "single_stages_s": {
+      "relay_rx": 0.05272093289836022,
+      "relay_tx": 1.2501800000000003,
+      "earth_commit": 0.017030957218644005,
+      "earth_receipt_submitted": 0.0002024439163506031,
+      "relay_receipt_rx": 1.2530175988650072,
+      "relay_receipt_tx": 0.05012699999999626,
+      "hub_receipt": 0.012875722003116152
+    },
+    "loaded_median_stages_s": {
+      "relay_rx": 0.05229648779788931,
+      "relay_tx": 12.392776000000005,
+      "earth_commit": 0.012557780221115422,
+      "earth_receipt_submitted": 0.0001247231848537922,
+      "relay_receipt_rx": 1.2522759357786981,
+      "relay_receipt_tx": 13.128343999999998,
+      "hub_receipt": 0.0092106140691115
+    }
+  },
+  {
+    "window": 128,
+    "peak_outstanding": 128,
+    "loaded_seconds": 90,
+    "loaded_earth_records": 97,
+    "loaded_payload_kib_s": 1.4555555555555555,
+    "loaded_submissions": 197,
+    "loaded_receipts": 69,
+    "oldest_unconfirmed_s": 78.31225315108895,
+    "fully_matched_credits": 70,
+    "cutoff_credits": 70,
+    "single_record_s": 2.63566546398215,
+    "loaded_median_receipt_s": 9.14258612296544,
+    "single_stages_s": {
+      "relay_rx": 0.05259524898765733,
+      "relay_tx": 1.2502289999999974,
+      "earth_commit": 0.01653027794376527,
+      "earth_receipt_submitted": 0.00016267294995486736,
+      "relay_receipt_rx": 1.2530100491062797,
+      "relay_receipt_tx": 0.050147000000002606,
+      "hub_receipt": 0.01299121499449285
+    },
+    "loaded_median_stages_s": {
+      "relay_rx": 0.05233238112992922,
+      "relay_tx": 5.3003829999999965,
+      "earth_commit": 0.010293461979976826,
+      "earth_receipt_submitted": 0.00013561313971877098,
+      "relay_receipt_rx": 1.252219975040461,
+      "relay_receipt_tx": 2.6325099999999964,
+      "hub_receipt": 0.008421048898611616
+    }
+  }
+]

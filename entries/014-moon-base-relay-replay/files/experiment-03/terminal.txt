@@ -1,0 +1,104 @@
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T141107Z-up
+9f0fdc6fb46a16245fdd7150f84b7a00c7318c21d2e3cba5007dd9cd5769526a
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T141107Z-down
+8f931e28d2253abace32eb648c5fefeb40c6e8329ad6244156a7d0c69ca50199
++ docker create --init --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T141107Z-relay --network mb-dtn-20261125T141107Z-up --network-alias relay --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-hdtn:smoke bash /bench/relay-node.sh
+cbb5d7beb3344057e290441a746410ac478eb8611619c21443c0f4c5d1b09e3c
++ docker network connect --alias relay mb-dtn-20261125T141107Z-down mb-dtn-20261125T141107Z-relay
++ docker run -d --init -e TCPCL_KEEPALIVE=3 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T141107Z-hub --network mb-dtn-20261125T141107Z-up --network-alias hub --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-ion:smoke bash /bench/ion-node.sh 10 hub 4556
+ee0122513d302faf061046b179ae9dbdf3b1fbe3203f02bdd8dd253954d72642
++ docker run -d --init -e TCPCL_KEEPALIVE=3 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T141107Z-earth --network mb-dtn-20261125T141107Z-down --network-alias earth --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-ion:smoke bash /bench/ion-node.sh 30 earth 4557
+c9934e55ea70da9376dbf3e9c1a62e6f9bc73f466452837c9cf5a874552384f1
++ docker start mb-dtn-20261125T141107Z-relay
+mb-dtn-20261125T141107Z-relay
++ docker inspect --format '{{.Name}} networks={{range $name, $net := .NetworkSettings.Networks}}{{$name}} {{end}} published={{json .HostConfig.PortBindings}}' mb-dtn-20261125T141107Z-hub mb-dtn-20261125T141107Z-relay mb-dtn-20261125T141107Z-earth
++ tee ~/moonbase-dtn-smoke/runs/20261125T141107Z/topology.txt
+/mb-dtn-20261125T141107Z-hub networks=mb-dtn-20261125T141107Z-up  published={}
+/mb-dtn-20261125T141107Z-relay networks=mb-dtn-20261125T141107Z-down mb-dtn-20261125T141107Z-up  published={}
+/mb-dtn-20261125T141107Z-earth networks=mb-dtn-20261125T141107Z-down  published={}
++ docker network inspect --format '{{.Name}} internal={{.Internal}}' mb-dtn-20261125T141107Z-up mb-dtn-20261125T141107Z-down
++ tee -a ~/moonbase-dtn-smoke/runs/20261125T141107Z/topology.txt
+mb-dtn-20261125T141107Z-up internal=true
+mb-dtn-20261125T141107Z-down internal=true
++ docker image inspect --format '{{index .RepoTags 0}} {{.Id}}' moonbase-dtn-ion:smoke moonbase-dtn-hdtn:smoke
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T141107Z-hub
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T141107Z-earth
++ [[ outage == outage ]]
++ python3 ~/moonbase-dtn-smoke/outage.py ~/moonbase-dtn-smoke/runs/20261125T141107Z mb-dtn-20261125T141107Z-up mb-dtn-20261125T141107Z-hub mb-dtn-20261125T141107Z-relay mb-dtn-20261125T141107Z-earth
++ docker inspect --format "{{.Name}} {{.State.StartedAt}} {{.RestartCount}}" mb-dtn-20261125T141107Z-hub mb-dtn-20261125T141107Z-relay mb-dtn-20261125T141107Z-earth
++ docker exec -d -w /run/ion mb-dtn-20261125T141107Z-earth bprecvfile ipn:30.1 5
++ docker exec -d -w /run/ion mb-dtn-20261125T141107Z-hub bprecvfile ipn:10.2 4
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T141107Z-up mb-dtn-20261125T141107Z-hub
+{"event": "uplink_closed", "utc": "2026-11-25T14:11:10.958806+00:00", "monotonic_s": 1711493.763802536, "earth_session": ["11423015"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T141107Z-hub
++ docker cp ~/moonbase-dtn-smoke/runs/20261125T141107Z/outage-001.json mb-dtn-20261125T141107Z-hub:/run/ion/outage-001.json
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/outage-001.json
+{"event": "hub_injected", "utc": "2026-11-25T14:11:11.043677+00:00", "monotonic_s": 1711493.848680101, "id": "outage-001"}
++ docker cp ~/moonbase-dtn-smoke/runs/20261125T141107Z/outage-002.json mb-dtn-20261125T141107Z-hub:/run/ion/outage-002.json
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/outage-002.json
+{"event": "hub_injected", "utc": "2026-11-25T14:11:11.119101+00:00", "monotonic_s": 1711493.924104273, "id": "outage-002"}
++ docker cp ~/moonbase-dtn-smoke/runs/20261125T141107Z/outage-003.json mb-dtn-20261125T141107Z-hub:/run/ion/outage-003.json
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/outage-003.json
+{"event": "hub_injected", "utc": "2026-11-25T14:11:11.194036+00:00", "monotonic_s": 1711493.999038875, "id": "outage-003"}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth cat /proc/net/tcp
+{"event": "outage_verified", "utc": "2026-11-25T14:11:41.074358+00:00", "monotonic_s": 1711523.879361859, "earth_files": 0, "earth_session": ["11423015"]}
++ docker network connect --alias hub mb-dtn-20261125T141107Z-up mb-dtn-20261125T141107Z-hub
+{"event": "uplink_restored", "utc": "2026-11-25T14:11:41.126947+00:00", "monotonic_s": 1711523.931950413, "closed_seconds": 30.16814668686129}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth python3 /bench/ledger.py testfile1 227b251706837b8e72d68af83853769ea7af6dc2b2ef62b4176d7479205330f6
+{"event": "earth_commit", "utc": "2026-11-25T14:11:45.161835+00:00", "monotonic_s": 1711527.966838107, "id": "outage-002", "sha256": "227b251706837b8e72d68af83853769ea7af6dc2b2ef62b4176d7479205330f6", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile1.json
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth python3 /bench/ledger.py testfile2 f7c8b0bbcbcf38eef529f0ab5eefd132ce4729148c9139a93d12b4d6ed417be4
+{"event": "earth_commit", "utc": "2026-11-25T14:11:45.373023+00:00", "monotonic_s": 1711528.178025431, "id": "outage-003", "sha256": "f7c8b0bbcbcf38eef529f0ab5eefd132ce4729148c9139a93d12b4d6ed417be4", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile2.json
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth python3 /bench/ledger.py testfile3 897ec869a9d84a2407d8de257845ce68898ef9837d929b1f08203c95a502e799
+{"event": "earth_commit", "utc": "2026-11-25T14:11:45.575989+00:00", "monotonic_s": 1711528.380992168, "id": "outage-001", "sha256": "897ec869a9d84a2407d8de257845ce68898ef9837d929b1f08203c95a502e799", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile3.json
+{"event": "hub_receipt", "utc": "2026-11-25T14:11:45.695890+00:00", "monotonic_s": 1711528.500893824, "id": "outage-002", "sha256": "227b251706837b8e72d68af83853769ea7af6dc2b2ef62b4176d7479205330f6"}
+{"event": "hub_receipt", "utc": "2026-11-25T14:11:45.757039+00:00", "monotonic_s": 1711528.562042553, "id": "outage-003", "sha256": "f7c8b0bbcbcf38eef529f0ab5eefd132ce4729148c9139a93d12b4d6ed417be4"}
+{"event": "hub_receipt", "utc": "2026-11-25T14:11:45.815744+00:00", "monotonic_s": 1711528.620747639, "id": "outage-001", "sha256": "897ec869a9d84a2407d8de257845ce68898ef9837d929b1f08203c95a502e799"}
+{"event": "drain", "utc": "2026-11-25T14:11:45.815828+00:00", "monotonic_s": 1711528.6208326, "first_commit_s": 4.0348876940552145, "last_commit_s": 4.449041755171493, "last_receipt_s": 4.688797226175666}
++ docker cp ~/moonbase-dtn-smoke/runs/20261125T141107Z/lost-001.json mb-dtn-20261125T141107Z-hub:/run/ion/lost-001.json
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/lost-001.json
+{"event": "hub_injected", "utc": "2026-11-25T14:11:45.891821+00:00", "monotonic_s": 1711528.696824369, "id": "lost-001"}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth python3 /bench/ledger.py testfile4 cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b --suppress-receipt
+{"event": "earth_commit", "utc": "2026-11-25T14:11:46.050065+00:00", "monotonic_s": 1711528.855068842, "id": "lost-001", "sha256": "cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b", "receipt_suppressed": true}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-hub bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T141107Z-up mb-dtn-20261125T141107Z-hub
+{"event": "uplink_closed", "utc": "2026-11-25T14:11:46.260739+00:00", "monotonic_s": 1711529.065741955, "earth_session": ["11423015"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T141107Z-hub
+{"event": "application_receipt_timeout", "utc": "2026-11-25T14:11:51.274297+00:00", "monotonic_s": 1711534.079298307, "id": "lost-001"}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/lost-001.json
+{"event": "hub_injected", "utc": "2026-11-25T14:11:51.343095+00:00", "monotonic_s": 1711534.148097691, "id": "lost-001"}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth cat /proc/net/tcp
+{"event": "outage_verified", "utc": "2026-11-25T14:11:56.383022+00:00", "monotonic_s": 1711539.188025288, "earth_files": 4, "earth_session": ["11423015"]}
++ docker network connect --alias hub mb-dtn-20261125T141107Z-up mb-dtn-20261125T141107Z-hub
+{"event": "uplink_restored", "utc": "2026-11-25T14:11:56.438026+00:00", "monotonic_s": 1711539.243028565, "closed_seconds": 10.177285509882495}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth python3 /bench/ledger.py testfile5 cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b
+{"event": "earth_duplicate", "utc": "2026-11-25T14:12:01.290062+00:00", "monotonic_s": 1711544.095065699, "id": "lost-001", "sha256": "cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T141107Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile5.json
+{"event": "hub_receipt", "utc": "2026-11-25T14:12:01.411360+00:00", "monotonic_s": 1711544.216363598, "id": "lost-001", "sha256": "cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b"}
++ docker cp mb-dtn-20261125T141107Z-earth:/run/ion/earth.sqlite3 ~/moonbase-dtn-smoke/runs/20261125T141107Z/earth.sqlite3
++ docker inspect --format "{{.Name}} {{.State.StartedAt}} {{.RestartCount}}" mb-dtn-20261125T141107Z-hub mb-dtn-20261125T141107Z-relay mb-dtn-20261125T141107Z-earth
+{"event": "lost_receipt_verified", "utc": "2026-11-25T14:12:01.439623+00:00", "monotonic_s": 1711544.244625858, "id": "lost-001", "observed_arrivals": 2, "durable_rows": 1, "final_receipt_s": 4.973335032816976, "container_restarts": 0}
++ exit
++ cleanup
++ result=0
++ set +e
++ set +x
+Run 20261125T141107Z (2026-11-25T14:11:07Z), exit 0. Evidence: ~/moonbase-dtn-smoke/runs/20261125T141107Z

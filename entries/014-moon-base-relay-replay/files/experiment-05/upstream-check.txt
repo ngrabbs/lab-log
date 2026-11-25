@@ -1,0 +1,7 @@
+SUCCESS: Bundle received correctly via TCP4+TCPCLv4!
+SUCCESS: Source SDR is clear (bundle released after XFER_SUCCESS).
+SUCCESS: 6MB bundle received correctly!
+INFO: Transmitted 7 fragments (expected 2)
+SUCCESS: Source SDR is clear after 6MB bundle transmission.
+SUCCESS: No slot capacity errors (BP fragmentation working correctly)
+TCP4 two-node test completed.

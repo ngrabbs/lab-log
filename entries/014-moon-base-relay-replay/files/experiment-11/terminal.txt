@@ -1,0 +1,185 @@
+===== Final setup, LTE attach, 30-second cut, and queue drain =====
+5b81d7d19d60286988d8b2d0362e72b00b6d3e2d1a4b887a427a7b7ab28b3891
+27eabbbbc252e6a9713fb99400339ff4c2b93a511eb06b937665f4f497b9a44f
+31de51d2de79d37cc0f76b2d32addaa4be654a665fd8b94bcf9c6757ad2bba3b
+071b99b76228b29ad13ac0368c7a27f94524e876eee92d9bf64dbc671dcd88a3
+mb-lte-20261125T190651Z-relay
+9d42db93d0a250103d29c925e51f465a5d58a561503c7177aac7412657baaf25
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=0 at time 2026-Nov-25 19:06:54
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=1 at time 2026-Nov-25 19:06:54
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
++ [[ 1 == 1 ]]
++ rover $'set -e\n        sudo -n mmcli -m 0 --timeout=15 --simple-disconnect || true\n        sudo -n mmcli -m 0 --timeout=18 --disable\n        sudo -n mmcli -m 0 --timeout=15 --set-power-state-low\n        sleep 2\n        sudo -n mmcli -m 0 --timeout=20 --enable'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'set -e\n        sudo -n mmcli -m 0 --timeout=15 --simple-disconnect || true\n        sudo -n mmcli -m 0 --timeout=18 --disable\n        sudo -n mmcli -m 0 --timeout=15 --set-power-state-low\n        sleep 2\n        sudo -n mmcli -m 0 --timeout=20 --enable'
+successfully disconnected all bearers in the modem
+successfully disabled the modem
+successfully set new power state in the modem
+successfully enabled the modem
++ rover $'mkdir -p ~/moonbase-dtn-lte/20261125T190651Z\n    ip -4 route show default\n    mmcli -m 0 -K | grep -E \'^modem.generic.state |modem.generic.ports.value.*\\(net\\)\''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'mkdir -p ~/moonbase-dtn-lte/20261125T190651Z\n    ip -4 route show default\n    mmcli -m 0 -K | grep -E \'^modem.generic.state |modem.generic.ports.value.*\\(net\\)\''
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
+modem.generic.ports.value[7]                    : wwan0 (net)
+modem.generic.state                             : enabled
++ rf_pid=45852
++ pi 'timeout 40 bash -c '\''until grep -q "eNodeB started" ~/moonbase-dtn-lte/20261125T190651Z/rf-auto/enb.console 2>/dev/null; do sleep .5; done'\'''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 40 bash -c '\''until grep -q "eNodeB started" ~/moonbase-dtn-lte/20261125T190651Z/rf-auto/enb.console 2>/dev/null; do sleep .5; done'\'''
++ pi 'mkdir -p ~/moonbase-dtn-lte/20261125T190651Z/rf-auto; sudo -n bash ~/moonbase-dtn-lte/rf-window.sh $HOME/moonbase-dtn-lte/20261125T190651Z/rf-auto $HOME/moonbase-lte $HOME/moonbase-uhd-images.H2krtS/uhd-images-4.6.0'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'mkdir -p ~/moonbase-dtn-lte/20261125T190651Z/rf-auto; sudo -n bash ~/moonbase-dtn-lte/rf-window.sh $HOME/moonbase-dtn-lte/20261125T190651Z/rf-auto $HOME/moonbase-lte $HOME/moonbase-uhd-images.H2krtS/uhd-images-4.6.0'
+moonbase_sgi     UNKNOWN        172.16.0.1/24 
++ rover 'sudo -n bash ~/moonbase-dtn-lte/toughpad-bearer.sh 0 $HOME/moonbase-dtn-lte/20261125T190651Z'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> 'sudo -n bash ~/moonbase-dtn-lte/toughpad-bearer.sh 0 $HOME/moonbase-dtn-lte/20261125T190651Z'
+successfully registered the modem
+successfully connected the modem
+172.16.0.1 dev wwan0 src 172.16.0.2 uid 0 
+    cache 
+PING 172.16.0.1 (172.16.0.1) from 172.16.0.2 wwan0: 56(84) bytes of data.
+64 bytes from 172.16.0.1: icmp_seq=1 ttl=64 time=25.5 ms
+64 bytes from 172.16.0.1: icmp_seq=2 ttl=64 time=25.0 ms
+64 bytes from 172.16.0.1: icmp_seq=3 ttl=64 time=24.5 ms
+
+--- 172.16.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2001ms
+rtt min/avg/max/mdev = 24.540/25.040/25.536/0.406 ms
++ [[ 1 == 1 ]]
++ RUN_ID=20261125T190651Z
++ bash relay-cut.sh moonbase-dtn-lte/20261125T190651Z/rf-auto
++ jobs_to_wait+=("$!")
++ ground 'timeout 120 python3 ~/moonbase-dtn-lte/forward-worker.py earth $HOME/moonbase-dtn-lte/20261125T190651Z mb-lte-20261125T190651Z-earth > ~/moonbase-dtn-lte/20261125T190651Z/earth-worker.jsonl 2>&1'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<relay-management-ip> 'timeout 120 python3 ~/moonbase-dtn-lte/forward-worker.py earth $HOME/moonbase-dtn-lte/20261125T190651Z mb-lte-20261125T190651Z-earth > ~/moonbase-dtn-lte/20261125T190651Z/earth-worker.jsonl 2>&1'
++ jobs_to_wait+=("$!")
++ send_rover auto-baseline-20261125T190651Z
++ rover $'set -e; cd ~/moonbase-dtn-lte/20261125T190651Z\n        read -r device address < bearer-ip.txt\n        python3 ../store_forward.py --db rover.sqlite3 enqueue auto-baseline-20261125T190651Z\n        sudo -n python3 ../store_forward.py --db rover.sqlite3 forward --device $device --seconds 6'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'set -e; cd ~/moonbase-dtn-lte/20261125T190651Z\n        read -r device address < bearer-ip.txt\n        python3 ../store_forward.py --db rover.sqlite3 enqueue auto-baseline-20261125T190651Z\n        sudo -n python3 ../store_forward.py --db rover.sqlite3 forward --device $device --seconds 6'
++ pi 'timeout 120 python3 ~/moonbase-dtn-lte/forward-worker.py hub $HOME/moonbase-dtn-lte/20261125T190651Z mb-lte-20261125T190651Z-hub $HOME/moonbase-dtn-lte/20261125T190651Z/rf-auto/intake.sqlite3 > ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl 2>&1'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 120 python3 ~/moonbase-dtn-lte/forward-worker.py hub $HOME/moonbase-dtn-lte/20261125T190651Z mb-lte-20261125T190651Z-hub $HOME/moonbase-dtn-lte/20261125T190651Z/rf-auto/intake.sqlite3 > ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl 2>&1'
+{"at": "2026-11-25T19:07:30.535+00:00", "event": "queued", "bodies": ["auto-baseline-20261125T190651Z"]}
+{"at": "2026-11-25T19:07:30.721+00:00", "event": "acknowledged", "id": "69686987209d427ba8acd33df961e04e", "body": "auto-baseline-20261125T190651Z", "queued_at": "2026-11-25T19:07:30.530+00:00"}
+{"at": "2026-11-25T19:07:30.721+00:00", "event": "queue_empty"}
++ wait_pi 25 'test -s ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl && test $(grep -c earth_receipt ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 1'
++ pi 'timeout 25 bash -c '\''until test -s ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl && test $(grep -c earth_receipt ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 1; do sleep .25; done'\'''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 25 bash -c '\''until test -s ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl && test $(grep -c earth_receipt ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 1; do sleep .25; done'\'''
++ pi 'ps -o pid,lstart -C srsenb,srsepc | tee ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-before.txt'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'ps -o pid,lstart -C srsenb,srsepc | tee ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-before.txt'
+    PID                  STARTED
+ 107231 Wed Nov 25 13:06:59 2026
+ 107261 Wed Nov 25 13:06:59 2026
++ ping_pid=45882
++ jobs_to_wait+=("$ping_pid")
++ sleep 2
++ rover $'set -e; cd ~/moonbase-dtn-lte/20261125T190651Z; read -r device address < bearer-ip.txt\n    ping -D -I $device -i 1 -c 43 -W 1 172.16.0.1 > relay-cut-ping.txt'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'set -e; cd ~/moonbase-dtn-lte/20261125T190651Z; read -r device address < bearer-ip.txt\n    ping -D -I $device -i 1 -c 43 -W 1 172.16.0.1 > relay-cut-ping.txt'
++ cut_pid=45889
++ jobs_to_wait+=("$cut_pid")
++ wait_pi 20 'test -s ~/moonbase-dtn-lte/20261125T190651Z/link-down && grep relay_session ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl | tail -1 | grep -q false'
++ pi 'timeout 20 bash -c '\''until test -s ~/moonbase-dtn-lte/20261125T190651Z/link-down && grep relay_session ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl | tail -1 | grep -q false; do sleep .25; done'\'''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 20 bash -c '\''until test -s ~/moonbase-dtn-lte/20261125T190651Z/link-down && grep relay_session ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl | tail -1 | grep -q false; do sleep .25; done'\'''
++ pi 'bash -s -- $HOME/moonbase-dtn-lte/20261125T190651Z mb-lte-20261125T190651Z-hub'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'bash -s -- $HOME/moonbase-dtn-lte/20261125T190651Z mb-lte-20261125T190651Z-hub'
+eth0@if31        UP             172.17.0.2/16 
+default via 172.17.0.1 dev eth0 
+1795633653.939573846
++ send_rover auto-cut-20261125T190651Z-001 auto-cut-20261125T190651Z-002 auto-cut-20261125T190651Z-003
++ rover $'set -e; cd ~/moonbase-dtn-lte/20261125T190651Z\n        read -r device address < bearer-ip.txt\n        python3 ../store_forward.py --db rover.sqlite3 enqueue auto-cut-20261125T190651Z-001 auto-cut-20261125T190651Z-002 auto-cut-20261125T190651Z-003\n        sudo -n python3 ../store_forward.py --db rover.sqlite3 forward --device $device --seconds 6'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'set -e; cd ~/moonbase-dtn-lte/20261125T190651Z\n        read -r device address < bearer-ip.txt\n        python3 ../store_forward.py --db rover.sqlite3 enqueue auto-cut-20261125T190651Z-001 auto-cut-20261125T190651Z-002 auto-cut-20261125T190651Z-003\n        sudo -n python3 ../store_forward.py --db rover.sqlite3 forward --device $device --seconds 6'
+{"at": "2026-11-25T19:07:40.661+00:00", "event": "queued", "bodies": ["auto-cut-20261125T190651Z-001", "auto-cut-20261125T190651Z-002", "auto-cut-20261125T190651Z-003"]}
+{"at": "2026-11-25T19:07:40.822+00:00", "event": "acknowledged", "id": "d46afe94bf7c46b795b58d3f4ddb5d94", "body": "auto-cut-20261125T190651Z-001", "queued_at": "2026-11-25T19:07:40.653+00:00"}
+{"at": "2026-11-25T19:07:40.907+00:00", "event": "acknowledged", "id": "234248f5da864a85bf3c8324c45ec806", "body": "auto-cut-20261125T190651Z-002", "queued_at": "2026-11-25T19:07:40.654+00:00"}
+{"at": "2026-11-25T19:07:40.986+00:00", "event": "acknowledged", "id": "ac64e6519e2e45b59d3af715b115e3a1", "body": "auto-cut-20261125T190651Z-003", "queued_at": "2026-11-25T19:07:40.654+00:00"}
+{"at": "2026-11-25T19:07:40.987+00:00", "event": "queue_empty"}
++ wait_pi 4 'test $(grep -c intake_read ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 4'
++ pi 'timeout 4 bash -c '\''until test $(grep -c intake_read ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 4; do sleep .25; done'\'''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 4 bash -c '\''until test $(grep -c intake_read ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 4; do sleep .25; done'\'''
++ pi 'python3 - $HOME/moonbase-dtn-lte/20261125T190651Z $HOME/moonbase-dtn-lte/20261125T190651Z/rf-auto'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'python3 - $HOME/moonbase-dtn-lte/20261125T190651Z $HOME/moonbase-dtn-lte/20261125T190651Z/rf-auto'
+{"unix_s": 1795633661.4463065, "intake": 4, "hub_confirmed": 1, "hub_held": 3}
++ ground 'python3 - $HOME/moonbase-dtn-lte/20261125T190651Z/earth.sqlite3'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<relay-management-ip> 'python3 - $HOME/moonbase-dtn-lte/20261125T190651Z/earth.sqlite3'
+Earth rows during cut: 1
++ wait 45889
+1795633683.989063203
++ wait_pi 35 'test $(grep -c earth_receipt ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 4'
++ pi 'timeout 35 bash -c '\''until test $(grep -c earth_receipt ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 4; do sleep .25; done'\'''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 35 bash -c '\''until test $(grep -c earth_receipt ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl) -eq 4; do sleep .25; done'\'''
++ pi $'set -e; ps -o pid,lstart -C srsenb,srsepc | tee ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-after.txt\n    cmp ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-before.txt ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-after.txt\n    cat ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> $'set -e; ps -o pid,lstart -C srsenb,srsepc | tee ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-after.txt\n    cmp ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-before.txt ~/moonbase-dtn-lte/20261125T190651Z/rf-processes-after.txt\n    cat ~/moonbase-dtn-lte/20261125T190651Z/hub-worker.jsonl'
+    PID                  STARTED
+ 107231 Wed Nov 25 13:06:59 2026
+ 107261 Wed Nov 25 13:06:59 2026
+{"event": "relay_session", "unix_s": 1795633650.533358, "ready": true}
+{"event": "intake_read", "unix_s": 1795633650.8358967, "id": "69686987209d427ba8acd33df961e04e"}
+{"event": "bp_injected", "unix_s": 1795633650.9404144, "id": "69686987209d427ba8acd33df961e04e"}
+{"event": "earth_receipt", "unix_s": 1795633651.2574503, "id": "69686987209d427ba8acd33df961e04e", "sha256": "19d9f24b6d833be1899e238f7d728f75bdc3a20e745ac0a519fe15cbb3f89280"}
+{"event": "relay_session", "unix_s": 1795633660.1936407, "ready": false}
+{"event": "intake_read", "unix_s": 1795633660.949563, "id": "d46afe94bf7c46b795b58d3f4ddb5d94"}
+{"event": "intake_read", "unix_s": 1795633660.949642, "id": "234248f5da864a85bf3c8324c45ec806"}
+{"event": "intake_read", "unix_s": 1795633661.1105907, "id": "ac64e6519e2e45b59d3af715b115e3a1"}
+{"event": "relay_session", "unix_s": 1795633687.0169468, "ready": true}
+{"event": "bp_injected", "unix_s": 1795633687.111751, "id": "d46afe94bf7c46b795b58d3f4ddb5d94"}
+{"event": "earth_receipt", "unix_s": 1795633687.424014, "id": "d46afe94bf7c46b795b58d3f4ddb5d94", "sha256": "606626b82ef83b1fd0c31e7ec6c75a3b46daae0eb2fe6c496e0953907907986c"}
+{"event": "bp_injected", "unix_s": 1795633687.5093846, "id": "234248f5da864a85bf3c8324c45ec806"}
+{"event": "earth_receipt", "unix_s": 1795633687.8202183, "id": "234248f5da864a85bf3c8324c45ec806", "sha256": "5425838a8813cc4cfbe4a89a69bc8aba47566cae8c63b02a727503da234120f2"}
+{"event": "bp_injected", "unix_s": 1795633687.9070485, "id": "ac64e6519e2e45b59d3af715b115e3a1"}
+{"event": "earth_receipt", "unix_s": 1795633688.2182765, "id": "ac64e6519e2e45b59d3af715b115e3a1", "sha256": "8d4b4b3cfa8c58e5fb063111e82e12a0c96b15d13960c87b60d8942e36f9eb24"}
++ ground 'cat ~/moonbase-dtn-lte/20261125T190651Z/earth-worker.jsonl'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<relay-management-ip> 'cat ~/moonbase-dtn-lte/20261125T190651Z/earth-worker.jsonl'
+{"event": "earth_commit", "unix_s": 1795633651.0730195, "id": "69686987209d427ba8acd33df961e04e", "sha256": "19d9f24b6d833be1899e238f7d728f75bdc3a20e745ac0a519fe15cbb3f89280"}
+{"event": "earth_receipt_sent", "unix_s": 1795633651.130896, "id": "69686987209d427ba8acd33df961e04e"}
+{"event": "earth_commit", "unix_s": 1795633687.219098, "id": "d46afe94bf7c46b795b58d3f4ddb5d94", "sha256": "606626b82ef83b1fd0c31e7ec6c75a3b46daae0eb2fe6c496e0953907907986c"}
+{"event": "earth_receipt_sent", "unix_s": 1795633687.2752845, "id": "d46afe94bf7c46b795b58d3f4ddb5d94"}
+{"event": "earth_commit", "unix_s": 1795633687.6595097, "id": "234248f5da864a85bf3c8324c45ec806", "sha256": "5425838a8813cc4cfbe4a89a69bc8aba47566cae8c63b02a727503da234120f2"}
+{"event": "earth_receipt_sent", "unix_s": 1795633687.7192209, "id": "234248f5da864a85bf3c8324c45ec806"}
+{"event": "earth_commit", "unix_s": 1795633688.0105712, "id": "ac64e6519e2e45b59d3af715b115e3a1", "sha256": "8d4b4b3cfa8c58e5fb063111e82e12a0c96b15d13960c87b60d8942e36f9eb24"}
+{"event": "earth_receipt_sent", "unix_s": 1795633688.0728734, "id": "ac64e6519e2e45b59d3af715b115e3a1"}
++ wait 45882
++ rover 'tail -5 ~/moonbase-dtn-lte/20261125T190651Z/relay-cut-ping.txt'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> 'tail -5 ~/moonbase-dtn-lte/20261125T190651Z/relay-cut-ping.txt'
+[1795633694.106661] 64 bytes from 172.16.0.1: icmp_seq=43 ttl=64 time=24.5 ms
+
+--- 172.16.0.1 ping statistics ---
+43 packets transmitted, 43 received, 0% packet loss, time 42077ms
+rtt min/avg/max/mdev = 21.635/32.103/41.958/5.678 ms
++ cleanup
++ rc=0
++ trap - EXIT
++ set +e
++ pi 'touch ~/moonbase-dtn-lte/20261125T190651Z/stop-worker'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'touch ~/moonbase-dtn-lte/20261125T190651Z/stop-worker'
++ ground 'touch ~/moonbase-dtn-lte/20261125T190651Z/stop-worker'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<relay-management-ip> 'touch ~/moonbase-dtn-lte/20261125T190651Z/stop-worker'
++ for job in "${jobs_to_wait[@]}"
++ wait 45875
++ for job in "${jobs_to_wait[@]}"
++ wait 45876
++ for job in "${jobs_to_wait[@]}"
++ wait 45882
++ for job in "${jobs_to_wait[@]}"
++ wait 45889
++ exit 0
++ exit 0
++ cleanup
++ rc=0
++ trap - EXIT
++ set +e
++ [[ -n 45852 ]]
++ pi 'touch ~/moonbase-dtn-lte/20261125T190651Z/rf-auto/stop-rf'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'touch ~/moonbase-dtn-lte/20261125T190651Z/rf-auto/stop-rf'
++ rover 'sudo -n bash -s -- $HOME/moonbase-dtn-lte/20261125T190651Z 0'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> 'sudo -n bash -s -- $HOME/moonbase-dtn-lte/20261125T190651Z 0'
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
++ [[ -n 45852 ]]
++ wait 45852
++ exit 0
+
+===== Final teardown and state verification =====
+mb-lte-20261125T190651Z-hub
+mb-lte-20261125T190651Z-relay
+mb-lte-20261125T190651Z-earth
+mb-lte-20261125T190651Z-down
+mb-lte-20261125T190651Z-edge
+Pi: eNB, EPC, SGi, and experiment containers stopped
+m75q: experiment containers and networks removed
+modem.generic.state                             : registered
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
+Toughpad: LTE test address and route removed
+

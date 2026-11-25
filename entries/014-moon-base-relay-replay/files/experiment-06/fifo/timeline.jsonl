@@ -1,0 +1,48 @@
+{"event": "link_delay", "utc": "2026-11-25T15:23:36.177595+00:00", "monotonic_s": 1715838.98259118, "role": "relay", "interface": "eth0", "milliseconds": 50}
+{"event": "link_delay", "utc": "2026-11-25T15:23:36.227259+00:00", "monotonic_s": 1715839.032260822, "role": "relay", "interface": "eth1", "milliseconds": 1250}
+{"event": "link_delay", "utc": "2026-11-25T15:23:36.275803+00:00", "monotonic_s": 1715839.080806431, "role": "earth", "interface": "eth0", "milliseconds": 1250}
+{"event": "uplink_closed", "utc": "2026-11-25T15:23:36.504237+00:00", "monotonic_s": 1715839.309241363, "earth_session": ["11636223"]}
+{"event": "trace_started", "utc": "2026-11-25T15:23:36.516944+00:00", "monotonic_s": 1715839.321947825, "policy": "fifo", "trace_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "planned_records": 1578, "rise_s": 1800, "acquisition_complete_s": 1830, "cutoff_s": 2100}
+{"event": "trace_progress", "utc": "2026-11-25T15:24:36.570256+00:00", "monotonic_s": 1715899.375259413, "elapsed_s": 60.062482276931405, "received": 0, "queue_counts": {"queued": 47}}
+{"event": "trace_progress", "utc": "2026-11-25T15:25:36.562066+00:00", "monotonic_s": 1715959.367068343, "elapsed_s": 120.05212746094912, "received": 0, "queue_counts": {"queued": 92}}
+{"event": "trace_progress", "utc": "2026-11-25T15:26:36.572803+00:00", "monotonic_s": 1716019.377806072, "elapsed_s": 180.06443350203335, "received": 0, "queue_counts": {"queued": 137}}
+{"event": "trace_progress", "utc": "2026-11-25T15:27:36.559581+00:00", "monotonic_s": 1716079.364584053, "elapsed_s": 240.05136283603497, "received": 0, "queue_counts": {"queued": 182}}
+{"event": "trace_progress", "utc": "2026-11-25T15:28:36.554764+00:00", "monotonic_s": 1716139.359767436, "elapsed_s": 300.04690070590004, "received": 0, "queue_counts": {"queued": 227}}
+{"event": "trace_progress", "utc": "2026-11-25T15:29:36.534397+00:00", "monotonic_s": 1716199.339400912, "elapsed_s": 360.0267257760279, "received": 0, "queue_counts": {"queued": 272}}
+{"event": "trace_progress", "utc": "2026-11-25T15:30:36.529691+00:00", "monotonic_s": 1716259.334694038, "elapsed_s": 420.0218199780211, "received": 0, "queue_counts": {"queued": 317}}
+{"event": "trace_progress", "utc": "2026-11-25T15:31:36.549158+00:00", "monotonic_s": 1716319.354161077, "elapsed_s": 480.04099598899484, "received": 0, "queue_counts": {"queued": 362}}
+{"event": "trace_progress", "utc": "2026-11-25T15:32:36.539615+00:00", "monotonic_s": 1716379.344618419, "elapsed_s": 540.0319473620038, "received": 0, "queue_counts": {"queued": 407}}
+{"event": "trace_progress", "utc": "2026-11-25T15:33:36.539290+00:00", "monotonic_s": 1716439.344293931, "elapsed_s": 600.0317116058432, "received": 0, "queue_counts": {"queued": 452}}
+{"event": "trace_progress", "utc": "2026-11-25T15:34:36.524470+00:00", "monotonic_s": 1716499.329473313, "elapsed_s": 660.0159241068177, "received": 0, "queue_counts": {"queued": 497}}
+{"event": "trace_progress", "utc": "2026-11-25T15:35:36.511607+00:00", "monotonic_s": 1716559.316610518, "elapsed_s": 720.0036160638556, "received": 0, "queue_counts": {"queued": 542}}
+{"event": "trace_progress", "utc": "2026-11-25T15:36:36.539713+00:00", "monotonic_s": 1716619.344715818, "elapsed_s": 780.0317199039273, "received": 0, "queue_counts": {"queued": 587}}
+{"event": "trace_progress", "utc": "2026-11-25T15:37:36.529819+00:00", "monotonic_s": 1716679.334822525, "elapsed_s": 840.0219548728783, "received": 0, "queue_counts": {"queued": 632}}
+{"event": "trace_progress", "utc": "2026-11-25T15:38:36.519606+00:00", "monotonic_s": 1716739.324609141, "elapsed_s": 900.0088803668041, "received": 0, "queue_counts": {"queued": 678}}
+{"event": "trace_progress", "utc": "2026-11-25T15:39:36.583164+00:00", "monotonic_s": 1716799.388166941, "elapsed_s": 960.0754806930199, "received": 0, "queue_counts": {"queued": 723}}
+{"event": "trace_progress", "utc": "2026-11-25T15:40:36.568395+00:00", "monotonic_s": 1716859.373398637, "elapsed_s": 1020.0591000230052, "received": 0, "queue_counts": {"queued": 768}}
+{"event": "trace_progress", "utc": "2026-11-25T15:41:36.574797+00:00", "monotonic_s": 1716919.379800476, "elapsed_s": 1080.0663868119009, "received": 0, "queue_counts": {"queued": 813}}
+{"event": "trace_progress", "utc": "2026-11-25T15:42:36.580927+00:00", "monotonic_s": 1716979.385930098, "elapsed_s": 1140.0732629499398, "received": 0, "queue_counts": {"queued": 858}}
+{"event": "trace_progress", "utc": "2026-11-25T15:43:36.571284+00:00", "monotonic_s": 1717039.376286916, "elapsed_s": 1200.0620578539092, "received": 0, "queue_counts": {"queued": 903}}
+{"event": "trace_progress", "utc": "2026-11-25T15:44:36.556810+00:00", "monotonic_s": 1717099.361813004, "elapsed_s": 1260.0481588148978, "received": 0, "queue_counts": {"queued": 948}}
+{"event": "trace_progress", "utc": "2026-11-25T15:45:36.518617+00:00", "monotonic_s": 1717159.323620862, "elapsed_s": 1320.0101763568819, "received": 0, "queue_counts": {"queued": 993}}
+{"event": "trace_progress", "utc": "2026-11-25T15:46:36.598245+00:00", "monotonic_s": 1717219.403248514, "elapsed_s": 1380.080070285825, "received": 0, "queue_counts": {"queued": 1038}}
+{"event": "trace_progress", "utc": "2026-11-25T15:47:36.578695+00:00", "monotonic_s": 1717279.383697761, "elapsed_s": 1440.0702878569718, "received": 0, "queue_counts": {"queued": 1083}}
+{"event": "trace_progress", "utc": "2026-11-25T15:48:36.568393+00:00", "monotonic_s": 1717339.373396861, "elapsed_s": 1500.0587231488898, "received": 0, "queue_counts": {"queued": 1128}}
+{"event": "trace_progress", "utc": "2026-11-25T15:49:36.546379+00:00", "monotonic_s": 1717399.351382638, "elapsed_s": 1560.037330887979, "received": 0, "queue_counts": {"queued": 1173}}
+{"event": "trace_progress", "utc": "2026-11-25T15:50:36.535553+00:00", "monotonic_s": 1717459.340557456, "elapsed_s": 1620.0270372109953, "received": 0, "queue_counts": {"queued": 1218}}
+{"event": "trace_progress", "utc": "2026-11-25T15:51:36.515621+00:00", "monotonic_s": 1717519.320623878, "elapsed_s": 1680.0069383808877, "received": 0, "queue_counts": {"queued": 1263}}
+{"event": "trace_progress", "utc": "2026-11-25T15:52:36.577571+00:00", "monotonic_s": 1717579.382574572, "elapsed_s": 1740.068899096921, "received": 0, "queue_counts": {"queued": 1308}}
+{"event": "geometric_rise", "utc": "2026-11-25T15:53:36.561614+00:00", "monotonic_s": 1717639.366617335, "elapsed_s": 1800.054148501018}
+{"event": "trace_progress", "utc": "2026-11-25T15:53:36.562814+00:00", "monotonic_s": 1717639.367818805, "elapsed_s": 1800.054148501018, "received": 0, "queue_counts": {"queued": 1353}}
+{"event": "outage_verified", "utc": "2026-11-25T15:54:06.669083+00:00", "monotonic_s": 1717669.474086273, "earth_files": 0, "earth_session": ["11636223"]}
+{"event": "uplink_restored", "utc": "2026-11-25T15:54:06.752543+00:00", "monotonic_s": 1717669.557546845, "closed_seconds": 1830.2483046019915}
+{"event": "link_delay", "utc": "2026-11-25T15:54:06.800991+00:00", "monotonic_s": 1717669.605993984, "role": "hub", "interface": "eth0", "milliseconds": 50}
+{"event": "fresh_hub_session", "utc": "2026-11-25T15:54:09.615036+00:00", "monotonic_s": 1717672.420039088, "elapsed_s": 1833.1107946150005}
+{"event": "trace_progress", "utc": "2026-11-25T15:54:36.550155+00:00", "monotonic_s": 1717699.355158065, "elapsed_s": 1860.008536804933, "received": 68, "queue_counts": {"acked": 44, "inflight": 48, "queued": 1307}}
+{"event": "trace_progress", "utc": "2026-11-25T15:55:36.517063+00:00", "monotonic_s": 1717759.322066644, "elapsed_s": 1920.008026122814, "received": 186, "queue_counts": {"acked": 163, "inflight": 48, "queued": 1233}}
+{"event": "trace_progress", "utc": "2026-11-25T15:56:36.510775+00:00", "monotonic_s": 1717819.315778917, "elapsed_s": 1980.0017548168544, "received": 283, "queue_counts": {"acked": 272, "inflight": 38, "queued": 1179}}
+{"event": "trace_progress", "utc": "2026-11-25T15:57:36.514533+00:00", "monotonic_s": 1717879.3195362, "elapsed_s": 2040.0039535639808, "received": 418, "queue_counts": {"acked": 396, "inflight": 48, "queued": 1090}}
+{"event": "uplink_closed", "utc": "2026-11-25T15:58:36.730470+00:00", "monotonic_s": 1717939.535473292, "earth_session": ["11636223"]}
+{"event": "trace_cutoff", "utc": "2026-11-25T15:58:36.743007+00:00", "monotonic_s": 1717939.548010663, "elapsed_s": 2100.001724513015}
+{"event": "trace_progress", "utc": "2026-11-25T15:58:36.744708+00:00", "monotonic_s": 1717939.549713134, "elapsed_s": 2100.001724513015, "received": 507, "queue_counts": {"acked": 486, "inflight": 48, "queued": 1044}}
+{"event": "trace_summary", "utc": "2026-11-25T15:58:41.564733+00:00", "monotonic_s": 1717944.36973652, "policy": "fifo", "rehearsal": false, "trace_jsonl_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "cutoff_s": 2100, "usable_s": 270, "first_tcpcl_session_s": 1833.1107946150005, "outstanding_limit": 48, "pacing_bytes_per_s": 10240, "one_way_hop_delay_ms": [50, 1250], "offered_records": 1578, "earth_records": 507, "earth_records_by_class": {"status": 338, "science": 169}, "earth_payload_bytes": 692224, "mean_payload_goodput_kib_s": 2.5037037037037035, "earth_undelivered_bytes": 1458560, "hub_unconfirmed_bytes": 1484672, "hub_receipts": 486, "alerts": {"alert-outage": {"latency_s": null, "deadline_met": false}, "alert-contact-open": {"latency_s": null, "deadline_met": false}, "alert-pass-close": {"latency_s": null, "deadline_met": false}}, "duplicate_earth_arrivals": 0, "post_cutoff_earth_records": 3, "no_session_transfer_failures": 0}

@@ -1,0 +1,43 @@
+{
+  "policy": "fifo",
+  "rehearsal": false,
+  "diagnostic": true,
+  "trace_jsonl_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59",
+  "cutoff_s": 133,
+  "usable_s": 105,
+  "first_tcpcl_session_s": 32.656182625098154,
+  "outstanding_limit": 48,
+  "pacing_bytes_per_s": 10240,
+  "one_way_hop_delay_ms": [
+    50,
+    1250
+  ],
+  "offered_records": 1578,
+  "earth_records": 152,
+  "earth_records_by_class": {
+    "science": 51,
+    "status": 101
+  },
+  "earth_payload_bytes": 208384,
+  "mean_payload_goodput_kib_s": 1.938095238095238,
+  "earth_undelivered_bytes": 1942400,
+  "hub_unconfirmed_bytes": 1975168,
+  "hub_receipts": 128,
+  "alerts": {
+    "alert-outage": {
+      "latency_s": null,
+      "deadline_met": false
+    },
+    "alert-contact-open": {
+      "latency_s": null,
+      "deadline_met": false
+    },
+    "alert-pass-close": {
+      "latency_s": null,
+      "deadline_met": false
+    }
+  },
+  "duplicate_earth_arrivals": 0,
+  "post_cutoff_earth_records": 2,
+  "no_session_transfer_failures": 0
+}

@@ -1,0 +1,45 @@
+{
+  "policy": "fifo",
+  "rehearsal": false,
+  "diagnostic": false,
+  "relay_path": "configured",
+  "trace_jsonl_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59",
+  "cutoff_s": 2100,
+  "usable_s": 270,
+  "first_tcpcl_session_s": 1834.7215795910452,
+  "outstanding_limit": 48,
+  "pacing_bytes_per_s": 10240,
+  "one_way_hop_delay_ms": [
+    50,
+    1250
+  ],
+  "offered_records": 1578,
+  "earth_records": 1578,
+  "earth_records_by_class": {
+    "science": 525,
+    "status": 1050,
+    "alert": 3
+  },
+  "earth_payload_bytes": 2150784,
+  "mean_payload_goodput_kib_s": 7.779166666666667,
+  "earth_undelivered_bytes": 0,
+  "hub_unconfirmed_bytes": 4096,
+  "hub_receipts": 1575,
+  "alerts": {
+    "alert-outage": {
+      "latency_s": 1033.059526899131,
+      "deadline_met": false
+    },
+    "alert-contact-open": {
+      "latency_s": 203.0072988239583,
+      "deadline_met": false
+    },
+    "alert-pass-close": {
+      "latency_s": 1.9110751410480589,
+      "deadline_met": true
+    }
+  },
+  "duplicate_earth_arrivals": 0,
+  "post_cutoff_earth_records": 0,
+  "no_session_transfer_failures": 0
+}

@@ -1,0 +1,16 @@
+{
+  "cut_started_utc": "2026-11-25T19:07:33.939574+00:00",
+  "cut_seconds": 30.049,
+  "restore_to_sessions_ready_seconds": 3.028,
+  "restore_to_first_receipt_seconds": 3.435,
+  "restore_to_last_receipt_seconds": 4.229,
+  "rows_at_pi_during_cut": 3,
+  "cut_rows_at_earth_after_restore": 3,
+  "matching_earth_rows": 4,
+  "lte_ping_replies": 43,
+  "lte_ping_replies_during_cut": 30,
+  "lte_rtt_min_avg_max_ms": "21.635/32.103/41.958",
+  "rf_processes_unchanged": true,
+  "duplicate_earth_commits": 0,
+  "hdtn_payloads_and_receipts_acknowledged": 8
+}

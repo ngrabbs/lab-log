@@ -1,0 +1,23 @@
+First-run startup failure
+2026-11-25 13:28:50 tcpclv4_agent: timed out waiting for pool /ion_tcp4_rx_hubout
+2026-11-25 13:28:50 tcpclv4_agent: timed out waiting for pool /ion_tcp4_tx_hubin
+
+Successful retry · ION active sessions
+
+hub-active.log
+2026-11-25 13:29:13 tcpclv4_agent: TCPCL session established, peer=ipn:20.0
+2026-11-25 13:29:14 tcpclv4_agent: TX xfer 1: 153 bytes
+2026-11-25 13:29:15 tcpclv4_agent: RX xfer 1: 209 bytes -> slot 0
+
+earth-active.log
+2026-11-25 13:29:13 tcpclv4_agent: TCPCL session established, peer=ipn:20.0
+2026-11-25 13:29:14 tcpclv4_agent: RX xfer 1: 153 bytes -> slot 0
+2026-11-25 13:29:15 tcpclv4_agent: TX xfer 1: 210 bytes
+
+Successful retry · HDTN TCPCLv4 induct counters
+[ hdtn     ][ info ]: TcpclV4 Induct / Bundle Sink:
+ totalBundlesSentAndAcked 1
+ totalBundlesReceived 1
+[ hdtn     ][ info ]: TcpclV4 Induct / Bundle Sink:
+ totalBundlesSentAndAcked 1
+ totalBundlesReceived 1

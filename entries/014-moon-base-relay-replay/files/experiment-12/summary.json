@@ -1,0 +1,105 @@
+{
+  "trace_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59",
+  "contact_open_s": 1830,
+  "cutoff_s": 2100,
+  "lte_device": "wwan0",
+  "lte_peer": "172.16.0.2",
+  "lte_unique_intake": 1578,
+  "lte_retries": 2,
+  "policies": {
+    "fifo": {
+      "relay_disconnected_s": 1829.993369683998,
+      "sessions_ready_after_open_s": 2.484336016448651,
+      "earth_by_cutoff": 1577,
+      "earth_by_class": {
+        "status": 1049,
+        "science": 525,
+        "alert": 3
+      },
+      "earth_payload_bytes": 2150272,
+      "earth_missing_by_class": {
+        "status": 1
+      },
+      "earth_missing_ids": [
+        "status-1049"
+      ],
+      "not_submitted_by_cutoff": 0,
+      "submitted_without_earth_commit_by_cutoff": 1,
+      "earth_committed_without_pi_receipt_by_cutoff": 2,
+      "earth_committed_within_50ms_of_cutoff": [],
+      "earth_post_cutoff": [
+        "status-1049"
+      ],
+      "lte_rows_during_30min_outage": 1351,
+      "lte_rows_before_relay_restore": 1374,
+      "pre_contact_offered": 1374,
+      "pre_contact_at_earth": 1374,
+      "pre_contact_drain_s": 225.7837182979565,
+      "pi_receipts_by_cutoff": 1575,
+      "peak_outstanding": 25,
+      "alerts": {
+        "alert-outage": {
+          "earth_latency_s": 1040.0507569839247,
+          "deadline_met": false
+        },
+        "alert-contact-open": {
+          "earth_latency_s": 225.84034534199168,
+          "deadline_met": false
+        },
+        "alert-pass-close": {
+          "earth_latency_s": 1.7850505348760635,
+          "deadline_met": true
+        }
+      },
+      "duplicate_earth_arrivals": 0
+    },
+    "alerts-first": {
+      "relay_disconnected_s": 1830.0409241829984,
+      "sessions_ready_after_open_s": 0.4589294782781508,
+      "earth_by_cutoff": 1576,
+      "earth_by_class": {
+        "status": 1048,
+        "science": 525,
+        "alert": 3
+      },
+      "earth_payload_bytes": 2149760,
+      "earth_missing_by_class": {
+        "status": 2
+      },
+      "earth_missing_ids": [
+        "status-1048",
+        "status-1049"
+      ],
+      "not_submitted_by_cutoff": 0,
+      "submitted_without_earth_commit_by_cutoff": 2,
+      "earth_committed_without_pi_receipt_by_cutoff": 0,
+      "earth_committed_within_50ms_of_cutoff": [],
+      "earth_post_cutoff": [
+        "status-1048",
+        "status-1049"
+      ],
+      "lte_rows_during_30min_outage": 1351,
+      "lte_rows_before_relay_restore": 1374,
+      "pre_contact_offered": 1374,
+      "pre_contact_at_earth": 1374,
+      "pre_contact_drain_s": 237.155476545915,
+      "pi_receipts_by_cutoff": 1576,
+      "peak_outstanding": 32,
+      "alerts": {
+        "alert-outage": {
+          "earth_latency_s": 931.923915278865,
+          "deadline_met": false
+        },
+        "alert-contact-open": {
+          "earth_latency_s": 1.8754445319530078,
+          "deadline_met": true
+        },
+        "alert-pass-close": {
+          "earth_latency_s": 2.5068564077373594,
+          "deadline_met": true
+        }
+      },
+      "duplicate_earth_arrivals": 0
+    }
+  }
+}

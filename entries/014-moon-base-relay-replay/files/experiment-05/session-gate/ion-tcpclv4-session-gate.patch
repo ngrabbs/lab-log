@@ -1,0 +1,104 @@
+--- a/bpv7/tcp4/tcp4clo.c
++++ b/bpv7/tcp4/tcp4clo.c
+@@ -41,6 +41,7 @@
+ {
+ 	int		*running;
+ 	_Atomic int	*agent_connected;
++	_Atomic int	*session_up;
+ 	CtrlChannel	*ctrl_ch;
+ 	IonTransferPool	*tx_pool;
+ 	Tcp4InFlight	*inflight;
+@@ -70,6 +71,7 @@
+ 						"timeout, failing all "
+ 						"in-flight.");
+ 				*(rtp->agent_connected) = 0;
++				*(rtp->session_up) = 0;
+ 				pthread_mutex_lock(rtp->inflight_mutex);
+ 				tcp4_inflight_fail_all(rtp->inflight,
+ 						rtp->inflight_size);
+@@ -111,6 +113,7 @@
+ 			writeMemo("[w] tcp4clo: agent disconnected, "
+ 					"failing all in-flight.");
+ 			*(rtp->agent_connected) = 0;
++			*(rtp->session_up) = 0;
+ 			pthread_mutex_lock(rtp->inflight_mutex);
+ 			tcp4_inflight_fail_all(rtp->inflight,
+ 					rtp->inflight_size);
+@@ -184,6 +187,7 @@
+ 			break;
+ 
+ 		case CTRL_SESSION_UP:
++			*(rtp->session_up) = 1;
+ 			{
+ 				char	txt[512];
+ 
+@@ -197,6 +201,7 @@
+ 			break;
+ 
+ 		case CTRL_SESSION_DOWN:
++			*(rtp->session_up) = 0;
+ 			writeMemo("[w] tcp4clo: TCPCL session down.");
+ 			break;
+ 
+@@ -250,6 +255,7 @@
+ 	uint64_t		xfer_id_counter = 1;
+ 	int			running = 1;
+ 	_Atomic int		agent_connected = 1;
++	_Atomic int		session_up = 0;
+ 	ResponseThreadParms	rtp;
+ 	pthread_t		responseThread;
+ 	SdrObject		bundleZco;
+@@ -424,6 +430,7 @@
+ 
+ 	rtp.running = &running;
+ 	rtp.agent_connected = &agent_connected;
++	rtp.session_up = &session_up;
+ 	rtp.ctrl_ch = &tx_ctrl;
+ 	rtp.tx_pool = &tx_pool;
+ 	rtp.inflight = inflight;
+@@ -452,13 +459,11 @@
+ 
+ 	while (!(sm_SemEnded(vduct->semaphore)))
+ 	{
+-		/*	Never consume bundles while the agent is down:
+-		 *	a transfer started now could not be announced
+-		 *	to any agent, stranding the bundle.  Leaving
+-		 *	the bundles queued in BP costs nothing and
+-		 *	they flow normally on reconnect.		*/
+-
+-		if (!agent_connected)
++		/*	The local agent can stay connected while the
++		 *	remote TCPCL session is down.  Leave queued
++		 *	bundles in BP until both links are ready.	*/
++
++		if (!agent_connected || !session_up)
+ 		{
+ 			microsnooze(100000);	/*  100ms.		*/
+ 			continue;
+@@ -492,6 +497,26 @@
+ 		if (bundleZco == 1)		/*  Corrupt bundle.	*/
+ 		{
+ 			continue;
++		}
++
++		/*	The session can close while bpDequeue blocks.
++		 *	Keep stewardship of this one bundle without
++		 *	occupying a TX slot or failing it in a loop.	*/
++
++		while (!agent_connected || !session_up)
++		{
++			if (sm_SemEnded(vduct->semaphore))
++			{
++				break;
++			}
++
++			microsnooze(100000);
++		}
++
++		if (sm_SemEnded(vduct->semaphore))
++		{
++			oK(bpHandleXmitFailure(bundleZco));
++			break;
+ 		}
+ 
+ 		CHKZERO(sdr_begin_xn(sdr));

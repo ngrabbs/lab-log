@@ -1,0 +1,4 @@
+HDTN opportunistic-forward timeout count: 0
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*

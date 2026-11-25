@@ -1,0 +1,48 @@
+{"event": "link_delay", "utc": "2026-11-25T17:10:29.870430+00:00", "monotonic_s": 1722252.675424276, "role": "relay", "interface": "eth0", "milliseconds": 50}
+{"event": "link_delay", "utc": "2026-11-25T17:10:29.921131+00:00", "monotonic_s": 1722252.726133592, "role": "relay", "interface": "eth1", "milliseconds": 1250}
+{"event": "link_delay", "utc": "2026-11-25T17:10:29.969839+00:00", "monotonic_s": 1722252.774841851, "role": "earth", "interface": "eth0", "milliseconds": 1250}
+{"event": "uplink_closed", "utc": "2026-11-25T17:10:30.192333+00:00", "monotonic_s": 1722252.997336379, "earth_session": ["11891021"]}
+{"event": "trace_started", "utc": "2026-11-25T17:10:30.204516+00:00", "monotonic_s": 1722253.009519882, "policy": "alerts-first", "trace_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "planned_records": 1578, "rise_s": 1800, "acquisition_complete_s": 1830, "cutoff_s": 2100, "wall_start_ns": 1795626630192330473, "relay_path": "configured"}
+{"event": "trace_progress", "utc": "2026-11-25T17:11:30.249531+00:00", "monotonic_s": 1722313.054534235, "elapsed_s": 60.05381002696231, "received": 0, "queue_counts": {"queued": 47}}
+{"event": "trace_progress", "utc": "2026-11-25T17:12:30.230290+00:00", "monotonic_s": 1722373.035292945, "elapsed_s": 120.03470409987494, "received": 0, "queue_counts": {"queued": 92}}
+{"event": "trace_progress", "utc": "2026-11-25T17:13:30.203244+00:00", "monotonic_s": 1722433.008247818, "elapsed_s": 180.00769987492822, "received": 0, "queue_counts": {"queued": 137}}
+{"event": "trace_progress", "utc": "2026-11-25T17:14:30.262498+00:00", "monotonic_s": 1722493.067501442, "elapsed_s": 240.0668213760946, "received": 0, "queue_counts": {"queued": 182}}
+{"event": "trace_progress", "utc": "2026-11-25T17:15:30.201937+00:00", "monotonic_s": 1722553.006941266, "elapsed_s": 300.0063161519356, "received": 0, "queue_counts": {"queued": 227}}
+{"event": "trace_progress", "utc": "2026-11-25T17:16:30.252792+00:00", "monotonic_s": 1722613.057794955, "elapsed_s": 360.0570506078657, "received": 0, "queue_counts": {"queued": 272}}
+{"event": "trace_progress", "utc": "2026-11-25T17:17:30.263142+00:00", "monotonic_s": 1722673.068145356, "elapsed_s": 420.06739287800156, "received": 0, "queue_counts": {"queued": 317}}
+{"event": "trace_progress", "utc": "2026-11-25T17:18:30.253439+00:00", "monotonic_s": 1722733.058442389, "elapsed_s": 480.0577500530053, "received": 0, "queue_counts": {"queued": 362}}
+{"event": "trace_progress", "utc": "2026-11-25T17:19:30.242565+00:00", "monotonic_s": 1722793.047568593, "elapsed_s": 540.0467333840206, "received": 0, "queue_counts": {"queued": 407}}
+{"event": "trace_progress", "utc": "2026-11-25T17:20:30.233568+00:00", "monotonic_s": 1722853.038571691, "elapsed_s": 600.0376906308811, "received": 0, "queue_counts": {"queued": 452}}
+{"event": "trace_progress", "utc": "2026-11-25T17:21:30.213610+00:00", "monotonic_s": 1722913.018614012, "elapsed_s": 660.0176500210073, "received": 0, "queue_counts": {"queued": 497}}
+{"event": "trace_progress", "utc": "2026-11-25T17:22:30.259934+00:00", "monotonic_s": 1722973.064938091, "elapsed_s": 720.064079642063, "received": 0, "queue_counts": {"queued": 542}}
+{"event": "trace_progress", "utc": "2026-11-25T17:23:30.226717+00:00", "monotonic_s": 1723033.031721282, "elapsed_s": 780.0307103190571, "received": 0, "queue_counts": {"queued": 587}}
+{"event": "trace_progress", "utc": "2026-11-25T17:24:30.222924+00:00", "monotonic_s": 1723093.027928262, "elapsed_s": 840.0274655420799, "received": 0, "queue_counts": {"queued": 632}}
+{"event": "trace_progress", "utc": "2026-11-25T17:25:30.208520+00:00", "monotonic_s": 1723153.013523736, "elapsed_s": 900.0112446739804, "received": 0, "queue_counts": {"queued": 678}}
+{"event": "trace_progress", "utc": "2026-11-25T17:26:30.250434+00:00", "monotonic_s": 1723213.05543766, "elapsed_s": 960.0544035069179, "received": 0, "queue_counts": {"queued": 723}}
+{"event": "trace_progress", "utc": "2026-11-25T17:27:30.233625+00:00", "monotonic_s": 1723273.038627766, "elapsed_s": 1020.0374246989377, "received": 0, "queue_counts": {"queued": 768}}
+{"event": "trace_progress", "utc": "2026-11-25T17:28:30.203586+00:00", "monotonic_s": 1723333.008589336, "elapsed_s": 1080.0079087899067, "received": 0, "queue_counts": {"queued": 813}}
+{"event": "trace_progress", "utc": "2026-11-25T17:29:30.266614+00:00", "monotonic_s": 1723393.071616734, "elapsed_s": 1140.062567108078, "received": 0, "queue_counts": {"queued": 858}}
+{"event": "trace_progress", "utc": "2026-11-25T17:30:30.242217+00:00", "monotonic_s": 1723453.047220357, "elapsed_s": 1200.046194144059, "received": 0, "queue_counts": {"queued": 903}}
+{"event": "trace_progress", "utc": "2026-11-25T17:31:30.226957+00:00", "monotonic_s": 1723513.031960539, "elapsed_s": 1260.031333633, "received": 0, "queue_counts": {"queued": 948}}
+{"event": "trace_progress", "utc": "2026-11-25T17:32:30.198753+00:00", "monotonic_s": 1723573.003756161, "elapsed_s": 1320.0020798728801, "received": 0, "queue_counts": {"queued": 993}}
+{"event": "trace_progress", "utc": "2026-11-25T17:33:30.230058+00:00", "monotonic_s": 1723633.035061606, "elapsed_s": 1380.033296915004, "received": 0, "queue_counts": {"queued": 1038}}
+{"event": "trace_progress", "utc": "2026-11-25T17:34:30.224319+00:00", "monotonic_s": 1723693.029322609, "elapsed_s": 1440.027509456966, "received": 0, "queue_counts": {"queued": 1083}}
+{"event": "trace_progress", "utc": "2026-11-25T17:35:30.209192+00:00", "monotonic_s": 1723753.014195268, "elapsed_s": 1500.01142084389, "received": 0, "queue_counts": {"queued": 1128}}
+{"event": "trace_progress", "utc": "2026-11-25T17:36:30.223088+00:00", "monotonic_s": 1723813.02809191, "elapsed_s": 1560.0265146410093, "received": 0, "queue_counts": {"queued": 1173}}
+{"event": "trace_progress", "utc": "2026-11-25T17:37:30.282075+00:00", "monotonic_s": 1723873.087078141, "elapsed_s": 1620.0771014920902, "received": 0, "queue_counts": {"queued": 1218}}
+{"event": "trace_progress", "utc": "2026-11-25T17:38:30.212277+00:00", "monotonic_s": 1723933.017281436, "elapsed_s": 1680.0157991279848, "received": 0, "queue_counts": {"queued": 1263}}
+{"event": "trace_progress", "utc": "2026-11-25T17:39:30.250398+00:00", "monotonic_s": 1723993.055401378, "elapsed_s": 1740.0534716290422, "received": 0, "queue_counts": {"queued": 1308}}
+{"event": "geometric_rise", "utc": "2026-11-25T17:40:30.206263+00:00", "monotonic_s": 1724053.011267108, "elapsed_s": 1800.0106841190718}
+{"event": "trace_progress", "utc": "2026-11-25T17:40:30.207459+00:00", "monotonic_s": 1724053.012463594, "elapsed_s": 1800.0106841190718, "received": 0, "queue_counts": {"queued": 1353}}
+{"event": "outage_verified", "utc": "2026-11-25T17:41:00.346754+00:00", "monotonic_s": 1724083.151757599, "earth_files": 0, "earth_session": ["11891021"]}
+{"event": "uplink_restored", "utc": "2026-11-25T17:41:00.389202+00:00", "monotonic_s": 1724083.194205822, "closed_seconds": 1830.1968686829787}
+{"event": "link_delay", "utc": "2026-11-25T17:41:00.439891+00:00", "monotonic_s": 1724083.244894915, "role": "hub", "interface": "eth0", "milliseconds": 50}
+{"event": "fresh_hub_session", "utc": "2026-11-25T17:41:03.876615+00:00", "monotonic_s": 1724086.681618767, "elapsed_s": 1833.6842785479967}
+{"event": "trace_progress", "utc": "2026-11-25T17:41:30.201227+00:00", "monotonic_s": 1724113.006231069, "elapsed_s": 1860.0048641019966, "received": 209, "queue_counts": {"acked": 197, "inflight": 23, "queued": 1179}}
+{"event": "trace_progress", "utc": "2026-11-25T17:42:30.200479+00:00", "monotonic_s": 1724173.005482123, "elapsed_s": 1920.0039850429166, "received": 681, "queue_counts": {"acked": 671, "inflight": 23, "queued": 750}}
+{"event": "trace_progress", "utc": "2026-11-25T17:43:30.202481+00:00", "monotonic_s": 1724233.007484372, "elapsed_s": 1980.0056812539697, "received": 1167, "queue_counts": {"acked": 1157, "inflight": 22, "queued": 310}}
+{"event": "trace_progress", "utc": "2026-11-25T17:44:30.205614+00:00", "monotonic_s": 1724293.010617023, "elapsed_s": 2040.0081533319317, "received": 1478, "queue_counts": {"acked": 1473, "inflight": 10, "queued": 51}}
+{"event": "uplink_closed", "utc": "2026-11-25T17:45:30.413497+00:00", "monotonic_s": 1724353.218500379, "earth_session": ["11891021"]}
+{"event": "trace_cutoff", "utc": "2026-11-25T17:45:30.426452+00:00", "monotonic_s": 1724353.231455684, "elapsed_s": 2100.005237498088}
+{"event": "trace_progress", "utc": "2026-11-25T17:45:30.428074+00:00", "monotonic_s": 1724353.23307851, "elapsed_s": 2100.005237498088, "received": 1577, "queue_counts": {"acked": 1577, "inflight": 1}}
+{"event": "trace_summary", "utc": "2026-11-25T17:45:35.256918+00:00", "monotonic_s": 1724358.061920977, "policy": "alerts-first", "rehearsal": false, "diagnostic": false, "relay_path": "configured", "trace_jsonl_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "cutoff_s": 2100, "usable_s": 270, "first_tcpcl_session_s": 1833.6842785479967, "outstanding_limit": 48, "pacing_bytes_per_s": 10240, "one_way_hop_delay_ms": [50, 1250], "offered_records": 1578, "earth_records": 1577, "earth_records_by_class": {"status": 1049, "science": 525, "alert": 3}, "earth_payload_bytes": 2150272, "mean_payload_goodput_kib_s": 7.777314814814815, "earth_undelivered_bytes": 512, "hub_unconfirmed_bytes": 512, "hub_receipts": 1577, "alerts": {"alert-outage": {"latency_s": 935.0084591419436, "deadline_met": false}, "alert-contact-open": {"latency_s": 5.0578400050756045, "deadline_met": true}, "alert-pass-close": {"latency_s": 2.389686500886455, "deadline_met": true}}, "duplicate_earth_arrivals": 0, "post_cutoff_earth_records": 1, "no_session_transfer_failures": 0}
