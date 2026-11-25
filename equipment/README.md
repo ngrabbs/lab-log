@@ -1,6 +1,6 @@
 # Equipment on Hand
 
-**Updated:** 2026-11-02
+**Updated:** 2026-11-25
 
 **Inventory status:** Seeded from older testbed records; reconciliation in progress.
 
@@ -98,7 +98,7 @@ Manufacturer reference: [Digirig Lite setup manual](https://digirig.net/digirig-
 
 | Equipment | Availability | Recorded capabilities and limits |
 | --- | --- | --- |
-| CaribouLite 6G on a Raspberry Pi Zero 2 W | Conducted HiF TX verified 2026-11-22 | HiF and S1G SMA ports. [Entry 013](../entries/013-cariboulite-sband-qpsk/README.md) documents 2250 MHz QPSK in a conducted path to a HackRF One. Absolute S-band TX power unmeasured. |
+| CaribouLite 6G on a Raspberry Pi Zero 2 W | One working HAT in bench use. Second HAT out of service after a D6–D7 near-short was measured on 2026-11-23. | HiF and S1G SMA ports. Two-way narrow FM audio verified on HiF at 446.025 MHz. At 2250 MHz, minimum PA, the conducted HiF link to a HackRF One delivered **2.659 Mbps** at 1.475 Msym/s QPSK with **10,240/10,240 frames** verified. A November 23 bench repeat with 500 ksym/s interleaved Reed–Solomon at +20 dB on the step attenuator, with the fixed 30 dB pad in place, verified **10,238/10,240 frames at 0.665 Mbps**. That repeat had TX FIFO gaps. An earlier attempt at the same dial setting failed acquisition at a lower received level. [S-band bench setup and reference run](../entries/013-cariboulite-sband-qpsk/README.md#conducted-qpsk-rate-limit) |
 | SDRB (AMSAT prototype) | In current bench use, October 25 | Native TX gain controls and exploratory J14 doubler measurements in [entry 008](../entries/008-sdrb-j14-drive-check/README.md); software gain is not calibrated output dBm. |
 | RTL-SDR attached to outpost1, marketed model unconfirmed | Detected and used 2026-10-28 | USB RTL2838; librtlsdr identifies R820T tuner. It may be one of the previously inventoried v3/v4 units; no additional unit count is inferred. LibreSDR-supplied receive antenna, owner reports 70 cm suitability; exact antenna unknown. [Entry 009](../entries/009-bpsk-over-fm/README.md) records successful 446 MHz packet reception. |
 | RTL-SDR v3 | Recorded owned | RX-only SDR. Exact unit, frequency coverage and calibration unknown; source noise-floor comparison not independently established. |
