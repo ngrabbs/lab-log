@@ -1,0 +1,12 @@
+FROM ubuntu:24.04
+ARG ION_REV=b7e2c84a9b0e6f91e50d45f8946b9aa42749d93f
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    autoconf automake build-essential ca-certificates git libssl-dev libtool pkg-config python3 \
+    && rm -rf /var/lib/apt/lists/*
+RUN git init -q /src/ion && git -C /src/ion fetch --depth=1 https://github.com/nasa-jpl/ION-DTN.git "$ION_REV" \
+    && git -C /src/ion checkout --detach FETCH_HEAD \
+    && test "$(git -C /src/ion rev-parse HEAD)" = "$ION_REV"
+WORKDIR /src/ion
+RUN autoreconf -fi && ./configure --enable-tcpclv4-external \
+    && make -j4 && make install && ldconfig \
+    && command -v ionadmin && command -v tcpclv4_agent && command -v bpsendfile && command -v bprecvfile

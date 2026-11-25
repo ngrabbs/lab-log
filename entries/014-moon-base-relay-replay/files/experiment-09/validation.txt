@@ -1,0 +1,6 @@
+fifo: reconciled 1578 ledger rows, 1578 at cutoff, 1575 receipts at cutoff, peak outstanding 29
+  Window full for 0.0 s of 270 s. Median submission-to-receipt 2.78 s.
+  Acquisition backlog cleared at 203.038 s into usable contact.
+alerts-first: reconciled 1578 ledger rows, 1577 at cutoff, 1577 receipts at cutoff, peak outstanding 35
+  Window full for 0.0 s of 270 s. Median submission-to-receipt 2.79 s.
+  Acquisition backlog cleared at 210.492 s into usable contact.

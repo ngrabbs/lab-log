@@ -1,0 +1,202 @@
+ae4f2118b208a2d35153e340d21ee5a46ce2040e4e9d0aeec6fbb5bb4ead522d
+efbf9be36d8216fac6c7c66ec53c8c0c26d68cba90f782617b864f2c8f822534
+e6c814b0b21905870d120027bc56c241898c2bd3e3ec5c303563ecb27574faa5
+ed2cf4edb6218e4bd4f885bdfc4f07ffebad0a7c910c64b474f21ed61b57e3b1
+mb-lte-20261125T191951Z-relay
+ad2510ab4876295dd6728c1f52878a70ce573bc57fb9195ab04066275c8504cc
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=0 at time 2026-Nov-25 19:19:53
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
++ sudo -n nsenter -t 109530 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 318332 -n /usr/sbin/tc qdisc replace dev eth1 root netem delay 50ms
++ sudo -n nsenter -t 318332 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 1250ms
++ sudo -n nsenter -t 318208 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 1250ms
+07009f8b30f115db4eb1ddb001a0eee5ea312acf059828c4235ddb18ef5ff951
+0dc149ab715442eb853a5037ece8402073e02bd69aef040615d8f034f1ad8a7d
+4e0f773921d08ca06f64e031311cfe329b21ea5533606cf71f2d88e5292ddbd6
+3fa3a8abbe0ee17bea3df48d82aac26b7374643ef9dea80e0c93f9e94426715e
+mb-lte-20261125T191952Z-relay
+116f81683c19339b3f0d7503003f16947dc9fdbdc54a8c72da9dc160350f334f
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=0 at time 2026-Nov-25 19:19:59
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=1 at time 2026-Nov-25 19:19:59
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
++ sudo -n nsenter -t 109726 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 319193 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 319193 -n /usr/sbin/tc qdisc replace dev eth1 root netem delay 1250ms
++ sudo -n nsenter -t 319068 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 1250ms
++ [[ 1 == 1 ]]
++ rover $'set -e\n        sudo -n mmcli -m 0 --timeout=15 --simple-disconnect || true\n        sudo -n mmcli -m 0 --timeout=18 --disable\n        sudo -n mmcli -m 0 --timeout=15 --set-power-state-low\n        sleep 2\n        sudo -n mmcli -m 0 --timeout=20 --enable'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'set -e\n        sudo -n mmcli -m 0 --timeout=15 --simple-disconnect || true\n        sudo -n mmcli -m 0 --timeout=18 --disable\n        sudo -n mmcli -m 0 --timeout=15 --set-power-state-low\n        sleep 2\n        sudo -n mmcli -m 0 --timeout=20 --enable'
+successfully disconnected all bearers in the modem
+successfully disabled the modem
+successfully set new power state in the modem
+successfully enabled the modem
++ rover $'mkdir -p ~/moonbase-dtn-lte/20261125T191951Z\n    ip -4 route show default\n    mmcli -m 0 -K | grep -E \'^modem.generic.state |modem.generic.ports.value.*\\(net\\)\''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'mkdir -p ~/moonbase-dtn-lte/20261125T191951Z\n    ip -4 route show default\n    mmcli -m 0 -K | grep -E \'^modem.generic.state |modem.generic.ports.value.*\\(net\\)\''
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
+modem.generic.ports.value[7]                    : wwan0 (net)
+modem.generic.state                             : enabled
++ window=2300
++ [[ 2300 =~ ^[0-9]+$ ]]
++ rf_pid=46714
++ pi 'timeout 40 bash -c '\''until grep -q "eNodeB started" ~/moonbase-dtn-lte/20261125T191951Z/rf-full/enb.console 2>/dev/null; do sleep .5; done'\'''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 40 bash -c '\''until grep -q "eNodeB started" ~/moonbase-dtn-lte/20261125T191951Z/rf-full/enb.console 2>/dev/null; do sleep .5; done'\'''
++ pi 'mkdir -p ~/moonbase-dtn-lte/20261125T191951Z/rf-full; sudo -n bash ~/moonbase-dtn-lte/rf-window.sh $HOME/moonbase-dtn-lte/20261125T191951Z/rf-full $HOME/moonbase-lte $HOME/moonbase-uhd-images.H2krtS/uhd-images-4.6.0 2300'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'mkdir -p ~/moonbase-dtn-lte/20261125T191951Z/rf-full; sudo -n bash ~/moonbase-dtn-lte/rf-window.sh $HOME/moonbase-dtn-lte/20261125T191951Z/rf-full $HOME/moonbase-lte $HOME/moonbase-uhd-images.H2krtS/uhd-images-4.6.0 2300'
+moonbase_sgi     UNKNOWN        172.16.0.1/24 
++ register_tries=2
++ [[ 2 == 1 ]]
++ [[ 2 == 2 ]]
++ rover 'sudo -n env LTE_REGISTER_TRIES=2 bash ~/moonbase-dtn-lte/toughpad-bearer.sh 0 $HOME/moonbase-dtn-lte/20261125T191951Z'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> 'sudo -n env LTE_REGISTER_TRIES=2 bash ~/moonbase-dtn-lte/toughpad-bearer.sh 0 $HOME/moonbase-dtn-lte/20261125T191951Z'
+successfully registered the modem
+successfully connected the modem
+172.16.0.1 dev wwan0 src 172.16.0.2 uid 0 
+    cache 
+PING 172.16.0.1 (172.16.0.1) from 172.16.0.2 wwan0: 56(84) bytes of data.
+64 bytes from 172.16.0.1: icmp_seq=1 ttl=64 time=37.4 ms
+64 bytes from 172.16.0.1: icmp_seq=2 ttl=64 time=28.9 ms
+64 bytes from 172.16.0.1: icmp_seq=3 ttl=64 time=28.6 ms
+
+--- 172.16.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2001ms
+rtt min/avg/max/mdev = 28.571/31.614/37.417/4.104 ms
++ [[ 1 == 1 ]]
++ RUN_ID=20261125T191951Z
++ bash split-trace.sh run moonbase-dtn-lte/20261125T191951Z/rf-full
+Matched contact t0 (UTC epoch): 1795634444
++ exit
++ cleanup
++ rc=0
++ trap - EXIT
++ set +e
++ [[ -n 46714 ]]
++ pi 'touch ~/moonbase-dtn-lte/20261125T191951Z/rf-full/stop-rf'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'touch ~/moonbase-dtn-lte/20261125T191951Z/rf-full/stop-rf'
++ rover 'sudo -n bash -s -- $HOME/moonbase-dtn-lte/20261125T191951Z 0'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> 'sudo -n bash -s -- $HOME/moonbase-dtn-lte/20261125T191951Z 0'
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
++ [[ -n 46714 ]]
++ wait 46714
++ exit 0
+mb-lte-20261125T191951Z-hub
+mb-lte-20261125T191951Z-relay
+mb-lte-20261125T191951Z-earth
+mb-lte-20261125T191951Z-down
+mb-lte-20261125T191951Z-edge
+mb-lte-20261125T191952Z-hub
+mb-lte-20261125T191952Z-relay
+mb-lte-20261125T191952Z-earth
+mb-lte-20261125T191952Z-down
+mb-lte-20261125T191952Z-edge
+Pi: eNB, EPC, SGi, and experiment containers stopped
+m75q: experiment containers and networks removed
+modem.generic.state                             : registered
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
+Toughpad: LTE test address and route removed
+{
+  "trace_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59",
+  "contact_open_s": 1830,
+  "cutoff_s": 2100,
+  "lte_device": "wwan0",
+  "lte_peer": "172.16.0.2",
+  "lte_unique_intake": 1578,
+  "lte_retries": 2,
+  "policies": {
+    "fifo": {
+      "relay_disconnected_s": 1829.993369683998,
+      "sessions_ready_after_open_s": 2.484336016448651,
+      "earth_by_cutoff": 1577,
+      "earth_by_class": {
+        "status": 1049,
+        "science": 525,
+        "alert": 3
+      },
+      "earth_payload_bytes": 2150272,
+      "earth_missing_by_class": {
+        "status": 1
+      },
+      "earth_missing_ids": [
+        "status-1049"
+      ],
+      "not_submitted_by_cutoff": 0,
+      "submitted_without_earth_commit_by_cutoff": 1,
+      "earth_committed_without_pi_receipt_by_cutoff": 2,
+      "earth_committed_within_50ms_of_cutoff": [],
+      "earth_post_cutoff": [
+        "status-1049"
+      ],
+      "lte_rows_during_30min_outage": 1351,
+      "lte_rows_before_relay_restore": 1374,
+      "pre_contact_offered": 1374,
+      "pre_contact_at_earth": 1374,
+      "pre_contact_drain_s": 225.7837182979565,
+      "pi_receipts_by_cutoff": 1575,
+      "peak_outstanding": 25,
+      "alerts": {
+        "alert-outage": {
+          "earth_latency_s": 1040.0507569839247,
+          "deadline_met": false
+        },
+        "alert-contact-open": {
+          "earth_latency_s": 225.84034534199168,
+          "deadline_met": false
+        },
+        "alert-pass-close": {
+          "earth_latency_s": 1.7850505348760635,
+          "deadline_met": true
+        }
+      },
+      "duplicate_earth_arrivals": 0
+    },
+    "alerts-first": {
+      "relay_disconnected_s": 1830.0409241829984,
+      "sessions_ready_after_open_s": 0.4589294782781508,
+      "earth_by_cutoff": 1576,
+      "earth_by_class": {
+        "status": 1048,
+        "science": 525,
+        "alert": 3
+      },
+      "earth_payload_bytes": 2149760,
+      "earth_missing_by_class": {
+        "status": 2
+      },
+      "earth_missing_ids": [
+        "status-1048",
+        "status-1049"
+      ],
+      "not_submitted_by_cutoff": 0,
+      "submitted_without_earth_commit_by_cutoff": 2,
+      "earth_committed_without_pi_receipt_by_cutoff": 0,
+      "earth_committed_within_50ms_of_cutoff": [],
+      "earth_post_cutoff": [
+        "status-1048",
+        "status-1049"
+      ],
+      "lte_rows_during_30min_outage": 1351,
+      "lte_rows_before_relay_restore": 1374,
+      "pre_contact_offered": 1374,
+      "pre_contact_at_earth": 1374,
+      "pre_contact_drain_s": 237.155476545915,
+      "pi_receipts_by_cutoff": 1576,
+      "peak_outstanding": 32,
+      "alerts": {
+        "alert-outage": {
+          "earth_latency_s": 931.923915278865,
+          "deadline_met": false
+        },
+        "alert-contact-open": {
+          "earth_latency_s": 1.8754445319530078,
+          "deadline_met": true
+        },
+        "alert-pass-close": {
+          "earth_latency_s": 2.5068564077373594,
+          "deadline_met": true
+        }
+      },
+      "duplicate_earth_arrivals": 0
+    }
+  }
+}

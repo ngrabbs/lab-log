@@ -1,0 +1,4 @@
+HDTN opportunistic-forward timeout count: 44
+[ ingress  ][ error]: Ingress::Process: tcpcl opportunistic forward timed out after 3 seconds for ipn:30.1 ..trying the cut-through path or storage instead
+[ ingress  ][ error]: Ingress::Process: tcpcl opportunistic forward timed out after 3 seconds for ipn:30.1 ..trying the cut-through path or storage instead
+[ ingress  ][ error]: Ingress::Process: tcpcl opportunistic forward timed out after 3 seconds for ipn:10.2 ..trying the cut-through path or storage instead

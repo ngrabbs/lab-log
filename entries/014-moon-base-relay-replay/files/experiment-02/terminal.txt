@@ -1,0 +1,65 @@
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T132911Z-up
+7914c47a4369526a566b68f769239ce952f4ff3ac207a52f00197d4b39933a92
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T132911Z-down
+608f24838ee264f5bbc3c081fffa6dd1df97c9793a4ea01da5362f8eb34a9ae7
++ docker create --init --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T132911Z-relay --network mb-dtn-20261125T132911Z-up --network-alias relay --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-hdtn:smoke bash /bench/relay-node.sh
+55d88e55450b97912069d3733e26c8d56fb192e2d088632134f007e2a02559f9
++ docker network connect --alias relay mb-dtn-20261125T132911Z-down mb-dtn-20261125T132911Z-relay
++ docker run -d --init --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T132911Z-hub --network mb-dtn-20261125T132911Z-up --network-alias hub --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-ion:smoke bash /bench/ion-node.sh 10 hub 4556
+0803403585a9d9215080d20e3445c711d8530ba2560461a111d1de6d1d14dd1e
++ docker run -d --init --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T132911Z-earth --network mb-dtn-20261125T132911Z-down --network-alias earth --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-ion:smoke bash /bench/ion-node.sh 30 earth 4557
+b1bc7ed699dcb953e9da1e65982943f57cd10d9685de6fb90ee7933d571b52c4
++ docker start mb-dtn-20261125T132911Z-relay
+mb-dtn-20261125T132911Z-relay
++ docker inspect --format '{{.Name}} networks={{range $name, $net := .NetworkSettings.Networks}}{{$name}} {{end}} published={{json .HostConfig.PortBindings}}' mb-dtn-20261125T132911Z-hub mb-dtn-20261125T132911Z-relay mb-dtn-20261125T132911Z-earth
++ tee ~/moonbase-dtn-smoke/runs/20261125T132911Z/topology.txt
+/mb-dtn-20261125T132911Z-hub networks=mb-dtn-20261125T132911Z-up  published={}
+/mb-dtn-20261125T132911Z-relay networks=mb-dtn-20261125T132911Z-down mb-dtn-20261125T132911Z-up  published={}
+/mb-dtn-20261125T132911Z-earth networks=mb-dtn-20261125T132911Z-down  published={}
++ docker network inspect --format '{{.Name}} internal={{.Internal}}' mb-dtn-20261125T132911Z-up mb-dtn-20261125T132911Z-down
++ tee -a ~/moonbase-dtn-smoke/runs/20261125T132911Z/topology.txt
+mb-dtn-20261125T132911Z-up internal=true
+mb-dtn-20261125T132911Z-down internal=true
++ docker image inspect --format '{{index .RepoTags 0}} {{.Id}}' moonbase-dtn-ion:smoke moonbase-dtn-hdtn:smoke
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T132911Z-hub
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T132911Z-earth
++ printf '%s\n' '{"id":"smoke-001","class":"status","battery_mv":12180,"mode":"survey"}'
+++ sha256sum ~/moonbase-dtn-smoke/runs/20261125T132911Z/sent.json
+++ cut '-d ' -f1
++ digest=114ee1ba632409fcb3daccf67d27c8833874574a6b2be21837df786e76f1e5bb
++ docker cp ~/moonbase-dtn-smoke/runs/20261125T132911Z/sent.json mb-dtn-20261125T132911Z-hub:/run/ion/payload.json
++ docker exec -d -w /run/ion mb-dtn-20261125T132911Z-earth bprecvfile ipn:30.1 1
++ docker exec -d -w /run/ion mb-dtn-20261125T132911Z-hub bprecvfile ipn:10.2 1
++ docker exec -w /run/ion mb-dtn-20261125T132911Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/payload.json
+aStopping bpsendfile.
++ wait_for_file mb-dtn-20261125T132911Z-earth
++ timeout 30s bash -c 'until docker exec "$1" test -s /run/ion/testfile1; do sleep 0.2; done' bash mb-dtn-20261125T132911Z-earth
++ docker exec -w /run/ion mb-dtn-20261125T132911Z-earth python3 /bench/receipt.py smoke-001 114ee1ba632409fcb3daccf67d27c8833874574a6b2be21837df786e76f1e5bb
+Earth committed smoke-001, 71 bytes, SHA-256 114ee1ba632409fcb3daccf67d27c8833874574a6b2be21837df786e76f1e5bb
++ docker cp mb-dtn-20261125T132911Z-earth:/run/ion/testfile1 ~/moonbase-dtn-smoke/runs/20261125T132911Z/earth-received.json
++ docker cp mb-dtn-20261125T132911Z-earth:/run/ion/earth.sqlite3 ~/moonbase-dtn-smoke/runs/20261125T132911Z/earth.sqlite3
++ cmp ~/moonbase-dtn-smoke/runs/20261125T132911Z/sent.json ~/moonbase-dtn-smoke/runs/20261125T132911Z/earth-received.json
++ docker exec -w /run/ion mb-dtn-20261125T132911Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt.json
+aStopping bpsendfile.
++ wait_for_file mb-dtn-20261125T132911Z-hub
++ timeout 30s bash -c 'until docker exec "$1" test -s /run/ion/testfile1; do sleep 0.2; done' bash mb-dtn-20261125T132911Z-hub
++ docker cp mb-dtn-20261125T132911Z-hub:/run/ion/testfile1 ~/moonbase-dtn-smoke/runs/20261125T132911Z/hub-receipt.json
++ python3 - ~/moonbase-dtn-smoke/runs/20261125T132911Z/hub-receipt.json 114ee1ba632409fcb3daccf67d27c8833874574a6b2be21837df786e76f1e5bb
+Hub received application receipt for smoke-001, SHA-256 114ee1ba632409fcb3daccf67d27c8833874574a6b2be21837df786e76f1e5bb
++ cleanup
++ result=0
++ set +e
++ set +x
+Run 20261125T132911Z (2026-11-25T13:29:11Z), exit 0. Evidence: ~/moonbase-dtn-smoke/runs/20261125T132911Z

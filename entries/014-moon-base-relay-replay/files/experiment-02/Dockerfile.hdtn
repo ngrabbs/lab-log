@@ -1,0 +1,13 @@
+FROM ubuntu:24.04
+ARG HDTN_REV=7fbe90cdbe3c8c737efaacb5985f881f95fc7d2a
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    build-essential ca-certificates cmake git libboost-all-dev libssl-dev libzmq3-dev ninja-build python3 \
+    && rm -rf /var/lib/apt/lists/*
+RUN git init -q /src/hdtn && git -C /src/hdtn fetch --depth=1 https://github.com/nasa/HDTN.git "$HDTN_REV" \
+    && git -C /src/hdtn checkout --detach FETCH_HEAD \
+    && test "$(git -C /src/hdtn rev-parse HEAD)" = "$HDTN_REV"
+WORKDIR /src/hdtn
+RUN cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_X86_HARDWARE_ACCELERATION=OFF -DLTP_RNG_USE_RDSEED=OFF \
+    && cmake --build build --parallel 4 --target hdtn-one-process \
+    && test -x build/module/hdtn_one_process/hdtn-one-process

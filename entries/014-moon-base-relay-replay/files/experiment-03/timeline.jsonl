@@ -1,0 +1,23 @@
+{"event": "uplink_closed", "utc": "2026-11-25T14:11:10.958806+00:00", "monotonic_s": 1711493.763802536, "earth_session": ["11423015"]}
+{"event": "hub_injected", "utc": "2026-11-25T14:11:11.043677+00:00", "monotonic_s": 1711493.848680101, "id": "outage-001"}
+{"event": "hub_injected", "utc": "2026-11-25T14:11:11.119101+00:00", "monotonic_s": 1711493.924104273, "id": "outage-002"}
+{"event": "hub_injected", "utc": "2026-11-25T14:11:11.194036+00:00", "monotonic_s": 1711493.999038875, "id": "outage-003"}
+{"event": "outage_verified", "utc": "2026-11-25T14:11:41.074358+00:00", "monotonic_s": 1711523.879361859, "earth_files": 0, "earth_session": ["11423015"]}
+{"event": "uplink_restored", "utc": "2026-11-25T14:11:41.126947+00:00", "monotonic_s": 1711523.931950413, "closed_seconds": 30.16814668686129}
+{"event": "earth_commit", "utc": "2026-11-25T14:11:45.161835+00:00", "monotonic_s": 1711527.966838107, "id": "outage-002", "sha256": "227b251706837b8e72d68af83853769ea7af6dc2b2ef62b4176d7479205330f6", "receipt_suppressed": false}
+{"event": "earth_commit", "utc": "2026-11-25T14:11:45.373023+00:00", "monotonic_s": 1711528.178025431, "id": "outage-003", "sha256": "f7c8b0bbcbcf38eef529f0ab5eefd132ce4729148c9139a93d12b4d6ed417be4", "receipt_suppressed": false}
+{"event": "earth_commit", "utc": "2026-11-25T14:11:45.575989+00:00", "monotonic_s": 1711528.380992168, "id": "outage-001", "sha256": "897ec869a9d84a2407d8de257845ce68898ef9837d929b1f08203c95a502e799", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:11:45.695890+00:00", "monotonic_s": 1711528.500893824, "id": "outage-002", "sha256": "227b251706837b8e72d68af83853769ea7af6dc2b2ef62b4176d7479205330f6"}
+{"event": "hub_receipt", "utc": "2026-11-25T14:11:45.757039+00:00", "monotonic_s": 1711528.562042553, "id": "outage-003", "sha256": "f7c8b0bbcbcf38eef529f0ab5eefd132ce4729148c9139a93d12b4d6ed417be4"}
+{"event": "hub_receipt", "utc": "2026-11-25T14:11:45.815744+00:00", "monotonic_s": 1711528.620747639, "id": "outage-001", "sha256": "897ec869a9d84a2407d8de257845ce68898ef9837d929b1f08203c95a502e799"}
+{"event": "drain", "utc": "2026-11-25T14:11:45.815828+00:00", "monotonic_s": 1711528.6208326, "first_commit_s": 4.0348876940552145, "last_commit_s": 4.449041755171493, "last_receipt_s": 4.688797226175666}
+{"event": "hub_injected", "utc": "2026-11-25T14:11:45.891821+00:00", "monotonic_s": 1711528.696824369, "id": "lost-001"}
+{"event": "earth_commit", "utc": "2026-11-25T14:11:46.050065+00:00", "monotonic_s": 1711528.855068842, "id": "lost-001", "sha256": "cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b", "receipt_suppressed": true}
+{"event": "uplink_closed", "utc": "2026-11-25T14:11:46.260739+00:00", "monotonic_s": 1711529.065741955, "earth_session": ["11423015"]}
+{"event": "application_receipt_timeout", "utc": "2026-11-25T14:11:51.274297+00:00", "monotonic_s": 1711534.079298307, "id": "lost-001"}
+{"event": "hub_injected", "utc": "2026-11-25T14:11:51.343095+00:00", "monotonic_s": 1711534.148097691, "id": "lost-001"}
+{"event": "outage_verified", "utc": "2026-11-25T14:11:56.383022+00:00", "monotonic_s": 1711539.188025288, "earth_files": 4, "earth_session": ["11423015"]}
+{"event": "uplink_restored", "utc": "2026-11-25T14:11:56.438026+00:00", "monotonic_s": 1711539.243028565, "closed_seconds": 10.177285509882495}
+{"event": "earth_duplicate", "utc": "2026-11-25T14:12:01.290062+00:00", "monotonic_s": 1711544.095065699, "id": "lost-001", "sha256": "cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:12:01.411360+00:00", "monotonic_s": 1711544.216363598, "id": "lost-001", "sha256": "cb3f993862aab1e18720a130f85a0abe7d1cb66728c3b5175a4b8e953974339b"}
+{"event": "lost_receipt_verified", "utc": "2026-11-25T14:12:01.439623+00:00", "monotonic_s": 1711544.244625858, "id": "lost-001", "observed_arrivals": 2, "durable_rows": 1, "final_receipt_s": 4.973335032816976, "container_restarts": 0}

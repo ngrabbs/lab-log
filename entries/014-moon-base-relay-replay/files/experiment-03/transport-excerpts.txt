@@ -1,0 +1,15 @@
+Initial run with default keepalive settings
+[ storage  ][ error]: Ignoring Duplicate Message for adding Opportunistic link from ingress connection.. 
+[ hdtn     ][ info ]: TcpclV4BundleSink: destructor waiting on 3 unacked bundles
+ totalBundlesSent 3
+ totalBundlesSentAndAcked 0
+ totalBundlesSent 0
+RuntimeError: Timed out waiting for mb-dtn-20261125T140906Z-hub testfile1
+Hub agent messages stating there was no TCPCL session: 22816
+
+Repeat with 3 s keepalive proposal
+[ hdtn     ][ info ]: TcpclV4BundleSink remote host has requested a smaller keepalive interval of 3 seconds than ours of 15.
+[ hdtn     ][ info ]: TcpclV4BundleSource remote host has requested a smaller keepalive interval of 3 seconds than ours of 17.
+[ storage  ][ info ]: Removing Opportunistic link from ingress connection.. finalDestEid (ipn:10.*) will STOP being released from storage
+[ storage  ][ error]: Ignoring Duplicate Message for adding Opportunistic link from ingress connection.. 
+Hub agent messages stating there was no TCPCL session: 186830

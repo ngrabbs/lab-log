@@ -1,0 +1,35 @@
+{"event": "uplink_closed", "utc": "2026-11-25T14:19:14.027841+00:00", "monotonic_s": 1711976.832837737, "earth_session": ["11447884"]}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:19:14.120909+00:00", "monotonic_s": 1711976.925912113, "id": "gated-001"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:19:14.121040+00:00", "monotonic_s": 1711976.926045025, "contact": false}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:19:14.207420+00:00", "monotonic_s": 1711977.012423303, "id": "gated-002"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:19:14.207525+00:00", "monotonic_s": 1711977.012529996, "contact": false}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:19:14.295224+00:00", "monotonic_s": 1711977.100227223, "id": "gated-003"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:19:14.295324+00:00", "monotonic_s": 1711977.100329405, "contact": false}
+{"event": "durable_queue_verified", "utc": "2026-11-25T14:19:14.383229+00:00", "monotonic_s": 1711977.188231856, "rows": [["gated-001", "queued", 0], ["gated-002", "queued", 0], ["gated-003", "queued", 0]]}
+{"event": "outage_verified", "utc": "2026-11-25T14:19:44.150641+00:00", "monotonic_s": 1712006.955644097, "earth_files": 0, "earth_session": ["11447884"]}
+{"event": "uplink_restored", "utc": "2026-11-25T14:19:44.205332+00:00", "monotonic_s": 1712007.010335186, "closed_seconds": 30.177496509160846}
+{"event": "fresh_hub_session", "utc": "2026-11-25T14:19:48.756943+00:00", "monotonic_s": 1712011.561946504, "count": 2}
+{"event": "hub_injected", "utc": "2026-11-25T14:19:49.020198+00:00", "monotonic_s": 1712011.825201645, "id": "gated-001"}
+{"event": "earth_commit", "utc": "2026-11-25T14:19:49.168297+00:00", "monotonic_s": 1712011.973300319, "id": "gated-001", "sha256": "065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:19:49.280237+00:00", "monotonic_s": 1712012.085240435, "id": "gated-001", "sha256": "065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:19:49.361825+00:00", "monotonic_s": 1712012.166828678, "id": "gated-001"}
+{"event": "hub_injected", "utc": "2026-11-25T14:19:49.638088+00:00", "monotonic_s": 1712012.443091217, "id": "gated-002"}
+{"event": "earth_commit", "utc": "2026-11-25T14:19:49.782309+00:00", "monotonic_s": 1712012.587312876, "id": "gated-002", "sha256": "e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:19:49.905805+00:00", "monotonic_s": 1712012.710809156, "id": "gated-002", "sha256": "e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:19:49.996052+00:00", "monotonic_s": 1712012.801055362, "id": "gated-002"}
+{"event": "hub_injected", "utc": "2026-11-25T14:19:50.280672+00:00", "monotonic_s": 1712013.085674825, "id": "gated-003"}
+{"event": "earth_commit", "utc": "2026-11-25T14:19:50.437920+00:00", "monotonic_s": 1712013.242923972, "id": "gated-003", "sha256": "a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4", "receipt_suppressed": false}
+{"event": "hub_receipt", "utc": "2026-11-25T14:19:50.557907+00:00", "monotonic_s": 1712013.362910095, "id": "gated-003", "sha256": "a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4"}
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T14:19:50.649770+00:00", "monotonic_s": 1712013.454773906, "id": "gated-003"}
+{"event": "gated_drain", "utc": "2026-11-25T14:19:50.706504+00:00", "monotonic_s": 1712013.511506971, "first_commit_s": 4.962965132901445, "last_commit_s": 6.232588785933331, "last_receipt_s": 6.352574908873066, "native_failures": 0}
+{"event": "hub_queue_commit", "utc": "2026-11-25T14:19:50.802977+00:00", "monotonic_s": 1712013.607980424, "id": "gated-lost"}
+{"event": "hub_injected", "utc": "2026-11-25T14:19:51.089924+00:00", "monotonic_s": 1712013.894927269, "id": "gated-lost"}
+{"event": "earth_commit", "utc": "2026-11-25T14:19:51.238905+00:00", "monotonic_s": 1712014.043908373, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181", "receipt_suppressed": true}
+{"event": "uplink_closed", "utc": "2026-11-25T14:19:51.458132+00:00", "monotonic_s": 1712014.26313485, "earth_session": ["11447884"]}
+{"event": "application_retry_queued", "utc": "2026-11-25T14:19:56.562284+00:00", "monotonic_s": 1712019.367287547, "id": "gated-lost"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T14:19:56.562401+00:00", "monotonic_s": 1712019.367406029, "contact": false}
+{"event": "outage_verified", "utc": "2026-11-25T14:20:01.574076+00:00", "monotonic_s": 1712024.379079853, "earth_files": 4, "earth_session": ["11447884"]}
+{"event": "uplink_restored", "utc": "2026-11-25T14:20:01.632024+00:00", "monotonic_s": 1712024.437027314, "closed_seconds": 10.17389150406234}
+{"event": "fresh_hub_session", "utc": "2026-11-25T14:20:02.419688+00:00", "monotonic_s": 1712025.224691097, "count": 3}
+{"event": "hub_injected", "utc": "2026-11-25T14:20:02.686423+00:00", "monotonic_s": 1712025.491425957, "id": "gated-lost"}
+{"event": "earth_duplicate", "utc": "2026-11-25T14:20:02.826696+00:00", "monotonic_s": 1712025.63170005, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181", "receipt_suppressed": false}

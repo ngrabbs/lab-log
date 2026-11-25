@@ -1,0 +1,190 @@
+{
+  "configuration": {
+    "contact_windows_s_rise_usable_close": [
+      [
+        1800,
+        1830,
+        2100
+      ],
+      [
+        3900,
+        3930,
+        4200
+      ]
+    ],
+    "hub_payload_rate_Bps": 10240,
+    "relay_payload_rate_Bps": 102400,
+    "hub_delay_ms": 50.0,
+    "relay_delay_ms": 1250.0,
+    "alert_deadline_ms": 10000,
+    "injected_retry_timeout_s": 8.0,
+    "trace_records": 3153,
+    "trace_jsonl_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59"
+  },
+  "runs": {
+    "fifo": {
+      "offered_records_by_first_close": 1578,
+      "offered_bytes_by_first_close": 2150784,
+      "earth_records_by_first_close": 1578,
+      "earth_bytes_by_first_close": 2150784,
+      "earth_records_by_class": {
+        "alert": 3,
+        "status": 1050,
+        "science": 525
+      },
+      "peak_hub_queue_bytes_first_pass": 1875584,
+      "hub_queue_bytes_at_first_close": 0,
+      "peak_relay_waiting_bytes_first_pass": 0,
+      "status_age_p95_s": 1738.055,
+      "alerts": {
+        "alert-outage": {
+          "latency_s": 1021.31375,
+          "met_deadline": false
+        },
+        "alert-contact-open": {
+          "latency_s": 184.47625,
+          "met_deadline": false
+        },
+        "alert-pass-close": {
+          "latency_s": 1.31375,
+          "met_deadline": true
+        }
+      },
+      "duplicate_arrivals_full_run": 0,
+      "target_events": [
+        {
+          "time_s": 2095.0,
+          "event": "hub_send"
+        },
+        {
+          "time_s": 2095.0625,
+          "event": "relay_arrival"
+        },
+        {
+          "time_s": 2096.31375,
+          "event": "earth_commit"
+        },
+        {
+          "time_s": 2097.61375,
+          "event": "receipt"
+        }
+      ]
+    },
+    "alerts_first": {
+      "offered_records_by_first_close": 1578,
+      "offered_bytes_by_first_close": 2150784,
+      "earth_records_by_first_close": 1578,
+      "earth_bytes_by_first_close": 2150784,
+      "earth_records_by_class": {
+        "alert": 3,
+        "status": 1050,
+        "science": 525
+      },
+      "peak_hub_queue_bytes_first_pass": 1875968,
+      "hub_queue_bytes_at_first_close": 0,
+      "peak_relay_waiting_bytes_first_pass": 0,
+      "status_age_p95_s": 1735.08,
+      "alerts": {
+        "alert-outage": {
+          "latency_s": 931.31375,
+          "met_deadline": false
+        },
+        "alert-contact-open": {
+          "latency_s": 1.32625,
+          "met_deadline": true
+        },
+        "alert-pass-close": {
+          "latency_s": 1.31375,
+          "met_deadline": true
+        }
+      },
+      "duplicate_arrivals_full_run": 0,
+      "target_events": [
+        {
+          "time_s": 2095.0,
+          "event": "hub_send"
+        },
+        {
+          "time_s": 2095.0625,
+          "event": "relay_arrival"
+        },
+        {
+          "time_s": 2096.31375,
+          "event": "earth_commit"
+        },
+        {
+          "time_s": 2097.61375,
+          "event": "receipt"
+        }
+      ]
+    },
+    "lost_receipt": {
+      "offered_records_by_first_close": 1578,
+      "offered_bytes_by_first_close": 2150784,
+      "earth_records_by_first_close": 1578,
+      "earth_bytes_by_first_close": 2150784,
+      "earth_records_by_class": {
+        "alert": 3,
+        "status": 1050,
+        "science": 525
+      },
+      "peak_hub_queue_bytes_first_pass": 1875968,
+      "hub_queue_bytes_at_first_close": 0,
+      "peak_relay_waiting_bytes_first_pass": 0,
+      "status_age_p95_s": 1735.08,
+      "alerts": {
+        "alert-outage": {
+          "latency_s": 931.31375,
+          "met_deadline": false
+        },
+        "alert-contact-open": {
+          "latency_s": 1.32625,
+          "met_deadline": true
+        },
+        "alert-pass-close": {
+          "latency_s": 1.31375,
+          "met_deadline": true
+        }
+      },
+      "duplicate_arrivals_full_run": 1,
+      "target_events": [
+        {
+          "time_s": 2095.0,
+          "event": "hub_send"
+        },
+        {
+          "time_s": 2095.0625,
+          "event": "relay_arrival"
+        },
+        {
+          "time_s": 2096.31375,
+          "event": "earth_commit"
+        },
+        {
+          "time_s": 2096.31375,
+          "event": "receipt_suppressed"
+        },
+        {
+          "time_s": 2103.0,
+          "event": "retry_queued"
+        },
+        {
+          "time_s": 3930.0,
+          "event": "hub_send"
+        },
+        {
+          "time_s": 3930.0625,
+          "event": "relay_arrival"
+        },
+        {
+          "time_s": 3931.31375,
+          "event": "earth_duplicate"
+        },
+        {
+          "time_s": 3932.61375,
+          "event": "receipt"
+        }
+      ]
+    }
+  }
+}

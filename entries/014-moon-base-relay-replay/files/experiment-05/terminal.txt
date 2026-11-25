@@ -1,0 +1,384 @@
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T150833Z-up
+8b997ff3b30ae83b60d53fdb7c7c23882816548fd2e40217b2bbbd074918722d
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T150833Z-down
+5bf6807c67dcb3485a7cc1c80b25fb5b44f138668c18474f945d77f7010a958b
++ docker create --init --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T150833Z-relay --network mb-dtn-20261125T150833Z-up --network-alias relay --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-hdtn:smoke bash /bench/relay-node.sh
+33ef737d50604f25158fb0b83ca3f91ee037cb51305029d58a8b42e922f0f396
++ docker network connect --alias relay mb-dtn-20261125T150833Z-down mb-dtn-20261125T150833Z-relay
++ docker run -d --init -e TCPCL_KEEPALIVE=3 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T150833Z-hub --network mb-dtn-20261125T150833Z-up --network-alias hub --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-ion:session-gate bash /bench/ion-node.sh 10 hub 4556
+7ecc3c3252be615e5f2651e092ea478bf6b2924f1f75c08ec5f19c4b8f05f1c5
++ docker run -d --init -e TCPCL_KEEPALIVE=3 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T150833Z-earth --network mb-dtn-20261125T150833Z-down --network-alias earth --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-ion:smoke bash /bench/ion-node.sh 30 earth 4557
+2f5d677629c623006e8ef115ffd99ae1160aff588f9873d1966e9a0616613e17
++ docker start mb-dtn-20261125T150833Z-relay
+mb-dtn-20261125T150833Z-relay
++ docker inspect --format '{{.Name}} networks={{range $name, $net := .NetworkSettings.Networks}}{{$name}} {{end}} published={{json .HostConfig.PortBindings}}' mb-dtn-20261125T150833Z-hub mb-dtn-20261125T150833Z-relay mb-dtn-20261125T150833Z-earth
++ tee ~/moonbase-dtn-smoke/runs/20261125T150833Z/topology.txt
+/mb-dtn-20261125T150833Z-hub networks=mb-dtn-20261125T150833Z-up  published={}
+/mb-dtn-20261125T150833Z-relay networks=mb-dtn-20261125T150833Z-down mb-dtn-20261125T150833Z-up  published={}
+/mb-dtn-20261125T150833Z-earth networks=mb-dtn-20261125T150833Z-down  published={}
++ docker network inspect --format '{{.Name}} internal={{.Internal}}' mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-down
++ tee -a ~/moonbase-dtn-smoke/runs/20261125T150833Z/topology.txt
+mb-dtn-20261125T150833Z-up internal=true
+mb-dtn-20261125T150833Z-down internal=true
++ docker image inspect --format '{{index .RepoTags 0}} {{.Id}}' moonbase-dtn-ion:session-gate moonbase-dtn-ion:smoke moonbase-dtn-hdtn:smoke
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T150833Z-hub
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T150833Z-earth
++ [[ gated != smoke ]]
++ python3 ~/moonbase-dtn-smoke/gated.py ~/moonbase-dtn-smoke/runs/20261125T150833Z mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-hub mb-dtn-20261125T150833Z-relay mb-dtn-20261125T150833Z-earth
++ docker inspect --format "{{.Name}} {{.State.StartedAt}} {{.RestartCount}}" mb-dtn-20261125T150833Z-hub mb-dtn-20261125T150833Z-relay mb-dtn-20261125T150833Z-earth
++ docker exec -d -w /run/ion mb-dtn-20261125T150833Z-earth bprecvfile ipn:30.1 6
++ docker exec -d -w /run/ion mb-dtn-20261125T150833Z-hub bprecvfile ipn:10.2 5
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "no TCPCL session, failing xfer"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-hub
+{"event": "uplink_closed", "utc": "2026-11-25T15:08:37.432810+00:00", "monotonic_s": 1714940.237806089, "earth_session": ["11572776"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T150833Z-hub
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py enqueue "{\"class\": \"status\", \"id\": \"gated-001\", \"mode\": \"survey\"}"
+{"event": "hub_queue_commit", "utc": "2026-11-25T15:08:37.528286+00:00", "monotonic_s": 1714940.333288791, "id": "gated-001"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T15:08:37.528395+00:00", "monotonic_s": 1714940.333399974, "contact": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py enqueue "{\"class\": \"status\", \"id\": \"gated-002\", \"mode\": \"survey\"}"
+{"event": "hub_queue_commit", "utc": "2026-11-25T15:08:37.610348+00:00", "monotonic_s": 1714940.415350782, "id": "gated-002"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T15:08:37.610458+00:00", "monotonic_s": 1714940.415462615, "contact": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py enqueue "{\"class\": \"status\", \"id\": \"gated-003\", \"mode\": \"survey\"}"
+{"event": "hub_queue_commit", "utc": "2026-11-25T15:08:37.692391+00:00", "monotonic_s": 1714940.497394223, "id": "gated-003"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T15:08:37.692499+00:00", "monotonic_s": 1714940.497503775, "contact": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py status
+{"event": "durable_queue_verified", "utc": "2026-11-25T15:08:37.773164+00:00", "monotonic_s": 1714940.578167045, "rows": [["gated-001", "queued", 0], ["gated-002", "queued", 0], ["gated-003", "queued", 0]]}
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
+{"event": "stale_relay_route_removed", "utc": "2026-11-25T15:08:46.525784+00:00", "monotonic_s": 1714949.330786894}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth cat /proc/net/tcp
+{"event": "outage_verified", "utc": "2026-11-25T15:09:07.536660+00:00", "monotonic_s": 1714970.341663374, "earth_files": 0, "earth_session": ["11572776"]}
++ docker network connect --alias hub mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-hub
+{"event": "uplink_restored", "utc": "2026-11-25T15:09:07.584677+00:00", "monotonic_s": 1714970.389679531, "closed_seconds": 30.151872802060097}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
+{"event": "fresh_hub_session", "utc": "2026-11-25T15:09:11.503166+00:00", "monotonic_s": 1714974.308168571, "count": 2}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py claim
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/queue-gated-001.json
+{"event": "hub_injected", "utc": "2026-11-25T15:09:11.782633+00:00", "monotonic_s": 1714974.587635801, "id": "gated-001"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth python3 /bench/ledger.py testfile1 065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb
+{"event": "earth_commit", "utc": "2026-11-25T15:09:11.944866+00:00", "monotonic_s": 1714974.749869391, "id": "gated-001", "sha256": "065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile1.json
+{"event": "hub_receipt", "utc": "2026-11-25T15:09:12.054136+00:00", "monotonic_s": 1714974.859139412, "id": "gated-001", "sha256": "065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py ack "{\"id\": \"gated-001\", \"sha256\": \"065f2dda9bd2b5a3fec1a4adac1baa08afad19696bbf109d6c7bdefd796962cb\", \"disposition\": \"committed\"}"
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T15:09:12.140465+00:00", "monotonic_s": 1714974.945467869, "id": "gated-001"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py claim
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/queue-gated-002.json
+{"event": "hub_injected", "utc": "2026-11-25T15:09:12.397104+00:00", "monotonic_s": 1714975.202107057, "id": "gated-002"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth python3 /bench/ledger.py testfile2 e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2
+{"event": "earth_commit", "utc": "2026-11-25T15:09:12.548686+00:00", "monotonic_s": 1714975.353689157, "id": "gated-002", "sha256": "e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile2.json
+{"event": "hub_receipt", "utc": "2026-11-25T15:09:12.665356+00:00", "monotonic_s": 1714975.470359115, "id": "gated-002", "sha256": "e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py ack "{\"id\": \"gated-002\", \"sha256\": \"e1f68bf30915100df6712078d61a7199e8514cb9acf6b98ccd9659a105a18ae2\", \"disposition\": \"committed\"}"
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T15:09:12.756334+00:00", "monotonic_s": 1714975.561337216, "id": "gated-002"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py claim
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/queue-gated-003.json
+{"event": "hub_injected", "utc": "2026-11-25T15:09:13.021460+00:00", "monotonic_s": 1714975.826462464, "id": "gated-003"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth python3 /bench/ledger.py testfile3 a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4
+{"event": "earth_commit", "utc": "2026-11-25T15:09:13.181972+00:00", "monotonic_s": 1714975.986975105, "id": "gated-003", "sha256": "a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile3.json
+{"event": "hub_receipt", "utc": "2026-11-25T15:09:13.294077+00:00", "monotonic_s": 1714976.09908073, "id": "gated-003", "sha256": "a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py ack "{\"id\": \"gated-003\", \"sha256\": \"a40f1990e424f4ad5930d9c4c852dc0d2dd1f7630267de7d1d4c6ddcf7a835d4\", \"disposition\": \"committed\"}"
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T15:09:13.391221+00:00", "monotonic_s": 1714976.196223859, "id": "gated-003"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "no TCPCL session, failing xfer"
+{"event": "gated_drain", "utc": "2026-11-25T15:09:13.444514+00:00", "monotonic_s": 1714976.249517365, "first_commit_s": 4.360189859988168, "last_commit_s": 5.597295573912561, "last_receipt_s": 5.709401198895648, "native_failures": 0}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py enqueue "{\"class\": \"status\", \"id\": \"gated-lost\", \"mode\": \"survey\"}"
+{"event": "hub_queue_commit", "utc": "2026-11-25T15:09:13.541329+00:00", "monotonic_s": 1714976.346331977, "id": "gated-lost"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py claim
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/queue-gated-lost.json
+{"event": "hub_injected", "utc": "2026-11-25T15:09:13.796004+00:00", "monotonic_s": 1714976.601006451, "id": "gated-lost"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth python3 /bench/ledger.py testfile4 8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181 --suppress-receipt
+{"event": "earth_commit", "utc": "2026-11-25T15:09:13.943272+00:00", "monotonic_s": 1714976.748275484, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181", "receipt_suppressed": true}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-hub
+{"event": "uplink_closed", "utc": "2026-11-25T15:09:14.164352+00:00", "monotonic_s": 1714976.969354744, "earth_session": ["11572776"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T150833Z-hub
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py retry gated-lost
+{"event": "application_retry_queued", "utc": "2026-11-25T15:09:19.264685+00:00", "monotonic_s": 1714982.069687769, "id": "gated-lost"}
+{"event": "dispatch_blocked", "utc": "2026-11-25T15:09:19.264794+00:00", "monotonic_s": 1714982.069798782, "contact": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py status
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
+{"event": "stale_relay_route_removed", "utc": "2026-11-25T15:09:29.429020+00:00", "monotonic_s": 1714992.234022924}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth cat /proc/net/tcp
+{"event": "outage_verified", "utc": "2026-11-25T15:09:29.547345+00:00", "monotonic_s": 1714992.352347778, "earth_files": 4, "earth_session": ["11572776"]}
++ docker network connect --alias hub mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-hub
+{"event": "uplink_restored", "utc": "2026-11-25T15:09:29.594583+00:00", "monotonic_s": 1714992.399586368, "closed_seconds": 15.430230473866686}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
+{"event": "fresh_hub_session", "utc": "2026-11-25T15:09:34.484174+00:00", "monotonic_s": 1714997.289176756, "count": 3}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py claim
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/queue-gated-lost.json
+{"event": "hub_injected", "utc": "2026-11-25T15:09:34.745357+00:00", "monotonic_s": 1714997.550359605, "id": "gated-lost"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth python3 /bench/ledger.py testfile5 8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181
+{"event": "earth_duplicate", "utc": "2026-11-25T15:09:34.879855+00:00", "monotonic_s": 1714997.684858023, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile5.json
+{"event": "hub_receipt", "utc": "2026-11-25T15:09:34.997570+00:00", "monotonic_s": 1714997.802573724, "id": "gated-lost", "sha256": "8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py ack "{\"id\": \"gated-lost\", \"sha256\": \"8af1900528242a2d8dcf31f684bcf082ee8e3bf854e78aaf797b447412efb181\", \"disposition\": \"committed\"}"
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T15:09:35.093745+00:00", "monotonic_s": 1714997.898748351, "id": "gated-lost"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "no TCPCL session, failing xfer"
+{"event": "gated_lost_receipt", "utc": "2026-11-25T15:09:35.154110+00:00", "monotonic_s": 1714997.959113166, "id": "gated-lost", "final_receipt_s": 5.402987356064841, "native_failures": 0, "attempts": 2}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py enqueue "{\"class\": \"status\", \"id\": \"gated-inflight\", \"mode\": \"survey\"}"
+{"event": "hub_queue_commit", "utc": "2026-11-25T15:09:35.250639+00:00", "monotonic_s": 1714998.055642121, "id": "gated-inflight"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TX xfer "
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T150833Z-hub
++ sudo -n nsenter -t 61901 -n tc qdisc add dev eth0 root netem delay 2200ms
+{"event": "hub_egress_delayed", "utc": "2026-11-25T15:09:35.338370+00:00", "monotonic_s": 1714998.143372529, "milliseconds": 2200}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py claim
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bpsendfile ipn:10.1 ipn:30.1 /run/ion/queue-gated-inflight.json
+{"event": "hub_injected", "utc": "2026-11-25T15:09:35.606385+00:00", "monotonic_s": 1714998.411388612, "id": "gated-inflight"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TX xfer "
+{"event": "native_transfer_in_progress", "utc": "2026-11-25T15:09:35.668290+00:00", "monotonic_s": 1714998.473292911, "id": "gated-inflight"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-hub
+{"event": "uplink_closed", "utc": "2026-11-25T15:09:35.885635+00:00", "monotonic_s": 1714998.690638607, "earth_session": ["11572776"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T150833Z-hub
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py status
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
++ docker logs mb-dtn-20261125T150833Z-relay
+{"event": "stale_relay_route_removed", "utc": "2026-11-25T15:09:52.457534+00:00", "monotonic_s": 1715015.262536948}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth cat /proc/net/tcp
+{"event": "outage_verified", "utc": "2026-11-25T15:09:52.580577+00:00", "monotonic_s": 1715015.385580768, "earth_files": 5, "earth_session": ["11572776"]}
++ docker network connect --alias hub mb-dtn-20261125T150833Z-up mb-dtn-20261125T150833Z-hub
+{"event": "uplink_restored", "utc": "2026-11-25T15:09:52.638848+00:00", "monotonic_s": 1715015.443851426, "closed_seconds": 16.753212029114366}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub cat /proc/net/tcp
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
+{"event": "fresh_hub_session", "utc": "2026-11-25T15:09:55.319447+00:00", "monotonic_s": 1715018.124449736, "count": 4}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth python3 /bench/ledger.py testfile6 43757e5a782942d5bb3b8934010c87b6416092c2c5ab3f241dafb8914ca00d95
+{"event": "earth_commit", "utc": "2026-11-25T15:09:55.477517+00:00", "monotonic_s": 1715018.282519662, "id": "gated-inflight", "sha256": "43757e5a782942d5bb3b8934010c87b6416092c2c5ab3f241dafb8914ca00d95", "receipt_suppressed": false}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-earth bpsendfile ipn:30.2 ipn:10.2 /run/ion/receipt-testfile6.json
+{"event": "hub_receipt", "utc": "2026-11-25T15:09:55.591069+00:00", "monotonic_s": 1715018.396071859, "id": "gated-inflight", "sha256": "43757e5a782942d5bb3b8934010c87b6416092c2c5ab3f241dafb8914ca00d95"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py ack "{\"id\": \"gated-inflight\", \"sha256\": \"43757e5a782942d5bb3b8934010c87b6416092c2c5ab3f241dafb8914ca00d95\", \"disposition\": \"committed\"}"
+{"event": "hub_queue_confirmed", "utc": "2026-11-25T15:09:55.676991+00:00", "monotonic_s": 1715018.481993357, "id": "gated-inflight"}
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub python3 /bench/hub-queue.py status
++ docker inspect --format "{{.Name}} {{.State.StartedAt}} {{.RestartCount}}" mb-dtn-20261125T150833Z-hub mb-dtn-20261125T150833Z-relay mb-dtn-20261125T150833Z-earth
++ docker exec -w /run/ion mb-dtn-20261125T150833Z-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "no TCPCL session, failing xfer"
+{"event": "inflight_recovered", "utc": "2026-11-25T15:09:55.822045+00:00", "monotonic_s": 1715018.627048371, "id": "gated-inflight", "native_failures": 0, "final_receipt_s": 2.9522204329259694, "hub_queue": [["gated-001", "acked", 1], ["gated-002", "acked", 1], ["gated-003", "acked", 1], ["gated-lost", "acked", 2], ["gated-inflight", "acked", 1]]}
++ docker cp mb-dtn-20261125T150833Z-earth:/run/ion/earth.sqlite3 ~/moonbase-dtn-smoke/runs/20261125T150833Z/earth.sqlite3
++ docker cp mb-dtn-20261125T150833Z-hub:/run/ion/hub.sqlite3 ~/moonbase-dtn-smoke/runs/20261125T150833Z/hub.sqlite3
++ exit
++ cleanup
++ result=0
++ set +e
++ set +x
+Run 20261125T150833Z (2026-11-25T15:08:33Z), exit 0. Evidence: ~/moonbase-dtn-smoke/runs/20261125T150833Z

@@ -1,0 +1,86 @@
+[
+  {
+    "relay_path": "stock",
+    "relay_forward_paths": {
+      "relay_tx": {
+        "ingress-session": 136,
+        "configured-outduct": 22
+      },
+      "relay_receipt_tx": {
+        "configured-outduct": 20,
+        "ingress-session": 114
+      }
+    },
+    "window": 48,
+    "peak_outstanding": 48,
+    "loaded_seconds": 90,
+    "loaded_earth_records": 158,
+    "loaded_payload_kib_s": 2.35,
+    "loaded_submissions": 182,
+    "loaded_receipts": 134,
+    "oldest_unconfirmed_s": 30.748911118134856,
+    "fully_matched_credits": 135,
+    "cutoff_credits": 135,
+    "single_record_s": 2.623193287057802,
+    "loaded_median_receipt_s": 26.21335219987668,
+    "single_stages_s": {
+      "relay_rx": 0.052796140127725266,
+      "relay_tx": 1.2506910000000033,
+      "earth_commit": 0.014151953019862162,
+      "earth_receipt_submitted": 0.00018966500647366047,
+      "relay_receipt_rx": 1.252373381973662,
+      "relay_receipt_tx": 0.05012599999999878,
+      "hub_receipt": 0.0028651469300768895
+    },
+    "loaded_median_stages_s": {
+      "relay_rx": 0.052252940094284384,
+      "relay_tx": 14.353395999999996,
+      "earth_commit": 0.013084962364075636,
+      "earth_receipt_submitted": 0.0001234624069184065,
+      "relay_receipt_rx": 1.2521075334622758,
+      "relay_receipt_tx": 9.638382999999997,
+      "hub_receipt": 0.010468097958167277
+    }
+  },
+  {
+    "relay_path": "configured",
+    "relay_forward_paths": {
+      "relay_tx": {
+        "configured-outduct": 557
+      },
+      "relay_receipt_tx": {
+        "configured-outduct": 549
+      }
+    },
+    "window": 48,
+    "peak_outstanding": 24,
+    "loaded_seconds": 90,
+    "loaded_earth_records": 557,
+    "loaded_payload_kib_s": 8.233333333333333,
+    "loaded_submissions": 568,
+    "loaded_receipts": 549,
+    "oldest_unconfirmed_s": 2.6041596201248467,
+    "fully_matched_credits": 550,
+    "cutoff_credits": 550,
+    "single_record_s": 2.628371032886207,
+    "loaded_median_receipt_s": 2.793427766067907,
+    "single_stages_s": {
+      "relay_rx": 0.05278827808742648,
+      "relay_tx": 1.2506139999999988,
+      "earth_commit": 0.013566250000756952,
+      "earth_receipt_submitted": 0.00016485387459397316,
+      "relay_receipt_rx": 1.2528478961246492,
+      "relay_receipt_tx": 0.05047400000000124,
+      "hub_receipt": 0.007915754798780483
+    },
+    "loaded_median_stages_s": {
+      "relay_rx": 0.05238138006247084,
+      "relay_tx": 1.3580050000000057,
+      "earth_commit": 0.008710549908357734,
+      "earth_receipt_submitted": 0.00012115295976400375,
+      "relay_receipt_rx": 1.2522069612095663,
+      "relay_receipt_tx": 0.09504899999998884,
+      "hub_receipt": 0.00706902195246073
+    }
+  }
+]

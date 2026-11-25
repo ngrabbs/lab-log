@@ -1,0 +1,5 @@
+/mb-dtn-20261125T132911Z-hub networks=mb-dtn-20261125T132911Z-up  published={}
+/mb-dtn-20261125T132911Z-relay networks=mb-dtn-20261125T132911Z-down mb-dtn-20261125T132911Z-up  published={}
+/mb-dtn-20261125T132911Z-earth networks=mb-dtn-20261125T132911Z-down  published={}
+mb-dtn-20261125T132911Z-up internal=true
+mb-dtn-20261125T132911Z-down internal=true

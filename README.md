@@ -14,6 +14,7 @@ Newest entries first. Ongoing investigations are updated on their own page.
 
 | No. | Entry | Description |
 | --- | --- | --- |
+| 014 | [Moon Base relay contact replay](entries/014-moon-base-relay-replay/README.md) | Python and live BPv7 contact replay. At 5 KiB/s the three-policy LilyGO replay delivered 900 FIFO, 1,042 alerts-first, and 898 alerts-then-FIFO records by cutoff. In progress. |
 | 013 | [CaribouLite conducted S-band QPSK science downlink](entries/013-cariboulite-sband-qpsk/README.md) | 2250 MHz QPSK goodput and loss at 250 and 500 ksym/s. The 2 MS/s profile delivered 2.66 Mbps of payload with zero observed packet loss over 10,240 frames. In progress. |
 | 012 | [Timing the EMBER fire detector on the Raspberry Pi 4](entries/012-pi-fire-benchmark/README.md) | Per-triplet results and runtimes for EGSE, phase fallback, and Jacob’s JPEG methods. In progress. |
 | 011 | [EMBER transceiver power consumption and RF output](entries/011-transceiver-power/README.md) | Planned PPK2 current/packet-energy measurements and conducted RF output checks. No measurements yet. In progress. |

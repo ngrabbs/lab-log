@@ -1,0 +1,4 @@
+fifo: reconciled 510 ledger rows, 507 at cutoff, 486 receipts at cutoff, peak outstanding 48
+  Window full for 202.2 s of 270 s. Median submission-to-receipt 24.00 s.
+alerts-first: reconciled 482 ledger rows, 469 at cutoff, 450 receipts at cutoff, peak outstanding 48
+  Window full for 215.8 s of 270 s. Median submission-to-receipt 27.02 s.

@@ -1,0 +1,5 @@
+/mb-dtn-20261125T165743Z-fifo-w16-configured-hub networks=mb-dtn-20261125T165743Z-fifo-w16-configured-up  published={}
+/mb-dtn-20261125T165743Z-fifo-w16-configured-relay networks=mb-dtn-20261125T165743Z-fifo-w16-configured-down mb-dtn-20261125T165743Z-fifo-w16-configured-up  published={}
+/mb-dtn-20261125T165743Z-fifo-w16-configured-earth networks=mb-dtn-20261125T165743Z-fifo-w16-configured-down  published={}
+mb-dtn-20261125T165743Z-fifo-w16-configured-up internal=true
+mb-dtn-20261125T165743Z-fifo-w16-configured-down internal=true

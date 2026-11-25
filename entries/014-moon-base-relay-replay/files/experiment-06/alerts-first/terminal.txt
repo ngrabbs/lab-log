@@ -1,0 +1,167 @@
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T152332Z-alerts-first-up
+bb0f503f32232562eaa1f01618e5bb966bc638cc5a7d8cc6a25409459d163c7a
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T152332Z-alerts-first-down
+b7e486569a8a8cb1e391d84479d34d2aea1a10ce069aa1dabe4a22188e55825e
++ docker create --init --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T152332Z-alerts-first-relay --network mb-dtn-20261125T152332Z-alerts-first-up --network-alias relay --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-hdtn:smoke bash /bench/relay-node.sh
+9905645a4ffbf5d2d8c1349aed73ae21813bd810c4c32d04b0b49b64b91635e5
++ docker network connect --alias relay mb-dtn-20261125T152332Z-alerts-first-down mb-dtn-20261125T152332Z-alerts-first-relay
++ docker run -d --init -e TCPCL_KEEPALIVE=5 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T152332Z-alerts-first-hub --network mb-dtn-20261125T152332Z-alerts-first-up --network-alias hub --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly --mount type=bind,src=~/moonbase-dtn-smoke/runs/20261125T152332Z-alerts-first/hub,dst=/run/ion moonbase-dtn-ion:session-gate bash /bench/ion-node.sh 10 hub 4556
+eeede3c481b25b53a8e113b5d0dc9f9a674024ed15bf97d9af8b3c16b9e93a6e
++ docker run -d --init -e TCPCL_KEEPALIVE=5 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T152332Z-alerts-first-earth --network mb-dtn-20261125T152332Z-alerts-first-down --network-alias earth --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly --mount type=bind,src=~/moonbase-dtn-smoke/runs/20261125T152332Z-alerts-first/earth,dst=/run/ion moonbase-dtn-ion:smoke bash /bench/ion-node.sh 30 earth 4557
+c38311a8aac1f6e5e2cad07a7a518b4b8b5c8ca1f8ca17f9faace70a18f04e24
++ docker start mb-dtn-20261125T152332Z-alerts-first-relay
+mb-dtn-20261125T152332Z-alerts-first-relay
++ docker inspect --format '{{.Name}} networks={{range $name, $net := .NetworkSettings.Networks}}{{$name}} {{end}} published={{json .HostConfig.PortBindings}}' mb-dtn-20261125T152332Z-alerts-first-hub mb-dtn-20261125T152332Z-alerts-first-relay mb-dtn-20261125T152332Z-alerts-first-earth
++ tee ~/moonbase-dtn-smoke/runs/20261125T152332Z-alerts-first/topology.txt
+/mb-dtn-20261125T152332Z-alerts-first-hub networks=mb-dtn-20261125T152332Z-alerts-first-up  published={}
+/mb-dtn-20261125T152332Z-alerts-first-relay networks=mb-dtn-20261125T152332Z-alerts-first-down mb-dtn-20261125T152332Z-alerts-first-up  published={}
+/mb-dtn-20261125T152332Z-alerts-first-earth networks=mb-dtn-20261125T152332Z-alerts-first-down  published={}
++ docker network inspect --format '{{.Name}} internal={{.Internal}}' mb-dtn-20261125T152332Z-alerts-first-up mb-dtn-20261125T152332Z-alerts-first-down
++ tee -a ~/moonbase-dtn-smoke/runs/20261125T152332Z-alerts-first/topology.txt
+mb-dtn-20261125T152332Z-alerts-first-up internal=true
+mb-dtn-20261125T152332Z-alerts-first-down internal=true
++ docker image inspect --format '{{index .RepoTags 0}} {{.Id}}' moonbase-dtn-ion:session-gate moonbase-dtn-ion:smoke moonbase-dtn-hdtn:smoke
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T152332Z-alerts-first-hub
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T152332Z-alerts-first-earth
++ [[ trace != smoke ]]
++ python3 ~/moonbase-dtn-smoke/trace.py ~/moonbase-dtn-smoke/runs/20261125T152332Z-alerts-first mb-dtn-20261125T152332Z-alerts-first-up mb-dtn-20261125T152332Z-alerts-first-hub mb-dtn-20261125T152332Z-alerts-first-relay mb-dtn-20261125T152332Z-alerts-first-earth
++ docker exec -d -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bprecvfile ipn:10.2
++ docker exec -d -w /run/ion mb-dtn-20261125T152332Z-alerts-first-earth bprecvfile ipn:30.1
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T152332Z-alerts-first-relay
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T152332Z-alerts-first-relay
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T152332Z-alerts-first-relay
++ sudo -n nsenter -t 85994 -n tc qdisc replace dev eth0 root netem delay 50ms
+{"event": "link_delay", "utc": "2026-11-25T15:23:36.141027+00:00", "monotonic_s": 1715838.946023157, "role": "relay", "interface": "eth0", "milliseconds": 50}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T152332Z-alerts-first-relay
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T152332Z-alerts-first-relay
++ sudo -n nsenter -t 85994 -n tc qdisc replace dev eth1 root netem delay 1250ms
+{"event": "link_delay", "utc": "2026-11-25T15:23:36.190604+00:00", "monotonic_s": 1715838.995607048, "role": "relay", "interface": "eth1", "milliseconds": 1250}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T152332Z-alerts-first-earth
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T152332Z-alerts-first-earth
++ sudo -n nsenter -t 85830 -n tc qdisc replace dev eth0 root netem delay 1250ms
+{"event": "link_delay", "utc": "2026-11-25T15:23:36.238538+00:00", "monotonic_s": 1715839.043541134, "role": "earth", "interface": "eth0", "milliseconds": 1250}
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker logs mb-dtn-20261125T152332Z-alerts-first-relay
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T152332Z-alerts-first-up mb-dtn-20261125T152332Z-alerts-first-hub
+{"event": "uplink_closed", "utc": "2026-11-25T15:23:36.450245+00:00", "monotonic_s": 1715839.255248532, "earth_session": ["11637611"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T152332Z-alerts-first-hub
+{"event": "trace_started", "utc": "2026-11-25T15:23:36.463810+00:00", "monotonic_s": 1715839.268813321, "policy": "alerts-first", "trace_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "planned_records": 1578, "rise_s": 1800, "acquisition_complete_s": 1830, "cutoff_s": 2100}
+{"event": "trace_progress", "utc": "2026-11-25T15:24:36.519038+00:00", "monotonic_s": 1715899.324041031, "elapsed_s": 60.053486451972276, "received": 0, "queue_counts": {"queued": 47}}
+{"event": "trace_progress", "utc": "2026-11-25T15:25:36.489197+00:00", "monotonic_s": 1715959.294199952, "elapsed_s": 120.02577850501984, "received": 0, "queue_counts": {"queued": 92}}
+{"event": "trace_progress", "utc": "2026-11-25T15:26:36.500379+00:00", "monotonic_s": 1716019.305382212, "elapsed_s": 180.03813545801677, "received": 0, "queue_counts": {"queued": 137}}
+{"event": "trace_progress", "utc": "2026-11-25T15:27:36.509729+00:00", "monotonic_s": 1716079.314731991, "elapsed_s": 240.04622645908967, "received": 0, "queue_counts": {"queued": 182}}
+{"event": "trace_progress", "utc": "2026-11-25T15:28:36.482964+00:00", "monotonic_s": 1716139.287967134, "elapsed_s": 300.0208644210361, "received": 0, "queue_counts": {"queued": 227}}
+{"event": "trace_progress", "utc": "2026-11-25T15:29:36.462499+00:00", "monotonic_s": 1716199.267502392, "elapsed_s": 360.0006307021249, "received": 0, "queue_counts": {"queued": 272}}
+{"event": "trace_progress", "utc": "2026-11-25T15:30:36.507951+00:00", "monotonic_s": 1716259.312954624, "elapsed_s": 420.04562085401267, "received": 0, "queue_counts": {"queued": 317}}
+{"event": "trace_progress", "utc": "2026-11-25T15:31:36.485774+00:00", "monotonic_s": 1716319.290777009, "elapsed_s": 480.02324818400666, "received": 0, "queue_counts": {"queued": 362}}
+{"event": "trace_progress", "utc": "2026-11-25T15:32:36.467091+00:00", "monotonic_s": 1716379.272094071, "elapsed_s": 540.0048597720452, "received": 0, "queue_counts": {"queued": 407}}
+{"event": "trace_progress", "utc": "2026-11-25T15:33:36.528550+00:00", "monotonic_s": 1716439.33355326, "elapsed_s": 600.0663572300691, "received": 0, "queue_counts": {"queued": 452}}
+{"event": "trace_progress", "utc": "2026-11-25T15:34:36.483828+00:00", "monotonic_s": 1716499.288831086, "elapsed_s": 660.0188426950481, "received": 0, "queue_counts": {"queued": 497}}
+{"event": "trace_progress", "utc": "2026-11-25T15:35:36.478359+00:00", "monotonic_s": 1716559.283362769, "elapsed_s": 720.0162062700838, "received": 0, "queue_counts": {"queued": 542}}
+{"event": "trace_progress", "utc": "2026-11-25T15:36:36.468056+00:00", "monotonic_s": 1716619.273059566, "elapsed_s": 780.0053934550378, "received": 0, "queue_counts": {"queued": 587}}
+{"event": "trace_progress", "utc": "2026-11-25T15:37:36.503701+00:00", "monotonic_s": 1716679.308704229, "elapsed_s": 840.0391898071393, "received": 0, "queue_counts": {"queued": 632}}
+{"event": "trace_progress", "utc": "2026-11-25T15:38:36.486163+00:00", "monotonic_s": 1716739.291166495, "elapsed_s": 900.02243979997, "received": 0, "queue_counts": {"queued": 678}}
+{"event": "trace_progress", "utc": "2026-11-25T15:39:36.536182+00:00", "monotonic_s": 1716799.34118478, "elapsed_s": 960.0719735650346, "received": 0, "queue_counts": {"queued": 723}}
+{"event": "trace_progress", "utc": "2026-11-25T15:40:36.489325+00:00", "monotonic_s": 1716859.294327785, "elapsed_s": 1020.026556211058, "received": 0, "queue_counts": {"queued": 768}}
+{"event": "trace_progress", "utc": "2026-11-25T15:41:36.532201+00:00", "monotonic_s": 1716919.337204268, "elapsed_s": 1080.0699872539844, "received": 0, "queue_counts": {"queued": 813}}
+{"event": "trace_progress", "utc": "2026-11-25T15:42:36.540973+00:00", "monotonic_s": 1716979.345976617, "elapsed_s": 1140.0775332271587, "received": 0, "queue_counts": {"queued": 858}}
+{"event": "trace_progress", "utc": "2026-11-25T15:43:36.528759+00:00", "monotonic_s": 1717039.333762788, "elapsed_s": 1200.0737783119548, "received": 0, "queue_counts": {"queued": 903}}
+{"event": "trace_progress", "utc": "2026-11-25T15:44:36.496185+00:00", "monotonic_s": 1717099.30118876, "elapsed_s": 1260.030571723124, "received": 0, "queue_counts": {"queued": 948}}
+{"event": "trace_progress", "utc": "2026-11-25T15:45:36.510958+00:00", "monotonic_s": 1717159.315961005, "elapsed_s": 1320.046519223135, "received": 0, "queue_counts": {"queued": 993}}
+{"event": "trace_progress", "utc": "2026-11-25T15:46:36.473321+00:00", "monotonic_s": 1717219.278324513, "elapsed_s": 1380.0101803990547, "received": 0, "queue_counts": {"queued": 1038}}
+{"event": "trace_progress", "utc": "2026-11-25T15:47:36.538982+00:00", "monotonic_s": 1717279.343985282, "elapsed_s": 1440.0756120940205, "received": 0, "queue_counts": {"queued": 1083}}
+{"event": "trace_progress", "utc": "2026-11-25T15:48:36.510736+00:00", "monotonic_s": 1717339.315739119, "elapsed_s": 1500.043428034056, "received": 0, "queue_counts": {"queued": 1128}}
+{"event": "trace_progress", "utc": "2026-11-25T15:49:36.474047+00:00", "monotonic_s": 1717399.279050911, "elapsed_s": 1560.0103641131427, "received": 0, "queue_counts": {"queued": 1173}}
+{"event": "trace_progress", "utc": "2026-11-25T15:50:36.527813+00:00", "monotonic_s": 1717459.332816634, "elapsed_s": 1620.0635387960356, "received": 0, "queue_counts": {"queued": 1218}}
+{"event": "trace_progress", "utc": "2026-11-25T15:51:36.487906+00:00", "monotonic_s": 1717519.292909136, "elapsed_s": 1680.0243110610172, "received": 0, "queue_counts": {"queued": 1263}}
+{"event": "trace_progress", "utc": "2026-11-25T15:52:36.538074+00:00", "monotonic_s": 1717579.34307678, "elapsed_s": 1740.0744435491506, "received": 0, "queue_counts": {"queued": 1308}}
+{"event": "geometric_rise", "utc": "2026-11-25T15:53:36.504176+00:00", "monotonic_s": 1717639.309179184, "elapsed_s": 1800.0417361860164}
+{"event": "trace_progress", "utc": "2026-11-25T15:53:36.505484+00:00", "monotonic_s": 1717639.310487867, "elapsed_s": 1800.0417361860164, "received": 0, "queue_counts": {"queued": 1353}}
++ docker logs mb-dtn-20261125T152332Z-alerts-first-relay
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-earth bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-earth cat /proc/net/tcp
+{"event": "outage_verified", "utc": "2026-11-25T15:54:06.669328+00:00", "monotonic_s": 1717669.474331129, "earth_files": 0, "earth_session": ["11637611"]}
++ docker network connect --alias hub mb-dtn-20261125T152332Z-alerts-first-up mb-dtn-20261125T152332Z-alerts-first-hub
+{"event": "uplink_restored", "utc": "2026-11-25T15:54:06.740759+00:00", "monotonic_s": 1717669.545762641, "closed_seconds": 1830.2905132591259}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T152332Z-alerts-first-hub
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T152332Z-alerts-first-hub
++ sudo -n nsenter -t 85646 -n tc qdisc replace dev eth0 root netem delay 50ms
+{"event": "link_delay", "utc": "2026-11-25T15:54:06.789359+00:00", "monotonic_s": 1717669.594361684, "role": "hub", "interface": "eth0", "milliseconds": 50}
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub cat /proc/net/tcp
+{"event": "fresh_hub_session", "utc": "2026-11-25T15:54:09.614835+00:00", "monotonic_s": 1717672.419837813, "elapsed_s": 1833.1645859810524}
+{"event": "trace_progress", "utc": "2026-11-25T15:54:36.479094+00:00", "monotonic_s": 1717699.284096922, "elapsed_s": 1860.000242290087, "received": 62, "queue_counts": {"acked": 39, "inflight": 48, "queued": 1312}}
+{"event": "trace_progress", "utc": "2026-11-25T15:55:36.468808+00:00", "monotonic_s": 1717759.273811737, "elapsed_s": 1920.0032664490864, "received": 159, "queue_counts": {"acked": 136, "inflight": 48, "queued": 1260}}
+{"event": "trace_progress", "utc": "2026-11-25T15:56:36.461189+00:00", "monotonic_s": 1717819.266192468, "elapsed_s": 1980.005900543183, "received": 255, "queue_counts": {"acked": 233, "inflight": 48, "queued": 1208}}
+{"event": "trace_progress", "utc": "2026-11-25T15:57:36.466268+00:00", "monotonic_s": 1717879.271271622, "elapsed_s": 2040.0007722009905, "received": 344, "queue_counts": {"acked": 321, "inflight": 48, "queued": 1165}}
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker logs mb-dtn-20261125T152332Z-alerts-first-relay
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T152332Z-alerts-first-up mb-dtn-20261125T152332Z-alerts-first-hub
+{"event": "uplink_closed", "utc": "2026-11-25T15:58:36.657260+00:00", "monotonic_s": 1717939.462263022, "earth_session": ["11637611"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T152332Z-alerts-first-hub
+{"event": "trace_cutoff", "utc": "2026-11-25T15:58:36.669427+00:00", "monotonic_s": 1717939.474430555, "elapsed_s": 2100.002561395988}
+{"event": "trace_progress", "utc": "2026-11-25T15:58:36.671072+00:00", "monotonic_s": 1717939.476076274, "elapsed_s": 2100.002561395988, "received": 469, "queue_counts": {"acked": 450, "inflight": 48, "queued": 1080}}
++ docker exec -w /run/ion mb-dtn-20261125T152332Z-alerts-first-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "no TCPCL session, failing xfer"
+{"event": "trace_summary", "utc": "2026-11-25T15:58:41.517537+00:00", "monotonic_s": 1717944.322540927, "policy": "alerts-first", "rehearsal": false, "trace_jsonl_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "cutoff_s": 2100, "usable_s": 270, "first_tcpcl_session_s": 1833.1645859810524, "outstanding_limit": 48, "pacing_bytes_per_s": 10240, "one_way_hop_delay_ms": [50, 1250], "offered_records": 1578, "earth_records": 469, "earth_records_by_class": {"status": 351, "science": 116, "alert": 2}, "earth_payload_bytes": 536320, "mean_payload_goodput_kib_s": 1.9398148148148149, "earth_undelivered_bytes": 1614464, "hub_unconfirmed_bytes": 1636992, "hub_receipts": 450, "alerts": {"alert-outage": {"latency_s": 934.4857944711111, "deadline_met": false}, "alert-contact-open": {"latency_s": 4.535910776164428, "deadline_met": true}, "alert-pass-close": {"latency_s": null, "deadline_met": false}}, "duplicate_earth_arrivals": 0, "post_cutoff_earth_records": 13, "no_session_transfer_failures": 0}
++ exit
++ cleanup
++ result=0
++ set +e
++ set +x
+Run 20261125T152332Z-alerts-first (2026-11-25T15:23:32Z), exit 0. Evidence: ~/moonbase-dtn-smoke/runs/20261125T152332Z-alerts-first

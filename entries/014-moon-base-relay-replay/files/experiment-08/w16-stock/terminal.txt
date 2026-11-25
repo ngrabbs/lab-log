@@ -1,0 +1,175 @@
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T165743Z-fifo-w16-stock-up
+2f97abdee5300f455ddfd0208c9e71a980120a33a0020dd060a1a12af2d35661
++ docker network create --internal --label experiment=moonbase-dtn-smoke mb-dtn-20261125T165743Z-fifo-w16-stock-down
+de6888a8e74e0496c255b977c8119dbc60c645b64cb63626f83bf27cf8b461b9
++ docker create --init --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T165743Z-fifo-w16-stock-relay --network mb-dtn-20261125T165743Z-fifo-w16-stock-up --network-alias relay --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly moonbase-dtn-hdtn:smoke bash /bench/relay-node.sh
+d5c46a8bf5b61897e54c876973e8a515e4b11118d85ff2b662a8a75d91954342
++ docker network connect --alias relay mb-dtn-20261125T165743Z-fifo-w16-stock-down mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker run -d --init -e TCPCL_KEEPALIVE=5 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T165743Z-fifo-w16-stock-hub --network mb-dtn-20261125T165743Z-fifo-w16-stock-up --network-alias hub --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly --mount type=bind,src=~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/hub,dst=/run/ion moonbase-dtn-ion:session-gate bash /bench/ion-node.sh 10 hub 4556
+15a55a562e6bd2b19e779f584d3826452b7cadd3637ef3a1d08a40b4b59e7667
++ docker run -d --init -e TCPCL_KEEPALIVE=5 --label experiment=moonbase-dtn-smoke --name mb-dtn-20261125T165743Z-fifo-w16-stock-earth --network mb-dtn-20261125T165743Z-fifo-w16-stock-down --network-alias earth --mount type=bind,src=~/moonbase-dtn-smoke,dst=/bench,readonly --mount type=bind,src=~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/earth,dst=/run/ion moonbase-dtn-ion:smoke bash /bench/ion-node.sh 30 earth 4557
+c3d70629e3fc69b03dccce77d054a764ecc162b2aa2492c547234d500de5090b
++ docker start mb-dtn-20261125T165743Z-fifo-w16-stock-relay
+mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker inspect --format '{{.Name}} networks={{range $name, $net := .NetworkSettings.Networks}}{{$name}} {{end}} published={{json .HostConfig.PortBindings}}' mb-dtn-20261125T165743Z-fifo-w16-stock-hub mb-dtn-20261125T165743Z-fifo-w16-stock-relay mb-dtn-20261125T165743Z-fifo-w16-stock-earth
++ tee ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/topology.txt
+/mb-dtn-20261125T165743Z-fifo-w16-stock-hub networks=mb-dtn-20261125T165743Z-fifo-w16-stock-up  published={}
+/mb-dtn-20261125T165743Z-fifo-w16-stock-relay networks=mb-dtn-20261125T165743Z-fifo-w16-stock-down mb-dtn-20261125T165743Z-fifo-w16-stock-up  published={}
+/mb-dtn-20261125T165743Z-fifo-w16-stock-earth networks=mb-dtn-20261125T165743Z-fifo-w16-stock-down  published={}
++ docker network inspect --format '{{.Name}} internal={{.Internal}}' mb-dtn-20261125T165743Z-fifo-w16-stock-up mb-dtn-20261125T165743Z-fifo-w16-stock-down
++ tee -a ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/topology.txt
+mb-dtn-20261125T165743Z-fifo-w16-stock-up internal=true
+mb-dtn-20261125T165743Z-fifo-w16-stock-down internal=true
++ docker image inspect --format '{{index .RepoTags 0}} {{.Id}}' moonbase-dtn-ion:session-gate moonbase-dtn-ion:smoke moonbase-dtn-hdtn:smoke
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T165743Z-fifo-w16-stock-hub
++ for role in "$hub" "$earth"
++ timeout 40s bash -c '
+        until docker exec "$1" grep -qi "session established" /run/ion/active.log 2>/dev/null &&
+              docker exec "$1" grep -qi "session established" /run/ion/passive.log 2>/dev/null; do
+            sleep 1
+        done
+    ' bash mb-dtn-20261125T165743Z-fifo-w16-stock-earth
++ [[ trace != smoke ]]
++ python3 ~/moonbase-dtn-smoke/trace.py ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock mb-dtn-20261125T165743Z-fifo-w16-stock-up mb-dtn-20261125T165743Z-fifo-w16-stock-hub mb-dtn-20261125T165743Z-fifo-w16-stock-relay mb-dtn-20261125T165743Z-fifo-w16-stock-earth
++ docker exec -d -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bprecvfile ipn:10.2
++ docker exec -d -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-earth bprecvfile ipn:30.1
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ sudo -n nsenter -t 180511 -n tc qdisc replace dev eth1 root netem delay 50ms
+{"event": "link_delay", "utc": "2026-11-25T16:57:46.986146+00:00", "monotonic_s": 1721489.791142209, "role": "relay", "interface": "eth1", "milliseconds": 50}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ sudo -n nsenter -t 180511 -n tc qdisc replace dev eth0 root netem delay 1250ms
+{"event": "link_delay", "utc": "2026-11-25T16:57:47.035602+00:00", "monotonic_s": 1721489.840605018, "role": "relay", "interface": "eth0", "milliseconds": 1250}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-earth
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T165743Z-fifo-w16-stock-earth
++ sudo -n nsenter -t 180348 -n tc qdisc replace dev eth0 root netem delay 1250ms
+{"event": "link_delay", "utc": "2026-11-25T16:57:47.085855+00:00", "monotonic_s": 1721489.890858116, "role": "earth", "interface": "eth0", "milliseconds": 1250}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ sudo -n nsenter -t 180511 -n sh -c "printf \"%s\n\" \"$$\" > \"$1\"; shift; exec \"$@\"" sh ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/uplink.pid tcpdump -i eth1 -n -s 0 -U -Z <bench-user> -w ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/uplink.pcap "tcp and (port 4556 or port 4557)"
+{"event": "relay_capture", "utc": "2026-11-25T16:57:47.170947+00:00", "monotonic_s": 1721489.975949902, "role": "uplink", "relay_ip": "<relay-ip>", "interface": "eth1"}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ sudo -n nsenter -t 180511 -n sh -c "printf \"%s\n\" \"$$\" > \"$1\"; shift; exec \"$@\"" sh ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/downlink.pid tcpdump -i eth0 -n -s 0 -U -Z <bench-user> -w ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock/downlink.pcap "tcp and (port 4556 or port 4557)"
+{"event": "relay_capture", "utc": "2026-11-25T16:57:47.257463+00:00", "monotonic_s": 1721490.062467063, "role": "downlink", "relay_ip": "<relay-ip>", "interface": "eth0"}
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker logs mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T165743Z-fifo-w16-stock-up mb-dtn-20261125T165743Z-fifo-w16-stock-hub
+{"event": "uplink_closed", "utc": "2026-11-25T16:57:47.491301+00:00", "monotonic_s": 1721490.296304734, "earth_session": ["11863170"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-hub
+{"event": "trace_started", "utc": "2026-11-25T16:57:47.503697+00:00", "monotonic_s": 1721490.30870024, "policy": "fifo", "trace_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "planned_records": 1578, "rise_s": 25, "acquisition_complete_s": 28, "cutoff_s": 133, "wall_start_ns": 1795625867491298948, "relay_path": "stock"}
+{"event": "geometric_rise", "utc": "2026-11-25T16:58:12.516980+00:00", "monotonic_s": 1721515.321981721, "elapsed_s": 25.025666455971077}
++ docker logs mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-earth bash -c "shopt -s nullglob; printf \"%s\n\" testfile[0-9]*"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-earth cat /proc/net/tcp
+{"event": "outage_verified", "utc": "2026-11-25T16:58:15.693716+00:00", "monotonic_s": 1721518.498718673, "earth_files": 0, "earth_session": ["11863170"]}
++ docker network connect --alias hub mb-dtn-20261125T165743Z-fifo-w16-stock-up mb-dtn-20261125T165743Z-fifo-w16-stock-hub
+{"event": "uplink_restored", "utc": "2026-11-25T16:58:15.751202+00:00", "monotonic_s": 1721518.556205193, "closed_seconds": 28.25989915896207}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-hub
++ docker inspect --format {{.State.Pid}} mb-dtn-20261125T165743Z-fifo-w16-stock-hub
++ sudo -n nsenter -t 180158 -n tc qdisc replace dev eth0 root netem delay 50ms
+{"event": "link_delay", "utc": "2026-11-25T16:58:15.802907+00:00", "monotonic_s": 1721518.607909582, "role": "hub", "interface": "eth0", "milliseconds": 50}
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub cat /proc/net/tcp
+{"event": "fresh_hub_session", "utc": "2026-11-25T16:58:20.826102+00:00", "monotonic_s": 1721523.631104783, "elapsed_s": 33.334796668961644}
+{"event": "trace_progress", "utc": "2026-11-25T16:58:47.495043+00:00", "monotonic_s": 1721550.30004618, "elapsed_s": 60.00130383600481, "received": 39, "queue_counts": {"acked": 33, "inflight": 16, "queued": 1529}}
+{"event": "trace_progress", "utc": "2026-11-25T16:59:47.498571+00:00", "monotonic_s": 1721610.303574947, "elapsed_s": 120.00472542108037, "received": 255, "queue_counts": {"acked": 249, "inflight": 16, "queued": 1313}}
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "TCPCL session established"
++ docker logs mb-dtn-20261125T165743Z-fifo-w16-stock-relay
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-earth cat /proc/net/tcp
++ docker network disconnect mb-dtn-20261125T165743Z-fifo-w16-stock-up mb-dtn-20261125T165743Z-fifo-w16-stock-hub
+{"event": "uplink_closed", "utc": "2026-11-25T17:00:00.751469+00:00", "monotonic_s": 1721623.556472099, "earth_session": ["11863170"]}
++ docker inspect --format "{{json .NetworkSettings.Networks}}" mb-dtn-20261125T165743Z-fifo-w16-stock-hub
+{"event": "trace_cutoff", "utc": "2026-11-25T17:00:00.763592+00:00", "monotonic_s": 1721623.568595923, "elapsed_s": 133.00756820105016}
++ docker exec -w /run/ion mb-dtn-20261125T165743Z-fifo-w16-stock-hub bash -c "grep -Fc \"$1\" /run/ion/active.log || true" bash "no TCPCL session, failing xfer"
+{"event": "trace_summary", "utc": "2026-11-25T17:00:05.556033+00:00", "monotonic_s": 1721628.361036838, "policy": "fifo", "rehearsal": false, "diagnostic": true, "relay_path": "stock", "trace_jsonl_sha256": "e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59", "cutoff_s": 133, "usable_s": 105, "first_tcpcl_session_s": 33.334796668961644, "outstanding_limit": 16, "pacing_bytes_per_s": 10240, "one_way_hop_delay_ms": [50, 1250], "offered_records": 1578, "earth_records": 303, "earth_records_by_class": {"status": 202, "science": 101}, "earth_payload_bytes": 413696, "mean_payload_goodput_kib_s": 3.8476190476190477, "earth_undelivered_bytes": 1737088, "hub_unconfirmed_bytes": 1749376, "hub_receipts": 294, "alerts": {"alert-outage": {"latency_s": null, "deadline_met": false}, "alert-contact-open": {"latency_s": null, "deadline_met": false}, "alert-pass-close": {"latency_s": null, "deadline_met": false}}, "duplicate_earth_arrivals": 0, "post_cutoff_earth_records": 7, "no_session_transfer_failures": 0}
++ exit
++ cleanup
++ result=0
++ set +e
++ set +x
+Run 20261125T165743Z-fifo-w16-stock (2026-11-25T16:57:43Z), exit 0. Evidence: ~/moonbase-dtn-smoke/runs/20261125T165743Z-fifo-w16-stock

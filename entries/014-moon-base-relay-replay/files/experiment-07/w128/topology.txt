@@ -1,0 +1,5 @@
+/mb-dtn-20261125T164837Z-fifo-w128-hub networks=mb-dtn-20261125T164837Z-fifo-w128-up  published={}
+/mb-dtn-20261125T164837Z-fifo-w128-relay networks=mb-dtn-20261125T164837Z-fifo-w128-down mb-dtn-20261125T164837Z-fifo-w128-up  published={}
+/mb-dtn-20261125T164837Z-fifo-w128-earth networks=mb-dtn-20261125T164837Z-fifo-w128-down  published={}
+mb-dtn-20261125T164837Z-fifo-w128-up internal=true
+mb-dtn-20261125T164837Z-fifo-w128-down internal=true

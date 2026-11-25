@@ -1,0 +1,13 @@
+Trace: 3153 records, JSONL SHA-256 e5fc01939c9080b41d37f89ff0e52c891347049f07047e4018e07ada70fd4c59
+fifo: 1578/1578 unique Earth records by first close (2,150,784 B); 1/3 alerts on time; 0 repeated arrivals over both passes
+alerts_first: 1578/1578 unique Earth records by first close (2,150,784 B); 2/3 alerts on time; 0 repeated arrivals over both passes
+lost_receipt: 1578/1578 unique Earth records by first close (2,150,784 B); 2/3 alerts on time; 1 repeated arrivals over both passes
+2095.000000 s  hub_send
+2095.062500 s  relay_arrival
+2096.313750 s  earth_commit
+2096.313750 s  receipt_suppressed
+2103.000000 s  retry_queued
+3930.000000 s  hub_send
+3930.062500 s  relay_arrival
+3931.313750 s  earth_duplicate
+3932.613750 s  receipt

@@ -1,0 +1,126 @@
+596ab6812d4386c4dc92fa890784c1dcb34f6f326dd7a2d818fa0c5ed7b4ee95
+d62c71b9288974e828a729e19af18eee6573ba386a68b9a0268fad243aeef5c7
+fc1239d14ad8721f728b915086fc0834b0047bf987a7d512fe12ba6abb099c6b
+4a9888ec7e270375b241166e709bac348ec9ed437626dabf90cc6e3eb5eaeac4
+mb-lte-20261125T213105Z-relay
+01b916a0b2e301da991194a372a6ae65db98c54828865f583761691125bd2a4e
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=0 at time 2026-Nov-25 21:31:08
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=1 at time 2026-Nov-25 21:31:08
++ sudo -n nsenter -t 121741 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 435051 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 435051 -n /usr/sbin/tc qdisc replace dev eth1 root netem delay 1250ms
++ sudo -n nsenter -t 434927 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 1250ms
+94d62d2428947b185922edb0f161d67fab5e586dc6772ede49297c52c0c6c447
+a149d65b3444b19d727c3dd2710dfb01339629695f85ebc27207fb1916068c05
+289a50459242cfe5eb0e09d8ef10b90e23e29d04edf062337fcf22eac93ae31c
+2574d0af45e11686d7600f202bb33709bdb7a081176c8bcf1827b4b567955602
+mb-lte-20261125T213106Z-relay
+0a3097ce4428c08b55f2c8933e24c31dd60b774ee564ea6f1e7ea50d7b344e2f
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=0 at time 2026-Nov-25 21:31:12
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=1 at time 2026-Nov-25 21:31:12
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
++ sudo -n nsenter -t 121935 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 435865 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 435865 -n /usr/sbin/tc qdisc replace dev eth1 root netem delay 1250ms
++ sudo -n nsenter -t 435740 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 1250ms
+430c4c6411b202b023f8d37f87f57279ba2ced99c166ac216a35f5e9a33fdf7f
+928cddfd97ea5f7273f6f1067e590e02be323b7e7411232b8905a448eb07c426
+47baba053f5fd5a0eab672dc59daf79aa809e6754e9e8865e82a2055b00e0364
+1d78b03ae9bdceb3b58e60a637776401aaa6332f70a1aae98531fa50c5b11f9a
+mb-lte-20261125T213107Z-relay
+d7961c106299c7a4f61543c3535fa2ad4894d9bcb15d63c0cf4a4eb0ca395131
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:30.*
+[ router   ][ info ]:  -- LINK UP Event sent for outductArrayIndex=0 at time 2026-Nov-25 21:31:16
+[ ingress  ][ info ]: Configured outducts only for TCPCLv4 peer ipn:10.*
++ sudo -n nsenter -t 122130 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 436685 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 50ms
++ sudo -n nsenter -t 436685 -n /usr/sbin/tc qdisc replace dev eth1 root netem delay 1250ms
++ sudo -n nsenter -t 436562 -n /usr/sbin/tc qdisc replace dev eth0 root netem delay 1250ms
++ [[ 1 == 1 ]]
++ rover $'set -e\n        sudo -n mmcli -m 0 --timeout=15 --simple-disconnect || true\n        sudo -n mmcli -m 0 --timeout=18 --disable\n        sudo -n mmcli -m 0 --timeout=15 --set-power-state-low\n        sleep 2\n        sudo -n mmcli -m 0 --timeout=20 --enable'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'set -e\n        sudo -n mmcli -m 0 --timeout=15 --simple-disconnect || true\n        sudo -n mmcli -m 0 --timeout=18 --disable\n        sudo -n mmcli -m 0 --timeout=15 --set-power-state-low\n        sleep 2\n        sudo -n mmcli -m 0 --timeout=20 --enable'
+successfully disconnected all bearers in the modem
+successfully disabled the modem
+successfully set new power state in the modem
+successfully enabled the modem
++ rover $'mkdir -p ~/moonbase-dtn-lte/20261125T213105Z\n    ip -4 route show default\n    mmcli -m 0 -K | grep -E \'^modem.generic.state |modem.generic.ports.value.*\\(net\\)\''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> $'mkdir -p ~/moonbase-dtn-lte/20261125T213105Z\n    ip -4 route show default\n    mmcli -m 0 -K | grep -E \'^modem.generic.state |modem.generic.ports.value.*\\(net\\)\''
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
+modem.generic.ports.value[7]                    : wwan0 (net)
+modem.generic.state                             : enabled
++ window=2300
++ [[ 2300 =~ ^[0-9]+$ ]]
++ rf_pid=48647
++ pi 'timeout 40 bash -c '\''until grep -q "eNodeB started" ~/moonbase-dtn-lte/20261125T213105Z/rf-full/enb.console 2>/dev/null; do sleep .5; done'\'''
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'timeout 40 bash -c '\''until grep -q "eNodeB started" ~/moonbase-dtn-lte/20261125T213105Z/rf-full/enb.console 2>/dev/null; do sleep .5; done'\'''
++ pi 'mkdir -p ~/moonbase-dtn-lte/20261125T213105Z/rf-full; sudo -n bash ~/moonbase-dtn-lte/rf-window.sh $HOME/moonbase-dtn-lte/20261125T213105Z/rf-full $HOME/moonbase-lte $HOME/moonbase-uhd-images.H2krtS/uhd-images-4.6.0 2300'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'mkdir -p ~/moonbase-dtn-lte/20261125T213105Z/rf-full; sudo -n bash ~/moonbase-dtn-lte/rf-window.sh $HOME/moonbase-dtn-lte/20261125T213105Z/rf-full $HOME/moonbase-lte $HOME/moonbase-uhd-images.H2krtS/uhd-images-4.6.0 2300'
+moonbase_sgi     UNKNOWN        172.16.0.1/24 
+grep: /home/<ssh-user>/moonbase-dtn-lte/20261125T213105Z/rf-full/intake.jsonl: No such file or directory
++ register_tries=2
++ [[ 2 == 1 ]]
++ [[ 2 == 2 ]]
++ rover 'sudo -n env LTE_REGISTER_TRIES=2 bash ~/moonbase-dtn-lte/toughpad-bearer.sh 0 $HOME/moonbase-dtn-lte/20261125T213105Z'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> 'sudo -n env LTE_REGISTER_TRIES=2 bash ~/moonbase-dtn-lte/toughpad-bearer.sh 0 $HOME/moonbase-dtn-lte/20261125T213105Z'
+successfully registered the modem
+successfully connected the modem
+172.16.0.1 dev wwan0 src 172.16.0.2 uid 0 
+    cache 
+PING 172.16.0.1 (172.16.0.1) from 172.16.0.2 wwan0: 56(84) bytes of data.
+64 bytes from 172.16.0.1: icmp_seq=1 ttl=64 time=41.2 ms
+64 bytes from 172.16.0.1: icmp_seq=2 ttl=64 time=39.8 ms
+64 bytes from 172.16.0.1: icmp_seq=3 ttl=64 time=36.2 ms
+
+--- 172.16.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 36.151/39.045/41.160/2.117 ms
++ [[ 1 == 1 ]]
++ RUN_ID=20261125T213105Z
++ bash split-trace.sh run moonbase-dtn-lte/20261125T213105Z/rf-full
+Matched contact t0 (UTC epoch): 1795642326
+Payload pacing per arm: 5120 bytes/s
++ exit
++ cleanup
++ rc=0
++ trap - EXIT
++ set +e
++ [[ -n 48647 ]]
++ pi 'touch ~/moonbase-dtn-lte/20261125T213105Z/rf-full/stop-rf'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<pi-management-ip> 'touch ~/moonbase-dtn-lte/20261125T213105Z/rf-full/stop-rf'
++ rover 'sudo -n bash -s -- $HOME/moonbase-dtn-lte/20261125T213105Z 0'
++ ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=5 <ssh-user>@<toughpad-management-ip> 'sudo -n bash -s -- $HOME/moonbase-dtn-lte/20261125T213105Z 0'
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
++ [[ -n 48647 ]]
++ wait 48647
++ exit 0
+mb-lte-20261125T213105Z-hub
+mb-lte-20261125T213105Z-relay
+mb-lte-20261125T213105Z-earth
+mb-lte-20261125T213105Z-down
+mb-lte-20261125T213105Z-edge
+mb-lte-20261125T213106Z-hub
+mb-lte-20261125T213106Z-relay
+mb-lte-20261125T213106Z-earth
+mb-lte-20261125T213106Z-down
+mb-lte-20261125T213106Z-edge
+mb-lte-20261125T213107Z-hub
+mb-lte-20261125T213107Z-relay
+mb-lte-20261125T213107Z-earth
+mb-lte-20261125T213107Z-down
+mb-lte-20261125T213107Z-edge
+Pi: eNB, EPC, SGi, and experiment containers stopped
+m75q: experiment containers and networks removed
+modem.generic.state                             : enabled
+default via <wifi-gateway> dev wlp2s0 proto dhcp src <toughpad-management-ip> metric 600 
+Toughpad: LTE test address and route removed
+Traceback (most recent call last):
+  File "/home/<ssh-user>/Documents/ChatGPT/Moon Base Challenge/dtn/lte/score-split-trace.py", line 155, in <module>
+    score(parser.parse_args())
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/<ssh-user>/Documents/ChatGPT/Moon Base Challenge/dtn/lte/score-split-trace.py", line 86, in score
+    assert not send or max(send.values()) < cutoff
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

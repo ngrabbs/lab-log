@@ -1,0 +1,20 @@
+[
+  {
+    "policy": "fifo",
+    "acquisition_backlog_records": 1374,
+    "acquisition_backlog_committed": 1374,
+    "acquisition_backlog_receipts": 1374,
+    "acquisition_backlog_clearance_s_after_open": 203.03766818204895,
+    "all_records_remaining_at_earth": 0,
+    "all_records_unconfirmed_at_hub": 3
+  },
+  {
+    "policy": "alerts-first",
+    "acquisition_backlog_records": 1374,
+    "acquisition_backlog_committed": 1374,
+    "acquisition_backlog_receipts": 1374,
+    "acquisition_backlog_clearance_s_after_open": 210.49249058705755,
+    "all_records_remaining_at_earth": 1,
+    "all_records_unconfirmed_at_hub": 1
+  }
+]

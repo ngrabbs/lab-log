@@ -1,0 +1,5 @@
+/mb-dtn-20261125T165743Z-fifo-w16-stock-hub networks=mb-dtn-20261125T165743Z-fifo-w16-stock-up  published={}
+/mb-dtn-20261125T165743Z-fifo-w16-stock-relay networks=mb-dtn-20261125T165743Z-fifo-w16-stock-down mb-dtn-20261125T165743Z-fifo-w16-stock-up  published={}
+/mb-dtn-20261125T165743Z-fifo-w16-stock-earth networks=mb-dtn-20261125T165743Z-fifo-w16-stock-down  published={}
+mb-dtn-20261125T165743Z-fifo-w16-stock-up internal=true
+mb-dtn-20261125T165743Z-fifo-w16-stock-down internal=true
